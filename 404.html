@@ -3181,7 +3181,8 @@ class Component extends DCLogic {
   MOVE = 4.5;
   cueStart = (k) => Math.max(this.CUES[k] - this.MOVE, k ? this.CUES[k - 1] : 0);
 
-  cueSlots = () => [...document.querySelectorAll('[data-story-images] [data-slot]')].filter(s => s.offsetParent);
+  cueSlots = () => [...document.querySelectorAll('[data-story-images] [data-slot]')];
+  cueTarget = (el) => { if (!el || el.offsetParent) return el; const hero = document.querySelector('[data-story-hero]'); return hero && hero.offsetParent ? hero : null; };
   cueY = (el) => { const vh = window.innerHeight; const max = document.documentElement.scrollHeight - vh; return Math.round(Math.max(0, Math.min(max, this.absTop(el) + el.offsetHeight / 2 - vh / 2))); };
   cueIndexAt = (t) => { let i = -1; for (let k = 0; k < this.CUES.length; k++) { if (t >= this.cueStart(k)) i = k; else break; } return i; };
   reduceMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -3194,7 +3195,7 @@ class Component extends DCLogic {
 
   moveTo = (i, instant) => {
     this.cancelMove();
-    const el = this.cueSlots()[i];
+    const el = this.cueTarget(this.cueSlots()[i]);
     if (!el) return;
     const y1 = this.cueY(el), y0 = window.scrollY;
     const html = document.documentElement, body = document.body;
@@ -3261,7 +3262,7 @@ class Component extends DCLogic {
 
   startFollow = () => {
     if (!this._followBound) {
-      const stop = (e) => { if (e && e.target && e.target.closest && e.target.closest('button, input, a, [role="slider"]')) return; if (this._moveRaf) this.cancelMove(); };
+      const stop = (e) => { if (e && e.target && e.target.closest && e.target.closest('button, input, a, [role="slider"]')) return; if (e && e.type === 'touchstart' && window.matchMedia && matchMedia('(orientation: landscape) and (max-height: 500px) and (pointer: coarse)').matches) return; if (this._moveRaf) this.cancelMove(); };
       ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => window.addEventListener(ev, stop, { passive: true }));
       this._followBound = stop;
     }
@@ -3711,6 +3712,9 @@ class Component extends DCLogic {
   componentDidMount() {
     this.loadSeal();
     this.initPlayerAutohide();
+    this._reSync = () => { clearTimeout(this._reSyncT); this._reSyncT = setTimeout(() => { const a = this._a; if (this.state.page === 's-lm' && a && (!a.paused || a.currentTime > 0)) this.snapToAudio(a.currentTime); }, 350); };
+    window.addEventListener('orientationchange', this._reSync);
+    if (window.matchMedia) { const omq = matchMedia('(orientation: landscape)'); if (omq.addEventListener) omq.addEventListener('change', this._reSync); }
     document.addEventListener('pointerdown', this.playClick, true);
     if (window.speechSynthesis) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices(); }
     this._place = () => requestAnimationFrame(this.placeStoryImages);
