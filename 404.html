@@ -394,6 +394,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="wte-photos"] > div{grid-template-rows:minmax(0,1fr) !important}
 [data-m="pk-orig"]{display:none !important}
 [data-m="pk-dup"]{display:block !important;height:280px;margin:36px -18px 8px;align-self:stretch}
+[data-m="wte-photos"]{display:none !important}
+[data-m="tent-dup"]{display:block !important;height:280px;margin:-8px -18px 0;align-self:stretch}
 [data-m="1col"]{grid-template-columns:minmax(0,1fr) !important}
 [data-m="1col"] > *{min-width:0 !important;max-width:100% !important}
 [data-m="row2x2"]{grid-template-columns:1fr 1fr !important}
@@ -417,8 +419,11 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="steps"] > div > div:first-child{height:84px !important;min-height:0 !important;aspect-ratio:auto !important}
 [data-m="about-seal"]{left:0 !important}
 [data-m="shasta"]{background-size:cover !important;background-repeat:no-repeat !important;background-position:center !important}
-[data-m="faq-tiles"]{grid-template-columns:1fr 1.4fr 1fr !important}
-[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+[data-m="faq-tiles"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+[data-m="faq-tiles"]>img:nth-child(2),[data-m="faq-tiles2"]>img:nth-child(2){display:none !important}
+[data-m="faq-tiles"]>img:nth-child(1),[data-m="faq-tiles2"]>img:nth-child(1){grid-column:1 !important}
+[data-m="faq-tiles"]>img:nth-child(3),[data-m="faq-tiles2"]>img:nth-child(3){grid-column:2 !important}
+[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important}
 [data-m="faq-head"]{width:100% !important}
 [data-m="sbox"]{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:22px !important;padding:60px 18px 64px !important;overflow:hidden !important}
 [data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
@@ -774,6 +779,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </div>
 <div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio.jpg" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;filter:brightness(.8)" loading="lazy"></div>
+<div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
 <div data-m="wte-story" style="min-width:0;display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:flex-end;width:min(100%,600px);margin-top:44px;padding-right:6px">
 <div style="display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%;position:relative;left:42px">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;font-size:clamp(20px,2.5vw,36px);line-height:1.12;color:#D4A24A;margin:0 0 10px;text-align:center">THE FICTIONAL ORIGIN STORY OF<br>THE LION’S MANE MUSHROOM</p>
@@ -3710,8 +3716,40 @@ class Component extends DCLogic {
     } catch (err) {}
   };
 
+  initPhoneText() {
+    if (!window.matchMedia || !window.MutationObserver) return;
+    const mq = matchMedia('(max-width: 767.98px)');
+    const SKIP = 'header,button,[data-m="player"],[data-m="badges"],[data-tts-skip]';
+    const done = new Set();
+    const apply = () => {
+      if (!mq.matches) return;
+      const root = document.querySelector('x-dc') || document.body;
+      root.querySelectorAll('[style*="font-size"]').forEach(el => {
+        if (el.dataset.fsUp || el.closest(SKIP)) return;
+        const v = el.style.fontSize;
+        if (!v || /em|%/.test(v)) return;
+        const s = parseFloat(getComputedStyle(el).fontSize);
+        if (!s || s >= 24 || (s >= 20 && /Playfair/.test(getComputedStyle(el).fontFamily))) { el.dataset.fsUp = 'skip'; return; }
+        let n = s * 1.12;
+        if (/^(P|LI)$/.test(el.tagName) && s >= 14) n = Math.max(n, 17);
+        el.dataset.fsUp = '1';
+        el.style.setProperty('font-size', (Math.round(n * 2) / 2) + 'px', 'important');
+        done.add(el);
+      });
+    };
+    const undo = () => { done.forEach(el => { el.style.removeProperty('font-size'); delete el.dataset.fsUp; }); done.clear(); document.querySelectorAll('[data-fs-up]').forEach(el => delete el.dataset.fsUp); };
+    let t = 0;
+    const sched = () => { cancelAnimationFrame(t); t = requestAnimationFrame(apply); };
+    this._fsObs = new MutationObserver(sched);
+    this._fsObs.observe(document.body, { childList: true, subtree: true });
+    const onMq = () => { if (mq.matches) apply(); else undo(); };
+    if (mq.addEventListener) mq.addEventListener('change', onMq);
+    apply();
+  }
+
   componentDidMount() {
     this.loadSeal();
+    this.initPhoneText();
     this.initPlayerAutohide();
     this._reSync = () => { clearTimeout(this._reSyncT); this._reSyncT = setTimeout(() => { const a = this._a; if (this.state.page === 's-lm' && a && (!a.paused || a.currentTime > 0)) this.snapToAudio(a.currentTime); }, 350); };
     window.addEventListener('orientationchange', this._reSync);

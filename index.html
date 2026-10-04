@@ -3716,8 +3716,40 @@ class Component extends DCLogic {
     } catch (err) {}
   };
 
+  initPhoneText() {
+    if (!window.matchMedia || !window.MutationObserver) return;
+    const mq = matchMedia('(max-width: 767.98px)');
+    const SKIP = 'header,button,[data-m="player"],[data-m="badges"],[data-tts-skip]';
+    const done = new Set();
+    const apply = () => {
+      if (!mq.matches) return;
+      const root = document.querySelector('x-dc') || document.body;
+      root.querySelectorAll('[style*="font-size"]').forEach(el => {
+        if (el.dataset.fsUp || el.closest(SKIP)) return;
+        const v = el.style.fontSize;
+        if (!v || /em|%/.test(v)) return;
+        const s = parseFloat(getComputedStyle(el).fontSize);
+        if (!s || s >= 24 || (s >= 20 && /Playfair/.test(getComputedStyle(el).fontFamily))) { el.dataset.fsUp = 'skip'; return; }
+        let n = s * 1.12;
+        if (/^(P|LI)$/.test(el.tagName) && s >= 14) n = Math.max(n, 17);
+        el.dataset.fsUp = '1';
+        el.style.setProperty('font-size', (Math.round(n * 2) / 2) + 'px', 'important');
+        done.add(el);
+      });
+    };
+    const undo = () => { done.forEach(el => { el.style.removeProperty('font-size'); delete el.dataset.fsUp; }); done.clear(); document.querySelectorAll('[data-fs-up]').forEach(el => delete el.dataset.fsUp); };
+    let t = 0;
+    const sched = () => { cancelAnimationFrame(t); t = requestAnimationFrame(apply); };
+    this._fsObs = new MutationObserver(sched);
+    this._fsObs.observe(document.body, { childList: true, subtree: true });
+    const onMq = () => { if (mq.matches) apply(); else undo(); };
+    if (mq.addEventListener) mq.addEventListener('change', onMq);
+    apply();
+  }
+
   componentDidMount() {
     this.loadSeal();
+    this.initPhoneText();
     this.initPlayerAutohide();
     this._reSync = () => { clearTimeout(this._reSyncT); this._reSyncT = setTimeout(() => { const a = this._a; if (this.state.page === 's-lm' && a && (!a.paused || a.currentTime > 0)) this.snapToAudio(a.currentTime); }, 350); };
     window.addEventListener('orientationchange', this._reSync);
