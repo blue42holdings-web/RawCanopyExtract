@@ -431,10 +431,270 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-story-titleblock] > *:not([data-m="play-row"]){display:none !important}
 [data-m="play-row"]{margin:0 auto !important}
 [data-m="hero-tts"]{display:none !important}
+[data-m="extract-card"]{background-position:50% 60% !important}
 [data-m="cta3"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;gap:18px !important}
 [data-m="cta3"] > *{justify-self:center !important;white-space:normal !important;text-align:center}
 [data-m="sbox"] [data-stamp]{height:120px;align-items:center !important;justify-content:center !important;margin:24px 0 !important}
 [data-m="sbox"] [data-stamp] p{font-size:48px !important}
+}
+@media (orientation:landscape) and (max-height:500px) and (pointer:coarse){
+body:has([data-story-grid]) header{position:relative !important}
+[data-story-images]{margin-top:0 !important;padding-top:0 !important}
+/* story pages: single interleaved column */
+[data-story-hero]{display:block !important;margin:0 calc(50% - 50vw) 0 !important;width:100vw !important}
+[data-story-titleblock]{display:none !important}
+[data-story-grid]{display:grid !important;grid-template-columns:1fr !important;gap:0 !important}
+[data-story-text],[data-story-images]{display:contents !important}
+[data-story-text] > p{margin-left:0;margin-right:0}
+[data-slot]{width:100vw !important;height:100vh !important;height:100dvh !important;margin:0 calc(50% - 50vw) !important;aspect-ratio:auto !important;overflow:hidden !important;background:#000 !important}
+[data-slot] > img{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important}
+[data-story-images] > [data-slot]:has(img[src*="plate-mountain-first-light"]){display:none !important}
+[data-story-text] > p:nth-child(1){order:10}
+[data-story-text] > p:nth-child(2){order:20}
+[data-story-text] > p:nth-child(3){order:30}
+[data-story-text] > p:nth-child(4){order:40}
+[data-story-text] > p:nth-child(5){order:50}
+[data-story-text] > p:nth-child(6){order:60}
+[data-story-text] > p:nth-child(7){order:70}
+[data-story-text] > p:nth-child(8){order:80}
+[data-story-text] > p:nth-child(9){order:90}
+[data-story-text] > p:nth-child(10){order:100}
+[data-story-text] > p:nth-child(11){order:110}
+[data-story-text] > p:nth-child(12){order:120}
+[data-story-text] > p:nth-child(13){order:130}
+[data-story-text] > p:nth-child(14){order:140}
+[data-story-text] > p:nth-child(15){order:150}
+[data-story-text] > p:nth-child(16){order:160}
+[data-story-text] > p:nth-child(17){order:170}
+[data-story-text] > p:nth-child(18){order:180}
+[data-story-text] > p:nth-child(19){order:190}
+[data-story-text] > p:nth-child(20){order:200}
+[data-story-text] > p:nth-child(21){order:210}
+[data-story-text] > p:nth-child(22){order:220}
+[data-story-text] > p:nth-child(23){order:230}
+[data-story-text] > p:nth-child(24){order:240}
+[data-story-text] > p:nth-child(25){order:250}
+[data-story-text] > p:nth-child(26){order:260}
+[data-story-text] > p:nth-child(27){order:270}
+[data-story-text] > p:nth-child(28){order:280}
+[data-story-text] > p:nth-child(29){order:290}
+[data-story-text] > p:nth-child(30){order:300}
+[data-story-text] > p:nth-child(31){order:310}
+[data-story-text] > p:nth-child(32){order:320}
+[data-story-text] > p:nth-child(33){order:330}
+[data-story-text] > p:nth-child(34){order:340}
+[data-story-text] > p:nth-child(35){order:350}
+[data-story-text] > p:nth-child(36){order:360}
+[data-story-text] > p:nth-child(37){order:370}
+[data-story-text] > p:nth-child(38){order:380}
+[data-story-text] > p:nth-child(39){order:390}
+[data-story-text] > p:nth-child(40){order:400}
+[data-story-text] > p:nth-child(41){order:410}
+[data-story-text] > p:nth-child(42){order:420}
+[data-story-text] > p:nth-child(43){order:430}
+[data-story-text] > p:nth-child(44){order:440}
+[data-story-text] > p:nth-child(45){order:450}
+[data-story-text] > p:nth-child(46){order:460}
+[data-story-text] > p:nth-child(47){order:470}
+[data-story-text] > p:nth-child(48){order:480}
+[data-story-text] > p:nth-child(49){order:490}
+[data-story-text] > p:nth-child(50){order:500}
+[data-story-text] > p:nth-child(51){order:510}
+[data-story-text] > p:nth-child(52){order:520}
+[data-story-text] > p:nth-child(53){order:530}
+[data-story-text] > p:nth-child(54){order:540}
+[data-story-text] > p:nth-child(55){order:550}
+[data-story-text] > p:nth-child(56){order:560}
+[data-story-text] > p:nth-child(57){order:570}
+[data-story-text] > p:nth-child(58){order:580}
+[data-story-text] > p:nth-child(59){order:590}
+[data-story-text] > p:nth-child(60){order:600}
+[data-story-text] > p:nth-child(61){order:610}
+[data-story-text] > p:nth-child(62){order:620}
+[data-story-text] > p:nth-child(63){order:630}
+[data-story-text] > p:nth-child(64){order:640}
+[data-story-text] > p:nth-child(65){order:650}
+[data-story-text] > p:nth-child(66){order:660}
+[data-story-text] > p:nth-child(67){order:670}
+[data-story-text] > p:nth-child(68){order:680}
+[data-story-text] > p:nth-child(69){order:690}
+[data-story-text] > p:nth-child(70){order:700}
+[data-story-text] > p:nth-child(71){order:710}
+[data-story-text] > p:nth-child(72){order:720}
+[data-story-text] > p:nth-child(73){order:730}
+[data-story-text] > p:nth-child(74){order:740}
+[data-story-text] > p:nth-child(75){order:750}
+[data-story-text] > p:nth-child(76){order:760}
+[data-story-text] > p:nth-child(77){order:770}
+[data-story-text] > p:nth-child(78){order:780}
+[data-story-text] > p:nth-child(79){order:790}
+[data-story-text] > p:nth-child(80){order:800}
+[data-story-text] > p:nth-child(81){order:810}
+[data-story-text] > p:nth-child(82){order:820}
+[data-story-text] > p:nth-child(83){order:830}
+[data-story-text] > p:nth-child(84){order:840}
+[data-story-text] > p:nth-child(85){order:850}
+[data-story-text] > p:nth-child(86){order:860}
+[data-story-text] > p:nth-child(87){order:870}
+[data-story-text] > p:nth-child(88){order:880}
+[data-story-text] > p:nth-child(89){order:890}
+[data-story-text] > p:nth-child(90){order:900}
+[data-story-text] > p:nth-child(91){order:910}
+[data-story-text] > p:nth-child(92){order:920}
+[data-story-text] > p:nth-child(93){order:930}
+[data-story-text] > p:nth-child(94){order:940}
+[data-story-text] > p:nth-child(95){order:950}
+[data-story-text] > p:nth-child(96){order:960}
+[data-story-text] > p:nth-child(97){order:970}
+[data-story-text] > p:nth-child(98){order:980}
+[data-story-text] > p:nth-child(99){order:990}
+[data-story-text] > p:nth-child(100){order:1000}
+[data-story-text] > p:nth-child(101){order:1010}
+[data-story-text] > p:nth-child(102){order:1020}
+[data-story-text] > p:nth-child(103){order:1030}
+[data-story-text] > p:nth-child(104){order:1040}
+[data-story-text] > p:nth-child(105){order:1050}
+[data-story-text] > p:nth-child(106){order:1060}
+[data-story-text] > p:nth-child(107){order:1070}
+[data-story-text] > p:nth-child(108){order:1080}
+[data-story-text] > p:nth-child(109){order:1090}
+[data-story-text] > p:nth-child(110){order:1100}
+[data-story-text] > p:nth-child(111){order:1110}
+[data-story-text] > p:nth-child(112){order:1120}
+[data-story-text] > p:nth-child(113){order:1130}
+[data-story-text] > p:nth-child(114){order:1140}
+[data-story-text] > p:nth-child(115){order:1150}
+[data-story-text] > p:nth-child(116){order:1160}
+[data-story-text] > p:nth-child(117){order:1170}
+[data-story-text] > p:nth-child(118){order:1180}
+[data-story-text] > p:nth-child(119){order:1190}
+[data-story-text] > p:nth-child(120){order:1200}
+[data-story-text] > p:nth-child(121){order:1210}
+[data-story-text] > p:nth-child(122){order:1220}
+[data-story-text] > p:nth-child(123){order:1230}
+[data-story-text] > p:nth-child(124){order:1240}
+[data-story-text] > p:nth-child(125){order:1250}
+[data-story-text] > p:nth-child(126){order:1260}
+[data-story-text] > p:nth-child(127){order:1270}
+[data-story-text] > p:nth-child(128){order:1280}
+[data-story-text] > p:nth-child(129){order:1290}
+[data-story-text] > p:nth-child(130){order:1300}
+[data-story-text] > p:nth-child(131){order:1310}
+[data-story-text] > p:nth-child(132){order:1320}
+[data-story-text] > p:nth-child(133){order:1330}
+[data-story-text] > p:nth-child(134){order:1340}
+[data-story-text] > p:nth-child(135){order:1350}
+[data-story-text] > p:nth-child(136){order:1360}
+[data-story-text] > p:nth-child(137){order:1370}
+[data-story-text] > p:nth-child(138){order:1380}
+[data-story-text] > p:nth-child(139){order:1390}
+[data-story-text] > p:nth-child(140){order:1400}
+[data-story-text] > p:nth-child(141){order:1410}
+[data-story-text] > p:nth-child(142){order:1420}
+[data-story-text] > p:nth-child(143){order:1430}
+[data-story-text] > p:nth-child(144){order:1440}
+[data-story-text] > p:nth-child(145){order:1450}
+[data-story-text] > p:nth-child(146){order:1460}
+[data-story-text] > p:nth-child(147){order:1470}
+[data-story-text] > p:nth-child(148){order:1480}
+[data-story-text] > p:nth-child(149){order:1490}
+[data-story-text] > p:nth-child(150){order:1500}
+[data-story-text] > p:nth-child(151){order:1510}
+[data-story-text] > p:nth-child(152){order:1520}
+[data-story-text] > p:nth-child(153){order:1530}
+[data-story-text] > p:nth-child(154){order:1540}
+[data-story-text] > p:nth-child(155){order:1550}
+[data-story-text] > p:nth-child(156){order:1560}
+[data-story-text] > p:nth-child(157){order:1570}
+[data-story-text] > p:nth-child(158){order:1580}
+[data-story-text] > p:nth-child(159){order:1590}
+[data-story-text] > p:nth-child(160){order:1600}
+[data-story-text] > p:nth-child(161){order:1610}
+[data-story-text] > p:nth-child(162){order:1620}
+[data-story-text] > p:nth-child(163){order:1630}
+[data-story-text] > p:nth-child(164){order:1640}
+[data-story-text] > p:nth-child(165){order:1650}
+[data-story-text] > p:nth-child(166){order:1660}
+[data-story-text] > p:nth-child(167){order:1670}
+[data-story-text] > p:nth-child(168){order:1680}
+[data-story-text] > p:nth-child(169){order:1690}
+[data-story-text] > p:nth-child(170){order:1700}
+[data-story-text] > p:nth-child(171){order:1710}
+[data-story-text] > p:nth-child(172){order:1720}
+[data-story-text] > p:nth-child(173){order:1730}
+[data-story-text] > p:nth-child(174){order:1740}
+[data-story-text] > p:nth-child(175){order:1750}
+[data-story-text] > p:nth-child(176){order:1760}
+[data-story-text] > p:nth-child(177){order:1770}
+[data-story-text] > p:nth-child(178){order:1780}
+[data-story-text] > p:nth-child(179){order:1790}
+[data-story-text] > p:nth-child(180){order:1800}
+[data-story-text] > p:nth-child(181){order:1810}
+[data-story-text] > p:nth-child(182){order:1820}
+[data-story-text] > p:nth-child(183){order:1830}
+[data-story-text] > p:nth-child(184){order:1840}
+[data-story-text] > p:nth-child(185){order:1850}
+[data-story-text] > p:nth-child(186){order:1860}
+[data-story-text] > p:nth-child(187){order:1870}
+[data-story-text] > p:nth-child(188){order:1880}
+[data-story-text] > p:nth-child(189){order:1890}
+[data-story-text] > p:nth-child(190){order:1900}
+[data-story-images] > [data-slot]:nth-child(2){order:25}
+[data-story-images] > [data-slot]:nth-child(3){order:55}
+[data-story-images] > [data-slot]:nth-child(4){order:75}
+[data-story-images] > [data-slot]:nth-child(5){order:105}
+[data-story-images] > [data-slot]:nth-child(6){order:125}
+[data-story-images] > [data-slot]:nth-child(7){order:155}
+[data-story-images] > [data-slot]:nth-child(8){order:175}
+[data-story-images] > [data-slot]:nth-child(9){order:205}
+[data-story-images] > [data-slot]:nth-child(10){order:225}
+[data-story-images] > [data-slot]:nth-child(11){order:255}
+[data-story-images] > [data-slot]:nth-child(12){order:275}
+[data-story-images] > [data-slot]:nth-child(13){order:305}
+[data-story-images] > [data-slot]:nth-child(14){order:325}
+[data-story-images] > [data-slot]:nth-child(15){order:355}
+[data-story-images] > [data-slot]:nth-child(16){order:375}
+[data-story-images] > [data-slot]:nth-child(17){order:405}
+[data-story-images] > [data-slot]:nth-child(18){order:425}
+[data-story-images] > [data-slot]:nth-child(19){order:455}
+[data-story-images] > [data-slot]:nth-child(20){order:475}
+[data-story-images] > [data-slot]:nth-child(21){order:505}
+[data-story-images] > [data-slot]:nth-child(22){order:525}
+[data-story-images] > [data-slot]:nth-child(23){order:555}
+[data-story-images] > [data-slot]:nth-child(24){order:575}
+[data-story-images] > [data-slot]:nth-child(25){order:605}
+[data-story-images] > [data-slot]:nth-child(26){order:625}
+[data-story-images] > [data-slot]:nth-child(27){order:645}
+[data-story-images] > [data-slot]:nth-child(28){order:675}
+[data-story-images] > [data-slot]:nth-child(29){order:695}
+[data-story-images] > [data-slot]:nth-child(30){order:725}
+[data-story-images] > [data-slot]:nth-child(31){order:745}
+[data-story-images] > [data-slot]:nth-child(32){order:775}
+[data-story-images] > [data-slot]:nth-child(33){order:795}
+[data-story-images] > [data-slot]:nth-child(34){order:825}
+[data-story-images] > [data-slot]:nth-child(35){order:845}
+[data-story-images] > [data-slot]:nth-child(36){order:875}
+[data-story-images] > [data-slot]:nth-child(37){order:895}
+[data-story-images] > [data-slot]:nth-child(38){order:925}
+[data-story-images] > [data-slot]:nth-child(39){order:945}
+[data-story-images] > [data-slot]:nth-child(40){order:975}
+[data-story-images] > [data-slot]:nth-child(41){order:995}
+[data-story-images] > [data-slot]:nth-child(42){order:1025}
+[data-story-images] > [data-slot]:nth-child(43){order:1045}
+[data-story-images] > [data-slot]:nth-child(44){order:1075}
+[data-story-images] > [data-slot]:nth-child(45){order:1095}
+[data-story-images] > [data-slot]:nth-child(46){order:1125}
+[data-story-images] > [data-slot]:nth-child(47){order:1145}
+[data-story-images] > [data-slot]:nth-child(48){order:1175}
+[data-story-images] > [data-slot]:nth-child(49){order:1195}
+[data-story-images] > [data-slot]:nth-child(50){order:1225}
+[data-story-text]{padding:0 !important;background:none !important}
+[data-m="player-spacer"]{height:0 !important}
+[data-m="player"]{background:rgba(0,0,0,.5) !important;border-top:none !important;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+[data-m="player"] > div{padding:4px 14px !important;flex-wrap:nowrap !important;gap:10px !important}
+[data-m="player"] button[aria-label]{width:32px !important;height:32px !important}
+[data-m="player"] button[data-page]{display:none !important}
+[data-m="player"] input[type="range"]{height:18px !important}
 }
 @media (hover:hover) and (pointer:fine){
 button,a[href],[role="link"],[data-page],input[type="submit"]{transition:scale .2s cubic-bezier(.4,0,.2,1),filter .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease !important}
@@ -658,7 +918,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;background:#000;line-height:0;font-size:0">
 
-<div data-page="mushrooms" onClick="{{ go }}" role="link" tabindex="0" aria-label="Extracted per species" style-hover="filter:brightness(1.12)" style="cursor:pointer;transition:filter 250ms ease;position:relative;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;padding:38px 34px;background-image:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.4) 100%),url('assets/photo/lab-extraction-rig.jpg');background-size:max(125%,560px) auto;background-repeat:no-repeat;background-position:0% 60%">
+<div data-page="mushrooms" onClick="{{ go }}" role="link" tabindex="0" aria-label="Extracted per species" data-m="extract-card" style-hover="filter:brightness(1.12)" style="cursor:pointer;transition:filter 250ms ease;position:relative;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;padding:38px 34px;background-image:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.4) 100%),url('assets/photo/lab-extraction-rig.jpg');background-size:max(125%,560px) auto;background-repeat:no-repeat;background-position:0% 60%">
 
 <h3 data-sweep="true" style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,3.4vw,46px);line-height:1.05;color:#FFFFFF;margin:0 0 12px">Extracted per species</h3>
 <p style="font-size:16px;line-height:1.65;color:#FFFDF7;margin:0;max-width:34ch">Lion's mane: hot water plus an alcohol extract. Cordyceps: two hot water extracts. Turkey tail: a mycelium extract. Never merged into one claim.</p>
@@ -2466,8 +2726,8 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </footer>
 
 <sc-if value="{{ aShown }}" hint-placeholder-val="{{ false }}">
-<div style="height:84px;background:#000"></div>
-<div role="region" aria-label="Audio player" style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(0,0,0,.95);border-top:1px solid rgba(212,162,74,.5)">
+<div data-m="player-spacer" style="height:84px;background:#000"></div>
+<div role="region" aria-label="Audio player" data-m="player" style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(0,0,0,.95);border-top:1px solid rgba(212,162,74,.5)">
 <div style="max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap">
 <button onClick="{{ restartAudio }}" aria-label="Restart from the beginning" title="Restart" style="flex:0 0 auto;width:44px;height:44px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#D4A24A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"></path><path d="M3.5 3.5v4.8h4.8"></path></svg></button>
 <button onClick="{{ toggleAudio }}" aria-label="{{ aAria }}" style="flex:0 0 auto;width:46px;height:46px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D4A24A;font-family:system-ui,sans-serif;font-size:16px;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)">{{ aIcon }}</button>
