@@ -6,6 +6,7 @@ if(!HOVER&&(matchMedia('(prefers-reduced-motion: reduce)').matches||!matchMedia(
 var MAP={"a-kettle-over-the-fire.jpg":"assets/cutouts/a-kettle-over-the-fire-cutout.webp","lab-extraction-rig.jpg":"assets/cutouts/lab-extraction-rig-cutout.webp","lm-powder-scoop.jpg":"assets/cutouts/lm-powder-scoop-cutout.webp","shop-tennis-handshake-nobrand.jpg":"assets/cutouts/shop-tennis-handshake-nobrand-cutout.webp","coconut-palm-up.webp":"assets/cutouts/coconut-palm-up-cutout.webp","ginger-root.webp":"assets/cutouts/ginger-root-cutout.webp","coffee-pack-in-camp.jpg":"assets/cutouts/coffee-pack-in-camp-cutout.webp","receipts-tennis-noblog.jpg":"assets/cutouts/receipts-tennis-noblog-cutout.webp","kettle-tent-mist.jpg":"assets/cutouts/kettle-tent-mist-cutout.webp","lm-white.jpg":"assets/cutouts/lm-white-cutout.webp","cordyceps-forest.webp":"assets/cutouts/cordyceps-forest-cutout.webp","turkey-tail-card.jpg":"assets/cutouts/turkey-tail-card-cutout.webp","a-diver-signalling-underwater-alongside-a-shark.jpg":"assets/cutouts/a-diver-signalling-underwater-alongside-a-shark-cutout.webp","a-surfer-deep-in-the-barrel.jpg":"assets/cutouts/a-surfer-deep-in-the-barrel-cutout.webp","a-freediver-rising-over-the-sand-flats.jpg":"assets/cutouts/a-freediver-rising-over-the-sand-flats-cutout.webp","lm-how-made-desk.jpg":"assets/cutouts/lm-how-made-desk-cutout.webp","tt-autumn-fans.jpg":"assets/cutouts/tt-autumn-fans-cutout.webp","why-desk-coffee.jpg":"assets/cutouts/why-desk-coffee-cutout.webp","stillness-in-the-forest.jpg":"assets/cutouts/stillness-in-the-forest-cutout.webp","about-loaded-car-clean.jpg":"assets/cutouts/about-loaded-car-clean-cutout.webp","about-kayaks.jpg":"assets/cutouts/about-kayaks-cutout.webp","c-press-coast.jpg":"assets/cutouts/c-press-coast-cutout.webp","h-van-forest.webp":"assets/cutouts/h-van-forest-cutout.webp","van-rainier-stripes26.jpg":"assets/cutouts/van-rainier-stripes26-cutout.webp","two-figures-stretching-against-a-sunset-sea.jpg":"assets/cutouts/two-figures-stretching-against-a-sunset-sea-cutout.webp","tent-mug-zoom.jpg":"assets/cutouts/tent-mug-zoom-cutout.webp","lions-mane.jpg":"assets/cutouts/lions-mane-cutout.webp","tt-right-form-log.webp":"assets/cutouts/tt-right-form-log-cutout.webp","measured-hiker-sunset-flip.jpg":"assets/cutouts/measured-hiker-sunset-flip-cutout.webp"};
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches, DUR=1200, EASE='cubic-bezier(.45,0,.55,1)';
 var SOFT={'stillness-in-the-forest.jpg':3,'kettle-tent-mist.jpg':3,'lm-how-made-desk.jpg':3,'measured-hiker-sunset-flip.jpg':3,'tt-right-form-log.webp':3,'lab-extraction-rig.jpg':3,'lions-mane.jpg':3,'tent-mug-zoom.jpg':40,'receipts-tennis-noblog.jpg':3};
+var DIM={'receipts-tennis-noblog.jpg':'brightness(.3)','receipts-tennis-noblog.png':'brightness(.3)'};
 var LIFT=RM?'none':'scale(1.02)', BLUR='blur(7px)', FEATHER=24;
 var TIGHT={'a-kettle-over-the-fire.jpg':1,'two-figures-stretching-against-a-sunset-sea.jpg':1,'coconut-palm-up.webp':1}, TBLUR='blur(3px)', TFEATHER=6;
 function bl(st){ return TIGHT[st.info.k]?TBLUR:BLUR; }
@@ -55,12 +56,12 @@ function build(el,info){
   if(info.kind==='img'){
     var fit=cs.objectFit, size= fit==='contain'?'contain': fit==='fill'?'100% 100%': fit==='none'?'auto': fit==='scale-down'?'contain':'cover';
     st.box=mk('position:fixed;pointer-events:none;z-index:30;overflow:hidden;border-radius:'+cs.borderRadius+';');
-    st.cut=mk(cutCss+'background-size:'+size+';background-position:'+cs.objectPosition+';');
+    st.cut=mk(cutCss+'background-size:'+size+';background-position:'+cs.objectPosition+';'+(DIM[info.k]?'filter:'+DIM[info.k]+';':''));
     document.body.appendChild(st.box); place(st);
   } else {
     if(cs.position==='static'){ st.saved.push([el,'position',el.style.position]); el.style.position='relative'; }
     st.box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;border-radius:inherit;');
-    st.cut=mk(cutCss+'background-size:'+info.size+';background-position:'+info.pos+';');
+    st.cut=mk(cutCss+'background-size:'+info.size+';background-position:'+info.pos+';'+(DIM[info.k]?'filter:'+DIM[info.k]+';':''));
     [].slice.call(el.children).forEach(function(c){ var cc=getComputedStyle(c); if(cc.position==='static'){ st.saved.push([c,'position',c.style.position],[c,'zIndex',c.style.zIndex]); c.style.position='relative'; c.style.zIndex='1'; } else if(cc.zIndex==='auto'){ st.saved.push([c,'zIndex',c.style.zIndex]); c.style.zIndex='1'; } });
     el.insertBefore(st.box, el.firstChild);
   }
