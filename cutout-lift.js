@@ -1,6 +1,8 @@
 (function(){
 if(window.__cutoutLiftInit) return; window.__cutoutLiftInit=true;
-if(!window.matchMedia||!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+if(!window.matchMedia) return;
+var HOVER=matchMedia('(hover: hover) and (pointer: fine)').matches;
+if(!HOVER&&(matchMedia('(prefers-reduced-motion: reduce)').matches||!matchMedia('(pointer: coarse)').matches)) return;
 var MAP={"a-kettle-over-the-fire.jpg":"assets/cutouts/a-kettle-over-the-fire-cutout.webp","lab-extraction-rig.jpg":"assets/cutouts/lab-extraction-rig-cutout.webp","lm-powder-scoop.jpg":"assets/cutouts/lm-powder-scoop-cutout.webp","shop-tennis-handshake-nobrand.jpg":"assets/cutouts/shop-tennis-handshake-nobrand-cutout.webp","coconut-palm-up.webp":"assets/cutouts/coconut-palm-up-cutout.webp","ginger-root.webp":"assets/cutouts/ginger-root-cutout.webp","coffee-pack-in-camp.jpg":"assets/cutouts/coffee-pack-in-camp-cutout.webp","receipts-tennis-noblog.jpg":"assets/cutouts/receipts-tennis-noblog-cutout.webp","kettle-tent-mist.jpg":"assets/cutouts/kettle-tent-mist-cutout.webp","lm-white.jpg":"assets/cutouts/lm-white-cutout.webp","cordyceps-forest.webp":"assets/cutouts/cordyceps-forest-cutout.webp","turkey-tail-card.jpg":"assets/cutouts/turkey-tail-card-cutout.webp","a-diver-signalling-underwater-alongside-a-shark.jpg":"assets/cutouts/a-diver-signalling-underwater-alongside-a-shark-cutout.webp","a-surfer-deep-in-the-barrel.jpg":"assets/cutouts/a-surfer-deep-in-the-barrel-cutout.webp","a-freediver-rising-over-the-sand-flats.jpg":"assets/cutouts/a-freediver-rising-over-the-sand-flats-cutout.webp","lm-how-made-desk.jpg":"assets/cutouts/lm-how-made-desk-cutout.webp","tt-autumn-fans.jpg":"assets/cutouts/tt-autumn-fans-cutout.webp","why-desk-coffee.jpg":"assets/cutouts/why-desk-coffee-cutout.webp","stillness-in-the-forest.jpg":"assets/cutouts/stillness-in-the-forest-cutout.webp","about-loaded-car-clean.jpg":"assets/cutouts/about-loaded-car-clean-cutout.webp","about-kayaks.jpg":"assets/cutouts/about-kayaks-cutout.webp","c-press-coast.jpg":"assets/cutouts/c-press-coast-cutout.webp","h-van-forest.webp":"assets/cutouts/h-van-forest-cutout.webp","van-rainier-stripes26.jpg":"assets/cutouts/van-rainier-stripes26-cutout.webp","two-figures-stretching-against-a-sunset-sea.jpg":"assets/cutouts/two-figures-stretching-against-a-sunset-sea-cutout.webp","tent-mug-zoom.jpg":"assets/cutouts/tent-mug-zoom-cutout.webp","lions-mane.jpg":"assets/cutouts/lions-mane-cutout.webp","tt-right-form-log.webp":"assets/cutouts/tt-right-form-log-cutout.webp","measured-hiker-sunset-flip.jpg":"assets/cutouts/measured-hiker-sunset-flip-cutout.webp"};
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches, DUR=1200, EASE='cubic-bezier(.45,0,.55,1)';
 var SOFT={'stillness-in-the-forest.jpg':3,'kettle-tent-mist.jpg':3,'lm-how-made-desk.jpg':3,'measured-hiker-sunset-flip.jpg':3,'tt-right-form-log.webp':3,'lab-extraction-rig.jpg':3,'lions-mane.jpg':3,'tent-mug-zoom.jpg':40,'receipts-tennis-noblog.jpg':3};
@@ -21,7 +23,7 @@ function loadImg(src){ if(!imgCache[src]) imgCache[src]=new Promise(function(res
 function feathered(src,boxW,boxH,FEATHER){
   return loadImg(src).then(function(im){
     var iw=im.naturalWidth, ih=im.naturalHeight, s=Math.max(boxW/iw,boxH/ih)||1;
-    var c=Math.min(1,2000/Math.max(iw,ih)), cw=Math.round(iw*c), ch=Math.round(ih*c);
+    var c=Math.min(1,(HOVER?2000:1200)/Math.max(iw,ih)), cw=Math.round(iw*c), ch=Math.round(ih*c);
     var f=Math.max(2,Math.round(FEATHER*c/s)), ck=src+'|'+f;
     if(featherCache[ck]) return featherCache[ck];
     return featherCache[ck]=new Promise(function(res){
@@ -88,9 +90,15 @@ function tick(){ queued=false; if(px<0){ setActive(null); return; }
   for(var i=0;i<els.length;i++){ var e=els[i]; if(e===document.body||e===document.documentElement) break; var m=match(e); if(m){ hit=e; info=m; break; } }
   setActive(hit,info);
 }
+if(HOVER){
 document.addEventListener('mousemove',function(e){ px=e.clientX; py=e.clientY; if(!queued){ queued=true; requestAnimationFrame(tick); } },{passive:true});
 document.addEventListener('mouseleave',function(){ px=-1; setActive(null); });
-window.addEventListener('blur',function(){ px=-1; setActive(null); });
+} else {
+/* touch devices: play whichever image sits at the middle of the screen; reset when it scrolls away */
+var center=function(){ if(document.hidden) return; px=innerWidth/2; py=innerHeight/2; if(!queued){ queued=true; requestAnimationFrame(tick); } };
+window.addEventListener('scroll',center,{passive:true,capture:true}); window.addEventListener('load',center); setInterval(center,600); center();
+}
+if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 function reflow(){ states.forEach(function(st){ if(!st.el.isConnected){ teardown(st); if(active===st) active=null; return; } if(st.info.kind==='img') place(st); }); if(!queued&&px>=0){ queued=true; requestAnimationFrame(tick); } }
 window.addEventListener('scroll',reflow,{passive:true,capture:true}); window.addEventListener('resize',reflow);
 })();

@@ -125,7 +125,7 @@ header [style*="gap: 26px"],header [style*="gap:26px"]{gap:14px !important;row-g
 [data-story-text] > p{margin-left:0;margin-right:0}
 [data-slot]{width:calc(100% + 36px) !important;margin:34px -18px !important;aspect-ratio:auto !important;height:auto !important;overflow:visible !important}
 [data-slot] > img{width:100% !important;height:auto !important;object-fit:contain !important;display:block !important}
-[data-story-images] > [data-slot]:has(img[src*="image_1788786869376"]){display:none !important}
+[data-story-images] > [data-slot]:has(img[src*="plate-mountain-first-light"]){display:none !important}
 [data-story-text] > p:nth-child(1){order:10}
 [data-story-text] > p:nth-child(2){order:20}
 [data-story-text] > p:nth-child(3){order:30}
@@ -375,6 +375,67 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-story-hero]{margin-left:-14px !important;margin-right:-14px !important}
 }
 
+@media (max-width:767px){
+[data-m="hero"]{aspect-ratio:auto !important;min-height:0 !important;padding:64px 0 52px !important}
+[data-m="hero"] [data-rcx-rotator]{margin-top:30px !important;font-size:22px !important}
+[data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
+[data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
+[data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
+[data-m="wte-h2"]{padding-left:0 !important;font-size:30px !important;letter-spacing:.08em !important;white-space:nowrap !important}
+[data-m="wte-h2"] img{height:30px !important}
+[data-m="wte-rule"]{width:100% !important;left:0 !important}
+[data-m="wte-text"]{padding-left:0 !important}
+[data-m="wte-text"] p,[data-m="wte-text"] [data-keep-one-line]{text-align:center !important}
+[data-m="wte-text"] div{padding-left:0 !important;align-items:center !important}
+[data-m="wte-text"] a{white-space:normal !important}
+[data-m="wte-story"]{width:100% !important;align-self:stretch !important;align-items:center !important;padding-right:0 !important}
+[data-m="wte-story"] div{left:0 !important;padding-left:0 !important}
+[data-m="wte-story"] div div div{flex-wrap:wrap !important;justify-content:center !important}
+[data-m="wte-photos"]{min-height:560px !important}
+[data-m="1col"]{grid-template-columns:minmax(0,1fr) !important}
+[data-m="1col"] > *{min-width:0 !important;max-width:100% !important}
+[data-m="row2x2"]{grid-template-columns:1fr 1fr !important}
+[data-m="row2x2"] > img{height:170px !important}
+[data-m="badges"]{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:26px 10px !important;justify-items:center !important;padding:28px 0 !important}
+[data-m="badges"] > div{padding-bottom:0 !important;width:100% !important;font-size:12px !important}
+[data-m="badges"] > div > img{height:40px !important}
+[data-m="badges"] > div > p{position:static !important;transform:none !important;width:auto !important;max-width:100% !important;margin:8px 0 0 !important;font-size:12px !important;white-space:normal !important;left:auto !important;top:auto !important}
+[data-m="badges"] > div:last-child:nth-child(3n+1){grid-column:2}
+[data-m="foot-grid"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;text-align:center !important;gap:30px !important}
+[data-m="foot-grid"] img{margin:0 auto 16px !important}
+[data-m="foot-grid"] [data-keep-one-line]{margin:0 !important;text-align:center !important}
+[data-m="foot-grid"] nav{align-items:center !important;width:100% !important}
+[data-m="foot-grid"] nav button{white-space:nowrap !important}
+[data-m="foot-grid"] nav button{text-align:center !important}
+[data-m="foot-grid"] form{margin:0 auto !important;width:320px !important;max-width:100% !important}
+[data-m="foot-grid"] > div > div{justify-content:center !important}
+[data-m="foot-legal"]{flex-direction:column !important;align-items:center !important;text-align:center !important;justify-content:center !important}
+[data-m="steps"]{grid-template-columns:minmax(0,1fr) !important;gap:44px !important}
+[data-m="steps"] svg{overflow:visible !important}
+[data-m="steps"] > div > div:first-child{height:84px !important;min-height:0 !important;aspect-ratio:auto !important}
+[data-m="about-seal"]{left:0 !important}
+[data-m="shasta"]{background-size:cover !important;background-repeat:no-repeat !important;background-position:center !important}
+[data-m="faq-tiles"]{grid-template-columns:1fr 1.4fr 1fr !important}
+[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+[data-m="faq-head"]{width:100% !important}
+[data-m="sbox"]{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:22px !important;padding:60px 18px 64px !important;overflow:hidden !important}
+[data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
+[data-m="flat"]{display:contents !important}
+[data-m="hide"]{display:none !important}
+[data-m="sbox"] [data-mo]{position:relative !important;z-index:2 !important;transform:none !important;padding-top:0 !important;margin-left:auto !important;margin-right:auto !important;max-width:100% !important;pointer-events:auto !important}
+[data-m="sbox"] [data-mo="1"]{order:1}[data-m="sbox"] [data-mo="2"]{order:2}[data-m="sbox"] [data-mo="3"]{order:3}[data-m="sbox"] [data-mo="4"]{order:4}[data-m="sbox"] [data-mo="5"]{order:5}[data-m="sbox"] [data-mo="6"]{order:6}
+[data-m="sbox"] [data-mo] p,[data-m="sbox"] p[data-mo]{white-space:normal !important;text-align:center !important}
+[data-m="sbox"] [data-stamp]{inset:auto !important;display:flex !important;margin:14px 0 !important;pointer-events:none !important}
+[data-m="sbox"] [data-mo="5"],[data-m="sbox"] [data-mo="6"]{width:100% !important;max-width:360px !important}
+[data-story-titleblock]{display:block !important}
+[data-story-titleblock] > *:not([data-m="play-row"]){display:none !important}
+[data-m="play-row"]{margin:0 auto !important}
+[data-m="hero-tts"]{display:none !important}
+[data-m="cta3"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;gap:18px !important}
+[data-m="cta3"] > *{justify-self:center !important;white-space:normal !important;text-align:center}
+[data-m="sbox"] [data-stamp]{height:120px;align-items:center !important;justify-content:center !important;margin:24px 0 !important}
+[data-m="sbox"] [data-stamp] p{font-size:48px !important}
+}
 @media (hover:hover) and (pointer:fine){
 button,a[href],[role="link"],[data-page],input[type="submit"]{transition:scale .2s cubic-bezier(.4,0,.2,1),filter .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease !important}
 button:hover,a[href]:hover,[role="link"]:hover,[data-page]:hover,input[type="submit"]:hover{scale:1.05;z-index:4}
@@ -390,14 +451,14 @@ button[data-cta-small]:hover{scale:1.28}
 button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brightness(1.18)}
 }
 </style>
-<script src="cutout-lift.js?v=20261003ak"></script>
+<script src="cutout-lift.js?v=20261004b"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
 
 <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,162,74,.26)">
 <div style="max-width:1300px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap">
-<div style="position:relative;display:flex"><button data-page="home" onClick="{{ go }}" style="background:none;border:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.2)"><img src="assets/vine-gold.svg" alt="Raw Canopy Extract home" style="height:40px;width:auto;display:block"></button><sc-if value="{{ ttsHome }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%);z-index:61;white-space:nowrap"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if></div>
+<div style="position:relative;display:flex"><button data-page="home" onClick="{{ go }}" style="background:none;border:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.2)"><img src="assets/vine-gold.svg" alt="Raw Canopy Extract home" style="height:40px;width:auto;display:block"></button><sc-if value="{{ ttsHome }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" data-m="hdr-tts" style="position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%);z-index:61;white-space:nowrap"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if></div>
 <nav style="display:flex;flex-wrap:wrap;gap:14px;margin-left:auto;align-items:center">
 <button data-page="shop" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">SHOP</button>
 
@@ -415,7 +476,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div style="position: relative">
 
-<section data-screen-label="Home — hero" style="margin-bottom:-1px;background-color:#000;position:relative;width:100%;max-width:100%;aspect-ratio:1449/920;display:flex;align-items:center;justify-content:center;background-image:radial-gradient(44% 48% at 50% 44%,rgba(0,0,0,.9) 0%,rgba(0,0,0,.74) 58%,rgba(0,0,0,.42) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg');background-size:cover;background-repeat:no-repeat;background-position:center 82%">
+<section data-screen-label="Home — hero" data-m="hero" style="margin-bottom:-1px;background-color:#000;position:relative;width:100%;max-width:100%;aspect-ratio:1449/920;display:flex;align-items:center;justify-content:center;background-image:radial-gradient(44% 48% at 50% 44%,rgba(0,0,0,.9) 0%,rgba(0,0,0,.74) 58%,rgba(0,0,0,.42) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg');background-size:cover;background-repeat:no-repeat;background-position:center 82%">
 <div style="padding:0 28px;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;max-width:940px">
 <div ref="{{ setHeroSeal }}" style="width:min(430px,76vw);aspect-ratio:1/1"></div>
 <p ref="{{ setRotator }}" data-rcx-rotator="true" style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,3vw,40px);line-height:1.1;color:#F1ECE1;margin:46px 0 0;display:flex;justify-content:center;gap:.26em;white-space:nowrap">
@@ -430,11 +491,11 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 <section data-screen-label="Home — on the go" style="background:#000">
 <div style="width:100%;display:grid;background-color:#000;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch" data-split="half">
-<div style="min-width:0;display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:40px 56px 40px calc(max(28px,(100% - 1300px) / 2 + 28px) + 52px);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.92)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-repeat:no-repeat;background-position:12% 38%">
-<div style="min-width:0;align-self:flex-end;width:min(100%,600px)">
-<h2 data-sweep="true" style="font-family:'Oswald',sans-serif;font-weight:300;letter-spacing:.1em;font-size:clamp(28px,4vw,53px);line-height:1.05;color:#F1ECE1;margin:0;width:100%;text-align:center;padding-left:120px">WHY THIS E<img src="assets/extract-x-gold.svg" alt="X" style="height:clamp(28px,3.95vw,54px);width:auto;display:inline-block;vertical-align:-0.2em;margin:0 -0.14em 0 -0.34em">ISTS</h2>
-<div style="width:calc(100% - 120px);height:2px;background:#D4A24A;margin:24px 0 18px;position:relative;left:120px"></div>
-<div style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
+<div data-m="wte-col" style="min-width:0;display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:40px 56px 40px calc(max(28px,(100% - 1300px) / 2 + 28px) + 52px);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.92)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-repeat:no-repeat;background-position:12% 38%">
+<div data-m="wte-inner" style="min-width:0;align-self:flex-end;width:min(100%,600px)">
+<h2 data-sweep="true" data-m="wte-h2" style="font-family:'Oswald',sans-serif;font-weight:300;letter-spacing:.1em;font-size:clamp(28px,4vw,53px);line-height:1.05;color:#F1ECE1;margin:0;width:100%;text-align:center;padding-left:120px">WHY THIS E<img src="assets/extract-x-gold.svg" alt="X" style="height:clamp(28px,3.95vw,54px);width:auto;display:inline-block;vertical-align:-0.2em;margin:0 -0.14em 0 -0.34em">ISTS</h2>
+<div data-m="wte-rule" style="width:calc(100% - 120px);height:2px;background:#D4A24A;margin:24px 0 18px;position:relative;left:120px"></div>
+<div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#E4DCCC;margin:0;text-align:justify">Raw Canopy Extract is an uncompromising new brand of organic, single-serving packets. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#E4DCCC;margin:0;text-align:justify">We're launching with three mushroom extracts. Most mushroom powder sold is made by growing mycelium, the root-like network of the mushroom, on grain, then grinding the whole thing up, grain and all. That cheap approach is why so much of what gets sold as mushroom is mostly starch.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#E4DCCC;margin:0;text-align:justify">There is no single rule that fits every mushroom, so we don't apply one. We follow the research that yields the best results for the human body, species by species. For lion's mane and cordyceps, the research points to the fruiting body, the mushroom itself, as the source of the best extract. So that's what we use. Turkey tail is the exception. The compounds that put it at the center of decades of research come from its mycelium, the root network of the mushroom, drawn out with hot water. So that's how we make it.</p>
@@ -450,7 +511,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <p style="font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:#E4DCCC;margin:0;align-self:stretch;text-align:center;padding-left:32px">Tear open a packet and add it to the coffee or tea.<br>Best enjoyed with food or alongside a meal.<br>Hot water or a smoothie works great too.<br>Elevate your favorite cup with the power of botanical science.</p>
 </div>
 </div>
-<div style="min-width:0;display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:flex-end;width:min(100%,600px);margin-top:44px;padding-right:6px">
+<div data-m="wte-story" style="min-width:0;display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:flex-end;width:min(100%,600px);margin-top:44px;padding-right:6px">
 <div style="display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%;position:relative;left:42px">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;font-size:clamp(20px,2.5vw,36px);line-height:1.12;color:#D4A24A;margin:0 0 10px;text-align:center">THE FICTIONAL ORIGIN STORY OF<br>THE LION’S MANE MUSHROOM</p>
 <div style="display:flex;align-items:center;justify-content:center;gap:22px;max-width:100%;padding-left:40px;box-sizing:border-box">
@@ -466,7 +527,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </div>
 
-<div style="position:relative;min-width:0;align-self:stretch;overflow:hidden">
+<div data-m="wte-photos" style="position:relative;min-width:0;align-self:stretch;overflow:hidden">
 <div style="position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:0;line-height:0;font-size:0">
 
 
@@ -649,7 +710,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <section style="position:relative;padding:0 28px;background:#000">
 <div style="position:absolute;inset:0;background-image:url('assets/photo/shop-tennis-handshake-nobrand.jpg');background-size:cover;background-position:center;pointer-events:none"></div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.92);pointer-events:none"></div>
-<div style="position:relative;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px"><article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
+<div style="position:relative;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px" data-m="1col"><article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
 <img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
@@ -863,7 +924,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </section>
 
 <section style="padding:20px 28px 70px;background:#000">
-<div style="max-width:1300px;margin:0 auto;border-top:1px solid rgba(212,162,74,.22);border-bottom:1px solid rgba(212,162,74,.22);padding:34px 0;display:flex;flex-wrap:nowrap;gap:0;align-items:flex-start;justify-content:space-between;padding-left:clamp(22px,5vw,70px);padding-right:clamp(22px,5vw,70px)">
+<div data-m="badges" style="max-width:1300px;margin:0 auto;border-top:1px solid rgba(212,162,74,.22);border-bottom:1px solid rgba(212,162,74,.22);padding:34px 0;display:flex;flex-wrap:nowrap;gap:0;align-items:flex-start;justify-content:space-between;padding-left:clamp(22px,5vw,70px);padding-right:clamp(22px,5vw,70px)">
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 10px)"><img src="assets/icons/certified-organic.svg" alt="Certified organic" style="height:clamp(30px,4.4vw,62px);width:auto;display:block" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.9);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)"><span data-pending-cert="true" style="filter:blur(4px);user-select:none">CERTIFIED ORGANIC</span></p></div>
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 10px)"><img src="assets/icons/single-ingredient.svg" alt="Single ingredient" style="height:clamp(30px,4.4vw,62px);width:auto;display:block" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.9);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)">SINGLE INGREDIENT</p></div>
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 10px)"><img src="assets/icons/fruiting-body.svg" alt="Right form per species" style="height:clamp(30px,4.4vw,62px);width:auto;display:block" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.9);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)">RIGHT FORM PER SPECIES</p></div>
@@ -882,7 +943,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="max-width:1300px;margin:0 auto">
 <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#8C8574;margin:0 0 26px">COMING SOON · SIGN UP FOR UPDATES BELOW</p>
-<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+<div data-m="1col" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
 
 
 <article style="border:1px solid rgba(241,236,225,.14);background:#060605;padding:26px;display:flex;flex-direction:column">
@@ -1039,7 +1100,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </section>
 
 </div>
-<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-row-photo.jpg" alt="" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
+<section style="margin-top:-1px;background:#000;padding:0"><div data-m="row2x2" style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-row-photo.jpg" alt="" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
 
 </div>
 </sc-if>
@@ -1129,7 +1190,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </section>
 
 <section style="padding:0 28px 76px;background:transparent">
-<div style="max-width:1200px;margin:0 auto;padding-top:0;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;justify-items:center">
+<div data-m="cta3" style="max-width:1200px;margin:0 auto;padding-top:0;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;justify-items:center">
 <p style="display:flex;align-items:center;gap:14px;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:24px;color:#D4A24A;margin:0;justify-self:start">CHECK THE RECEIPTS <span style="font-family:'Playfair Display',serif;font-size:28px;line-height:1">→</span></p>
 <button data-page="receipts" onClick="{{ go }}" style="background:none;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:13px 22px" style-hover="background:rgba(212,162,74,.12)">SEE THE CERTIFICATES</button>
 <button data-page="shop" onClick="{{ go }}" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.14em;padding:18px 42px;white-space:nowrap;justify-self:end" style-hover="background:#E9C079">SHOP STEEL TINS</button>
@@ -1162,42 +1223,42 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 
-<section style="position:relative;padding:0;background:#000">
-<button data-nogrow="true" data-page="s-lm" onClick="{{ go }}" style="display:block;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background-color:#000;background-image:url('assets/photo/story-lm-poster-flip.jpg');background-size:cover;background-position:center 34%;min-height:680px;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
+<section data-m="sbox" data-sbox="lm" style="position:relative;padding:0;background:#000">
+<button data-m="flat" data-nogrow="true" data-page="s-lm" onClick="{{ go }}" style="display:block;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background-color:#000;background-image:url('assets/photo/story-lm-poster-flip.jpg');background-size:cover;background-position:center 34%;min-height:680px;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
 <div style="position:absolute;inset:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;opacity:.4;pointer-events:none"></div>
 <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.58) 48%,rgba(0,0,0,.4) 74%,rgba(0,0,0,.66) 100%);pointer-events:none"></div>
-<div style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:104px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
-<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
-<div style="width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center">
-<div style="width:max-content">
+<div data-m="flat" style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:104px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
+<div data-m="flat" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
+<div data-m="flat" style="width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center">
+<div data-mo="2" style="width:max-content">
 <p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(46px,7.7vw,114px);line-height:.96;letter-spacing:.024em;color:#D4A24A;margin:0">THE ROAR</p>
 <p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,3.8vw,55px);line-height:1.2;letter-spacing:.13em;color:#D4A24A;margin:6px 0;text-align:center;padding-left:.13em">OF THE</p>
 <p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(46px,7.7vw,114px);line-height:.96;color:#D4A24A;margin:0">MOUNTAIN</p>
 </div>
-<p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.3vw,32px);line-height:1.5;color:#EDE5D6;margin:32px 0 0;text-align:center">“The great gallery of Orrin goes up<br>into the dark in terraces of cut stone.”</p>
+<p data-mo="4" style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.3vw,32px);line-height:1.5;color:#EDE5D6;margin:32px 0 0;text-align:center">“The great gallery of Orrin goes up<br>into the dark in terraces of cut stone.”</p>
 </div>
 </div>
 </div>
 </button>
-<div style="position:absolute;inset:0;z-index:4;pointer-events:none">
-<div style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
-<div></div>
-<div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;gap:26px;min-width:0">
-<div style="display:flex;flex-direction:column;align-items:center;gap:26px;padding-top:64px;transform:translateX(-52px)">
-<button data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:84px;height:84px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
+<div data-m="flat" style="position:absolute;inset:0;z-index:4;pointer-events:none">
+<div data-m="flat" style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
+<div></div data-m="hide">
+<div data-m="flat" style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;gap:26px;min-width:0">
+<div data-m="flat" style="display:flex;flex-direction:column;align-items:center;gap:26px;padding-top:64px;transform:translateX(-52px)">
+<button data-mo="1" data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:84px;height:84px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">CLICK</span>
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
-<div style="min-width:0">
+<div data-mo="3" style="min-width:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">A FICTIONAL ORIGIN STORY</p>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">OF THE LION’S MANE MUSHROOM</p>
 </div>
-<div style="max-width:360px;width:100%;pointer-events:auto">
+<div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,1.5vw,21px);line-height:1.3;color:#D4A24A;margin:0 0 6px">Storyboard and narration out now · Animated film coming mid-2028</p>
 <p style="font-size:14px;line-height:1.5;color:#EDE5D6;margin:0">Every purchase funds it. The words are written and the storyboard is narrated. Next comes the animated film, released chapter by chapter. Sign up to follow along.</p>
 </div>
 </div>
-<div style="max-width:360px;width:100%;pointer-events:auto;transform:translateX(-52px)">
+<div data-mo="6" style="max-width:360px;width:100%;pointer-events:auto;transform:translateX(-52px)">
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
 <input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
@@ -1329,34 +1390,34 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 
-<section style="position:relative;padding:0;background:#000">
-<button data-nogrow="true" data-page="s-cd" onClick="{{ go }}" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background:#060605;min-height:640px;overflow:hidden;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
+<section data-m="sbox"  style="position:relative;padding:0;background:#000">
+<button data-m="flat" data-nogrow="true" data-page="s-cd" onClick="{{ go }}" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background:#060605;min-height:640px;overflow:hidden;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
 <div style="position:absolute;inset:0;background-color:#060605;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;filter:grayscale(1) brightness(.72);pointer-events:none"></div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none"></div>
-<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;transform:translateY(-60px)">
+<div data-mo="2" data-stamp="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;transform:translateY(-60px)">
 <p data-sweep="true" data-sweep-soft="true" style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:clamp(56px,11vw,168px);line-height:1;color:rgba(241,236,225,.66);margin:0;white-space:nowrap;transform:rotate(-24deg)">COMING SOON</p>
 </div>
-<div style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:70px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
-<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
-<p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3.2vw,44px);line-height:1.1;color:#B9B2A4;margin:0">“The One<br>Who Went Up On Top”</p>
+<div data-m="flat" style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:70px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
+<div data-m="flat" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
+<p data-mo="1" style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3.2vw,44px);line-height:1.1;color:#B9B2A4;margin:0">“The One<br>Who Went Up On Top”</p>
 </div>
 </div>
 </button>
-<div style="position:absolute;inset:0;z-index:4;pointer-events:none">
-<div style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
-<div></div>
-<div style="display:flex;flex-direction:column;justify-content:flex-end;gap:28px;min-width:0">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:28px">
-<div style="min-width:0">
+<div data-m="flat" style="position:absolute;inset:0;z-index:4;pointer-events:none">
+<div data-m="flat" style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
+<div></div data-m="hide">
+<div data-m="flat" style="display:flex;flex-direction:column;justify-content:flex-end;gap:28px;min-width:0">
+<div data-m="flat" style="display:flex;align-items:center;justify-content:space-between;gap:28px">
+<div data-mo="4" style="min-width:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">THE FICTIONAL STORY OF</p>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">THE CORDYCEPS MUSHROOM</p>
 </div>
-<button data-cta-small="true" data-page="s-cd" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
+<button data-mo="3" data-cta-small="true" data-page="s-cd" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
-<div style="max-width:360px;width:100%;pointer-events:auto">
+<div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,1.5vw,21px);line-height:1.3;color:#D4A24A;margin:0 0 6px">In development · Coming 2029</p>
 <p style="font-size:14px;line-height:1.5;color:#EDE5D6;margin:0 0 12px">Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
@@ -1492,34 +1553,34 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 
-<section style="position:relative;padding:0;background:#000">
-<button data-nogrow="true" data-page="s-rs" onClick="{{ go }}" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background:#060605;min-height:640px;overflow:hidden;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
+<section data-m="sbox"  style="position:relative;padding:0;background:#000">
+<button data-m="flat" data-nogrow="true" data-page="s-rs" onClick="{{ go }}" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background:#060605;min-height:640px;overflow:hidden;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
 <div style="position:absolute;inset:0;background-color:#060605;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;filter:grayscale(1) brightness(.72);pointer-events:none"></div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none"></div>
-<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;transform:translateY(-60px)">
+<div data-mo="2" data-stamp="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;transform:translateY(-60px)">
 <p data-sweep="true" data-sweep-soft="true" style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:clamp(56px,11vw,168px);line-height:1;color:rgba(241,236,225,.66);margin:0;white-space:nowrap;transform:rotate(-24deg)">COMING SOON</p>
 </div>
-<div style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:70px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
-<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
-<p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3.2vw,44px);line-height:1.1;color:#B9B2A4;margin:0">“The Keeper<br>of the Records”</p>
+<div data-m="flat" style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:70px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
+<div data-m="flat" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
+<p data-mo="1" style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3.2vw,44px);line-height:1.1;color:#B9B2A4;margin:0">“The Keeper<br>of the Records”</p>
 </div>
 </div>
 </button>
-<div style="position:absolute;inset:0;z-index:4;pointer-events:none">
-<div style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
-<div></div>
-<div style="display:flex;flex-direction:column;justify-content:flex-end;gap:28px;min-width:0">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:28px">
-<div style="min-width:0">
+<div data-m="flat" style="position:absolute;inset:0;z-index:4;pointer-events:none">
+<div data-m="flat" style="height:100%;max-width:1300px;margin:0 auto;padding:70px 48px 56px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px">
+<div></div data-m="hide">
+<div data-m="flat" style="display:flex;flex-direction:column;justify-content:flex-end;gap:28px;min-width:0">
+<div data-m="flat" style="display:flex;align-items:center;justify-content:space-between;gap:28px">
+<div data-mo="4" style="min-width:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">THE FICTIONAL STORY OF</p>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">THE TURKEY TAIL MUSHROOM</p>
 </div>
-<button data-cta-small="true" data-page="s-rs" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
+<button data-mo="3" data-cta-small="true" data-page="s-rs" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
-<div style="max-width:360px;width:100%;pointer-events:auto">
+<div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,1.5vw,21px);line-height:1.3;color:#D4A24A;margin:0 0 6px">In development · Coming 2030</p>
 <p style="font-size:14px;line-height:1.5;color:#EDE5D6;margin:0 0 12px">Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
@@ -1651,7 +1712,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 <section style="padding:0 28px 96px;background:#000">
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px">
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px" data-m="1col">
 
 <article style="border:1px solid rgba(241,236,225,.16);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-desk-coffee.jpg');background-size:100% 100%,cover;background-position:center 60%,center 35%;background-repeat:no-repeat,no-repeat;background-origin:border-box;background-clip:border-box;padding:32px;display:flex;flex-direction:column">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:14px;color:#EDE7DA;margin:0 0 22px">A TYPICAL BLEND</p>
@@ -1736,7 +1797,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <section style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
 <p style="max-width:1080px;margin:0 auto 34px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;text-align:center">HOW TO USE</p>
 <p style="max-width:62ch;margin:0 auto 44px;font-size:17px;line-height:1.7;color:#DDD5C4;text-align:center;text-wrap:pretty">Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.</p>
-<div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;text-align:center">
+<div data-m="steps" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;text-align:center">
 <div style="display:flex;flex-direction:column;align-items:center">
 <div style="position:relative;width:76px;height:84px;display:flex;align-items:center;justify-content:center;margin:0 0 22px"><svg viewBox="0 0 76 84" width="76" height="84" style="position:absolute;top:0;left:0;display:block" aria-hidden="true"><polygon points="38,1.6 74.6,22.1 74.6,61.9 38,82.4 1.4,61.9 1.4,22.1" fill="none" stroke="#D4A24A" stroke-width="2.6"></polygon><text data-hexnum="true" x="37.75" y="51.13" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="34" fill="#FFFFFF">1</text></svg></div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:34px;color:#F1ECE1;margin:0 0 10px">Tear</h2>
@@ -1803,7 +1864,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 
-<section style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
+<section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
 <div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.</p>
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.</p>
@@ -1814,7 +1875,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 <section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.jpg" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.jpg" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-selfie.jpg" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
-<div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px;position:relative;left:90px">
+<div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px;position:relative;left:90px" data-m="about-seal">
 <div ref="{{ setAboutSeal }}" style="width:min(360px,77vw);aspect-ratio:1/1"></div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:16px;color:#D4A24A;margin:34px 0 14px">CONNECT TO THE SOURCE</p>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);color:#F1ECE1;margin:0 0 16px">Source verified ingredients.</h2>
@@ -1830,20 +1891,20 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <sc-if value="{{ isFaq }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="FAQ" style="background:#000">
 <section style="position:relative;min-height:34vh;padding:320px 28px 40px;pointer-events:none">
-<div style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
+<div data-m="faq-tiles" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
 <img src="assets/photo/faq/c-press-coast.jpg" alt="Pressing coffee above the sea" style="{{ tileStyle0 }}" draggable="true" data-i="0" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="{{ tileStyle1 }}" draggable="true" data-i="1" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 </div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.6);pointer-events:none"></div>
-<div style="position:relative;width:min(660px,56%);margin:0 auto;pointer-events:auto">
+<div data-m="faq-head" style="position:relative;width:min(660px,56%);margin:0 auto;pointer-events:auto">
 <p style="display:inline-block;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:26px;color:#D4A24A;margin:0 0 16px;padding:10px 16px 10px 0">FAQ</p>
 <h1 style="display:inline-block;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.06;color:#F1ECE1;margin:0;padding:0">Ten honest answers.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
 </section>
 <section style="position:relative;padding:0;pointer-events:none">
-<div style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
+<div data-m="faq-tiles2" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
 <img src="assets/photo/faq/desk-journal-coffee.jpg" alt="Journals and coffee on a sunlit desk" style="{{ tileStyle3 }}" draggable="true" data-i="3" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/f-mossy-tree.jpg" alt="Old growth from the forest floor" style="{{ tileStyle4 }}" draggable="true" data-i="4" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/van-rainier-stripes26.jpg" alt="A van parked below Mount Rainier" style="{{ tileStyle5 }}" draggable="true" data-i="5" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
@@ -1961,12 +2022,13 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div data-screen-label="Story — Lion's Mane" style="background-color:#050504;background-image:linear-gradient(rgba(3,3,3,.86),rgba(3,3,3,.86)),url('assets/pattern-honeycomb-seamless.svg');background-size:100% 100%,33px auto;background-repeat:no-repeat,repeat;background-position:center top,center top">
 <div data-story-hero="true" style="display:none">
 <div style="position:relative;width:100%;background:transparent">
+<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><button data-m="hero-tts-mini" onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="position:absolute;top:10px;left:28px;z-index:4;background:rgba(0,0,0,.72);border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.12em;padding:5px 9px;cursor:pointer">{{ ttsLabel }}</button></sc-if>
 <img src="assets/photo/story/plate-mountain-first-light.jpg" alt="Story plate: the mountain at first light" style="width:100%;height:auto;display:block" loading="lazy">
 <div style="position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.78) 34%,rgba(0,0,0,.35) 68%,rgba(0,0,0,0) 100%);pointer-events:none"></div>
 <div style="position:absolute;left:0;right:0;bottom:0;padding:0 18px 26px;text-align:center">
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,8vw,40px);line-height:1.05;color:#D4A24A;margin:0 0 12px">THE ROAR OF THE MOUNTAIN</h1>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:13px;line-height:1.35;color:#EDE5D6;margin:0">A FICTIONAL ORIGIN STORY</p>
-<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:14px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
+<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-m="hero-tts" data-tts-skip="true" style="margin:14px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
 </div>
 </div>
@@ -1976,7 +2038,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="width:120px;height:1px;background:rgba(212,162,74,.7);margin:34px auto 22px"></div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.24em;font-size:clamp(16px,1.9vw,26px);color:#B8A98C;margin:0">A FICTIONAL ORIGIN STORY OF THE LION’S MANE MUSHROOM</p>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
-<div style="display:flex;align-items:center;justify-content:center;gap:22px;margin:46px auto 0;flex-wrap:wrap">
+<div data-m="play-row" style="display:flex;align-items:center;justify-content:center;gap:22px;margin:46px auto 0;flex-wrap:wrap">
 <button onClick="{{ toggleAudio }}" aria-label="{{ aAria }}" style="flex:0 0 auto;width:72px;height:72px;background:#000;border:3px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:0;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:system-ui,sans-serif;font-size:20px;line-height:1;color:#D4A24A">{{ aIcon }}</span>
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.12em;font-size:13px;line-height:1;color:#D4A24A">{{ aLabel }}</span>
@@ -2360,7 +2422,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="position:absolute;inset:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;pointer-events:none"></div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.55);pointer-events:none"></div>
 
-<div style="position:relative;padding:52px 28px 0"><div style="position:relative;max-width:1300px;margin:0 auto 52px;display:flex;flex-wrap:nowrap;gap:0;align-items:flex-start;justify-content:space-between;padding-bottom:40px;padding-left:clamp(22px,5vw,70px);padding-right:clamp(22px,5vw,70px)">
+<div style="position:relative;padding:52px 28px 0"><div data-m="badges" style="position:relative;max-width:1300px;margin:0 auto 52px;display:flex;flex-wrap:nowrap;gap:0;align-items:flex-start;justify-content:space-between;padding-bottom:40px;padding-left:clamp(22px,5vw,70px);padding-right:clamp(22px,5vw,70px)">
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 9px)"><img src="assets/icons/certified-organic.svg" alt="Certified organic" style="height:clamp(30px,4.4vw,56px);width:auto;display:block;opacity:1" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.85);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)"><span data-pending-cert="true" style="filter:blur(4px);user-select:none">CERTIFIED ORGANIC</span></p></div>
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 9px)"><img src="assets/icons/single-ingredient.svg" alt="Single ingredient" style="height:clamp(30px,4.4vw,56px);width:auto;display:block;opacity:1" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.85);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)">SINGLE INGREDIENT</p></div>
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 9px)"><img src="assets/icons/fruiting-body.svg" alt="Right form per species" style="height:clamp(30px,4.4vw,56px);width:auto;display:block;opacity:1" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.85);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)">RIGHT FORM PER SPECIES</p></div>
@@ -2375,7 +2437,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </div>
 </div>
-<div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(360px,1.5fr) repeat(auto-fit,minmax(180px,1fr));gap:48px;align-items:start">
+<div data-m="foot-grid" style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(360px,1.5fr) repeat(auto-fit,minmax(180px,1fr));gap:48px;align-items:start">
 <div>
 <img src="assets/seal-on-black.svg" alt="Raw Canopy Extract" style="height:104px;width:auto;display:block;margin:0 0 20px 90px" loading="lazy">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:14px;color:#D4A24A;margin:0 0 0 90px;white-space:nowrap" data-keep-one-line="true">ONE INGREDIENT. NOTHING ELSE.</p>
@@ -2405,7 +2467,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </div>
 </div>
-<div style="max-width:1300px;margin:56px auto 0;padding-top:26px;display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between">
+<div data-m="foot-legal" style="max-width:1300px;margin:56px auto 0;padding-top:26px;display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between">
 <p style="font-size:12.5px;line-height:1.65;color:#9E978A;margin:0;max-width:74ch">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
 <p style="font-size:12.5px;color:#9E978A;margin:0">© 2026 Blue 42 Holdings LLC · Hornbrook, California</p>
 </div>
