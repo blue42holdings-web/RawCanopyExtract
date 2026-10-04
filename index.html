@@ -31,6 +31,7 @@ button{font:inherit;cursor:pointer}
 input{font:inherit}
 ::selection{background:#D4A24A;color:#000}
 @keyframes rcxRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes rcxPushIn{from{transform:scale(1)}to{transform:scale(1.06)}}
 @keyframes rcxFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes rcxGlitchA{
 0%{clip-path:inset(0 0 0 0);transform:translateX(0);text-shadow:none}
@@ -1658,7 +1659,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:56px">
 <div>
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 20px">WHAT IT IS</h2>
-<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0 0 20px">Cordyceps militaris fruits as small orange clubs, a few centimeters tall, blunt at the tip and brighter than anything else on a forest floor. In the wild it is found across temperate Asia, Europe and North America. It is the cultivated relative of the high-altitude Himalayan species that has been collected by hand for generations and priced accordingly.</p>
+<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0 0 20px">Cordyceps militaris fruits as small orange clubs, a few centimeters tall, blunt at the tip and brighter than anything else on a forest floor. In the wild it is found across temperate Asia, Europe and North America. It is the cultivated relative of the high-altitude Himalayan species that has been collected by hand for generations and priced accordingly. Cordyceps is affectionately known in some circles as "the hiker's chewing gum" due to its energy producing qualities.</p>
 <p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0">Ours is grown, not gathered: in trays, on a substrate the fruiting body is lifted off, so nothing but the mushroom goes into the extractor. Dried, it holds that orange; the powder is the color of old brass.</p>
 </div>
 </div>
@@ -2060,8 +2061,9 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 <sc-if value="{{ isHow }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="How To Use">
-<section data-m="how-hero" style="margin-bottom:-1px;min-height:40vh;display:flex;align-items:center;justify-content:center;padding:64px 28px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%">
-<div style="width:100%;max-width:1300px;margin:0 auto;text-align:center">
+<section style="margin-bottom:-1px;min-height:40vh;display:flex;align-items:center;justify-content:center;padding:64px 28px;background-color:#000;position:relative;overflow:hidden">
+<div data-m="how-hero" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;animation:rcxPushIn 6s cubic-bezier(.33,0,.2,1) both"></div>
+<div style="position:relative;z-index:1;width:100%;max-width:1300px;margin:0 auto;text-align:center">
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,4.6vw,60px);line-height:1.22;color:#F1ECE1;margin:0">M<span style="color:#D4A24A">o</span>rning coffee.<br>Aftern<span style="color:#D4A24A">o</span>on tea.<br>The cup bef<span style="color:#D4A24A">o</span>re bed.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
