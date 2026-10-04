@@ -393,9 +393,9 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="wte-photos"]{min-height:280px !important}
 [data-m="wte-photos"] > div{grid-template-rows:minmax(0,1fr) !important}
 [data-m="pk-orig"]{display:none !important}
-[data-m="pk-dup"]{display:block !important;height:280px;margin:36px -18px 8px;align-self:stretch}
+[data-m="pk-dup"]{display:block !important;height:280px;margin:-48px -18px 36px;align-self:stretch}
 [data-m="wte-photos"]{display:none !important}
-[data-m="tent-dup"]{display:block !important;height:280px;margin:-8px -18px 0;align-self:stretch}
+[data-m="tent-dup"]{display:block !important;height:280px;margin:36px -18px 8px;align-self:stretch}
 [data-m="1col"]{grid-template-columns:minmax(0,1fr) !important}
 [data-m="1col"] > *{min-width:0 !important;max-width:100% !important}
 [data-m="row2x2"]{grid-template-columns:1fr 1fr !important}
@@ -762,6 +762,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="width:100%;display:grid;background-color:#000;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch" data-split="half">
 <div data-m="wte-col" style="min-width:0;display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:40px 56px 40px calc(max(28px,(100% - 1300px) / 2 + 28px) + 52px);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.92)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-repeat:no-repeat;background-position:12% 38%">
 <div data-m="wte-inner" style="min-width:0;align-self:flex-end;width:min(100%,600px)">
+<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio.jpg" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <h2 data-sweep="true" data-m="wte-h2" style="font-family:'Oswald',sans-serif;font-weight:300;letter-spacing:.1em;font-size:clamp(28px,4vw,53px);line-height:1.05;color:#F1ECE1;margin:0;width:100%;text-align:center;padding-left:120px">WHY THIS E<img src="assets/extract-x-gold.svg" alt="X" style="height:clamp(28px,3.95vw,54px);width:auto;display:inline-block;vertical-align:-0.2em;margin:0 -0.14em 0 -0.34em">ISTS</h2>
 <div data-m="wte-rule" style="width:calc(100% - 120px);height:2px;background:#D4A24A;margin:24px 0 18px;position:relative;left:120px"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
@@ -771,16 +772,15 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#E4DCCC;margin:0;text-align:justify">One ingredient. No grain, no filler. Forest to cup. Every lot is tested, and<br><a data-page="receipts" onClick="{{ go }}" href="#" style="white-space:nowrap;color:#D4A24A;text-decoration:underline">the results are always one scan away</a>.</p>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">One for physical performance</p><a href="https://scholars.duke.edu/publication/1687465" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps militaris Improves Tolerance to High Intensity Exercise After Acute and Chronic Supplementation (Duke University)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">One for mental clarity</p><a href="https://www.mdpi.com/2072-6643/15/22/4842" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">The Acute and Chronic Effects of Lion's Mane Mushroom Supplementation on Cognitive Function, Stress and Mood in Young Adults (Nutrients)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">One for immune support</p><a href="https://www.mdpi.com/2072-6643/15/9/2227" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Medicinal Mushroom Extracts from Hericium coralloides and Trametes versicolor Exert Differential Immunomodulatory Effects on Immune Cells from Older Adults In Vitro (Nutrients)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Cordyceps for physical performance</p><a href="https://scholars.duke.edu/publication/1687465" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps militaris Improves Tolerance to High Intensity Exercise After Acute and Chronic Supplementation (Duke University)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Lion's mane for mental clarity</p><a href="https://www.mdpi.com/2072-6643/15/22/4842" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">The Acute and Chronic Effects of Lion's Mane Mushroom Supplementation on Cognitive Function, Stress and Mood in Young Adults (Nutrients)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Turkey tail for immune support</p><a href="https://www.mdpi.com/2072-6643/15/9/2227" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Medicinal Mushroom Extracts from Hericium coralloides and Trametes versicolor Exert Differential Immunomodulatory Effects on Immune Cells from Older Adults In Vitro (Nutrients)</a></div>
 </div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
 </div>
-<p style="font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:#E4DCCC;margin:0;align-self:stretch;text-align:center;padding-left:32px">Tear open a packet and add it to the coffee or tea.<br>Best enjoyed with food or alongside a meal.<br>Hot water or a smoothie works great too.<br>Elevate your favorite cup with the power of botanical science.</p>
+<p style="font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:#E4DCCC;margin:0;align-self:stretch;text-align:center;padding-left:32px"><span style="display:block">Tear open a packet and add it to the coffee or tea.</span><span style="display:block">Best enjoyed with food or alongside a meal.</span><span style="display:block">Hot water or a smoothie works great too.</span><span style="display:block">Elevate your favorite cup with the power of botanical science.</span></p>
 </div>
 </div>
-<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio.jpg" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
 <div data-m="wte-story" style="min-width:0;display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:flex-end;width:min(100%,600px);margin-top:44px;padding-right:6px">
 <div style="display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%;position:relative;left:42px">
@@ -3739,14 +3739,26 @@ class Component extends DCLogic {
         done.add(el);
       });
     };
-    const undo = () => { done.forEach(el => { el.style.removeProperty('font-size'); delete el.dataset.fsUp; }); done.clear(); document.querySelectorAll('[data-fs-up]').forEach(el => delete el.dataset.fsUp); };
+    const balance = () => {
+      const root = document.querySelector('x-dc') || document.body;
+      root.querySelectorAll('p,h1,h2,h3,h4,h5,h6,li,a,span,div,button,label,figcaption').forEach(el => {
+        if (el.dataset.balUp) return;
+        if (![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return;
+        if (getComputedStyle(el).textAlign !== 'center') return;
+        el.dataset.balUp = '1';
+        el.style.setProperty('text-wrap', 'balance');
+        balDone.add(el);
+      });
+    };
+    const balDone = new Set();
+    const undo = () => { done.forEach(el => { el.style.removeProperty('font-size'); delete el.dataset.fsUp; }); done.clear(); document.querySelectorAll('[data-fs-up]').forEach(el => delete el.dataset.fsUp); balDone.forEach(el => { el.style.removeProperty('text-wrap'); delete el.dataset.balUp; }); balDone.clear(); };
     let t = 0;
-    const sched = () => { cancelAnimationFrame(t); t = requestAnimationFrame(apply); };
+    const sched = () => { cancelAnimationFrame(t); t = requestAnimationFrame(() => { apply(); if (mq.matches) balance(); }); };
     this._fsObs = new MutationObserver(sched);
     this._fsObs.observe(document.body, { childList: true, subtree: true });
-    const onMq = () => { if (mq.matches) apply(); else undo(); };
+    const onMq = () => { if (mq.matches) { apply(); balance(); } else undo(); };
     if (mq.addEventListener) mq.addEventListener('change', onMq);
-    apply();
+    apply(); if (mq.matches) balance();
   }
 
   componentDidMount() {
