@@ -1,0 +1,1350 @@
+RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
+Exported October 5, 2026 from the current site build. Export only.
+Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
+
+HOW TO READ THIS FILE
+- Pages are listed in site order, then the site-wide parts (header, phone menu, footer, cart, audio player) once at the end.
+- Text is listed top to bottom in page source order. Headings are marked HEADING. "--- SECTION ---" marks a named section.
+- LINK lines give the full address; every external link should read "(opens in a new tab)". Links marked "(on this site)" switch to another page of the site.
+- [live: ...] is a value filled in when the page runs (lot numbers, beta-glucan, cart counts, button labels that change, etc.).
+- [ONLY SHOWN WHEN: ...] marks text that appears only in a certain state. [DESKTOP ONLY] / [PHONE ONLY] / [PHONE LAYOUT VERSION] mark blocks that show on one screen size only.
+- PHONE HOME PAGE: on phones the order is seal → three-packets photo → Why This Exists → tent photo + story → photo row → lab results paragraph → "Make the first cup an honest one." → footer. The tins section and "What is in the packet" are desktop only.
+- A full list of every external link, grouped by page, is at the end for checking.
+
+==============================================================================
+PAGE: HOME
+==============================================================================
+--- SECTION: Home — hero ---
+  BACKGROUND PHOTO: assets/photo/hero-stove-pour-ridge-v10.png
+[live: w0.text] [live: w1.text] [live: w2.text]
+--- SECTION: Home — on the go ---
+  BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.png
+[PHONE LAYOUT VERSION of a desktop block]
+    IMAGE: assets/photo/packets-powder-trio.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+HEADING: WHY THIS EISTS
+  IMAGE: assets/extract-x-gold.svg  | alt text: "X"
+Raw Canopy Extract is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
+We're launching with three non-psychedelic, everyday functional mushroom extract powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
+Cordyceps for physical performance:
+LINK: "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
+Lion's mane for mental clarity:
+LINK: "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
+Turkey tail for immune support:
+LINK: "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
+THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
+Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
+[DESKTOP ONLY — hidden on phones]
+  Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
+    LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
+[PHONE LAYOUT VERSION of a desktop block]
+    IMAGE: assets/photo/tent-mug-zoom.png  | alt text: "A woman holding a mug in a tent"
+CHECK OUT OUR ILLUSTRATEDFICTIONAL ORIGIN STORY OFTHE LION’S MANE MUSHROOM
+The Roar of the Mountain
+BUTTON: "HEAR THE STORY ALONGSIDE ITS STORYBOARD→" -> opens the "Story: Lion's Mane" page
+BUTTON: "CLICKHERE" [label: Open the story] -> opens the "Story: Lion's Mane" page
+[DESKTOP ONLY — hidden on phones]
+  [DESKTOP ONLY — hidden on phones]
+      IMAGE: assets/photo/packets-powder-trio.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+    IMAGE: assets/photo/tent-mug-zoom.png  | alt text: "A woman holding a mug in a tent"
+--- SECTION: Home — the world it lives in ---
+  IMAGE: ./7466909c-2af5-4892-8232-0e12a49f627a-mtowftku-cevj.png  | alt text: "A cup in the woods"
+  IMAGE: assets/photo/fruiting-body-mycelium-rainbow-crop.png  | alt text: "Fruiting body above, mycelium below, illustrated poster"
+  IMAGE: ./ff9c1d42-4950-4209-a52b-8724a5a9d0f2-mtowbr1j-ab5x.png  | alt text: "A kettle over the fire"
+  IMAGE: assets/photo/mug-dawn.jpg  | alt text: "A steel mug held above a ridge at dawn"
+[PHONE LAYOUT VERSION of a desktop block]
+  Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
+    LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
+--- SECTION: Home — the first cup ---
+  BACKGROUND PHOTO: assets/photo/first-cup-backpacker-clean.png
+HEADING: Make the first cup an honest one.
+BUTTON: "SHOP" -> opens the "Shop" page
+[DESKTOP ONLY — hidden on phones]
+  --- SECTION: Home — the tins ---
+    BACKGROUND PHOTO: assets/pattern-field-bold.svg
+  HEADING: Nothing but single-serving packets of organic mushroom extract powder inside four recyclable steel tins.
+  BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
+    IMAGE: assets/photo/tins/rcx-front-lions-mane.png  | alt text: "Lion's Mane steel tin front"
+  BUTTON: "BUY · $39.99"
+  HEADING: Lion's Mane
+  Hericium erinaceus, hot water plus alcohol extracts, fruiting body.
+  20 PACKETS · 2 GRAM SERVINGS
+    IMAGE: assets/photo/tins/rcx-front-cordyceps.png  | alt text: "Cordyceps steel tin front"
+  BUTTON: "BUY · $39.99"
+  HEADING: Cordyceps
+  Cordyceps militaris, two hot water extracts, fruiting body.
+  20 PACKETS · 2 GRAM SERVINGS
+    IMAGE: assets/photo/tins/rcx-front-turkey-tail.png  | alt text: "Turkey Tail steel tin front"
+  BUTTON: "BUY · $39.99"
+  HEADING: Turkey Tail
+  Trametes versicolor, mycelium extract.
+  20 PACKETS · 2 GRAM SERVINGS
+    IMAGE: assets/photo/tins/rcx-front-combo.png  | alt text: "Mushroom Combo packet front"
+  BUTTON: "BUY · $59.99"
+  HEADING: Mushroom Combo
+  Lion's mane: hot water plus alcohol extracts. Cordyceps: two hot water extracts. Both fruiting body. Turkey tail: mycelium extract.
+  30 PACKETS · 2 GRAM SERVINGS
+  LOT NUMBER ON EVERY STEEL TIN. CERTIFICATE ON EVERY LOT.
+[DESKTOP ONLY — hidden on phones]
+  --- SECTION: Home — what it is ---
+    BACKGROUND PHOTO: assets/pattern-field-bold.svg
+  WHAT IS IN THE PACKET
+  HEADING: The power of botanical sciencein every serving.
+    BACKGROUND PHOTO: assets/photo/lab-extraction-rig.png
+  CLICKABLE CARD: "Extracted per species" -> opens the "The Mushrooms" page
+  HEADING: Extracted per species
+  Lion's mane: hot water plus an alcohol extract. Cordyceps: two hot water extracts. Turkey tail: a mycelium extract. Never merged into one claim.
+    BACKGROUND PHOTO: assets/photo/lions-mane.jpg
+  CLICKABLE CARD: "Single ingredient" -> opens the "Why One Ingredient" page
+  HEADING: Single ingredient
+  The mushroom only. No filler. No sweetener.
+    BACKGROUND PHOTO: assets/photo/lm-powder-scoop.jpg
+  CLICKABLE CARD: "No filler. No B.S." -> opens the "Receipts" page
+  HEADING: No filler. No B.S.
+  No grain, no maltodextrin, no flow agents, no gum.
+    BACKGROUND PHOTO: assets/photo/tt-right-form-log.webp
+  CLICKABLE CARD: "The right form" -> opens the "How To Use" page
+    IMAGE: assets/icons/fruiting-body.svg  | alt text: "The right form for each mushroom"
+  HEADING: The right form
+  Fruiting body for lion's mane and cordyceps, mycelium for turkey tail. Never mushroom milled in with the grain it grew on.
+    BACKGROUND PHOTO: assets/photo/measured-hiker-sunset-flip.png
+  CLICKABLE CARD: "Measured every time" -> opens the "Shop" page
+    IMAGE: assets/icons/beta-glucans-tested.svg  | alt text: "Beta-glucans tested"
+  HEADING: Measured every time
+  Weighed by machine into every packet. 2 grams, and the beta-glucan result printed on the certificate.
+
+==============================================================================
+PAGE: SHOP
+==============================================================================
+--- SECTION: Shop ---
+  BACKGROUND PHOTO: assets/photo/coffee-asset.webp
+SHOP
+HEADING: The small packetthat packs a punch.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+  BACKGROUND PHOTO: assets/photo/shop-tennis-handshake-nobrand.png
+  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.png  | alt text: "Lion's Mane packet front"
+HEADING: Lion's Mane
+20 PACKETS · 2 GRAM SERVINGS
+Hericium erinaceus, hot water plus alcohol extracts, fruiting body. Nothing else in the packet. Recyclable steel tin.
+LOT [live: currentLm.lot] · [live: currentLm.mg] MG BETA-GLUCAN / PACKET
+$39.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubLm]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyLm]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+  IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.png  | alt text: "Cordyceps packet front"
+HEADING: Cordyceps
+20 PACKETS · 2 GRAM SERVINGS
+Cordyceps militaris, two hot water extracts, fruiting body. Grown, not gathered. Recyclable steel tin.
+LOT [live: currentCd.lot] · [live: currentCd.mg] MG BETA-GLUCAN / PACKET
+$39.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubCd]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyCd]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+  IMAGE: assets/photo/tins/rcx-front-turkey-tail-packet.png  | alt text: "Turkey Tail packet front"
+HEADING: Turkey Tail
+20 PACKETS · 2 GRAM SERVINGS
+Trametes versicolor, mycelium extract. The cloud mushroom. Recyclable steel tin.
+LOT [live: currentRs.lot] · [live: currentRs.mg] MG BETA-GLUCAN / PACKET
+$39.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubRs]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyRs]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+  IMAGE: assets/photo/tins/rcx-front-combo-shop-v5.png  | alt text: "Mushroom Combo packet front"
+HEADING: Mushroom Combo
+30 PACKETS · 2 GRAM SERVINGS
+All three in one steel tin: ten lion's mane, ten cordyceps, ten turkey tail. Thirty packets.
+LOTS [live: currentLm.lot] · [live: currentCd.lot] · [live: currentRs.lot]
+$59.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubCombo]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyCombo]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+RAW CANOPY EXTRACT
+PRODUCT PHOTO COMING SOONSIGN UP FOR UPDATES BELOW
+HEADING: Lion's Mane Box
+RECYCLABLE BOX
+40 PACKETS · 2 GRAM SERVINGS
+Forty lion's mane packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
+UNCOATED FSC KRAFT · RECYCLABLE
+$69.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubLmr]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyLmr]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+RAW CANOPY EXTRACT
+PRODUCT PHOTO COMING SOONSIGN UP FOR UPDATES BELOW
+HEADING: Cordyceps Box
+RECYCLABLE BOX
+40 PACKETS · 2 GRAM SERVINGS
+Forty cordyceps packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
+UNCOATED FSC KRAFT · RECYCLABLE
+$69.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubCdr]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyCdr]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+RAW CANOPY EXTRACT
+PRODUCT PHOTO COMING SOONSIGN UP FOR UPDATES BELOW
+HEADING: Turkey Tail Box
+RECYCLABLE BOX
+40 PACKETS · 2 GRAM SERVINGS
+Forty turkey tail packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
+UNCOATED FSC KRAFT · RECYCLABLE
+$69.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubRsr]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyRsr]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+RAW CANOPY EXTRACT
+PRODUCT PHOTO COMING SOONSIGN UP FOR UPDATES BELOW
+HEADING: Combo Box
+RECYCLABLE BOX
+60 PACKETS · 2 GRAM SERVINGS
+Twenty lion's mane, twenty cordyceps, twenty turkey tail in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. All three, a month of each, plainly packed and recyclable.
+UNCOATED FSC KRAFT · RECYCLABLE
+$99.99
+BUTTON: "ONE-TIME"
+BUTTON: "[live: subLabel]"
+[ONLY SHOWN WHEN: isSubCbr]
+  Renews every 30 days at the subscription price until you cancel. Cancel anytime online.
+BUTTON: "−"
+[live: qtyCbr]
+BUTTON: "+"
+BUTTON: "ADD TO CART"
+  IMAGE: assets/icons/certified-organic.svg  | alt text: "Certified organic"
+CERTIFIED ORGANIC
+  IMAGE: assets/icons/single-ingredient.svg  | alt text: "Single ingredient"
+SINGLE INGREDIENT
+  IMAGE: assets/icons/fruiting-body.svg  | alt text: "Right form per species"
+RIGHT FORM PER SPECIES
+  IMAGE: assets/icons/beta-glucans-tested.svg  | alt text: "Beta-glucans tested"
+BETA-GLUCANS TESTED
+  IMAGE: assets/icons/no-fillers.svg  | alt text: "No fillers"
+NO FILLERS
+  IMAGE: assets/icons/vegan.svg  | alt text: "Vegan"
+VEGAN
+  IMAGE: assets/icons/recyclable-tin.svg  | alt text: "Recyclable steel tin"
+RECYCLABLE STEEL TIN
+[ONLY SHOWN WHEN: showComingSoon]
+  COMING SOON · SIGN UP FOR UPDATES BELOW
+    BACKGROUND PHOTO: assets/photo/coconut-palm-up.webp
+  HEADING: Coconut
+  COCONUT MILK POWDER
+  Single-ingredient organic coconut milk powder. No fillers, no maltodextrin. The same idea, a different cup.
+  [ONLY SHOWN WHEN: notifiedCoconut]
+    We'll write when it lands.
+  Sign up for updates when new products are released
+  FIELD: "Email address"
+  BUTTON: "NOTIFY ME"
+    BACKGROUND PHOTO: assets/photo/ginger-root.webp
+  HEADING: Ginger Root
+  GINGER POWDER
+  Single-ingredient organic ginger root. One rhizome, dried and milled, nothing carried along with it.
+  [ONLY SHOWN WHEN: notifiedGinger]
+    We'll write when it lands.
+  Sign up for updates when new products are released
+  FIELD: "Email address"
+  BUTTON: "NOTIFY ME"
+    BACKGROUND PHOTO: assets/photo/orange-slices.jpg
+  HEADING: Orange
+  ORANGE JUICE POWDER
+  Freeze-dried orange juice powder. Nothing added to make it dissolve: no maltodextrin, no carrier, no sweetener. Juice, not whole fruit, so it goes into your cup and disappears. Tear it into tea, water, or over turkey tail.
+  [ONLY SHOWN WHEN: notifiedOrange]
+    We'll write when it lands.
+  Sign up for updates when new products are released
+  FIELD: "Email address"
+  BUTTON: "NOTIFY ME"
+    BACKGROUND PHOTO: assets/photo/honeycomb.avif
+  HEADING: Honey
+  DRIED HONEY
+  Pure honey in a tear-open packet. One ingredient, sourced the way everything else here is, with the receipt to prove it. The sweetener for the tea side of the cup.
+  [ONLY SHOWN WHEN: notifiedHoney]
+    We'll write when it lands.
+  Sign up for updates when new products are released
+  FIELD: "Email address"
+  BUTTON: "NOTIFY ME"
+[DESKTOP ONLY — hidden on phones]
+    IMAGE: ./f35da25a7d452e00dca21f34a0b13609227243dc-mtopujei-faey.jpg  | alt text: "Coffee pack in camp"
+    IMAGE: ./unwind_at_the_best_yoga_retreats_in_asia-mtzins5h-ix8f.jpg  | alt text: "Two figures stretching against a sunset sea"
+    IMAGE: ./buying-advice-emtb-mtb-enduro-016-mu4zklga-w2e2.jpg  | alt text: "A rider pausing on a granite ridge"
+    IMAGE: ./friends-workout-759-musqpi4v-jpph.webp  | alt text: "friends-workout-759"
+
+==============================================================================
+PAGE: RECEIPTS
+==============================================================================
+--- SECTION: Receipts ---
+  BACKGROUND PHOTO: assets/photo/receipts-tennis-noblog.png
+HEADING: Check the receipts.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+Every steel tin carries a lot number. Every lot has a certificate. Find yours below, or type the lot number from your steel tin. Compare ours to anyone else's, if you can find one for your lot.
+Don't take our word for it. Here's the lab report.
+FIELD: "Lot number"
+BUTTON: "CLEAR"
+  BACKGROUND PHOTO: assets/photo/receipts-airport-line.jpg
+HEADING: LION'S MANE · HERICIUM ERINACEUS
+Fruiting body / 2 grams per packet* * * newest lot first * * *
+Official lot to come.
+LOT
+PACK DATE
+BETA-GLUCAN
+ORIGIN
+CERTIFIER
+COA
+[REPEATED LIST over [live: lotsLm]:]
+  [live: l.lot]
+  [live: l.date]
+  [live: l.pct]% / [live: l.mg]MG
+  [live: l.region]
+  [live: l.cert]
+  LINK: "VIEW PDF" -> #
+[ONLY SHOWN WHEN: noLmLots]
+  No lion's mane lot matches that number.
+HEADING: CORDYCEPS · CORDYCEPS MILITARIS
+Fruiting body / 2 grams per packet* * * newest lot first * * *
+Official lot to come.
+LOT
+PACK DATE
+BETA-GLUCAN
+ORIGIN
+CERTIFIER
+COA
+[REPEATED LIST over [live: lotsCd]:]
+  [live: l.lot]
+  [live: l.date]
+  [live: l.pct]% / [live: l.mg]MG
+  [live: l.region]
+  [live: l.cert]
+  LINK: "VIEW PDF" -> #
+[ONLY SHOWN WHEN: noCdLots]
+  No cordyceps lot matches that number.
+HEADING: TURKEY TAIL · TRAMETES VERSICOLOR
+Mycelium / 2 grams per packet* * * newest lot first * * *
+Official lot to come.
+LOT
+PACK DATE
+BETA-GLUCAN
+ORIGIN
+CERTIFIER
+COA
+[REPEATED LIST over [live: lotsRs]:]
+  [live: l.lot]
+  [live: l.date]
+  [live: l.pct]% / [live: l.mg]MG
+  [live: l.region], [live: l.country]
+  [live: l.cert]
+  LINK: "VIEW PDF" -> #
+[ONLY SHOWN WHEN: noRsLots]
+  No turkey tail lot matches that number.
+Beta-glucan is measured by a third-party laboratory on the finished extract and reported as a percentage of the powder; the milligram figure is that percentage applied to one 2 gram packet. Certificates are posted as received and are never edited. If a lot number on your steel tin is not listed here, write to us and we will send the certificate directly.
+* * * * * * * * * * * * * * * *THANK YOU FOR CHECKINGRAW CANOPY EXTRACT* * * * * * * * * * * * * * * *
+  IMAGE: assets/photo/receipts-football-training-crop-v2.jpg  | alt text: "A team warming up on a training pitch under a bright sky"
+  IMAGE: ./screenshot-2026-09-17-at-4-38-23-pm-mu667nxy-qfbt.png  | alt text: none
+  IMAGE: assets/photo/receipts-beach-camp.jpg  | alt text: "Two campers on a driftwood beach at sunset"
+  IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: "Tea outside the tent"
+
+==============================================================================
+PAGE: THE MUSHROOMS
+==============================================================================
+--- SECTION: The Mushrooms ---
+  BACKGROUND PHOTO: assets/photo/shop-river-canyon.png
+Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here since 609 CE.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+  BACKGROUND PHOTO: assets/photo/mushrooms-baseball-lights.webp
+THE MUSHROOMS · SPECIES FILES
+  IMAGE: assets/photo/lm-white.jpg  | alt text: "Lion's Mane"
+Hericium erinaceus
+  IMAGE: assets/icons/species/rcx-sym-lions-mane-gold.svg  | alt text: none
+HEADING: Lion's Mane
+PART USED
+Fruiting body
+EXTRACTION
+Hot water + alcohol extracts
+ORIGIN
+Wuyi Mountains
+BETA-GLUCAN
+[live: currentLm.pct]% · [live: currentLm.mg] mg / packet
+CURRENT LOT
+[live: currentLm.lot]
+BUTTON: "OPEN THE FILE" -> opens the "Lion's Mane" page
+  IMAGE: assets/photo/cordyceps-forest.webp  | alt text: "Cordyceps"
+Cordyceps militaris
+  IMAGE: assets/icons/species/rcx-sym-cordyceps-gold.svg  | alt text: none
+HEADING: Cordyceps
+PART USED
+Fruiting body
+EXTRACTION
+Two hot water extracts
+ORIGIN
+Wuyi Mountains
+BETA-GLUCAN
+[live: currentCd.pct]% · [live: currentCd.mg] mg / packet
+CURRENT LOT
+[live: currentCd.lot]
+BUTTON: "OPEN THE FILE" -> opens the "Cordyceps" page
+  IMAGE: assets/photo/turkey-tail-card.jpg  | alt text: "Turkey Tail"
+Trametes versicolor
+  IMAGE: assets/icons/species/rcx-sym-turkey-tail-gold.svg  | alt text: none
+HEADING: Turkey Tail
+PART USED
+Mycelium
+EXTRACTION
+Mycelium extract
+ORIGIN
+To be confirmed
+BETA-GLUCAN
+[live: currentRs.pct]% · [live: currentRs.mg] mg / packet
+CURRENT LOT
+[live: currentRs.lot]
+BUTTON: "OPEN THE FILE" -> opens the "Turkey Tail" page
+Nature did the work. We just measured it. Figures are lot-specific and change with every batch; the certificates are published in full on the receipts page.
+  BACKGROUND PHOTO: assets/photo/tt-log-best-form.webp
+THE BEST FORM FOR EACH
+HEADING: Fruiting body where it counts. Mycelium where the research is.
+Most mushroom products pick one form and use it for everything, usually mycelium grown on grain, because it is cheaper. We pick per species. Lion's mane and cordyceps are fruiting body: the mushroom itself, harvested whole and extracted whole, which is also what the human research on lion's mane used.
+  LINK: "human research on lion's mane" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
+Turkey tail is the exception. Its best-known extracts are made from cultured mycelium, and that is what the research on turkey tail and the gut used, so that is the form we use. Whichever the form, the rule doesn't change: one species per packet, no grain passed off as mushroom, beta-glucan measured on every lot.
+  LINK: "made from cultured mycelium" -> opens the "Receipts" page (on this site)
+  BACKGROUND PHOTO: assets/photo/extraction-diagram-plates.png
+HEADING: BOTANICAL SCIENCE
+Three species, each in the form that suits it. Lion's mane and cordyceps are fruiting body; turkey tail is mycelium. All three are assayed for beta-glucan by a third-party laboratory. Lion's mane is hot water plus alcohol extracts, cordyceps is two hot water extracts, turkey tail is a mycelium extract. Every figure below is taken from the certificate for the lot currently shipping.
+METHOD · PER SPECIES, SEE EACH FILE
+ASSAY · ENZYMATIC, β-1,3/1,6-GLUCAN
+FILL · 2 GRAMS / PACKET, GRAVIMETRIC
+CHECK THE RECEIPTS →
+BUTTON: "SEE THE CERTIFICATES" -> opens the "Receipts" page
+BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
+  IMAGE: ./20230805032805_1410005693_16559_0-mtp1wpe0-5mms.jpg  | alt text: "A diver signalling underwater alongside a shark"
+  IMAGE: ./images-mu06k4kb-4kxl.jpg  | alt text: "A surfer deep in the barrel"
+  IMAGE: ./800-mu06hufv-nq2u.jpg  | alt text: "A freediver rising over the sand flats"
+  IMAGE: ./adjustments-771x578x96x0x580x578x1771773-mtp1x9oq-hs7g.jpeg  | alt text: "A freediver surfacing at sunset"
+
+==============================================================================
+PAGE: LION'S MANE
+==============================================================================
+--- SECTION: Lion's Mane ---
+  BACKGROUND PHOTO: assets/photo/lm-hero-cluster.jpg
+HERICIUM ERINACEUS · FRUITING BODY · 80% HOT WATER · 20% ALCOHOL
+  IMAGE: assets/icons/species/rcx-sym-lions-mane-gold.svg  | alt text: none
+HEADING: Lion's Mane
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+Grown in the dark. Made for the light.
+HEADING: WHAT IT IS
+Hericium erinaceus grows as a white cascade of soft spines, hanging out of a wound in a hardwood (beech, oak, maple) like something poured and then frozen. It fruits in late summer and autumn across temperate forests in North America, Europe and East Asia, usually well off the ground, usually alone. Fresh, it has the texture of a sea creature; dried, it goes ivory and hard.
+It has been gathered and prepared in East Asia for centuries, in kitchens as much as anywhere else, and it is one of the few mushrooms people recognize on sight without being told. Ours is cultivated on hardwood so the fruiting body can be harvested whole and extracted whole.
+  BACKGROUND PHOTO: assets/photo/story-lm-poster-flip.jpg
+BUTTON: "THE ROAR OF THE MOUNTAIN “The great gallery of Orrin rosein terraces of cut stone.”" -> opens the "Story: Lion's Mane" page
+BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Lion's Mane" page
+CHECK OUT OUR ILLUSTRATED
+FICTIONAL STORY
+Storyboard and narration out now · Animated film coming mid-2028
+Every purchase funds it. The words are written and the storyboard is narrated. Next comes the animated film, released chapter by chapter. Sign up to follow along.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+  BACKGROUND PHOTO: assets/photo/lm-skagit-valley.jpg
+HEADING: WHERE OURS COMES FROM
+REGION
+Wuyi Mountains
+CERTIFIER
+Organic certification pending
+PART USED
+Fruiting body
+A fruiting body is the mushroom itself. Mycelium is the root-like network it grows from, and most commercial "mushroom" products are mycelium grown on rice or oats, ground up together, so a large share of what's in the capsule is the grain it grew on. A test for beta-glucan tells you which one you're holding, because grain reads low. That's why we publish it, and why we choose the form per species: fruiting body here, mycelium for turkey tail, where that is the form its research used.
+  LINK: "turkey tail" -> opens the "Turkey Tail" page (on this site)
+  BACKGROUND PHOTO: assets/photo/lm-crate.png
+HEADING: HOW IT'S MADE
+For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Hot water pulls out the beta-glucans, the compounds that make up the mushroom's cell walls. A second pass with alcohol pulls out what water can't. Lion's mane is 80 percent hot water extract and 20 percent alcohol extract, from the fruiting body. One ingredient. No grain, no filler. Forest to cup.
+  BACKGROUND PHOTO: assets/photo/lm-how-made-desk.jpg
+HEADING: WHAT'S BEEN STUDIED
+Supports focus for the challenge ahead.*
+  LINK: "*" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
+Supports a steady, clear mind.*
+  LINK: "*" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
+* These statements have not been evaluated by the Food and Drug Administration. See sources and full disclaimer at the foot of this page.
+HEADING: FURTHER READING
+Outside research on this mushroom, from the people who published it.
+Mushrooms magnify memory by boosting nerve growthThe University of Queensland
+  LINK: "Mushrooms magnify memory by boosting nerve growth" -> https://news.uq.edu.au/2023-02-10-mushrooms-magnify-memory-boosting-nerve-growth  (opens in a new tab)
+Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type MiceEvidence Based Complementary and Alternative Medicine
+  LINK: "Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type Mice" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC5237458/  (opens in a new tab)
+Improvement of cognitive functions by oral intake of Hericium erinaceusBiomedical Research
+  LINK: "Improvement of cognitive functions by oral intake of Hericium erinaceus" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
+HEADING: THE NAMES IT GOES BY
+LATIN
+Hericium erinaceus
+Erinaceus is Latin for hedgehog, for the spines.
+JAPANESE
+Yamabushitake
+Named for the yamabushi, mountain monks whose robes carried tufted pom-poms.
+CHINESE
+Hóutóugū
+Monkey head mushroom, for the shaggy round fruiting body.
+ENGLISH
+Lion's mane
+Also bearded tooth and pom pom. Every name is about the spines.
+HEADING: HOW TO TAKE IT
+WHEN
+In the morning, or before the part of the day that needs your head. It has no caffeine of its own, so it sits well in the first cup.
+IN WHAT
+Coffee or tea is the easy one. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Hot water or a smoothie works too. Powder in the mug first, hot liquid onto it, stirred to a paste.
+HOW MUCH
+One packet (2 grams) is one serving. Enjoy one a day, no more than two. One steel tin is twenty mornings.
+HEADING: THE LOT SHIPPING NOW
+LOT
+[live: currentLm.lot]
+PACKED
+[live: currentLm.date]
+BETA-GLUCAN
+[live: currentLm.pct]%
+PER PACKET
+[live: currentLm.mg] mg
+BUTTON: "SEE THE CERTIFICATE" -> opens the "Receipts" page
+HEADING: THE OTHER TWO
+BUTTON: "CordycepsPERFORMANCE · ENERGYOPEN THE FILE →" -> opens the "Cordyceps" page
+BUTTON: "Turkey TailIMMUNITY · DIGESTIONOPEN THE FILE →" -> opens the "Turkey Tail" page
+* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+
+==============================================================================
+PAGE: CORDYCEPS
+==============================================================================
+--- SECTION: Cordyceps ---
+  BACKGROUND PHOTO: assets/photo/cd-hero-clubs.png
+CORDYCEPS MILITARIS · FRUITING BODY · TWO HOT WATER EXTRACTS
+  IMAGE: assets/icons/species/rcx-sym-cordyceps-gold.svg  | alt text: none
+HEADING: Cordyceps
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+For your best efforts, from the forest's.
+HEADING: WHAT IT IS
+Cordyceps militaris fruits as small orange clubs, a few centimeters tall, blunt at the tip and brighter than anything else on a forest floor. In the wild it is found across temperate Asia, Europe and North America. It is the cultivated relative of the high-altitude Himalayan species that has been collected by hand for generations and priced accordingly. Cordyceps is affectionately known in some circles as "the hiker's chewing gum" due to its energy producing qualities.
+Ours is grown, not gathered: in trays, on a substrate the fruiting body is lifted off, so nothing but the mushroom goes into the extractor. Dried, it holds that orange; the powder is the color of old brass.
+  BACKGROUND PHOTO: assets/photo/cd-yunnan-hoodoos.webp
+HEADING: WHERE OURS COMES FROM
+REGION
+Wuyi Mountains
+CERTIFIER
+Organic certification pending
+PART USED
+Fruiting body
+A fruiting body is the mushroom itself. Mycelium is the root-like network it grows from, and most commercial "mushroom" products are mycelium grown on rice or oats, ground up together, so a large share of what's in the capsule is the grain it grew on. A test for beta-glucan tells you which one you're holding, because grain reads low. That's why we publish it, and why we choose the form per species: fruiting body here, mycelium for turkey tail, where that is the form its research used.
+  LINK: "turkey tail" -> opens the "Turkey Tail" page (on this site)
+  BACKGROUND PHOTO: assets/photo/cd-studied-clubs.webp
+HEADING: HOW IT'S MADE
+For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Cordyceps gets two hot water extracts and no alcohol step at all. Hot water is what pulls the beta-glucans out of the cell walls, and a second pass takes what the first left behind: two hot water extracts, fruiting body. One ingredient. No grain, no filler. Forest to cup.
+  BACKGROUND PHOTO: assets/photo/cd-stadium-sunset.avif
+HEADING: WHAT'S BEEN STUDIED
+Supports energy and endurance when the day runs long.*
+  LINK: "*" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
+* These statements have not been evaluated by the Food and Drug Administration. See sources and full disclaimer at the foot of this page.
+BUTTON: "COMING SOON “The OneWho Went Up On Top”" -> opens the "Story: Cordyceps" page
+THE FICTIONAL STORY OF
+THE CORDYCEPS MUSHROOM
+BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Cordyceps" page
+In development · Coming 2029
+Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+HEADING: FURTHER READING
+Outside research on this mushroom, from the people who published it.
+Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trialPLOS One, via the National Library of Medicine
+  LINK: "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC13372127/  (opens in a new tab)
+HEADING: THE NAMES IT GOES BY
+LATIN
+Cordyceps militaris
+Cordyceps is club-head, from the Greek and Latin. Militaris is soldierly.
+CHINESE
+Yǒng chóng cǎo
+The cultivated cousin of the wild Himalayan species, grown in trays, not gathered.
+ENGLISH
+Scarlet caterpillar club
+Small orange clubs, a few centimeters tall, brighter than anything else on the forest floor.
+HEADING: HOW TO TAKE IT
+WHEN
+Before the effort: a training session, a long drive, a long shift. Any time you want to show up with something left.
+IN WHAT
+Coffee, tea, hot water, or blended into a smoothie after a workout. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Powder first, hot liquid onto it, stirred to a paste.
+HOW MUCH
+One packet (2 grams) is one serving. Enjoy one a day, no more than two. One steel tin is twenty sessions.
+HEADING: THE LOT SHIPPING NOW
+LOT
+[live: currentCd.lot]
+PACKED
+[live: currentCd.date]
+BETA-GLUCAN
+[live: currentCd.pct]%
+PER PACKET
+[live: currentCd.mg] mg
+BUTTON: "SEE THE CERTIFICATE" -> opens the "Receipts" page
+HEADING: THE OTHER TWO
+BUTTON: "Lion's ManeBRAIN · FOCUSOPEN THE FILE →" -> opens the "Lion's Mane" page
+BUTTON: "Turkey TailIMMUNITY · DIGESTIONOPEN THE FILE →" -> opens the "Turkey Tail" page
+* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+
+==============================================================================
+PAGE: TURKEY TAIL
+==============================================================================
+--- SECTION: Turkey Tail ---
+  BACKGROUND PHOTO: assets/photo/tt-hero-habitat.jpg
+TRAMETES VERSICOLOR · MYCELIUM EXTRACT
+  IMAGE: assets/icons/species/rcx-sym-turkey-tail-gold.svg  | alt text: none
+HEADING: Turkey Tail
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+Layered like weather. Named for the clouds.
+HEADING: WHAT IT IS
+Trametes versicolor grows in overlapping layers on fallen wood in temperate forests: thin, leathery fans stacked one over the next, each rippled with concentric bands of brown, rust, gray and blue and finished with a wavy white edge. Versicolor means of several colors, and no two fans agree on which. You will also find it under its older name, Coriolus versicolor. The English name is plain description: a banded fan, spread open, really does look like a wild turkey's tail.
+In China it is Yún zhī, the cloud mushroom, for the way those bands swirl across the cap. In Japan it is Kawaratake. Its use in China is documented back at least two thousand years, and it was written into the Compendium of Materia Medica during the Ming Dynasty. It is too tough to eat, so it has always been prepared: simmered, steeped, extracted.
+  BACKGROUND PHOTO: assets/photo/rs-changbai.jpg
+HEADING: WHERE OURS COMES FROM
+REGION
+To be confirmed
+CERTIFIER
+Organic certification pending
+PART USED
+Mycelium
+Turkey tail is the one mushroom in our line we don't use as a fruiting body, and that is on purpose. We use its mycelium, the root-like network the mushroom grows from, because that is the form the research on turkey tail is built on: its best-known extracts, including the polysaccharopeptide called PSP, are made from cultured mycelium. The grain problem doesn't go away. Mycelium ground up with the grain it grew on is still mostly grain, so turkey tail gets the same test as the others: beta-glucan measured on every lot, and the certificate published.
+  LINK: "made from cultured mycelium" -> opens the "Receipts" page (on this site)
+  BACKGROUND PHOTO: assets/photo/tt-autumn-fans.png
+HEADING: HOW IT'S MADE
+Turkey tail starts as cultured mycelium, not a harvested cap. It is extracted so that what goes into the packet is the part the research is about: the beta-glucans and the protein-bound polysaccharides, concentrated, with the woody bulk left behind. One species, one extract, 2 grams. One ingredient. No grain, no filler. Forest to cup.
+  BACKGROUND PHOTO: assets/photo/tt-plane-cabin.webp
+HEADING: WHAT'S BEEN STUDIED
+Supports a healthy immune system.*Supports healthy digestion and a balanced gut microbiome.*
+  LINK: "*" -> https://pubmed.ncbi.nlm.nih.gov/25006989/  (opens in a new tab)
+  LINK: "*" -> https://pubmed.ncbi.nlm.nih.gov/25006989/  (opens in a new tab)
+Most of the published work looks at turkey tail's polysaccharides: how immune cells respond to its mycelium in the lab, and how its polysaccharopeptide feeds the bacteria that live in the gut, both in culture and in a trial in healthy volunteers. The research is early and mostly small. We link what exists so you can read it yourself rather than take our word for it.* These statements have not been evaluated by the Food and Drug Administration.
+  LINK: "in culture" -> https://pubmed.ncbi.nlm.nih.gov/23435630/  (opens in a new tab)
+  LINK: "trial in healthy volunteers" -> https://pubmed.ncbi.nlm.nih.gov/25006989/  (opens in a new tab)
+BUTTON: "COMING SOON “The Keeperof the Records”" -> opens the "Story: Turkey Tail" page
+THE FICTIONAL STORY OF
+THE TURKEY TAIL MUSHROOM
+BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Turkey Tail" page
+In development · Coming 2030
+Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+HEADING: FURTHER READING
+Outside research on this mushroom, from the people who published it.
+Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolorJournal of Veterinary Research
+  LINK: "Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolor" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC10541659/  (opens in a new tab)
+Antioxidative activities and chemical characterization of polysaccharide extracts from the widely used mushrooms Ganoderma applanatum, Ganoderma lucidum, Lentinus edodes and Trametes versicolorJournal of Food Composition and Analysis
+  LINK: "Antioxidative activities and chemical characterization of polysaccharide extracts from the widely used mushrooms Ganoderma applanatum, Ganoderma lucidum, Lentinus edodes and Trametes versicolor" -> https://research.wur.nl/en/publications/antioxidative-activities-and-chemical-characterization-of-polysac-2/  (opens in a new tab)
+Screening and comparison of antioxidant activities of polysaccharides from Coriolus versicolorInternational Journal of Biological Macromolecules
+  LINK: "Screening and comparison of antioxidant activities of polysaccharides from Coriolus versicolor" -> https://www.sciencedirect.com/science/article/abs/pii/S0141813014003237  (opens in a new tab)
+HEADING: THE NAMES IT GOES BY
+CHINESE
+Yún zhī
+The cloud mushroom, for bands that ripple across each fan like weather.
+JAPANESE
+Kawaratake
+Known and used in Japan under this name for generations.
+LATIN
+Trametes versicolor
+Versicolor means of several colors. Formerly Coriolus versicolor, and you will see both.
+ENGLISH
+Turkey tail
+For the fanned, banded layers, like a wild turkey's tail spread open.
+HEADING: HOW TO TAKE IT
+WHEN
+Any time of day. It has no caffeine and no taste to fight with, so it fits wherever you already have a cup. With a meal is an easy habit to keep.
+IN WHAT
+Coffee, tea, hot water or broth, or a smoothie. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Powder in the mug first, hot liquid onto it, stirred to a paste.
+HOW MUCH
+One packet (2 grams) is one serving. Enjoy one a day, no more than two. One steel tin is twenty days.
+HEADING: THE LOT SHIPPING NOW
+LOT
+[live: currentRs.lot]
+PACKED
+[live: currentRs.date]
+BETA-GLUCAN
+[live: currentRs.pct]%
+PER PACKET
+[live: currentRs.mg] mg
+BUTTON: "SEE THE CERTIFICATE" -> opens the "Receipts" page
+HEADING: THE OTHER TWO
+BUTTON: "Lion's ManeBRAIN · FOCUSOPEN THE FILE →" -> opens the "Lion's Mane" page
+BUTTON: "CordycepsPERFORMANCE · ENERGYOPEN THE FILE →" -> opens the "Cordyceps" page
+* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+
+==============================================================================
+PAGE: WHY ONE INGREDIENT
+==============================================================================
+--- SECTION: Why One Ingredient ---
+  BACKGROUND PHOTO: assets/photo/why-tent.jpg
+WHY ONE INGREDIENT
+HEADING: When there are thirty-seven things in the capsule, what's in the capsule?
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+No filler. No binders. No flow agents. No grain.
+Look at the back of most mushroom products. Eight ingredients. Twelve. Twenty. A blend, a complex, a stack. It reads like abundance. It works like a hiding place. When everything is in there, nobody can tell you how much of any one thing you're getting, and nobody has to.
+Ours has one ingredient. The mushroom. Nothing to carry it, nothing to fill it out, nothing to make the label longer. Which means there's nowhere for a bad number to hide, so we publish the number.
+  BACKGROUND PHOTO: assets/photo/why-desk-coffee.jpg
+A TYPICAL BLEND
+"Proprietary blend" · 1,200 mg
+Eleven species in one figure
+Amount per species: not stated
+Fruiting body or mycelium: not stated
+Beta-glucan: not stated
+Lot number: on the bottle, matching nothing
+  BACKGROUND PHOTO: assets/photo/why-sunrise.webp
+A TYPICAL COMPLEX
+"Mushroom complex" · 2,000 mg
+Grain substrate included in the weight
+Extract ratio: stated as a range
+Third-party test: on request
+Beta-glucan: not stated
+Certificate: not published
+  BACKGROUND PHOTO: assets/photo/why-pour.webp
+OURS
+Lion's mane fruiting body extract · 2 grams
+One species. One ingredient.
+Fruiting body, chosen for this species
+Beta-glucan [live: currentLm.mg] mg per packet ([live: currentLm.pct]%)
+Lot [live: currentLm.lot] on the steel tin
+Certificate published on this site
+BUTTON: "OPEN THE CERTIFICATES" -> opens the "Receipts" page
+The two comparison cards describe common label practice in this category. They name no brand and quote no specific product.
+  BACKGROUND PHOTO: assets/photo/why-grow-houses-crop.png
+HEADING: FRUITING BODY OR MYCELIUM
+Mycelium isn't the problem. Mycelium sold by the gram with the grain it grew on still in it is. So we don't pick one form for the whole line. Lion's mane and cordyceps are fruiting body. Turkey tail is mycelium, because its best-studied extracts are made from mycelium and that is what the research tested.
+  LINK: "best-studied extracts" -> https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq  (opens in a new tab)
+  LINK: "research" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
+Every species file says which form is in the packet, and every certificate says what it tested at.
+HEADING: HOW TO READ ANYONE’S LAB REPORT
+Most brands will supply a certificate of analysis on request rather than post one. The common dodge is a single report for a whole product line, left up indefinitely, so the document you are shown is not the document for the steel tin in your hand.
+The check that matters most is the batch number. If the lot on the steel tin does not appear on the report, the report is not about your product.
+Starch is the tell for grain filler. Mushrooms store very little of it and grain is mostly starch, so a high starch reading means grain came along for the ride, whether the label says fruiting body or mycelium.
+Don't take our word for it. Here's the lab report. Compare ours to anyone else's, if you can find one for your batch.
+HEADING: WHAT OUR CODE DOES THAT THEIRS DOESN'T
+You'll see verification marks on other packaging. Scan one and you'll usually land on a page confirming the brand has been checked by a laboratory. That's real, and it's better than nothing. But it's the brand that was verified, not the bag in your hand. The same code sits on every product they make, and it won't tell you what your batch tested at, or when it was made, or whether the certificate still matches what you bought.
+Scan ours and you get your lot. The number stamped on your steel tin, the date it was packed, what the beta-glucans actually came back at, and the lab report itself. Not a badge saying we passed. The page saying what we got.
+HEADING: They promise. We prove.
+One scientifically extracted mushroom. One scan away.
+BUTTON: "BUY STEEL TIN" -> opens the "Shop" page
+  IMAGE: assets/photo/why-ballfield-dusk-vignette-v2.jpg  | alt text: "A lit ballfield at dusk below a ridge"
+  IMAGE: assets/photo/camp-adventure.jpg  | alt text: "A camp at first light"
+  IMAGE: ./forest-meditation-peace-stockcake-185201-mtopvt0i-6w18.jpg  | alt text: "Stillness in the forest"
+  IMAGE: assets/photo/why-surfer-flip.png  | alt text: "Out on the water"
+
+==============================================================================
+PAGE: HOW TO USE
+==============================================================================
+--- SECTION: How To Use ---
+  BACKGROUND PHOTO: assets/photo/how-gym-coffee-crop.png
+HEADING: Morning coffee.Afternoon tea.The cup before bed.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+  BACKGROUND PHOTO: assets/photo/stir-mushroom-cup.webp
+HOW TO USE
+Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.
+HEADING: Tear
+One packet. It opens at the notch with one hand.
+HEADING: Stir
+Into whatever's already in the cup. A spoon is enough; a frother is faster.
+HEADING: Drink
+That's the whole instruction. 2 grams, once.
+HEADING: Live
+Then go do the things you love.
+HEADING: WHAT TO PUT IT IN
+Coffee, tea, water or smoothies. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Anything warm you already drink, and a blender handles the cold.
+Turkey tail goes in anything warm, at any hour of the day. It has no caffeine of its own, and with a meal is an easy habit to keep.
+HEADING: A FUN NEW APPROACH TO THE PERFECT BLEND
+Here's an idea you might not have thought of. Tear a packet straight into your kettle.
+Just time it right. Take your water off the heat and wait a moment for the boiling to stop. Add it too soon and it'll foam right over the top, wasting your precious extract.
+Listen for the calm, tear it in, and pour the potent extract into your cup already blended.
+HEADING: HOW MUCH
+One packet (2 grams) is one serving. Enjoy one a day, no more than two. No scoop, no guessing, no working out how much of the tub is actually mushroom.
+Twenty packets to a steel tin, which is twenty days if you take one a day. The lot number is stamped on the side, so you can look up where and when that batch was extracted and what the assay came back at.
+HEADING: HOW TO MIX IT
+Clumps come from how the powder first meets the liquid, not from the powder itself. Add a small splash first, stir it into a paste, then fill the cup.
+Powder in the mug first, then the hot liquid onto it. Stir it to a smooth paste with a splash before you top it up and it goes in clean. A handheld frother is the fastest fix if you have one, and a little coconut milk makes it blend smoother than black coffee.
+  IMAGE: ./360_f_2108564370_ujhgzm58rbm4mcp2azyijt6-musqkbev-1noq.jpg  | alt text: "Parent and child outdoors"
+  IMAGE: assets/photo/how-paddle-sunset.jpg  | alt text: "Paddling out at sunset"
+  IMAGE: assets/photo/kitchen-shake.jpg  | alt text: "Into a shake at the counter"
+  IMAGE: ./how-to-make-the-perfect-coffee-while-cam-mtzhk3c2-55ui.jpg  | alt text: "Coffee made at camp"
+
+==============================================================================
+PAGE: ABOUT
+==============================================================================
+--- SECTION: About ---
+  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.png
+ABOUT
+HEADING: I left the reality TV edit bay to build something real.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+  BACKGROUND PHOTO: assets/photo/shasta-lenticular.jpg
+I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.
+I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.
+I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.
+For years I bought "healthy" capsules and powder tubs with sunbursts on them. One look at the ingredient list told you everything. Artificial flavoring made in a lab, and a dozen things you'd never willingly put in your body.
+So I decided to start my own brand without the bullshit. One ingredient, because there is only one that matters. That number tested by a laboratory that doesn't work for me. The results published and easily reviewed, just a barcode scan away. Nothing hidden. Everything gained.
+The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. It's your turn now.
+  IMAGE: assets/photo/about-loaded-car-clean.jpg  | alt text: "A car loaded to the roof"
+  IMAGE: assets/photo/about-kayaks.jpeg  | alt text: "Two kayaks on the rack"
+  IMAGE: assets/photo/about-three-dogs-2.png  | alt text: "On the road north"
+  IMAGE: assets/photo/about-selfie.png  | alt text: "Wind on the water"
+CONNECT TO THE SOURCE
+HEADING: Source verified ingredients.
+Not a slogan. A promise.
+BUTTON: "SEE THE LOTS" -> opens the "Receipts" page
+  IMAGE: assets/vine-gold.svg  | alt text: none
+
+==============================================================================
+PAGE: FAQ
+==============================================================================
+--- SECTION: FAQ ---
+  IMAGE: assets/photo/faq/c-press-coast.png  | alt text: "Pressing coffee above the sea"
+  IMAGE: assets/photo/faq/e-tent-dusk.jpg  | alt text: "A lit tent on the dunes"
+  IMAGE: assets/photo/faq/h-van-forest.webp  | alt text: "Camp in the trees"
+FAQ
+HEADING: Ten honest answers.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+  IMAGE: assets/photo/faq/desk-journal-coffee.jpg  | alt text: "Journals and coffee on a sunlit desk"
+  IMAGE: assets/photo/faq/f-mossy-tree.jpg  | alt text: "Old growth from the forest floor"
+  IMAGE: assets/photo/faq/van-rainier-stripes26.png  | alt text: "A van parked below Mount Rainier"
+BUTTON: "01What is a fruiting body?+"
+The mushroom itself: the part that grows above the log. Mycelium is the root-like network underneath it. Most products on the shelf are mycelium grown on rice or oats and milled together with the grain, so the grain is part of what you swallow. Our lion's mane and cordyceps are fruiting body. Our turkey tail is mycelium, because that is the form the research tested, and it is extracted on its own, never milled in with grain. The beta-glucan result is how you tell the difference from the outside.
+BUTTON: "02What is beta-glucan and why do you publish it?+"
+Beta-glucans are the compounds that make up the mushroom's cell walls, and they are the standard way a laboratory measures how much mushroom is in a mushroom powder. Grain reads low, so the number is hard to fake. We publish it because it is the one figure in this category that can be checked, and because we can't ask you to trust a claim we haven't shown you.
+BUTTON: "03Is this organic?+"
+Our mushroom extracts come from a certified organic supplier. Our own organic certification is in progress, and we'll post the certificate here as soon as it's issued.
+BUTTON: "04How do I read my lot number?+"
+It's stamped on the side of the steel tin. Type it into the field on the receipts page and the certificate for that exact batch comes up.
+BUTTON: "05How many packets are in a steel tin?+"
+Twenty in a single-mushroom steel tin. Thirty in the Mushroom Combo steel tin, ten of each. Forty in a single-mushroom box. Sixty in the Combo Box, twenty of each. Each packet holds 2 grams, weighed by machine, so every one is the same as the last.
+BUTTON: "06Can I put it in cold drinks?+"
+In a blender, yes. A smoothie disperses the powder completely. Stirred into a cold glass it will not fully dissolve. Hot liquid or a blender, not a spoon in cold water. However you make it: powder in the mug first, hot liquid onto it, stirred to a smooth paste with a splash before you top it up. A handheld frother is the fastest fix, and coconut milk carries it better than black coffee.
+BUTTON: "07Is the steel tin recyclable?+"
+It's steel, and steel is recycled nearly everywhere in the United States. It is also built to be kept. The forty-packet box is uncoated kraft and recyclable too; the steel tin is the smaller amount in something you keep, the box is the larger amount, plainly packed.
+BUTTON: "08Is the packet recyclable?+"
+Not yet. The foil layers that protect the extract also make the packet hard to recycle. Our tin and box recycle today, and a recyclable packet is our goal as we grow.
+BUTTON: "09Where does it ship from?+"
+Domestic orders go by USPS Ground Advantage, typically two to five days in transit. Expedited shipping is available at checkout. We'll post the fulfillment location here once it's set.
+BUTTON: "10What's your return policy?+"
+Thirty days. Unopened steel tins come back for a full refund; opened ones come back for a refund too, once, because the only way to find out whether it belongs in your cup is to put it there. Write to hello@rawcanopyextract.com with your lot number and we'll send a label.
+  IMAGE: assets/photo/faq-camp-table-tin.png  | alt text: "Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet"
+  IMAGE: ./2196885_large_499b9b9f-mtzii0w9-vy5i.jpg  | alt text: "Morning practice on an open deck"
+  IMAGE: ./best-mushroom-coffee-4137414520-mtziiomy-2rea.png  | alt text: "A cup beside dried mushrooms and coffee beans"
+  IMAGE: ./istockphoto-1044535438-612x612-musqnayr-f0uc.jpg  | alt text: "istockphoto-1044535438-612x612"
+
+==============================================================================
+PAGE: SHIPPING, PRIVACY & TERMS
+==============================================================================
+--- SECTION: Legal ---
+LEGAL
+HEADING: Shipping, privacy, terms.
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+Last updated 5 September 2026. These are the standard terms; if something here is unclear, write to hello@rawcanopyextract.com and a person will answer.
+HEADING: SHIPPING AND RETURNS
+Orders ship on the next business day. Domestic orders ship by USPS Ground Advantage and typically arrive in two to five business days; expedited service is offered at checkout at cost. We ship within the United States for now, with more countries coming.
+Returns are accepted for thirty days from delivery. Unopened steel tins are refunded in full. An opened steel tin is refunded once per customer, because judging whether it belongs in your cup requires opening it. Request a return by writing to hello@rawcanopyextract.com with your order number and the lot number from the side of the steel tin; we send a prepaid label and refund to the original payment method within five business days of receipt.
+If a shipment arrives damaged or a steel tin is short-filled, send a photograph and we replace it without a return.
+HEADING: SUBSCRIPTIONS
+If you choose Every 30 Days, your order renews automatically every 30 days and is charged to your payment method at the subscription price shown at checkout until you cancel. We send a confirmation email with these terms and how to cancel. You can cancel at any time online, and cancelling stops all future orders.
+HEADING: PRIVACY POLICY
+We collect what is required to take an order and answer a question: name, shipping and billing address, email address, and, if you choose to give it, a phone number. Payment card details are handled by our payment processor and never reach our servers. Email addresses given to the list are used to send lot notes and new-lot announcements and nothing else; every message carries an unsubscribe link that works immediately.
+We do not sell, rent or trade personal information. Service providers who handle data on our behalf (payment processing, fulfillment, email delivery, site analytics) are bound to use it only for those purposes. Analytics are aggregate; we do not build advertising profiles.
+You may ask us at any time what we hold about you, ask for it to be corrected, or ask for it to be deleted, subject to the records we are required to keep for tax and product-traceability purposes. Write to privacy@rawcanopyextract.com.
+HEADING: TERMS OF SERVICE
+By ordering from this site you agree to these terms. Prices and availability are subject to change without notice; an order is accepted when it ships. Certificates of analysis are published as issued by the testing laboratory and are provided for information; they describe the lot tested, not any individual packet's performance, and we do not edit them.
+All text, photography, marks and artwork on this site are the property of Blue 42 Holdings LLC, doing business as Raw Canopy Extract and may not be reproduced without permission. Nothing on this site is medical advice. Consult a qualified healthcare professional before using any supplement, particularly if you are pregnant or nursing, taking medication, or managing a medical condition.
+These terms are governed by the laws of the State of California. To the extent permitted by law, our liability is limited to the amount paid for the product in question.
+HEADING: FDA DISCLAIMER
+These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+Raw Canopy Extract products are dietary supplements. Any references to published research on this site are provided so that you can read the literature yourself; they are not claims about what this product will do for you. Keep out of reach of children. Store the steel tin closed, dry and out of direct sun.
+
+==============================================================================
+PAGE: STORY: LION'S MANE
+==============================================================================
+--- SECTION: Story — Lion's Mane ---
+  BACKGROUND PHOTO: assets/pattern-honeycomb-seamless.svg
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  IMAGE: ./image_1788786869376_d2792629-mtr9lxe6-y6qf.png  | alt text: "Story plate: the mountain at first light"
+HEADING: THE ROAR OF THE MOUNTAIN
+A FICTIONAL ORIGIN STORY
+[ONLY SHOWN WHEN: ttsOk]
+  [DESKTOP ONLY — hidden on phones]
+    BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+    [ONLY SHOWN WHEN: ttsActive]
+      BUTTON: "STOP" [label: Stop reading]
+HEADING: THE ROAR OF THE MOUNTAIN
+A FICTIONAL ORIGIN STORY OF THE LION’S MANE MUSHROOM
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+BUTTON: "[live: aIcon] [live: aLabel]" [label: [live: aAria]]
+LISTEN TO THE STORY
+Chapter One
+In Orrin, there is a mountain that wears a cloud, and the cloud does not leave it. Three flat disks stacked one upon another, turning slow above the snow, winding down through the air like a screw. Wind comes off the high country and pours straight through it and out the far side and is gone, and still the cloud does not move, and it is not made of the same air twice in all a day.
+The old people said the mountain was breathing. The young ones said it was only weather. No one who lives beneath it has ever thought this strange. There has never been a morning without it.
+Inside, it was morning also, though morning inside a mountain is a thing men agree upon rather than a thing they see.
+High on the fourth terrace, a woman leaned out over the rail and shook a blanket, and the dust came down through the crystal light in a long bright drift, and took the better part of a minute to reach the floor.
+Below her, the great gallery of Orrin rose in terraces of cut stone, stairs folding back upon themselves, doors stacked six deep, bridges thrown across the gap at four heights, every foot of it lit by clear crystal set into the walls.
+Their grandfathers’ grandfathers had come up out of the water with nothing but each other, and had found these caverns already cut and waiting, and had never learned by whom. This was the whole of the world, and it was enough, and no one had ever wanted for more.
+At the foot of the west stair, the crew was waiting with their picks and their coiled rope, and they looked up the stair and they looked at one another.
+“He is asleep, as he was yesterday and as he will be tomorrow. I will fetch him.”
+Somebody laughed, and the crew settled in to wait, as they have waited many times before.
+Three flights up and along a passage was a room cut square from the rock, and in it a man flat on his back, with his legs thrown wide, one bare leg escaped from the sheet and hanging free, and a pillow pulled down over his eyes. Both hands holding it fast against the morning.
+Raken was snoring beneath it. Politely, wholeheartedly, and it filled the room entire.
+Adimu stood in the doorway and looked upon him with great affection and no patience whatsoever. Then he yanked the pillow from his face.
+Raken woke as a man comes up out of deep water. Eyes wide, hair flat on the one side and standing upon the other, blinking at a room far brighter than he had agreed to. He was young and smooth of face, and his was the sort of face that has not yet been asked to do anything hard.
+“Wake up, let’s go. Everyone is waiting. And you can carry the crate, sleepyhead.”
+So he came out of his room, with the crate in his arms and his coat half on and one boot not properly upon his foot, and he went down the last flights at a run.
+Past the second landing there were women working at the water channel, where the cold stream came down and ran along the wall in its cut course. And the eldest knelt at the edge of it, with her sleeves shoved past the elbow, and Xiomara looked at him coming down the stairs.
+“Late again, huh?”
+He was very late, and he stopped anyway. She rose to her feet, wiping her hands upon her skirts, waiting to see what he would say. Her two friends had gone quiet in the way that friends go quiet when they intend to hear everything.
+Raken put the crate down, and then what he did was bow to her. Deep, and no shame in him at all.
+“My lady. I had the finest evening of my life in your company, and I intend to have another. Tonight I mean to build upon it. Trust first, then a house of our own. Then a long and disgraceful old age with too many children in it.”
+“You have thought about this a great deal for a man who cannot rise from his bed.”
+“I have thought of nothing else.”
+Her friends were laughing. Xiomara did not. She looked at him with one eyebrow raised, which in her was the same as laughing. And he knew it, and she knew he knew it. And that was the whole of their courtship, in a single look.
+And upon the step above them sat Teo. Xiomara’s brother was all of seven, watching Raken the way a boy watches the only thing in the world he means to become.
+Then Raken turned off to work. Coat over the shoulder, and he jumped and struck his heels together in the air and came down in a strut. He called back to her, with a smirk upon his face:
+“I will see you tonight. This day will take an eternity.”
+And he was gone down the gallery.
+Behind him, Teo set his bucket upon the step. He slung his jacket over his shoulder in the very same manner, jumped, struck his heels together badly, landing hard, nearly going over. Grinned a mischievous grin, then ran after Raken down the passage and across the waterfall bridge.
+“Where do you think you’re going? Get back here!”
+Chapter Two
+In Orrin, the working face was a raw place, and it was the whole of their inheritance. Rough stone. Timber props braced floor to ceiling, dust standing in the lamp beams, black water sheeting down one wall and running away in a cut channel. The air was wet and tasted of stone, and the sound of it was the sound of iron on rock, over and over, from four hundred years back to that morning.
+For this was the labor here, and the labor of their fathers before them, from the day the water took the old country to that very morning.
+Gold lay in the seams. Emerald green glowed wherever the lamp swung by, and silver shined brightly. Easily enough to buy a kingdom some places on earth. They shoveled all of it into the spoil and thought no more about it. For when a man has cut through gold every day of four hundred years, gold is gravel.
+They came for the crystal. Clear as light, cold to the hand, glowing faint of its own accord. They cut it free and set it in padded crates, and it went back into the city and into the walls, and the city stayed lit.
+Raken was bent to a seam with a wedge in his hand when the mountain spoke. He had the crystal half free, the finest he had cut in a season. He stopped and his face changed.
+It was not a shake. Not yet. It was a growl, low and steady in the stone beneath his feet. He held still. He waited for it to be nothing. And then it grew.
+He turned and looked up the tunnel toward the mouth of it. Dust was already coming down through the beams. The first stones were bouncing on the floor and skittering away into the dark, and the lamps hung on their nails were swinging all together.
+Then the roof let go.
+Rock came off the ceiling in sheets. Men were running in every direction and shouting things that no one could hear. And over all of it came Calder’s voice.
+“Collapse! Everyone out! It’s happening again!”
+Behind a fallen rock, low to the ground, with his hands over his face, terrified, was the boy. There were clean tracks cut through the dust on his cheeks where the tears had run, and his mouth was open, and nothing at all was coming out of it.
+Raken saw him, turned, and ran back into the collapsing cave.
+“Where are you going?”
+Adimu roared from safety, for he had seen nothing, and his friend was running the wrong way into a mountain coming down upon itself.
+“In Poseidon’s name, you’re going the wrong way!”
+He did not answer. There was no time. He found Teo behind the fallen rock.
+“I’m so scared.”
+“I got you. Run.”
+They ran. Raken dragging Teo towards safety, stumbling, and behind the two of them the ceiling caved like a thing with a will and an appetite.
+Ten paces from the light, Raken saw large, heavy, bone crushing boulders descending. Without thinking, he put both hands upon the boy and pushed forward and clear.
+And the exit closed.
+Chapter Three
+It came down between them in one motion. Stone and crystal and gold all together, a wall where before then had been the way home.
+He worked at escaping for a day, and a night, and another day. He shouted in anger. The rock took his voice and gave it back to him.
+He took up his lamp, and he turned his back upon the only cave door he had ever known in all his life, and walked away from it into the unknown.
+A mountain this old is not sealed shut. I have nothing else to do. I must find a way out.
+He cut his marks upon the wall. One for every sleeping, in a neat row, like a man keeping accounts. For to keep the account is the same as believing that someone will one day read it.
+On the sixth day he sat down upon the stone with his back against the wall.
+I can’t believe I stood her up. She will be furious.
+He laughed at the ceiling of a mountain that had swallowed him whole.
+She will not weep, that one, and when I come out of here I shall not hear the end of it.
+And Raken laughed out loud.
+“And what can be so funny?”
+He turned with the lamp, and there was a thing in the crevice with its legs braced against the stone, and it was the strangest sight of all his life.
+“Forgive me. It is only that, from where I sit, you appear to be trapped for good.”
+Broad and low and armored, the size of a fox, a shell across its back like an overturned dish, a fringe of small legs beneath it clicking on the rock. Two little stalks upon the front of it, both of them pointed straight at him, emanating a wisdom Raken had never known.
+“What are you?”
+“Older than your city. A great deal quieter. Which is how I heard you.”
+Chapter Four
+“You are hunting a door.”
+“I am.”
+“I have been the whole of this mountain, every crack of it, and I have had a long while to be thorough. There is air moving in a million places, and I have passed through all of them.”
+“Then there is a way out.”
+“Your spirit is strong, my young foolish one. The very best of your kind. Away outside, into the rain, wind and snow, the valleys and rivers. There are ways, sure. Yet for naught. People large, who came in at a hole, and have been calling it a door ever since.”
+The creature went on, slowly clicking away into the dark.
+Raken sat dejected, with his face in his hands, and did not move for a long while.
+There was a world out there. There was air coming in from it, this very moment, across his own skin.
+So he searched, for he was not yet a man who could think to stop. Determined to prove the creature wrong, he went deeper into the mountain than any man had ever gone. Than their fathers and their fathers before them, and he saw wonders that no one had ever seen.
+The creature had told him true. There was no exit to be found.
+Time came off in pieces. His accounts upon the wall went from neat rows, then to marks cut over the top of older marks, and then he stopped cutting them, because a man does not keep accounts for a creditor who is never coming.
+He grew unkempt, wild. The bones came forward in his face until he was a different man altogether. He sat in the dark and whittled a flute out of a splinter of prop timber, because a man must do something with his hands, or else lose them.
+And he was ready for the next dimension.
+Out of nowhere, the mountain roared. The same voice as before. Low and long, rising and falling and rising again, like the growl of an enormous beast.
+The ring of clouds above the summit wound tighter, three disks drawing in upon one another, faster and faster, the screw turning down into itself. And within the vapor a cold silver brightness rose up through it and passed and was gone.
+The floor came up under his body and shook him hard. Rock let go above him. He rolled and covered his head, and the dust drifted down.
+When it finally stopped, something felt different. He felt a pull. Something was calling.
+Raken lifted his head. The roof had cracked. He knew every stone of that chamber by touch and by memory, and where there had been a wall there was now a shoulder of fallen rock.
+He climbed far above, where in all his years nothing had ever been. A thread of silver light, beckoning.
+He climbed higher. And higher. He got one hand upon a ledge and hung there with his arms shaking. And as his eyes came up over the edge, the whole of the opening ahead of him was full of moonlight.
+And there, hanging from the wet lip of the rock, was something glowing. A shimmering white. Long strands of it, a full hand’s length, cascading down like the coat of some animal. Wet, and stirring in the air that came cool through.
+It was the first living thing he had seen in that mountain that was not moss, and it was beautiful past all reason.
+He reached out, extended. His mouth open and hungry.
+It had come from nowhere, on the one ledge, hidden for an unknown amount of time. It had been waiting. He had arrived.
+Chapter Five
+His hand opened and closed, for his life depended on it. He ate.
+And when he sat back against the stone, with the last of it upon his beard and upon the rock beside him, his eyes fell closed, and he let out one long breath that had been in him for years.
+For the first time in longer than he could name, he was full, and it was such a small and ridiculous happiness that it very nearly undid him.
+He slept where he sat, and he dreamed vibrant, and the dream was clear. It arrived, a vision, a manifestation of all things into form. He let go and accepted.
+He dreamed of his room. The narrow bed, the weight of the pillow over his face, and the loud good dark beneath it.
+He saw the crew running in terror. A worker running for his life, carrying his tool for cutting through hard rock, and the pick coming loose from his hand as great danger loomed. The tool striking the tunnel floor, bouncing once and lying still in the dust, while the man who had carried it ran on toward the light of survival.
+Raken woke with his eyes wide, the way he had woken on the last ordinary morning of his life.
+He was on his feet, and made haste. He ran. Running back along a road he had walked ten thousand times.
+Was this dream of vision, or a cruel jest?
+Half buried under a scatter of spoil, it was there. Where it had lain all the long years he had been slowly dying.
+Iron. And a way out.
+There is no telling how long it took him. Effort, and a will possessed by something greater than himself.
+As the cold air caressed his face, the entire world opened. He was free.
+Far along the shoulder of the second peak, he stood upon the snow and felt sorrow. A man, broken. No longer belonging to this land, or beyond.
+He was white haired and white bearded and bent at the shoulder. There was not one thing left of the innocent young man, untested.
+A hand came to his, and it closed hard around his fingers, and it did not let go.
+“Better late than never.”
+Their eyes met, and then Xiomara’s arms were about him, and his about her, and the two of them stood upon that mountainside, holding one another as though the universe had been made only that morning.
+She too, older. There were years upon her face that had gone by without him, a life she had lived while he was under the ground. And he was older by three lifetimes and lighter by half his weight.
+Neither of them cared.
+Out upon the slope, a young man had stopped walking. He was not a child any more. He had a coil of rope over his shoulder and worn boots upon his feet and the long legs of somebody who had grown up walking that ground a long time. Searching.
+And his face broke, and he smiled.
+He came back for me.
+And so I watched on in great relief as my sister and Raken embraced.
+For many seasons I sought out the man I admired most. A debt, owed. For his age, his beard had grown so white and so long and unruly. From where I stood, it looked like a mane upon him.
+  IMAGE: ./screenshot-2026-09-06-at-10-26-01-pm-mtqvb9bc-b5dg.png  | alt text: "Story still"
+  IMAGE: ./image_1788786869376_d2792629-mtr9lxe6-y6qf.png  | alt text: "Story still"
+  IMAGE: ./image_1788900723741_afa86cc9-mtt5bgzo-uswz.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-46-52-am-mtt4kj5x-blfo.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-06-at-11-52-47-pm-mtqvxmk5-vlf3.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-06-at-11-53-05-pm-mtqvy4j7-6tgc.png  | alt text: "Story still"
+  IMAGE: ./image_1788900953361_a7bfdf3f-mtt5izbi-yxb7.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-3-42-04-am-mtr42vo5-w01r.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-06-at-11-56-37-pm-mtqw0we7-8u8c.png  | alt text: "Story still"
+  IMAGE: ./image_1788901478796_d923cc92-mtt5tvk5-suyo.png  | alt text: "Story still"
+  IMAGE: ./image_1788831478513_896cccfc-mts03qfa-7tcc.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-01-35-am-mtqw7tgu-h89t.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-02-40-am-mtqw8nyp-8ki9.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-13-20-am-mtqwq9q7-9hae.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-17-29-am-mtqws7xq-rgy2.png  | alt text: "Story still"
+  IMAGE: ./image_1788902462543_35391bd1-mtt6cvu8-var6.png  | alt text: "Story still"
+  IMAGE: ./image_1788901623035_e355cedb-mtt5vdsi-iqye.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-06-at-10-26-14-pm-mtqxijmg-fawk.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-42-14-am-mtqxnm08-n5pk.png  | alt text: "Story still"
+  IMAGE: ./image_1788902799717_c9837c37-mtt6l3b3-z8ub.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-35-50-am-mtqxk6kc-s72y.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-51-41-am-mtqy57er-4clx.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-1-14-43-am-mtqz5ek2-t2cq.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-12-55-20-am-mtqz6819-8wum.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-1-03-50-am-mtqz6n2x-limz.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-1-04-40-am-mtqz7cj1-762y.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-1-05-45-am-mtqz7tf5-wil9.png  | alt text: "Story still"
+  IMAGE: ./0217887485331484498c7002523dcce63b4e4e02-mtr6kgor-hiic.png  | alt text: "Story still"
+  IMAGE: ./image_1788778541343_08426d4b-mtr6jvun-jwh7.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-4-28-45-am-mtt5yvvz-cuw2.png  | alt text: "Story still"
+  IMAGE: ./image_1788812945145_8cf2dfd4-mtrrd3hb-kkwv.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-07-at-4-46-56-am-mtr6ibkl-ypal.png  | alt text: "Story still"
+  IMAGE: ./image_1788781696409_a48bf833-mtr6l99b-5fkl.png  | alt text: "Story still"
+  IMAGE: ./image_1788904235276_77848f11-mtt7f1f4-dto6.png  | alt text: "Story still"
+  IMAGE: ./image_1788782372586_64a1217d-mtr6w0qv-ppsv.png  | alt text: "Story still"
+  IMAGE: ./image_1788782981902_b711d4a1-mtr7cmk0-1vna.png  | alt text: "Story still"
+  IMAGE: ./image_1788783665714_965d98c4-mttbm86p-1bzs.png  | alt text: "Story still"
+  IMAGE: ./021788749752266b825dd5258dc4c388f66926d1-mtr76wgv-4ptg.png  | alt text: "Story still"
+  IMAGE: ./02178874890041334cb6184a92ddd9ae87302c18-mtr7nt0u-9row.png  | alt text: "Story still"
+  IMAGE: ./02178874993329477dd13f2098096eba9569e39b-mtr7ploa-v9bv.png  | alt text: "Story still"
+  IMAGE: ./image_1788817561320_efcd456f-mtrsr0eb-bt7o.png  | alt text: "Story still"
+  IMAGE: ./screenshot-2026-09-08-at-4-39-52-pm-mttbb32p-ngio.png  | alt text: "Story still"
+  IMAGE: ./image_1788817637970_905739c4-mtrspppy-aawn.png  | alt text: "Story still"
+  IMAGE: ./image_1788820230332_ccc84b63-mtrte1yx-mffl.png  | alt text: "Story still"
+  IMAGE: ./image_1788831888995_bcc776ba-mts0c5uu-icm2.png  | alt text: "Story still"
+  IMAGE: ./image_1788810307332_542ab2cd-mts6ir7p-nckv.png  | alt text: "Story still"
+  IMAGE: ./image_1788810128825_b77dc270-mtrra238-39z5.png  | alt text: "Story still"
+  IMAGE: ./image_1788810455770_3c8f8469-mtrraiq6-08cv.png  | alt text: "Story still"
+  IMAGE: ./image_1788809581505_d6d243fa-mtrran5c-8tfh.png  | alt text: "Story still"
+  IMAGE: ./image_1788809274607_3caf1db3-mtrrblvv-ixn2.png  | alt text: "Story still"
+Help bring these stories to life
+These stories are being made into animated films, one at a time. If you would like to see them sooner, you can contribute to the work. Every contribution goes toward making these films.
+LINK: "SUPPORT THE FILMS" -> #support-the-films
+BUTTON: "← BACK TO LION’S MANE" -> opens the "Lion's Mane" page
+These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.
+BUTTON: "" [label: Restart from the beginning]
+BUTTON: "[live: aIcon]" [label: [live: aAria]]
+LISTEN TO THE ROAR OF THE MOUNTAINKEEPS PLAYING AS YOU BROWSE THE SITE
+An animated story, released in chapters. Sign up and we’ll tell you when the next one is ready.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+
+==============================================================================
+PAGE: STORY: CORDYCEPS
+==============================================================================
+--- SECTION: Story — Cordyceps ---
+  BACKGROUND PHOTO: assets/pattern-honeycomb-seamless.svg
+HEADING: The One Who Went Up On Top
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+A FICTIONAL ORIGIN STORY · RAW CANOPY EXTRACT
+Above the last tree, the air keeps only what it needs.
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+  IMAGE: assets/hexagon-gold.svg  | alt text: "Raw Canopy Extract hexagon mark"
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+  IMAGE: assets/hexagon-gold.svg  | alt text: "Raw Canopy Extract hexagon mark"
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+Help bring these stories to life
+These stories are being made into animated films, one at a time. If you would like to see them sooner, you can contribute to the work. Every contribution goes toward making these films.
+LINK: "SUPPORT THE FILMS" -> #support-the-films
+BUTTON: "← BACK TO CORDYCEPS" -> opens the "Cordyceps" page
+These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.
+In development · Coming 2029
+Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+
+==============================================================================
+PAGE: STORY: TURKEY TAIL
+==============================================================================
+--- SECTION: Story — Turkey Tail ---
+  BACKGROUND PHOTO: assets/pattern-honeycomb-seamless.svg
+HEADING: The Keeper of the Records
+[ONLY SHOWN WHEN: ttsOk]
+  BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+  [ONLY SHOWN WHEN: ttsActive]
+    BUTTON: "STOP" [label: Stop reading]
+A FICTIONAL ORIGIN STORY · RAW CANOPY EXTRACT
+Everything the forest has ever done is written on the old wood.
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+  IMAGE: assets/hexagon-gold.svg  | alt text: "Raw Canopy Extract hexagon mark"
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+  IMAGE: assets/hexagon-gold.svg  | alt text: "Raw Canopy Extract hexagon mark"
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+COMING SOON
+Help bring these stories to life
+These stories are being made into animated films, one at a time. If you would like to see them sooner, you can contribute to the work. Every contribution goes toward making these films.
+LINK: "SUPPORT THE FILMS" -> #support-the-films
+BUTTON: "← BACK TO TURKEY TAIL" -> opens the "Turkey Tail" page
+These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.
+In development · Coming 2030
+Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+
+==============================================================================
+SITE-WIDE (header, footer, cart, audio player — every page)
+==============================================================================
+BUTTON: "" -> opens the "Home" page
+  IMAGE: assets/vine-gold.svg  | alt text: "Raw Canopy Extract home"
+[ONLY SHOWN WHEN: ttsHome]
+  [DESKTOP ONLY — hidden on phones]
+    BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+    [ONLY SHOWN WHEN: ttsActive]
+      BUTTON: "STOP" [label: Stop reading]
+BUTTON: "SHOP" -> opens the "Shop" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "RECEIPTS" -> opens the "Receipts" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "THE MUSHROOMS" -> opens the "The Mushrooms" page
+  [ONLY SHOWN WHEN: mushOpen]
+    BUTTON: "LION'S MANE" -> opens the "Lion's Mane" page
+    BUTTON: "CORDYCEPS" -> opens the "Cordyceps" page
+    BUTTON: "TURKEY TAIL" -> opens the "Turkey Tail" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "WHY ONE INGREDIENT" -> opens the "Why One Ingredient" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "HOW TO USE" -> opens the "How To Use" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "ABOUT" -> opens the "About" page
+[DESKTOP ONLY — hidden on phones]
+  BUTTON: "FAQ" -> opens the "FAQ" page
+BUTTON: "CART [live: cartCount]"
+[PHONE ONLY]
+  BUTTON: "" [label: [live: menuLabel]]
+[ONLY SHOWN WHEN: menuOpen]
+  [PHONE ONLY]
+    BUTTON: "RECEIPTS" -> opens the "Receipts" page
+    BUTTON: "THE MUSHROOMS" -> opens the "The Mushrooms" page
+    BUTTON: "LION'S MANE" -> opens the "Lion's Mane" page
+    BUTTON: "CORDYCEPS" -> opens the "Cordyceps" page
+    BUTTON: "TURKEY TAIL" -> opens the "Turkey Tail" page
+    BUTTON: "WHY ONE INGREDIENT" -> opens the "Why One Ingredient" page
+    BUTTON: "HOW TO USE" -> opens the "How To Use" page
+    BUTTON: "ABOUT" -> opens the "About" page
+    BUTTON: "FAQ" -> opens the "FAQ" page
+    [ONLY SHOWN WHEN: ttsOk]
+      BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
+      [ONLY SHOWN WHEN: ttsActive]
+        BUTTON: "STOP" [label: Stop reading]
+[ONLY SHOWN WHEN: showFooterStrip]
+  BACKGROUND PHOTO: assets/pattern-field-bold.svg
+  IMAGE: assets/icons/certified-organic.svg  | alt text: "Certified organic"
+CERTIFIED ORGANIC
+  IMAGE: assets/icons/single-ingredient.svg  | alt text: "Single ingredient"
+SINGLE INGREDIENT
+  IMAGE: assets/icons/fruiting-body.svg  | alt text: "Right form per species"
+RIGHT FORM PER SPECIES
+  IMAGE: assets/icons/beta-glucans-tested.svg  | alt text: "Beta-glucans tested"
+BETA-GLUCANS TESTED
+  IMAGE: assets/icons/no-fillers.svg  | alt text: "No fillers"
+NO FILLERS
+  IMAGE: assets/icons/vegan.svg  | alt text: "Vegan"
+VEGAN
+  IMAGE: assets/icons/recyclable-tin.svg  | alt text: "Recyclable steel tin"
+RECYCLABLE STEEL TIN
+  IMAGE: assets/seal-on-black.svg  | alt text: "Raw Canopy Extract"
+ONE INGREDIENT. NOTHING ELSE.
+BUTTON: "Shop" -> opens the "Shop" page
+BUTTON: "Receipts" -> opens the "Receipts" page
+BUTTON: "The Mushrooms" -> opens the "The Mushrooms" page
+BUTTON: "Why One Ingredient" -> opens the "Why One Ingredient" page
+BUTTON: "How To Use" -> opens the "How To Use" page
+BUTTON: "About" -> opens the "About" page
+BUTTON: "FAQ" -> opens the "FAQ" page
+BUTTON: "Shipping, Privacy & Terms" -> opens the "Shipping, Privacy & Terms" page
+FIELD: "Email address"
+BUTTON: "JOIN THEMOVEMENT"
+[ONLY SHOWN WHEN: signedUp]
+  You're on the list.
+LINK: "INSTAGRAM" -> #
+LINK: "YOUTUBE" -> #
+LINK: "TIKTOK" -> #
+These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+© 2026 Blue 42 Holdings LLC · Hornbrook, California
+[ONLY SHOWN WHEN: aShown]
+  BUTTON: "" [label: Restart from the beginning]
+  BUTTON: "[live: aIcon]" [label: [live: aAria]]
+  BUTTON: "[live: aStatus] The Roar of the Mountain" -> opens the "Story: Lion's Mane" page
+  [live: aCurLabel]
+  FIELD:  [label: Scrub through the story]
+  [live: aDurLabel]
+  BUTTON: "✕" [label: Stop and close the player]
+[ONLY SHOWN WHEN: drawerOpen]
+  YOUR CART
+  BUTTON: "×"
+  [ONLY SHOWN WHEN: cartEmpty]
+    Nothing here yet. One steel tin is twenty packets.
+  [REPEATED LIST over [live: cartLines]:]
+    [live: line.name]
+    [live: line.planLabel]
+    BUTTON: "−"
+    [live: line.qty]
+    BUTTON: "+"
+    BUTTON: "Remove"
+    [live: line.sub]
+  SUBTOTAL
+  [live: cartTotal]
+  BUTTON: "CHECKOUT"
+  Every steel tin carries a lot number you can match to a certificate.
+
+==============================================================================
+EXTERNAL LINK CHECK LIST (every external link on the site)
+==============================================================================
+
+PAGE: HOME
+  "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)"
+     https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725
+  "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+  "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)"
+     https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X
+
+PAGE: THE MUSHROOMS
+  "human research on lion's mane"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+
+PAGE: LION'S MANE
+  "*"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+  "*"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+  "Mushrooms magnify memory by boosting nerve growth"
+     https://news.uq.edu.au/2023-02-10-mushrooms-magnify-memory-boosting-nerve-growth
+  "Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type Mice"
+     https://pmc.ncbi.nlm.nih.gov/articles/PMC5237458/
+  "Improvement of cognitive functions by oral intake of Hericium erinaceus"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+
+PAGE: CORDYCEPS
+  "*"
+     https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725
+  "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial"
+     https://pmc.ncbi.nlm.nih.gov/articles/PMC13372127/
+
+PAGE: TURKEY TAIL
+  "*"
+     https://pubmed.ncbi.nlm.nih.gov/25006989/
+  "*"
+     https://pubmed.ncbi.nlm.nih.gov/25006989/
+  "in culture"
+     https://pubmed.ncbi.nlm.nih.gov/23435630/
+  "trial in healthy volunteers"
+     https://pubmed.ncbi.nlm.nih.gov/25006989/
+  "Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolor"
+     https://pmc.ncbi.nlm.nih.gov/articles/PMC10541659/
+  "Antioxidative activities and chemical characterization of polysaccharide extracts from the widely used mushrooms Ganoderma applanatum, Ganoderma lucidum, Lentinus edodes and Trametes versicolor"
+     https://research.wur.nl/en/publications/antioxidative-activities-and-chemical-characterization-of-polysac-2/
+  "Screening and comparison of antioxidant activities of polysaccharides from Coriolus versicolor"
+     https://www.sciencedirect.com/science/article/abs/pii/S0141813014003237
+
+PAGE: WHY ONE INGREDIENT
+  "best-studied extracts"
+     https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq
+  "research"
+     https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X

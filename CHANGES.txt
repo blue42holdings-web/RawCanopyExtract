@@ -1,0 +1,25 @@
+RAW CANOPY EXTRACT — DELIVERY, October 5, 2026
+All notes from today, combined.
+
+WHAT CHANGED
+1. Home hero (phone): photo behind the seal darkened. No animation.
+2. Measured / Tested / Published rotator: now changes every 4 seconds (desktop + phone).
+3. Lion's Mane top (phone): soft shade behind the gold Latin-name line so it reads over the white spines.
+4. Lion's Mane, Roar of the Mountain card (desktop): Mount Shasta photo slightly darker.
+5. Cordyceps, Where Ours Comes From (phone): photo zoomed ~10% to hide the bottom-edge line.
+6. Shop (phone): the four-photo row (kayak, yoga, mountain biker, gym high-five) hidden. Desktop unchanged.
+7. About (phone): forehead photo lightened.
+8. Click sounds (phone): sound restarts on every tap, including after lock, app switch or idle. Silent switch still respected.
+9. Home, Why This Exists: "...functional mushroom extract powders: lion's mane, cordyceps and turkey tail."
+10. Home tins heading (desktop only): "Nothing but single-serving packets of organic mushroom extract powder inside four recyclable steel tins." Wraps onto two lines when it doesn't fit.
+11. Lion's Mane story card: "CHECK OUT OUR ILLUSTRATED / FICTIONAL STORY" (replaces "A fictional origin story of the lion's mane mushroom").
+12. Home story block gold title: "CHECK OUT OUR ILLUSTRATED / FICTIONAL ORIGIN STORY OF / THE LION'S MANE MUSHROOM".
+
+FILES THAT CHANGED
+- site/index.html
+- RawCanopyExtract-site-text.txt (plain-text export, regenerated)
+(404.html, cutout-lift.js, support.js, .nojekyll and assets/ are unchanged but included so the folder is complete.)
+
+STILL OPEN
+- Turkey tail icon: the new clouds-and-mountain file was not attached. Please send it.
+- Friend's feedback list: needs your input before notes can be written.
