@@ -741,6 +741,11 @@ button[data-cta-small]:hover{scale:1.28}
 @media (hover:none){
 button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brightness(1.18)}
 }
+/* photos: no select, no press-and-hold save/open menu, no drag-out */
+img,picture,video,canvas,svg,[style*="background-image"]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img:not([draggable="true"]){-webkit-user-drag:none}
+/* design text: no accidental highlight; paragraph text stays selectable */
+button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
 <script src="cutout-lift.js?v=20261004i"></script>
 </helmet>
@@ -3802,6 +3807,10 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
+    this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };
+    document.addEventListener('contextmenu', this._noImgMenu);
+    document.addEventListener('dragstart', this._noImgDrag);
     this.loadSeal();
     this.initPhoneText();
     this.initPlayerAutohide();
@@ -3839,6 +3848,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('contextmenu', this._noImgMenu); document.removeEventListener('dragstart', this._noImgDrag);
     clearInterval(this._ahTick); if (this._ahTap) document.removeEventListener('pointerdown', this._ahTap, true);
     if (this._a) this._a.pause();
     if (window.speechSynthesis) speechSynthesis.cancel();
