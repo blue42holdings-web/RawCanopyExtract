@@ -113,6 +113,7 @@ if(!window.matchMedia||!window.IntersectionObserver) return;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 var SKIP=["why-rv-desk-nopen","hero-stove-pour-ridge-v10","why-grow-houses-crop","a-kettle-over-the-fire","lab-extraction-rig","lm-powder-scoop","shop-tennis-handshake-nobrand","coconut-palm-up","ginger-root","coffee-pack-in-camp","receipts-tennis-noblog","kettle-tent-mist","lm-white","cordyceps-forest","turkey-tail-card","a-diver-signalling-underwater-alongside-a-shark","a-surfer-deep-in-the-barrel","a-freediver-rising-over-the-sand-flats","lm-how-made-desk","tt-autumn-fans","why-desk-coffee","stillness-in-the-forest","about-loaded-car-clean","about-kayaks","c-press-coast","h-van-forest","van-rainier-stripes26","two-figures-stretching-against-a-sunset-sea","tent-mug-zoom","lions-mane","tt-right-form-log","measured-hiker-sunset-flip","ff9c1d42-4950-4209-a52b-8724a5a9d0f2-mtowbr1j-ab5x","tent-mug-graded-v2","turkey-tail-right-form","packs-thermos-flip","f35da25a7d452e00dca21f34a0b13609227243dc-mtopujei-faey","20230805032805_1410005693_16559_0-mtp1wpe0-5mms","images-mu06k4kb-4kxl","800-mu06hufv-nq2u","cd-rower-scull","forest-meditation-peace-stockcake-185201-mtopvt0i-6w18","coffee-makers","unwind_at_the_best_yoga_retreats_in_asia-mtzins5h-ix8f","tt-right-form-forest","measured-hiker-sunset","measured-paddleboard-river","measured-paddleboard-river-flip"];
 var LIFT=0.1, DELAY=1000, FADE_IN=2600, FADE_OUT=1200;
+var BOOST={'lm-skagit-valley':0.24,'cd-yunnan-hoodoos':0.32,'rs-changbai':0.32};
 function split(v){ var out=[],d=0,cur=''; for(var i=0;i<v.length;i++){ var ch=v[i]; if(ch==='(')d++; if(ch===')')d--; if(ch===','&&d===0){ out.push(cur.trim()); cur=''; } else cur+=ch; } out.push(cur.trim()); return out; }
 function stemOf(u){ var f=u.split('?')[0].split('#')[0].split('/').pop(); try{ f=decodeURIComponent(f); }catch(e){} return f.replace(/\.(jpe?g|png|webp|avif)$/i,''); }
 var items=new Map(), visible=new Set(), timer=0;
@@ -121,7 +122,7 @@ function candidate(el){
   var cs=getComputedStyle(el), bi=cs.backgroundImage; if(!bi||bi.indexOf('url(')<0||bi.indexOf('gradient')<0) return null;
   if(cs.animationName&&cs.animationName!=='none') return null;
   var L=split(bi); if(!/^(linear|radial)-gradient\(.*rgba?\(0, 0, 0/.test(L[0])) return null;
-  for(var i=0;i<L.length;i++){ var m=L[i].match(/url\(["']?([^"')]+)["']?\)/); if(m){ if(/\.svg/i.test(m[1])) return null; if(SKIP.indexOf(stemOf(m[1]))>=0) return null; return {i:i,url:m[1]}; } }
+  for(var i=0;i<L.length;i++){ var m=L[i].match(/url\(["']?([^"')]+)["']?\)/); if(m){ if(/\.svg/i.test(m[1])) return null; if(SKIP.indexOf(stemOf(m[1]))>=0) return null; return {i:i,url:m[1],lift:BOOST[stemOf(m[1])]||LIFT}; } }
   return null;
 }
 function sync(it){
@@ -137,12 +138,12 @@ function add(el,info){
   var d=document.createElement('div'); d.setAttribute('data-bright-layer',''); d.setAttribute('aria-hidden','true');
   d.style.cssText='position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;border-radius:inherit;transition:opacity '+FADE_OUT+'ms ease;';
   el.insertBefore(d,el.firstChild);
-  var it={el:el,i:info.i,url:info.url,layer:d,saved:saved}; sync(it); items.set(el,it); io.observe(el);
+  var it={el:el,i:info.i,url:info.url,lift:info.lift,layer:d,saved:saved}; sync(it); items.set(el,it); io.observe(el);
 }
 function remove(it){ io.unobserve(it.el); if(it.layer.parentNode) it.layer.parentNode.removeChild(it.layer); it.saved.forEach(function(s){ it.el.style[s[0]]=s[1]; }); visible.delete(it.el); items.delete(it.el); }
 var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var it=items.get(e.target); if(!it) return;
   if(e.isIntersecting&&e.intersectionRatio>=0.35) visible.add(e.target); else { visible.delete(e.target); dim(it); } }); arm(); },{threshold:[0,0.35,0.6]});
-function lit(it){ sync(it); it.layer.style.transition='opacity '+FADE_IN+'ms cubic-bezier(.4,0,.2,1)'; it.layer.style.opacity=String(LIFT); }
+function lit(it){ sync(it); it.layer.style.transition='opacity '+FADE_IN+'ms cubic-bezier(.4,0,.2,1)'; it.layer.style.opacity=String(it.lift||LIFT); }
 function dim(it){ it.layer.style.transition='opacity '+FADE_OUT+'ms ease'; it.layer.style.opacity='0'; }
 function arm(){ clearTimeout(timer); timer=setTimeout(function(){ visible.forEach(function(el){ var it=items.get(el); if(it) lit(it); }); },DELAY); }
 function scan(){
