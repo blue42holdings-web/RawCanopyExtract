@@ -423,6 +423,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 header button[data-page="home"] > img{height:23px !important}
 header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !important}
 [data-m="faq-tiles"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+[data-m="lab-orig"]{display:none !important}
+[data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
 [data-m="how-hero"]{background-size:auto 100% !important;background-position:70% 70% !important}
 [data-m="faq-tiles"]>img:nth-child(2),[data-m="faq-tiles2"]>img:nth-child(2){display:none !important}
@@ -780,7 +782,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
 </div>
 <p style="font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:#FFFFFF;margin:0;align-self:stretch;text-align:center;padding-left:32px"><span style="display:block">Not a coffee or tea drinker? Hot water or a smoothie works just as well.</span><span style="display:block">One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.</span><span style="display:block">Elevate your favorite cup with the power of botanical science.</span></p>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p>
+<p data-m="lab-orig" style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p>
 </div>
 </div>
 <div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
@@ -836,6 +838,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 
 
+<div data-m="lab-dup" style="display:none;background:#000;padding:56px 24px 52px;margin-bottom:-1px"><p style="font-size:17px;line-height:1.6;color:#FFFFFF;margin:0 auto;max-width:34em;text-align:center">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p></div>
 <section data-screen-label="Home — the tins" style="margin-bottom:-1px;background-color:#000;position:relative;padding:110px 28px;background:linear-gradient(#000,#070706 55%,#000);padding-bottom:0">
 <div style="position:absolute;inset:0;z-index:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;pointer-events:none"></div>
 <div data-m="tins-pattern-dim" style="position:absolute;inset:0;z-index:0;background:rgba(0,0,0,.5);pointer-events:none"></div>
