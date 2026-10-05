@@ -475,7 +475,11 @@ header button[data-page="home"] > img{height:clamp(22px,6.4vw,26px) !important;m
 [data-m="nav-shop"]{display:flex !important;align-items:center !important;min-height:44px !important}
 [data-m="nav-shop"]::after,[data-m="nav-cart"]::after{content:"";position:absolute;inset:-8px -8px}
 [data-m="nav-menu-btn"]{margin:0 !important;flex:0 0 auto !important}
-[data-m="hero"]{background-image:radial-gradient(60% 52% at 50% 44%,rgba(0,0,0,.95) 0%,rgba(0,0,0,.88) 60%,rgba(0,0,0,.74) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important}
+[data-m="hero"]{background-image:radial-gradient(72% 58% at 50% 44%,rgba(0,0,0,.97) 0%,rgba(0,0,0,.93) 60%,rgba(0,0,0,.8) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important}
+[data-m="lm-eyebrow"]{position:relative !important;isolation:isolate;text-shadow:0 1px 6px rgba(0,0,0,.9)}
+[data-m="lm-eyebrow"]::before{content:"";position:absolute;left:-28px;right:-28px;top:-16px;bottom:-14px;z-index:-1;background:radial-gradient(ellipse 70% 100% at 40% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 60%,rgba(0,0,0,0) 100%);pointer-events:none}
+[data-m="cd-where"]{background-size:auto 110% !important;background-position:center 20% !important}
+[data-m="about-selfie"]{filter:brightness(.5) !important}
 [data-m="play-row"]{flex-direction:column !important;gap:14px !important;margin:44px auto 0 !important}
 [data-m="play-label"]{text-align:center !important}
 [data-m="story-body"]{padding-top:40px !important}
@@ -823,7 +827,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="wte-rule" style="width:calc(100% - 120px);height:2px;background:#D4A24A;margin:24px 0 18px;position:relative;left:120px"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Raw Canopy Extract is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three non-psychedelic, everyday functional mushroom extracts: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three non-psychedelic, everyday functional mushroom extract powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Cordyceps for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)</a></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Lion's mane for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)</a></div>
@@ -1334,7 +1338,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </sc-if>
 </div>
 </section>
-<section style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.jpg" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.jpg" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
+<section data-m="hide" style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.jpg" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.jpg" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
 </div>
 </sc-if>
 
@@ -1534,7 +1538,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
 <div style="position:absolute;left:0;right:0;bottom:0;height:18px;background:#000;pointer-events:none"></div>
 <div style="position:relative;max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">HERICIUM ERINACEUS · FRUITING BODY · 80% HOT WATER · 20% ALCOHOL</p>
+<p data-m="lm-eyebrow" style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">HERICIUM ERINACEUS · FRUITING BODY · 80% HOT WATER · 20% ALCOHOL</p>
 <div style="display:flex;align-items:center;gap:clamp(16px,2vw,26px)"><img data-species-symbol="true" src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt="" aria-hidden="true" style="height:65px;width:auto;display:block;flex:0 0 auto"><h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(42px,6vw,78px);line-height:1.03;color:#F1ECE1;margin:0">Lion's Mane</h1></div>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.2vw,26px);color:#D4A24A;margin:20px 0 0">Grown in the dark. Made for the light.</p>
@@ -1555,7 +1559,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <section data-m="sbox" data-sbox="lm" style="position:relative;padding:0;background:#000">
 <button data-m="flat" data-nogrow="true" data-page="s-lm" onClick="{{ go }}" style="display:block;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background-color:#000;background-image:url('assets/photo/story-lm-poster-flip.jpg');background-size:cover;background-position:center 34%;min-height:680px;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
 <div style="position:absolute;inset:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px 220px;background-repeat:repeat;background-attachment:fixed;background-position:center top;opacity:.3;pointer-events:none"></div>
-<div data-m="sbox-shade" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.56) 46%,rgba(0,0,0,.58) 70%,rgba(0,0,0,.74) 100%);pointer-events:none"></div>
+<div data-m="sbox-shade" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%);pointer-events:none"></div>
 <div data-m="flat" style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:104px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
 <div data-m="flat" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
 <div data-m="flat" style="width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center">
@@ -1719,7 +1723,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/cd-yunnan-hoodoos.webp');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;overflow:hidden">
+<section data-m="cd-where" style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/cd-yunnan-hoodoos.webp');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;overflow:hidden">
 <div data-m="cd-where-bg" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;transform:scale(1.25);transform-origin:70% 85%"></div>
 <div style="max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
@@ -2204,7 +2208,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0">The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of&nbsp;something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. <span style="color:#D4A24A">It's your turn now.</span></p>
 </div>
 </section>
-<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.jpg" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.jpg" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-selfie.jpg" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
+<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.jpg" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.jpg" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="about-selfie" src="assets/photo/about-selfie.jpg" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
 <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px;position:relative;left:90px" data-m="about-seal">
 <div ref="{{ setAboutSeal }}" style="width:min(360px,77vw);aspect-ratio:1/1"></div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:16px;color:#D4A24A;margin:34px 0 14px">CONNECT TO THE SOURCE</p>
@@ -2926,9 +2930,9 @@ class Component extends DCLogic {
         });
         this._away = true;
       }
-      this._rotT = setTimeout(step, 7000);
+      this._rotT = setTimeout(step, 4000);
     };
-    this._rotT = setTimeout(step, 7000);
+    this._rotT = setTimeout(step, 4000);
   };
 
   setHeroSeal = (n) => {
@@ -3743,13 +3747,43 @@ class Component extends DCLogic {
     els.forEach(el => this._sweepObs.observe(el));
   };
 
+  markClickStale = () => { this._clickStale = true; };
+
+  wakeClickCtx = () => {
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    let ctx = this._clickCtx;
+    const idle = Date.now() - (this._clickLast || 0) > 45000;
+    if (ctx && (ctx.state === 'closed' || ((this._clickStale || idle || ctx.state === 'interrupted') && ctx.state !== 'running'))) {
+      try { ctx.close(); } catch (err) {}
+      ctx = null;
+    }
+    if (!ctx) {
+      ctx = this._clickCtx = new AC();
+      this._clickBuf5 = null; this._tickBuf = null;
+      ctx.onstatechange = () => { if (ctx.state === 'interrupted' || ctx.state === 'suspended') this._clickStale = true; };
+    }
+    this._clickStale = false; this._clickLast = Date.now();
+    if (ctx.state !== 'running') {
+      try { const p = ctx.resume(); if (p && p.catch) p.catch(() => {}); } catch (err) {}
+      try { const s = ctx.createBufferSource(); s.buffer = ctx.createBuffer(1, 1, ctx.sampleRate); s.connect(ctx.destination); s.start(0); } catch (err) {}
+    }
+    return ctx;
+  };
+
+  wakeClick = () => { try { this.wakeClickCtx(); } catch (err) {} };
+
   playClick = (e) => {
+    let ctx;
+    try { ctx = this.wakeClickCtx(); } catch (err) { return; }
     const t = e.target && e.target.closest && e.target.closest('button, a[href], [role="link"], [data-page], input[type="submit"], summary');
-    if (!t || t.disabled) return;
+    if (!t || t.disabled || !ctx) return;
+    if (ctx.state === 'running') { this.renderClick(ctx); return; }
+    const at = Date.now();
+    try { ctx.resume().then(() => { if (ctx.state === 'running' && Date.now() - at < 400) this.renderClick(ctx); }).catch(() => {}); } catch (err) {}
+  };
+
+  renderClick = (ctx) => {
     try {
-      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-      const ctx = this._clickCtx || (this._clickCtx = new AC());
-      if (ctx.state === 'suspended') ctx.resume();
       const now = ctx.currentTime;
       const buf = this._clickBuf5 || (this._clickBuf5 = (() => {
         const sr = ctx.sampleRate, len = Math.floor(sr * 0.012), b = ctx.createBuffer(1, len, sr), d = b.getChannelData(0);
@@ -3839,6 +3873,12 @@ class Component extends DCLogic {
     window.addEventListener('orientationchange', this._reSync);
     if (window.matchMedia) { const omq = matchMedia('(orientation: landscape)'); if (omq.addEventListener) omq.addEventListener('change', this._reSync); }
     document.addEventListener('pointerdown', this.playClick, true);
+    document.addEventListener('touchend', this.wakeClick, true);
+    document.addEventListener('click', this.wakeClick, true);
+    document.addEventListener('visibilitychange', this.markClickStale);
+    window.addEventListener('pagehide', this.markClickStale);
+    window.addEventListener('pageshow', this.markClickStale);
+    window.addEventListener('blur', this.markClickStale);
     if (window.speechSynthesis) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices(); }
     this._place = () => requestAnimationFrame(this.placeStoryImages);
     window.addEventListener('resize', this._place);
@@ -3874,6 +3914,12 @@ class Component extends DCLogic {
     if (this._a) this._a.pause();
     if (window.speechSynthesis) speechSynthesis.cancel();
     document.removeEventListener('pointerdown', this.playClick, true);
+    document.removeEventListener('touchend', this.wakeClick, true);
+    document.removeEventListener('click', this.wakeClick, true);
+    document.removeEventListener('visibilitychange', this.markClickStale);
+    window.removeEventListener('pagehide', this.markClickStale);
+    window.removeEventListener('pageshow', this.markClickStale);
+    window.removeEventListener('blur', this.markClickStale);
     this.cancelMove(); clearInterval(this._cueTimer);
     if (this._followBound) ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => window.removeEventListener(ev, this._followBound));
     if (this._place) window.removeEventListener('resize', this._place);
