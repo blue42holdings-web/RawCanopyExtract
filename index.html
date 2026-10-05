@@ -464,13 +464,16 @@ header > div[style]:not([data-m="nav-panel"]){flex-wrap:nowrap !important;paddin
 header nav[data-m="nav"]{flex-wrap:nowrap !important;gap:18px !important}
 header [data-m="nav-more"],[data-m="hdr-tts"]{display:none !important}
 [data-m="nav-menu-btn"],[data-m="nav-panel"]{display:flex !important}
-header > div[style]:not([data-m="nav-panel"]){display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:0 !important;align-items:center !important;justify-items:center !important}
-header nav[data-m="nav"]{display:contents !important}
-[data-m="hdr-logo"],[data-m="nav-shop"],[data-m="nav-menu-btn"]{width:100% !important;min-height:52px !important;justify-content:center !important;align-items:center !important;margin:0 !important}
-[data-m="hdr-logo"] > button{width:100% !important;min-height:52px !important;justify-content:center !important;margin:0 !important;padding:0 !important}
-[data-m="nav-shop"]{display:flex !important;padding:0 !important}
-[data-m="nav-cart"]{position:relative !important}
-[data-m="nav-cart"]::after{content:"";position:absolute;inset:-8px -14px}
+header > div[style]:not([data-m="nav-panel"]){display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px !important}
+header nav[data-m="nav"]{display:flex !important;flex-wrap:nowrap !important;align-items:center !important;gap:14px !important;margin-left:auto !important}
+[data-m="hdr-logo"]{flex:0 0 auto !important;margin-left:10px !important;overflow:hidden !important;align-items:center !important}
+[data-m="hdr-logo"] > :not(button){display:none !important}
+[data-m="hdr-logo"] > button{min-height:48px !important;justify-content:center !important;margin:0 !important;padding:0 !important;gap:0 !important}
+header button[data-page="home"] > img{height:clamp(22px,6.4vw,26px) !important;max-width:none !important}
+[data-m="nav-shop"],[data-m="nav-cart"]{position:relative !important}
+[data-m="nav-shop"]{display:flex !important;align-items:center !important;min-height:44px !important}
+[data-m="nav-shop"]::after,[data-m="nav-cart"]::after{content:"";position:absolute;inset:-8px -8px}
+[data-m="nav-menu-btn"]{margin:0 !important;flex:0 0 auto !important}
 [data-m="hero"]{background-image:radial-gradient(60% 52% at 50% 44%,rgba(0,0,0,.95) 0%,rgba(0,0,0,.88) 60%,rgba(0,0,0,.74) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important}
 [data-m="play-row"]{flex-direction:column !important;gap:14px !important;margin:44px auto 0 !important}
 [data-m="play-label"]{text-align:center !important}
@@ -780,16 +783,16 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </nav>
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div data-m="nav-panel" style="display:none;max-width:1300px;margin:0 auto;flex-direction:column;padding:4px 0 14px;border-top:1px solid rgba(212,162,74,.26)">
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
-<button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
-<button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:0 0 0 20px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">LION'S MANE</button>
-<button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:0 0 0 20px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">CORDYCEPS</button>
-<button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:0 0 0 20px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">TURKEY TAIL</button>
-<button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
-<button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
-<button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
-<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
-<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center;padding-top:16px"><button onClick="{{ ttsMenu }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;padding:0 18px;min-height:44px;cursor:pointer">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStopMenu }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:0 14px;min-height:44px;cursor:pointer">STOP</button></sc-if></div></sc-if>
+<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
+<button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
+<button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">LION'S MANE</button>
+<button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">CORDYCEPS</button>
+<button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">TURKEY TAIL</button>
+<button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
+<button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
+<button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
+<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
+<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center;padding-top:16px;padding-left:10px"><button onClick="{{ ttsMenu }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;padding:1px 18px;min-height:44px;cursor:pointer">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStopMenu }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:1px 14px;min-height:44px;cursor:pointer">STOP</button></sc-if></div></sc-if>
 </div></sc-if></header>
 
 <main>

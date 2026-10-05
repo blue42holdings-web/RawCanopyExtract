@@ -459,12 +459,25 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="cta3"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;gap:18px !important}
 [data-m="cta3"] > *{justify-self:center !important;white-space:normal !important;text-align:center}
 [data-m="tins-sec"],[data-m="home-wii"]{display:none !important}
-[data-m="founder-grid"]{grid-template-columns:minmax(0,1fr) !important}
 header{position:sticky !important;top:0 !important}
-header > div[style]{flex-wrap:nowrap !important;padding:8px 0 !important;gap:12px !important}
+header > div[style]:not([data-m="nav-panel"]){flex-wrap:nowrap !important;padding:8px 0 !important;gap:12px !important}
 header nav[data-m="nav"]{flex-wrap:nowrap !important;gap:18px !important}
 header [data-m="nav-more"],[data-m="hdr-tts"]{display:none !important}
 [data-m="nav-menu-btn"],[data-m="nav-panel"]{display:flex !important}
+header > div[style]:not([data-m="nav-panel"]){display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px !important}
+header nav[data-m="nav"]{display:flex !important;flex-wrap:nowrap !important;align-items:center !important;gap:14px !important;margin-left:auto !important}
+[data-m="hdr-logo"]{flex:0 0 auto !important;margin-left:10px !important;overflow:hidden !important;align-items:center !important}
+[data-m="hdr-logo"] > :not(button){display:none !important}
+[data-m="hdr-logo"] > button{min-height:48px !important;justify-content:center !important;margin:0 !important;padding:0 !important;gap:0 !important}
+header button[data-page="home"] > img{height:clamp(22px,6.4vw,26px) !important;max-width:none !important}
+[data-m="nav-shop"],[data-m="nav-cart"]{position:relative !important}
+[data-m="nav-shop"]{display:flex !important;align-items:center !important;min-height:44px !important}
+[data-m="nav-shop"]::after,[data-m="nav-cart"]::after{content:"";position:absolute;inset:-8px -8px}
+[data-m="nav-menu-btn"]{margin:0 !important;flex:0 0 auto !important}
+[data-m="hero"]{background-image:radial-gradient(60% 52% at 50% 44%,rgba(0,0,0,.95) 0%,rgba(0,0,0,.88) 60%,rgba(0,0,0,.74) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important}
+[data-m="play-row"]{flex-direction:column !important;gap:14px !important;margin:44px auto 0 !important}
+[data-m="play-label"]{text-align:center !important}
+[data-m="story-body"]{padding-top:40px !important}
 [data-m="sbox"] [data-stamp]{height:120px;align-items:center !important;justify-content:center !important;margin:24px 0 !important}
 [data-m="sbox"] [data-stamp] p{font-size:48px !important}
 }
@@ -742,36 +755,44 @@ button[data-cta-small]:hover{scale:1.28}
 @media (hover:none){
 button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brightness(1.18)}
 }
+/* photos: no select, no press-and-hold save/open menu, no drag-out */
+img,picture,video,canvas,svg{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+[style*="background-image"]{-webkit-touch-callout:none}
+img:not([draggable="true"]){-webkit-user-drag:none}
+/* design text: no accidental highlight; paragraph text stays selectable */
+button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
-<script src="cutout-lift.js?v=20261004i"></script>
+<script src="cutout-lift.js?v=20261004k"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
 
 <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,162,74,.26)">
 <div style="max-width:1300px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap">
-<div style="position:relative;display:flex"><button data-page="home" onClick="{{ go }}" style="background:none;border:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.2)"><img src="assets/vine-gold.svg" alt="Raw Canopy Extract home" style="height:40px;width:auto;display:block"></button><sc-if value="{{ ttsHome }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" data-m="hdr-tts" style="position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%);z-index:61;white-space:nowrap"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if></div>
+<div data-m="hdr-logo" style="position:relative;display:flex"><button data-page="home" onClick="{{ go }}" style="background:none;border:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.2)"><img src="assets/vine-gold.svg" alt="Raw Canopy Extract home" style="height:40px;width:auto;display:block"></button><sc-if value="{{ ttsHome }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" data-m="hdr-tts" style="position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%);z-index:61;white-space:nowrap"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if></div>
 <nav data-m="nav" style="display:flex;flex-wrap:wrap;gap:14px;margin-left:auto;align-items:center">
-<button data-page="shop" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">SHOP</button>
+<button data-page="shop" data-m="nav-shop" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">SHOP</button>
 
-<button data-page="why" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
-<button data-page="receipts" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button><button data-page="mushrooms" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
+<button data-page="receipts" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button><div data-m="nav-more" onMouseEnter="{{ mushEnter }}" onMouseLeave="{{ mushLeave }}" onFocus="{{ mushEnter }}" onBlur="{{ mushBlur }}" style="position:relative;display:flex;align-items:center"><button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button><sc-if value="{{ mushOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:100%;left:-18px;padding-top:12px;z-index:62"><div style="display:flex;flex-direction:column;padding:6px 0;background:rgba(0,0,0,.96);border:1px solid rgba(212,162,74,.26)"><button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;padding:10px 18px;text-align:left;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">LION'S MANE</button><button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;padding:10px 18px;text-align:left;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">CORDYCEPS</button><button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;padding:10px 18px;text-align:left;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">TURKEY TAIL</button></div></div></sc-if></div>
 <button data-page="why" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
 <button data-page="how" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
 <button data-page="about" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
 <button data-page="faq" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
-<button onClick="{{ openDrawer }}" style="background:none;border:1px solid rgba(212,162,74,.5);padding:8px 12px;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;color:#D4A24A" style-hover="background:rgba(212,162,74,.12)">CART <span style="font-family:'Oswald',sans-serif;font-size:13px">{{ cartCount }}</span></button>
+<button data-m="nav-cart" onClick="{{ openDrawer }}" style="background:none;border:1px solid rgba(212,162,74,.5);padding:8px 12px;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;color:#D4A24A" style-hover="background:rgba(212,162,74,.12)">CART <span style="font-family:'Oswald',sans-serif;font-size:13px">{{ cartCount }}</span></button>
 <button data-m="nav-menu-btn" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;margin:-6px -10px -6px -6px;background:none;border:none;padding:0;cursor:pointer"><span style="{{ menuBar1 }}"></span><span style="{{ menuBar2 }}"></span><span style="{{ menuBar3 }}"></span></button>
 </nav>
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div data-m="nav-panel" style="display:none;max-width:1300px;margin:0 auto;flex-direction:column;padding:4px 0 14px;border-top:1px solid rgba(212,162,74,.26)">
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
-<button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
-<button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
-<button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
-<button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
-<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
-<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center;padding-top:16px"><button onClick="{{ ttsMenu }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;padding:0 18px;min-height:44px;cursor:pointer">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStopMenu }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:0 14px;min-height:44px;cursor:pointer">STOP</button></sc-if></div></sc-if>
+<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
+<button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
+<button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">LION'S MANE</button>
+<button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">CORDYCEPS</button>
+<button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">TURKEY TAIL</button>
+<button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
+<button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
+<button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
+<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
+<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center;padding-top:16px;padding-left:10px"><button onClick="{{ ttsMenu }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;padding:1px 18px;min-height:44px;cursor:pointer">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStopMenu }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:1px 14px;min-height:44px;cursor:pointer">STOP</button></sc-if></div></sc-if>
 </div></sc-if></header>
 
 <main>
@@ -803,9 +824,9 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Raw Canopy Extract is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three non-psychedelic, everyday functional mushroom extracts: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Cordyceps for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial (PLOS One)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Lion's mane for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Improvement of cognitive functions by oral intake of Hericium erinaceus (Biomedical Research)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Turkey tail for immune support:</p><a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Immunomodulatory effects of Yun Zhi and Danshen capsules in health subjects, a randomized, double-blind, placebo-controlled, crossover study (International Immunopharmacology)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Cordyceps for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Lion's mane for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Turkey tail for immune support:</p><a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)</a></div>
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
@@ -860,7 +881,6 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="width:96px;height:2px;background:#D4A24A;transform-origin:left;animation:rcxRule 900ms cubic-bezier(.2,.8,.2,1) both;margin:30px 0 34px"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
 <button data-page="shop" onClick="{{ go }}" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.14em;padding:18px 40px" style-hover="background:#E9C079">SHOP</button>
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;padding:0;font-size:15px;color:#D4A24A;border-bottom:1px solid rgba(212,162,74,.45)">Check the receipts</button>
 </div>
 </div>
 </section>
@@ -1598,8 +1618,8 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </section>
 
-<div style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.86)),url('assets/photo/lm-how-made-desk.jpg');background-size:cover;background-position:center">
-<section data-m="studied-sec" style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0">
+<div style="background-color:#000">
+<section data-m="studied-sec" style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.86)),url('assets/photo/lm-how-made-desk.jpg');background-size:cover;background-position:45% 72%;background-repeat:no-repeat">
 <div style="position:relative;max-width:none;margin:0;background:transparent;padding:44px max(28px,calc((100% - 1080px) / 2));flex:1;display:flex;flex-direction:column;justify-content:center">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0 0 16px;max-width:74ch">Supports focus for the challenge ahead.<a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" title="Improvement of cognitive functions by oral intake of Hericium erinaceus (Biomedical Research)">*</a></p>
@@ -2172,28 +2192,6 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="width:96px;height:2px;background:#D4A24A;transform-origin:left;animation:rcxRule 900ms cubic-bezier(.2,.8,.2,1) both;margin:28px 0 0"></div>
 </div>
 </section>
-<section data-m="founder" style="position:relative;z-index:2;margin-top:-1px;background:#000;padding:56px 28px 60px">
-<div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:start" data-m="founder-grid">
-<figure data-founder-photo="true" style="margin:0;display:flex;flex-direction:column;gap:14px">
-<div role="img" aria-label="Founder photo coming soon" style="position:relative;aspect-ratio:4/5;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px">
-<img src="assets/vine-gold.svg" alt="" aria-hidden="true" style="height:44px;width:auto;opacity:.55">
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">FOUNDER PHOTO</p>
-<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
-</div>
-</figure>
-<div style="display:flex;flex-direction:column;gap:14px;min-width:0" data-m="founder-video">
-<div data-founder-video="true" role="img" aria-label="Founder video coming soon" style="position:relative;aspect-ratio:16/9;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px">
-<div aria-hidden="true" style="width:64px;height:64px;border:1px solid rgba(212,162,74,.6);border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid #D4A24A;margin-left:5px"></div></div>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">A SHORT FILM FROM THE FOUNDER</p>
-<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px;padding-top:4px">
-<p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,34px);line-height:1.15;color:#F1ECE1;margin:0">Your Name</p>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0;font-size:14px">FOUNDER, RAW CANOPY EXTRACT</p>
-</div>
-</div>
-</div>
-</section>
 
 <section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
 <div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
@@ -2374,13 +2372,13 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <span style="font-family:system-ui,sans-serif;font-size:20px;line-height:1;color:#D4A24A">{{ aIcon }}</span>
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.12em;font-size:13px;line-height:1;color:#D4A24A">{{ aLabel }}</span>
 </button>
-<div style="text-align:left">
+<div data-m="play-label" style="text-align:left">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:clamp(18px,1.8vw,24px);color:#F1ECE1;margin:0">LISTEN TO THE STORY</p>
 </div>
 </div>
 </div>
 </section>
-<section style="padding:72px 28px 96px;background:transparent">
+<section data-m="story-body" style="padding:72px 28px 96px;background:transparent">
 
 <div data-story-grid="true" style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:stretch">
 <div data-story-text="true" style="font-size:18px;line-height:1.95;color:#E4DCCC;background:rgba(0,0,0,.82);padding:44px 38px">
@@ -2861,7 +2859,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;subDiscount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:0,&quot;max&quot;:30,&quot;step&quot;:5,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;comingSoon&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;sealVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;transparent&quot;,&quot;on-black&quot;],&quot;default&quot;:&quot;transparent&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Identity&quot;}}">
 class Component extends DCLogic {
   state = {
-    page: 'home', cart: [], drawer: false, menuOpen: false, query: '', faq: -1,
+    page: 'home', cart: [], drawer: false, menuOpen: false, mushOpen: false, query: '', faq: -1,
     plan: { lm: 'once', cd: 'once', rs: 'once', combo: 'once', lmr: 'once', cdr: 'once', rsr: 'once', cbr: 'once' },
     qty: { lm: 1, cd: 1, rs: 1, combo: 1, lmr: 1, cdr: 1, rsr: 1, cbr: 1 },
     notified: {}, signedUp: false,
@@ -3384,7 +3382,7 @@ class Component extends DCLogic {
     const p = e.currentTarget.dataset.page;
     if (!p) return;
     if (e.currentTarget.tagName === 'A' && e.preventDefault) e.preventDefault();
-    this.setState({ page: p, drawer: false, menuOpen: false });
+    this.setState({ page: p, drawer: false, menuOpen: false, mushOpen: false });
     this.fadeBlack(false);
     window.scrollTo({ top: 0 });
     if (p === 's-lm') { setTimeout(() => { try { this.initAudio(); } catch (e) {} }, 300); this._imgHooked = false; [200, 800, 2000].forEach(d => setTimeout(this._place, d)); [900, 2200].forEach(d => setTimeout(() => { if (this._a && !this._a.paused && this.state.page === 's-lm') this.snapToAudio(this._a.currentTime); }, d)); }
@@ -3393,6 +3391,9 @@ class Component extends DCLogic {
   fmtT = (t) => { t = Math.max(0, Math.floor(t)); const hh = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), sec = String(t % 60).padStart(2, '0'); return hh ? hh + ':' + String(m).padStart(2, '0') + ':' + sec : m + ':' + sec; };
 
   openDrawer = () => this.setState({ drawer: true, menuOpen: false });
+  mushEnter = () => { clearTimeout(this._mushT); if (!this.state.mushOpen) this.setState({ mushOpen: true }); };
+  mushLeave = () => { clearTimeout(this._mushT); this._mushT = setTimeout(() => this.setState({ mushOpen: false }), 120); };
+  mushBlur = (e) => { if (!e.currentTarget.contains(e.relatedTarget)) this.mushLeave(); };
   toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
   ttsMenu = () => { this.setState({ menuOpen: false }); this.ttsToggle(); };
   ttsStopMenu = () => { this.setState({ menuOpen: false }); this.ttsStop(); };
@@ -3826,6 +3827,10 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
+    this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };
+    document.addEventListener('contextmenu', this._noImgMenu);
+    document.addEventListener('dragstart', this._noImgDrag);
     this.loadSeal();
     this.initPhoneText();
     this.initPlayerAutohide();
@@ -3863,6 +3868,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('contextmenu', this._noImgMenu); document.removeEventListener('dragstart', this._noImgDrag);
     clearInterval(this._ahTick); if (this._ahTap) document.removeEventListener('pointerdown', this._ahTap, true);
     if (this._a) this._a.pause();
     if (window.speechSynthesis) speechSynthesis.cancel();
@@ -3907,6 +3913,7 @@ class Component extends DCLogic {
       aCur: s.aCur || 0, aMax: (s.aDur && isFinite(s.aDur)) ? s.aDur : 1,
       aCurLabel: this.fmtT(s.aCur || 0), aDurLabel: (s.aDur && isFinite(s.aDur)) ? this.fmtT(s.aDur) : '--:--',
       toggleAudio: this.toggleAudio, restartAudio: this.restartAudio, seekAudio: this.seekAudio, closeAudio: this.closeAudio,
+      mushOpen: !!s.mushOpen, mushEnter: this.mushEnter, mushLeave: this.mushLeave, mushBlur: this.mushBlur,
       menuOpen: !!s.menuOpen, menuLabel: s.menuOpen ? 'Close menu' : 'Open menu', toggleMenu: this.toggleMenu, ttsMenu: this.ttsMenu, ttsStopMenu: this.ttsStopMenu,
       menuBar1: { display: 'block', width: '22px', height: '2px', background: '#D4A24A', transition: 'transform .25s ease', transform: s.menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' },
       menuBar2: { display: 'block', width: '22px', height: '2px', background: '#D4A24A', transition: 'opacity .2s ease', opacity: s.menuOpen ? 0 : 1 },
