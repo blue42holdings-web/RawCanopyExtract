@@ -1368,7 +1368,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;color:#000;font-weight:700;letter-spacing:.02em">{{ l.lot }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.date }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px;color:#000;font-weight:700">{{ l.pct }}% / {{ l.mg }}MG</span>
-<span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.region }}, {{ l.country }}</span>
+<span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.region }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.cert }}</span>
 <a href="#" style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12px;color:#000;text-decoration:underline">VIEW PDF</a>
 </div>
@@ -1392,7 +1392,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;color:#000;font-weight:700;letter-spacing:.02em">{{ l.lot }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.date }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px;color:#000;font-weight:700">{{ l.pct }}% / {{ l.mg }}MG</span>
-<span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.region }}, {{ l.country }}</span>
+<span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.region }}</span>
 <span style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12.5px">{{ l.cert }}</span>
 <a href="#" style="font-family:ui-monospace,'Courier New',Menlo,monospace;font-size:12px;color:#000;text-decoration:underline">VIEW PDF</a>
 </div>
@@ -1438,7 +1438,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-screen-label="The Mushrooms" style="background:#040404">
 <section style="position:relative;margin-bottom:-1px;padding:80px 28px 36px;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,.74) 74%,#040404 99%),url('assets/photo/shop-river-canyon.jpg');background-size:cover;background-position:center 50%;min-height:42vh;display:flex;align-items:center">
 <div style="position:relative;max-width:1200px;margin:0 auto">
-<p style="font-size:clamp(26px,2.8vw,40px);line-height:1.5;color:#F1ECE1;margin:24px 0 0;max-width:40ch;text-wrap:pretty">Red cliffs rise out of the forest and the clouds come down to meet them. These mushrooms grew here first, wild on fallen hardwood in the wet shade under the canopy, long before anyone thought to grow them on purpose.</p>
+<p style="font-size:clamp(26px,2.8vw,40px);line-height:1.5;color:#F1ECE1;margin:24px 0 0;max-width:40ch;text-wrap:pretty">Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here since 609 CE.</p>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
 </section>
@@ -1455,7 +1455,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="display:flex;align-items:center;gap:14px;margin:0 0 20px"><img data-species-symbol="true" src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt="" aria-hidden="true" style="height:40px;width:auto;display:block;flex:0 0 auto"><h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:30px;color:#F1ECE1;margin:0">Lion's Mane</h2></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">PART USED</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Fruiting body</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">EXTRACTION</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Hot water + alcohol extracts</span></div>
-<div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">ORIGIN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Skagit Valley, Washington</span></div>
+<div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">ORIGIN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Wuyi Mountains</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">BETA-GLUCAN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">{{ currentLm.pct }}% · {{ currentLm.mg }} mg / packet</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">CURRENT LOT</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">{{ currentLm.lot }}</span></div>
 <button data-page="m-lm" onClick="{{ go }}" style="margin-top:24px;width:100%;background:none;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:13px 18px" style-hover="background:rgba(212,162,74,.12)">OPEN THE FILE</button>
@@ -1469,7 +1469,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="display:flex;align-items:center;gap:14px;margin:0 0 20px"><img data-species-symbol="true" src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt="" aria-hidden="true" style="height:44px;width:auto;display:block;flex:0 0 auto"><h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:30px;color:#F1ECE1;margin:0">Cordyceps</h2></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">PART USED</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Fruiting body</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">EXTRACTION</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Two hot water extracts</span></div>
-<div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">ORIGIN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Chuxiong, Yunnan</span></div>
+<div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">ORIGIN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">Wuyi Mountains</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">BETA-GLUCAN</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">{{ currentCd.pct }}% · {{ currentCd.mg }} mg / packet</span></div>
 <div style="padding:14px 0;border-top:1px solid rgba(241,236,225,.14);display:flex;justify-content:space-between;gap:14px"><span style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:11.5px;color:#8C8574">CURRENT LOT</span><span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#E4DCCC">{{ currentCd.lot }}</span></div>
 <button data-page="m-cd" onClick="{{ go }}" style="margin-top:24px;width:100%;background:none;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:13px 18px" style-hover="background:rgba(212,162,74,.12)">OPEN THE FILE</button>
@@ -3108,20 +3108,20 @@ class Component extends DCLogic {
 
   lots = {
     lm: [
-      { lot: 'LM-2609-A', date: '4 Sep 2026', pct: '22.6', mg: '339', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' },
-      { lot: 'LM-2607-B', date: '18 Jul 2026', pct: '21.9', mg: '329', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' },
-      { lot: 'LM-2606-A', date: '2 Jun 2026', pct: '23.4', mg: '351', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' },
-      { lot: 'LM-2604-C', date: '11 Apr 2026', pct: '22.1', mg: '332', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' },
-      { lot: 'LM-2602-A', date: '27 Feb 2026', pct: '20.8', mg: '312', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' },
-      { lot: 'LM-2512-B', date: '9 Dec 2025', pct: '22.4', mg: '336', region: 'Skagit Valley, Washington', country: '—', cert: 'PENDING' }
+      { lot: 'LM-2609-A', date: '4 Sep 2026', pct: '22.6', mg: '339', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2607-B', date: '18 Jul 2026', pct: '21.9', mg: '329', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2606-A', date: '2 Jun 2026', pct: '23.4', mg: '351', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2604-C', date: '11 Apr 2026', pct: '22.1', mg: '332', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2602-A', date: '27 Feb 2026', pct: '20.8', mg: '312', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2512-B', date: '9 Dec 2025', pct: '22.4', mg: '336', region: 'Wuyi Mountains', cert: 'PENDING' }
     ],
     cd: [
-      { lot: 'CD-2608-A', date: '22 Aug 2026', pct: '19.4', mg: '291', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' },
-      { lot: 'CD-2606-B', date: '14 Jun 2026', pct: '18.8', mg: '282', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' },
-      { lot: 'CD-2605-A', date: '3 May 2026', pct: '19.9', mg: '299', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' },
-      { lot: 'CD-2603-A', date: '19 Mar 2026', pct: '18.2', mg: '273', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' },
-      { lot: 'CD-2601-C', date: '28 Jan 2026', pct: '19.1', mg: '287', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' },
-      { lot: 'CD-2511-A', date: '15 Nov 2025', pct: '18.6', mg: '279', region: 'Chuxiong, Yunnan', country: '—', cert: 'PENDING' }
+      { lot: 'CD-2608-A', date: '22 Aug 2026', pct: '19.4', mg: '291', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2606-B', date: '14 Jun 2026', pct: '18.8', mg: '282', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2605-A', date: '3 May 2026', pct: '19.9', mg: '299', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2603-A', date: '19 Mar 2026', pct: '18.2', mg: '273', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2601-C', date: '28 Jan 2026', pct: '19.1', mg: '287', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2511-A', date: '15 Nov 2025', pct: '18.6', mg: '279', region: 'Wuyi Mountains', cert: 'PENDING' }
     ],
     rs: [
       { lot: 'TT-2609-B', date: '1 Sep 2026', pct: '24.2', mg: '363', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
