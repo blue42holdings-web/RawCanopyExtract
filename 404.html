@@ -423,6 +423,10 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 header button[data-page="home"] > img{height:23px !important}
 header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !important}
 [data-m="faq-tiles"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+[data-m="fc-swap"]{display:flex !important;flex-direction:column !important}
+[data-m="fc-swap"]>[data-screen-label="Home — the first cup"]{order:1}
+[data-m="fc-swap"]>[data-m="lab-dup"]{order:2}
+[data-m="fc-swap"]>[data-screen-label="Home — the world it lives in"]{order:3}
 [data-m="lab-orig"]{display:none !important}
 [data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
@@ -812,6 +816,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </section>
 
 
+<div data-m="fc-swap" style="display:contents">
 <section data-screen-label="Home — the world it lives in" style="background:#000">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0;background:#000;line-height:0;font-size:0">
 <img src="assets/photo/a-cup-in-the-woods.jpg" alt="A cup in the woods" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/fruiting-body-mycelium-rainbow-crop.jpg" alt="Fruiting body above, mycelium below, illustrated poster" style="width:100%;height:272px;object-fit:cover;object-position:center 50%;display:block;filter:brightness(.92)"><img src="assets/photo/a-kettle-over-the-fire.jpg" alt="A kettle over the fire" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/mug-dawn.jpg" alt="A steel mug held above a ridge at dawn" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy">
@@ -834,6 +839,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 </div>
 </section>
+</div>
 
 
 
