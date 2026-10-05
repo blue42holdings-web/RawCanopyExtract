@@ -423,11 +423,13 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 header button[data-page="home"] > img{height:23px !important}
 header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !important}
 [data-m="faq-tiles"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-[data-m="cd-studied"]{background-image:linear-gradient(to bottom,rgba(0,0,0,.92) 0%,rgba(0,0,0,.88) 50%,rgba(0,0,0,.35) 78%,rgba(0,0,0,.2) 100%),url('assets/photo/cd-stadium-sunset.webp') !important;background-size:100% 100%,cover !important;background-position:center,center bottom !important}
-[data-m="tt-studied"]{background-image:linear-gradient(to bottom,rgba(0,0,0,.92) 0%,rgba(0,0,0,.88) 50%,rgba(0,0,0,.35) 78%,rgba(0,0,0,.2) 100%),url('assets/photo/tt-plane-cabin.webp') !important;background-size:100% 100%,cover !important;background-position:center,center bottom !important}
-[data-m="cd-studied"]>section,[data-m="tt-studied"]>section{padding-bottom:300px !important}
+[data-m="studied-sec"]{min-height:0 !important;padding-top:56px !important;padding-bottom:48px !important}
+[data-m="where-grid"]{border-top:none !important;border-bottom:none !important}
 [data-m="tins-sec"]{padding-top:32px !important}
-[data-m="tins-head"]{margin-top:0 !important}
+[data-m="tins-head"]{margin-top:0 !important;margin-bottom:16px !important}
+[data-m="tins-head"]>button{margin-bottom:0 !important}
+[data-m="tins-sec"] article>div:first-child{aspect-ratio:auto !important}
+[data-m="tins-sec"] article>button[data-id]{margin-top:16px !important}
 [data-m="fc-swap"]{display:flex !important;flex-direction:column !important}
 [data-m="fc-swap"]>[data-screen-label="Home — the first cup"]{order:1}
 [data-m="fc-swap"]>[data-m="lab-dup"]{order:2}
@@ -852,7 +854,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 <section data-screen-label="Home — the tins" data-m="tins-sec" style="margin-bottom:-1px;background-color:#000;position:relative;padding:110px 28px;background:linear-gradient(#000,#070706 55%,#000);padding-bottom:0">
 <div style="position:absolute;inset:0;z-index:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;pointer-events:none"></div>
-<div data-m="tins-pattern-dim" style="position:absolute;inset:0;z-index:0;background:rgba(0,0,0,.5);pointer-events:none"></div>
+<div data-m="tins-pattern-dim" style="position:absolute;inset:0;z-index:0;background:rgba(0,0,0,.75);pointer-events:none"></div>
 
 
 <div style="position:relative;z-index:1;max-width:1300px;margin:0 auto">
@@ -1561,7 +1563,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <section style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.78)),url('assets/photo/lm-skagit-valley.jpg');background-size:cover;background-position:center 40%">
 <div style="position:relative;max-width:none;margin:0;background:transparent;padding:44px max(28px,calc((100% - 1080px) / 2));flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;flex:1;display:flex;flex-direction:column;justify-content:center">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
+<div data-m="where-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
 <div style="padding:22px 22px 22px 0"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">REGION</p><p style="font-size:16px;color:#F1ECE1;margin:0">Skagit Valley, Washington</p></div>
 
 <div style="padding:22px"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">CERTIFIER</p><p style="font-size:16px;color:#F1ECE1;margin:0">Organic certification pending</p></div>
@@ -1579,7 +1581,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </section>
 
 <div style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.86)),url('assets/photo/lm-how-made-desk.jpg');background-size:cover;background-position:center">
-<section style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0">
+<section data-m="studied-sec" style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0">
 <div style="position:relative;max-width:none;margin:0;background:transparent;padding:44px max(28px,calc((100% - 1080px) / 2));flex:1;display:flex;flex-direction:column;justify-content:center">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0 0 16px;max-width:74ch">Supports focus for the challenge ahead.<a href="https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1405796/full" target="_blank" rel="noopener" title="Acute effects of a standardised extract of Hericium erinaceus (Lion's Mane mushroom) on cognition and mood in healthy younger adults: a double-blind randomised placebo-controlled study (Frontiers in Nutrition)">*</a></p>
@@ -1682,7 +1684,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div data-m="cd-where-bg" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/cd-yunnan-hoodoos.webp');background-size:cover;background-position:center;transform:scale(1.25);transform-origin:70% 85%"></div>
 <div style="max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
+<div data-m="where-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
 <div style="padding:22px 22px 22px 0"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">REGION</p><p style="font-size:16px;color:#F1ECE1;margin:0">Chuxiong, Yunnan</p></div>
 
 <div style="padding:22px"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">CERTIFIER</p><p style="font-size:16px;color:#F1ECE1;margin:0">Organic certification pending</p></div>
@@ -1703,7 +1705,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 </div>
 
 <div data-image-slot="cordyceps-studied" data-m="cd-studied" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/cd-stadium-sunset.webp');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center,center">
-<section style="position:relative;z-index:2;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px">
+<section data-m="studied-sec" style="position:relative;z-index:2;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px">
 <div style="position:relative;z-index:2;max-width:1080px;margin:0 auto;width:100%">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#F1ECE1;margin:0 0 16px;max-width:74ch">Supports energy and endurance when the day runs long.<a href="https://link.springer.com/article/10.1007/s13668-025-00690-9" target="_blank" rel="noopener" title="Ergogenic Aid by Cordyceps: Does It Work?? (Current Nutrition Reports)">*</a></p>
@@ -1847,7 +1849,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="height:24px"></div>
 <div style="position:relative;max-width:1080px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
+<div data-m="where-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
 <div style="padding:22px 22px 22px 0"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">REGION</p><p style="font-size:16px;color:#F1ECE1;margin:0">To be confirmed</p></div>
 
 <div style="padding:22px"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">CERTIFIER</p><p style="font-size:16px;color:#F1ECE1;margin:0">Organic certification pending</p></div>
@@ -1866,7 +1868,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="height:1px;background:#000;margin-top:-1px;position:relative;z-index:3"></div>
 
 <div data-m="tt-studied" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/tt-plane-cabin.webp');background-size:cover;background-repeat:no-repeat;background-position:center 42%">
-<section style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:34px 28px">
+<section data-m="studied-sec" style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:34px 28px">
 <div style="max-width:1080px;margin:0 auto;background:rgba(0,0,0,.62);padding:34px 30px">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0 0 14px;max-width:74ch">Supports a healthy immune system.<a href="https://www.sciencedirect.com/science/article/abs/pii/S0141813020349436" target="_blank" rel="noopener" title="Isolation and structure elucidation of polysaccharides from fruiting bodies of mushroom Coriolus versicolor and evaluation of their immunomodulatory effects (International Journal of Biological Macromolecules)">*</a><br>Supports healthy digestion and a balanced gut microbiome.<a href="https://www.mdpi.com/2309-608X/8/7/738" target="_blank" rel="noopener" title="Bioactivity of Biomass and Crude Exopolysaccharides Obtained by Controlled Submerged Cultivation of Medicinal Mushroom Trametes versicolor (Journal of Fungi)">*</a></p>
