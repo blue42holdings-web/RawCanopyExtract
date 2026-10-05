@@ -742,7 +742,8 @@ button[data-cta-small]:hover{scale:1.28}
 button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brightness(1.18)}
 }
 /* photos: no select, no press-and-hold save/open menu, no drag-out */
-img,picture,video,canvas,svg,[style*="background-image"]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img,picture,video,canvas,svg{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+[style*="background-image"]{-webkit-touch-callout:none}
 img:not([draggable="true"]){-webkit-user-drag:none}
 /* design text: no accidental highlight; paragraph text stays selectable */
 button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
