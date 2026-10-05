@@ -444,7 +444,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important}
 [data-m="faq-head"]{width:100% !important}
 [data-m="sbox"]{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:22px !important;padding:60px 18px 64px !important;overflow:hidden !important}
-[data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
+[data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.68)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
 [data-sbox="lm"] [data-m="sbox-shade"]{display:none !important}
 [data-m="flat"]{display:contents !important}
 [data-m="hide"]{display:none !important}
@@ -763,7 +763,7 @@ img:not([draggable="true"]){-webkit-user-drag:none}
 /* design text: no accidental highlight; paragraph text stays selectable */
 button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
-<script src="cutout-lift.js?v=20261004m"></script>
+<script src="cutout-lift.js?v=20261004n"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
@@ -1554,8 +1554,8 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <section data-m="sbox" data-sbox="lm" style="position:relative;padding:0;background:#000">
 <button data-m="flat" data-nogrow="true" data-page="s-lm" onClick="{{ go }}" style="display:block;width:100%;text-align:left;cursor:pointer;position:relative;padding:0;border:none;background-color:#000;background-image:url('assets/photo/story-lm-poster-flip.jpg');background-size:cover;background-position:center 34%;min-height:680px;transition:filter 240ms ease" style-hover="filter:brightness(1.08)">
-<div style="position:absolute;inset:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px 220px;background-repeat:repeat;background-attachment:fixed;background-position:center top;opacity:.16;pointer-events:none"></div>
-<div data-m="sbox-shade" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.34) 46%,rgba(0,0,0,.38) 70%,rgba(0,0,0,.6) 100%);pointer-events:none"></div>
+<div style="position:absolute;inset:0;background-image:url('assets/pattern-field-bold.svg');background-size:300px 220px;background-repeat:repeat;background-attachment:fixed;background-position:center top;opacity:.3;pointer-events:none"></div>
+<div data-m="sbox-shade" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.56) 46%,rgba(0,0,0,.58) 70%,rgba(0,0,0,.74) 100%);pointer-events:none"></div>
 <div data-m="flat" style="position:relative;width:100%;max-width:1300px;margin:0 auto;padding:104px 48px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px">
 <div data-m="flat" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:flex-start">
 <div data-m="flat" style="width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center">
@@ -1599,7 +1599,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0;background-color:#000">
+<section style="position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:0;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/lm-skagit-valley.jpg');background-size:cover;background-position:center 40%;background-repeat:no-repeat">
 <div style="position:relative;max-width:none;margin:0;background:transparent;padding:44px max(28px,calc((100% - 1080px) / 2));flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;flex:1;display:flex;flex-direction:column;justify-content:center">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
 <div data-m="where-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(241,236,225,.18);border-bottom:1px solid rgba(241,236,225,.18);margin-bottom:30px">
@@ -1719,7 +1719,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px;background-color:#000;position:relative;overflow:hidden">
+<section style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:96px 28px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/cd-yunnan-hoodoos.webp');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;overflow:hidden">
 <div data-m="cd-where-bg" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;transform:scale(1.25);transform-origin:70% 85%"></div>
 <div style="max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHERE OURS COMES FROM</h2>
