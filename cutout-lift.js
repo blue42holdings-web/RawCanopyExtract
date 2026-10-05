@@ -103,3 +103,53 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 function reflow(){ states.forEach(function(st){ if(!st.el.isConnected){ teardown(st); if(active===st) active=null; return; } if(st.info.kind==='img') place(st); }); if(!queued&&px>=0){ queued=true; requestAnimationFrame(tick); } }
 window.addEventListener('scroll',reflow,{passive:true,capture:true}); window.addEventListener('resize',reflow);
 })();
+/* slow, subtle brighten for darkened background photos that have no other animation */
+(function(){
+if(window.__rcxBrightenInit) return; window.__rcxBrightenInit=true;
+if(!window.matchMedia||!window.IntersectionObserver) return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+var SKIP=["why-rv-desk-nopen","a-kettle-over-the-fire","lab-extraction-rig","lm-powder-scoop","shop-tennis-handshake-nobrand","coconut-palm-up","ginger-root","coffee-pack-in-camp","receipts-tennis-noblog","kettle-tent-mist","lm-white","cordyceps-forest","turkey-tail-card","a-diver-signalling-underwater-alongside-a-shark","a-surfer-deep-in-the-barrel","a-freediver-rising-over-the-sand-flats","lm-how-made-desk","tt-autumn-fans","why-desk-coffee","stillness-in-the-forest","about-loaded-car-clean","about-kayaks","c-press-coast","h-van-forest","van-rainier-stripes26","two-figures-stretching-against-a-sunset-sea","tent-mug-zoom","lions-mane","tt-right-form-log","measured-hiker-sunset-flip","ff9c1d42-4950-4209-a52b-8724a5a9d0f2-mtowbr1j-ab5x","tent-mug-graded-v2","turkey-tail-right-form","packs-thermos-flip","f35da25a7d452e00dca21f34a0b13609227243dc-mtopujei-faey","20230805032805_1410005693_16559_0-mtp1wpe0-5mms","images-mu06k4kb-4kxl","800-mu06hufv-nq2u","cd-rower-scull","forest-meditation-peace-stockcake-185201-mtopvt0i-6w18","coffee-makers","unwind_at_the_best_yoga_retreats_in_asia-mtzins5h-ix8f","tt-right-form-forest","measured-hiker-sunset","measured-paddleboard-river","measured-paddleboard-river-flip"];
+var LIFT=0.1, DELAY=1000, FADE_IN=2600, FADE_OUT=1200;
+function split(v){ var out=[],d=0,cur=''; for(var i=0;i<v.length;i++){ var ch=v[i]; if(ch==='(')d++; if(ch===')')d--; if(ch===','&&d===0){ out.push(cur.trim()); cur=''; } else cur+=ch; } out.push(cur.trim()); return out; }
+function stemOf(u){ var f=u.split('?')[0].split('#')[0].split('/').pop(); try{ f=decodeURIComponent(f); }catch(e){} return f.replace(/\.(jpe?g|png|webp|avif)$/i,''); }
+var items=new Map(), visible=new Set(), timer=0;
+function candidate(el){
+  if(el.hasAttribute('data-lift-layer')||el.hasAttribute('data-bright-layer')||el.closest('[data-lift-layer]')) return null;
+  var cs=getComputedStyle(el), bi=cs.backgroundImage; if(!bi||bi.indexOf('url(')<0||bi.indexOf('gradient')<0) return null;
+  if(cs.animationName&&cs.animationName!=='none') return null;
+  var L=split(bi); if(!/^(linear|radial)-gradient\(.*rgba?\(0, 0, 0/.test(L[0])) return null;
+  for(var i=0;i<L.length;i++){ var m=L[i].match(/url\(["']?([^"')]+)["']?\)/); if(m){ if(/\.svg/i.test(m[1])) return null; if(SKIP.indexOf(stemOf(m[1]))>=0) return null; return {i:i,url:m[1]}; } }
+  return null;
+}
+function sync(it){
+  var cs=getComputedStyle(it.el), pick=function(v){ var a=split(v); return a[it.i%a.length]; };
+  var s=it.layer.style; s.backgroundImage='url("'+it.url+'")';
+  s.backgroundSize=pick(cs.backgroundSize); s.backgroundPosition=pick(cs.backgroundPosition);
+  s.backgroundRepeat=pick(cs.backgroundRepeat); s.backgroundAttachment=pick(cs.backgroundAttachment);
+}
+function add(el,info){
+  var cs=getComputedStyle(el), saved=[];
+  if(cs.position==='static'){ saved.push(['position',el.style.position]); el.style.position='relative'; }
+  if(cs.isolation!=='isolate'){ saved.push(['isolation',el.style.isolation]); el.style.isolation='isolate'; }
+  var d=document.createElement('div'); d.setAttribute('data-bright-layer',''); d.setAttribute('aria-hidden','true');
+  d.style.cssText='position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;border-radius:inherit;transition:opacity '+FADE_OUT+'ms ease;';
+  el.insertBefore(d,el.firstChild);
+  var it={el:el,i:info.i,url:info.url,layer:d,saved:saved}; sync(it); items.set(el,it); io.observe(el);
+}
+function remove(it){ io.unobserve(it.el); if(it.layer.parentNode) it.layer.parentNode.removeChild(it.layer); it.saved.forEach(function(s){ it.el.style[s[0]]=s[1]; }); visible.delete(it.el); items.delete(it.el); }
+var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var it=items.get(e.target); if(!it) return;
+  if(e.isIntersecting&&e.intersectionRatio>=0.35) visible.add(e.target); else { visible.delete(e.target); dim(it); } }); arm(); },{threshold:[0,0.35,0.6]});
+function lit(it){ sync(it); it.layer.style.transition='opacity '+FADE_IN+'ms cubic-bezier(.4,0,.2,1)'; it.layer.style.opacity=String(LIFT); }
+function dim(it){ it.layer.style.transition='opacity '+FADE_OUT+'ms ease'; it.layer.style.opacity='0'; }
+function arm(){ clearTimeout(timer); timer=setTimeout(function(){ visible.forEach(function(el){ var it=items.get(el); if(it) lit(it); }); },DELAY); }
+function scan(){
+  items.forEach(function(it){ if(!it.el.isConnected||!candidate(it.el)&&!it.el.contains(it.layer)) remove(it); });
+  var all=document.querySelectorAll('body *');
+  for(var k=0;k<all.length;k++){ var el=all[k]; if(items.has(el)) continue; var info=candidate(el); if(info) add(el,info); }
+}
+var q=0; function later(){ clearTimeout(q); q=setTimeout(scan,250); }
+new MutationObserver(function(ms){ for(var i=0;i<ms.length;i++){ var n=ms[i]; if(n.type==='childList'){ var a=[].slice.call(n.addedNodes).concat([].slice.call(n.removedNodes)); if(a.some(function(x){ return !(x.nodeType===1&&(x.hasAttribute('data-bright-layer')||x.hasAttribute('data-lift-layer'))); })){ later(); return; } } } }).observe(document.body,{childList:true,subtree:true});
+window.addEventListener('scroll',arm,{passive:true,capture:true});
+window.addEventListener('resize',function(){ items.forEach(sync); });
+if(document.readyState==='complete') scan(); else window.addEventListener('load',scan); setTimeout(scan,1500);
+})();
