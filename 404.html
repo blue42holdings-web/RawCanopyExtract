@@ -58,7 +58,7 @@ input{font:inherit}
 }
 
 @media (max-width:768px){
-html,body{overflow-x:hidden;max-width:100%}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 img{max-width:100%}
 
 /* value-only substrings: immune to how styles get serialized */
@@ -431,9 +431,9 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="tins-sec"] article>div:first-child{aspect-ratio:auto !important}
 [data-m="tins-sec"] article>button[data-id]{margin-top:16px !important}
 [data-m="fc-swap"]{display:flex !important;flex-direction:column !important}
-[data-m="fc-swap"]>[data-screen-label="Home — the first cup"]{order:1}
+[data-m="fc-swap"]>[data-screen-label="Home — the first cup"]{order:3}
 [data-m="fc-swap"]>[data-m="lab-dup"]{order:2}
-[data-m="fc-swap"]>[data-screen-label="Home — the world it lives in"]{order:3}
+[data-m="fc-swap"]>[data-screen-label="Home — the world it lives in"]{order:1}
 [data-m="lab-orig"]{display:none !important}
 [data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
@@ -458,6 +458,13 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="extract-card"]{background-position:50% 60% !important}
 [data-m="cta3"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;gap:18px !important}
 [data-m="cta3"] > *{justify-self:center !important;white-space:normal !important;text-align:center}
+[data-m="tins-sec"],[data-m="home-wii"]{display:none !important}
+[data-m="founder-grid"]{grid-template-columns:minmax(0,1fr) !important}
+header{position:sticky !important;top:0 !important}
+header > div[style]{flex-wrap:nowrap !important;padding:8px 0 !important;gap:12px !important}
+header nav[data-m="nav"]{flex-wrap:nowrap !important;gap:18px !important}
+header [data-m="nav-more"],[data-m="hdr-tts"]{display:none !important}
+[data-m="nav-menu-btn"],[data-m="nav-panel"]{display:flex !important}
 [data-m="sbox"] [data-stamp]{height:120px;align-items:center !important;justify-content:center !important;margin:24px 0 !important}
 [data-m="sbox"] [data-stamp] p{font-size:48px !important}
 }
@@ -744,17 +751,28 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,162,74,.26)">
 <div style="max-width:1300px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap">
 <div style="position:relative;display:flex"><button data-page="home" onClick="{{ go }}" style="background:none;border:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.2)"><img src="assets/vine-gold.svg" alt="Raw Canopy Extract home" style="height:40px;width:auto;display:block"></button><sc-if value="{{ ttsHome }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" data-m="hdr-tts" style="position:absolute;top:calc(100% + 26px);left:50%;transform:translateX(-50%);z-index:61;white-space:nowrap"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if></div>
-<nav style="display:flex;flex-wrap:wrap;gap:14px;margin-left:auto;align-items:center">
+<nav data-m="nav" style="display:flex;flex-wrap:wrap;gap:14px;margin-left:auto;align-items:center">
 <button data-page="shop" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">SHOP</button>
 
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button><button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
 <button data-page="why" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
-<button data-page="how" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
-<button data-page="about" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
-<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
+<button data-page="receipts" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button><button data-page="mushrooms" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
+<button data-page="why" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
+<button data-page="how" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
+<button data-page="about" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
+<button data-page="faq" data-m="nav-more" onClick="{{ go }}" style="background:none;border:none;padding:4px 0;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
 <button onClick="{{ openDrawer }}" style="background:none;border:1px solid rgba(212,162,74,.5);padding:8px 12px;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.1em;color:#D4A24A" style-hover="background:rgba(212,162,74,.12)">CART <span style="font-family:'Oswald',sans-serif;font-size:13px">{{ cartCount }}</span></button>
+<button data-m="nav-menu-btn" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;margin:-6px -10px -6px -6px;background:none;border:none;padding:0;cursor:pointer"><span style="{{ menuBar1 }}"></span><span style="{{ menuBar2 }}"></span><span style="{{ menuBar3 }}"></span></button>
 </nav>
-</div></header>
+</div>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div data-m="nav-panel" style="display:none;max-width:1300px;margin:0 auto;flex-direction:column;padding:4px 0 14px;border-top:1px solid rgba(212,162,74,.26)">
+<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
+<button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
+<button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
+<button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
+<button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
+<button data-page="faq" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:0;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">FAQ</button>
+<sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;align-items:center;padding-top:16px"><button onClick="{{ ttsMenu }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.13em;padding:0 18px;min-height:44px;cursor:pointer">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStopMenu }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:0 14px;min-height:44px;cursor:pointer">STOP</button></sc-if></div></sc-if>
+</div></sc-if></header>
 
 <main>
 
@@ -787,7 +805,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Cordyceps for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial (PLOS One)</a></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Lion's mane for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Improvement of cognitive functions by oral intake of Hericium erinaceus (Biomedical Research)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Turkey tail for immune support:</p><a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Effects of polysaccharopeptide from Trametes versicolor and amoxicillin on the gut microbiome of healthy volunteers: a randomized clinical trial (Gut Microbes)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0">Turkey tail for immune support:</p><a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Immunomodulatory effects of Yun Zhi and Danshen capsules in health subjects, a randomized, double-blind, placebo-controlled, crossover study (International Immunopharmacology)</a></div>
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
@@ -940,7 +958,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 
 
-<section data-screen-label="Home — what it is" style="position:relative;padding:0;background:#000">
+<section data-screen-label="Home — what it is" data-m="home-wii" style="position:relative;padding:0;background:#000">
 <div style="position:absolute;top:0;left:0;right:0;height:100%;background-image:url('assets/pattern-field-bold.svg');background-size:300px auto;background-repeat:repeat;background-attachment:fixed;background-position:center top;opacity:1;pointer-events:none"></div>
 <div style="position:relative;max-width:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:stretch;gap:0">
 <p style="position:relative;z-index:2;align-self:flex-start;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:20px;color:#D4A24A;margin:0 0 0 max(28px,calc((100% - 1300px) / 2 + 28px));background:#000;padding:13px 22px 10px">WHAT IS IN THE PACKET</p>
@@ -1460,7 +1478,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,50px);line-height:1.1;color:#F1ECE1;margin:0 0 28px;max-width:22ch">Fruiting body where it counts. Mycelium where the research is.</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 56px">
 <p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0">Most mushroom products pick one form and use it for everything, usually mycelium grown on grain, because it is cheaper. We pick per species. Lion's mane and cordyceps are fruiting body: the mushroom itself, harvested whole and extracted whole, which is also what the <a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" title="Improvement of cognitive functions by oral intake of Hericium erinaceus (Biomedical Research)">human research on lion's mane</a> used.</p>
-<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0">Turkey tail is the exception. Its best-known extracts are <a href="https://www.mdpi.com/2071-1050/15/20/15080" target="_blank" rel="noopener" title="Valorization of Grape Pomace for Trametes versicolor Mycelial Mass and Polysaccharides Production (Sustainability)">made from cultured mycelium</a>, and that is what the research on turkey tail and the gut used, so that is the form we use. Whichever the form, the rule doesn't change: one species per packet, no grain passed off as mushroom, beta-glucan measured on every lot.</p>
+<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0">Turkey tail is the exception. Its best-known extracts are <a href="#" data-page="receipts" onClick="{{ go }}">made from cultured mycelium</a>, and that is what the research on turkey tail and the gut used, so that is the form we use. Whichever the form, the rule doesn't change: one species per packet, no grain passed off as mushroom, beta-glucan measured on every lot.</p>
 </div>
 </div>
 </section>
@@ -1853,7 +1871,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="padding:22px"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">CERTIFIER</p><p style="font-size:16px;color:#F1ECE1;margin:0">Organic certification pending</p></div>
 <div style="padding:22px"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:12.5px;color:#8C8574;margin:0 0 8px">PART USED</p><p style="font-size:16px;color:#F1ECE1;margin:0">Mycelium</p></div>
 </div>
-<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0;max-width:74ch">Turkey tail is the one mushroom in our line we don't use as a fruiting body, and that is on purpose. We use its mycelium, the root-like network the mushroom grows from, because that is the form the research on turkey tail is built on: its best-known extracts, including the polysaccharopeptide called PSP, are <a href="https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq" target="_blank" rel="noopener" title="Medicinal Mushrooms (PDQ): Health Professional Version (National Cancer Institute)">made from cultured mycelium</a>. The grain problem doesn't go away. Mycelium ground up with the grain it grew on is still mostly grain, so turkey tail gets the same test as the others: beta-glucan measured on every lot, and the certificate published.</p>
+<p style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0;max-width:74ch">Turkey tail is the one mushroom in our line we don't use as a fruiting body, and that is on purpose. We use its mycelium, the root-like network the mushroom grows from, because that is the form the research on turkey tail is built on: its best-known extracts, including the polysaccharopeptide called PSP, are <a href="#" data-page="receipts" onClick="{{ go }}">made from cultured mycelium</a>. The grain problem doesn't go away. Mycelium ground up with the grain it grew on is still mostly grain, so turkey tail gets the same test as the others: beta-glucan measured on every lot, and the certificate published.</p>
 </div>
 </section>
 
@@ -2049,7 +2067,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <section style="padding:36px 28px 96px;background:transparent">
 <div style="max-width:900px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(17px,1.7vw,24px);color:#D4A24A;margin:0 0 24px">FRUITING BODY OR MYCELIUM</h2>
-<p style="font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:#F1ECE1;margin:0 0 22px">Mycelium isn't the problem. Mycelium sold by the gram with the grain it grew on still in it is. So we don't pick one form for the whole line. Lion's mane and cordyceps are fruiting body. Turkey tail is mycelium, because its <a href="https://link.springer.com/article/10.1007/s00253-008-1700-2" target="_blank" rel="noopener" title="Production and structural analysis of the polysaccharide secreted by Trametes (Coriolus) versicolor ATCC 200801 (Applied Microbiology and Biotechnology)">best-studied extracts</a> are made from mycelium and that is what the <a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" title="Immunomodulatory effects of Yun Zhi and Danshen capsules in health subjects: a randomized, double-blind, placebo-controlled, crossover study (International Immunopharmacology)">research</a> tested.</p>
+<p style="font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:#F1ECE1;margin:0 0 22px">Mycelium isn't the problem. Mycelium sold by the gram with the grain it grew on still in it is. So we don't pick one form for the whole line. Lion's mane and cordyceps are fruiting body. Turkey tail is mycelium, because its <a href="https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq" target="_blank" rel="noopener" title="Medicinal Mushrooms (PDQ): Health Professional Version (National Cancer Institute)">best-studied extracts</a> are made from mycelium and that is what the <a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" title="Immunomodulatory effects of Yun Zhi and Danshen capsules in health subjects: a randomized, double-blind, placebo-controlled, crossover study (International Immunopharmacology)">research</a> tested.</p>
 <p style="font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:#F1ECE1;margin:0 0 44px">Every species file says which form is in the packet, and every certificate says what it tested at.</p>
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(17px,1.7vw,24px);color:#D4A24A;margin:0 0 24px">HOW TO READ ANYONE’S LAB REPORT</h2>
 <p style="font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:#F1ECE1;margin:0 0 22px">Most brands will supply a certificate of analysis on request rather than post one. The common dodge is a single report for a whole product line, left up indefinitely, so the document you are shown is not the document for the steel tin in your hand.</p>
@@ -2154,6 +2172,28 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <div style="width:96px;height:2px;background:#D4A24A;transform-origin:left;animation:rcxRule 900ms cubic-bezier(.2,.8,.2,1) both;margin:28px 0 0"></div>
 </div>
 </section>
+<section data-m="founder" style="position:relative;z-index:2;margin-top:-1px;background:#000;padding:56px 28px 60px">
+<div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:start" data-m="founder-grid">
+<figure data-founder-photo="true" style="margin:0;display:flex;flex-direction:column;gap:14px">
+<div role="img" aria-label="Founder photo coming soon" style="position:relative;aspect-ratio:4/5;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px">
+<img src="assets/vine-gold.svg" alt="" aria-hidden="true" style="height:44px;width:auto;opacity:.55">
+<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">FOUNDER PHOTO</p>
+<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
+</div>
+</figure>
+<div style="display:flex;flex-direction:column;gap:14px;min-width:0" data-m="founder-video">
+<div data-founder-video="true" role="img" aria-label="Founder video coming soon" style="position:relative;aspect-ratio:16/9;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px">
+<div aria-hidden="true" style="width:64px;height:64px;border:1px solid rgba(212,162,74,.6);border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid #D4A24A;margin-left:5px"></div></div>
+<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">A SHORT FILM FROM THE FOUNDER</p>
+<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;padding-top:4px">
+<p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,34px);line-height:1.15;color:#F1ECE1;margin:0">Your Name</p>
+<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0;font-size:14px">FOUNDER, RAW CANOPY EXTRACT</p>
+</div>
+</div>
+</div>
+</section>
 
 <section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
 <div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
@@ -2215,7 +2255,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 
 <div style="border-bottom:1px solid rgba(241,236,225,.16)">
 <button data-sweep="true" data-i="2" onClick="{{ toggleFaq }}" style="width:100%;background:none;border:none;padding:26px 0;display:flex;gap:20px;align-items:baseline;text-align:left;color:#F1ECE1;font-family:'Playfair Display',serif;font-size:22px" style-hover="color:#D4A24A"><span style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#D4A24A;letter-spacing:.1em">03</span><span data-tts-read="true" style="flex:1">Is this organic?</span><span style="color:#D4A24A;font-family:'Oswald',sans-serif;font-size:18px">+</span></button>
-<p data-faq-a="2" style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0 0 30px;max-width:72ch;padding-left:38px;display:{{ faqDisp2 }}">Yes. Every species is <span data-pending-cert="true" style="filter:blur(4px);user-select:none">certified organic</span>. Every lot's certificate is posted on the receipts page next to that lot's number, so you can read what was signed for the batch you have. We'll name the certifying body here once those certificates are confirmed.</p>
+<p data-faq-a="2" style="font-size:17px;line-height:1.8;color:#DDD5C4;margin:0 0 30px;max-width:72ch;padding-left:38px;display:{{ faqDisp2 }}">Our mushroom extracts come from a certified organic supplier. Our own organic certification is in progress, and we'll post the certificate here as soon as it's issued.</p>
 </div>
 
 <div style="border-bottom:1px solid rgba(241,236,225,.16)">
@@ -2821,7 +2861,7 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;subDiscount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:0,&quot;max&quot;:30,&quot;step&quot;:5,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;comingSoon&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;sealVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;transparent&quot;,&quot;on-black&quot;],&quot;default&quot;:&quot;transparent&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Identity&quot;}}">
 class Component extends DCLogic {
   state = {
-    page: 'home', cart: [], drawer: false, query: '', faq: -1,
+    page: 'home', cart: [], drawer: false, menuOpen: false, query: '', faq: -1,
     plan: { lm: 'once', cd: 'once', rs: 'once', combo: 'once', lmr: 'once', cdr: 'once', rsr: 'once', cbr: 'once' },
     qty: { lm: 1, cd: 1, rs: 1, combo: 1, lmr: 1, cdr: 1, rsr: 1, cbr: 1 },
     notified: {}, signedUp: false,
@@ -3343,7 +3383,8 @@ class Component extends DCLogic {
   go = (e) => {
     const p = e.currentTarget.dataset.page;
     if (!p) return;
-    this.setState({ page: p, drawer: false });
+    if (e.currentTarget.tagName === 'A' && e.preventDefault) e.preventDefault();
+    this.setState({ page: p, drawer: false, menuOpen: false });
     this.fadeBlack(false);
     window.scrollTo({ top: 0 });
     if (p === 's-lm') { setTimeout(() => { try { this.initAudio(); } catch (e) {} }, 300); this._imgHooked = false; [200, 800, 2000].forEach(d => setTimeout(this._place, d)); [900, 2200].forEach(d => setTimeout(() => { if (this._a && !this._a.paused && this.state.page === 's-lm') this.snapToAudio(this._a.currentTime); }, d)); }
@@ -3351,7 +3392,10 @@ class Component extends DCLogic {
 
   fmtT = (t) => { t = Math.max(0, Math.floor(t)); const hh = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), sec = String(t % 60).padStart(2, '0'); return hh ? hh + ':' + String(m).padStart(2, '0') + ':' + sec : m + ':' + sec; };
 
-  openDrawer = () => this.setState({ drawer: true });
+  openDrawer = () => this.setState({ drawer: true, menuOpen: false });
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  ttsMenu = () => { this.setState({ menuOpen: false }); this.ttsToggle(); };
+  ttsStopMenu = () => { this.setState({ menuOpen: false }); this.ttsStop(); };
   closeDrawer = () => this.setState({ drawer: false });
 
   add = (e) => {
@@ -3863,6 +3907,10 @@ class Component extends DCLogic {
       aCur: s.aCur || 0, aMax: (s.aDur && isFinite(s.aDur)) ? s.aDur : 1,
       aCurLabel: this.fmtT(s.aCur || 0), aDurLabel: (s.aDur && isFinite(s.aDur)) ? this.fmtT(s.aDur) : '--:--',
       toggleAudio: this.toggleAudio, restartAudio: this.restartAudio, seekAudio: this.seekAudio, closeAudio: this.closeAudio,
+      menuOpen: !!s.menuOpen, menuLabel: s.menuOpen ? 'Close menu' : 'Open menu', toggleMenu: this.toggleMenu, ttsMenu: this.ttsMenu, ttsStopMenu: this.ttsStopMenu,
+      menuBar1: { display: 'block', width: '22px', height: '2px', background: '#D4A24A', transition: 'transform .25s ease', transform: s.menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' },
+      menuBar2: { display: 'block', width: '22px', height: '2px', background: '#D4A24A', transition: 'opacity .2s ease', opacity: s.menuOpen ? 0 : 1 },
+      menuBar3: { display: 'block', width: '22px', height: '2px', background: '#D4A24A', transition: 'transform .25s ease', transform: s.menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' },
       go: this.go, add: this.add, inc: this.inc, dec: this.dec, remove: this.remove,
       openDrawer: this.openDrawer, closeDrawer: this.closeDrawer, drawerOpen: s.drawer,
       setSeal: this.setSeal, setAboutSeal: this.setAboutSeal, setHeroSeal: this.setHeroSeal,
