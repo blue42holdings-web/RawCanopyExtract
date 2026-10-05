@@ -459,7 +459,6 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="cta3"]{grid-template-columns:minmax(0,1fr) !important;justify-items:center !important;gap:18px !important}
 [data-m="cta3"] > *{justify-self:center !important;white-space:normal !important;text-align:center}
 [data-m="tins-sec"],[data-m="home-wii"]{display:none !important}
-[data-m="founder-grid"]{grid-template-columns:minmax(0,1fr) !important}
 header{position:sticky !important;top:0 !important}
 header > div[style]{flex-wrap:nowrap !important;padding:8px 0 !important;gap:12px !important}
 header nav[data-m="nav"]{flex-wrap:nowrap !important;gap:18px !important}
@@ -2169,28 +2168,6 @@ button:active,a[href]:active,[role="link"]:active,[data-page]:active{filter:brig
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,3.8vw,50px);line-height:1.28;color:#F1ECE1;margin:0;max-width:none;text-wrap:pretty">I left the reality TV edit bay to build something real.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 <div style="width:96px;height:2px;background:#D4A24A;transform-origin:left;animation:rcxRule 900ms cubic-bezier(.2,.8,.2,1) both;margin:28px 0 0"></div>
-</div>
-</section>
-<section data-m="founder" style="position:relative;z-index:2;margin-top:-1px;background:#000;padding:56px 28px 60px">
-<div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:start" data-m="founder-grid">
-<figure data-founder-photo="true" style="margin:0;display:flex;flex-direction:column;gap:14px">
-<div role="img" aria-label="Founder photo coming soon" style="position:relative;aspect-ratio:4/5;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px">
-<img src="assets/vine-gold.svg" alt="" aria-hidden="true" style="height:44px;width:auto;opacity:.55">
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">FOUNDER PHOTO</p>
-<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
-</div>
-</figure>
-<div style="display:flex;flex-direction:column;gap:14px;min-width:0" data-m="founder-video">
-<div data-founder-video="true" role="img" aria-label="Founder video coming soon" style="position:relative;aspect-ratio:16/9;background:#0B0A08;border:1px solid rgba(212,162,74,.26);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px">
-<div aria-hidden="true" style="width:64px;height:64px;border:1px solid rgba(212,162,74,.6);border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid #D4A24A;margin-left:5px"></div></div>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0">A SHORT FILM FROM THE FOUNDER</p>
-<p style="font-size:15px;line-height:1.5;color:#B9B2A4;margin:0">Coming soon</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px;padding-top:4px">
-<p style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,34px);line-height:1.15;color:#F1ECE1;margin:0">Your Name</p>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:#D4A24A;margin:0;font-size:14px">FOUNDER, RAW CANOPY EXTRACT</p>
-</div>
-</div>
 </div>
 </section>
 
