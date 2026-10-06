@@ -1,47 +1,13 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026
-Everything since the October 5 delivery, combined.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (b)
+Change since the earlier October 6 export.
 
 WHAT CHANGED
+1. Phone only (narrower than 768px): the gold words EVERYDAY MUSHROOM POWDERS (Home, Why This Exists paragraph) now always stay together on one line. They fit at the current size on every phone width, so the text was not shrunk. Wording, color and font unchanged. Desktop unchanged.
 
-Home page — copy
-1. "Why This Exists" heading and the gold rule under it removed. The paragraph now opens with RAW CANOPY EXTRACT in gold capitals (Bebas Neue).
-2. "functional" removed, then "extract" removed: now reads "three non-psychedelic, everyday mushroom powders: lion's mane, cordyceps and turkey tail."
-3. "everyday mushroom powders" set in gold.
-4. Research lines now read: "Cordyceps mushroom for physical performance:", "Lion's mane mushroom for mental clarity:", "Turkey tail mushroom for immune support:".
-5. "Not a coffee or tea drinker? / One 2 gram serving per packet... / Elevate your favorite cup..." block reduced to the same size as the paragraphs above it.
-6. Fixed extra line spacing between the first and second lines of the opening paragraph.
-
-Home page — packets photo (top right of Why This Exists)
-7. Replaced with the new packets-on-powder photo you supplied (packets-powder-trio-v11.png).
-8. Turkey tail packet in that photo: new symbol (three arcs over the peaked "mountain" base) placed at the packet's angle, about 9°.
-9. Shine taken off the packets' bottom edges so they read matte.
-10. Photo zoomed in about 18% and cropped lower, so the packets are larger and sit higher with less headroom above them.
-
-Tin fronts (Home tins + Shop combo front)
-11. Lion's mane, cordyceps, turkey tail tins: "ORGANIC EXTRACT" now reads "ORGANIC MUSHROOM EXTRACT".
-12. Combo tins (Home and Shop): "CERTIFIED ORGANIC" now reads "CERTIFIED ORGANIC MUSHROOMS".
-13. Symbol and mushroom name raised. Latin name enlarged to about 1.5x and raised slightly.
-14. Equal spacing between every line in the circle.
-15. Names, Latin and text lines sit at the same height on all three tins. The bottom of each symbol is level across the set.
-
-Shop page — packet fronts
-16. Lion's mane, cordyceps, turkey tail: "ORGANIC EXTRACT" now reads "ORGANIC MUSHROOM EXTRACT".
-17. Turkey tail packet front: new symbol. The "DIETARY SUPPLEMENT · 20 PACKETS · NET WT" box removed (the other two never had it).
-18. Same layout as the tins: symbol and name raised, larger Latin, equal line spacing, all three aligned to the same heights.
-
-Other
-19. 404 page brought up to date with the live site, so it carries every change above.
-20. Photo inventory produced: exports/RCX-photo-inventory-2026-10-05.csv / .txt (143 images: 61 yours, 7 to confirm, 75 to license or replace).
+This is the only place on the site where those words appear.
 
 FILES THAT CHANGED
 - site/index.html
-- site/404.html
-- site/assets/photo/packets-powder-trio-v11.png (new; replaces v8)
-- site/assets/photo/tins/rcx-front-lions-mane.jpg, -cordyceps.jpg, -turkey-tail.jpg, -combo.jpg, -combo-shop-v5.jpg
-- site/assets/photo/tins/rcx-front-lions-mane-packet.jpg, -cordyceps-packet.jpg, -turkey-tail-packet.jpg
-(support.js, cutout-lift.js and .nojekyll are unchanged but included so the folder is complete.)
-
-STILL OPEN
-- Turkey tail tin and packet still say "MYCELIUM / METHOD LINE — HELD". This is placeholder text. Send the real method line, or say to remove it.
-- About 50 licensed photos still need a source traced (no usable file metadata). See the inventory.
-- Store move: the audio player only keeps playing across pages because the site never reloads. A Shopify theme must do the same (see project notes).
+- site/404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (plain-text export, regenerated)
+(support.js, cutout-lift.js, .nojekyll and assets/ are unchanged but included so the folder is complete.)

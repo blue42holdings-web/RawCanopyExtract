@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 5, 2026 from the current site build. Export only.
+Exported October 6, 2026 from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -15,21 +15,19 @@ HOW TO READ THIS FILE
 PAGE: HOME
 ==============================================================================
 --- SECTION: Home — hero ---
-  BACKGROUND PHOTO: assets/photo/hero-stove-pour-ridge-v10.png
+  BACKGROUND PHOTO: assets/photo/hero-stove-pour-ridge-v10.jpg
 [live: w0.text] [live: w1.text] [live: w2.text]
 --- SECTION: Home — on the go ---
-  BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.png
+  BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.jpg
 [PHONE LAYOUT VERSION of a desktop block]
-    IMAGE: assets/photo/packets-powder-trio.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-HEADING: WHY THIS EISTS
-  IMAGE: assets/extract-x-gold.svg  | alt text: "X"
-Raw Canopy Extract is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
-We're launching with three non-psychedelic, everyday functional mushroom extract powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
-Cordyceps for physical performance:
+    IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
+We're launching with three non-psychedelic, everyday mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
+Cordyceps mushroom for physical performance:
 LINK: "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
-Lion's mane for mental clarity:
+Lion's mane mushroom for mental clarity:
 LINK: "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
-Turkey tail for immune support:
+Turkey tail mushroom for immune support:
 LINK: "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
 Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
@@ -37,25 +35,25 @@ Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gr
   Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
     LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
 [PHONE LAYOUT VERSION of a desktop block]
-    IMAGE: assets/photo/tent-mug-zoom.png  | alt text: "A woman holding a mug in a tent"
+    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 CHECK OUT OUR ILLUSTRATEDFICTIONAL ORIGIN STORY OFTHE LION’S MANE MUSHROOM
 The Roar of the Mountain
 BUTTON: "HEAR THE STORY ALONGSIDE ITS STORYBOARD→" -> opens the "Story: Lion's Mane" page
 BUTTON: "CLICKHERE" [label: Open the story] -> opens the "Story: Lion's Mane" page
 [DESKTOP ONLY — hidden on phones]
   [DESKTOP ONLY — hidden on phones]
-      IMAGE: assets/photo/packets-powder-trio.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-    IMAGE: assets/photo/tent-mug-zoom.png  | alt text: "A woman holding a mug in a tent"
+      IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 --- SECTION: Home — the world it lives in ---
-  IMAGE: ./7466909c-2af5-4892-8232-0e12a49f627a-mtowftku-cevj.png  | alt text: "A cup in the woods"
-  IMAGE: assets/photo/fruiting-body-mycelium-rainbow-crop.png  | alt text: "Fruiting body above, mycelium below, illustrated poster"
-  IMAGE: ./ff9c1d42-4950-4209-a52b-8724a5a9d0f2-mtowbr1j-ab5x.png  | alt text: "A kettle over the fire"
+  IMAGE: assets/photo/a-cup-in-the-woods.jpg  | alt text: "A cup in the woods"
+  IMAGE: assets/photo/fruiting-body-mycelium-rainbow-crop.jpg  | alt text: "Fruiting body above, mycelium below, illustrated poster"
+  IMAGE: assets/photo/a-kettle-over-the-fire.jpg  | alt text: "A kettle over the fire"
   IMAGE: assets/photo/mug-dawn.jpg  | alt text: "A steel mug held above a ridge at dawn"
 [PHONE LAYOUT VERSION of a desktop block]
   Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
     LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
 --- SECTION: Home — the first cup ---
-  BACKGROUND PHOTO: assets/photo/first-cup-backpacker-clean.png
+  BACKGROUND PHOTO: assets/photo/first-cup-backpacker-clean.jpg
 HEADING: Make the first cup an honest one.
 BUTTON: "SHOP" -> opens the "Shop" page
 [DESKTOP ONLY — hidden on phones]
@@ -63,22 +61,22 @@ BUTTON: "SHOP" -> opens the "Shop" page
     BACKGROUND PHOTO: assets/pattern-field-bold.svg
   HEADING: Nothing but single-serving packets of organic mushroom extract powder inside four recyclable steel tins.
   BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
-    IMAGE: assets/photo/tins/rcx-front-lions-mane.png  | alt text: "Lion's Mane steel tin front"
+    IMAGE: assets/photo/tins/rcx-front-lions-mane.jpg?v=8  | alt text: "Lion's Mane steel tin front"
   BUTTON: "BUY · $39.99"
   HEADING: Lion's Mane
   Hericium erinaceus, hot water plus alcohol extracts, fruiting body.
   20 PACKETS · 2 GRAM SERVINGS
-    IMAGE: assets/photo/tins/rcx-front-cordyceps.png  | alt text: "Cordyceps steel tin front"
+    IMAGE: assets/photo/tins/rcx-front-cordyceps.jpg?v=9  | alt text: "Cordyceps steel tin front"
   BUTTON: "BUY · $39.99"
   HEADING: Cordyceps
   Cordyceps militaris, two hot water extracts, fruiting body.
   20 PACKETS · 2 GRAM SERVINGS
-    IMAGE: assets/photo/tins/rcx-front-turkey-tail.png  | alt text: "Turkey Tail steel tin front"
+    IMAGE: assets/photo/tins/rcx-front-turkey-tail.jpg?v=9  | alt text: "Turkey Tail steel tin front"
   BUTTON: "BUY · $39.99"
   HEADING: Turkey Tail
   Trametes versicolor, mycelium extract.
   20 PACKETS · 2 GRAM SERVINGS
-    IMAGE: assets/photo/tins/rcx-front-combo.png  | alt text: "Mushroom Combo packet front"
+    IMAGE: assets/photo/tins/rcx-front-combo.jpg?v=8  | alt text: "Mushroom Combo packet front"
   BUTTON: "BUY · $59.99"
   HEADING: Mushroom Combo
   Lion's mane: hot water plus alcohol extracts. Cordyceps: two hot water extracts. Both fruiting body. Turkey tail: mycelium extract.
@@ -89,7 +87,7 @@ BUTTON: "SHOP" -> opens the "Shop" page
     BACKGROUND PHOTO: assets/pattern-field-bold.svg
   WHAT IS IN THE PACKET
   HEADING: The power of botanical sciencein every serving.
-    BACKGROUND PHOTO: assets/photo/lab-extraction-rig.png
+    BACKGROUND PHOTO: assets/photo/lab-extraction-rig.jpg
   CLICKABLE CARD: "Extracted per species" -> opens the "The Mushrooms" page
   HEADING: Extracted per species
   Lion's mane: hot water plus an alcohol extract. Cordyceps: two hot water extracts. Turkey tail: a mycelium extract. Never merged into one claim.
@@ -106,7 +104,7 @@ BUTTON: "SHOP" -> opens the "Shop" page
     IMAGE: assets/icons/fruiting-body.svg  | alt text: "The right form for each mushroom"
   HEADING: The right form
   Fruiting body for lion's mane and cordyceps, mycelium for turkey tail. Never mushroom milled in with the grain it grew on.
-    BACKGROUND PHOTO: assets/photo/measured-hiker-sunset-flip.png
+    BACKGROUND PHOTO: assets/photo/measured-hiker-sunset-flip.jpg
   CLICKABLE CARD: "Measured every time" -> opens the "Shop" page
     IMAGE: assets/icons/beta-glucans-tested.svg  | alt text: "Beta-glucans tested"
   HEADING: Measured every time
@@ -123,8 +121,8 @@ HEADING: The small packetthat packs a punch.
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
-  BACKGROUND PHOTO: assets/photo/shop-tennis-handshake-nobrand.png
-  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.png  | alt text: "Lion's Mane packet front"
+  BACKGROUND PHOTO: assets/photo/shop-tennis-handshake-nobrand.jpg
+  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=5  | alt text: "Lion's Mane packet front"
 HEADING: Lion's Mane
 20 PACKETS · 2 GRAM SERVINGS
 Hericium erinaceus, hot water plus alcohol extracts, fruiting body. Nothing else in the packet. Recyclable steel tin.
@@ -138,7 +136,7 @@ BUTTON: "−"
 [live: qtyLm]
 BUTTON: "+"
 BUTTON: "ADD TO CART"
-  IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.png  | alt text: "Cordyceps packet front"
+  IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=5  | alt text: "Cordyceps packet front"
 HEADING: Cordyceps
 20 PACKETS · 2 GRAM SERVINGS
 Cordyceps militaris, two hot water extracts, fruiting body. Grown, not gathered. Recyclable steel tin.
@@ -152,7 +150,7 @@ BUTTON: "−"
 [live: qtyCd]
 BUTTON: "+"
 BUTTON: "ADD TO CART"
-  IMAGE: assets/photo/tins/rcx-front-turkey-tail-packet.png  | alt text: "Turkey Tail packet front"
+  IMAGE: assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=5  | alt text: "Turkey Tail packet front"
 HEADING: Turkey Tail
 20 PACKETS · 2 GRAM SERVINGS
 Trametes versicolor, mycelium extract. The cloud mushroom. Recyclable steel tin.
@@ -166,7 +164,7 @@ BUTTON: "−"
 [live: qtyRs]
 BUTTON: "+"
 BUTTON: "ADD TO CART"
-  IMAGE: assets/photo/tins/rcx-front-combo-shop-v5.png  | alt text: "Mushroom Combo packet front"
+  IMAGE: assets/photo/tins/rcx-front-combo-shop-v5.jpg?v=8  | alt text: "Mushroom Combo packet front"
 HEADING: Mushroom Combo
 30 PACKETS · 2 GRAM SERVINGS
 All three in one steel tin: ten lion's mane, ten cordyceps, ten turkey tail. Thirty packets.
@@ -297,16 +295,16 @@ RECYCLABLE STEEL TIN
   FIELD: "Email address"
   BUTTON: "NOTIFY ME"
 [DESKTOP ONLY — hidden on phones]
-    IMAGE: ./f35da25a7d452e00dca21f34a0b13609227243dc-mtopujei-faey.jpg  | alt text: "Coffee pack in camp"
-    IMAGE: ./unwind_at_the_best_yoga_retreats_in_asia-mtzins5h-ix8f.jpg  | alt text: "Two figures stretching against a sunset sea"
-    IMAGE: ./buying-advice-emtb-mtb-enduro-016-mu4zklga-w2e2.jpg  | alt text: "A rider pausing on a granite ridge"
-    IMAGE: ./friends-workout-759-musqpi4v-jpph.webp  | alt text: "friends-workout-759"
+    IMAGE: assets/photo/coffee-pack-in-camp.jpg  | alt text: "Coffee pack in camp"
+    IMAGE: assets/photo/two-figures-stretching-against-a-sunset-sea.jpg  | alt text: "Two figures stretching against a sunset sea"
+    IMAGE: assets/photo/a-rider-pausing-on-a-granite-ridge.jpg  | alt text: "A rider pausing on a granite ridge"
+    IMAGE: assets/photo/friends-workout.webp  | alt text: "friends-workout-759"
 
 ==============================================================================
 PAGE: RECEIPTS
 ==============================================================================
 --- SECTION: Receipts ---
-  BACKGROUND PHOTO: assets/photo/receipts-tennis-noblog.png
+  BACKGROUND PHOTO: assets/photo/receipts-tennis-noblog.jpg
 HEADING: Check the receipts.
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
@@ -374,7 +372,7 @@ COA
 Beta-glucan is measured by a third-party laboratory on the finished extract and reported as a percentage of the powder; the milligram figure is that percentage applied to one 2 gram packet. Certificates are posted as received and are never edited. If a lot number on your steel tin is not listed here, write to us and we will send the certificate directly.
 * * * * * * * * * * * * * * * *THANK YOU FOR CHECKINGRAW CANOPY EXTRACT* * * * * * * * * * * * * * * *
   IMAGE: assets/photo/receipts-football-training-crop-v2.jpg  | alt text: "A team warming up on a training pitch under a bright sky"
-  IMAGE: ./screenshot-2026-09-17-at-4-38-23-pm-mu667nxy-qfbt.png  | alt text: none
+  IMAGE: assets/photo/receipts-row-photo.jpg  | alt text: none
   IMAGE: assets/photo/receipts-beach-camp.jpg  | alt text: "Two campers on a driftwood beach at sunset"
   IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: "Tea outside the tent"
 
@@ -382,7 +380,7 @@ Beta-glucan is measured by a third-party laboratory on the finished extract and 
 PAGE: THE MUSHROOMS
 ==============================================================================
 --- SECTION: The Mushrooms ---
-  BACKGROUND PHOTO: assets/photo/shop-river-canyon.png
+  BACKGROUND PHOTO: assets/photo/shop-river-canyon.jpg
 Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here since 609 CE.
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
@@ -443,7 +441,7 @@ Most mushroom products pick one form and use it for everything, usually mycelium
   LINK: "human research on lion's mane" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
 Turkey tail is the exception. Its best-known extracts are made from cultured mycelium, and that is what the research on turkey tail and the gut used, so that is the form we use. Whichever the form, the rule doesn't change: one species per packet, no grain passed off as mushroom, beta-glucan measured on every lot.
   LINK: "made from cultured mycelium" -> opens the "Receipts" page (on this site)
-  BACKGROUND PHOTO: assets/photo/extraction-diagram-plates.png
+  BACKGROUND PHOTO: assets/photo/extraction-diagram-plates.jpg
 HEADING: BOTANICAL SCIENCE
 Three species, each in the form that suits it. Lion's mane and cordyceps are fruiting body; turkey tail is mycelium. All three are assayed for beta-glucan by a third-party laboratory. Lion's mane is hot water plus alcohol extracts, cordyceps is two hot water extracts, turkey tail is a mycelium extract. Every figure below is taken from the certificate for the lot currently shipping.
 METHOD · PER SPECIES, SEE EACH FILE
@@ -452,10 +450,10 @@ FILL · 2 GRAMS / PACKET, GRAVIMETRIC
 CHECK THE RECEIPTS →
 BUTTON: "SEE THE CERTIFICATES" -> opens the "Receipts" page
 BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
-  IMAGE: ./20230805032805_1410005693_16559_0-mtp1wpe0-5mms.jpg  | alt text: "A diver signalling underwater alongside a shark"
-  IMAGE: ./images-mu06k4kb-4kxl.jpg  | alt text: "A surfer deep in the barrel"
-  IMAGE: ./800-mu06hufv-nq2u.jpg  | alt text: "A freediver rising over the sand flats"
-  IMAGE: ./adjustments-771x578x96x0x580x578x1771773-mtp1x9oq-hs7g.jpeg  | alt text: "A freediver surfacing at sunset"
+  IMAGE: assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg  | alt text: "A diver signalling underwater alongside a shark"
+  IMAGE: assets/photo/a-surfer-deep-in-the-barrel.jpg  | alt text: "A surfer deep in the barrel"
+  IMAGE: assets/photo/a-freediver-rising-over-the-sand-flats.jpg  | alt text: "A freediver rising over the sand flats"
+  IMAGE: assets/photo/a-freediver-surfacing-at-sunset.jpg  | alt text: "A freediver surfacing at sunset"
 
 ==============================================================================
 PAGE: LION'S MANE
@@ -494,7 +492,7 @@ PART USED
 Fruiting body
 A fruiting body is the mushroom itself. Mycelium is the root-like network it grows from, and most commercial "mushroom" products are mycelium grown on rice or oats, ground up together, so a large share of what's in the capsule is the grain it grew on. A test for beta-glucan tells you which one you're holding, because grain reads low. That's why we publish it, and why we choose the form per species: fruiting body here, mycelium for turkey tail, where that is the form its research used.
   LINK: "turkey tail" -> opens the "Turkey Tail" page (on this site)
-  BACKGROUND PHOTO: assets/photo/lm-crate.png
+  BACKGROUND PHOTO: assets/photo/lm-crate.jpg
 HEADING: HOW IT'S MADE
 For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Hot water pulls out the beta-glucans, the compounds that make up the mushroom's cell walls. A second pass with alcohol pulls out what water can't. Lion's mane is 80 percent hot water extract and 20 percent alcohol extract, from the fruiting body. One ingredient. No grain, no filler. Forest to cup.
   BACKGROUND PHOTO: assets/photo/lm-how-made-desk.jpg
@@ -551,7 +549,7 @@ BUTTON: "Turkey TailIMMUNITY · DIGESTIONOPEN THE FILE →" -> opens the "Turkey
 PAGE: CORDYCEPS
 ==============================================================================
 --- SECTION: Cordyceps ---
-  BACKGROUND PHOTO: assets/photo/cd-hero-clubs.png
+  BACKGROUND PHOTO: assets/photo/cd-hero-clubs.jpg
 CORDYCEPS MILITARIS · FRUITING BODY · TWO HOT WATER EXTRACTS
   IMAGE: assets/icons/species/rcx-sym-cordyceps-gold.svg  | alt text: none
 HEADING: Cordyceps
@@ -576,7 +574,7 @@ A fruiting body is the mushroom itself. Mycelium is the root-like network it gro
   BACKGROUND PHOTO: assets/photo/cd-studied-clubs.webp
 HEADING: HOW IT'S MADE
 For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Cordyceps gets two hot water extracts and no alcohol step at all. Hot water is what pulls the beta-glucans out of the cell walls, and a second pass takes what the first left behind: two hot water extracts, fruiting body. One ingredient. No grain, no filler. Forest to cup.
-  BACKGROUND PHOTO: assets/photo/cd-stadium-sunset.avif
+  BACKGROUND PHOTO: assets/photo/cd-stadium-sunset.webp
 HEADING: WHAT'S BEEN STUDIED
 Supports energy and endurance when the day runs long.*
   LINK: "*" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
@@ -653,7 +651,7 @@ PART USED
 Mycelium
 Turkey tail is the one mushroom in our line we don't use as a fruiting body, and that is on purpose. We use its mycelium, the root-like network the mushroom grows from, because that is the form the research on turkey tail is built on: its best-known extracts, including the polysaccharopeptide called PSP, are made from cultured mycelium. The grain problem doesn't go away. Mycelium ground up with the grain it grew on is still mostly grain, so turkey tail gets the same test as the others: beta-glucan measured on every lot, and the certificate published.
   LINK: "made from cultured mycelium" -> opens the "Receipts" page (on this site)
-  BACKGROUND PHOTO: assets/photo/tt-autumn-fans.png
+  BACKGROUND PHOTO: assets/photo/tt-autumn-fans.jpg
 HEADING: HOW IT'S MADE
 Turkey tail starts as cultured mycelium, not a harvested cap. It is extracted so that what goes into the packet is the part the research is about: the beta-glucans and the protein-bound polysaccharides, concentrated, with the woody bulk left behind. One species, one extract, 2 grams. One ingredient. No grain, no filler. Forest to cup.
   BACKGROUND PHOTO: assets/photo/tt-plane-cabin.webp
@@ -757,7 +755,7 @@ Lot [live: currentLm.lot] on the steel tin
 Certificate published on this site
 BUTTON: "OPEN THE CERTIFICATES" -> opens the "Receipts" page
 The two comparison cards describe common label practice in this category. They name no brand and quote no specific product.
-  BACKGROUND PHOTO: assets/photo/why-grow-houses-crop.png
+  BACKGROUND PHOTO: assets/photo/why-grow-houses-crop.jpg
 HEADING: FRUITING BODY OR MYCELIUM
 Mycelium isn't the problem. Mycelium sold by the gram with the grain it grew on still in it is. So we don't pick one form for the whole line. Lion's mane and cordyceps are fruiting body. Turkey tail is mycelium, because its best-studied extracts are made from mycelium and that is what the research tested.
   LINK: "best-studied extracts" -> https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq  (opens in a new tab)
@@ -776,14 +774,14 @@ One scientifically extracted mushroom. One scan away.
 BUTTON: "BUY STEEL TIN" -> opens the "Shop" page
   IMAGE: assets/photo/why-ballfield-dusk-vignette-v2.jpg  | alt text: "A lit ballfield at dusk below a ridge"
   IMAGE: assets/photo/camp-adventure.jpg  | alt text: "A camp at first light"
-  IMAGE: ./forest-meditation-peace-stockcake-185201-mtopvt0i-6w18.jpg  | alt text: "Stillness in the forest"
-  IMAGE: assets/photo/why-surfer-flip.png  | alt text: "Out on the water"
+  IMAGE: assets/photo/stillness-in-the-forest.jpg  | alt text: "Stillness in the forest"
+  IMAGE: assets/photo/why-surfer-flip.jpg  | alt text: "Out on the water"
 
 ==============================================================================
 PAGE: HOW TO USE
 ==============================================================================
 --- SECTION: How To Use ---
-  BACKGROUND PHOTO: assets/photo/how-gym-coffee-crop.png
+  BACKGROUND PHOTO: assets/photo/how-gym-coffee-crop.jpg
 HEADING: Morning coffee.Afternoon tea.The cup before bed.
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
@@ -813,16 +811,16 @@ Twenty packets to a steel tin, which is twenty days if you take one a day. The l
 HEADING: HOW TO MIX IT
 Clumps come from how the powder first meets the liquid, not from the powder itself. Add a small splash first, stir it into a paste, then fill the cup.
 Powder in the mug first, then the hot liquid onto it. Stir it to a smooth paste with a splash before you top it up and it goes in clean. A handheld frother is the fastest fix if you have one, and a little coconut milk makes it blend smoother than black coffee.
-  IMAGE: ./360_f_2108564370_ujhgzm58rbm4mcp2azyijt6-musqkbev-1noq.jpg  | alt text: "Parent and child outdoors"
+  IMAGE: assets/photo/parent-and-child-outdoors.jpg  | alt text: "Parent and child outdoors"
   IMAGE: assets/photo/how-paddle-sunset.jpg  | alt text: "Paddling out at sunset"
   IMAGE: assets/photo/kitchen-shake.jpg  | alt text: "Into a shake at the counter"
-  IMAGE: ./how-to-make-the-perfect-coffee-while-cam-mtzhk3c2-55ui.jpg  | alt text: "Coffee made at camp"
+  IMAGE: assets/photo/coffee-made-at-camp.jpg  | alt text: "Coffee made at camp"
 
 ==============================================================================
 PAGE: ABOUT
 ==============================================================================
 --- SECTION: About ---
-  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.png
+  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.jpg
 ABOUT
 HEADING: I left the reality TV edit bay to build something real.
 [ONLY SHOWN WHEN: ttsOk]
@@ -837,9 +835,9 @@ For years I bought "healthy" capsules and powder tubs with sunbursts on them. On
 So I decided to start my own brand without the bullshit. One ingredient, because there is only one that matters. That number tested by a laboratory that doesn't work for me. The results published and easily reviewed, just a barcode scan away. Nothing hidden. Everything gained.
 The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. It's your turn now.
   IMAGE: assets/photo/about-loaded-car-clean.jpg  | alt text: "A car loaded to the roof"
-  IMAGE: assets/photo/about-kayaks.jpeg  | alt text: "Two kayaks on the rack"
-  IMAGE: assets/photo/about-three-dogs-2.png  | alt text: "On the road north"
-  IMAGE: assets/photo/about-selfie.png  | alt text: "Wind on the water"
+  IMAGE: assets/photo/about-kayaks.jpg  | alt text: "Two kayaks on the rack"
+  IMAGE: assets/photo/about-three-dogs-2.jpg  | alt text: "On the road north"
+  IMAGE: assets/photo/about-selfie.jpg  | alt text: "Wind on the water"
 CONNECT TO THE SOURCE
 HEADING: Source verified ingredients.
 Not a slogan. A promise.
@@ -850,7 +848,7 @@ BUTTON: "SEE THE LOTS" -> opens the "Receipts" page
 PAGE: FAQ
 ==============================================================================
 --- SECTION: FAQ ---
-  IMAGE: assets/photo/faq/c-press-coast.png  | alt text: "Pressing coffee above the sea"
+  IMAGE: assets/photo/faq/c-press-coast.jpg  | alt text: "Pressing coffee above the sea"
   IMAGE: assets/photo/faq/e-tent-dusk.jpg  | alt text: "A lit tent on the dunes"
   IMAGE: assets/photo/faq/h-van-forest.webp  | alt text: "Camp in the trees"
 FAQ
@@ -861,7 +859,7 @@ HEADING: Ten honest answers.
     BUTTON: "STOP" [label: Stop reading]
   IMAGE: assets/photo/faq/desk-journal-coffee.jpg  | alt text: "Journals and coffee on a sunlit desk"
   IMAGE: assets/photo/faq/f-mossy-tree.jpg  | alt text: "Old growth from the forest floor"
-  IMAGE: assets/photo/faq/van-rainier-stripes26.png  | alt text: "A van parked below Mount Rainier"
+  IMAGE: assets/photo/faq/van-rainier-stripes26.jpg  | alt text: "A van parked below Mount Rainier"
 BUTTON: "01What is a fruiting body?+"
 The mushroom itself: the part that grows above the log. Mycelium is the root-like network underneath it. Most products on the shelf are mycelium grown on rice or oats and milled together with the grain, so the grain is part of what you swallow. Our lion's mane and cordyceps are fruiting body. Our turkey tail is mycelium, because that is the form the research tested, and it is extracted on its own, never milled in with grain. The beta-glucan result is how you tell the difference from the outside.
 BUTTON: "02What is beta-glucan and why do you publish it?+"
@@ -882,10 +880,10 @@ BUTTON: "09Where does it ship from?+"
 Domestic orders go by USPS Ground Advantage, typically two to five days in transit. Expedited shipping is available at checkout. We'll post the fulfillment location here once it's set.
 BUTTON: "10What's your return policy?+"
 Thirty days. Unopened steel tins come back for a full refund; opened ones come back for a refund too, once, because the only way to find out whether it belongs in your cup is to put it there. Write to hello@rawcanopyextract.com with your lot number and we'll send a label.
-  IMAGE: assets/photo/faq-camp-table-tin.png  | alt text: "Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet"
-  IMAGE: ./2196885_large_499b9b9f-mtzii0w9-vy5i.jpg  | alt text: "Morning practice on an open deck"
-  IMAGE: ./best-mushroom-coffee-4137414520-mtziiomy-2rea.png  | alt text: "A cup beside dried mushrooms and coffee beans"
-  IMAGE: ./istockphoto-1044535438-612x612-musqnayr-f0uc.jpg  | alt text: "istockphoto-1044535438-612x612"
+  IMAGE: assets/photo/faq-camp-table-tin.jpg  | alt text: "Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet"
+  IMAGE: assets/photo/morning-practice-on-an-open-deck.jpg  | alt text: "Morning practice on an open deck"
+  IMAGE: assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg  | alt text: "A cup beside dried mushrooms and coffee beans"
+  IMAGE: assets/photo/stock-outdoor-photo.jpg  | alt text: "istockphoto-1044535438-612x612"
 
 ==============================================================================
 PAGE: SHIPPING, PRIVACY & TERMS
@@ -923,7 +921,7 @@ PAGE: STORY: LION'S MANE
   BACKGROUND PHOTO: assets/pattern-honeycomb-seamless.svg
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
-  IMAGE: ./image_1788786869376_d2792629-mtr9lxe6-y6qf.png  | alt text: "Story plate: the mountain at first light"
+  IMAGE: assets/photo/story/plate-mountain-first-light.jpg  | alt text: "Story plate: the mountain at first light"
 HEADING: THE ROAR OF THE MOUNTAIN
 A FICTIONAL ORIGIN STORY
 [ONLY SHOWN WHEN: ttsOk]
@@ -1059,56 +1057,56 @@ And his face broke, and he smiled.
 He came back for me.
 And so I watched on in great relief as my sister and Raken embraced.
 For many seasons I sought out the man I admired most. A debt, owed. For his age, his beard had grown so white and so long and unruly. From where I stood, it looked like a mane upon him.
-  IMAGE: ./screenshot-2026-09-06-at-10-26-01-pm-mtqvb9bc-b5dg.png  | alt text: "Story still"
-  IMAGE: ./image_1788786869376_d2792629-mtr9lxe6-y6qf.png  | alt text: "Story still"
-  IMAGE: ./image_1788900723741_afa86cc9-mtt5bgzo-uswz.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-46-52-am-mtt4kj5x-blfo.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-06-at-11-52-47-pm-mtqvxmk5-vlf3.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-06-at-11-53-05-pm-mtqvy4j7-6tgc.png  | alt text: "Story still"
-  IMAGE: ./image_1788900953361_a7bfdf3f-mtt5izbi-yxb7.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-3-42-04-am-mtr42vo5-w01r.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-06-at-11-56-37-pm-mtqw0we7-8u8c.png  | alt text: "Story still"
-  IMAGE: ./image_1788901478796_d923cc92-mtt5tvk5-suyo.png  | alt text: "Story still"
-  IMAGE: ./image_1788831478513_896cccfc-mts03qfa-7tcc.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-01-35-am-mtqw7tgu-h89t.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-02-40-am-mtqw8nyp-8ki9.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-13-20-am-mtqwq9q7-9hae.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-17-29-am-mtqws7xq-rgy2.png  | alt text: "Story still"
-  IMAGE: ./image_1788902462543_35391bd1-mtt6cvu8-var6.png  | alt text: "Story still"
-  IMAGE: ./image_1788901623035_e355cedb-mtt5vdsi-iqye.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-06-at-10-26-14-pm-mtqxijmg-fawk.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-42-14-am-mtqxnm08-n5pk.png  | alt text: "Story still"
-  IMAGE: ./image_1788902799717_c9837c37-mtt6l3b3-z8ub.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-35-50-am-mtqxk6kc-s72y.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-51-41-am-mtqy57er-4clx.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-1-14-43-am-mtqz5ek2-t2cq.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-12-55-20-am-mtqz6819-8wum.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-1-03-50-am-mtqz6n2x-limz.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-1-04-40-am-mtqz7cj1-762y.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-1-05-45-am-mtqz7tf5-wil9.png  | alt text: "Story still"
-  IMAGE: ./0217887485331484498c7002523dcce63b4e4e02-mtr6kgor-hiic.png  | alt text: "Story still"
-  IMAGE: ./image_1788778541343_08426d4b-mtr6jvun-jwh7.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-4-28-45-am-mtt5yvvz-cuw2.png  | alt text: "Story still"
-  IMAGE: ./image_1788812945145_8cf2dfd4-mtrrd3hb-kkwv.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-07-at-4-46-56-am-mtr6ibkl-ypal.png  | alt text: "Story still"
-  IMAGE: ./image_1788781696409_a48bf833-mtr6l99b-5fkl.png  | alt text: "Story still"
-  IMAGE: ./image_1788904235276_77848f11-mtt7f1f4-dto6.png  | alt text: "Story still"
-  IMAGE: ./image_1788782372586_64a1217d-mtr6w0qv-ppsv.png  | alt text: "Story still"
-  IMAGE: ./image_1788782981902_b711d4a1-mtr7cmk0-1vna.png  | alt text: "Story still"
-  IMAGE: ./image_1788783665714_965d98c4-mttbm86p-1bzs.png  | alt text: "Story still"
-  IMAGE: ./021788749752266b825dd5258dc4c388f66926d1-mtr76wgv-4ptg.png  | alt text: "Story still"
-  IMAGE: ./02178874890041334cb6184a92ddd9ae87302c18-mtr7nt0u-9row.png  | alt text: "Story still"
-  IMAGE: ./02178874993329477dd13f2098096eba9569e39b-mtr7ploa-v9bv.png  | alt text: "Story still"
-  IMAGE: ./image_1788817561320_efcd456f-mtrsr0eb-bt7o.png  | alt text: "Story still"
-  IMAGE: ./screenshot-2026-09-08-at-4-39-52-pm-mttbb32p-ngio.png  | alt text: "Story still"
-  IMAGE: ./image_1788817637970_905739c4-mtrspppy-aawn.png  | alt text: "Story still"
-  IMAGE: ./image_1788820230332_ccc84b63-mtrte1yx-mffl.png  | alt text: "Story still"
-  IMAGE: ./image_1788831888995_bcc776ba-mts0c5uu-icm2.png  | alt text: "Story still"
-  IMAGE: ./image_1788810307332_542ab2cd-mts6ir7p-nckv.png  | alt text: "Story still"
-  IMAGE: ./image_1788810128825_b77dc270-mtrra238-39z5.png  | alt text: "Story still"
-  IMAGE: ./image_1788810455770_3c8f8469-mtrraiq6-08cv.png  | alt text: "Story still"
-  IMAGE: ./image_1788809581505_d6d243fa-mtrran5c-8tfh.png  | alt text: "Story still"
-  IMAGE: ./image_1788809274607_3caf1db3-mtrrblvv-ixn2.png  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-01.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/plate-mountain-first-light.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-02.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-03.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-04.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-05.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-06.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-07.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-08.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-09.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-10.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-11.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-12.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-13.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-14.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-15.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-16.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-17.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-18.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-19.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-20.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-21.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-22.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-23.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-24.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-25.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-26.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-27.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-28.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-29.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-30.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-31.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-32.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-33.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-34.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-35.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-36.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-37.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-38.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-39.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-40.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-41.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-42.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-43.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-44.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-45.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-46.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-47.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-48.jpg  | alt text: "Story still"
+  IMAGE: assets/photo/story/frame-49.jpg  | alt text: "Story still"
 Help bring these stories to life
 These stories are being made into animated films, one at a time. If you would like to see them sooner, you can contribute to the work. Every contribution goes toward making these films.
 LINK: "SUPPORT THE FILMS" -> #support-the-films
