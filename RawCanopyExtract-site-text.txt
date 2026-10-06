@@ -22,20 +22,20 @@ PAGE: HOME
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
-We're launching with three non-psychedelic, everyday mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
+We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
 Cordyceps mushroom for physical performance:
 LINK: "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
-Lion's mane mushroom for mental clarity:
+LION'S MANE MUSHROOM for mental clarity:
 LINK: "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
 Turkey tail mushroom for immune support:
 LINK: "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
+[PHONE LAYOUT VERSION of a desktop block]
+    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
 [DESKTOP ONLY — hidden on phones]
   Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
     LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
-[PHONE LAYOUT VERSION of a desktop block]
-    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 CHECK OUT OUR ILLUSTRATEDFICTIONAL ORIGIN STORY OFTHE LION’S MANE MUSHROOM
 The Roar of the Mountain
 BUTTON: "HEAR THE STORY ALONGSIDE ITS STORYBOARD→" -> opens the "Story: Lion's Mane" page
@@ -43,12 +43,11 @@ BUTTON: "CLICKHERE" [label: Open the story] -> opens the "Story: Lion's Mane" pa
 [DESKTOP ONLY — hidden on phones]
   [DESKTOP ONLY — hidden on phones]
       IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 --- SECTION: Home — the world it lives in ---
   IMAGE: assets/photo/a-cup-in-the-woods.jpg  | alt text: "A cup in the woods"
   IMAGE: assets/photo/fruiting-body-mycelium-rainbow-crop.jpg  | alt text: "Fruiting body above, mycelium below, illustrated poster"
   IMAGE: assets/photo/a-kettle-over-the-fire.jpg  | alt text: "A kettle over the fire"
-  IMAGE: assets/photo/mug-dawn.jpg  | alt text: "A steel mug held above a ridge at dawn"
+  IMAGE: assets/photo/receipts-row-photo.jpg  | alt text: "A mom with her coffee on the school run"
 [PHONE LAYOUT VERSION of a desktop block]
   Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
     LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
@@ -372,7 +371,7 @@ COA
 Beta-glucan is measured by a third-party laboratory on the finished extract and reported as a percentage of the powder; the milligram figure is that percentage applied to one 2 gram packet. Certificates are posted as received and are never edited. If a lot number on your steel tin is not listed here, write to us and we will send the certificate directly.
 * * * * * * * * * * * * * * * *THANK YOU FOR CHECKINGRAW CANOPY EXTRACT* * * * * * * * * * * * * * * *
   IMAGE: assets/photo/receipts-football-training-crop-v2.jpg  | alt text: "A team warming up on a training pitch under a bright sky"
-  IMAGE: assets/photo/receipts-row-photo.jpg  | alt text: none
+  IMAGE: assets/photo/mug-dawn.jpg  | alt text: "Coffee poured from a steel pot into an enamel mug by a campfire"
   IMAGE: assets/photo/receipts-beach-camp.jpg  | alt text: "Two campers on a driftwood beach at sunset"
   IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: "Tea outside the tent"
 
@@ -782,12 +781,19 @@ PAGE: HOW TO USE
 ==============================================================================
 --- SECTION: How To Use ---
   BACKGROUND PHOTO: assets/photo/how-gym-coffee-crop.jpg
+  IMAGE: assets/photo/camp-adventure.jpg  | alt text: none
+  IMAGE: assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg  | alt text: none
+  IMAGE: assets/photo/faq/c-press-coast.jpg  | alt text: none
 HEADING: Morning coffee.Afternoon tea.The cup before bed.
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/stir-mushroom-cup.webp
+  IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: none
+  IMAGE: assets/photo/coffee-pack-in-camp.jpg  | alt text: none
+  IMAGE: assets/photo/stillness-in-the-forest.jpg  | alt text: none
+  IMAGE: assets/photo/faq/e-tent-dusk.jpg  | alt text: none
 HOW TO USE
 Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.
 HEADING: Tear
@@ -828,6 +834,9 @@ HEADING: I left the reality TV edit bay to build something real.
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/shasta-lenticular.jpg
+  IMAGE: assets/photo/wet-slate.jpeg  | alt text: none
+  IMAGE: assets/photo/shasta-lenticular.jpg  | alt text: none
+  IMAGE: assets/photo/faq/f-mossy-tree.jpg  | alt text: none
 I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.
 I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.
 I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.
@@ -875,7 +884,7 @@ In a blender, yes. A smoothie disperses the powder completely. Stirred into a co
 BUTTON: "07Is the steel tin recyclable?+"
 It's steel, and steel is recycled nearly everywhere in the United States. It is also built to be kept. The forty-packet box is uncoated kraft and recyclable too; the steel tin is the smaller amount in something you keep, the box is the larger amount, plainly packed.
 BUTTON: "08Is the packet recyclable?+"
-Not yet. The foil layers that protect the extract also make the packet hard to recycle. Our tin and box recycle today, and a recyclable packet is our goal as we grow.
+Unfortunately, no. The packet is a metallized film laminate, which means layers of different materials bonded together. That barrier keeps the extract inside safe for an extended period of time. Caring for the environment is a core belief of this brand. Our long-term goal is to make the packet recyclable too, and if sales grow at a steady pace, we intend to get there.
 BUTTON: "09Where does it ship from?+"
 Domestic orders go by USPS Ground Advantage, typically two to five days in transit. Expedited shipping is available at checkout. We'll post the fulfillment location here once it's set.
 BUTTON: "10What's your return policy?+"
