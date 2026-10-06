@@ -1,28 +1,19 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (c)
-Changes since the October 6 (b) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (d)
+Changes since the October 6 (c) export.
 
-WHAT CHANGED — DESKTOP AND PHONE
-1. Home, Why This Exists: "three non-psychedelic, everyday mushroom powders" now reads "three everyday organic mushroom powders". The gold now covers all four words.
-2. Home: the line now reads "LION'S MANE MUSHROOM for mental clarity:". The line is larger and LION'S MANE MUSHROOM is in capitals, larger again.
-3. Home: the tent photo (woman holding a mug) now sits right under "THE GYM. THE VIDEO CALL. THE LONG FLIGHT." The "Not a coffee or tea drinker?…" paragraph sits under the photo. On desktop the packets photo now shows at its natural shape, centred in the right column, with black above and below.
-4. Photo swap: the steel pot pouring into the blue enamel mug (Home, four-photo row above the lab paragraph) and the carpool mom (Receipts, bottom photo row) swapped places.
-5. Lion's Mane page, top photo: the box behind the gold "HERICIUM ERINACEUS · …" line is gone. The photo is now darkened just behind the words, fading out smoothly in every direction with no visible edge.
-6. FAQ, "Is the packet recyclable?": answer replaced with your new text, word for word.
+WHAT CHANGED
+Desktop only (768px and wider)
+1. Tent photo (woman holding the cup) is back where it was before the last round: the lower half of the right column. The packets photo is back in the upper half, exactly as before.
 
-WHAT CHANGED — PHONE ONLY (narrower than 768px)
-7. "everyday organic mushroom powders" stays on one line. On very narrow screens it shrinks only as much as needed.
-8. Why This Exists paragraphs set two sizes larger (15px to 17px).
-9. About, My Story: the Mount Shasta background no longer repeats. It now uses three different images stacked down the section (black wet slate, Mount Shasta, mossy forest floor), kept dark.
-10. How To Use, top: the gym photo is no longer used on phone. Three different images take its place (camp at first light, cup with dried mushrooms and coffee, pressing coffee above the sea), kept dark.
-11. How To Use, Tear / Stir / Drink: four photos from other pages behind it (tea outside the tent, coffee pack in camp, forest stillness, lit tent on the dunes), very dark so the gold icons and text stand out.
+Phone only (narrower than 768px)
+2. Tent photo stays where it is now: right under "THE GYM. THE VIDEO CALL. THE LONG FLIGHT.", with the "Not a coffee or tea drinker?…" paragraph below it.
+
+Desktop and phone
+3. Lion's Mane research line is back to its original size, the same as the other two research lines.
+4. All three research lines: only the mushroom name is in capitals and one small step larger (1.05x). LION'S MANE MUSHROOM, CORDYCEPS MUSHROOM, TURKEY TAIL MUSHROOM all match.
 
 FILES THAT CHANGED
 - site/index.html
 - site/404.html (kept in step with index.html)
-- site/assets/photo/wet-slate.jpeg (new)
 - RawCanopyExtract-site-text.txt (plain-text export, regenerated)
-(support.js, cutout-lift.js, .nojekyll and the rest of assets/ are unchanged but included so the folder is complete.)
-
-TO CHECK
-- "organic" is now in item 1. If your CCOF certificate isn't issued yet, take it off before the site goes public.
-- Only the Lion's Mane research line was enlarged, as asked. The cordyceps and turkey tail lines are unchanged.
+(support.js, cutout-lift.js, .nojekyll and assets/ are unchanged but included so the folder is complete.)

@@ -23,11 +23,11 @@ PAGE: HOME
     IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
 We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
-Cordyceps mushroom for physical performance:
+CORDYCEPS MUSHROOM for physical performance:
 LINK: "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
 LION'S MANE MUSHROOM for mental clarity:
 LINK: "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
-Turkey tail mushroom for immune support:
+TURKEY TAIL MUSHROOM for immune support:
 LINK: "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
 [PHONE LAYOUT VERSION of a desktop block]
@@ -43,6 +43,7 @@ BUTTON: "CLICKHERE" [label: Open the story] -> opens the "Story: Lion's Mane" pa
 [DESKTOP ONLY — hidden on phones]
   [DESKTOP ONLY — hidden on phones]
       IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+    IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 --- SECTION: Home — the world it lives in ---
   IMAGE: assets/photo/a-cup-in-the-woods.jpg  | alt text: "A cup in the woods"
   IMAGE: assets/photo/fruiting-body-mycelium-rainbow-crop.jpg  | alt text: "Fruiting body above, mycelium below, illustrated poster"
