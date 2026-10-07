@@ -1,12 +1,14 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (j)
-Changes since the October 6 (i) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (k)
+Changes since the October 6 (j) export.
 
 WHAT CHANGED
 Phone only (narrower than 768px). Desktop is unchanged.
 The Mushrooms page, BOTANICAL SCIENCE section:
-1. The section now ends right after its last line ("FILL · 2 GRAMS / PACKET, GRAVIMETRIC"), with only the normal padding below it. The text sets the height. The stacked art fills that height behind the text, starting with the lion's mane panel at the top, and is cropped at the bottom where the section ends. No panels hang below the text, and there is no black border or empty space.
-2. The three small lines (METHOD · PER SPECIES, SEE EACH FILE / ASSAY · ENZYMATIC, β-1,3/1,6-GLUCAN / FILL · 2 GRAMS / PACKET, GRAVIMETRIC) are now the same gold as BOTANICAL SCIENCE, a little larger (14px, up from 12.5px) and semi-bold.
-3. The box behind the text is darker (80 percent, up from 50) so every line reads clearly. The art still shows faintly around and behind it.
+1. The dark box behind the text is removed. No box, no box edges.
+2. One even dark filter, 55 percent black, now covers the whole extraction image edge to edge, top to bottom. The bright cream areas are toned down, and the mushroom, tanks and flasks stay visible behind the text.
+3. Readability: a soft dark shadow sits directly behind the letters of the heading, the paragraph and the three small lines (no box). BOTANICAL SCIENCE and the METHOD / ASSAY / FILL lines stay gold; the paragraph stays white.
+4. The section still ends right after "FILL · 2 GRAMS / PACKET, GRAVIMETRIC", with normal padding below and no art hanging below it.
+Note: the filter is now a single even 55 percent from the start. The old fade-in on scroll no longer changes the darkness, so it can't be seen.
 
 FILES THAT CHANGED
 - index.html
