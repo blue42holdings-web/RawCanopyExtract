@@ -374,7 +374,9 @@ Beta-glucan is measured by a third-party laboratory on the finished extract and 
 * * * * * * * * * * * * * * * *THANK YOU FOR CHECKINGRAW CANOPY EXTRACT* * * * * * * * * * * * * * * *
   IMAGE: assets/photo/receipts-football-training-crop-v2.jpg  | alt text: "A team warming up on a training pitch under a bright sky"
   IMAGE: assets/photo/mug-dawn.jpg  | alt text: "Coffee poured from a steel pot into an enamel mug by a campfire"
+  IMAGE: assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg  | alt text: "A diver signalling underwater alongside a shark"
   IMAGE: assets/photo/receipts-beach-camp.jpg  | alt text: "Two campers on a driftwood beach at sunset"
+  IMAGE: assets/photo/a-freediver-rising-over-the-sand-flats.jpg  | alt text: "A freediver rising over the sand flats"
   IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: "Tea outside the tent"
 
 ==============================================================================
@@ -1288,7 +1290,7 @@ These statements have not been evaluated by the Food and Drug Administration. Th
   BUTTON: "✕" [label: Stop and close the player]
 [ONLY SHOWN WHEN: drawerOpen]
   YOUR CART
-  BUTTON: "×"
+  BUTTON: "×" [label: Close cart]
   [ONLY SHOWN WHEN: cartEmpty]
     Nothing here yet. One steel tin is twenty packets.
   [REPEATED LIST over [live: cartLines]:]

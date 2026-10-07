@@ -504,15 +504,20 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="mush-hero"]{min-height:0 !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important}
 [data-m="mush-hero"] > div:not([data-m="mush-shade"]){position:relative;z-index:1;text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
 [data-m="mush-shade"],[data-m="bf-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;transition:opacity 3s cubic-bezier(.4,0,.2,1) .4s}
-[data-m="mush-shade"]{background:rgba(0,0,0,.46)}
+[data-m="mush-shade"]{background:rgba(0,0,0,.46);transition:opacity 6s ease-in-out 1.5s !important}
 [data-m="bf-shade"]{background:rgba(0,0,0,.4)}
 [data-m="mush-shade"][data-lit],[data-m="bf-shade"][data-lit]{opacity:0}
 [data-m="bestform-sec"]{position:relative !important;background-image:linear-gradient(rgba(0,0,0,.77),rgba(0,0,0,.83)),url('assets/photo/tt-log-best-form.webp') !important}
 [data-m="bestform-sec"] > div:not([data-m="bf-shade"]){position:relative;z-index:1}
+[data-m="mush-row4"]{display:none !important}
+[data-m="lm-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.45);opacity:1;transition:opacity 6s ease-in-out 1.5s}
+[data-m="lm-shade"][data-lit]{opacity:0}
+img[data-m="rc-dk"]{display:none !important}
+img[data-m="rc-ph"]{display:block !important}
+[data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
 [data-m="faq-row"] > :nth-child(3){order:4}
 [data-m="faq-row"] > :nth-child(4){order:3}
-[data-how-bg] > img:nth-child(2){display:none !important}
-[data-how-bg] > img[data-dog]{object-position:30% center !important;-webkit-mask-image:none !important;mask-image:none !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
+[data-how-bg] > img[data-dog]{flex:0 0 auto !important;height:min(55%,1100px) !important;object-position:42% center !important;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
 [data-how-bg][data-lit] > img[data-dog]{transform:scale(1.06)}
 [data-m="mush-files"]{padding-top:48px !important}
 [data-m="badges-sec"]{display:none !important}
@@ -1509,7 +1514,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 </div>
-<section style="margin-top:-1px;background:#000;padding:0"><div data-m="row2x2" style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/mug-dawn.jpg" alt="Coffee poured from a steel pot into an enamel mug by a campfire" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
+<section style="margin-top:-1px;background:#000;padding:0"><div data-m="row2x2" style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-dk" src="assets/photo/mug-dawn.jpg" alt="Coffee poured from a steel pot into an enamel mug by a campfire" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-ph" src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:none;filter:brightness(.92)" loading="lazy"><img data-m="rc-dk" src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-ph" src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:none;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
 
 </div>
 </sc-if>
@@ -1608,13 +1613,14 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <button data-page="shop" onClick="{{ go }}" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.14em;padding:18px 42px;white-space:nowrap;justify-self:end" style-hover="background:#E9C079">SHOP STEEL TINS</button>
 </div>
 </section>
-</div><section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-surfer-deep-in-the-barrel.jpg" alt="A surfer deep in the barrel" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-surfacing-at-sunset.jpg" alt="A freediver surfacing at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
+</div><section data-m="mush-row4" style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-surfer-deep-in-the-barrel.jpg" alt="A surfer deep in the barrel" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-surfacing-at-sunset.jpg" alt="A freediver surfacing at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
 </div>
 </sc-if>
 
 <sc-if value="{{ isLM }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Lion's Mane">
 <section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
+<div data-m="lm-shade" aria-hidden="true" style="display:none"></div>
 <div style="position:absolute;left:0;right:0;bottom:0;height:18px;background:#000;pointer-events:none"></div>
 <div style="position:relative;max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
 <p data-m="lm-eyebrow" style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">HERICIUM ERINACEUS · FRUITING BODY · 80% HOT WATER · 20% ALCOHOL</p>
@@ -2206,7 +2212,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <div data-m="steps-wrap" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.84)),url('assets/photo/stir-mushroom-cup.webp');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center 72%">
-<div data-m="bgstack" data-how-bg="" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/how-freediver-line.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/how-kayak-whitewater.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:52% center;display:block;filter:brightness(0.34)" loading="lazy"></div>
+<div data-m="bgstack" data-how-bg="" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/how-freediver-line.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"><img data-lift-once="assets/cutouts/how-kayak-whitewater-cutout.webp" src="assets/photo/how-kayak-whitewater.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:52% center;display:block;filter:brightness(0.34)" loading="lazy"></div>
 <section style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
 <p style="max-width:1080px;margin:0 auto 34px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;text-align:center">HOW TO USE</p>
 <p style="max-width:62ch;margin:0 auto 44px;font-size:17px;line-height:1.7;color:#DDD5C4;text-align:center;text-wrap:pretty">Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.</p>
@@ -2907,7 +2913,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <aside style="position:relative;width:min(420px,92vw);height:100%;background:#0A0A09;border-left:1px solid rgba(212,162,74,.3);padding:30px 26px;display:flex;flex-direction:column;animation:rcxFade 260ms ease-out both;overflow-y:auto">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:17px;color:#D4A24A;margin:0">YOUR CART</p>
-<button onClick="{{ closeDrawer }}" style="background:none;border:none;color:#CFC7B6;font-size:22px;line-height:1;padding:0">×</button>
+<button onClick="{{ closeDrawer }}" aria-label="Close cart" data-m="cart-x" style="background:none;border:none;color:#CFC7B6;font-size:22px;line-height:1;padding:0">×</button>
 </div>
 <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
 <p style="font-size:16px;color:#CFC7B6;margin:0">Nothing here yet. One steel tin is twenty packets.</p>
@@ -3930,8 +3936,8 @@ class Component extends DCLogic {
 
   componentDidMount() {
     if ('IntersectionObserver' in window) {
-      const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: 0.25 });
-      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs]),[data-m="diag-stack"]:not([data-lit]):not([data-obs]),[data-m="mush-shade"]:not([data-lit]):not([data-obs]),[data-m="bf-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
+      const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height >= innerHeight * 0.25)) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25] });
+      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs]),[data-m="diag-stack"]:not([data-lit]):not([data-obs]),[data-m="mush-shade"]:not([data-lit]):not([data-obs]),[data-m="bf-shade"]:not([data-lit]):not([data-obs]),[data-m="lm-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
     }
     this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
     this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };

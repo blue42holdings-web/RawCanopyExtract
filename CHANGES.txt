@@ -1,20 +1,21 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (o)
-Changes since the October 6 (n) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (p)
+Changes since the October 6 (o) export.
 
 ALL PHONE ONLY (narrower than 768px). Desktop is unchanged.
 
-1. FAQ page, top photo grid: the rainbow-stripe van photo (bottom left) now animates on phone. The animation was only playing for whatever sat at the exact middle of the screen, and the middle fell on the line between the two photos. It now plays when the van photo scrolls to the middle of the screen.
-2. FAQ page, bottom photo grid: the two bottom photos are swapped. The couple at the gym is now bottom left and the cup with mushrooms is bottom right.
-3. How To Use page, behind steps 1 to 4:
-   - The diver is framed to the right of the numbers instead of behind them.
-   - The white water kayak photo is removed on phone.
-   - Animation: the diver starts very dark, then over about 6 seconds slowly brightens and pushes in slightly once it scrolls into view. It runs once. At its brightest it stays heavily darkened (the same level as before), so the paragraphs stay easy to read.
-4. The Mushrooms page, red cliffs section: the photo starts as dark as before, then brightens over about 3 seconds so the red cliffs and the river show clearly. The text has a soft dark shadow behind the letters so it stays easy to read.
-5. The Mushrooms page, turkey tail photo behind THE BEST FORM FOR EACH: the photo starts as dark as before, then brightens a little over about 3 seconds so the mushrooms show clearly. It doesn't get glaring.
+1. How To Use, diver photo behind steps 1 to 4: the diver is back in full view, just slightly right of centre so he isn't directly under the numbers. His whole body shows. His slow brighten and push-in is unchanged.
+2. How To Use: the white water kayak photo is back under the diver, where it was. It now has the cutout animation. When it scrolls into view, the kayaker is cut out and lifts slightly while the water behind softens. It plays once. It stays under the same dark layer as before, so the text stays easy to read.
+3. The Mushrooms page, red cliffs photo: it now holds dark for 1.5 seconds, then brightens slowly over 6 seconds.
+4. The Mushrooms page, bottom: the four photos (diver with the shark, surfer in the barrel, freediver with the ring, freediver at sunset) are removed on phone.
+5. Lion's Mane page, top photo: it starts darker, holds 1.5 seconds, then brightens over 6 seconds to where it was before.
+   NOT DONE: the lion's mane cutout lift. There is no cutout file for this photo (lm-hero-cluster.jpg) yet. Supply a transparent PNG of the mushroom cluster at the same pixel size as the photo and it can go in.
+6. Receipts page, four-photo grid: top right is now the woman underwater with the shark, and bottom left is the freediver blowing the bubble ring. The other two are unchanged.
+7. Cart: the X that closes YOUR CART is larger, with a 48 by 48 pixel tap area. Tapping outside the cart panel closes it (this already worked, and still does).
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- cutout-lift.js (lets the van photo's animation play on phone)
+- cutout-lift.js (new once-only cutout lift for the kayak photo)
+- assets/cutouts/how-kayak-whitewater-cutout.webp (new, 82 KB)
 - RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
-Everything from (m) and (n) is included too. Delete the old assets folder in the repo before you copy this one in.
+Everything from (m), (n) and (o) is included too. Delete the old assets folder in the repo before you copy this one in.
