@@ -379,7 +379,7 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 
 @container (max-aspect-ratio: 1449/1086){[data-m="pk-orig"] > img{transform:scale(1.2) !important;transform-origin:center 99.2% !important}}
 @media (max-width:767px){
-[data-m="emp-line"]{display:block;white-space:nowrap;font-size:min(1em,4.6vw)}
+[data-m="emp-line"]{display:block;white-space:nowrap;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:min(1.18em,6.2vw);color:#D4A24A}
 [data-m="wte-text"] > p{font-size:17px !important}
 [data-m="how-strip"]{display:flex !important;flex-direction:column}
 [data-m="bgstack"][data-blend]{display:flex !important;flex-direction:column}
@@ -517,7 +517,10 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="how-steps-sec"]{background-size:100% 100% !important}
 [data-m="shasta-img"]{filter:brightness(.14) !important;transition:filter 6s ease-in-out 1.5s}
 [data-m="shasta-img"][data-lit]{filter:brightness(.5) !important}
-[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,.45) 26%,rgba(0,0,0,0) 48%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important}
+[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 138% !important;background-position:0 0,50% 82% !important}
+[data-m="lm-eyebrow"]::before{display:none !important}
+[data-m="lm-hero"] [data-m="lm-eyebrow"],[data-m="lm-hero"] p[style*="italic"]{position:relative;isolation:isolate}
+[data-m="lm-hero"] [data-m="lm-eyebrow"]::after,[data-m="lm-hero"] p[style*="italic"]::after{content:"";position:absolute;left:-14px;right:-14px;top:-12px;bottom:-12px;z-index:-1;pointer-events:none;border-radius:18px;background:rgba(0,0,0,.55);filter:blur(12px)}
 [data-m="lm-hero"] > div[style*="max-width:1080px"]{text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
 [data-m="lm-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.45);opacity:1;transition:opacity 6s ease-in-out 1.5s}
 [data-m="lm-shade"][data-lit]{opacity:0}
@@ -919,9 +922,9 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> <span data-m="emp-line">organic mushroom powders<span style="color:#FFFFFF">:</span></span></span> lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)</a></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span data-m="rl-name" style="font-size:1.05em">TURKEY TAIL MUSHROOM</span> for immune support:</p><a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-cd" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-lm" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-rs" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">TURKEY TAIL MUSHROOM</span> for immune support:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-m="long-flight" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
@@ -3852,7 +3855,23 @@ class Component extends DCLogic {
     return ctx;
   };
 
-  wakeClick = () => { try { this.wakeClickCtx(); } catch (err) {} };
+  primeAudioSession = () => {
+    try { if (navigator.audioSession && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback'; } catch (err) {}
+    if (this._sessPrimed) return;
+    try {
+      if (!this._silentUrl) {
+        const sr = 8000, n = 800, b = new ArrayBuffer(44 + n * 2), v = new DataView(b), w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+        w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true); w(36, 'data'); v.setUint32(40, n * 2, true);
+        this._silentUrl = URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
+      }
+      const el = this._silentEl || (this._silentEl = new Audio(this._silentUrl));
+      el.setAttribute('playsinline', ''); el.preload = 'auto';
+      const p = el.play();
+      if (p && p.then) p.then(() => { this._sessPrimed = true; }).catch(() => {});
+    } catch (err) {}
+  };
+
+  wakeClick = () => { this.primeAudioSession(); try { this.wakeClickCtx(); } catch (err) {} };
 
   playClick = (e) => {
     let ctx;
@@ -3961,6 +3980,7 @@ class Component extends DCLogic {
     document.addEventListener('pointerdown', this.playClick, true);
     document.addEventListener('touchend', this.wakeClick, true);
     document.addEventListener('click', this.wakeClick, true);
+    document.addEventListener('keydown', this.wakeClick, true);
     document.addEventListener('visibilitychange', this.markClickStale);
     window.addEventListener('pagehide', this.markClickStale);
     window.addEventListener('pageshow', this.markClickStale);
@@ -4002,6 +4022,7 @@ class Component extends DCLogic {
     document.removeEventListener('pointerdown', this.playClick, true);
     document.removeEventListener('touchend', this.wakeClick, true);
     document.removeEventListener('click', this.wakeClick, true);
+    document.removeEventListener('keydown', this.wakeClick, true);
     document.removeEventListener('visibilitychange', this.markClickStale);
     window.removeEventListener('pagehide', this.markClickStale);
     window.removeEventListener('pageshow', this.markClickStale);

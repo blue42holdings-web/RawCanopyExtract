@@ -377,63 +377,22 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-story-hero]{margin-left:-14px !important;margin-right:-14px !important}
 }
 
-@container (max-aspect-ratio: 1449/1086){[data-m="pk-orig"] > img{transform:scale(1.2) !important;transform-origin:center 99.2% !important}}
 @media (max-width:767px){
-[data-m="emp-line"]{display:block;white-space:nowrap;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:min(1.18em,6.2vw);color:#D4A24A}
+[data-m="emp"]{white-space:nowrap;font-size:min(1em,5vw)}
 [data-m="wte-text"] > p{font-size:17px !important}
-[data-m="how-strip"]{display:flex !important;flex-direction:column}
-[data-m="bgstack"][data-blend]{display:flex !important;flex-direction:column}
-[data-blend] > img,[data-m="how-strip"] > img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%)}
-[data-blend] > img + img,[data-m="how-strip"] > img + img{margin-top:-14%}
-[data-m="how-strip"] > img:first-child{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%)}
-[data-m="rl-name"]{display:block}
-[data-m="long-flight"]{color:#FFFFFF !important}
-[data-m="tt-studied"]{position:relative !important;background-image:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,#000 78%,#000 100%),url('assets/photo/tt-plane-cabin.webp') !important}
+[data-m="how-strip"]{display:grid !important}
+[data-m="tt-studied"]{position:relative !important;background-image:url('assets/photo/tt-plane-cabin.webp') !important}
 [data-m="tt-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9));opacity:1;transition:opacity 3s ease-out}
 [data-m="tt-shade"][data-lit]{opacity:.69}
 [data-m="tt-studied"] > section{position:relative;z-index:1}
 [data-m="bgstack"]{display:grid !important;position:absolute;inset:0;z-index:0;grid-auto-rows:minmax(0,1fr);pointer-events:none;overflow:hidden}
-[data-m="shasta"],[data-m="steps-wrap"]{position:relative !important;background-image:none !important}
-[data-m="shasta"] > div:not([data-m="bgstack"]),[data-m="steps-wrap"] > section{position:relative;z-index:1}
-[data-m="steps-wrap"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
+[data-m="steps-wrap"]{position:relative !important;background-image:none !important}
+[data-m="steps-wrap"] > section{position:relative;z-index:1}
 [data-m="hero"]{aspect-ratio:auto !important;min-height:0 !important;padding:64px 0 52px !important}
 [data-m="hero"] [data-rcx-rotator]{margin-top:30px !important;font-size:22px !important}
 [data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
 [data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
 [data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
-[data-m="wte-col"]{background-color:#000 !important;background-image:none !important}
-[data-m="tent-dup"] + p,[data-m="wte-story"]{background-color:#000;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-repeat:no-repeat !important}
-[data-m="tent-dup"] + p{margin:4px -18px 0 !important;padding:14px 18px 44px !important;background-position:0 0,center top !important}
-[data-m="wte-story"]{width:auto !important;margin:0 -18px -44px !important;padding:0 18px 44px !important;background-position:0 0,center bottom !important}
-[data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
-[data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
-[data-m="why-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
-[data-m="why-cards"]{padding-bottom:22px !important}
-[data-dogs] > img[data-dog]{filter:brightness(.16) !important;transition:filter 6s ease-in-out 1.5s}
-[data-dogs][data-lit] > img[data-dog]{filter:brightness(.34) !important}
-[style] > img[data-m="swap-dk"]{display:none !important}
-[style] > img[data-m="swap-ph"]{display:block !important}
-[data-m="diag-wrap"]{background-image:none !important}
-[data-m="diag-sec"]{min-height:0 !important;align-items:flex-start !important;padding:36px 18px 36px !important;background:#000 !important}
-[data-m="diag-stack"]{display:flex !important;flex-direction:column;position:absolute;top:0;bottom:0;left:0;right:0;z-index:0;pointer-events:none;overflow:hidden}
-[data-m="diag-stack"] > img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%)}
-[data-m="diag-stack"] > img:first-child{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 90%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 90%,transparent 100%)}
-[data-m="diag-stack"] > img:nth-child(3){-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 100%)}
-[data-m="diag-stack"] > img + img{margin-top:-20vw}
-[data-m="diag-shade"]{position:absolute;inset:0;background:rgba(0,0,0,.65);opacity:1;transition:opacity 2.6s cubic-bezier(.4,0,.2,1) 1s}
-[data-m="diag-stack"][data-lit] > [data-m="diag-shade"]{opacity:1}
-[data-m="diag-box"]{padding:28px 22px !important;z-index:1;background:transparent !important;box-shadow:none !important;border:0 !important}
-[data-m="diag-box"] h2,[data-m="diag-box"] p,[data-m="diag-meta"]{text-shadow:0 0 6px rgba(0,0,0,.95),0 0 14px rgba(0,0,0,.85),0 1px 2px rgba(0,0,0,1)}
-[data-m="diag-meta"]{color:#D4A24A !important;font-size:14px !important;font-weight:600 !important;gap:12px 26px !important}
-section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76px"],section[style*="28px 72px"],section[style*="28px 64px"]{padding-bottom:40px !important}
-[data-screen-label^="Story"]{background-image:none !important;background-color:#000 !important}
-[data-m="why-prove"]{margin-top:-1px;padding-top:72px !important;background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/lab-extraction-rig.jpg') center/cover no-repeat !important}
-[data-m="why-slate"] > section:first-child{padding-top:28px !important}
-[data-m="camper-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.97);opacity:1;transition:opacity 6s ease-in-out 1.5s}
-[data-m="camper-shade"][data-lit]{opacity:.8041}
-[data-m="tent-dup"] + p{margin-top:14px !important}
-[data-m="tent-dup"]{z-index:1}
-[data-m="wte-inner"]{text-shadow:0 0 18px rgba(0,0,0,.9),0 0 6px rgba(0,0,0,.7)}
 [data-m="wte-h2"]{padding-left:0 !important;font-size:30px !important;letter-spacing:.08em !important;white-space:nowrap !important}
 [data-m="wte-h2"] img{height:30px !important}
 [data-m="wte-rule"]{width:100% !important;left:0 !important}
@@ -441,7 +400,7 @@ section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76
 [data-m="wte-text"] p,[data-m="wte-text"] [data-keep-one-line]{text-align:center !important}
 [data-m="wte-text"] div{padding-left:0 !important;align-items:center !important}
 [data-m="wte-text"] a{white-space:normal !important}
-[data-m="wte-story"]{width:auto !important;align-self:stretch !important;align-items:center !important}
+[data-m="wte-story"]{width:100% !important;align-self:stretch !important;align-items:center !important;padding-right:0 !important}
 [data-m="wte-story"] div{left:0 !important;padding-left:0 !important}
 [data-m="wte-story"] div div div{flex-wrap:wrap !important;justify-content:center !important}
 [data-m="wte-photos"]{min-height:280px !important}
@@ -491,53 +450,10 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
 [data-m="how-hero"]{background-size:auto 100% !important;background-position:70% 70% !important}
-[data-m="faq-tiles"]>img:nth-child(2){display:none !important}
-[data-m="faq-tiles"]>img:nth-child(1){grid-column:1 !important}
-[data-m="faq-tiles"]>img:nth-child(3){grid-column:2 !important}
-[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:minmax(0,1fr) !important}
-[data-m="faq-tiles2"]>img:nth-child(1){grid-column:2 !important;grid-row:1 !important}
-[data-m="faq-tiles2"]>img:nth-child(2){display:none !important}
-[data-m="faq-tiles2"]>img:nth-child(3){grid-column:1 !important;grid-row:1 !important}
-[data-m="faq-tiles2"]>img[data-m="faq-tile-ph"]{display:none !important}
-[data-m="faq-tiles2"]>img{height:200px !important;min-height:0 !important;align-self:stretch !important}
-[data-m="faq-tiles"]>img{height:auto !important;min-height:0 !important;align-self:stretch !important}
-[data-m="faq-box"]{padding-top:48px !important}
-[data-m="mush-hero"]{min-height:0 !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important}
-[data-m="mush-hero"] > div:not([data-m="mush-shade"]){position:relative;z-index:1;text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
-[data-m="mush-shade"],[data-m="bf-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;transition:opacity 3s cubic-bezier(.4,0,.2,1) .4s}
-[data-m="mush-shade"]{background:rgba(0,0,0,.46);transition:opacity 6s ease-in-out 1.5s !important}
-[data-m="bf-shade"]{background:rgba(0,0,0,.4)}
-[data-m="mush-shade"][data-lit],[data-m="bf-shade"][data-lit]{opacity:0}
-[data-m="bestform-sec"]{position:relative !important;background-image:linear-gradient(rgba(0,0,0,.77),rgba(0,0,0,.83)),url('assets/photo/tt-log-best-form.webp') !important}
-[data-m="bestform-sec"] > div:not([data-m="bf-shade"]){position:relative;z-index:1}
-[data-m="mush-row4"]{display:none !important}
-[data-fb="42"]{box-shadow:-80px 0 0 rgba(0,0,0,.42),80px 0 0 rgba(0,0,0,.42)}
-[data-fb="62"]{box-shadow:-80px 0 0 rgba(0,0,0,.62),80px 0 0 rgba(0,0,0,.62)}
-[data-fb="82"]{box-shadow:-80px 0 0 rgba(0,0,0,.82),80px 0 0 rgba(0,0,0,.82)}
-[data-m="how-steps-sec"]{background-size:100% 100% !important}
-[data-m="shasta-img"]{filter:brightness(.14) !important;transition:filter 6s ease-in-out 1.5s}
-[data-m="shasta-img"][data-lit]{filter:brightness(.5) !important}
-[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 138% !important;background-position:0 0,50% 82% !important}
-[data-m="lm-eyebrow"]::before{display:none !important}
-[data-m="lm-hero"] [data-m="lm-eyebrow"],[data-m="lm-hero"] p[style*="italic"]{position:relative;isolation:isolate}
-[data-m="lm-hero"] [data-m="lm-eyebrow"]::after,[data-m="lm-hero"] p[style*="italic"]::after{content:"";position:absolute;left:-14px;right:-14px;top:-12px;bottom:-12px;z-index:-1;pointer-events:none;border-radius:18px;background:rgba(0,0,0,.55);filter:blur(12px)}
-[data-m="lm-hero"] > div[style*="max-width:1080px"]{text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
-[data-m="lm-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.45);opacity:1;transition:opacity 6s ease-in-out 1.5s}
-[data-m="lm-shade"][data-lit]{opacity:0}
-img[data-m="rc-dk"]{display:none !important}
-img[data-m="rc-ph"]{display:block !important}
-[data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
-[data-m="faq-row"] > :nth-child(3){order:4}
-[data-m="faq-row"] > :nth-child(4){order:3}
-[data-how-bg] > img[data-dog]{flex:0 0 auto !important;align-self:flex-start !important;width:180% !important;max-width:none !important;height:auto !important;margin-left:-22% !important;object-fit:fill !important;transform-origin:62% 30% !important;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
-[data-how-bg][data-lit] > img[data-dog]{transform:scale(1.06)}
-[data-m="mush-files"]{padding-top:48px !important}
-[data-m="badges-sec"]{display:none !important}
-[data-m="soon-sec"]{padding-top:48px !important}
-[data-m="bestform-sec"]{min-height:0 !important;padding-bottom:48px !important}
-[data-m="cta3-sec"]{padding-top:48px !important}
-button[aria-label="Open the story"]{width:72px !important;height:72px !important;border-width:4px !important;padding:0 !important}
-button[aria-label="Open the story"] > span{font-size:22px !important;letter-spacing:.06em !important;line-height:1 !important}
+[data-m="faq-tiles"]>img:nth-child(2),[data-m="faq-tiles2"]>img:nth-child(2){display:none !important}
+[data-m="faq-tiles"]>img:nth-child(1),[data-m="faq-tiles2"]>img:nth-child(1){grid-column:1 !important}
+[data-m="faq-tiles"]>img:nth-child(3),[data-m="faq-tiles2"]>img:nth-child(3){grid-column:2 !important}
+[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important}
 [data-m="faq-head"]{width:100% !important}
 [data-m="sbox"]{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:22px !important;padding:60px 18px 64px !important;overflow:hidden !important}
 [data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.68)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
@@ -861,7 +777,7 @@ img:not([draggable="true"]){-webkit-user-drag:none}
 /* design text: no accidental highlight; paragraph text stays selectable */
 button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
-<script src="cutout-lift.js?v=20261006u"></script>
+<script src="cutout-lift.js?v=20261004n"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
@@ -882,11 +798,11 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </nav>
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div data-m="nav-panel" style="display:none;max-width:1300px;margin:0 auto;flex-direction:column;padding:4px 0 14px;border-top:1px solid rgba(212,162,74,.26)">
+<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
 <button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
 <button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">LION'S MANE</button>
 <button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">CORDYCEPS</button>
 <button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">TURKEY TAIL</button>
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
 <button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
 <button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
 <button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
@@ -916,19 +832,18 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="width:100%;display:grid;background-color:#000;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch" data-split="half">
 <div data-m="wte-col" style="min-width:0;display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:40px 56px 40px calc(max(28px,(100% - 1300px) / 2 + 28px) + 52px);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.92)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-repeat:no-repeat;background-position:12% 38%">
 <div data-m="wte-inner" style="min-width:0;align-self:flex-end;width:min(100%,600px)">
-<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
+<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.png" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
-<div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> <span data-m="emp-line">organic mushroom powders<span style="color:#FFFFFF">:</span></span></span> lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> organic mushroom powders</span>: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-cd" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-lm" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
-<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-rs" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">TURKEY TAIL MUSHROOM</span> for immune support:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)</a></div>
+<div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span style="font-size:1.05em">TURKEY TAIL MUSHROOM</span> for immune support:</p><a href="https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)</a></div>
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-m="long-flight" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
-</div></div>
+<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
+</div>
 <div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;align-self:stretch;text-align:center;padding-left:32px"><span style="display:block">Not a coffee or tea drinker? Hot water or a smoothie works just as well.</span><span style="display:block">One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.</span><span style="display:block">Elevate your favorite cup with the power of botanical science.</span></p>
 <p data-m="lab-orig" style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p>
@@ -942,7 +857,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p data-sweep="true" style="font-family:'Playfair Display',serif;font-size:clamp(20px,2.4vw,34px);line-height:1.15;color:#F1ECE1;margin:0">The Roar of the Mountain</p>
 <div style="display:flex;align-items:center;gap:6px">
 <button data-sweep="true" data-page="s-lm" onClick="{{ go }}" style="background:none;border:none;padding:6px 0 0;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:clamp(15px,1.5vw,22px);color:#D4A24A;cursor:pointer" style-hover="color:#E9C079">HEAR THE STORY ALONGSIDE ITS STORYBOAR<span style="letter-spacing:0">D</span><span style="letter-spacing:0;margin-left:.12em">→</span></button>
-<button data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:62px;height:62px;background:#000;border:4px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.18)"><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">CLICK</span></button>
+<button data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:62px;height:62px;background:#000;border:4px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.18)"><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">CLICK</span><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">HERE</span></button>
 </div>
 </div>
 </div>
@@ -954,7 +869,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:0;line-height:0;font-size:0">
 
 
-<div data-m="pk-orig" style="position:relative;min-height:0;min-width:0;overflow:hidden;container-type:size"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 97%;display:block;filter:brightness(.8);transform:scale(1.18);transform-origin:center 50%" loading="lazy"></div><div style="position:relative;min-height:0;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div></div>
+<div data-m="pk-orig" style="position:relative;min-height:0;min-width:0;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.png" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8);transform:scale(1.18);transform-origin:center 100%" loading="lazy"></div><div style="position:relative;min-height:0;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div></div>
 </div>
 </div>
 </section>
@@ -963,7 +878,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="fc-swap" style="display:contents">
 <section data-screen-label="Home — the world it lives in" style="background:#000">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0;background:#000;line-height:0;font-size:0">
-<img data-m="swap-ph" src="assets/photo/parent-and-child-outdoors.jpg" alt="A mom in her car, her daughter kissing her goodbye" style="width:100%;height:272px;object-fit:cover;object-position:52% 35%;display:none;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/fruiting-body-mycelium-rainbow-crop.jpg" alt="Fruiting body above, mycelium below, illustrated poster" style="width:100%;height:272px;object-fit:cover;object-position:center 50%;display:block;filter:brightness(.92)"><img src="assets/photo/a-kettle-over-the-fire.jpg" alt="A kettle over the fire" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-cup-in-the-woods.jpg" alt="A cup in the woods" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy">
+<img src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/fruiting-body-mycelium-rainbow-crop.jpg" alt="Fruiting body above, mycelium below, illustrated poster" style="width:100%;height:272px;object-fit:cover;object-position:center 50%;display:block;filter:brightness(.92)"><img src="assets/photo/a-kettle-over-the-fire.jpg" alt="A kettle over the fire" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-cup-in-the-woods.jpg" alt="A cup in the woods" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy">
 
 
 
@@ -1138,7 +1053,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.92);pointer-events:none"></div>
 <div style="position:relative;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px" data-m="1col"><article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=6" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=5" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Lion's Mane</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1162,7 +1077,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=6" alt="Cordyceps packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=5" alt="Cordyceps packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Cordyceps</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1186,7 +1101,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=6" alt="Turkey Tail packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=5" alt="Turkey Tail packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Turkey Tail</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1349,7 +1264,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section data-m="badges-sec" style="padding:20px 28px 70px;background:#000">
+<section style="padding:20px 28px 70px;background:#000">
 <div data-m="badges" style="max-width:1300px;margin:0 auto;border-top:1px solid rgba(212,162,74,.22);border-bottom:1px solid rgba(212,162,74,.22);padding:34px 0;display:flex;flex-wrap:nowrap;gap:0;align-items:flex-start;justify-content:space-between;padding-left:clamp(22px,5vw,70px);padding-right:clamp(22px,5vw,70px)">
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 10px)"><img src="assets/icons/certified-organic.svg" alt="Certified organic" style="height:clamp(30px,4.4vw,62px);width:auto;display:block" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.9);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)"><span data-pending-cert="true" style="filter:blur(4px);user-select:none">CERTIFIED ORGANIC</span></p></div>
 <div style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;font-size:clamp(9px,1.25vw,16px);padding-bottom:calc(2.7em + 10px)"><img src="assets/icons/single-ingredient.svg" alt="Single ingredient" style="height:clamp(30px,4.4vw,62px);width:auto;display:block" loading="lazy"><p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(9px,1.25vw,16px);color:rgba(212,162,74,.9);margin:0;text-align:center;line-height:1.3;position:absolute;left:50%;top:calc(100% - 2.7em);transform:translateX(-50%);width:clamp(56px,10.5vw,140px)">SINGLE INGREDIENT</p></div>
@@ -1365,7 +1280,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section data-m="soon-sec" style="padding:0 28px 110px;background:#000">
+<section style="padding:0 28px 110px;background:#000">
 <div style="max-width:1300px;margin:0 auto">
 <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#8C8574;margin:0 0 26px">COMING SOON · SIGN UP FOR UPDATES BELOW</p>
@@ -1431,7 +1346,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </sc-if>
 </div>
 </section>
-<section data-m="hide" style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.webp" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.webp" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
+<section data-m="hide" style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.jpg" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.jpg" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
 </div>
 </sc-if>
 
@@ -1526,22 +1441,21 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 </div>
-<section style="margin-top:-1px;background:#000;padding:0"><div data-m="row2x2" style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-dk" src="assets/photo/mug-dawn.jpg" alt="Coffee poured from a steel pot into an enamel mug by a campfire" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-ph" src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:none;filter:brightness(.92)" loading="lazy"><img data-m="rc-dk" src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="rc-ph" src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:none;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
+<section style="margin-top:-1px;background:#000;padding:0"><div data-m="row2x2" style="display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,540px) minmax(0,540px) minmax(28px,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/receipts-football-training-crop-v2.jpg" alt="A team warming up on a training pitch under a bright sky" style="width:100%;height:240px;object-fit:cover;object-position:center 62%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/mug-dawn.jpg" alt="Coffee poured from a steel pot into an enamel mug by a campfire" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/receipts-beach-camp.jpg" alt="Two campers on a driftwood beach at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kettle-tent-mist.jpg" alt="Tea outside the tent" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
 
 </div>
 </sc-if>
 
 <sc-if value="{{ isMushrooms }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="The Mushrooms" style="background:#040404">
-<section data-m="mush-hero" style="position:relative;margin-bottom:-1px;padding:80px 28px 36px;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,.74) 74%,#040404 99%),url('assets/photo/shop-river-canyon.jpg');background-size:cover;background-position:center 50%;min-height:42vh;display:flex;align-items:center">
-<div data-m="mush-shade" aria-hidden="true" style="display:none"></div>
+<section style="position:relative;margin-bottom:-1px;padding:80px 28px 36px;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,.74) 74%,#040404 99%),url('assets/photo/shop-river-canyon.jpg');background-size:cover;background-position:center 50%;min-height:42vh;display:flex;align-items:center">
 <div style="position:relative;max-width:1200px;margin:0 auto">
 <p style="font-size:clamp(26px,2.8vw,40px);line-height:1.5;color:#F1ECE1;margin:24px 0 0;max-width:40ch;text-wrap:pretty">Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here since 609 CE.</p>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
 </section>
 
-<section data-m="mush-files" style="position:relative;padding:64px 28px 56px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),linear-gradient(rgba(40,90,170,.45),rgba(40,90,170,.45)),url('assets/photo/mushrooms-baseball-lights.webp');background-blend-mode:normal,soft-light,color,normal;background-size:cover;background-position:center 30%">
+<section style="position:relative;padding:64px 28px 56px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),linear-gradient(rgba(40,90,170,.45),rgba(40,90,170,.45)),url('assets/photo/mushrooms-baseball-lights.webp');background-blend-mode:normal,soft-light,color,normal;background-size:cover;background-position:center 30%">
 <div style="position:relative;max-width:1200px;margin:0 auto">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:14px;color:#D4A24A;margin:0 0 26px">THE MUSHROOMS · SPECIES FILES</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px">
@@ -1591,8 +1505,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <p style="position:relative;z-index:3;max-width:1200px;margin:30px auto 0;font-size:15px;line-height:1.7;color:#E4DCCC">Nature did the work. We just measured it. Figures are lot-specific and change with every batch; the certificates are published in full on the receipts page.</p>
 </section>
-<section data-m="bestform-sec" style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.9)),url('assets/photo/tt-log-best-form.webp');background-size:cover;background-position:center">
-<div data-m="bf-shade" aria-hidden="true" style="display:none"></div>
+<section style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.9)),url('assets/photo/tt-log-best-form.webp');background-size:cover;background-position:center">
 <div style="max-width:1200px;margin:0 auto">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;margin:0 0 16px">THE BEST FORM FOR EACH</p>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,50px);line-height:1.1;color:#F1ECE1;margin:0 0 28px;max-width:22ch">Fruiting body where it counts. Mycelium where the research is.</h2>
@@ -1605,34 +1518,32 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="height:1px;background:#000;margin-top:-1px;position:relative;z-index:3"></div>
 <div style="height:1px;background:#000;margin-bottom:-1px;position:relative;z-index:3"></div>
 
-<div data-m="diag-wrap" style="margin-bottom:-1px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.84)),url('assets/photo/extraction-diagram-plates.jpg');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center">
-<section data-m="diag-sec" style="position:relative;min-height:40vh;display:flex;align-items:center;padding:84px 28px 30px;background:transparent">
-<div data-m="diag-stack" aria-hidden="true" style="display:none"><img src="assets/photo/diagram-panel-1.jpg" alt="" style="width:100%;height:auto;display:block" loading="lazy"><img src="assets/photo/diagram-panel-2.jpg" alt="" style="width:100%;height:auto;display:block" loading="lazy"><img src="assets/photo/diagram-panel-3.jpg" alt="" style="width:100%;height:auto;display:block" loading="lazy"><div data-m="diag-shade"></div></div>
-<div data-m="diag-box" style="position:relative;max-width:1080px;margin:0 auto;background:rgba(0,0,0,.82);padding:44px 38px">
+<div style="margin-bottom:-1px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.84)),url('assets/photo/extraction-diagram-plates.jpg');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center">
+<section style="position:relative;min-height:40vh;display:flex;align-items:center;padding:84px 28px 30px;background:transparent">
+<div style="position:relative;max-width:1080px;margin:0 auto;background:rgba(0,0,0,.82);padding:44px 38px">
 <h2 style="font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.14em;font-size:clamp(36px,4.8vw,62px);line-height:1.06;color:#D4A24A;margin:0 0 26px;max-width:26ch">BOTANICAL SCIENCE</h2>
 <p style="font-size:clamp(20px,1.9vw,27px);line-height:1.7;color:#E4DCCC;margin:0;max-width:52ch">Three species, each in the form that suits it. Lion's mane and cordyceps are fruiting body; turkey tail is mycelium. All three are assayed for beta-glucan by a third-party laboratory. Lion's mane is hot water plus alcohol extracts, cordyceps is two hot water extracts, turkey tail is a mycelium extract. Every figure below is taken from the certificate for the lot currently shipping.</p>
-<div data-m="diag-meta" style="display:flex;flex-wrap:wrap;gap:26px;margin:30px 0 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#8C8574">
+<div style="display:flex;flex-wrap:wrap;gap:26px;margin:30px 0 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#8C8574">
 <span>METHOD · PER SPECIES, SEE EACH FILE</span><span>ASSAY · ENZYMATIC, β-1,3/1,6-GLUCAN</span><span>FILL · 2 GRAMS / PACKET, GRAVIMETRIC</span>
 </div>
 
 </div>
 </section>
 
-<section data-m="cta3-sec" style="padding:0 28px 76px;background:transparent">
+<section style="padding:0 28px 76px;background:transparent">
 <div data-m="cta3" style="max-width:1200px;margin:0 auto;padding-top:0;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;justify-items:center">
 <p style="display:flex;align-items:center;gap:14px;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:24px;color:#D4A24A;margin:0;justify-self:start">CHECK THE RECEIPTS <span style="font-family:'Playfair Display',serif;font-size:28px;line-height:1">→</span></p>
 <button data-page="receipts" onClick="{{ go }}" style="background:none;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:13px 22px" style-hover="background:rgba(212,162,74,.12)">SEE THE CERTIFICATES</button>
 <button data-page="shop" onClick="{{ go }}" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.14em;padding:18px 42px;white-space:nowrap;justify-self:end" style-hover="background:#E9C079">SHOP STEEL TINS</button>
 </div>
 </section>
-</div><section data-m="mush-row4" style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-surfer-deep-in-the-barrel.jpg" alt="A surfer deep in the barrel" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-surfacing-at-sunset.jpg" alt="A freediver surfacing at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
+</div><section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg" alt="A diver signalling underwater alongside a shark" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-surfer-deep-in-the-barrel.jpg" alt="A surfer deep in the barrel" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-rising-over-the-sand-flats.jpg" alt="A freediver rising over the sand flats" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-freediver-surfacing-at-sunset.jpg" alt="A freediver surfacing at sunset" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div></section>
 </div>
 </sc-if>
 
 <sc-if value="{{ isLM }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Lion's Mane">
-<section data-m="lm-hero" style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
-<div data-m="lm-shade" aria-hidden="true" style="display:none"></div>
+<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
 <div style="position:absolute;left:0;right:0;bottom:0;height:18px;background:#000;pointer-events:none"></div>
 <div style="position:relative;max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
 <p data-m="lm-eyebrow" style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">HERICIUM ERINACEUS · FRUITING BODY · 80% HOT WATER · 20% ALCOHOL</p>
@@ -1677,6 +1588,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="flat" style="display:flex;flex-direction:column;align-items:center;gap:26px;padding-top:64px;transform:translateX(-52px)">
 <button data-mo="1" data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:84px;height:84px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">CLICK</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 <div data-mo="3" style="min-width:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">CHECK OUT OUR ILLUSTRATED</p>
@@ -1876,6 +1788,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <button data-mo="3" data-cta-small="true" data-page="s-cd" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
@@ -1960,7 +1873,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isRS }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Turkey Tail">
-<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.6) 100%),url('assets/photo/tt-hero-habitat.webp');background-size:cover;background-position:center 50%">
+<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.6) 100%),url('assets/photo/tt-hero-habitat.jpg');background-size:cover;background-position:center 50%">
 <div style="max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">TRAMETES VERSICOLOR · MYCELIUM EXTRACT</p>
 <div style="display:flex;align-items:center;gap:clamp(16px,2vw,26px)"><img data-species-symbol="true" src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt="" aria-hidden="true" style="height:72px;width:auto;display:block;flex:0 0 auto"><h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(42px,6vw,78px);line-height:1.03;color:#F1ECE1;margin:0">Turkey Tail</h1></div>
@@ -2006,7 +1919,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="tt-studied" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/tt-plane-cabin.webp');background-size:cover;background-repeat:no-repeat;background-position:center 42%">
 <div data-m="tt-shade" aria-hidden="true" style="display:none"></div>
 <section data-m="studied-sec" style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:34px 28px">
-<div data-fb="62" style="max-width:1080px;margin:0 auto;background:rgba(0,0,0,.62);padding:34px 30px">
+<div style="max-width:1080px;margin:0 auto;background:rgba(0,0,0,.62);padding:34px 30px">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0 0 14px;max-width:74ch">Supports a healthy immune system.<a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener" title="Effects of polysaccharopeptide from Trametes versicolor and amoxicillin on the gut microbiome of healthy volunteers: a randomized clinical trial (Gut Microbes)">*</a><br>Supports healthy digestion and a balanced gut microbiome.<a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener" title="Effects of polysaccharopeptide from Trametes versicolor and amoxicillin on the gut microbiome of healthy volunteers: a randomized clinical trial (Gut Microbes)">*</a></p>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0;max-width:74ch">Most of the published work looks at turkey tail's polysaccharides: how immune cells respond to its mycelium in the lab, and how its polysaccharopeptide feeds the bacteria that live in the gut, both <a href="https://pubmed.ncbi.nlm.nih.gov/23435630/" target="_blank" rel="noopener">in culture</a> and in a <a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener">trial in healthy volunteers</a>. The research is early and mostly small. We link what exists so you can read it yourself rather than take our word for it.<br><br>* These statements have not been evaluated by the Food and Drug Administration.</p>
@@ -2037,6 +1950,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <button data-mo="3" data-cta-small="true" data-page="s-rs" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
@@ -2139,7 +2053,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:18px;line-height:1.85;color:#DDD5C4;margin:0">Ours has one ingredient. The mushroom. Nothing to carry it, nothing to fill it out, nothing to make the label longer. Which means there's nowhere for a bad number to hide, so we publish the number.</p>
 </div>
 </section>
-<section data-m="why-cards" style="padding:0 28px 96px;background:#000">
+<section style="padding:0 28px 96px;background:#000">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px" data-m="1col">
 
 <article style="border:1px solid rgba(241,236,225,.16);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-desk-coffee.jpg');background-size:100% 100%,cover;background-position:center 60%,center 35%;background-repeat:no-repeat,no-repeat;background-origin:border-box;background-clip:border-box;padding:32px;display:flex;flex-direction:column">
@@ -2167,7 +2081,6 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </article>
 
 <article style="border:1px solid rgba(212,162,74,.55);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-pour.webp');background-size:cover;background-position:center;padding:32px;display:flex;flex-direction:column;background-repeat:no-repeat;background-origin:border-box;background-clip:border-box">
-<p style="font-size:13px;line-height:1.5;color:#EDE7DA;margin:0 0 16px;font-style:italic">Example receipt. Real lot results will be posted here when the first batch is tested.</p>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:14px;color:#D4A24A;margin:0 0 22px">OURS</p>
 <p style="font-family:'Playfair Display',serif;font-size:25px;color:#F1ECE1;margin:0 0 20px">Lion's mane fruiting body extract · 2 grams</p>
 <div style="display:grid;gap:12px;font-size:15px;color:#DDD5C4;line-height:1.6">
@@ -2184,7 +2097,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="max-width:1200px;margin:22px auto 0;font-size:13px;color:#EDE7DA">The two comparison cards describe common label practice in this category. They name no brand and quote no specific product.</p>
 </section>
 
-<div data-m="why-slate" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),url('assets/photo/why-grow-houses-crop.webp');background-size:100% 100%,112% auto;background-repeat:no-repeat;background-position:center 60%,42% 56%">
+<div style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),url('assets/photo/why-grow-houses-crop.jpg');background-size:100% 100%,112% auto;background-repeat:no-repeat;background-position:center 60%,42% 56%">
 <section style="padding:36px 28px 96px;background:transparent">
 <div style="max-width:900px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(17px,1.7vw,24px);color:#D4A24A;margin:0 0 24px">FRUITING BODY OR MYCELIUM</h2>
@@ -2200,7 +2113,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:#F1ECE1;margin:0">Scan ours and you get your lot. The number stamped on your steel tin, the date it was packed, what the beta-glucans actually came back at, and the lab report itself. Not a badge saying we passed. The page saying what we got.</p>
 </div>
 </section>
-<section data-m="why-prove" style="padding:0 28px 96px;background:transparent">
+<section style="padding:0 28px 96px;background:transparent">
 <div style="max-width:1080px;margin:0 auto;text-align:center">
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,5vw,58px);color:#F1ECE1;margin:0 0 18px">They promise. We prove.</h2>
 <p style="font-size:18px;line-height:1.75;color:#DDD5C4;margin:0 auto 38px;max-width:52ch">One scientifically extracted mushroom. One scan away.</p>
@@ -2222,10 +2135,11 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
 </div>
 </section>
+<div data-m="how-strip" style="display:none;grid-template-columns:minmax(0,1fr);gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/how-beach-dusk.jpeg" alt="Dusk on a wide coastal beach" style="width:100%;height:280px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-paddleboard-river.webp" alt="Paddleboarding a clear mountain river" style="width:100%;height:280px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-mossy-tree.jpg" alt="A moss-covered tree in old forest" style="width:100%;height:280px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div>
 
 <div data-m="steps-wrap" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.84)),url('assets/photo/stir-mushroom-cup.webp');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center 72%">
-<div data-m="bgstack" data-how-bg="" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/how-freediver-line.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"><img data-lift-once="assets/cutouts/how-kayak-whitewater-cutout.webp" src="assets/photo/how-kayak-whitewater.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:52% center;display:block;filter:brightness(0.34)" loading="lazy"></div>
-<section data-m="how-steps-sec" style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
+<div data-m="bgstack" aria-hidden="true" style="display:none"><img src="assets/photo/kettle-tent-mist.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.2)" loading="lazy"><img src="assets/photo/coffee-pack-in-camp.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.2)" loading="lazy"><img src="assets/photo/stillness-in-the-forest.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.2)" loading="lazy"><img src="assets/photo/faq/e-tent-dusk.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.2)" loading="lazy"></div>
+<section style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
 <p style="max-width:1080px;margin:0 auto 34px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;text-align:center">HOW TO USE</p>
 <p style="max-width:62ch;margin:0 auto 44px;font-size:17px;line-height:1.7;color:#DDD5C4;text-align:center;text-wrap:pretty">Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.</p>
 <div data-m="steps" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;text-align:center">
@@ -2252,7 +2166,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 <section style="display:flex;align-items:flex-start;padding:0 28px;background:transparent">
-<div data-fb="42" style="width:100%;max-width:1300px;margin:0 auto;background:rgba(0,0,0,.42);padding:0 44px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px 78px">
+<div style="width:100%;max-width:1300px;margin:0 auto;background:rgba(0,0,0,.42);padding:0 44px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px 78px">
 <div style="display:flex;flex-direction:column">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(16px,1.7vw,24px);color:#D4A24A;margin:0px 0 14px">WHAT TO PUT IT IN</h2>
 <p style="font-size:clamp(15px,1.3vw,19px);line-height:1.7;color:#F1ECE1;margin:0 0 16px">Coffee, tea, water or smoothies. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Anything warm you already drink, and a blender handles the cold.</p>
@@ -2274,7 +2188,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 </div>
 <section style="padding:0;background:#000">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img data-m="swap-ph" src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;object-position:35% 30%;display:none;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/parent-and-child-outdoors.jpg" alt="Parent and child outdoors" width="645" height="360" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-paddle-sunset.jpg" alt="Paddling out at sunset" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kitchen-shake.jpg" alt="Into a shake at the counter" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/coffee-made-at-camp.jpg" alt="Coffee made at camp" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/parent-and-child-outdoors.jpg" alt="Parent and child outdoors" width="645" height="360" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-paddle-sunset.jpg" alt="Paddling out at sunset" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kitchen-shake.jpg" alt="Into a shake at the counter" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/coffee-made-at-camp.jpg" alt="Coffee made at camp" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div>
 </section>
 
 </div>
@@ -2296,9 +2210,8 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
-<div data-m="bgstack" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/about-dogs-1.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 30%;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-2.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:62% center;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-3.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 35%;display:block;filter:brightness(0.34)" loading="lazy"><img data-m="shasta-img" src="assets/photo/shasta-lenticular.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"></div>
 
-<div data-fb="42" style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
+<div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.</p>
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.</p>
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.</p>
@@ -2307,7 +2220,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0">The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of&nbsp;something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. <span style="color:#D4A24A">It's your turn now.</span></p>
 </div>
 </section>
-<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.webp" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.webp" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="about-selfie" src="assets/photo/about-selfie.webp" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
+<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.jpg" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.jpg" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="about-selfie" src="assets/photo/about-selfie.jpg" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
 <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px;position:relative;left:90px" data-m="about-seal">
 <div ref="{{ setAboutSeal }}" style="width:min(360px,77vw);aspect-ratio:1/1"></div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:16px;color:#D4A24A;margin:34px 0 14px">CONNECT TO THE SOURCE</p>
@@ -2327,7 +2240,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="faq-tiles" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
 <img src="assets/photo/faq/c-press-coast.jpg" alt="Pressing coffee above the sea" style="{{ tileStyle0 }}" draggable="true" data-i="0" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="{{ tileStyle1 }}" draggable="true" data-i="1" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
-<img data-lift-probe="" src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
+<img src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 </div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.6);pointer-events:none"></div>
 <div data-m="faq-head" style="position:relative;width:min(660px,56%);margin:0 auto;pointer-events:auto">
@@ -2340,11 +2253,10 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="faq-tiles2" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
 <img src="assets/photo/faq/desk-journal-coffee.jpg" alt="Journals and coffee on a sunlit desk" style="{{ tileStyle3 }}" draggable="true" data-i="3" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/f-mossy-tree.jpg" alt="Old growth from the forest floor" style="{{ tileStyle4 }}" draggable="true" data-i="4" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
-<img data-lift-probe="" src="assets/photo/faq/van-rainier-stripes26.jpg" alt="A van parked below Mount Rainier" style="{{ tileStyle5 }}" draggable="true" data-i="5" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
-<img data-m="faq-tile-ph" src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="display:none;width:100%;height:100%;object-fit:cover" loading="lazy">
+<img src="assets/photo/faq/van-rainier-stripes26.jpg" alt="A van parked below Mount Rainier" style="{{ tileStyle5 }}" draggable="true" data-i="5" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 </div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.6);pointer-events:none"></div>
-<div data-m="faq-box" style="position:relative;width:min(716px,60%);max-width:100%;margin:0 auto;background:#000;padding:110px 22px 110px;pointer-events:auto">
+<div style="position:relative;width:min(716px,60%);max-width:100%;margin:0 auto;background:#000;padding:110px 22px 110px;pointer-events:auto">
 
 <div style="border-bottom:1px solid rgba(241,236,225,.16)">
 <button data-sweep="true" data-i="0" onClick="{{ toggleFaq }}" style="width:100%;background:none;border:none;padding:26px 0;display:flex;gap:20px;align-items:baseline;text-align:left;color:#F1ECE1;font-family:'Playfair Display',serif;font-size:22px" style-hover="color:#D4A24A"><span style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#D4A24A;letter-spacing:.1em">01</span><span data-tts-read="true" style="flex:1">What is a fruiting body?</span><span style="color:#D4A24A;font-family:'Oswald',sans-serif;font-size:18px">+</span></button>
@@ -2398,7 +2310,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 </div>
 </section>
-<section style="margin-top:-1px;background:#000;padding:0"><div data-m="faq-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/faq-camp-table-tin.jpg" alt="Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet" style="width:100%;height:240px;object-fit:cover;object-position:center 60%;display:block;filter:brightness(.92)" loading="lazy"><div style="overflow:hidden;line-height:0"><img src="assets/photo/faq-yoga-bamboo-circle.jpg" alt="Morning yoga in a bamboo circle above the jungle" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.8);transform:scale(1.16);transform-origin:50% 55%" loading="lazy"></div><img src="assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg" alt="A cup beside dried mushrooms and coffee beans" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/stock-outdoor-photo.jpg" alt="istockphoto-1044535438-612x612" width="612" height="408" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 510px; aspect-ratio: 612 / 408"></div></section>
+<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/faq-camp-table-tin.jpg" alt="Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet" style="width:100%;height:240px;object-fit:cover;object-position:center 60%;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/morning-practice-on-an-open-deck.jpg" alt="Morning practice on an open deck" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg" alt="A cup beside dried mushrooms and coffee beans" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/stock-outdoor-photo.jpg" alt="istockphoto-1044535438-612x612" width="612" height="408" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 510px; aspect-ratio: 612 / 408"></div></section>
 </div>
 </sc-if>
 
@@ -2486,7 +2398,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <section data-m="story-body" style="padding:72px 28px 96px;background:transparent">
 
 <div data-story-grid="true" style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:stretch">
-<div data-fb="82" data-story-text="true" style="font-size:18px;line-height:1.95;color:#E4DCCC;background:rgba(0,0,0,.82);padding:44px 38px">
+<div data-story-text="true" style="font-size:18px;line-height:1.95;color:#E4DCCC;background:rgba(0,0,0,.82);padding:44px 38px">
 <div data-story-chapter="true" style="text-align:center;padding:8px 0;margin:0 0 40px;order:10"><p style="font-family:'Playfair Display',serif;font-size:40px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#D4A24A;margin:0">Chapter One</p></div>
 <p style="margin:0 0 22px">In Orrin, there is a mountain that wears a cloud, and the cloud does not leave it. Three flat disks stacked one upon another, turning slow above the snow, winding down through the air like a screw. Wind comes off the high country and pours straight through it and out the far side and is gone, and still the cloud does not move, and it is not made of the same air twice in all a day.</p>
 <p style="margin:0 0 22px">The old people said the mountain was breathing. The young ones said it was only weather. No one who lives beneath it has ever thought this strange. There has never been a morning without it.</p>
@@ -2679,7 +2591,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 26px">
 <button onClick="{{ restartAudio }}" aria-label="Restart from the beginning" title="Restart" style="flex:0 0 auto;width:44px;height:44px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#D4A24A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"></path><path d="M3.5 3.5v4.8h4.8"></path></svg></button>
 <button onClick="{{ toggleAudio }}" aria-label="{{ aAria }}" style="flex:0 0 auto;width:54px;height:54px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D4A24A;font-family:system-ui,sans-serif;font-size:18px;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)">{{ aIcon }}</button>
@@ -2750,7 +2662,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2029</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
@@ -2817,7 +2729,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2030</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
@@ -2925,7 +2837,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <aside style="position:relative;width:min(420px,92vw);height:100%;background:#0A0A09;border-left:1px solid rgba(212,162,74,.3);padding:30px 26px;display:flex;flex-direction:column;animation:rcxFade 260ms ease-out both;overflow-y:auto">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:17px;color:#D4A24A;margin:0">YOUR CART</p>
-<button onClick="{{ closeDrawer }}" aria-label="Close cart" data-m="cart-x" style="background:none;border:none;color:#CFC7B6;font-size:22px;line-height:1;padding:0">×</button>
+<button onClick="{{ closeDrawer }}" style="background:none;border:none;color:#CFC7B6;font-size:22px;line-height:1;padding:0">×</button>
 </div>
 <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
 <p style="font-size:16px;color:#CFC7B6;margin:0">Nothing here yet. One steel tin is twenty packets.</p>
@@ -3212,13 +3124,28 @@ class Component extends DCLogic {
 
   lots = {
     lm: [
-      { lot: 'LM 0000 A (example)', date: 'Example', pct: '22.6', mg: '452', region: 'Wuyi Mountains', cert: 'PENDING' }
+      { lot: 'LM-2609-A', date: '4 Sep 2026', pct: '22.6', mg: '339', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2607-B', date: '18 Jul 2026', pct: '21.9', mg: '329', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2606-A', date: '2 Jun 2026', pct: '23.4', mg: '351', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2604-C', date: '11 Apr 2026', pct: '22.1', mg: '332', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2602-A', date: '27 Feb 2026', pct: '20.8', mg: '312', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'LM-2512-B', date: '9 Dec 2025', pct: '22.4', mg: '336', region: 'Wuyi Mountains', cert: 'PENDING' }
     ],
     cd: [
-      { lot: 'CD 0000 A (example)', date: 'Example', pct: '19.4', mg: '388', region: 'Wuyi Mountains', cert: 'PENDING' }
+      { lot: 'CD-2608-A', date: '22 Aug 2026', pct: '19.4', mg: '291', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2606-B', date: '14 Jun 2026', pct: '18.8', mg: '282', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2605-A', date: '3 May 2026', pct: '19.9', mg: '299', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2603-A', date: '19 Mar 2026', pct: '18.2', mg: '273', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2601-C', date: '28 Jan 2026', pct: '19.1', mg: '287', region: 'Wuyi Mountains', cert: 'PENDING' },
+      { lot: 'CD-2511-A', date: '15 Nov 2025', pct: '18.6', mg: '279', region: 'Wuyi Mountains', cert: 'PENDING' }
     ],
     rs: [
-      { lot: 'TT 0000 A (example)', date: 'Example', pct: '24.2', mg: '484', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' }
+      { lot: 'TT-2609-B', date: '1 Sep 2026', pct: '24.2', mg: '363', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
+      { lot: 'TT-2607-A', date: '9 Jul 2026', pct: '25.1', mg: '377', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
+      { lot: 'TT-2605-B', date: '21 May 2026', pct: '23.7', mg: '356', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
+      { lot: 'TT-2604-A', date: '6 Apr 2026', pct: '24.6', mg: '369', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
+      { lot: 'TT-2602-B', date: '12 Feb 2026', pct: '23.3', mg: '350', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' },
+      { lot: 'TT-2512-A', date: '18 Dec 2025', pct: '24.9', mg: '374', region: 'Origin to be confirmed', country: '—', cert: 'PENDING' }
     ]
   };
 
@@ -3855,23 +3782,7 @@ class Component extends DCLogic {
     return ctx;
   };
 
-  primeAudioSession = () => {
-    try { if (navigator.audioSession && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback'; } catch (err) {}
-    if (this._sessPrimed) return;
-    try {
-      if (!this._silentUrl) {
-        const sr = 8000, n = 800, b = new ArrayBuffer(44 + n * 2), v = new DataView(b), w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
-        w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true); w(36, 'data'); v.setUint32(40, n * 2, true);
-        this._silentUrl = URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
-      }
-      const el = this._silentEl || (this._silentEl = new Audio(this._silentUrl));
-      el.setAttribute('playsinline', ''); el.preload = 'auto';
-      const p = el.play();
-      if (p && p.then) p.then(() => { this._sessPrimed = true; }).catch(() => {});
-    } catch (err) {}
-  };
-
-  wakeClick = () => { this.primeAudioSession(); try { this.wakeClickCtx(); } catch (err) {} };
+  wakeClick = () => { try { this.wakeClickCtx(); } catch (err) {} };
 
   playClick = (e) => {
     let ctx;
@@ -3964,8 +3875,8 @@ class Component extends DCLogic {
 
   componentDidMount() {
     if ('IntersectionObserver' in window) {
-      const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height >= innerHeight * 0.25)) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25] });
-      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs]),[data-m="diag-stack"]:not([data-lit]):not([data-obs]),[data-m="mush-shade"]:not([data-lit]):not([data-obs]),[data-m="bf-shade"]:not([data-lit]):not([data-obs]),[data-m="lm-shade"]:not([data-lit]):not([data-obs]),[data-m="shasta-img"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
+      const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: 0.25 });
+      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
     }
     this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
     this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };
@@ -3980,7 +3891,6 @@ class Component extends DCLogic {
     document.addEventListener('pointerdown', this.playClick, true);
     document.addEventListener('touchend', this.wakeClick, true);
     document.addEventListener('click', this.wakeClick, true);
-    document.addEventListener('keydown', this.wakeClick, true);
     document.addEventListener('visibilitychange', this.markClickStale);
     window.addEventListener('pagehide', this.markClickStale);
     window.addEventListener('pageshow', this.markClickStale);
@@ -4022,7 +3932,6 @@ class Component extends DCLogic {
     document.removeEventListener('pointerdown', this.playClick, true);
     document.removeEventListener('touchend', this.wakeClick, true);
     document.removeEventListener('click', this.wakeClick, true);
-    document.removeEventListener('keydown', this.wakeClick, true);
     document.removeEventListener('visibilitychange', this.markClickStale);
     window.removeEventListener('pagehide', this.markClickStale);
     window.removeEventListener('pageshow', this.markClickStale);
