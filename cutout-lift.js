@@ -106,7 +106,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 /* phone only: camper photo behind the opening paragraph gets its own slow, once-only cutout (holds 1.5s, then 6s together with the shade) */
 (function(){
   if(RM||!matchMedia('(max-width:767px)').matches||!window.IntersectionObserver) return;
-  var CK='why-rv-desk-nopen.jpg', CSRC='assets/cutouts/why-rv-desk-nopen-cutout.png', CT=function(p){ return p+' 6000ms ease-in-out 1500ms'; };
+  var CK='why-rv-desk-nopen.jpg', CSRC='assets/cutouts/why-rv-desk-nopen-cutout-v2.png', CT=function(p){ return p+' 6000ms ease-in-out 1500ms'; };
   function arm(el){
     if(el.__camperLift) return; el.__camperLift=true;
     var cs=getComputedStyle(el), r=el.getBoundingClientRect();
