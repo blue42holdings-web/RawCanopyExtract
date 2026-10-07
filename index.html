@@ -399,9 +399,12 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
 [data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
 [data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
-[data-m="wte-col"]{background-image:none !important;background-color:#000 !important}
-[data-m="wte-story"]{margin:0 -18px -44px !important;padding:44px 18px 44px !important;width:auto !important;align-self:stretch !important;box-sizing:border-box;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('assets/photo/roar-wet-slate.jpg');background-size:100% 100%,cover;background-position:0 0,center;background-repeat:no-repeat}
-[data-m="wte-inner"]{margin:-48px -18px 0 !important;padding:48px 18px 40px !important;width:auto !important;box-sizing:border-box;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:100% 100%,cover;background-position:0 0,14% center;background-repeat:no-repeat}
+[data-m="wte-col"]{background-color:#000 !important;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center bottom !important;background-repeat:no-repeat !important}
+[data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-54px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
+[data-m="camper-zone"] > :not([data-m="camper-shade"]){position:relative;z-index:1}
+[data-m="camper-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.8);opacity:1;transition:opacity 3s ease-out}
+[data-m="camper-shade"][data-lit]{opacity:.65}
+[data-m="tent-dup"]{z-index:1}
 [data-m="wte-inner"]{text-shadow:0 0 18px rgba(0,0,0,.9),0 0 6px rgba(0,0,0,.7)}
 [data-m="wte-h2"]{padding-left:0 !important;font-size:30px !important;letter-spacing:.08em !important;white-space:nowrap !important}
 [data-m="wte-h2"] img{height:30px !important}
@@ -844,6 +847,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="wte-inner" style="min-width:0;align-self:flex-end;width:min(100%,600px)">
 <div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.png" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
+<div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> organic mushroom powders</span>: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
@@ -853,7 +857,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px;margin:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-m="long-flight" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
-</div>
+</div></div>
 <div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;align-self:stretch;text-align:center;padding-left:32px"><span style="display:block">Not a coffee or tea drinker? Hot water or a smoothie works just as well.</span><span style="display:block">One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.</span><span style="display:block">Elevate your favorite cup with the power of botanical science.</span></p>
 <p data-m="lab-orig" style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p>
@@ -3886,7 +3890,7 @@ class Component extends DCLogic {
   componentDidMount() {
     if ('IntersectionObserver' in window) {
       const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: 0.25 });
-      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
+      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
     }
     this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
     this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };
