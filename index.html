@@ -399,7 +399,10 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
 [data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
 [data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
-[data-m="wte-col"]{background-color:#000 !important;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center bottom !important;background-repeat:no-repeat !important}
+[data-m="wte-col"]{background-color:#000 !important;background-image:none !important}
+[data-m="tent-dup"] + p,[data-m="wte-story"]{background-color:#000;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-repeat:no-repeat !important}
+[data-m="tent-dup"] + p{margin:4px -18px 0 !important;padding:14px 18px 44px !important;background-position:0 0,center top !important}
+[data-m="wte-story"]{width:auto !important;margin:0 -18px -44px !important;padding:0 18px 44px !important;background-position:0 0,center bottom !important}
 [data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
 [data-m="why-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
@@ -436,7 +439,7 @@ section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76
 [data-m="wte-text"] p,[data-m="wte-text"] [data-keep-one-line]{text-align:center !important}
 [data-m="wte-text"] div{padding-left:0 !important;align-items:center !important}
 [data-m="wte-text"] a{white-space:normal !important}
-[data-m="wte-story"]{width:100% !important;align-self:stretch !important;align-items:center !important;padding-right:0 !important}
+[data-m="wte-story"]{width:auto !important;align-self:stretch !important;align-items:center !important}
 [data-m="wte-story"] div{left:0 !important;padding-left:0 !important}
 [data-m="wte-story"] div div div{flex-wrap:wrap !important;justify-content:center !important}
 [data-m="wte-photos"]{min-height:280px !important}
@@ -494,6 +497,8 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-tiles2"]>img:nth-child(2){grid-column:1 !important;grid-row:1 !important}
 [data-m="faq-tiles2"]>img:nth-child(3){grid-column:1 !important;grid-row:2 !important}
 [data-m="faq-tiles2"]>img[data-m="faq-tile-ph"]{display:block !important;grid-column:2 !important;grid-row:2 !important}
+[data-m="faq-tiles2"]>img{height:200px !important;min-height:0 !important;align-self:stretch !important}
+[data-m="faq-tiles"]>img{height:auto !important;min-height:0 !important;align-self:stretch !important}
 [data-m="faq-box"]{padding-top:48px !important}
 [data-m="bestform-sec"]{min-height:0 !important;padding-bottom:48px !important}
 [data-m="cta3-sec"]{padding-top:48px !important}
@@ -877,7 +882,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="width:100%;display:grid;background-color:#000;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch" data-split="half">
 <div data-m="wte-col" style="min-width:0;display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:40px 56px 40px calc(max(28px,(100% - 1300px) / 2 + 28px) + 52px);background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.92)),url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-repeat:no-repeat;background-position:12% 38%">
 <div data-m="wte-inner" style="min-width:0;align-self:flex-end;width:min(100%,600px)">
-<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.png" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
+<div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
@@ -915,7 +920,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:0;line-height:0;font-size:0">
 
 
-<div data-m="pk-orig" style="position:relative;min-height:0;min-width:0;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.png" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8);transform:scale(1.18);transform-origin:center 100%" loading="lazy"></div><div style="position:relative;min-height:0;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div></div>
+<div data-m="pk-orig" style="position:relative;min-height:0;min-width:0;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 97%;display:block;filter:brightness(.8);transform:scale(1.18);transform-origin:center 50%" loading="lazy"></div><div style="position:relative;min-height:0;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div></div>
 </div>
 </div>
 </section>
@@ -1099,7 +1104,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.92);pointer-events:none"></div>
 <div style="position:relative;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px" data-m="1col"><article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=5" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=6" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Lion's Mane</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1123,7 +1128,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=5" alt="Cordyceps packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=6" alt="Cordyceps packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Cordyceps</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1147,7 +1152,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=5" alt="Turkey Tail packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=6" alt="Turkey Tail packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Turkey Tail</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
@@ -1392,7 +1397,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </sc-if>
 </div>
 </section>
-<section data-m="hide" style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.jpg" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.jpg" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
+<section data-m="hide" style="background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/coffee-pack-in-camp.webp" alt="Coffee pack in camp" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/two-figures-stretching-against-a-sunset-sea.jpg" alt="Two figures stretching against a sunset sea" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-rider-pausing-on-a-granite-ridge.webp" alt="A rider pausing on a granite ridge" style="object-position:center 72%;width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.72) contrast(1.12) saturate(1.08)" loading="lazy"><img src="assets/photo/friends-workout.webp" alt="friends-workout-759" width="759" height="422" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 552px; aspect-ratio: 759 / 422"></div></section>
 </div>
 </sc-if>
 
@@ -1918,7 +1923,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isRS }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Turkey Tail">
-<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.6) 100%),url('assets/photo/tt-hero-habitat.jpg');background-size:cover;background-position:center 50%">
+<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.6) 100%),url('assets/photo/tt-hero-habitat.webp');background-size:cover;background-position:center 50%">
 <div style="max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:14px;color:#D4A24A;margin:0 0 14px">TRAMETES VERSICOLOR · MYCELIUM EXTRACT</p>
 <div style="display:flex;align-items:center;gap:clamp(16px,2vw,26px)"><img data-species-symbol="true" src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt="" aria-hidden="true" style="height:72px;width:auto;display:block;flex:0 0 auto"><h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(42px,6vw,78px);line-height:1.03;color:#F1ECE1;margin:0">Turkey Tail</h1></div>
@@ -2142,7 +2147,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="max-width:1200px;margin:22px auto 0;font-size:13px;color:#EDE7DA">The two comparison cards describe common label practice in this category. They name no brand and quote no specific product.</p>
 </section>
 
-<div data-m="why-slate" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),url('assets/photo/why-grow-houses-crop.jpg');background-size:100% 100%,112% auto;background-repeat:no-repeat;background-position:center 60%,42% 56%">
+<div data-m="why-slate" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.86)),url('assets/photo/why-grow-houses-crop.webp');background-size:100% 100%,112% auto;background-repeat:no-repeat;background-position:center 60%,42% 56%">
 <section style="padding:36px 28px 96px;background:transparent">
 <div style="max-width:900px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(17px,1.7vw,24px);color:#D4A24A;margin:0 0 24px">FRUITING BODY OR MYCELIUM</h2>
@@ -2182,7 +2187,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <div data-m="steps-wrap" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.84)),url('assets/photo/stir-mushroom-cup.webp');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center 72%">
-<div data-m="bgstack" data-blend="" aria-hidden="true" style="display:none"><img src="assets/photo/how-forest-palms.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/how-forest-trail.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"></div>
+<div data-m="bgstack" data-blend="" aria-hidden="true" style="display:none"><img src="assets/photo/how-forest-palms.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/how-forest-trail.webp" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"></div>
 <section style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
 <p style="max-width:1080px;margin:0 auto 34px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;text-align:center">HOW TO USE</p>
 <p style="max-width:62ch;margin:0 auto 44px;font-size:17px;line-height:1.7;color:#DDD5C4;text-align:center;text-wrap:pretty">Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.</p>
@@ -2265,7 +2270,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0">The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of&nbsp;something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. <span style="color:#D4A24A">It's your turn now.</span></p>
 </div>
 </section>
-<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.jpg" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.jpg" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="about-selfie" src="assets/photo/about-selfie.jpg" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
+<section style="margin-top:-1px;background:#000;padding:0"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/about-loaded-car-clean.webp" alt="A car loaded to the roof" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-kayaks.jpg" alt="Two kayaks on the rack" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/about-three-dogs-2.webp" alt="On the road north" style="width:100%;height:326px;object-fit:cover;object-position:center 0%;display:block;filter:brightness(.92)" loading="lazy"><img data-m="about-selfie" src="assets/photo/about-selfie.webp" alt="Wind on the water" style="width:100%;height:326px;object-fit:cover;display:block;filter:brightness(.34)" loading="lazy"></div></section><section style="padding:0 28px 110px;background:#000">
 <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:70px;position:relative;left:90px" data-m="about-seal">
 <div ref="{{ setAboutSeal }}" style="width:min(360px,77vw);aspect-ratio:1/1"></div>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:16px;color:#D4A24A;margin:34px 0 14px">CONNECT TO THE SOURCE</p>

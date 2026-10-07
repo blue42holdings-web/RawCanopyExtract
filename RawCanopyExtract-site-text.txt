@@ -20,7 +20,7 @@ PAGE: HOME
 --- SECTION: Home — on the go ---
   BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.jpg
 [PHONE LAYOUT VERSION of a desktop block]
-    IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+    IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
 We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
 CORDYCEPS MUSHROOM for physical performance:
@@ -42,7 +42,7 @@ BUTTON: "HEAR THE STORY ALONGSIDE ITS STORYBOARD→" -> opens the "Story: Lion's
 BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Lion's Mane" page
 [DESKTOP ONLY — hidden on phones]
   [DESKTOP ONLY — hidden on phones]
-      IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
+      IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
     IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 --- SECTION: Home — the world it lives in ---
   IMAGE: assets/photo/parent-and-child-outdoors.jpg  | alt text: "A mom in her car, her daughter kissing her goodbye"
@@ -123,7 +123,7 @@ HEADING: The small packetthat packs a punch.
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/shop-tennis-handshake-nobrand.jpg
-  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=5  | alt text: "Lion's Mane packet front"
+  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=6  | alt text: "Lion's Mane packet front"
 HEADING: Lion's Mane
 20 PACKETS · 2 GRAM SERVINGS
 Hericium erinaceus, hot water plus alcohol extracts, fruiting body. Nothing else in the packet. Recyclable steel tin.
@@ -137,7 +137,7 @@ BUTTON: "−"
 [live: qtyLm]
 BUTTON: "+"
 BUTTON: "ADD TO CART"
-  IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=5  | alt text: "Cordyceps packet front"
+  IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=6  | alt text: "Cordyceps packet front"
 HEADING: Cordyceps
 20 PACKETS · 2 GRAM SERVINGS
 Cordyceps militaris, two hot water extracts, fruiting body. Grown, not gathered. Recyclable steel tin.
@@ -151,7 +151,7 @@ BUTTON: "−"
 [live: qtyCd]
 BUTTON: "+"
 BUTTON: "ADD TO CART"
-  IMAGE: assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=5  | alt text: "Turkey Tail packet front"
+  IMAGE: assets/photo/tins/rcx-front-turkey-tail-packet.jpg?v=6  | alt text: "Turkey Tail packet front"
 HEADING: Turkey Tail
 20 PACKETS · 2 GRAM SERVINGS
 Trametes versicolor, mycelium extract. The cloud mushroom. Recyclable steel tin.
@@ -296,9 +296,9 @@ RECYCLABLE STEEL TIN
   FIELD: "Email address"
   BUTTON: "NOTIFY ME"
 [DESKTOP ONLY — hidden on phones]
-    IMAGE: assets/photo/coffee-pack-in-camp.jpg  | alt text: "Coffee pack in camp"
+    IMAGE: assets/photo/coffee-pack-in-camp.webp  | alt text: "Coffee pack in camp"
     IMAGE: assets/photo/two-figures-stretching-against-a-sunset-sea.jpg  | alt text: "Two figures stretching against a sunset sea"
-    IMAGE: assets/photo/a-rider-pausing-on-a-granite-ridge.jpg  | alt text: "A rider pausing on a granite ridge"
+    IMAGE: assets/photo/a-rider-pausing-on-a-granite-ridge.webp  | alt text: "A rider pausing on a granite ridge"
     IMAGE: assets/photo/friends-workout.webp  | alt text: "friends-workout-759"
 
 ==============================================================================
@@ -633,7 +633,7 @@ BUTTON: "Turkey TailIMMUNITY · DIGESTIONOPEN THE FILE →" -> opens the "Turkey
 PAGE: TURKEY TAIL
 ==============================================================================
 --- SECTION: Turkey Tail ---
-  BACKGROUND PHOTO: assets/photo/tt-hero-habitat.jpg
+  BACKGROUND PHOTO: assets/photo/tt-hero-habitat.webp
 TRAMETES VERSICOLOR · MYCELIUM EXTRACT
   IMAGE: assets/icons/species/rcx-sym-turkey-tail-gold.svg  | alt text: none
 HEADING: Turkey Tail
@@ -760,7 +760,7 @@ Lot [live: currentLm.lot] on the steel tin
 Certificate published on this site
 BUTTON: "OPEN THE CERTIFICATES" -> opens the "Receipts" page
 The two comparison cards describe common label practice in this category. They name no brand and quote no specific product.
-  BACKGROUND PHOTO: assets/photo/why-grow-houses-crop.jpg
+  BACKGROUND PHOTO: assets/photo/why-grow-houses-crop.webp
 HEADING: FRUITING BODY OR MYCELIUM
 Mycelium isn't the problem. Mycelium sold by the gram with the grain it grew on still in it is. So we don't pick one form for the whole line. Lion's mane and cordyceps are fruiting body. Turkey tail is mycelium, because its best-studied extracts are made from mycelium and that is what the research tested.
   LINK: "best-studied extracts" -> https://www.cancer.gov/about-cancer/treatment/cam/hp/mushrooms-pdq  (opens in a new tab)
@@ -794,7 +794,7 @@ HEADING: Morning coffee.Afternoon tea.The cup before bed.
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/stir-mushroom-cup.webp
   IMAGE: assets/photo/how-forest-palms.jpg  | alt text: none
-  IMAGE: assets/photo/how-forest-trail.jpg  | alt text: none
+  IMAGE: assets/photo/how-forest-trail.webp  | alt text: none
 HOW TO USE
 Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.
 HEADING: Tear
@@ -846,10 +846,10 @@ I've been very concerned about what's put in our food for years. They get you si
 For years I bought "healthy" capsules and powder tubs with sunbursts on them. One look at the ingredient list told you everything. Artificial flavoring made in a lab, and a dozen things you'd never willingly put in your body.
 So I decided to start my own brand without the bullshit. One ingredient, because there is only one that matters. That number tested by a laboratory that doesn't work for me. The results published and easily reviewed, just a barcode scan away. Nothing hidden. Everything gained.
 The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. It's your turn now.
-  IMAGE: assets/photo/about-loaded-car-clean.jpg  | alt text: "A car loaded to the roof"
+  IMAGE: assets/photo/about-loaded-car-clean.webp  | alt text: "A car loaded to the roof"
   IMAGE: assets/photo/about-kayaks.jpg  | alt text: "Two kayaks on the rack"
-  IMAGE: assets/photo/about-three-dogs-2.jpg  | alt text: "On the road north"
-  IMAGE: assets/photo/about-selfie.jpg  | alt text: "Wind on the water"
+  IMAGE: assets/photo/about-three-dogs-2.webp  | alt text: "On the road north"
+  IMAGE: assets/photo/about-selfie.webp  | alt text: "Wind on the water"
 CONNECT TO THE SOURCE
 HEADING: Source verified ingredients.
 Not a slogan. A promise.

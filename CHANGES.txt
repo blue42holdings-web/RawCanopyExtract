@@ -1,30 +1,43 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (l)
-Changes since the October 6 (k) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (m)
+Changes since the October 6 (l) export.
 
 WHAT CHANGED
-Phone only (narrower than 768px) unless marked PHONE AND DESKTOP.
+1. PHONE ONLY. Home page, "on the go" column: the wet slate (roar-wet-slate.jpg) is removed from the background of the whole column. It now sits only behind the "Not a coffee or tea drinker?" paragraph and The Roar of the Mountain section below it, at the same 88 percent dark as before. Nothing sits behind the packets photo; while it loads, that space is plain black. Spacing is unchanged.
 
-1. The Mushrooms page, around BOTANICAL SCIENCE:
-   - Above: the gap between "...beta-glucan measured on every lot." and the start of the BOTANICAL SCIENCE art is now 48 pixels (the oversized empty space is removed).
-   - Below: there is now a 48 pixel black gap between the art and CHECK THE RECEIPTS.
-   The 48 pixel rule for photo/black section gaps is recorded in the project notes for all future work.
+2. PHONE AND DESKTOP. Photos re-saved web-sized (no wider than 1600 pixels). They look the same on screen and load much faster:
+   packets-powder-trio-v11.png  3.6 MB -> packets-powder-trio-v11.webp  258 KB (the PNG was fully opaque, with no transparent pixels)
+   how-beach-dusk.jpeg          4.0 MB -> 279 KB (not currently shown on any page)
+   how-forest-trail.jpg         3.4 MB -> how-forest-trail.webp  285 KB
+   tt-hero-habitat.jpg          2.3 MB -> tt-hero-habitat.webp  278 KB
+   receipts-beach-camp.jpg      1.6 MB -> 269 KB (same name)
+   why-ballfield-dusk-vignette-v2.jpg  1.1 MB -> 78 KB (same name)
+   a-rider-pausing-on-a-granite-ridge.jpg  833 KB -> .webp  261 KB
+   about-selfie.jpg             711 KB -> .webp  326 KB
+   about-loaded-car-clean.jpg   659 KB -> .webp  275 KB
+   lm-how-made-desk.jpg         656 KB -> 161 KB (same name)
+   receipts-football-training-crop-v2.jpg  654 KB -> 67 KB (same name)
+   story-lm-poster-flip.jpg     636 KB -> 62 KB (same name)
+   tins/rcx-front-cordyceps-packet.jpg    610 KB -> 287 KB (same name)
+   tins/rcx-front-lions-mane-packet.jpg   617 KB -> 291 KB (same name)
+   tins/rcx-front-turkey-tail-packet.jpg  629 KB -> 287 KB (same name)
+   shop-river-canyon.jpg        572 KB -> 267 KB (same name)
+   coffee-pack-in-camp.jpg      562 KB -> .webp  206 KB
+   about-three-dogs-2.jpg       509 KB -> .webp  276 KB
+   why-grow-houses-crop.jpg     500 KB -> .webp  269 KB
+   cutouts/why-rv-desk-nopen-cutout-v2.png  569 KB -> .webp  56 KB (transparency kept)
+   Where the format changed to .webp, the site's links were updated to match. Full-size originals are kept outside the site for safekeeping.
 
-2. The round CLICK HERE buttons (Home, and the Lion's Mane, Cordyceps and Turkey Tail pages):
-   - PHONE AND DESKTOP: the button now says CLICK.
-   - PHONE ONLY: CLICK is larger (22px) and the gold circle is smaller (72px across), leaving a small, even margin around the word. Same gold ring, same black center.
+3. Deleted from the export: packets-powder-trio-v8.png, v9.png and v10.png (about 10 MB, unused). packets-powder-trio-v11.png is also gone, replaced by the .webp above.
 
-3. Phone menu: RECEIPTS now comes right after TURKEY TAIL. Order: THE MUSHROOMS, LION'S MANE, CORDYCEPS, TURKEY TAIL, RECEIPTS, WHY ONE INGREDIENT, HOW TO USE, ABOUT, FAQ, READ ALOUD. RECEIPTS keeps the main-item size and style (not indented).
-
-4. FAQ page:
-   - The empty black space between the photos and question 01 is now 48 pixels.
-   - The photo grid under the heading was only showing two photos on phone. It now shows four in a 2 x 2 grid with no gaps: top left, the mossy tree; top right, the journals and coffee on the desk (it used to sit beside the van photo); lower left, the woman in the van under the rainbow stripes (van-rainier-stripes26), now low enough on screen for its animation to play; lower right, the lit tent on the dunes (already used on the FAQ page on desktop). All animations unchanged.
-
-NOT YET DONE
-- The site-wide 48 pixel check on every page has not been done page by page yet. Items 1 and 4 cover the spots you named.
-- The speed note from earlier (packets photo, image shrinking, deleting v8-v10, scroll loading) is still open.
+4. DESKTOP. Home page, the packets photo beside "on the go": the three packets are now centred top to bottom in the frame, with the same space above as below. Same photo, same zoom.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (plain-text export, regenerated: CLICK HERE now reads CLICK, menu order updated)
-(All other files are unchanged and are included so the upload is complete.)
+- cutout-lift.js (points at the renamed photos and cutout)
+- every photo listed in item 2 (new .webp files replace the old .jpg/.png files of the same name)
+- deleted: assets/photo/packets-powder-trio-v8.png, -v9.png, -v10.png, -v11.png, and the old .jpg/.png versions of each photo that became .webp
+- RawCanopyExtract-site-text.txt (plain-text export, regenerated; image file names updated, no wording changed)
+
+WHEN YOU UPLOAD
+Delete the old assets folder in the repo before you copy this one in, so the deleted files are really gone. Also drag the old "site" folder and "404 copy.html" to the Trash.
