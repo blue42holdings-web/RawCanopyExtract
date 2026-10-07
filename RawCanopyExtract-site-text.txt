@@ -793,8 +793,8 @@ HEADING: Morning coffee.Afternoon tea.The cup before bed.
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/stir-mushroom-cup.webp
-  IMAGE: assets/photo/how-forest-palms.jpg  | alt text: none
-  IMAGE: assets/photo/how-forest-trail.webp  | alt text: none
+  IMAGE: assets/photo/how-freediver-line.jpg  | alt text: none
+  IMAGE: assets/photo/how-kayak-whitewater.jpg  | alt text: none
 HOW TO USE
 Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.
 HEADING: Tear
