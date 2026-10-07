@@ -836,10 +836,10 @@ HEADING: I left the reality TV edit bay to build something real.
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/shasta-lenticular.jpg
-  IMAGE: assets/photo/shasta-lenticular.jpg  | alt text: none
   IMAGE: assets/photo/about-dogs-1.jpg  | alt text: none
   IMAGE: assets/photo/about-dogs-2.jpg  | alt text: none
   IMAGE: assets/photo/about-dogs-3.jpg  | alt text: none
+  IMAGE: assets/photo/shasta-lenticular.jpg  | alt text: none
 I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.
 I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.
 I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.

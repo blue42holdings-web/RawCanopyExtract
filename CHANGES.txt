@@ -1,11 +1,12 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (i)
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (j)
+Changes since the October 6 (i) export.
 
 WHAT CHANGED
 Phone only (narrower than 768px). Desktop is unchanged.
-1. The Mushrooms page, BOTANICAL SCIENCE section: the extraction diagram is cut into its three tall panels and stacked top to bottom (lion's mane, middle panel, cordyceps). Each panel shows in full, mushroom to bowl of powder, with soft fades where panels meet. The stack now fills the whole section, top to bottom, with no black strip.
-2. Same section: the darkening is lighter. The black box behind the text plus the shade over the diagram now add up to about 60 percent, down from about 85. Outside the text box the diagram shows mostly clear. The fade-in when the section scrolls into view works the same way as before; it just ends lighter.
-4. About page, the photos behind the story: the Shasta cloud photo is moved from the top of the stack to the bottom. It now sits under the three dog photos, lined up under the closing paragraph ("It's your turn now.").
-3. The middle panel is still the reishi drawing. It needs to be redrawn as turkey tail, or dropped on phone.
+The Mushrooms page, BOTANICAL SCIENCE section:
+1. The section now ends right after its last line ("FILL · 2 GRAMS / PACKET, GRAVIMETRIC"), with only the normal padding below it. The text sets the height. The stacked art fills that height behind the text, starting with the lion's mane panel at the top, and is cropped at the bottom where the section ends. No panels hang below the text, and there is no black border or empty space.
+2. The three small lines (METHOD · PER SPECIES, SEE EACH FILE / ASSAY · ENZYMATIC, β-1,3/1,6-GLUCAN / FILL · 2 GRAMS / PACKET, GRAVIMETRIC) are now the same gold as BOTANICAL SCIENCE, a little larger (14px, up from 12.5px) and semi-bold.
+3. The box behind the text is darker (80 percent, up from 50) so every line reads clearly. The art still shows faintly around and behind it.
 
 FILES THAT CHANGED
 - index.html
