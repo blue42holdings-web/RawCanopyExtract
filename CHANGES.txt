@@ -1,17 +1,30 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (k)
-Changes since the October 6 (j) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (l)
+Changes since the October 6 (k) export.
 
 WHAT CHANGED
-Phone only (narrower than 768px). Desktop is unchanged.
-The Mushrooms page, BOTANICAL SCIENCE section:
-1. The dark box behind the text is removed. No box, no box edges.
-2. One even dark filter, 55 percent black, now covers the whole extraction image edge to edge, top to bottom. The bright cream areas are toned down, and the mushroom, tanks and flasks stay visible behind the text.
-3. Readability: a soft dark shadow sits directly behind the letters of the heading, the paragraph and the three small lines (no box). BOTANICAL SCIENCE and the METHOD / ASSAY / FILL lines stay gold; the paragraph stays white.
-4. The section still ends right after "FILL · 2 GRAMS / PACKET, GRAVIMETRIC", with normal padding below and no art hanging below it.
-Note: the filter is now a single even 55 percent from the start. The old fade-in on scroll no longer changes the darkness, so it can't be seen.
+Phone only (narrower than 768px) unless marked PHONE AND DESKTOP.
+
+1. The Mushrooms page, around BOTANICAL SCIENCE:
+   - Above: the gap between "...beta-glucan measured on every lot." and the start of the BOTANICAL SCIENCE art is now 48 pixels (the oversized empty space is removed).
+   - Below: there is now a 48 pixel black gap between the art and CHECK THE RECEIPTS.
+   The 48 pixel rule for photo/black section gaps is recorded in the project notes for all future work.
+
+2. The round CLICK HERE buttons (Home, and the Lion's Mane, Cordyceps and Turkey Tail pages):
+   - PHONE AND DESKTOP: the button now says CLICK.
+   - PHONE ONLY: CLICK is larger (22px) and the gold circle is smaller (72px across), leaving a small, even margin around the word. Same gold ring, same black center.
+
+3. Phone menu: RECEIPTS now comes right after TURKEY TAIL. Order: THE MUSHROOMS, LION'S MANE, CORDYCEPS, TURKEY TAIL, RECEIPTS, WHY ONE INGREDIENT, HOW TO USE, ABOUT, FAQ, READ ALOUD. RECEIPTS keeps the main-item size and style (not indented).
+
+4. FAQ page:
+   - The empty black space between the photos and question 01 is now 48 pixels.
+   - The photo grid under the heading was only showing two photos on phone. It now shows four in a 2 x 2 grid with no gaps: top left, the mossy tree; top right, the journals and coffee on the desk (it used to sit beside the van photo); lower left, the woman in the van under the rainbow stripes (van-rainier-stripes26), now low enough on screen for its animation to play; lower right, the lit tent on the dunes (already used on the FAQ page on desktop). All animations unchanged.
+
+NOT YET DONE
+- The site-wide 48 pixel check on every page has not been done page by page yet. Items 1 and 4 cover the spots you named.
+- The speed note from earlier (packets photo, image shrinking, deleting v8-v10, scroll loading) is still open.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
+- RawCanopyExtract-site-text.txt (plain-text export, regenerated: CLICK HERE now reads CLICK, menu order updated)
 (All other files are unchanged and are included so the upload is complete.)

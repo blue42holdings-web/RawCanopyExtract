@@ -486,10 +486,19 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
 [data-m="how-hero"]{background-size:auto 100% !important;background-position:70% 70% !important}
-[data-m="faq-tiles"]>img:nth-child(2),[data-m="faq-tiles2"]>img:nth-child(2){display:none !important}
-[data-m="faq-tiles"]>img:nth-child(1),[data-m="faq-tiles2"]>img:nth-child(1){grid-column:1 !important}
-[data-m="faq-tiles"]>img:nth-child(3),[data-m="faq-tiles2"]>img:nth-child(3){grid-column:2 !important}
-[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:200px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+[data-m="faq-tiles"]>img:nth-child(2){display:none !important}
+[data-m="faq-tiles"]>img:nth-child(1){grid-column:1 !important}
+[data-m="faq-tiles"]>img:nth-child(3){grid-column:2 !important}
+[data-m="faq-tiles2"]{position:relative !important;inset:auto !important;height:400px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:repeat(2,minmax(0,1fr)) !important}
+[data-m="faq-tiles2"]>img:nth-child(1){grid-column:2 !important;grid-row:1 !important}
+[data-m="faq-tiles2"]>img:nth-child(2){grid-column:1 !important;grid-row:1 !important}
+[data-m="faq-tiles2"]>img:nth-child(3){grid-column:1 !important;grid-row:2 !important}
+[data-m="faq-tiles2"]>img[data-m="faq-tile-ph"]{display:block !important;grid-column:2 !important;grid-row:2 !important}
+[data-m="faq-box"]{padding-top:48px !important}
+[data-m="bestform-sec"]{min-height:0 !important;padding-bottom:48px !important}
+[data-m="cta3-sec"]{padding-top:48px !important}
+button[aria-label="Open the story"]{width:72px !important;height:72px !important;border-width:4px !important;padding:0 !important}
+button[aria-label="Open the story"] > span{font-size:22px !important;letter-spacing:.06em !important;line-height:1 !important}
 [data-m="faq-head"]{width:100% !important}
 [data-m="sbox"]{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:22px !important;padding:60px 18px 64px !important;overflow:hidden !important}
 [data-m="sbox"][data-sbox="lm"]{background:linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.68)),url('assets/photo/story-lm-poster-flip.jpg') center/cover no-repeat !important}
@@ -834,11 +843,11 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </nav>
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div data-m="nav-panel" style="display:none;max-width:1300px;margin:0 auto;flex-direction:column;padding:4px 0 14px;border-top:1px solid rgba(212,162,74,.26)">
-<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
 <button data-page="mushrooms" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">THE MUSHROOMS</button>
 <button data-page="m-lm" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">LION'S MANE</button>
 <button data-page="m-cd" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">CORDYCEPS</button>
 <button data-page="m-rs" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.1);padding:1px 0 1px 40px;min-height:46px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.13em;color:#CFC7B6" style-hover="color:#D4A24A">TURKEY TAIL</button>
+<button data-page="receipts" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">RECEIPTS</button>
 <button data-page="why" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">WHY ONE INGREDIENT</button>
 <button data-page="how" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">HOW TO USE</button>
 <button data-page="about" onClick="{{ go }}" style="background:none;border:none;border-bottom:1px solid rgba(212,162,74,.16);padding:1px 0 1px 10px;min-height:50px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.13em;color:#E4DCCC" style-hover="color:#D4A24A">ABOUT</button>
@@ -894,7 +903,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p data-sweep="true" style="font-family:'Playfair Display',serif;font-size:clamp(20px,2.4vw,34px);line-height:1.15;color:#F1ECE1;margin:0">The Roar of the Mountain</p>
 <div style="display:flex;align-items:center;gap:6px">
 <button data-sweep="true" data-page="s-lm" onClick="{{ go }}" style="background:none;border:none;padding:6px 0 0;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:clamp(15px,1.5vw,22px);color:#D4A24A;cursor:pointer" style-hover="color:#E9C079">HEAR THE STORY ALONGSIDE ITS STORYBOAR<span style="letter-spacing:0">D</span><span style="letter-spacing:0;margin-left:.12em">→</span></button>
-<button data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:62px;height:62px;background:#000;border:4px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.18)"><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">CLICK</span><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">HERE</span></button>
+<button data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:62px;height:62px;background:#000;border:4px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;transition:filter 200ms ease" style-hover="filter:brightness(1.18)"><span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:13px;line-height:1.04;color:#D4A24A">CLICK</span></button>
 </div>
 </div>
 </div>
@@ -1542,7 +1551,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <p style="position:relative;z-index:3;max-width:1200px;margin:30px auto 0;font-size:15px;line-height:1.7;color:#E4DCCC">Nature did the work. We just measured it. Figures are lot-specific and change with every batch; the certificates are published in full on the receipts page.</p>
 </section>
-<section style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.9)),url('assets/photo/tt-log-best-form.webp');background-size:cover;background-position:center">
+<section data-m="bestform-sec" style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background-color:#040404;background-image:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.9)),url('assets/photo/tt-log-best-form.webp');background-size:cover;background-position:center">
 <div style="max-width:1200px;margin:0 auto">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;margin:0 0 16px">THE BEST FORM FOR EACH</p>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,50px);line-height:1.1;color:#F1ECE1;margin:0 0 28px;max-width:22ch">Fruiting body where it counts. Mycelium where the research is.</h2>
@@ -1568,7 +1577,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="padding:0 28px 76px;background:transparent">
+<section data-m="cta3-sec" style="padding:0 28px 76px;background:transparent">
 <div data-m="cta3" style="max-width:1200px;margin:0 auto;padding-top:0;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;justify-items:center">
 <p style="display:flex;align-items:center;gap:14px;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:24px;color:#D4A24A;margin:0;justify-self:start">CHECK THE RECEIPTS <span style="font-family:'Playfair Display',serif;font-size:28px;line-height:1">→</span></p>
 <button data-page="receipts" onClick="{{ go }}" style="background:none;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.13em;padding:13px 22px" style-hover="background:rgba(212,162,74,.12)">SEE THE CERTIFICATES</button>
@@ -1626,7 +1635,6 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="flat" style="display:flex;flex-direction:column;align-items:center;gap:26px;padding-top:64px;transform:translateX(-52px)">
 <button data-mo="1" data-page="s-lm" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:84px;height:84px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">CLICK</span>
-<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(12px,1.3vw,17px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 <div data-mo="3" style="min-width:0">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.13em;font-size:clamp(17px,2.1vw,32px);line-height:1.14;color:#EDE5D6;margin:0;white-space:nowrap">CHECK OUT OUR ILLUSTRATED</p>
@@ -1826,7 +1834,6 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <button data-mo="3" data-cta-small="true" data-page="s-cd" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
-<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
@@ -1988,7 +1995,6 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 <button data-mo="3" data-cta-small="true" data-page="s-rs" onClick="{{ go }}" aria-label="Open the story" style="flex:0 0 auto;width:85px;height:85px;background:#000;border:5px solid #D4A24A;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0;cursor:pointer;pointer-events:auto;transition:filter 200ms ease" style-hover="filter:brightness(1.18)">
 <span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">CLICK</span>
-<span style="font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.1em;font-size:clamp(13px,1.5vw,19px);line-height:1.04;color:#D4A24A">HERE</span>
 </button>
 </div>
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
@@ -2293,9 +2299,10 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <img src="assets/photo/faq/desk-journal-coffee.jpg" alt="Journals and coffee on a sunlit desk" style="{{ tileStyle3 }}" draggable="true" data-i="3" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/f-mossy-tree.jpg" alt="Old growth from the forest floor" style="{{ tileStyle4 }}" draggable="true" data-i="4" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/van-rainier-stripes26.jpg" alt="A van parked below Mount Rainier" style="{{ tileStyle5 }}" draggable="true" data-i="5" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
+<img data-m="faq-tile-ph" src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="display:none;width:100%;height:100%;object-fit:cover" loading="lazy">
 </div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.6);pointer-events:none"></div>
-<div style="position:relative;width:min(716px,60%);max-width:100%;margin:0 auto;background:#000;padding:110px 22px 110px;pointer-events:auto">
+<div data-m="faq-box" style="position:relative;width:min(716px,60%);max-width:100%;margin:0 auto;background:#000;padding:110px 22px 110px;pointer-events:auto">
 
 <div style="border-bottom:1px solid rgba(241,236,225,.16)">
 <button data-sweep="true" data-i="0" onClick="{{ toggleFaq }}" style="width:100%;background:none;border:none;padding:26px 0;display:flex;gap:20px;align-items:baseline;text-align:left;color:#F1ECE1;font-family:'Playfair Display',serif;font-size:22px" style-hover="color:#D4A24A"><span style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:#D4A24A;letter-spacing:.1em">01</span><span data-tts-read="true" style="flex:1">What is a fruiting body?</span><span style="color:#D4A24A;font-family:'Oswald',sans-serif;font-size:18px">+</span></button>

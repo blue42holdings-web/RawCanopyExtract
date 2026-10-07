@@ -39,7 +39,7 @@ Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gr
 CHECK OUT OUR ILLUSTRATEDFICTIONAL ORIGIN STORY OFTHE LION’S MANE MUSHROOM
 The Roar of the Mountain
 BUTTON: "HEAR THE STORY ALONGSIDE ITS STORYBOARD→" -> opens the "Story: Lion's Mane" page
-BUTTON: "CLICKHERE" [label: Open the story] -> opens the "Story: Lion's Mane" page
+BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Lion's Mane" page
 [DESKTOP ONLY — hidden on phones]
   [DESKTOP ONLY — hidden on phones]
       IMAGE: assets/photo/packets-powder-trio-v11.png  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
@@ -477,7 +477,7 @@ Hericium erinaceus grows as a white cascade of soft spines, hanging out of a wou
 It has been gathered and prepared in East Asia for centuries, in kitchens as much as anywhere else, and it is one of the few mushrooms people recognize on sight without being told. Ours is cultivated on hardwood so the fruiting body can be harvested whole and extracted whole.
   BACKGROUND PHOTO: assets/photo/story-lm-poster-flip.jpg
 BUTTON: "THE ROAR OF THE MOUNTAIN “The great gallery of Orrin rosein terraces of cut stone.”" -> opens the "Story: Lion's Mane" page
-BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Lion's Mane" page
+BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Lion's Mane" page
 CHECK OUT OUR ILLUSTRATED
 FICTIONAL STORY
 Storyboard and narration out now · Animated film coming mid-2028
@@ -586,7 +586,7 @@ Supports energy and endurance when the day runs long.*
 BUTTON: "COMING SOON “The OneWho Went Up On Top”" -> opens the "Story: Cordyceps" page
 THE FICTIONAL STORY OF
 THE CORDYCEPS MUSHROOM
-BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Cordyceps" page
+BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Cordyceps" page
 In development · Coming 2029
 Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.
 FIELD: "Email address"
@@ -669,7 +669,7 @@ Most of the published work looks at turkey tail's polysaccharides: how immune ce
 BUTTON: "COMING SOON “The Keeperof the Records”" -> opens the "Story: Turkey Tail" page
 THE FICTIONAL STORY OF
 THE TURKEY TAIL MUSHROOM
-BUTTON: "CLICK HERE" [label: Open the story] -> opens the "Story: Turkey Tail" page
+BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Turkey Tail" page
 In development · Coming 2030
 Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.
 FIELD: "Email address"
@@ -872,6 +872,7 @@ HEADING: Ten honest answers.
   IMAGE: assets/photo/faq/desk-journal-coffee.jpg  | alt text: "Journals and coffee on a sunlit desk"
   IMAGE: assets/photo/faq/f-mossy-tree.jpg  | alt text: "Old growth from the forest floor"
   IMAGE: assets/photo/faq/van-rainier-stripes26.jpg  | alt text: "A van parked below Mount Rainier"
+  IMAGE: assets/photo/faq/e-tent-dusk.jpg  | alt text: "A lit tent on the dunes"
 BUTTON: "01What is a fruiting body?+"
 The mushroom itself: the part that grows above the log. Mycelium is the root-like network underneath it. Most products on the shelf are mycelium grown on rice or oats and milled together with the grain, so the grain is part of what you swallow. Our lion's mane and cordyceps are fruiting body. Our turkey tail is mycelium, because that is the form the research tested, and it is extracted on its own, never milled in with grain. The beta-glucan result is how you tell the difference from the outside.
 BUTTON: "02What is beta-glucan and why do you publish it?+"
@@ -1229,11 +1230,11 @@ BUTTON: "CART [live: cartCount]"
   BUTTON: "" [label: [live: menuLabel]]
 [ONLY SHOWN WHEN: menuOpen]
   [PHONE ONLY]
-    BUTTON: "RECEIPTS" -> opens the "Receipts" page
     BUTTON: "THE MUSHROOMS" -> opens the "The Mushrooms" page
     BUTTON: "LION'S MANE" -> opens the "Lion's Mane" page
     BUTTON: "CORDYCEPS" -> opens the "Cordyceps" page
     BUTTON: "TURKEY TAIL" -> opens the "Turkey Tail" page
+    BUTTON: "RECEIPTS" -> opens the "Receipts" page
     BUTTON: "WHY ONE INGREDIENT" -> opens the "Why One Ingredient" page
     BUTTON: "HOW TO USE" -> opens the "How To Use" page
     BUTTON: "ABOUT" -> opens the "About" page
