@@ -1,16 +1,17 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (d)
-Changes since the October 7 (b) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (f)
+Changes since the October 7 (e) export. PHONE ONLY (narrower than 768px). Desktop unchanged.
 
-1. PHONE ONLY. Lion's Mane, Cordyceps and Turkey Tail pages: the "How to Take It" section now has the dark wet slate photo behind it (roar-wet-slate.jpg, same .88 dark filter as the Why page). Sent in the (c) export.
-2. PHONE ONLY. Home page, the four-photo grid below The Roar of the Mountain CLICK button:
-   - Top left: mom in the car with her daughter (unchanged)
-   - Top right: thermos pour in the woods (a-cup-in-the-woods.jpg), moved up from bottom right
-   - Bottom left: copper kettle pouring (unchanged)
-   - Bottom right: FRUITING BODY / MYCELIUM poster (fruiting-body-mycelium-rainbow-crop.jpg), moved down from top right
-   Desktop row unchanged.
+1. Home page, mushroom list under "ORGANIC MUSHROOM POWDERS": new order on phone is
+   Lion's Mane (mental clarity), Cordyceps (physical performance), Turkey Tail (immune support).
+   Wording, arrows and links unchanged.
+2. Turkey Tail page, top photo: zoomed in so the frame shows only the turkey tail mushroom
+   (dark top-left corner cropped out). It now starts dark and brightens to full brightness
+   with the same timing as the Lion's Mane top photo (holds 1.5s, brightens over 6s).
+   The heading text has the same soft dark shadow as Lion's Mane so it stays readable.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
+- RawCanopyExtract-site-text.txt (regenerated; no wording changed)
+- CHANGES.txt (this file)
 No photos, cutouts or scripts changed.
