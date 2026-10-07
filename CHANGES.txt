@@ -1,19 +1,14 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (d)
-Changes since the October 6 (c) export.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (i)
 
 WHAT CHANGED
-Desktop only (768px and wider)
-1. Tent photo (woman holding the cup) is back where it was before the last round: the lower half of the right column. The packets photo is back in the upper half, exactly as before.
-
-Phone only (narrower than 768px)
-2. Tent photo stays where it is now: right under "THE GYM. THE VIDEO CALL. THE LONG FLIGHT.", with the "Not a coffee or tea drinker?…" paragraph below it.
-
-Desktop and phone
-3. Lion's Mane research line is back to its original size, the same as the other two research lines.
-4. All three research lines: only the mushroom name is in capitals and one small step larger (1.05x). LION'S MANE MUSHROOM, CORDYCEPS MUSHROOM, TURKEY TAIL MUSHROOM all match.
+Phone only (narrower than 768px). Desktop is unchanged.
+1. The Mushrooms page, BOTANICAL SCIENCE section: the extraction diagram is cut into its three tall panels and stacked top to bottom (lion's mane, middle panel, cordyceps). Each panel shows in full, mushroom to bowl of powder, with soft fades where panels meet. The stack now fills the whole section, top to bottom, with no black strip.
+2. Same section: the darkening is lighter. The black box behind the text plus the shade over the diagram now add up to about 60 percent, down from about 85. Outside the text box the diagram shows mostly clear. The fade-in when the section scrolls into view works the same way as before; it just ends lighter.
+4. About page, the photos behind the story: the Shasta cloud photo is moved from the top of the stack to the bottom. It now sits under the three dog photos, lined up under the closing paragraph ("It's your turn now.").
+3. The middle panel is still the reishi drawing. It needs to be redrawn as turkey tail, or dropped on phone.
 
 FILES THAT CHANGED
-- site/index.html
-- site/404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (plain-text export, regenerated)
-(support.js, cutout-lift.js, .nojekyll and assets/ are unchanged but included so the folder is complete.)
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
+(All other files are unchanged and are included so the upload is complete.)
