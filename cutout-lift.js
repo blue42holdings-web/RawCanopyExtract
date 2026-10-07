@@ -99,7 +99,7 @@ document.addEventListener('mousemove',function(e){ px=e.clientX; py=e.clientY; i
 document.addEventListener('mouseleave',function(){ px=-1; setActive(null); });
 } else {
 /* touch devices: play whichever image sits at the middle of the screen; reset when it scrolls away */
-var center=function(){ if(document.hidden) return; px=innerWidth/2; py=innerHeight/2; if(!queued){ queued=true; requestAnimationFrame(tick); } };
+var center=function(){ if(document.hidden) return; px=innerWidth/2; py=innerHeight/2; var pr=document.querySelectorAll('[data-lift-probe]'); for(var pi=0;pi<pr.length;pi++){ var rr=pr[pi].getBoundingClientRect(); if(rr.width&&rr.top<=py&&rr.bottom>=py&&(rr.left>px||rr.right<px)){ px=(rr.left+rr.right)/2; break; } } if(!queued){ queued=true; requestAnimationFrame(tick); } };
 window.addEventListener('scroll',center,{passive:true,capture:true}); window.addEventListener('load',center); setInterval(center,600); center();
 }
 if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });

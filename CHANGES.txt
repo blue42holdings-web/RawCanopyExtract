@@ -1,19 +1,20 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (n)
-Changes since the October 6 (m) export. Includes the fixes made to (m) after it first went out: the packets photo centred on desktop and the full-width slate behind The Roar of the Mountain on phone.
+RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (o)
+Changes since the October 6 (n) export.
 
 ALL PHONE ONLY (narrower than 768px). Desktop is unchanged.
 
-1. How To Use page, behind steps 1, 2 and 3: the palm forest and the hiker in the woods are replaced by your two new photos. On top is the freediver descending the line; below it is the red kayak in white water. Same darkening and the same soft blend between them as before.
-2. FAQ page photo grid: exactly four photos. Top left, the coffee press pour; top right, the white van and the camp chair; bottom left, the woman in the van under the rainbow stripes (animation kept); bottom right, the journals and coffee on the desk. The mossy forest and the lit tent are removed on phone.
-3. Turkey Tail page, WHAT'S BEEN STUDIED (airplane cabin): the photo fades smoothly to black from about halfway down the section, so the leg at the bottom never shows. The slow lightening on scroll is unchanged.
-4. The Mushrooms page: the empty black gap under the red cliffs section is shrunk to 48 pixels before THE MUSHROOMS · SPECIES FILES. The cliffs photo now ends at its text instead of fading into a long black strip.
-5. The Mushrooms page, BOTANICAL SCIENCE: the dark filter over the extraction art is now 65 percent black, up from 55.
-6. Shop page: the row of badges under the products (leaf, SINGLE INGREDIENT, RIGHT FORM PER SPECIES, BETA-GLUCANS TESTED, NO FILLERS, VEGAN, RECYCLABLE STEEL TIN), with its lines above and below, is removed on phone. COMING SOON · SIGN UP FOR UPDATES BELOW follows with the standard 48 pixel gap.
+1. FAQ page, top photo grid: the rainbow-stripe van photo (bottom left) now animates on phone. The animation was only playing for whatever sat at the exact middle of the screen, and the middle fell on the line between the two photos. It now plays when the van photo scrolls to the middle of the screen.
+2. FAQ page, bottom photo grid: the two bottom photos are swapped. The couple at the gym is now bottom left and the cup with mushrooms is bottom right.
+3. How To Use page, behind steps 1 to 4:
+   - The diver is framed to the right of the numbers instead of behind them.
+   - The white water kayak photo is removed on phone.
+   - Animation: the diver starts very dark, then over about 6 seconds slowly brightens and pushes in slightly once it scrolls into view. It runs once. At its brightest it stays heavily darkened (the same level as before), so the paragraphs stay easy to read.
+4. The Mushrooms page, red cliffs section: the photo starts as dark as before, then brightens over about 3 seconds so the red cliffs and the river show clearly. The text has a soft dark shadow behind the letters so it stays easy to read.
+5. The Mushrooms page, turkey tail photo behind THE BEST FORM FOR EACH: the photo starts as dark as before, then brightens a little over about 3 seconds so the mushrooms show clearly. It doesn't get glaring.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- assets/photo/how-freediver-line.jpg (new, 23 KB)
-- assets/photo/how-kayak-whitewater.jpg (new, 265 KB)
+- cutout-lift.js (lets the van photo's animation play on phone)
 - RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
-Everything from (m) is included too: the smaller photos, deleted packets files and cutout-lift.js. If you haven't uploaded (m) yet, this one replaces it. Delete the old assets folder in the repo before copying this one in.
+Everything from (m) and (n) is included too. Delete the old assets folder in the repo before you copy this one in.
