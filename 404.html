@@ -404,6 +404,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
 [data-m="why-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
 [data-m="why-cards"]{padding-bottom:22px !important}
+[data-dogs] > img[data-dog]{filter:brightness(.16) !important;transition:filter 6s ease-in-out 1.5s}
+[data-dogs][data-lit] > img[data-dog]{filter:brightness(.34) !important}
 [style] > img[data-m="swap-dk"]{display:none !important}
 [style] > img[data-m="swap-ph"]{display:block !important}
 [data-m="diag-wrap"]{background-image:none !important}
@@ -2236,7 +2238,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
-<div data-m="bgstack" data-blend="" aria-hidden="true" style="display:none"><img src="assets/photo/shasta-lenticular.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/about-water-freedive-crop.png" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 32%;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/about-water-cave.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"></div>
+<div data-m="bgstack" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img src="assets/photo/shasta-lenticular.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-1.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 30%;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-2.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:62% center;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-3.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 35%;display:block;filter:brightness(0.34)" loading="lazy"></div>
 
 <div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.</p>
@@ -3888,7 +3890,7 @@ class Component extends DCLogic {
   componentDidMount() {
     if ('IntersectionObserver' in window) {
       const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: 0.25 });
-      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
+      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
     }
     this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
     this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };
