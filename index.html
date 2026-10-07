@@ -378,7 +378,7 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 }
 
 @media (max-width:767px){
-[data-m="emp"]{white-space:nowrap;font-size:min(1em,5vw)}
+[data-m="emp-line"]{display:block;white-space:nowrap;font-size:min(1em,4.6vw)}
 [data-m="wte-text"] > p{font-size:17px !important}
 [data-m="how-strip"]{display:flex !important;flex-direction:column}
 [data-m="bgstack"][data-blend]{display:flex !important;flex-direction:column}
@@ -403,6 +403,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
 [data-m="why-slate"]{background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
+[data-m="why-cards"]{padding-bottom:22px !important}
+[data-m="why-slate"] > section:first-child{padding-top:28px !important}
 [data-m="camper-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.97);opacity:1;transition:opacity 6s ease-in-out 1.5s}
 [data-m="camper-shade"][data-lit]{opacity:.8041}
 [data-m="tent-dup"] + p{margin-top:14px !important}
@@ -792,7 +794,7 @@ img:not([draggable="true"]){-webkit-user-drag:none}
 /* design text: no accidental highlight; paragraph text stays selectable */
 button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
-<script src="cutout-lift.js?v=20261006t"></script>
+<script src="cutout-lift.js?v=20261006u"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
@@ -851,7 +853,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> organic mushroom powders</span>: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> <span data-m="emp-line">organic mushroom powders<span style="color:#FFFFFF">:</span></span></span> lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <div style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:</p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)</a></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:</p><a href="https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article" target="_blank" rel="noopener" style="font-size:clamp(13px,1vw,15px);line-height:1.45;color:#D4A24A;text-decoration:underline;text-underline-offset:3px;text-wrap:pretty">Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)</a></div>
@@ -2069,7 +2071,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-size:18px;line-height:1.85;color:#DDD5C4;margin:0">Ours has one ingredient. The mushroom. Nothing to carry it, nothing to fill it out, nothing to make the label longer. Which means there's nowhere for a bad number to hide, so we publish the number.</p>
 </div>
 </section>
-<section style="padding:0 28px 96px;background:#000">
+<section data-m="why-cards" style="padding:0 28px 96px;background:#000">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px" data-m="1col">
 
 <article style="border:1px solid rgba(241,236,225,.16);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-desk-coffee.jpg');background-size:100% 100%,cover;background-position:center 60%,center 35%;background-repeat:no-repeat,no-repeat;background-origin:border-box;background-clip:border-box;padding:32px;display:flex;flex-direction:column">
