@@ -395,6 +395,7 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="bgstack"]{display:grid !important;position:absolute;inset:0;z-index:0;grid-auto-rows:minmax(0,1fr);pointer-events:none;overflow:hidden}
 [data-m="shasta"],[data-m="steps-wrap"]{position:relative !important;background-image:none !important}
 [data-m="shasta"] > div:not([data-m="bgstack"]),[data-m="steps-wrap"] > section{position:relative;z-index:1}
+[data-m="steps-wrap"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
 [data-m="hero"]{aspect-ratio:auto !important;min-height:0 !important;padding:64px 0 52px !important}
 [data-m="hero"] [data-rcx-rotator]{margin-top:30px !important;font-size:22px !important}
 [data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
@@ -510,6 +511,14 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="bestform-sec"]{position:relative !important;background-image:linear-gradient(rgba(0,0,0,.77),rgba(0,0,0,.83)),url('assets/photo/tt-log-best-form.webp') !important}
 [data-m="bestform-sec"] > div:not([data-m="bf-shade"]){position:relative;z-index:1}
 [data-m="mush-row4"]{display:none !important}
+[data-fb="42"]{box-shadow:-80px 0 0 rgba(0,0,0,.42),80px 0 0 rgba(0,0,0,.42)}
+[data-fb="62"]{box-shadow:-80px 0 0 rgba(0,0,0,.62),80px 0 0 rgba(0,0,0,.62)}
+[data-fb="82"]{box-shadow:-80px 0 0 rgba(0,0,0,.82),80px 0 0 rgba(0,0,0,.82)}
+[data-m="how-steps-sec"]{background-size:100% 100% !important}
+[data-m="shasta-img"]{filter:brightness(.14) !important;transition:filter 6s ease-in-out 1.5s}
+[data-m="shasta-img"][data-lit]{filter:brightness(.5) !important}
+[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,.45) 26%,rgba(0,0,0,0) 48%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important}
+[data-m="lm-hero"] > div[style*="max-width:1080px"]{text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
 [data-m="lm-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.45);opacity:1;transition:opacity 6s ease-in-out 1.5s}
 [data-m="lm-shade"][data-lit]{opacity:0}
 img[data-m="rc-dk"]{display:none !important}
@@ -517,7 +526,7 @@ img[data-m="rc-ph"]{display:block !important}
 [data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
 [data-m="faq-row"] > :nth-child(3){order:4}
 [data-m="faq-row"] > :nth-child(4){order:3}
-[data-how-bg] > img[data-dog]{flex:0 0 auto !important;height:min(55%,1100px) !important;object-position:42% center !important;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
+[data-how-bg] > img[data-dog]{flex:0 0 auto !important;align-self:flex-start !important;width:180% !important;max-width:none !important;height:auto !important;margin-left:-22% !important;object-fit:fill !important;transform-origin:62% 30% !important;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
 [data-how-bg][data-lit] > img[data-dog]{transform:scale(1.06)}
 [data-m="mush-files"]{padding-top:48px !important}
 [data-m="badges-sec"]{display:none !important}
@@ -1619,7 +1628,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isLM }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="Lion's Mane">
-<section style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
+<section data-m="lm-hero" style="position:relative;margin-bottom:-1px;min-height:40vh;display:flex;align-items:flex-end;background-color:#000;background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.97) 3%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.3) 100%),url('assets/photo/lm-hero-cluster.jpg');background-size:cover;background-position:center 50%">
 <div data-m="lm-shade" aria-hidden="true" style="display:none"></div>
 <div style="position:absolute;left:0;right:0;bottom:0;height:18px;background:#000;pointer-events:none"></div>
 <div style="position:relative;max-width:1080px;margin:0 auto;padding:44px 28px 44px;width:100%">
@@ -1994,7 +2003,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="tt-studied" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),url('assets/photo/tt-plane-cabin.webp');background-size:cover;background-repeat:no-repeat;background-position:center 42%">
 <div data-m="tt-shade" aria-hidden="true" style="display:none"></div>
 <section data-m="studied-sec" style="min-height:520px;display:flex;flex-direction:column;justify-content:center;padding:34px 28px">
-<div style="max-width:1080px;margin:0 auto;background:rgba(0,0,0,.62);padding:34px 30px">
+<div data-fb="62" style="max-width:1080px;margin:0 auto;background:rgba(0,0,0,.62);padding:34px 30px">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 24px">WHAT'S BEEN STUDIED</h2>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0 0 14px;max-width:74ch">Supports a healthy immune system.<a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener" title="Effects of polysaccharopeptide from Trametes versicolor and amoxicillin on the gut microbiome of healthy volunteers: a randomized clinical trial (Gut Microbes)">*</a><br>Supports healthy digestion and a balanced gut microbiome.<a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener" title="Effects of polysaccharopeptide from Trametes versicolor and amoxicillin on the gut microbiome of healthy volunteers: a randomized clinical trial (Gut Microbes)">*</a></p>
 <p style="font-size:19px;line-height:1.85;color:#DDD5C4;margin:0;max-width:74ch">Most of the published work looks at turkey tail's polysaccharides: how immune cells respond to its mycelium in the lab, and how its polysaccharopeptide feeds the bacteria that live in the gut, both <a href="https://pubmed.ncbi.nlm.nih.gov/23435630/" target="_blank" rel="noopener">in culture</a> and in a <a href="https://pubmed.ncbi.nlm.nih.gov/25006989/" target="_blank" rel="noopener">trial in healthy volunteers</a>. The research is early and mostly small. We link what exists so you can read it yourself rather than take our word for it.<br><br>* These statements have not been evaluated by the Food and Drug Administration.</p>
@@ -2213,7 +2222,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <div data-m="steps-wrap" style="background-color:#000;background-image:linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.84)),url('assets/photo/stir-mushroom-cup.webp');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center 72%">
 <div data-m="bgstack" data-how-bg="" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/how-freediver-line.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.34)" loading="lazy"><img data-lift-once="assets/cutouts/how-kayak-whitewater-cutout.webp" src="assets/photo/how-kayak-whitewater.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:52% center;display:block;filter:brightness(0.34)" loading="lazy"></div>
-<section style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
+<section data-m="how-steps-sec" style="padding:70px 28px 44px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)) center/min(1300px,calc(100% - 56px)) 100% no-repeat">
 <p style="max-width:1080px;margin:0 auto 34px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;text-align:center">HOW TO USE</p>
 <p style="max-width:62ch;margin:0 auto 44px;font-size:17px;line-height:1.7;color:#DDD5C4;text-align:center;text-wrap:pretty">Grab a corner and give the packet a shake so the powder drops to the far end. Work it open a little with your fingers, tear across the top, then pinch the sides so it opens wide. Every grain in there was carefully extracted, so get all of it.</p>
 <div data-m="steps" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;text-align:center">
@@ -2240,7 +2249,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 <section style="display:flex;align-items:flex-start;padding:0 28px;background:transparent">
-<div style="width:100%;max-width:1300px;margin:0 auto;background:rgba(0,0,0,.42);padding:0 44px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px 78px">
+<div data-fb="42" style="width:100%;max-width:1300px;margin:0 auto;background:rgba(0,0,0,.42);padding:0 44px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px 78px">
 <div style="display:flex;flex-direction:column">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:clamp(16px,1.7vw,24px);color:#D4A24A;margin:0px 0 14px">WHAT TO PUT IT IN</h2>
 <p style="font-size:clamp(15px,1.3vw,19px);line-height:1.7;color:#F1ECE1;margin:0 0 16px">Coffee, tea, water or smoothies. Recommended with food, not on an empty stomach, because it's a highly concentrated extract. Anything warm you already drink, and a blender handles the cold.</p>
@@ -2284,9 +2293,9 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section data-m="shasta" style="margin-bottom:-1px;min-height:0;display:flex;align-items:stretch;background-color:#000;padding:0 28px;background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/shasta-lenticular.jpg');background-size:132% auto;background-position:center 31%">
-<div data-m="bgstack" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/about-dogs-1.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 30%;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-2.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:62% center;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-3.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 35%;display:block;filter:brightness(0.34)" loading="lazy"><img src="assets/photo/shasta-lenticular.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"></div>
+<div data-m="bgstack" data-dogs="" data-blend="" aria-hidden="true" style="display:none"><img data-dog="" src="assets/photo/about-dogs-1.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 30%;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-2.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:62% center;display:block;filter:brightness(0.34)" loading="lazy"><img data-dog="" src="assets/photo/about-dogs-3.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:center 35%;display:block;filter:brightness(0.34)" loading="lazy"><img data-m="shasta-img" src="assets/photo/shasta-lenticular.jpg" alt="" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;display:block;filter:brightness(0.34)" loading="lazy"></div>
 
-<div style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
+<div data-fb="42" style="width:100%;max-width:900px;margin:0 auto;background:rgba(0,0,0,.42);padding:52px 44px">
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I spent 20 years as an unscripted television editor. Emmy nominated for Undercover Boss and American Ninja Warrior. As the industry thinned out, the pull north got louder.</p>
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I worked in development, cut trailers for series, and was lead editor on many shows starting way back at MTV. You have almost certainly seen a piece of one in a hotel room.</p>
 <p style="font-size:clamp(19px,1.7vw,24px);line-height:1.85;color:#F1ECE1;margin:0 0 26px">I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.</p>
@@ -2315,7 +2324,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="faq-tiles" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
 <img src="assets/photo/faq/c-press-coast.jpg" alt="Pressing coffee above the sea" style="{{ tileStyle0 }}" draggable="true" data-i="0" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="{{ tileStyle1 }}" draggable="true" data-i="1" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
-<img src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
+<img data-lift-probe="" src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 </div>
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.6);pointer-events:none"></div>
 <div data-m="faq-head" style="position:relative;width:min(660px,56%);margin:0 auto;pointer-events:auto">
@@ -2474,7 +2483,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <section data-m="story-body" style="padding:72px 28px 96px;background:transparent">
 
 <div data-story-grid="true" style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:stretch">
-<div data-story-text="true" style="font-size:18px;line-height:1.95;color:#E4DCCC;background:rgba(0,0,0,.82);padding:44px 38px">
+<div data-fb="82" data-story-text="true" style="font-size:18px;line-height:1.95;color:#E4DCCC;background:rgba(0,0,0,.82);padding:44px 38px">
 <div data-story-chapter="true" style="text-align:center;padding:8px 0;margin:0 0 40px;order:10"><p style="font-family:'Playfair Display',serif;font-size:40px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:#D4A24A;margin:0">Chapter One</p></div>
 <p style="margin:0 0 22px">In Orrin, there is a mountain that wears a cloud, and the cloud does not leave it. Three flat disks stacked one upon another, turning slow above the snow, winding down through the air like a screw. Wind comes off the high country and pours straight through it and out the far side and is gone, and still the cloud does not move, and it is not made of the same air twice in all a day.</p>
 <p style="margin:0 0 22px">The old people said the mountain was breathing. The young ones said it was only weather. No one who lives beneath it has ever thought this strange. There has never been a morning without it.</p>
@@ -2667,7 +2676,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 26px">
 <button onClick="{{ restartAudio }}" aria-label="Restart from the beginning" title="Restart" style="flex:0 0 auto;width:44px;height:44px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#D4A24A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"></path><path d="M3.5 3.5v4.8h4.8"></path></svg></button>
 <button onClick="{{ toggleAudio }}" aria-label="{{ aAria }}" style="flex:0 0 auto;width:54px;height:54px;background:#000;border:2px solid #D4A24A;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D4A24A;font-family:system-ui,sans-serif;font-size:18px;cursor:pointer;padding:0" style-hover="filter:brightness(1.18)">{{ aIcon }}</button>
@@ -2738,7 +2747,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2029</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
@@ -2805,7 +2814,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 
 <section style="padding:70px 28px 96px;background:transparent">
-<div style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
+<div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2030</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
 <form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
@@ -3937,7 +3946,7 @@ class Component extends DCLogic {
   componentDidMount() {
     if ('IntersectionObserver' in window) {
       const shadeIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height >= innerHeight * 0.25)) { e.target.setAttribute('data-lit', ''); shadeIO.unobserve(e.target); } }), { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25] });
-      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs]),[data-m="diag-stack"]:not([data-lit]):not([data-obs]),[data-m="mush-shade"]:not([data-lit]):not([data-obs]),[data-m="bf-shade"]:not([data-lit]):not([data-obs]),[data-m="lm-shade"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
+      this._shadeTick = setInterval(() => document.querySelectorAll('[data-m="tt-shade"]:not([data-lit]):not([data-obs]),[data-m="camper-shade"]:not([data-lit]):not([data-obs]),[data-dogs]:not([data-lit]):not([data-obs]),[data-m="diag-stack"]:not([data-lit]):not([data-obs]),[data-m="mush-shade"]:not([data-lit]):not([data-obs]),[data-m="bf-shade"]:not([data-lit]):not([data-obs]),[data-m="lm-shade"]:not([data-lit]):not([data-obs]),[data-m="shasta-img"]:not([data-lit]):not([data-obs])').forEach(el => { el.setAttribute('data-obs', ''); shadeIO.observe(el); }), 500);
     }
     this._noImgMenu = (e) => { const t = e.target; if (t && t.closest && t.closest('img,picture,video,canvas,svg')) e.preventDefault(); };
     this._noImgDrag = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && t.getAttribute('draggable') !== 'true') e.preventDefault(); };

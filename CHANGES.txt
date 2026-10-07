@@ -1,21 +1,20 @@
-RAW CANOPY EXTRACT — DELIVERY, October 6, 2026 (p)
-Changes since the October 6 (o) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (a)
+Changes since the October 6 (p) export.
 
 ALL PHONE ONLY (narrower than 768px). Desktop is unchanged.
 
-1. How To Use, diver photo behind steps 1 to 4: the diver is back in full view, just slightly right of centre so he isn't directly under the numbers. His whole body shows. His slow brighten and push-in is unchanged.
-2. How To Use: the white water kayak photo is back under the diver, where it was. It now has the cutout animation. When it scrolls into view, the kayaker is cut out and lifts slightly while the water behind softens. It plays once. It stays under the same dark layer as before, so the text stays easy to read.
-3. The Mushrooms page, red cliffs photo: it now holds dark for 1.5 seconds, then brightens slowly over 6 seconds.
-4. The Mushrooms page, bottom: the four photos (diver with the shark, surfer in the barrel, freediver with the ring, freediver at sunset) are removed on phone.
-5. Lion's Mane page, top photo: it starts darker, holds 1.5 seconds, then brightens over 6 seconds to where it was before.
-   NOT DONE: the lion's mane cutout lift. There is no cutout file for this photo (lm-hero-cluster.jpg) yet. Supply a transparent PNG of the mushroom cluster at the same pixel size as the photo and it can go in.
-6. Receipts page, four-photo grid: top right is now the woman underwater with the shark, and bottom left is the freediver blowing the bubble ring. The other two are unchanged.
-7. Cart: the X that closes YOUR CART is larger, with a 48 by 48 pixel tap area. Tapping outside the cart panel closes it (this already worked, and still does).
+1. How To Use, diver photo: the diver now sits about two thirds of the way across the screen (about 68 percent from the left), clearly right of the gold hexagons, with his whole body on screen. His placement is now set by the screen width, not the section height, so it stays put on every phone. His slow brighten and push-in is unchanged.
+2. Dark filters edge to edge:
+   - How To Use: the dark layer behind HOW TO USE and the steps, and the one behind WHAT TO PUT IT IN / HOW MUCH, now run from the left edge to the right edge. No more lighter stripes at the sides.
+   - The same fix is applied wherever a text box sat over a photo with lighter side margins on phone: Turkey Tail WHAT'S BEEN STUDIED, the About story box over the dogs and Shasta, and the three illustrated story pages (story text and end boxes).
+3. How To Use, the lower part of that section: the plain black behind and below the photos is now the wet slate rock, under the same very dark filter used elsewhere (88 percent). It reads as nearly black with faint texture. No animation.
+4. About page, Shasta cloud photo: it starts dark when it scrolls into view, holds about 1.5 seconds, then brightens over about 6 seconds until the mountain and clouds show clearly. The story box behind the text keeps it readable.
+5. FAQ page, top grid: both vans now animate on phone. The white van with the camp chair (top right) and the rainbow-stripe van (bottom left) each play their cutout lift when they reach the middle of the screen.
+6. Lion's Mane page, top photo: the dark shading now sits only along the bottom, behind the gold words and the paragraph, fading out softly about halfway up. The top and middle of the mushroom are clear. The text has a soft shadow behind the letters. The slow dark to bright animation is unchanged.
+   Note: the lion's mane photo still has no cutout lift. No cutout file exists for it yet (see the (p) notes).
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- cutout-lift.js (new once-only cutout lift for the kayak photo)
-- assets/cutouts/how-kayak-whitewater-cutout.webp (new, 82 KB)
 - RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
-Everything from (m), (n) and (o) is included too. Delete the old assets folder in the repo before you copy this one in.
+Everything from (m) to (p) is included too. Delete the old assets folder in the repo before you copy this one in.
