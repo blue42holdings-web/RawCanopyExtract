@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 7, 2026 from the current site build. Export only.
+Exported October 7, 2026 (d) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -23,12 +23,12 @@ PAGE: HOME
     IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
 We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
-CORDYCEPS MUSHROOM for physical performance:
-LINK: "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
-LION'S MANE MUSHROOM for mental clarity:
-LINK: "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
-TURKEY TAIL MUSHROOM for immune support:
-LINK: "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
+CORDYCEPS MUSHROOM for physical performance:→
+  LINK: "CORDYCEPS MUSHROOM for physical performance:→" -> opens the "Cordyceps" page (on this site)
+LION'S MANE MUSHROOM for mental clarity:→
+  LINK: "LION'S MANE MUSHROOM for mental clarity:→" -> opens the "Lion's Mane" page (on this site)
+TURKEY TAIL MUSHROOM for immune support:→
+  LINK: "TURKEY TAIL MUSHROOM for immune support:→" -> opens the "Turkey Tail" page (on this site)
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
@@ -1309,14 +1309,6 @@ These statements have not been evaluated by the Food and Drug Administration. Th
 ==============================================================================
 EXTERNAL LINK CHECK LIST (every external link on the site)
 ==============================================================================
-
-PAGE: HOME
-  "Cordyceps fruiting body extract and faster reaction times: a randomized, placebo-controlled trial (PLOS One, 2026)"
-     https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725
-  "Lion's mane and memory and thinking: a 12-week randomized, placebo-controlled trial (Biomedical Research, 2019)"
-     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
-  "Turkey tail (Yun Zhi) and immune function in 100 healthy adults: a randomized, placebo-controlled trial (International Immunopharmacology, 2004)"
-     https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X
 
 PAGE: THE MUSHROOMS
   "human research on lion's mane"

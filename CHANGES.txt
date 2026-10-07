@@ -1,20 +1,16 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (a)
-Changes since the October 6 (p) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (d)
+Changes since the October 7 (b) export.
 
-ALL PHONE ONLY (narrower than 768px). Desktop is unchanged.
-
-1. How To Use, diver photo: the diver now sits about two thirds of the way across the screen (about 68 percent from the left), clearly right of the gold hexagons, with his whole body on screen. His placement is now set by the screen width, not the section height, so it stays put on every phone. His slow brighten and push-in is unchanged.
-2. Dark filters edge to edge:
-   - How To Use: the dark layer behind HOW TO USE and the steps, and the one behind WHAT TO PUT IT IN / HOW MUCH, now run from the left edge to the right edge. No more lighter stripes at the sides.
-   - The same fix is applied wherever a text box sat over a photo with lighter side margins on phone: Turkey Tail WHAT'S BEEN STUDIED, the About story box over the dogs and Shasta, and the three illustrated story pages (story text and end boxes).
-3. How To Use, the lower part of that section: the plain black behind and below the photos is now the wet slate rock, under the same very dark filter used elsewhere (88 percent). It reads as nearly black with faint texture. No animation.
-4. About page, Shasta cloud photo: it starts dark when it scrolls into view, holds about 1.5 seconds, then brightens over about 6 seconds until the mountain and clouds show clearly. The story box behind the text keeps it readable.
-5. FAQ page, top grid: both vans now animate on phone. The white van with the camp chair (top right) and the rainbow-stripe van (bottom left) each play their cutout lift when they reach the middle of the screen.
-6. Lion's Mane page, top photo: the dark shading now sits only along the bottom, behind the gold words and the paragraph, fading out softly about halfway up. The top and middle of the mushroom are clear. The text has a soft shadow behind the letters. The slow dark to bright animation is unchanged.
-   Note: the lion's mane photo still has no cutout lift. No cutout file exists for it yet (see the (p) notes).
+1. PHONE ONLY. Lion's Mane, Cordyceps and Turkey Tail pages: the "How to Take It" section now has the dark wet slate photo behind it (roar-wet-slate.jpg, same .88 dark filter as the Why page). Sent in the (c) export.
+2. PHONE ONLY. Home page, the four-photo grid below The Roar of the Mountain CLICK button:
+   - Top left: mom in the car with her daughter (unchanged)
+   - Top right: thermos pour in the woods (a-cup-in-the-woods.jpg), moved up from bottom right
+   - Bottom left: copper kettle pouring (unchanged)
+   - Bottom right: FRUITING BODY / MYCELIUM poster (fruiting-body-mycelium-rainbow-crop.jpg), moved down from top right
+   Desktop row unchanged.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
 - RawCanopyExtract-site-text.txt (plain-text export, regenerated; no wording changed)
-Everything from (m) to (p) is included too. Delete the old assets folder in the repo before you copy this one in.
+No photos, cutouts or scripts changed.

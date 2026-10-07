@@ -407,7 +407,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="wte-story"]{width:auto !important;margin:0 -18px -44px !important;padding:0 18px 44px !important;background-position:0 0,center bottom !important}
 [data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
-[data-m="why-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
+[data-m="world-grid"] > img:nth-child(3){order:4}[data-m="world-grid"] > img:nth-child(4){order:3}[data-m="world-grid"] > img:nth-child(5){order:2}
+[data-m="why-slate"],[data-m="howto-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
 [data-m="why-cards"]{padding-bottom:22px !important}
 [data-dogs] > img[data-dog]{filter:brightness(.16) !important;transition:filter 6s ease-in-out 1.5s}
 [data-dogs][data-lit] > img[data-dog]{filter:brightness(.34) !important}
@@ -962,7 +963,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <div data-m="fc-swap" style="display:contents">
 <section data-screen-label="Home — the world it lives in" style="background:#000">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0;background:#000;line-height:0;font-size:0">
+<div data-m="world-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0;background:#000;line-height:0;font-size:0">
 <img data-m="swap-ph" src="assets/photo/parent-and-child-outdoors.jpg" alt="A mom in her car, her daughter kissing her goodbye" style="width:100%;height:272px;object-fit:cover;object-position:52% 35%;display:none;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/fruiting-body-mycelium-rainbow-crop.jpg" alt="Fruiting body above, mycelium below, illustrated poster" style="width:100%;height:272px;object-fit:cover;object-position:center 50%;display:block;filter:brightness(.92)"><img src="assets/photo/a-kettle-over-the-fire.jpg" alt="A kettle over the fire" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/a-cup-in-the-woods.jpg" alt="A cup in the woods" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy">
 
 
@@ -1755,7 +1756,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="padding:56px 28px 40px;background:#000">
+<section data-m="howto-slate" style="padding:56px 28px 40px;background:#000">
 <div style="max-width:1080px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 28px">HOW TO TAKE IT</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px">
@@ -1917,7 +1918,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="padding:56px 28px 40px;background:#000">
+<section data-m="howto-slate" style="padding:56px 28px 40px;background:#000">
 <div style="max-width:1080px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 28px">HOW TO TAKE IT</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px">
@@ -2081,7 +2082,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </div>
 </section>
 
-<section style="padding:56px 28px 40px;background:#000">
+<section data-m="howto-slate" style="padding:56px 28px 40px;background:#000">
 <div style="max-width:1080px;margin:0 auto">
 <h2 style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:18px;color:#D4A24A;margin:0 0 28px">HOW TO TAKE IT</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px">
