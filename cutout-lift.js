@@ -103,6 +103,25 @@ var center=function(){ if(document.hidden) return; px=innerWidth/2; py=innerHeig
 window.addEventListener('scroll',center,{passive:true,capture:true}); window.addEventListener('load',center); setInterval(center,600); center();
 }
 if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
+/* phone only: camper photo behind the opening paragraph gets its own slow, once-only cutout (holds 1.5s, then 6s together with the shade) */
+(function(){
+  if(RM||!matchMedia('(max-width:767px)').matches||!window.IntersectionObserver) return;
+  var CK='why-rv-desk-nopen.jpg', CSRC='assets/cutouts/why-rv-desk-nopen-cutout.png', CT=function(p){ return p+' 6000ms ease-in-out 1500ms'; };
+  function arm(el){
+    if(el.__camperLift) return; el.__camperLift=true;
+    var cs=getComputedStyle(el), r=el.getBoundingClientRect();
+    var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;');
+    var blur=mk('position:absolute;inset:0;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);transition:'+CT('backdrop-filter')+','+CT('-webkit-backdrop-filter')+';');
+    var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+cs.backgroundSize+';background-position:'+cs.backgroundPosition+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+CT('opacity')+','+CT('transform')+';');
+    box.appendChild(blur); box.appendChild(cut); el.insertBefore(box,el.firstChild);
+    var ready=feathered(CSRC,r.width,r.height,FEATHER).then(function(u){ cut.style.backgroundImage='url("'+u+'")'; });
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect();
+      ready.then(function(){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LIFT; blur.style.backdropFilter=BLUR; blur.style.webkitBackdropFilter=BLUR; }); }); }); }); },{threshold:0.25});
+    io.observe(el);
+  }
+  setInterval(function(){ var z=document.querySelectorAll('[data-m="camper-zone"]'); for(var i=0;i<z.length;i++) if(key2(z[i])) arm(z[i]); },500);
+  function key2(el){ var bi=getComputedStyle(el).backgroundImage; return bi&&bi.indexOf(CK)>=0; }
+})();
 function reflow(){ states.forEach(function(st){ if(!st.el.isConnected){ teardown(st); if(active===st) active=null; return; } if(st.info.kind==='img') place(st); }); if(!queued&&px>=0){ queued=true; requestAnimationFrame(tick); } }
 window.addEventListener('scroll',reflow,{passive:true,capture:true}); window.addEventListener('resize',reflow);
 })();
