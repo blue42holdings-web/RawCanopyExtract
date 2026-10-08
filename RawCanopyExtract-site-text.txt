@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 7, 2026 (h) from the current site build. Export only.
+Exported October 7, 2026 (j) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -834,7 +834,7 @@ Powder in the mug first, then the hot liquid onto it. Stir it to a smooth paste 
 PAGE: ABOUT
 ==============================================================================
 --- SECTION: About ---
-  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.jpg
+  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.jpg (phone: about-colestin-windvane-flip.jpg)
 ABOUT
 HEADING: I left the reality TV edit bay to build something real.
 [ONLY SHOWN WHEN: ttsOk]

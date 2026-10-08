@@ -537,8 +537,17 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="tth-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background-color:rgba(0,0,0,.8);transition:background-color 8s ease-in-out 1.5s}
 [data-m="tth-shade"][data-lit]{background-color:rgba(0,0,0,.64)}
 [data-m="tth-hero"] > div > p,[data-m="cdh-hero"] > div > p{background:none !important;box-shadow:none !important;text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
-[data-m="row2x2"] > img[src*="granite-ridge"]{order:1}[data-m="row2x2"] > img[src*="shark"]{order:2}[data-m="row2x2"] > img[src*="football"]{order:3}[data-m="row2x2"] > img[src*="kettle-tent"]{order:4}
+[data-m="row2x2"] > img[src*="granite-ridge"]{order:1}[data-m="row2x2"] > img[src*="shark"]{order:2}[data-m="row2x2"] > img[src*="football"]{order:4}[data-m="row2x2"] > img[src*="kettle-tent"]{order:3}
 [data-m="about-hero"] > div:not([data-lift-layer]){position:relative;z-index:1}
+[data-m="about-hero"]{background-image:radial-gradient(120% 95% at 58% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane-flip.jpg') !important}
+[data-m="tth-hero"] > div > p,[data-m="cdh-hero"] > div > p{color:#fff !important}
+[data-m="tth-hero"] img[data-species-symbol],[data-m="cdh-hero"] img[data-species-symbol]{filter:brightness(0) invert(1) drop-shadow(0 0 2px #000) drop-shadow(0 0 6px rgba(0,0,0,.95)) drop-shadow(0 0 14px rgba(0,0,0,.7)) !important}
+[data-m="tth-hero"] > div > div[style*="width:96px"],[data-m="cdh-hero"] > div > div[style*="width:96px"]{background:#fff !important;box-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.7)}
+[data-m="faq-head"] > p,[data-m="faq-head"] > h1{text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
+[data-screen-label="FAQ"] > section:first-child{min-height:200px !important;padding:22px 18px 18px !important;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
+[data-m="how-hero"]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,0) 50%,#000 92%)}
+[data-m="steps-wrap"]{background-image:linear-gradient(#000 0,#000 2px,rgba(0,0,0,0) 25vh),linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:0 0,0 0,center !important;background-repeat:no-repeat !important}
+[data-how-bg] > img[data-dog]:first-child{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 25vh,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,transparent 0,#000 25vh,#000 82%,transparent 100%) !important}
 img[data-m="rc-dk"]{display:none !important}
 img[data-m="rc-ph"]{display:block !important}
 [data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
@@ -2301,7 +2310,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="About">
-<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-cutout.png" data-lift-dim="brightness(.52)" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
+<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.52)" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
 
 
 
@@ -2417,7 +2426,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 </div>
 </section>
-<section style="margin-top:-1px;background:#000;padding:0"><div data-m="faq-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/faq-camp-table-tin.jpg" alt="Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet" style="width:100%;height:240px;object-fit:cover;object-position:center 60%;display:block;filter:brightness(.92)" loading="lazy"><div style="overflow:hidden;line-height:0"><img src="assets/photo/faq-yoga-bamboo-circle.jpg" alt="Morning yoga in a bamboo circle above the jungle" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.8);transform:scale(1.16);transform-origin:50% 55%" loading="lazy"></div><img src="assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg" alt="A cup beside dried mushrooms and coffee beans" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/stock-outdoor-photo.jpg" alt="istockphoto-1044535438-612x612" width="612" height="408" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 510px; aspect-ratio: 612 / 408"></div></section>
+<section style="margin-top:-1px;background:#000;padding:0"><div data-m="faq-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img src="assets/photo/faq-camp-table-tin.jpg" alt="Camp coffee gear on a table with a Triple Power tin and a Lion's Mane packet" style="width:100%;height:240px;object-fit:cover;object-position:center 60%;display:block;filter:brightness(.92)" loading="lazy"><div style="overflow:hidden;line-height:0"><img src="assets/photo/faq-yoga-bamboo-circle.jpg" alt="Morning yoga in a bamboo circle above the jungle" style="width:100%;height:240px;object-fit:cover;object-position:center 88%;display:block;filter:brightness(.8);transform:scale(1.16);transform-origin:50% 85%" loading="lazy"></div><img src="assets/photo/a-cup-beside-dried-mushrooms-and-coffee.jpg" alt="A cup beside dried mushrooms and coffee beans" style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/stock-outdoor-photo.jpg" alt="istockphoto-1044535438-612x612" width="612" height="408" style="max-width: 100%; height: 243px; display: block; object-fit: cover; width: 510px; aspect-ratio: 612 / 408"></div></section>
 </div>
 </sc-if>
 

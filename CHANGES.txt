@@ -1,38 +1,26 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (h)
-Changes since the October 7 (g) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (j)
+Changes since the October 7 (h) export.
 
 PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-6.
-1. Mushrooms page top photo: hero is taller and the photo is zoomed in, so the red cliffs sit above the words.
-   The words now sit on the forest below the cliffs.
-2. Turkey Tail page top photo: starts dark (shade .80) and lightens only a little (to .64) over 8 seconds after a 1.5s hold.
-   Soft dark glow on the letters of the small gold line and the gold italic line, same as Lion's Mane. No boxes.
-   Cordyceps top photo: same letter glow added to its two lines (its dark start and slow brighten were already in place).
-3. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": top left is the mountain biker on the granite ridge,
-   zoomed in, rider on the right of the frame. Top right is the diver with the shark. Bottom left is the soccer training photo.
-   Bottom right is tea outside the tent. The freediver is not in this grid.
-   New file: assets/photo/a-rider-pausing-on-a-granite-ridge-ph-crop.jpg
-4. Why One Ingredient, coffee cup photo: new cutout with the whole cup, the whole stir straw and the surface under the cup.
-   It is noticeably darker at its brightest.
-   New file: assets/cutouts/why-desk-coffee-cutout-v2.png
-5. How To Use top photo: the man is cut out. He lifts more than before and brightens a little.
-   New file: assets/cutouts/how-gym-coffee-crop-cutout.png
-6. About top photo: the whole wind vane is cut out, from where the pole meets the ground to the vane. It lifts and brightens slightly.
-   New file: assets/cutouts/about-colestin-windvane-cutout.png
+1. Turkey Tail and Cordyceps top photos: the small top line, the italic tagline, the mushroom icon and the short underline
+   are now white, each with a soft dark glow directly on the letters/shape. No boxes. Mushroom names unchanged.
+2. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": bottom row swapped. Tea outside the tent is bottom left,
+   soccer training is bottom right. Top row unchanged.
+3. How To Use: the top photo now fades to pure black at its bottom. The underwater section starts in pure black and fades into
+   the underwater photo over about a quarter of the screen. Further down it looks as before.
+4. About top photo: flipped so the wind vane is on the right. The whole wind vane (pole to vane) still lifts and brightens slightly.
+   New files: assets/photo/about-colestin-windvane-flip.jpg, assets/cutouts/about-colestin-windvane-flip-cutout.png
+5. FAQ top: soft dark glow directly on the gold "FAQ" letters and on "Ten honest answers." No box.
+6. FAQ top photo grid: the extra strip above the top two photos is gone. The top row starts under the header and is the same
+   height as the bottom row (200px).
 
-DESKTOP AND PHONE
-9. Home, packets-on-powder photo (desktop): reframed and zoom eased so the packet tops have room above them.
-7. Mushrooms page: "Mushrooms have been cultivated here since 609 CE." now reads
-   "Mushrooms have been cultivated here for more than 1,400 years."
-8. Blur removed: "CERTIFIED ORGANIC" under the badge (both places), and the three sample lot rows on the Receipts page
-   (Lion's Mane, Cordyceps, Turkey Tail). All fully readable.
+DESKTOP
+7. FAQ page bottom photo row: the yoga photo in the bamboo circle is moved up so the woman is fully visible.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- cutout-lift.js
-- assets/photo/a-rider-pausing-on-a-granite-ridge-ph-crop.jpg (new)
-- assets/cutouts/why-desk-coffee-cutout-v2.png (new)
-- assets/cutouts/how-gym-coffee-crop-cutout.png (new)
-- assets/cutouts/about-colestin-windvane-cutout.png (new)
+- assets/photo/about-colestin-windvane-flip.jpg (new)
+- assets/cutouts/about-colestin-windvane-flip-cutout.png (new)
 - RawCanopyExtract-site-text.txt (regenerated)
 - CHANGES.txt (this file)
