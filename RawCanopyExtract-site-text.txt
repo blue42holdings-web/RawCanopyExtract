@@ -21,7 +21,7 @@ PAGE: HOME
   BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.jpg
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-The world keeps getting faster and more complicated. Your body and brain need support. Common sense says the answer grows naturally. We followed the research and hand selected three well studied mushrooms to bring the best of the forest to your cup.
+The world keeps getting faster and more complicated. Common sense says your body and brain need natural support. We followed the research and selected three mushrooms, bringing the best of the forest to your cup.
 CORDYCEPS MUSHROOM for physical performance:→
   LINK: "CORDYCEPS MUSHROOM for physical performance:→" -> opens the "Cordyceps" page (on this site)
 LION'S MANE MUSHROOM for mental clarity:→
