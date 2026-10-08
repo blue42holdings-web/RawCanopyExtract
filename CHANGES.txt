@@ -20,6 +20,7 @@ PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-6.
    New file: assets/cutouts/about-colestin-windvane-cutout.png
 
 DESKTOP AND PHONE
+9. Home, packets-on-powder photo (desktop): reframed and zoom eased so the packet tops have room above them.
 7. Mushrooms page: "Mushrooms have been cultivated here since 609 CE." now reads
    "Mushrooms have been cultivated here for more than 1,400 years."
 8. Blur removed: "CERTIFIED ORGANIC" under the badge (both places), and the three sample lot rows on the Receipts page
