@@ -1,17 +1,31 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (f)
-Changes since the October 7 (e) export. PHONE ONLY (narrower than 768px). Desktop unchanged.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (g)
+Changes since the October 7 (f) export.
 
-1. Home page, mushroom list under "ORGANIC MUSHROOM POWDERS": new order on phone is
-   Lion's Mane (mental clarity), Cordyceps (physical performance), Turkey Tail (immune support).
-   Wording, arrows and links unchanged.
-2. Turkey Tail page, top photo: zoomed in so the frame shows only the turkey tail mushroom
-   (dark top-left corner cropped out). It now starts dark and brightens to full brightness
-   with the same timing as the Lion's Mane top photo (holds 1.5s, brightens over 6s).
-   The heading text has the same soft dark shadow as Lion's Mane so it stays readable.
+PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-5.
+1. Home mushroom list: Lion's Mane, Cordyceps, Turkey Tail (already in the (f) export; unchanged).
+2. Cordyceps page top photo: zoomed in so the top-left leaf is gone; the cordyceps is cut out and lifts
+   while the background softens. Starts dark and brightens slowly (holds 1.5s, 6s), staying dark enough for the text.
+   New file: assets/cutouts/cd-hero-clubs-cutout.png
+3. Lion's Mane page top photo: the shaded rectangles behind the small gold line and the gold italic line are removed.
+   A soft dark glow on the letters themselves replaces them, so shading stops where each line's words stop.
+4. FAQ top grid: the camp-chair/van photo (top right) no longer animates. The girl in the van with the rainbow sun
+   (lower left) gets the cutout animation. Bottom two photos are near normal brightness; top two keep just enough
+   darkening for "Ten honest answers." (plus a soft glow on the heading).
+5. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": lower left freediver replaced with
+   a-rider-pausing-on-a-granite-ridge.webp.
+
+DESKTOP AND PHONE
+6. Further Reading lists: new top link on each mushroom page.
+   Lion's Mane: Biomedical Research 2019 study moved to the top.
+   Cordyceps: PLOS One reaction time trial (journals.plos.org).
+   Turkey Tail: International Immunopharmacology trial (sciencedirect.com).
+   Home page mushroom lines still link only to the on-site pages.
+7. About page final paragraph replaced; "Pay it forward. It's your turn now." removed.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (regenerated; no wording changed)
+- cutout-lift.js
+- assets/cutouts/cd-hero-clubs-cutout.png (new)
+- RawCanopyExtract-site-text.txt (regenerated)
 - CHANGES.txt (this file)
-No photos, cutouts or scripts changed.

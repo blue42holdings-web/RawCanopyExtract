@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 7, 2026 (f) from the current site build. Export only.
+Exported October 7, 2026 (g) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -510,12 +510,12 @@ Supports a steady, clear mind.*
 * These statements have not been evaluated by the Food and Drug Administration. See sources and full disclaimer at the foot of this page.
 HEADING: FURTHER READING
 Outside research on this mushroom, from the people who published it.
+Improvement of cognitive functions by oral intake of Hericium erinaceusBiomedical Research
+  LINK: "Improvement of cognitive functions by oral intake of Hericium erinaceus" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
 Mushrooms magnify memory by boosting nerve growthThe University of Queensland
   LINK: "Mushrooms magnify memory by boosting nerve growth" -> https://news.uq.edu.au/2023-02-10-mushrooms-magnify-memory-boosting-nerve-growth  (opens in a new tab)
 Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type MiceEvidence Based Complementary and Alternative Medicine
   LINK: "Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type Mice" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC5237458/  (opens in a new tab)
-Improvement of cognitive functions by oral intake of Hericium erinaceusBiomedical Research
-  LINK: "Improvement of cognitive functions by oral intake of Hericium erinaceus" -> https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article  (opens in a new tab)
 HEADING: THE NAMES IT GOES BY
 LATIN
 Hericium erinaceus
@@ -597,6 +597,8 @@ BUTTON: "JOIN THEMOVEMENT"
   You're on the list.
 HEADING: FURTHER READING
 Outside research on this mushroom, from the people who published it.
+Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trialPLOS One
+  LINK: "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial" -> https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725  (opens in a new tab)
 Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trialPLOS One, via the National Library of Medicine
   LINK: "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC13372127/  (opens in a new tab)
 HEADING: THE NAMES IT GOES BY
@@ -680,6 +682,8 @@ BUTTON: "JOIN THEMOVEMENT"
   You're on the list.
 HEADING: FURTHER READING
 Outside research on this mushroom, from the people who published it.
+Immunomodulatory effects of Yun Zhi and Danshen capsules in healthy subjects: a randomized, double-blind, placebo-controlled, crossover studyInternational Immunopharmacology
+  LINK: "Immunomodulatory effects of Yun Zhi and Danshen capsules in healthy subjects: a randomized, double-blind, placebo-controlled, crossover study" -> https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X  (opens in a new tab)
 Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolorJournal of Veterinary Research
   LINK: "Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolor" -> https://pmc.ncbi.nlm.nih.gov/articles/PMC10541659/  (opens in a new tab)
 Antioxidative activities and chemical characterization of polysaccharide extracts from the widely used mushrooms Ganoderma applanatum, Ganoderma lucidum, Lentinus edodes and Trametes versicolorJournal of Food Composition and Analysis
@@ -847,7 +851,7 @@ I worked in development, cut trailers for series, and was lead editor on many sh
 I've been very concerned about what's put in our food for years. They get you sick and give you a pill to fix it. They never treat the root cause. The reason has always been obvious.
 For years I bought "healthy" capsules and powder tubs with sunbursts on them. One look at the ingredient list told you everything. Artificial flavoring made in a lab, and a dozen things you'd never willingly put in your body.
 So I decided to start my own brand without the bullshit. One ingredient, because there is only one that matters. That number tested by a laboratory that doesn't work for me. The results published and easily reviewed, just a barcode scan away. Nothing hidden. Everything gained.
-The idea manifested just west of the Siskiyou Pass, in the Colestin Valley, just above Mount Shasta. That is where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of something greater than myself. Hoping to prove that we can make a positive change in the world. Pay it forward. It's your turn now.
+The idea manifested on the border of California and Oregon, just west of the Siskiyou Pass in the Colestin Valley, just above Mount Shasta. That's where I came with my three dogs to escape the 101 and 405. I was unknowingly in pursuit of something greater than myself, hoping to prove that one person can create a positive change in the world.
   IMAGE: assets/photo/about-loaded-car-clean.webp  | alt text: "A car loaded to the roof"
   IMAGE: assets/photo/about-kayaks.jpg  | alt text: "Two kayaks on the rack"
   IMAGE: assets/photo/about-three-dogs-2.webp  | alt text: "On the road north"
