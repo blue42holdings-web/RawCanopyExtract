@@ -1,3 +1,54 @@
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (h)
+Changes since the October 8 (g) export.
+
+DESKTOP AND PHONE
+1. Home, opening paragraph: the gold "three mushrooms" now always stays on one line, using a non-breaking space between the words. If it doesn't fit, the whole phrase moves to the next line. Wording and color unchanged.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated, no wording changes)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (g)
+Changes since the October 8 (f) export.
+
+DESKTOP AND PHONE
+1. Lion's Mane packet front and tin front: the apostrophe in "LION'S MANE" is now white, matching the rest of the name. Nothing else in either image changed. The Triple Power combo front is untouched: its "LION'S MANE" line is gold throughout.
+
+FILES THAT CHANGED
+- assets/photo/tins/rcx-front-lions-mane-packet.jpg
+- assets/photo/tins/rcx-front-lions-mane.jpg
+- index.html (image version numbers bumped so browsers load the new images)
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated, no wording changes)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (f)
+Changes since the October 8 (e) export.
+
+PHONE ONLY (narrower than 768px). Desktop unchanged.
+1. Full-width images, whole site. I measured every page at phone width for images that stopped short of either edge. Three places were inset and now run edge to edge:
+   - Home, "on the go" section: the camper photo, the tent photo, both wet slate panels and the packets photo. The black strips down both sides are gone. The text sits exactly where it did.
+   - Mushrooms, the three species file cards: the Lion's Mane, Cordyceps and Turkey Tail photos at the top of each card.
+   - Shop, the "coming soon" cards: the coconut, ginger, orange and honeycomb photos.
+   Every other page already ran full width. Nothing now spills past the screen edge, and the page doesn't scroll sideways.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated, no wording changes this round)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (e)
 Changes since the October 8 (d) export.
 

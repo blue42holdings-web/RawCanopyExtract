@@ -401,14 +401,14 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="hero"]{aspect-ratio:auto !important;min-height:0 !important;padding:64px 0 52px !important}
 [data-m="hero"] [data-rcx-rotator]{margin-top:30px !important;font-size:22px !important}
 [data-m="hdr-tts"]{position:static !important;transform:none !important;top:auto !important;left:auto !important;margin-left:14px !important;align-self:center !important}
-[data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
+[data-m="wte-col"]{padding:48px 32px 44px !important;margin:0 -14px !important;align-items:center !important}
 [data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
 [data-m="wte-col"]{background-color:#000 !important;background-image:none !important}
 [data-m="brand-slate"],[data-m="wte-story"]{background-color:#000;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-repeat:no-repeat !important}
-[data-m="wte-text"] [data-m="brand-slate"]{display:flex !important;flex-direction:column;gap:14px;margin:4px -18px 0 !important;padding:14px 18px 44px !important;background-position:0 0,center top !important}
+[data-m="wte-text"] [data-m="brand-slate"]{display:flex !important;flex-direction:column;gap:14px;margin:4px -32px 0 !important;padding:14px 32px 44px !important;background-position:0 0,center top !important}
 [data-m="brand-slate"] > p{font-size:17px !important;padding-left:0 !important}
-[data-m="wte-story"]{width:auto !important;margin:0 -18px -44px !important;padding:0 18px 44px !important;background-position:0 0,center bottom !important}
-[data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
+[data-m="wte-story"]{width:auto !important;margin:0 -32px -44px !important;padding:0 32px 44px !important;background-position:0 0,center bottom !important}
+[data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -32px -18px;padding:40px 32px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
 [data-m="world-grid"] > img:nth-child(3){order:4}[data-m="world-grid"] > img:nth-child(4){order:3}[data-m="world-grid"] > img:nth-child(5){order:2}
 [data-m="why-slate"],[data-m="howto-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
@@ -454,7 +454,7 @@ section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76
 [data-m="pk-dup"]{display:block !important;height:316px;margin:-84px -32px 36px !important;align-self:stretch;position:relative;z-index:2}
 [data-m="pk-dup"] > img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.35) 18px,rgba(0,0,0,.8) 34px,#000 50px);mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.35) 18px,rgba(0,0,0,.8) 34px,#000 50px)}
 [data-m="wte-photos"]{display:none !important}
-[data-m="tent-dup"]{display:block !important;height:280px !important;margin:4px -18px 4px !important;align-self:stretch}
+[data-m="tent-dup"]{display:block !important;height:280px !important;margin:4px -32px 4px !important;align-self:stretch}
 [data-m="1col"]{grid-template-columns:minmax(0,1fr) !important}
 [data-m="1col"] > *{min-width:0 !important;max-width:100% !important}
 [data-m="row2x2"]{grid-template-columns:1fr 1fr !important}
@@ -558,6 +558,8 @@ img[data-m="rc-ph"]{display:block !important}
 [data-how-bg] > img[data-dog]{flex:0 0 auto !important;align-self:flex-start !important;width:180% !important;max-width:none !important;height:auto !important;margin-left:-22% !important;object-fit:fill !important;transform-origin:62% 30% !important;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%) !important;transform:scale(1);transition:filter 6s ease-in-out 1.5s,transform 7.5s cubic-bezier(.33,0,.2,1) !important}
 [data-how-bg][data-lit] > img[data-dog]{transform:scale(1.06)}
 [data-m="mush-files"]{padding-top:48px !important}
+[data-m="mush-files"] [style*="border"] > div:first-child:has(> img[src*="turkey-tail-card"]),[data-m="mush-files"] [style*="border"] > img:first-child{width:calc(100% + 30px) !important;max-width:none !important;margin:0 -15px !important}
+[data-m="soon-sec"] article > div:first-child{margin-left:-27px !important;margin-right:-27px !important}
 [data-m="badges-sec"]{display:none !important}
 [data-m="soon-sec"]{padding-top:48px !important}
 [data-m="bestform-sec"]{min-height:0 !important;padding-bottom:48px !important}
@@ -945,7 +947,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">The world's <span style="color:#D4A24A">getting faster</span> and more complicated. Common sense says your <span style="color:#D4A24A">body and brain</span> need natural support. We followed the research and selected <span style="color:#D4A24A">three mushrooms</span>, bringing the best of the forest to your cup.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">The world's <span style="color:#D4A24A">getting faster</span> and more complicated. Common sense says your <span style="color:#D4A24A">body and brain</span> need natural support. We followed the research and selected <span style="color:#D4A24A;white-space:nowrap">three&nbsp;mushrooms</span>, bringing the best of the forest to your cup.</p>
 <div data-m="rl-list" style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-cd" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for <span style="color:#D4A24A">stamina and endurance</span><span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-lm" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for <span style="color:#D4A24A">brain health as you age</span><span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
@@ -1034,7 +1036,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-tin="true" style="position:relative;width:86%;margin-top:22.3%;filter:drop-shadow(0 26px 30px rgba(0,0,0,.85))">
 <div aria-hidden="true" style="position:relative;width:102%;margin-left:-1%;aspect-ratio:80/8.6;background:linear-gradient(90deg,#050505 0%,#1A1A18 20%,#3A3936 42%,#1C1C1A 64%,#0B0B0A 85%,#030303 100%);border-radius:3px 3px 1px 1px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 3px rgba(0,0,0,.55);border-bottom:1px solid rgba(212,162,74,.55)"></div>
 <div style="position:relative;background:#000">
-<img src="assets/photo/tins/rcx-front-lions-mane.jpg?v=8" alt="Lion's Mane steel tin front" style="width:100%;aspect-ratio:80/102;height:auto;display:block" loading="lazy">
+<img src="assets/photo/tins/rcx-front-lions-mane.jpg?v=9" alt="Lion's Mane steel tin front" style="width:100%;aspect-ratio:80/102;height:auto;display:block" loading="lazy">
 <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 9%,rgba(255,255,255,.05) 34%,rgba(255,255,255,0) 50%,rgba(0,0,0,0) 88%,rgba(0,0,0,.5) 100%),linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0) 94%,rgba(0,0,0,.4) 100%);box-shadow:inset 0 0 0 1px rgba(212,162,74,.32)"></div>
 </div>
 </div>
@@ -1167,7 +1169,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div style="position:absolute;inset:0;background:rgba(0,0,0,.92);pointer-events:none"></div>
 <div style="position:relative;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px" data-m="1col"><article style="border:1px solid rgba(212,162,74,.2);background:linear-gradient(#0A0A09,#000);padding:16px;display:flex;flex-direction:column;container-type:inline-size">
 <div style="position:relative;height:calc(125cqw + 16px);background:#000;margin:-16px -16px 20px;overflow:hidden">
-<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=6" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
+<img src="assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=7" alt="Lion's Mane packet front" style="position:absolute;max-width:none;width:calc(100cqw * 1552 / 1312);height:auto;left:calc(16px - 100cqw * 120 / 1312);top:calc(16px - 100cqw * 120 / 1312);aspect-ratio:1552/1760;display:block">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,2.6vw,38px);color:#F1ECE1;margin:0 0 8px">Lion's Mane</h2>
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 PACKETS · 2 GRAM SERVINGS</p>
