@@ -1,3 +1,19 @@
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (i)
+Changes since the October 8 (h) export.
+
+DESKTOP AND PHONE
+1. Home, opening paragraph, now reads word for word: "The world's getting faster and more complicated. Common sense says your body and brain need natural support. We followed the research and selected three mushrooms to bring the best of the forest to your cup."
+   "getting faster", "body and brain" and "three mushrooms" stay gold. "three mushrooms" still stays together on one line.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated: the new wording)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (h)
 Changes since the October 8 (g) export.
 
