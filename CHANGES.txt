@@ -1,3 +1,27 @@
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (j)
+Changes since the October 8 (i) export.
+
+DESKTOP AND PHONE
+1. Standing rule, whole site: headings use balanced wrapping and paragraphs and list items use "pretty" wrapping, so lines even out and no word is left alone on a last line. Lines that were already styled their own way keep that styling.
+2. Home, opening paragraph, now reads word for word: "The world's getting faster and more complicated. Common sense says your body and brain need natural support. Published research led us to three mushrooms that bring the best of the forest to your cup."
+   "getting faster", "body and brain" and "three mushrooms" stay gold. "three mushrooms" stays together on one line.
+
+PHONE ONLY (narrower than 768px). Desktop unchanged.
+3. About, photo row under the wind vane: the dog photos start dark and slowly lighten over about 8 seconds, a smaller change than the Mount Shasta image. Mount Shasta's final brightness is a little lower.
+4. How To Use: most of the black between the bottom of the gym image and HOW TO USE is gone, about 200px shorter. HOW TO USE still sits inside the black to water fade. The top image itself is unchanged.
+5. Off-center text, cause found: on the home page "on the go" section, a phone rule removed the left padding but kept the right, so that block sat about 32px left of center. That covered the opening paragraph, the mushroom lines, "THE GYM. THE VIDEO CALL. THE LONG FLIGHT." and "Not a coffee or tea drinker?". The padding is now equal on both sides and all of it is centered on the true center. The black strip by the packets image came from the same block's side spacing, fixed in the (f) export.
+   Also fixed while checking every page: the home 2x2 photo grid ("the world it lives in") had a 14px black edge on both sides and now runs edge to edge. Images and order unchanged.
+   Every page was checked at phone width: nothing is wider than the screen, nothing reserves space on the right, and the page doesn't scroll sideways.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated: the new third sentence)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (i)
 Changes since the October 8 (h) export.
 

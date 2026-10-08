@@ -59,6 +59,8 @@ input{font:inherit}
 
 [data-m="lm-eyebrow"]{position:relative;isolation:isolate}
 [data-m="lm-eyebrow"]::before{content:"";position:absolute;left:-90px;right:-90px;top:-60px;bottom:-60px;z-index:-1;background:radial-gradient(closest-side,rgba(0,0,0,.62) 0%,rgba(0,0,0,.5) 35%,rgba(0,0,0,.25) 65%,rgba(0,0,0,0) 100%);pointer-events:none}
+h1,h2,h3,h4,h5,h6,[data-m="long-flight"]{text-wrap:balance}
+p,li,blockquote,figcaption,dd{text-wrap:pretty}
 @media (max-width:768px){
 html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 img{max-width:100%}
@@ -410,6 +412,7 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="wte-story"]{width:auto !important;margin:0 -32px -44px !important;padding:0 32px 44px !important;background-position:0 0,center bottom !important}
 [data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -32px -18px;padding:40px 32px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
+section > [data-m="world-grid"]{margin-left:-14px !important;margin-right:-14px !important}
 [data-m="world-grid"] > img:nth-child(3){order:4}[data-m="world-grid"] > img:nth-child(4){order:3}[data-m="world-grid"] > img:nth-child(5){order:2}
 [data-m="why-slate"],[data-m="howto-slate"]{background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-position:0 0,center !important;background-repeat:no-repeat !important}
 [data-m="why-cards"]{padding-bottom:22px !important}
@@ -444,6 +447,8 @@ section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76
 [data-m="wte-text"]{padding-left:0 !important}
 [data-m="wte-text"] p,[data-m="wte-text"] [data-keep-one-line]{text-align:center !important}
 [data-m="wte-text"] div{padding-left:0 !important;align-items:center !important}
+[data-m="wte-text"] [data-m="camper-zone"]{padding-left:32px !important}
+[data-m="wte-text"] p{padding-left:0 !important}
 [data-m="wte-text"] a{white-space:normal !important}
 [data-m="wte-story"]{width:auto !important;align-self:stretch !important;align-items:center !important}
 [data-m="wte-story"] div{left:0 !important;padding-left:0 !important}
@@ -521,9 +526,9 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-fb="82"]{box-shadow:-80px 0 0 rgba(0,0,0,.82),80px 0 0 rgba(0,0,0,.82)}
 [data-m="how-steps-sec"]{background-size:100% 100% !important}
 [data-m="shasta-img"]{filter:brightness(.14) saturate(2.1) hue-rotate(-6deg) !important;transition:filter 6s ease-in-out 1.5s}
-[data-m="shasta-img"][data-lit]{filter:brightness(.7) saturate(2.1) hue-rotate(-6deg) !important}
-[data-dogs]:not([data-how-bg]) > img[data-dog]{filter:brightness(.16) !important}
-[data-dogs]:not([data-how-bg])[data-lit] > img[data-dog]{filter:brightness(.34) !important}
+[data-m="shasta-img"][data-lit]{filter:brightness(.6) saturate(2.1) hue-rotate(-6deg) !important}
+[data-dogs]:not([data-how-bg]) > img[data-dog]{filter:brightness(.16) !important;transition:filter 8s ease-in-out 1.5s !important}
+[data-dogs]:not([data-how-bg])[data-lit] > img[data-dog]{filter:brightness(.4) !important}
 [data-m="why-blend"]{background-size:100% 100%,118% auto !important;background-position:center 60%,90% 42% !important}
 [data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 138% !important;background-position:0 0,50% 82% !important}
 [data-m="lm-eyebrow"]::before{display:none !important}
@@ -541,7 +546,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-head"] > p,[data-m="faq-head"] > h1{text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
 [data-screen-label="FAQ"] > section:first-child{min-height:200px !important;padding:22px 18px 18px !important;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
 [data-m="how-label"]{font-size:30px !important;margin-top:30px !important}
-[data-m="how-top"]{min-height:70vh !important}
+[data-m="how-top"]{min-height:70vh !important;margin-bottom:-16vh !important}
 [data-m="cdh-hero"]{background-size:100% 100%,auto 135% !important;background-position:0 0,54% 95% !important}
 [data-m="tth-hero"]{background-size:100% 100%,auto 165% !important;background-position:0 0,47% 58% !important}
 [data-m="diag-stack"] > img{filter:grayscale(1) contrast(1.9)}
@@ -947,7 +952,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">The world's <span style="color:#D4A24A">getting faster</span> and more complicated. Common sense says your <span style="color:#D4A24A">body and brain</span> need natural support. We followed the research and selected <span style="color:#D4A24A;white-space:nowrap">three&nbsp;mushrooms</span> to bring the best of the forest to your cup.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">The world's <span style="color:#D4A24A">getting faster</span> and more complicated. Common sense says your <span style="color:#D4A24A">body and brain</span> need natural support. Published research led us to <span style="color:#D4A24A;white-space:nowrap">three&nbsp;mushrooms</span> that bring the best of the forest to your cup.</p>
 <div data-m="rl-list" style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-cd" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for <span style="color:#D4A24A">stamina and endurance</span><span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-lm" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for <span style="color:#D4A24A">brain health as you age</span><span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
