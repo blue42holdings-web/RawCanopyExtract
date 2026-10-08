@@ -15,7 +15,7 @@ PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-6.
    height as the bottom row (200px).
 
 DESKTOP
-7. FAQ page bottom photo row: the yoga photo in the bamboo circle is moved up so the woman is fully visible.
+7. FAQ page bottom photo row: the yoga photo in the bamboo circle is moved up so the woman is fully visible, then lowered slightly to show more of the top of the circle.
 
 FILES THAT CHANGED
 - index.html
