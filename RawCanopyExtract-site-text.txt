@@ -21,8 +21,7 @@ PAGE: HOME
   BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.jpg
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
-We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
+The world keeps getting faster and more complicated. Your body and brain need support. Common sense says the answer grows naturally. We followed the research and hand selected three well studied mushrooms to bring the best of the forest to your cup.
 CORDYCEPS MUSHROOM for physical performance:→
   LINK: "CORDYCEPS MUSHROOM for physical performance:→" -> opens the "Cordyceps" page (on this site)
 LION'S MANE MUSHROOM for mental clarity:→
@@ -32,6 +31,8 @@ TURKEY TAIL MUSHROOM for immune support:→
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
+RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
+We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
 Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
 [DESKTOP ONLY — hidden on phones]
   Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.

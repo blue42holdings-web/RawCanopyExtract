@@ -391,8 +391,8 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="tt-studied"]{position:relative !important;background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url('assets/photo/tt-plane-cabin.webp') !important;background-position:center 60% !important}
 [data-m="tt-studied"] [data-m="studied-sec"]{padding-top:0 !important;padding-bottom:0 !important}
 [data-m="tt-studied"] [data-fb="62"]{padding-top:44px !important;padding-bottom:44px !important}
-[data-m="tt-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9));opacity:1;transition:opacity 3s ease-out}
-[data-m="tt-shade"][data-lit]{opacity:.69}
+[data-m="tt-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9));opacity:1;transition:opacity 9s ease-in-out 1s}
+[data-m="tt-shade"][data-lit]{opacity:.6}
 [data-m="tt-studied"] > section{position:relative;z-index:1}
 [data-m="bgstack"]{display:grid !important;position:absolute;inset:0;z-index:0;grid-auto-rows:minmax(0,1fr);pointer-events:none;overflow:hidden}
 [data-m="shasta"],[data-m="steps-wrap"]{position:relative !important;background-image:none !important}
@@ -404,8 +404,9 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="wte-col"]{padding:48px 18px 44px !important;align-items:center !important}
 [data-m="wte-inner"]{width:100% !important;align-self:stretch !important}
 [data-m="wte-col"]{background-color:#000 !important;background-image:none !important}
-[data-m="tent-dup"] + p,[data-m="wte-story"]{background-color:#000;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-repeat:no-repeat !important}
-[data-m="tent-dup"] + p{margin:4px -18px 0 !important;padding:14px 18px 44px !important;background-position:0 0,center top !important}
+[data-m="brand-slate"],[data-m="wte-story"]{background-color:#000;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,cover !important;background-repeat:no-repeat !important}
+[data-m="wte-text"] [data-m="brand-slate"]{display:flex !important;flex-direction:column;gap:14px;margin:4px -18px 0 !important;padding:14px 18px 44px !important;background-position:0 0,center top !important}
+[data-m="brand-slate"] > p{font-size:17px !important;padding-left:0 !important}
 [data-m="wte-story"]{width:auto !important;margin:0 -18px -44px !important;padding:0 18px 44px !important;background-position:0 0,center bottom !important}
 [data-m="camper-zone"]{display:flex !important;flex-direction:column;gap:14px;position:relative;margin:-36px -18px -18px;padding:40px 18px 32px;background-color:#000;background-image:url('assets/photo/why-rv-desk-nopen.jpg');background-size:cover;background-position:14% center;background-repeat:no-repeat}
 [data-m="camper-zone"] > :not([data-m="camper-shade"]):not([data-lift-layer]){position:relative;z-index:1}
@@ -434,7 +435,7 @@ section[style*="28px 96px"],section[style*="28px 110px"],section[style*="28px 76
 [data-m="why-slate"] > section:first-child{padding-top:28px !important}
 [data-m="camper-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(0,0,0,.97);opacity:1;transition:opacity 6s ease-in-out 1.5s}
 [data-m="camper-shade"][data-lit]{opacity:.8041}
-[data-m="tent-dup"] + p{margin-top:14px !important}
+[data-m="wte-text"] [data-m="brand-slate"]{margin-top:14px !important}
 [data-m="tent-dup"]{z-index:1}
 [data-m="wte-inner"]{text-shadow:0 0 18px rgba(0,0,0,.9),0 0 6px rgba(0,0,0,.7)}
 [data-m="wte-h2"]{padding-left:0 !important;font-size:30px !important;letter-spacing:.08em !important;white-space:nowrap !important}
@@ -493,7 +494,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="lab-orig"]{display:none !important}
 [data-m="lab-dup"]{display:block !important}
 [data-m="cd-where-bg"]{transform:scale(1.8) !important;transform-origin:72% 80% !important}
-[data-m="how-hero"]{background-size:auto 100% !important;background-position:70% 70% !important}
+[data-m="how-hero"]{background-size:100% 100%,210% auto !important;background-position:0 0,62% 50% !important;animation:none !important;transform:none !important}
 [data-m="faq-tiles"]>img:nth-child(2){display:none !important}
 [data-m="faq-tiles"]>img:nth-child(1){grid-column:1 !important}
 [data-m="faq-tiles"]>img:nth-child(3){grid-column:2 !important}
@@ -505,7 +506,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-tiles2"]>img{height:200px !important;min-height:0 !important;align-self:stretch !important}
 [data-m="faq-tiles"]>img{height:auto !important;min-height:0 !important;align-self:stretch !important}
 [data-m="faq-box"]{padding-top:48px !important}
-[data-m="mush-hero"]{min-height:0 !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important;background-size:100% 100%,auto 125% !important;background-position:0 0,55% 62% !important}
+[data-m="mush-hero"]{min-height:0 !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important;background-size:100% 100%,auto 140% !important;background-position:0 0,55% 74% !important}
 [data-m="mush-hero"] > div:not([data-m="mush-shade"]){position:relative;z-index:1;text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
 [data-m="mush-shade"],[data-m="bf-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;transition:opacity 3s cubic-bezier(.4,0,.2,1) .4s}
 [data-m="mush-shade"]{background:rgba(0,0,0,.46);transition:opacity 6s ease-in-out 1.5s !important}
@@ -518,8 +519,11 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-fb="62"]{box-shadow:-80px 0 0 rgba(0,0,0,.62),80px 0 0 rgba(0,0,0,.62)}
 [data-fb="82"]{box-shadow:-80px 0 0 rgba(0,0,0,.82),80px 0 0 rgba(0,0,0,.82)}
 [data-m="how-steps-sec"]{background-size:100% 100% !important}
-[data-m="shasta-img"]{filter:brightness(.14) !important;transition:filter 6s ease-in-out 1.5s}
-[data-m="shasta-img"][data-lit]{filter:brightness(.5) !important}
+[data-m="shasta-img"]{filter:brightness(.14) saturate(2.1) hue-rotate(-6deg) !important;transition:filter 6s ease-in-out 1.5s}
+[data-m="shasta-img"][data-lit]{filter:brightness(.5) saturate(2.1) hue-rotate(-6deg) !important}
+[data-dogs]:not([data-how-bg]) > img[data-dog]{filter:brightness(.16) !important}
+[data-dogs]:not([data-how-bg])[data-lit] > img[data-dog]{filter:brightness(.34) !important}
+[data-m="why-blend"]{background-size:100% 100%,118% auto !important;background-position:center 60%,90% 42% !important}
 [data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 138% !important;background-position:0 0,50% 82% !important}
 [data-m="lm-eyebrow"]::before{display:none !important}
 [data-m="lm-hero"] [data-m="lm-eyebrow"],[data-m="lm-hero"] p[style*="italic"]{background:none !important;box-shadow:none !important;text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
@@ -536,15 +540,15 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-head"] > p,[data-m="faq-head"] > h1{text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
 [data-screen-label="FAQ"] > section:first-child{min-height:200px !important;padding:22px 18px 18px !important;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
 [data-m="how-label"]{font-size:30px !important;margin-top:30px !important}
-[data-m="how-top"]{min-height:62vh !important}
+[data-m="how-top"]{min-height:70vh !important}
 [data-m="cdh-hero"]{background-size:100% 100%,auto 135% !important;background-position:0 0,54% 95% !important}
 [data-m="tth-hero"]{background-size:100% 100%,auto 165% !important;background-position:0 0,47% 58% !important}
-[data-m="diag-stack"] > img{filter:grayscale(1)}
-[data-m="diag-shade"]{background:#2F4F66 !important;mix-blend-mode:multiply}
+[data-m="diag-stack"] > img{filter:grayscale(1) contrast(1.9)}
+[data-m="diag-shade"]{background:#34434E !important;mix-blend-mode:multiply}
 [data-m="how-intro"]{font-family:'Archivo',sans-serif !important;font-weight:400 !important;font-size:19px !important;line-height:1.65 !important;color:#E8E1D3 !important}
-[data-m="how-hero"]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 72%,rgba(0,0,0,.82) 90%,#000 100%)}
-[data-m="steps-wrap"]{background-image:linear-gradient(#000 0,rgba(0,0,0,.82) 3vh,rgba(0,0,0,.45) 10vh,rgba(0,0,0,0) 22vh),linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:0 0,0 0,center !important;background-repeat:no-repeat !important}
-[data-how-bg] > img[data-dog]:first-child{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.55) 10vh,#000 22vh,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.55) 10vh,#000 22vh,#000 82%,transparent 100%) !important}
+[data-m="how-hero"]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,#000 0,#000 24%,rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 36%,rgba(0,0,0,0) 62%,rgba(0,0,0,.5) 70%,#000 77%,#000 100%)}
+[data-m="steps-wrap"]{background-image:linear-gradient(#000 0,rgba(0,0,0,.92) 6vh,rgba(0,0,0,.75) 14vh,rgba(0,0,0,.5) 24vh,rgba(0,0,0,.25) 34vh,rgba(0,0,0,0) 46vh),linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:0 0,0 0,center !important;background-repeat:no-repeat !important}
+[data-how-bg] > img[data-dog]:first-child{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 14vh,rgba(0,0,0,.6) 28vh,#000 44vh,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 14vh,rgba(0,0,0,.6) 28vh,#000 44vh,#000 82%,transparent 100%) !important}
 img[data-m="rc-dk"]{display:none !important}
 img[data-m="rc-ph"]{display:block !important}
 [data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
@@ -882,7 +886,7 @@ img:not([draggable="true"]){-webkit-user-drag:none}
 /* design text: no accidental highlight; paragraph text stays selectable */
 button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],[style*="Bebas Neue"],[style*="Italianno"]{-webkit-user-select:none;user-select:none}
 </style>
-<script src="cutout-lift.js?v=20261007g"></script>
+<script src="cutout-lift.js?v=20261008b"></script>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#000"></rect><g fill="none" stroke="#D4A24A" stroke-width="3"><path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z"></path></g><text x="50" y="55" font-family="serif" font-size="16" fill="#D4A24A" text-anchor="middle">RCX</text></svg></template>
 <div style="background:#000;min-height:100vh;font-family:'Oswald',sans-serif;font-weight:300;color:#E4DCCC">
@@ -940,8 +944,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <div data-m="pk-dup" style="display:none;position:relative;overflow:hidden"><img src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 92%;display:block;filter:brightness(.8)" loading="lazy"></div>
 <div data-m="wte-text" style="display:flex;flex-direction:column;gap:14px;width:100%;margin-top:18px;padding-left:120px">
 <div data-m="camper-zone" style="display:contents"><div data-m="camper-shade" aria-hidden="true" style="display:none"></div>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
-<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> <span data-m="emp-line">organic mushroom powders<span style="color:#FFFFFF">:</span></span></span> lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">The world keeps getting faster and more complicated. Your body and brain need support. Common sense says the answer grows naturally. We followed the research and hand selected three well studied mushrooms to bring the best of the forest to your cup.</p>
 <div data-m="rl-list" style="display:flex;flex-direction:column;gap:16px;align-self:stretch;text-align:center;padding-left:32px">
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-cd" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">CORDYCEPS MUSHROOM</span> for physical performance:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
 <div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:clamp(16px,1.35vw,21px);line-height:1.4;color:#FFFFFF;margin:0"><a href="#" data-page="m-lm" onClick="{{ go }}" data-m="rl-link" style="color:inherit;text-decoration:none;cursor:pointer;display:block"><span data-m="rl-name" style="font-size:1.05em">LION'S MANE MUSHROOM</span> for mental clarity:<span aria-hidden="true" style="color:#D4A24A;margin-left:.4em;display:inline-block">&rarr;</span></a></p></div>
@@ -951,7 +954,11 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.06em;font-size:clamp(15px,1.72vw,27px);line-height:1.25;color:#D4A24A;margin:0;white-space:nowrap;display:block;text-align:right" data-m="long-flight" data-keep-one-line="true">THE GYM. THE VIDEO CALL. THE LONG FLIGHT.</p>
 </div></div>
 <div data-m="tent-dup" style="display:none;position:relative;overflow:hidden;line-height:0"><img src="assets/photo/tent-mug-zoom.jpg" alt="A woman holding a mug in a tent" style="width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 50%;display:block" loading="lazy"><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(118% 108% at 44% 38%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 76%,rgba(0,0,0,.44) 100%)"></div></div>
+<div data-m="brand-slate" style="display:contents">
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify"><span style="color:#D4A24A;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:1.18em;line-height:0">RAW CANOPY EXTRACT</span> is an uncompromising new brand of organic, single-serving packets that you tear open and <span style="color:#D4A24A">add to your favorite cup of coffee</span> or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.</p>
+<p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">We're launching with three <span data-m="emp" style="color:#D4A24A"><span style="color:#FFFFFF">everyday</span> <span data-m="emp-line">organic mushroom powders<span style="color:#FFFFFF">:</span></span></span> lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.</p>
 <p style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;align-self:stretch;text-align:center;padding-left:32px"><span style="display:block">Not a coffee or tea drinker? Hot water or a smoothie works just as well.</span><span style="display:block">One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.</span><span style="display:block">Elevate your favorite cup with the power of botanical science.</span></p>
+</div>
 <p data-m="lab-orig" style="font-size:clamp(15px,1.24vw,19px);line-height:1.5;color:#FFFFFF;margin:0;text-align:justify">Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and <a data-page="receipts" onClick="{{ go }}" role="link" tabindex="0" style="color:#D4A24A;text-decoration:underline;cursor:pointer" style-hover="color:#F1ECE1">look it up on our Receipts page</a> to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.</p>
 </div>
 </div>
@@ -2167,7 +2174,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <section data-m="why-cards" style="padding:0 28px 96px;background:#000">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px" data-m="1col">
 
-<article style="border:1px solid rgba(241,236,225,.16);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-desk-coffee.jpg');background-size:100% 100%,cover;background-position:center 60%,center 35%;background-repeat:no-repeat,no-repeat;background-origin:border-box;background-clip:border-box;padding:32px;display:flex;flex-direction:column">
+<article data-m="why-blend" style="border:1px solid rgba(241,236,225,.16);background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/why-desk-coffee.jpg');background-size:100% 100%,cover;background-position:center 60%,center 35%;background-repeat:no-repeat,no-repeat;background-origin:border-box;background-clip:border-box;padding:32px;display:flex;flex-direction:column">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:14px;color:#EDE7DA;margin:0 0 22px">A TYPICAL BLEND</p>
 <p style="font-family:'Playfair Display',serif;font-size:25px;color:#FFFFFF;margin:0 0 20px">"Proprietary blend" · 1,200 mg</p>
 <div style="display:grid;gap:12px;font-size:15px;color:#EDE7DA;line-height:1.6">
@@ -2241,7 +2248,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <sc-if value="{{ isHow }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="How To Use">
 <section data-m="how-top" style="margin-bottom:-1px;min-height:40vh;display:flex;align-items:center;justify-content:center;padding:64px 28px;background-color:#000;position:relative;overflow:hidden">
-<div data-m="how-hero" data-lift-bg="assets/cutouts/how-gym-coffee-crop-cutout.png" data-lift-dim="brightness(.8)" data-lift-scale="1.1" data-lift-origin="0.645 1" data-lift-dur="2600" data-lift-delay="1000" data-lift-noblur="" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;animation:rcxPushIn 6s cubic-bezier(.33,0,.2,1) both"></div>
+<div data-m="how-hero" data-lift-bg="assets/cutouts/how-gym-coffee-crop-cutout.png" data-lift-dim="brightness(.8)" data-lift-scale="1.12" data-lift-origin="0.645 1" data-lift-dur="6000" data-lift-delay="1500" data-lift-fade="1500" data-lift-ease="cubic-bezier(.45,0,.3,1)" data-lift-noblur="" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;animation:rcxPushIn 6s cubic-bezier(.33,0,.2,1) both"></div>
 <div style="position:relative;z-index:1;width:100%;max-width:1300px;margin:0 auto;text-align:center">
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,4.6vw,60px);line-height:1.22;color:#F1ECE1;margin:0">M<span style="color:#D4A24A">o</span>rning coffee.<br>Aftern<span style="color:#D4A24A">o</span>on tea.<br>The cup bef<span style="color:#D4A24A">o</span>re bed.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
@@ -2307,7 +2314,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="About">
-<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.95) saturate(1.15)" data-lift-scale="1.14" data-lift-origin="0.7075 0.826" data-lift-dur="2600" data-lift-delay="1000" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
+<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.95) saturate(1.15)" data-lift-scale="1.06" data-lift-origin="0.7075 0.826" data-lift-dur="7000" data-lift-delay="1500" data-lift-fade="1500" data-lift-ease="cubic-bezier(.45,0,.3,1)" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
 
 
 

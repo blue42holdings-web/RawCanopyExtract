@@ -155,13 +155,13 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
   }
   function arm(el){
     el.setAttribute('data-lift-armed','');
-    var DU=+(el.getAttribute('data-lift-dur')||6000), DE=el.hasAttribute('data-lift-delay')?+el.getAttribute('data-lift-delay'):1500, EZ=el.hasAttribute('data-lift-dur')?'cubic-bezier(.22,.7,.25,1)':'ease-in-out';
+    var DU=+(el.getAttribute('data-lift-dur')||6000), DE=el.hasAttribute('data-lift-delay')?+el.getAttribute('data-lift-delay'):1500, EZ=el.getAttribute('data-lift-ease')||(el.hasAttribute('data-lift-dur')?'cubic-bezier(.22,.7,.25,1)':'ease-in-out'), FD=el.getAttribute('data-lift-fade');
     var CT=function(p){ return p+' '+DU+'ms '+EZ+' '+DE+'ms'; }, NB=el.hasAttribute('data-lift-noblur');
     var cs=getComputedStyle(el), r=el.getBoundingClientRect(), sz=splitList(cs.backgroundSize), ps=splitList(cs.backgroundPosition), M='linear-gradient(to top,transparent 0,#000 14%)';
     var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:'+M+';mask-image:'+M+';');
     var blur=mk('position:absolute;inset:0;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);transition:'+CT('backdrop-filter')+','+CT('-webkit-backdrop-filter')+';');
     var LB=el.getAttribute('data-lift-scale'), LBT=LB?'scale('+LB+')':LIFT;
-    var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';filter:'+(el.getAttribute('data-lift-dim')||'none')+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+CT('opacity')+','+CT('transform')+';');
+    var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';filter:'+(el.getAttribute('data-lift-dim')||'none')+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+(FD?'opacity '+FD+'ms ease-out '+DE+'ms':CT('opacity'))+','+CT('transform')+';');
     box.appendChild(blur); box.appendChild(cut); el.insertBefore(box,el.firstChild);
     var OG=el.getAttribute('data-lift-origin');
     if(OG) loadImg(el.getAttribute('data-lift-bg')).then(function(im){ var o=OG.split(/\s+/).map(parseFloat), R=imgRect(el.offsetWidth,el.offsetHeight,im.naturalWidth,im.naturalHeight,sz[sz.length-1],ps[ps.length-1]); cut.style.transformOrigin=(R.x+o[0]*R.w).toFixed(1)+'px '+(R.y+o[1]*R.h).toFixed(1)+'px'; });

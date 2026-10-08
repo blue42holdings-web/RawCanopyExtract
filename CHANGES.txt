@@ -1,23 +1,20 @@
-RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (a)
-Changes since the October 7 (l) export.
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (b)
+Changes since the October 8 (a) export.
+
+DESKTOP AND PHONE
+1. Home, top of the page: the order is now the seal image, the new line, then the three mushroom lines. New line, word for word: "The world keeps getting faster and more complicated. Your body and brain need support. Common sense says the answer grows naturally. We followed the research and hand selected three well studied mushrooms to bring the best of the forest to your cup." The brand paragraph ("RAW CANOPY EXTRACT is an uncompromising new brand...") moved lower, together with the "We're launching with three..." paragraph that follows it. They now sit just before "Not a coffee or tea drinker?". On desktop they stay beside the packets and tent photos. On phone they come right under the tent photo, on the same slate panel as "Not a coffee or tea drinker?". Wording unchanged.
 
 PHONE ONLY (narrower than 768px). Desktop unchanged.
-1. Cordyceps top image: zoomed in (same framing used before) so the leaf in the top left is gone. No animation, words untouched.
-2. Turkey Tail top image: zoomed in (same framing used before) so the grass in the top left is gone. No animation, words untouched.
-3. Mushrooms, red cliffs top image: added height on top removed (box back to its original size). Zoom is now 25% over the original, image moved up and a little left.
-4. Botanical Science: the diagram panels are now slate blue, matched to the How To Use water.
-5. Cordyceps, "where ours comes from": image zoomed in 25% and moved up so the cliffs show. Box size unchanged.
-6. Click sounds: three sounds picked at random each click. Current sound 65%, a lighter click 20%, a deep hit followed by a lighter echoing click 15%. All three share the same echo.
-7. Turkey Tail, airplane cabin behind "WHAT'S BEEN STUDIED": empty gray strip at the top removed, extra space above and below removed, the dark filter now covers the whole image.
-8. About, wind vane: the cutout vane and pole now clearly rise (grow up from the base of the pole) and brighten, over about 2.6 seconds after a 1 second hold.
-9. How To Use, top image: box is taller. The man now rises and brightens like the Receipts tennis player (about 2.6 seconds after a 1 second hold). The gym behind him stays at its current darkness, with no softening, so it stays visible.
-10. How To Use: "HOW TO USE" heading moved down 30px so more of the fade shows above it.
-11. How To Use: the join between the two top images now fades smoothly, with no dark line.
-12. How To Use, bottom block of four: lower right is now the two women high-fiving in push-up position (friends-workout.webp), replacing the kettle over the fire.
+2. Mushrooms, red cliffs top image: same box size, no added height. Zoomed in a little more and shifted down the photo, so less sky and more cliffs.
+3. Botanical Science: lines darker, nearly black. Blue is now a grayer, slightly darker slate.
+4. Turkey Tail, airplane cabin behind "WHAT'S BEEN STUDIED": brightens slowly, a little, over about 9 seconds.
+5. Why One Ingredient, cup with the stir straw: zoomed in a little so the top of the straw sits above the "00" in "1,200".
+6. How To Use, top image: zoomed well out so the gym shows on both sides, and the box is taller. The photo is a very wide panorama, so zooming out makes it shorter on a phone, with soft fades above and below. The wide shot holds 1.5 seconds. Then the cutout of the man brightens and slowly grows forward over 6 seconds, like the tennis player. The gym keeps its current darkness. The black to blue fade under it is now about twice as tall and more gradual.
+7. About: the wind vane cutout now starts 1.5 seconds in. It fades in exactly on top of the original, then slowly grows forward over 7 seconds, so it never reads as two objects. Dog photos are back to their original colors. The color effect stays on the clouds and Mount Shasta image only.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- cutout-lift.js (adds the rise/brighten timing used by items 8 and 9)
-- RawCanopyExtract-site-text.txt (regenerated; one new image line for item 12, wording unchanged)
+- cutout-lift.js (adds the slower fade-in and growth timing used by items 6 and 7)
+- RawCanopyExtract-site-text.txt (regenerated: home page text order, wording unchanged except the new line)
 - CHANGES.txt (this file)
