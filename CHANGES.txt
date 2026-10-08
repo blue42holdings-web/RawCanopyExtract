@@ -1,31 +1,37 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (g)
-Changes since the October 7 (f) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (h)
+Changes since the October 7 (g) export.
 
-PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-5.
-1. Home mushroom list: Lion's Mane, Cordyceps, Turkey Tail (already in the (f) export; unchanged).
-2. Cordyceps page top photo: zoomed in so the top-left leaf is gone; the cordyceps is cut out and lifts
-   while the background softens. Starts dark and brightens slowly (holds 1.5s, 6s), staying dark enough for the text.
-   New file: assets/cutouts/cd-hero-clubs-cutout.png
-3. Lion's Mane page top photo: the shaded rectangles behind the small gold line and the gold italic line are removed.
-   A soft dark glow on the letters themselves replaces them, so shading stops where each line's words stop.
-4. FAQ top grid: the camp-chair/van photo (top right) no longer animates. The girl in the van with the rainbow sun
-   (lower left) gets the cutout animation. Bottom two photos are near normal brightness; top two keep just enough
-   darkening for "Ten honest answers." (plus a soft glow on the heading).
-5. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": lower left freediver replaced with
-   a-rider-pausing-on-a-granite-ridge.webp.
+PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-6.
+1. Mushrooms page top photo: hero is taller and the photo is zoomed in, so the red cliffs sit above the words.
+   The words now sit on the forest below the cliffs.
+2. Turkey Tail page top photo: starts dark (shade .80) and lightens only a little (to .64) over 8 seconds after a 1.5s hold.
+   Soft dark glow on the letters of the small gold line and the gold italic line, same as Lion's Mane. No boxes.
+   Cordyceps top photo: same letter glow added to its two lines (its dark start and slow brighten were already in place).
+3. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": top left is the mountain biker on the granite ridge,
+   zoomed in, rider on the right of the frame. Top right is the diver with the shark. Bottom left is the soccer training photo.
+   Bottom right is tea outside the tent. The freediver is not in this grid.
+   New file: assets/photo/a-rider-pausing-on-a-granite-ridge-ph-crop.jpg
+4. Why One Ingredient, coffee cup photo: new cutout with the whole cup, the whole stir straw and the surface under the cup.
+   It is noticeably darker at its brightest.
+   New file: assets/cutouts/why-desk-coffee-cutout-v2.png
+5. How To Use top photo: the man is cut out. He lifts more than before and brightens a little.
+   New file: assets/cutouts/how-gym-coffee-crop-cutout.png
+6. About top photo: the whole wind vane is cut out, from where the pole meets the ground to the vane. It lifts and brightens slightly.
+   New file: assets/cutouts/about-colestin-windvane-cutout.png
 
 DESKTOP AND PHONE
-6. Further Reading lists: new top link on each mushroom page.
-   Lion's Mane: Biomedical Research 2019 study moved to the top.
-   Cordyceps: PLOS One reaction time trial (journals.plos.org).
-   Turkey Tail: International Immunopharmacology trial (sciencedirect.com).
-   Home page mushroom lines still link only to the on-site pages.
-7. About page final paragraph replaced; "Pay it forward. It's your turn now." removed.
+7. Mushrooms page: "Mushrooms have been cultivated here since 609 CE." now reads
+   "Mushrooms have been cultivated here for more than 1,400 years."
+8. Blur removed: "CERTIFIED ORGANIC" under the badge (both places), and the three sample lot rows on the Receipts page
+   (Lion's Mane, Cordyceps, Turkey Tail). All fully readable.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
 - cutout-lift.js
-- assets/cutouts/cd-hero-clubs-cutout.png (new)
+- assets/photo/a-rider-pausing-on-a-granite-ridge-ph-crop.jpg (new)
+- assets/cutouts/why-desk-coffee-cutout-v2.png (new)
+- assets/cutouts/how-gym-coffee-crop-cutout.png (new)
+- assets/cutouts/about-colestin-windvane-cutout.png (new)
 - RawCanopyExtract-site-text.txt (regenerated)
 - CHANGES.txt (this file)

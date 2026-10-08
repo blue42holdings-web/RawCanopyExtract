@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 7, 2026 (g) from the current site build. Export only.
+Exported October 7, 2026 (h) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -376,7 +376,7 @@ Beta-glucan is measured by a third-party laboratory on the finished extract and 
   IMAGE: assets/photo/mug-dawn.jpg  | alt text: "Coffee poured from a steel pot into an enamel mug by a campfire"
   IMAGE: assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg  | alt text: "A diver signalling underwater alongside a shark"
   IMAGE: assets/photo/receipts-beach-camp.jpg  | alt text: "Two campers on a driftwood beach at sunset"
-  IMAGE: assets/photo/a-freediver-rising-over-the-sand-flats.jpg  | alt text: "A freediver rising over the sand flats"
+  IMAGE: assets/photo/a-rider-pausing-on-a-granite-ridge-ph-crop.jpg  | alt text: "A mountain biker pausing on a high granite ridge"
   IMAGE: assets/photo/kettle-tent-mist.jpg  | alt text: "Tea outside the tent"
 
 ==============================================================================
@@ -384,7 +384,7 @@ PAGE: THE MUSHROOMS
 ==============================================================================
 --- SECTION: The Mushrooms ---
   BACKGROUND PHOTO: assets/photo/shop-river-canyon.jpg
-Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here since 609 CE.
+Red cliffs rise out of the forest and the clouds come down to meet them. Mushrooms have been cultivated here for more than 1,400 years.
 [ONLY SHOWN WHEN: ttsOk]
   BUTTON: "[live: ttsLabel]" [label: [live: ttsLabel]]
   [ONLY SHOWN WHEN: ttsActive]

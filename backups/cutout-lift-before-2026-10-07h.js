@@ -7,7 +7,6 @@ var MAP={"a-kettle-over-the-fire.jpg":"assets/cutouts/a-kettle-over-the-fire-cut
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches, DUR=1200, EASE='cubic-bezier(.45,0,.55,1)';
 var SOFT={'stillness-in-the-forest.jpg':3,'kettle-tent-mist.jpg':3,'lm-how-made-desk.jpg':3,'measured-hiker-sunset-flip.jpg':3,'tt-right-form-log.webp':3,'lab-extraction-rig.jpg':3,'lions-mane.jpg':3,'tent-mug-zoom.jpg':40,'receipts-tennis-noblog.jpg':3};
 var DIM={'receipts-tennis-noblog.jpg':'brightness(.3)','receipts-tennis-noblog.png':'brightness(.3)','lab-extraction-rig.jpg':'brightness(.3)','lab-extraction-rig.png':'brightness(.3)','tt-autumn-fans.jpg':'brightness(.45)','tt-autumn-fans.png':'brightness(.45)'};
-if(!HOVER){ MAP['why-desk-coffee.jpg']='assets/cutouts/why-desk-coffee-cutout-v2.png'; SOFT['why-desk-coffee.jpg']=3; DIM['why-desk-coffee.jpg']='brightness(.55)'; }
 var LIFT=RM?'none':'scale(1.02)', BLUR='blur(7px)', FEATHER=24;
 var TIGHT={'a-kettle-over-the-fire.jpg':1,'two-figures-stretching-against-a-sunset-sea.jpg':1,'coconut-palm-up.webp':1}, TBLUR='blur(3px)', TFEATHER=6;
 function bl(st){ return TIGHT[st.info.k]?TBLUR:BLUR; }
@@ -152,12 +151,11 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     var cs=getComputedStyle(el), r=el.getBoundingClientRect(), sz=splitList(cs.backgroundSize), ps=splitList(cs.backgroundPosition), M='linear-gradient(to top,transparent 0,#000 14%)';
     var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:'+M+';mask-image:'+M+';');
     var blur=mk('position:absolute;inset:0;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);transition:'+CT('backdrop-filter')+','+CT('-webkit-backdrop-filter')+';');
-    var LB=el.getAttribute('data-lift-scale'), LBT=LB?'scale('+LB+')':LIFT;
-    var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';filter:'+(el.getAttribute('data-lift-dim')||'none')+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+CT('opacity')+','+CT('transform')+';');
+    var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+CT('opacity')+','+CT('transform')+';');
     box.appendChild(blur); box.appendChild(cut); el.insertBefore(box,el.firstChild);
     var ready=feathered(el.getAttribute('data-lift-bg'),r.width,r.height,SOFT_BG).then(function(u){ cut.style.backgroundImage='url("'+u+'")'; });
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect();
-      ready.then(function(){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LBT; blur.style.backdropFilter=BLUR; blur.style.webkitBackdropFilter=BLUR; }); }); }); }); },{threshold:0.25});
+      ready.then(function(){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LIFT; blur.style.backdropFilter=BLUR; blur.style.webkitBackdropFilter=BLUR; }); }); }); }); },{threshold:0.25});
     io.observe(el);
   }
   var SOFT_BG=3;
