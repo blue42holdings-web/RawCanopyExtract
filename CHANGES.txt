@@ -1,3 +1,49 @@
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (e)
+Changes since the October 8 (d) export.
+
+DESKTOP AND PHONE
+1. Home, opening paragraph, now reads word for word: "The world's getting faster and more complicated. Common sense says your body and brain need natural support. We followed the research and selected three mushrooms, bringing the best of the forest to your cup."
+   Gold: "getting faster", "body and brain", "three mushrooms". "natural support" is now white.
+2. Home, three mushroom lines: these were already in the October 8 (d) files and are unchanged here:
+   LION'S MANE MUSHROOM for brain health as you age
+   CORDYCEPS MUSHROOM for stamina and endurance
+   TURKEY TAIL MUSHROOM for a stronger immune system
+   The claim words are gold. I searched the whole site: "mental clarity", "physical performance" and "immune support" appear nowhere, and the new lines were not placed anywhere else. If the live site still shows the old lines, the old index.html is still on the server or cached in the browser. Replace index.html and 404.html, then hard refresh, or check in a private window.
+
+PHONE ONLY (narrower than 768px). Desktop unchanged.
+3. Home, packets on the orange powder (under the rocky seal image): now edge to edge with no black side strips. The top fades softly up into the rocky image, so the powder reaches slightly into it.
+4. About, wind vane: starts 2.5 seconds after the page loads, fades in on top of the original, then grows very slowly and smoothly over 14 seconds. It grows from the exact foot of the pole, and the bottom fade no longer covers the base, so the pole stays planted in the ground.
+5. About, photo row under the wind vane: dog photos untouched. Clouds and Mount Shasta image: sky brightened (this image only).
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- cutout-lift.js (lets the wind vane skip the bottom fade so the pole base stays visible)
+- RawCanopyExtract-site-text.txt (regenerated: first sentence of the opening paragraph)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (d)
+Changes since the October 8 (c) export.
+
+DESKTOP AND PHONE
+1. Home, the three mushroom lines under the opening paragraph, now read:
+   LION'S MANE MUSHROOM for brain health as you age
+   CORDYCEPS MUSHROOM for stamina and endurance
+   TURKEY TAIL MUSHROOM for a stronger immune system
+   The claim words are in the site gold (#D4A24A). The names, "for", the arrows, the links and the line order are unchanged. The old trailing colons are gone, to match the exact wording.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated: the three new lines)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (c)
 Changes since the October 8 (b) export.
 

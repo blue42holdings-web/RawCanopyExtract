@@ -158,6 +158,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     var DU=+(el.getAttribute('data-lift-dur')||6000), DE=el.hasAttribute('data-lift-delay')?+el.getAttribute('data-lift-delay'):1500, EZ=el.getAttribute('data-lift-ease')||(el.hasAttribute('data-lift-dur')?'cubic-bezier(.22,.7,.25,1)':'ease-in-out'), FD=el.getAttribute('data-lift-fade');
     var CT=function(p){ return p+' '+DU+'ms '+EZ+' '+DE+'ms'; }, NB=el.hasAttribute('data-lift-noblur');
     var cs=getComputedStyle(el), r=el.getBoundingClientRect(), sz=splitList(cs.backgroundSize), ps=splitList(cs.backgroundPosition), M='linear-gradient(to top,transparent 0,#000 14%)';
+    if(el.hasAttribute('data-lift-nomask')) M='none';
     var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:'+M+';mask-image:'+M+';');
     var blur=mk('position:absolute;inset:0;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);transition:'+CT('backdrop-filter')+','+CT('-webkit-backdrop-filter')+';');
     var LB=el.getAttribute('data-lift-scale'), LBT=LB?'scale('+LB+')':LIFT;
