@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 7, 2026 (l) from the current site build. Export only.
+Exported October 8, 2026 (a) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -828,7 +828,8 @@ Powder in the mug first, then the hot liquid onto it. Stir it to a smooth paste 
   IMAGE: assets/photo/parent-and-child-outdoors.jpg  | alt text: "Parent and child outdoors"
   IMAGE: assets/photo/how-paddle-sunset.jpg  | alt text: "Paddling out at sunset"
   IMAGE: assets/photo/kitchen-shake.jpg  | alt text: "Into a shake at the counter"
-  IMAGE: assets/photo/coffee-made-at-camp.jpg  | alt text: "Coffee made at camp"
+  IMAGE: assets/photo/coffee-made-at-camp.jpg  | alt text: "Coffee made at camp" (desktop only)
+  IMAGE: assets/photo/friends-workout.webp  | alt text: "Two friends high-fiving mid push-up" (phone only, in place of the photo above)
 
 ==============================================================================
 PAGE: ABOUT

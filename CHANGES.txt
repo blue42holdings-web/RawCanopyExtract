@@ -1,17 +1,23 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (l)
-Changes since the October 7 (k) export.
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (a)
+Changes since the October 7 (l) export.
 
 PHONE ONLY (narrower than 768px). Desktop unchanged.
-1. Turkey Tail and Cordyceps top images: restored to the ~1:30 PM October 7 version.
-   a. Cutout animation removed from both (cd-hero-clubs-cutout.png no longer used).
-   b. Each starts fairly dark and slowly gets a little lighter; that is the only motion.
-   c. Small top line, italic tagline, mushroom icons and short underline are gold with their original styling.
-      All white text, stacked glows, white icons, white glows and added gradients are removed.
-   Both sections now match the 1:30 PM markup and styling exactly.
-2. How To Use: the gold "HOW TO USE" heading above the instructions is twice its size (15px to 30px).
+1. Cordyceps top image: zoomed in (same framing used before) so the leaf in the top left is gone. No animation, words untouched.
+2. Turkey Tail top image: zoomed in (same framing used before) so the grass in the top left is gone. No animation, words untouched.
+3. Mushrooms, red cliffs top image: added height on top removed (box back to its original size). Zoom is now 25% over the original, image moved up and a little left.
+4. Botanical Science: the diagram panels are now slate blue, matched to the How To Use water.
+5. Cordyceps, "where ours comes from": image zoomed in 25% and moved up so the cliffs show. Box size unchanged.
+6. Click sounds: three sounds picked at random each click. Current sound 65%, a lighter click 20%, a deep hit followed by a lighter echoing click 15%. All three share the same echo.
+7. Turkey Tail, airplane cabin behind "WHAT'S BEEN STUDIED": empty gray strip at the top removed, extra space above and below removed, the dark filter now covers the whole image.
+8. About, wind vane: the cutout vane and pole now clearly rise (grow up from the base of the pole) and brighten, over about 2.6 seconds after a 1 second hold.
+9. How To Use, top image: box is taller. The man now rises and brightens like the Receipts tennis player (about 2.6 seconds after a 1 second hold). The gym behind him stays at its current darkness, with no softening, so it stays visible.
+10. How To Use: "HOW TO USE" heading moved down 30px so more of the fade shows above it.
+11. How To Use: the join between the two top images now fades smoothly, with no dark line.
+12. How To Use, bottom block of four: lower right is now the two women high-fiving in push-up position (friends-workout.webp), replacing the kettle over the fire.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- RawCanopyExtract-site-text.txt (regenerated; wording unchanged)
+- cutout-lift.js (adds the rise/brighten timing used by items 8 and 9)
+- RawCanopyExtract-site-text.txt (regenerated; one new image line for item 12, wording unchanged)
 - CHANGES.txt (this file)

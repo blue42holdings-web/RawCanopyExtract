@@ -388,7 +388,9 @@ section,footer,header{padding-left:14px !important;padding-right:14px !important
 [data-m="how-strip"] > img:first-child{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 82%,transparent 100%)}
 [data-m="rl-name"]{display:block}
 [data-m="long-flight"]{color:#D4A24A !important}
-[data-m="tt-studied"]{position:relative !important;background-image:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,#000 78%,#000 100%),url('assets/photo/tt-plane-cabin.webp') !important}
+[data-m="tt-studied"]{position:relative !important;background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url('assets/photo/tt-plane-cabin.webp') !important;background-position:center 60% !important}
+[data-m="tt-studied"] [data-m="studied-sec"]{padding-top:0 !important;padding-bottom:0 !important}
+[data-m="tt-studied"] [data-fb="62"]{padding-top:44px !important;padding-bottom:44px !important}
 [data-m="tt-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9));opacity:1;transition:opacity 3s ease-out}
 [data-m="tt-shade"][data-lit]{opacity:.69}
 [data-m="tt-studied"] > section{position:relative;z-index:1}
@@ -503,7 +505,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="faq-tiles2"]>img{height:200px !important;min-height:0 !important;align-self:stretch !important}
 [data-m="faq-tiles"]>img{height:auto !important;min-height:0 !important;align-self:stretch !important}
 [data-m="faq-box"]{padding-top:48px !important}
-[data-m="mush-hero"]{min-height:0 !important;padding-top:72vw !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important;background-size:100% 100%,384% auto !important;background-position:0 0,28.9% calc(20px - 69.6vw) !important}
+[data-m="mush-hero"]{min-height:0 !important;padding-bottom:48px !important;background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.42)),url('assets/photo/shop-river-canyon.jpg') !important;background-size:100% 100%,auto 125% !important;background-position:0 0,55% 62% !important}
 [data-m="mush-hero"] > div:not([data-m="mush-shade"]){position:relative;z-index:1;text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
 [data-m="mush-shade"],[data-m="bf-shade"]{display:block !important;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;transition:opacity 3s cubic-bezier(.4,0,.2,1) .4s}
 [data-m="mush-shade"]{background:rgba(0,0,0,.46);transition:opacity 6s ease-in-out 1.5s !important}
@@ -533,11 +535,16 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-m="about-hero"]{background-image:radial-gradient(120% 95% at 58% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane-flip.jpg') !important}
 [data-m="faq-head"] > p,[data-m="faq-head"] > h1{text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
 [data-screen-label="FAQ"] > section:first-child{min-height:200px !important;padding:22px 18px 18px !important;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
-[data-m="how-label"]{font-size:30px !important}
+[data-m="how-label"]{font-size:30px !important;margin-top:30px !important}
+[data-m="how-top"]{min-height:62vh !important}
+[data-m="cdh-hero"]{background-size:100% 100%,auto 135% !important;background-position:0 0,54% 95% !important}
+[data-m="tth-hero"]{background-size:100% 100%,auto 165% !important;background-position:0 0,47% 58% !important}
+[data-m="diag-stack"] > img{filter:grayscale(1)}
+[data-m="diag-shade"]{background:#2F4F66 !important;mix-blend-mode:multiply}
 [data-m="how-intro"]{font-family:'Archivo',sans-serif !important;font-weight:400 !important;font-size:19px !important;line-height:1.65 !important;color:#E8E1D3 !important}
-[data-m="how-hero"]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,0) 50%,#000 92%)}
-[data-m="steps-wrap"]{background-image:linear-gradient(#000 0,#000 2px,rgba(0,0,0,0) 25vh),linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:0 0,0 0,center !important;background-repeat:no-repeat !important}
-[data-how-bg] > img[data-dog]:first-child{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 25vh,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,transparent 0,#000 25vh,#000 82%,transparent 100%) !important}
+[data-m="how-hero"]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 72%,rgba(0,0,0,.82) 90%,#000 100%)}
+[data-m="steps-wrap"]{background-image:linear-gradient(#000 0,rgba(0,0,0,.82) 3vh,rgba(0,0,0,.45) 10vh,rgba(0,0,0,0) 22vh),linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('assets/photo/roar-wet-slate.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:0 0,0 0,center !important;background-repeat:no-repeat !important}
+[data-how-bg] > img[data-dog]:first-child{-webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.55) 10vh,#000 22vh,#000 82%,transparent 100%) !important;mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.55) 10vh,#000 22vh,#000 82%,transparent 100%) !important}
 img[data-m="rc-dk"]{display:none !important}
 img[data-m="rc-ph"]{display:block !important}
 [data-m="cart-x"]{font-size:36px !important;min-width:48px;min-height:48px;display:flex !important;align-items:center;justify-content:center;margin:-12px -12px -12px 0 !important}
@@ -586,7 +593,7 @@ header button[data-page="home"] > img{height:clamp(22px,6.4vw,26px) !important;m
 [data-m="nav-shop"]::after,[data-m="nav-cart"]::after{content:"";position:absolute;inset:-8px -8px}
 [data-m="nav-menu-btn"]{margin:0 !important;flex:0 0 auto !important}
 [data-m="hero"]{background-image:radial-gradient(58% 40% at 50% 44%,rgba(0,0,0,.96) 0%,rgba(0,0,0,.92) 45%,rgba(0,0,0,.62) 75%,rgba(0,0,0,.3) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important}
-[data-m="cd-where"]{background-size:auto 110% !important;background-position:center 20% !important}
+[data-m="cd-where"]{background-size:auto 137.5% !important;background-position:center 62% !important}
 [data-m="about-selfie"]{filter:brightness(.5) !important}
 [data-m="play-row"]{flex-direction:column !important;gap:14px !important;margin:44px auto 0 !important}
 [data-m="play-label"]{text-align:center !important}
@@ -2233,8 +2240,8 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isHow }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="How To Use">
-<section style="margin-bottom:-1px;min-height:40vh;display:flex;align-items:center;justify-content:center;padding:64px 28px;background-color:#000;position:relative;overflow:hidden">
-<div data-m="how-hero" data-lift-bg="assets/cutouts/how-gym-coffee-crop-cutout.png" data-lift-dim="brightness(.55)" data-lift-scale="1.045" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;animation:rcxPushIn 6s cubic-bezier(.33,0,.2,1) both"></div>
+<section data-m="how-top" style="margin-bottom:-1px;min-height:40vh;display:flex;align-items:center;justify-content:center;padding:64px 28px;background-color:#000;position:relative;overflow:hidden">
+<div data-m="how-hero" data-lift-bg="assets/cutouts/how-gym-coffee-crop-cutout.png" data-lift-dim="brightness(.8)" data-lift-scale="1.1" data-lift-origin="0.645 1" data-lift-dur="2600" data-lift-delay="1000" data-lift-noblur="" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url('assets/photo/how-gym-coffee-crop.jpg');background-size:max(115%, 175vh) auto;background-position:100% 70%;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;animation:rcxPushIn 6s cubic-bezier(.33,0,.2,1) both"></div>
 <div style="position:relative;z-index:1;width:100%;max-width:1300px;margin:0 auto;text-align:center">
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,4.6vw,60px);line-height:1.22;color:#F1ECE1;margin:0">M<span style="color:#D4A24A">o</span>rning coffee.<br>Aftern<span style="color:#D4A24A">o</span>on tea.<br>The cup bef<span style="color:#D4A24A">o</span>re bed.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:22px 0 0;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
@@ -2292,7 +2299,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </section>
 </div>
 <section style="padding:0;background:#000">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img data-m="swap-ph" src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;object-position:35% 30%;display:none;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/parent-and-child-outdoors.jpg" alt="Parent and child outdoors" width="645" height="360" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-paddle-sunset.jpg" alt="Paddling out at sunset" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kitchen-shake.jpg" alt="Into a shake at the counter" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/coffee-made-at-camp.jpg" alt="Coffee made at camp" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;background:#000;line-height:0;font-size:0"><img data-m="swap-ph" src="assets/photo/receipts-row-photo.jpg" alt="A mom with her coffee on the school run" style="width:100%;height:272px;object-fit:cover;object-position:35% 30%;display:none;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/parent-and-child-outdoors.jpg" alt="Parent and child outdoors" width="645" height="360" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/how-paddle-sunset.jpg" alt="Paddling out at sunset" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img src="assets/photo/kitchen-shake.jpg" alt="Into a shake at the counter" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="swap-dk" src="assets/photo/coffee-made-at-camp.jpg" alt="Coffee made at camp" style="width:100%;height:272px;object-fit:cover;display:block;filter:brightness(.92)" loading="lazy"><img data-m="swap-ph" src="assets/photo/friends-workout.webp" alt="Two friends high-fiving mid push-up" style="width:100%;height:272px;object-fit:cover;display:none;filter:brightness(.92)" loading="lazy"></div>
 </section>
 
 </div>
@@ -2300,7 +2307,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="About">
-<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.52)" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
+<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.95) saturate(1.15)" data-lift-scale="1.14" data-lift-origin="0.7075 0.826" data-lift-dur="2600" data-lift-delay="1000" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
 
 
 
@@ -3903,6 +3910,12 @@ class Component extends DCLogic {
 
   renderClick = (ctx) => {
     try {
+      const r = Math.random(), V = r < 0.65 ? 0 : r < 0.85 ? 1 : 2;
+      const P = [
+        { bpf: 360, ng: 0.55, f0: 68, f1: 30, og: 0.9, odur: 0.24, dly: 0.16, fb: 0.42, dg: 0.55, tAt: 0, tg: 0.025, tdl: 0.16, tfb: 0.42, twet: 0.6 },
+        { bpf: 820, ng: 0.7, f0: 120, f1: 62, og: 0.32, odur: 0.12, dly: 0.12, fb: 0.34, dg: 0.45, tAt: 0, tg: 0.042, tdl: 0.12, tfb: 0.36, twet: 0.62 },
+        { bpf: 300, ng: 0.5, f0: 58, f1: 26, og: 1.0, odur: 0.3, dly: 0.2, fb: 0.46, dg: 0.55, tAt: 0.035, tg: 0.032, tdl: 0.2, tfb: 0.5, twet: 0.75 }
+      ][V];
       const now = ctx.currentTime;
       const buf = this._clickBuf5 || (this._clickBuf5 = (() => {
         const sr = ctx.sampleRate, len = Math.floor(sr * 0.012), b = ctx.createBuffer(1, len, sr), d = b.getChannelData(0);
@@ -3913,15 +3926,15 @@ class Component extends DCLogic {
       const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 6;
       out.connect(comp).connect(ctx.destination);
       const src = ctx.createBufferSource(); src.buffer = buf;
-      const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 360; bp.Q.value = 0.8;
-      const ng = ctx.createGain(); ng.gain.value = 0.55;
+      const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = P.bpf; bp.Q.value = 0.8;
+      const ng = ctx.createGain(); ng.gain.value = P.ng;
       src.connect(bp).connect(ng).connect(out);
-      const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.setValueAtTime(68, now); o.frequency.exponentialRampToValueAtTime(30, now + 0.18);
-      const og = ctx.createGain(); og.gain.setValueAtTime(0.0001, now); og.gain.exponentialRampToValueAtTime(0.9, now + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+      const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.setValueAtTime(P.f0, now); o.frequency.exponentialRampToValueAtTime(P.f1, now + 0.18);
+      const og = ctx.createGain(); og.gain.setValueAtTime(0.0001, now); og.gain.exponentialRampToValueAtTime(P.og, now + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, now + P.odur);
       o.connect(og).connect(out);
-      const dl = ctx.createDelay(1); dl.delayTime.value = 0.16; const fb = ctx.createGain(); fb.gain.value = 0.42; const dg = ctx.createGain(); dg.gain.value = 0.55; const dlp = ctx.createBiquadFilter(); dlp.type = 'lowpass'; dlp.frequency.value = 900;
+      const dl = ctx.createDelay(1); dl.delayTime.value = P.dly; const fb = ctx.createGain(); fb.gain.value = P.fb; const dg = ctx.createGain(); dg.gain.value = P.dg; const dlp = ctx.createBiquadFilter(); dlp.type = 'lowpass'; dlp.frequency.value = 900;
       out.connect(dl); dl.connect(dlp); dlp.connect(fb).connect(dl); dlp.connect(dg).connect(ctx.destination);
-      src.start(now); o.start(now); o.stop(now + 0.26);
+      src.start(now); o.start(now); o.stop(now + P.odur + 0.02);
       const tb = this._tickBuf || (this._tickBuf = (() => {
         const sr = ctx.sampleRate, len = Math.floor(sr * 0.022), b = ctx.createBuffer(1, len, sr), d = b.getChannelData(0);
         const tick = (at, amp, dec) => { const o0 = Math.floor(sr * at); for (let i = 0; o0 + i < len; i++) { const env = Math.exp(-i / (sr * dec)); d[o0 + i] += amp * env * ((Math.random() * 2 - 1) * 0.6 + Math.sin(i / sr * 2 * Math.PI * 4200) * 0.8); } };
@@ -3930,10 +3943,10 @@ class Component extends DCLogic {
       })());
       const ts = ctx.createBufferSource(); ts.buffer = tb;
       const thp = ctx.createBiquadFilter(); thp.type = 'highpass'; thp.frequency.value = 1400;
-      const tg = ctx.createGain(); tg.gain.value = 0.025;
+      const tg = ctx.createGain(); tg.gain.value = P.tg;
       ts.connect(thp).connect(tg).connect(ctx.destination);
-      const tdl = ctx.createDelay(1); tdl.delayTime.value = 0.16; const tfb = ctx.createGain(); tfb.gain.value = 0.42; const twet = ctx.createGain(); twet.gain.value = 0.6; const tlp = ctx.createBiquadFilter(); tlp.type = 'lowpass'; tlp.frequency.value = 5200; tg.connect(tdl); tdl.connect(tlp); tlp.connect(tfb).connect(tdl); tlp.connect(twet).connect(ctx.destination);
-      ts.start(now);
+      const tdl = ctx.createDelay(1); tdl.delayTime.value = P.tdl; const tfb = ctx.createGain(); tfb.gain.value = P.tfb; const twet = ctx.createGain(); twet.gain.value = P.twet; const tlp = ctx.createBiquadFilter(); tlp.type = 'lowpass'; tlp.frequency.value = 5200; tg.connect(tdl); tdl.connect(tlp); tlp.connect(tfb).connect(tdl); tlp.connect(twet).connect(ctx.destination);
+      ts.start(now + P.tAt);
     } catch (err) {}
   };
 
