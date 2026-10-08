@@ -1,26 +1,20 @@
-RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (j)
-Changes since the October 7 (h) export.
+RAW CANOPY EXTRACT — DELIVERY, October 7, 2026 (k)
+Changes since the October 7 (j) export.
 
-PHONE ONLY (narrower than 768px). Desktop unchanged for items 1-6.
-1. Turkey Tail and Cordyceps top photos: the small top line, the italic tagline, the mushroom icon and the short underline
-   are now white, each with a soft dark glow directly on the letters/shape. No boxes. Mushroom names unchanged.
-2. Receipts grid under "THANK YOU FOR CHECKING RAW CANOPY EXTRACT.": bottom row swapped. Tea outside the tent is bottom left,
-   soccer training is bottom right. Top row unchanged.
-3. How To Use: the top photo now fades to pure black at its bottom. The underwater section starts in pure black and fades into
-   the underwater photo over about a quarter of the screen. Further down it looks as before.
-4. About top photo: flipped so the wind vane is on the right. The whole wind vane (pole to vane) still lifts and brightens slightly.
-   New files: assets/photo/about-colestin-windvane-flip.jpg, assets/cutouts/about-colestin-windvane-flip-cutout.png
-5. FAQ top: soft dark glow directly on the gold "FAQ" letters and on "Ten honest answers." No box.
-6. FAQ top photo grid: the extra strip above the top two photos is gone. The top row starts under the header and is the same
-   height as the bottom row (200px).
-
-DESKTOP
-7. FAQ page bottom photo row: the yoga photo in the bamboo circle is moved up so the woman is fully visible, then lowered slightly to show more of the top of the circle.
+PHONE ONLY (narrower than 768px). Desktop unchanged.
+1. Home first image (camping photo behind the seal): still dark in the middle behind the seal and hexagon; the darkening
+   eases off toward the edges so the camping scene, the packets (lower right) and the arm (lower left) come through.
+2. Turkey Tail and Cordyceps top images:
+   a. The large multi-layer glow is removed from the small top line and the italic tagline.
+   b. The photo is darkened behind the text with a smooth top-to-bottom gradient. No box, no hard edge.
+   c. Small line and tagline are solid bright white, slightly heavier, with only a tight 1-2px shadow.
+   d. Mushroom icons are back to gold, each with a soft white glow behind it.
+3. How To Use:
+   a. The underwater diver section is noticeably bluer (between aqua and slate blue) instead of gray.
+   b. "Grab a corner and give the packet a shake..." is larger (19px) and set in Archivo, a wider, less condensed sans.
 
 FILES THAT CHANGED
 - index.html
 - 404.html (kept in step with index.html)
-- assets/photo/about-colestin-windvane-flip.jpg (new)
-- assets/cutouts/about-colestin-windvane-flip-cutout.png (new)
-- RawCanopyExtract-site-text.txt (regenerated)
+- RawCanopyExtract-site-text.txt (regenerated; wording unchanged)
 - CHANGES.txt (this file)
