@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<rect width="1200" height="800" fill="#05090D"/>
+<g stroke="#7FD3FF" stroke-opacity=".08" stroke-width="1">
+<path d="M0 40H1200M0 80H1200M0 120H1200M0 160H1200M0 200H1200M0 240H1200M0 280H1200M0 320H1200M0 360H1200M0 400H1200M0 440H1200M0 480H1200M0 520H1200M0 560H1200M0 600H1200M0 640H1200M0 680H1200M0 720H1200M0 760H1200"/>
+<path d="M40 0V800M80 0V800M120 0V800M160 0V800M200 0V800M240 0V800M280 0V800M320 0V800M360 0V800M400 0V800M440 0V800M480 0V800M520 0V800M560 0V800M600 0V800M640 0V800M680 0V800M720 0V800M760 0V800M800 0V800M840 0V800M880 0V800M920 0V800M960 0V800M1000 0V800M1040 0V800M1080 0V800M1120 0V800M1160 0V800"/>
+</g>
+<g fill="#D4A24A" fill-opacity=".22">
+<rect x="70" y="520" width="34" height="160"><animate attributeName="height" values="160;220;160" dur="7s" repeatCount="indefinite"/><animate attributeName="y" values="520;460;520" dur="7s" repeatCount="indefinite"/></rect>
+<rect x="120" y="440" width="34" height="240"><animate attributeName="height" values="240;170;240" dur="9s" repeatCount="indefinite"/><animate attributeName="y" values="440;510;440" dur="9s" repeatCount="indefinite"/></rect>
+<rect x="170" y="380" width="34" height="300"><animate attributeName="height" values="300;340;300" dur="8s" repeatCount="indefinite"/><animate attributeName="y" values="380;340;380" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="220" y="480" width="34" height="200"><animate attributeName="height" values="200;260;200" dur="10s" repeatCount="indefinite"/><animate attributeName="y" values="480;420;480" dur="10s" repeatCount="indefinite"/></rect>
+<rect x="900" y="160" width="26" height="120"><animate attributeName="height" values="120;170;120" dur="8s" repeatCount="indefinite"/><animate attributeName="y" values="160;110;160" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="936" y="120" width="26" height="160"><animate attributeName="height" values="160;110;160" dur="11s" repeatCount="indefinite"/><animate attributeName="y" values="120;170;120" dur="11s" repeatCount="indefinite"/></rect>
+<rect x="972" y="90" width="26" height="190"><animate attributeName="height" values="190;230;190" dur="9s" repeatCount="indefinite"/><animate attributeName="y" values="90;50;90" dur="9s" repeatCount="indefinite"/></rect>
+</g>
+<g fill="none" stroke="#7FD3FF" stroke-opacity=".28" stroke-width="2">
+<path d="M0 300 C100 220 200 380 300 300 S500 220 600 300 S800 380 900 300 S1100 220 1200 300"><animate attributeName="d" dur="12s" repeatCount="indefinite" values="M0 300 C100 220 200 380 300 300 S500 220 600 300 S800 380 900 300 S1100 220 1200 300;M0 300 C100 380 200 220 300 300 S500 380 600 300 S800 220 900 300 S1100 380 1200 300;M0 300 C100 220 200 380 300 300 S500 220 600 300 S800 380 900 300 S1100 220 1200 300"/></path>
+<path d="M300 700 L380 640 L460 660 L540 560 L620 590 L700 480 L780 520 L860 420" stroke="#D4A24A" stroke-opacity=".35"><animate attributeName="stroke-dasharray" values="0 900;900 0" dur="10s" repeatCount="indefinite"/></path>
+<circle cx="1040" cy="560" r="90" stroke-dasharray="4 8"><animateTransform attributeName="transform" type="rotate" from="0 1040 560" to="360 1040 560" dur="40s" repeatCount="indefinite"/></circle>
+</g>
+<g font-family="IBM Plex Mono, monospace" fill="#BFE9FF" fill-opacity=".22" font-size="22">
+<text x="420" y="110">β-(1→3),(1→6)-D-glucan</text>
+<text x="80" y="200">C₆H₁₀O₅ · n</text>
+<text x="640" y="760">σ = √(Σ(xᵢ − μ)² / N)</text>
+<text x="380" y="420">p &lt; 0.05</text>
+<text x="820" y="660">VO₂ = Q × (CaO₂ − CvO₂)</text>
+<text x="60" y="760">n = 30 · 16 wk</text>
+<text x="1000" y="400">Δ = +11%</text>
+</g>
+</svg>
