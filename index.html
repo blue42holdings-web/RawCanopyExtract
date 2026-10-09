@@ -933,6 +933,15 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 .rcx-metal,.rcx-marble{outline:1px solid #000;outline-offset:-1px}
 .pk-moved[data-m="pk-dup"]{margin:22px auto 0 !important;height:260px !important;max-width:560px;width:100%}
 [data-m="wte-story"]{margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important}
+
+.rcx-metal{padding:20px !important}
+.rcx-marble{padding:24px !important}
+.rcx-box,.rcx-marble,.rcx-split{margin:12px auto !important}
+[data-m="rl-list"]{gap:12px !important}
+.rcx-metal p,.rcx-marble p,.rcx-txt{text-align:center !important;text-wrap:balance}
+.rcx-btn.rcx-metal,.rcx-btn.rcx-marble{display:inline-flex;align-items:center;justify-content:center;width:auto;min-height:52px;padding:10px 30px !important;margin:0 !important;font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.14em;text-decoration:none;cursor:pointer}
+.rcx-btn.rcx-metal{color:#D4A24A}
+.rcx-btn.rcx-marble{color:#14110C}
 </style>
 <script src="cutout-lift.js?v=20261008e"></script>
 </helmet>
@@ -981,7 +990,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 <span ref="{{ setSlot2 }}" style="display:inline-block;white-space:nowrap;overflow:hidden;padding:0.05em 0 0.32em;margin:0 0 -0.32em;transition:width .42s cubic-bezier(.4,0,.2,1)"><span style="{{ w2.style }}">{{ w2.text }}</span></span>
 </p>
 <div style="width:220px;height:2px;background:#D4A24A;transform-origin:center;animation:rcxRule 900ms cubic-bezier(.2,.8,.2,1) both;margin:30px 0 0"></div>
-<div style="margin-top:36px;display:flex;flex-direction:column;align-items:center;text-align:center"><h1 style="margin:0;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(34px,4.4vw,60px);line-height:1.05;color:#F1ECE1;text-wrap:balance">Upgrade your ritual. Elevate your cup.</h1><p class="pretty" style="margin:18px 0 0;font-size:20px;line-height:1.5;max-width:680px;color:#F1ECE1">The best of the forest, in one clean packet. Non-psychedelic, everyday organic mushroom extract you tear open and pour into your favorite cup of coffee or tea. Each one is scientifically extracted to yield the best results for the human body to absorb its goodness.</p><div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px"><a href="#" data-page="shop" onClick="{{ go }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:#D4A24A;color:#000;border:1px solid #D4A24A;font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.14em;text-decoration:none">SHOP STEEL TINS</a><a href="#" data-page="receipts" onClick="{{ go }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:transparent;color:#F1ECE1;border:1px solid rgba(241,236,225,.7);font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.14em;text-decoration:none">CHECK THE RECEIPTS</a></div></div>
+<style>@media (max-width:760px){.hero-panel{padding:40px 18px !important;margin-left:0 !important;margin-right:0 !important;width:100% !important;background:radial-gradient(ellipse 75% 62% at 50% 50%,rgba(0,0,0,.72) 0%,rgba(0,0,0,.5) 45%,rgba(0,0,0,.2) 75%,rgba(0,0,0,0) 100%) !important}}</style><div class="hero-panel" style="margin-top:36px;display:flex;flex-direction:column;align-items:center;text-align:center;background:radial-gradient(ellipse 62% 60% at 50% 50%,rgba(0,0,0,.72) 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.25) 72%,rgba(0,0,0,0) 100%);padding:60px 80px;margin-left:-40px;margin-right:-40px;box-sizing:border-box;max-width:960px;width:calc(100% + 80px)"><h1 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:1.05;color:#F1ECE1;text-wrap:balance">Upgrade your ritual. Elevate your cup.</h1><p class="pretty" style="margin:18px 0 0;font-size:20px;line-height:1.5;max-width:680px;color:#F1ECE1">The best of the forest, in one clean packet. Non-psychedelic, everyday organic mushroom extract you tear open and pour into your favorite cup of coffee or tea. Each one is scientifically extracted to yield the best results for the human body to absorb its goodness.</p><div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px"><a href="#" data-page="shop" onClick="{{ go }}" class="rcx-metal rcx-btn">SHOP STEEL TINS</a><a href="#" data-page="receipts" onClick="{{ go }}" class="rcx-marble rcx-btn">CHECK THE RECEIPTS</a></div></div>
 </div>
 </section>
 
