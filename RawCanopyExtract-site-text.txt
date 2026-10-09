@@ -1,5 +1,5 @@
 RAW CANOPY EXTRACT — FULL WEBSITE TEXT EXPORT
-Exported October 8, 2026 (a) from the current site build. Export only.
+Exported October 8, 2026 (m) from the current site build. Export only.
 Site address: https://blue42holdings-web.github.io/RawCanopyExtract/
 
 HOW TO READ THIS FILE
@@ -22,20 +22,22 @@ PAGE: HOME
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
 The world's getting faster and more complicated. Common sense says your body and brain need natural support. Published research led us to three mushrooms that bring the best of the forest to your cup.
-CORDYCEPS MUSHROOM for stamina and endurance→
-  LINK: "CORDYCEPS MUSHROOM for stamina and endurance→" -> opens the "Cordyceps" page (on this site)
 LION'S MANE MUSHROOM for brain health as you age→
   LINK: "LION'S MANE MUSHROOM for brain health as you age→" -> opens the "Lion's Mane" page (on this site)
+CORDYCEPS MUSHROOM for stamina and endurance→
+  LINK: "CORDYCEPS MUSHROOM for stamina and endurance→" -> opens the "Cordyceps" page (on this site)
 TURKEY TAIL MUSHROOM for a stronger immune system→
   LINK: "TURKEY TAIL MUSHROOM for a stronger immune system→" -> opens the "Turkey Tail" page (on this site)
 THE GYM. THE VIDEO CALL. THE LONG FLIGHT.
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/tent-mug-zoom.jpg  | alt text: "A woman holding a mug in a tent"
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
-We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail. We follow the research that yields the best results for the human body, species by species.
+We call the published lab results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
+  LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
+We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail, each scientifically extracted to yield the best results for the human body. To prove it, each lot is tested by an independent lab, and we publish the results just a scan away.
 Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
 [DESKTOP ONLY — hidden on phones]
-  Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
+  We call the published lab results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
     LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
 CHECK OUT OUR ILLUSTRATEDFICTIONAL ORIGIN STORY OFTHE LION’S MANE MUSHROOM
 The Roar of the Mountain
@@ -52,8 +54,10 @@ BUTTON: "CLICK" [label: Open the story] -> opens the "Story: Lion's Mane" page
   IMAGE: assets/photo/a-kettle-over-the-fire.jpg  | alt text: "A kettle over the fire"
   IMAGE: assets/photo/a-cup-in-the-woods.jpg  | alt text: "A cup in the woods"
 [PHONE LAYOUT VERSION of a desktop block]
-  Every batch we make is tested by an independent lab. We call the results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
-    LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
+  RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
+  [PHONE LAYOUT VERSION of a desktop block]
+    We call the published lab results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. For anyone who wants the full science, the complete lab certificate is there too.
+      LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
 --- SECTION: Home — the first cup ---
   BACKGROUND PHOTO: assets/photo/first-cup-backpacker-clean.jpg
 HEADING: Make the first cup an honest one.
@@ -63,7 +67,7 @@ BUTTON: "SHOP" -> opens the "Shop" page
     BACKGROUND PHOTO: assets/pattern-field-bold.svg
   HEADING: Nothing but single-serving packets of organic mushroom extract powder inside four recyclable steel tins.
   BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
-    IMAGE: assets/photo/tins/rcx-front-lions-mane.jpg?v=8  | alt text: "Lion's Mane steel tin front"
+    IMAGE: assets/photo/tins/rcx-front-lions-mane.jpg?v=9  | alt text: "Lion's Mane steel tin front"
   BUTTON: "BUY · $39.99"
   HEADING: Lion's Mane
   Hericium erinaceus, hot water plus alcohol extracts, fruiting body.
@@ -124,7 +128,7 @@ HEADING: The small packetthat packs a punch.
   [ONLY SHOWN WHEN: ttsActive]
     BUTTON: "STOP" [label: Stop reading]
   BACKGROUND PHOTO: assets/photo/shop-tennis-handshake-nobrand.jpg
-  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=6  | alt text: "Lion's Mane packet front"
+  IMAGE: assets/photo/tins/rcx-front-lions-mane-packet.jpg?v=7  | alt text: "Lion's Mane packet front"
 HEADING: Lion's Mane
 20 PACKETS · 2 GRAM SERVINGS
 Hericium erinaceus, hot water plus alcohol extracts, fruiting body. Nothing else in the packet. Recyclable steel tin.
@@ -829,14 +833,14 @@ Powder in the mug first, then the hot liquid onto it. Stir it to a smooth paste 
   IMAGE: assets/photo/parent-and-child-outdoors.jpg  | alt text: "Parent and child outdoors"
   IMAGE: assets/photo/how-paddle-sunset.jpg  | alt text: "Paddling out at sunset"
   IMAGE: assets/photo/kitchen-shake.jpg  | alt text: "Into a shake at the counter"
-  IMAGE: assets/photo/coffee-made-at-camp.jpg  | alt text: "Coffee made at camp" (desktop only)
-  IMAGE: assets/photo/friends-workout.webp  | alt text: "Two friends high-fiving mid push-up" (phone only, in place of the photo above)
+  IMAGE: assets/photo/coffee-made-at-camp.jpg  | alt text: "Coffee made at camp"
+  IMAGE: assets/photo/friends-workout.webp  | alt text: "Two friends high-fiving mid push-up"
 
 ==============================================================================
 PAGE: ABOUT
 ==============================================================================
 --- SECTION: About ---
-  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.jpg (phone: about-colestin-windvane-flip.jpg)
+  BACKGROUND PHOTO: assets/photo/about-colestin-windvane.jpg
 ABOUT
 HEADING: I left the reality TV edit bay to build something real.
 [ONLY SHOWN WHEN: ttsOk]
@@ -1325,15 +1329,17 @@ PAGE: LION'S MANE
      https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
   "*"
      https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
+  "Improvement of cognitive functions by oral intake of Hericium erinaceus"
+     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
   "Mushrooms magnify memory by boosting nerve growth"
      https://news.uq.edu.au/2023-02-10-mushrooms-magnify-memory-boosting-nerve-growth
   "Dietary Supplementation of Hericium erinaceus Increases Mossy Fiber CA3 Hippocampal Neurotransmission and Recognition Memory in Wild Type Mice"
      https://pmc.ncbi.nlm.nih.gov/articles/PMC5237458/
-  "Improvement of cognitive functions by oral intake of Hericium erinaceus"
-     https://www.jstage.jst.go.jp/article/biomedres/40/4/40_125/_article
 
 PAGE: CORDYCEPS
   "*"
+     https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725
+  "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial"
      https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351725
   "Acute Cordyceps militaris supplementation and elevated resting oxygen uptake with faster reaction times: A randomized crossover trial"
      https://pmc.ncbi.nlm.nih.gov/articles/PMC13372127/
@@ -1347,6 +1353,8 @@ PAGE: TURKEY TAIL
      https://pubmed.ncbi.nlm.nih.gov/23435630/
   "trial in healthy volunteers"
      https://pubmed.ncbi.nlm.nih.gov/25006989/
+  "Immunomodulatory effects of Yun Zhi and Danshen capsules in healthy subjects: a randomized, double-blind, placebo-controlled, crossover study"
+     https://www.sciencedirect.com/science/article/abs/pii/S156757690300290X
   "Antioxidant and antimicrobial properties of an extract rich in proteins obtained from Trametes versicolor"
      https://pmc.ncbi.nlm.nih.gov/articles/PMC10541659/
   "Antioxidative activities and chemical characterization of polysaccharide extracts from the widely used mushrooms Ganoderma applanatum, Ganoderma lucidum, Lentinus edodes and Trametes versicolor"

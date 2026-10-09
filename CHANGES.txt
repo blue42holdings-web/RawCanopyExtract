@@ -1,3 +1,61 @@
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (m)
+Changes since the October 8 (l) export.
+
+DESKTOP ONLY (768px and wider). Phone unchanged.
+1. Why One Ingredient: the photo behind "They promise. We prove." now always fills its whole area, so no black box opens near BUY STEEL TIN at any window width, and the bottom photo row stays attached to the image above.
+2. About: the top box ("About" / reality TV text) is taller, with more room above and below the words.
+3. How To Use: the gym box is taller at the top and bottom. The whole-image push-in is gone; instead the cut-out of the man waits 1 second, then slowly moves forward (6 seconds). The gym background stays still.
+4. Lion's Mane, Cordyceps and Turkey Tail: the "Where ours comes from", "How it's made" and "What's been studied" boxes are all taller and all the same minimum height (700px), so more of each image shows.
+5. Lion's Mane, "What's been studied" (desk photo): a thin black line now runs along the bottom edge, covering the white line.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- cutout-lift.js (the background cut-out animation can now run on desktop for the How To Use gym image only; phone behaviour unchanged)
+- RawCanopyExtract-site-text.txt (regenerated; no wording changed)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (l)
+Changes since the October 8 (k) export.
+
+DESKTOP AND PHONE
+1. Home, rock-background section, paragraph 1 (brand paragraph): unchanged.
+2. Paragraph 2 now reads: "We're launching with three everyday ORGANIC MUSHROOM POWDERS: lion's mane, cordyceps and turkey tail, each scientifically extracted to yield the best results for the human body. To prove it, each lot is tested by an independent lab, and we publish the results just a scan away." Gold styling unchanged.
+3. Paragraph 3 now reads: "Not a coffee or tea drinker? Hot water or a smoothie works just as well. One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go." The line after it, "Elevate your favorite cup with the power of botanical science.", is unchanged.
+4. Receipt paragraph: the opening now reads "We call the published lab results the receipt." The rest is unchanged.
+6. Balanced wrapping: the brand, launch and receipt paragraphs use "pretty" wrapping; the two "Not a coffee..." lines use "balance". "scan away" and "the go" are held together so neither word sits alone.
+7. Home, the three mushroom lines: Lion's Mane is now first on desktop too (it was already first on phone), then Cordyceps, then Turkey Tail. Wording unchanged.
+
+PHONE ONLY
+5. The (k) swap is undone: the brand paragraph is back on top under the tent photo, and the receipt paragraph is back below The Roar of the Mountain link.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
+RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (k)
+Changes since the October 8 (j) export.
+
+PHONE ONLY (narrower than 768px). Desktop unchanged.
+1. Home: the brand paragraph ("RAW CANOPY EXTRACT is an uncompromising new brand...") and the receipt paragraph ("Every batch we make is tested by an independent lab...") have swapped places. On phone, the receipt paragraph now sits under the tent photo, where the brand paragraph was, and the brand paragraph sits further down, below The Roar of the Mountain link, where the receipt paragraph was. Wording, gold words and the Receipts page link are all unchanged.
+
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- RawCanopyExtract-site-text.txt (regenerated: the phone order of the two paragraphs)
+- CHANGES.txt (this file)
+
+────────────────────────────────────────
+PREVIOUS DELIVERIES
+────────────────────────────────────────
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (j)
 Changes since the October 8 (i) export.
 
