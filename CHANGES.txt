@@ -1,3 +1,21 @@
+RAW CANOPY EXTRACT — DELIVERY, October 9, 2026 (n)
+Changes since the October 8 (m) export.
+
+DESKTOP AND PHONE
+1. Home: the "We're launching with three everyday ORGANIC MUSHROOM POWDERS" paragraph now ends "...and we publish the results." ("just a scan away" removed).
+2. Home: the receipt paragraph now includes "Every tin carries a QR code. Scan it and you'll land on the page where you can look up your lot." (after "...the exact batch in your hands.").
+3. Home: "THE GYM. THE VIDEO CALL. THE LONG FLIGHT." removed; no gap left.
+4. Mushrooms: "CHECK THE RECEIPTS →" below the Botanical Science box now opens the Receipts page. All other "Check the receipts" links checked: they open Receipts.
+
+PHONE ONLY
+5. How To Use: no black area above the gym photo; it starts right under the header.
+6. How To Use: the bottom of the gym photo fades smoothly to black (fully black just before the photo's edge, so no seam).
+
+STILL PLACEHOLDERS (need real destinations)
+- Receipts page "VIEW PDF" links (no certificate PDFs yet).
+- Footer INSTAGRAM / YOUTUBE / TIKTOK (no account URLs yet).
+- Cart CHECKOUT button (needs the real store checkout).
+
 RAW CANOPY EXTRACT — DELIVERY, October 8, 2026 (m)
 Changes since the October 8 (l) export.
 
