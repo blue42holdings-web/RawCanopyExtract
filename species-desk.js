@@ -1,0 +1,99 @@
+/* Desktop layout for the three mushroom pages (Oct 10).
+   - The top mushroom photo runs down behind the "What it is" box (box photo removed, words glow so they read).
+   - Background images behind the rows are removed; each page gets plain color behind the boxes:
+     Lion's Mane: black to the story band, then white.  Cordyceps: red, then white under the story band.
+     Turkey Tail: olive green down through the numbers, then red after the story band.
+   - Rows sit close together; the three file boxes match in size. */
+(function () {
+  var MQ = matchMedia('(min-width:768px)');
+  var PAGES = {
+    "Lion's Mane": { key: 'lm' },
+    'Cordyceps': { key: 'cd' },
+    'Turkey Tail': { key: 'tt' }
+  };
+  var RED = '#5c1319', OLIVE = '#3a4524', WHITE = '#F1ECE1';
+
+  function top(el, C) { return el.getBoundingClientRect().top - C.getBoundingClientRect().top; }
+
+  function apply(C, cfg) {
+    var hero = C.querySelector('section[data-m$="-hero"]'); if (!hero) return;
+    var what = hero.nextElementSibling;
+    while (what && (what.offsetHeight < 40 || !what.querySelector('[data-ph]'))) what = what.nextElementSibling;
+    if (!what) return;
+    var box = what.querySelector('[data-ph]');
+    // hero photo: read it once, before our styles clear it
+    if (!C.__sdImg) {
+      [hero].concat([].slice.call(hero.querySelectorAll('div'))).forEach(function (d) {
+        var m = getComputedStyle(d).backgroundImage.match(/url\("?([^")]+)"?\)/);
+        if (m && /assets\/photo\//.test(m[1]) && !C.__sdImg) C.__sdImg = m[1];
+      });
+      if (!C.__sdImg) return;
+    }
+    var img = C.__sdImg;
+    C.classList.add('sd-on', 'sd-' + cfg.key);
+    hero.querySelectorAll('div').forEach(function (d) {
+      var cs = getComputedStyle(d);
+      if (/assets\/photo\//.test(cs.backgroundImage)) d.style.visibility = 'hidden';
+      else if (cs.backgroundColor === 'rgb(0, 0, 0)' && d.offsetHeight < 60 && !d.querySelector('button,a')) d.style.setProperty('background', 'transparent', 'important');
+    });
+    hero.style.setProperty('box-shadow', 'none', 'important');
+    what.style.setProperty('box-shadow', 'none', 'important');
+    if (box) {
+      box.classList.add('sd-what');
+      box.style.setProperty('background', 'transparent', 'important');
+      box.style.setProperty('box-shadow', 'none', 'important');
+      box.querySelectorAll(':scope > div').forEach(function (d) { if (/url\(/.test(getComputedStyle(d).backgroundImage) || d.children.length === 0) d.style.setProperty('background', 'transparent', 'important'); });
+    }
+    var ov = C.querySelector(':scope > [data-sd-hero]');
+    if (!ov) { ov = document.createElement('div'); ov.setAttribute('data-sd-hero', ''); ov.setAttribute('aria-hidden', 'true'); C.insertBefore(ov, C.firstChild); }
+    var h0 = top(hero, C), h1 = top(what, C) + what.offsetHeight;
+    var fadeTo = cfg.key === 'lm' ? '#000' : cfg.key === 'cd' ? RED : OLIVE;
+    ov.style.cssText = 'position:absolute;left:0;right:0;top:' + h0 + 'px;height:' + (h1 - h0 + 160) + 'px;z-index:0;pointer-events:none;' +
+      'background:linear-gradient(rgba(0,0,0,.5) 0,rgba(0,0,0,.38) 40%,rgba(0,0,0,.55) calc(100% - 260px),' + fadeTo + ' 100%),url("' + img + '") center 30%/cover no-repeat';
+    // strip every background photo that is not inside a content box, and close the gaps
+    C.querySelectorAll('*').forEach(function (e) {
+      if (e.hasAttribute('data-sd-hero')) return;
+      var host = e.closest('[data-ph],section[data-m="sbox"],section[data-m$="-hero"],.cx,.mx-box,.mx-wrap,article,a,button');
+      if (host && !(host === e && e.tagName === 'SECTION' && e.querySelector('[data-ph]'))) return;
+      var cs = getComputedStyle(e), bb = getComputedStyle(e, '::before'), ba = getComputedStyle(e, '::after');
+      if (/assets\/photo\//.test(cs.backgroundImage)) { e.style.setProperty('background-image', 'none', 'important'); e.style.setProperty('background-color', 'transparent', 'important'); }
+      if (/assets\/photo\//.test(bb.backgroundImage) || /assets\/photo\//.test(ba.backgroundImage)) e.classList.add('sd-nopseudo');
+      if (e.getAttribute('data-m') === 'bgstack' || (e.getAttribute('aria-hidden') === 'true' && e.querySelector('img'))) e.style.setProperty('display', 'none', 'important');
+      if ((e.tagName === 'SECTION' || e.parentElement === C) && !e.querySelector('section[data-m="sbox"]')) { e.style.setProperty('min-height', '0', 'important'); }
+      if (e.tagName === 'SECTION' && e.querySelector(':scope > [data-ph]')) { e.style.setProperty('padding-top', '10px', 'important'); e.style.setProperty('padding-bottom', '10px', 'important'); e.style.setProperty('display', 'block', 'important'); }
+    });
+    C.querySelectorAll('section > [data-ph]').forEach(function (bx) {
+      if (bx.closest('section[data-m="sbox"],section[data-m$="-hero"]')) return;
+      bx.style.setProperty('max-width', '1080px', 'important'); bx.style.setProperty('width', 'auto', 'important');
+      bx.style.setProperty('margin', '0 auto', 'important'); bx.style.setProperty('min-height', '0', 'important');
+      bx.querySelectorAll(':scope > div').forEach(function (d) { if (!d.children.length) d.style.setProperty('display', 'none', 'important'); });
+    });
+    if (cfg.key === 'tt') { var ot = C.querySelector('section > [data-ph="red-hanging-lab"]'); if (ot) ot.style.setProperty('background', 'linear-gradient(rgba(24,24,24,.92),rgba(24,24,24,.94))', 'important'); }
+    // page color behind everything else
+    var sbox = C.querySelector(':scope > section[data-m="sbox"]');
+    var sTop = sbox ? top(sbox, C) : C.offsetHeight, sEnd = sbox ? sTop + sbox.offsetHeight : C.offsetHeight;
+    var bg;
+    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
+    else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
+    else bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + OLIVE + ' ' + (h1 + 120) + 'px,' + OLIVE + ' ' + (sTop + 40) + 'px,#141414 ' + (sTop + 160) + 'px,#141414 ' + (sEnd - 60) + 'px,' + RED + ' ' + (sEnd + 160) + 'px,' + RED + ' 100%)';
+    C.style.setProperty('background', bg, 'important');
+  }
+
+  function off(C) {
+    if (!C.classList.contains('sd-on')) return;
+    C.classList.remove('sd-on', 'sd-lm', 'sd-cd', 'sd-tt');
+    var ov = C.querySelector(':scope > [data-sd-hero]'); if (ov) ov.remove();
+    C.style.removeProperty('background');
+    C.querySelectorAll('section[data-m$="-hero"] div').forEach(function (d) { d.style.visibility = ''; });
+  }
+
+  function run() {
+    Object.keys(PAGES).forEach(function (label) {
+      document.querySelectorAll('div[data-screen-label="' + label + '"],div[data-screen-label="' + label.replace("'", "\\'") + '"]').forEach(function (C) {
+        if (!C.querySelector('section[data-m$="-hero"]')) return;
+        if (MQ.matches) apply(C, PAGES[label]); else off(C);
+      });
+    });
+  }
+  setInterval(run, 700); run();
+})();
