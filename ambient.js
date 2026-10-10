@@ -216,7 +216,7 @@
     return {
       master: master, duck: duck,
       scheduleUntil: scheduleUntil,
-      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.6, ctx.currentTime + sec); },
+      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.85, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
       setDuck: function (v, sec) { duck.gain.cancelScheduledValues(ctx.currentTime); duck.gain.setValueAtTime(duck.gain.value, ctx.currentTime); duck.gain.linearRampToValueAtTime(v, ctx.currentTime + sec); }
     };
@@ -268,17 +268,34 @@
     if (muted) eng.fadeOut(1.5); else { if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(2.5); }
     refresh();
   }
-  function firstGesture() {
-    ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (n) { document.removeEventListener(n, firstGesture, true); });
-    if (muted) { mkBtn(); return; }
-    start();
+  var kick = null;
+  function unlockIOS() {
+    // iOS routes Web Audio through the ringer switch unless a media element is playing
+    try {
+      if (kick) { if (kick.paused) kick.play().catch(function () {}); return; }
+      var n = 4000, b = new ArrayBuffer(44 + n * 2), v = new DataView(b);
+      function w(o, t) { for (var i = 0; i < t.length; i++) v.setUint8(o + i, t.charCodeAt(i)); }
+      w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+      v.setUint32(24, 8000, true); v.setUint32(28, 16000, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true); w(36, 'data'); v.setUint32(40, n * 2, true);
+      var blob = new Blob([b], { type: 'audio/wav' });
+      kick = document.createElement('audio');
+      kick.setAttribute('data-ambient-kick', ''); kick.loop = true; kick.setAttribute('playsinline', ''); kick.src = URL.createObjectURL(blob);
+      kick.play().catch(function () {});
+    } catch (e) {}
   }
-  ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (n) { document.addEventListener(n, firstGesture, true); });
+  function firstGesture() {
+    if (muted) { mkBtn(); return; }
+    unlockIOS();
+    start();
+    if (ctx && ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} }
+    if (ctx && ctx.state === 'running') ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (n) { document.removeEventListener(n, firstGesture, true); });
+  }
+  ['pointerdown', 'touchstart', 'touchend', 'keydown', 'click'].forEach(function (n) { document.addEventListener(n, firstGesture, true); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkBtn); else mkBtn();
 
   // step aside while the site's own story audio is playing
-  document.addEventListener('play', function (e) { if (e.target && e.target.tagName === 'AUDIO' && eng) { playing++; eng.setDuck(0.0, 1.2); } }, true);
-  function released(e) { if (e.target && e.target.tagName === 'AUDIO' && eng) { playing = Math.max(0, playing - 1); if (!playing) eng.setDuck(1, 3); } }
+  document.addEventListener('play', function (e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing++; eng.setDuck(0.0, 1.2); } }, true);
+  function released(e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing = Math.max(0, playing - 1); if (!playing) eng.setDuck(1, 3); } }
   document.addEventListener('pause', released, true);
   document.addEventListener('ended', released, true);
   document.addEventListener('visibilitychange', function () {
