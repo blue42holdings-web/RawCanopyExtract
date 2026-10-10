@@ -50,7 +50,7 @@
   function build(ctx, dest) {
     var T0 = ctx.currentTime;
     var comp = ctx.createDynamicsCompressor();
-    comp.threshold.value = -24; comp.knee.value = 24; comp.ratio.value = 3; comp.attack.value = 0.05; comp.release.value = 0.5;
+    comp.threshold.value = -34; comp.knee.value = 24; comp.ratio.value = 8; comp.attack.value = 0.05; comp.release.value = 0.5;
     var master = ctx.createGain(); master.gain.value = 0;
     comp.connect(master); master.connect(dest);
     var duck = ctx.createGain(); duck.gain.value = 1; duck.connect(comp); // used when story audio plays
@@ -259,8 +259,8 @@
     return {
       master: master, duck: duck,
       scheduleUntil: scheduleUntil,
-      slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.6 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
-      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.6, ctx.currentTime + sec); },
+      slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.22 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
+      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
       setDuck: function (v, sec) { duck.gain.cancelScheduledValues(ctx.currentTime); duck.gain.setValueAtTime(duck.gain.value, ctx.currentTime); duck.gain.linearRampToValueAtTime(v, ctx.currentTime + sec); }
     };
