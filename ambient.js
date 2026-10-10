@@ -224,16 +224,16 @@
     function scheduleAct() {
       var t = acts.t, kind = acts.next, dur;
       if (kind === 'build') {
-        dur = acts.n === 0 ? 62 : rnd(55, 72);
-        padStream(t, dur, [2.0, 3.2], acts.n === 0 ? 0.1 : 0.2, 0.92, acts.n === 0 ? 0.55 : 0.5, 1);
+        dur = acts.n === 0 ? 50 : rnd(40, 52);
+        padStream(t, dur, [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, 0.6);
         if (acts.n > 0) natureTo(t, 0, 4);
         acts.buildCount++;
-        acts.next = (acts.buildCount > 1 && Math.random() < 0.5) ? 'dark' : 'break';
+        acts.next = (acts.buildCount > 1 && Math.random() < 0.2) ? 'dark' : 'break';
       } else if (kind === 'break') {
-        dur = rnd(48, 62);
-        padStream(t, dur, [3.6, 5.2], 0.35, 0.12, 0.5, 0.4);
+        dur = rnd(55, 70);
+        padStream(t, dur, [3.8, 5.4], 0.35, 0.12, 0.42, 0.32);
         natureTo(t + 2, 0.24, 3.5); // ten seconds or so to fade up, then it stays soft
-        acts.next = 'build';
+        acts.next = Math.random() < 0.55 ? 'build' : 'break';
       } else {
         dur = rnd(26, 32);
         natureTo(t, 0.03, 3);
@@ -259,8 +259,8 @@
     return {
       master: master, duck: duck,
       scheduleUntil: scheduleUntil,
-      slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.85 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
-      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.85, ctx.currentTime + sec); },
+      slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.6 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
+      fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.6, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
       setDuck: function (v, sec) { duck.gain.cancelScheduledValues(ctx.currentTime); duck.gain.setValueAtTime(duck.gain.value, ctx.currentTime); duck.gain.linearRampToValueAtTime(v, ctx.currentTime + sec); }
     };
