@@ -301,6 +301,14 @@
     document.body.appendChild(btn); refresh();
   }
   setInterval(function () { if (btn && !document.body.contains(btn)) { btn = null; mkBtn(); } }, 2000);
+  // keep the sound button clear of the story player bar: it rides up with the bar and comes back down
+  setInterval(function () {
+    if (!btn) return;
+    var bar = document.querySelector('[data-m="player"]'), lift = 0;
+    if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
+    var want = (12 + lift) + 'px';
+    if (btn.style.bottom !== want) { btn.style.transition = 'bottom .3s ease'; btn.style.bottom = want; }
+  }, 120);
   function refresh() { if (!btn) return; var on = started && !muted; btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none" '); btn.setAttribute('aria-label', on ? 'Turn ambient sound off' : 'Turn ambient sound on'); }
 
   function start() {
