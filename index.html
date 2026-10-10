@@ -953,6 +953,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 }
 </style>
 <script src="cutout-lift.js?v=20261008e"></script>
+<script src="rcx-motion.js?v=20261009a"></script>
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
 </helmet>
@@ -3204,11 +3205,11 @@ html body .mx-box.mx-todo,html body .cx-sec .mx-box.mx-todo{padding-top:34px !im
 /* Words spread evenly to fill each photo card: equal space above, between and below */
 html body .mx-box:not(.mx-lab),html body .mx-sec .mx-box:not(.mx-lab),html body .cx-sec .mx-box:not(.mx-lab){justify-content:space-evenly !important}
 @media (max-width:767px){
-html body .cx-sec .mx-box:not(.mx-lab) .mx-tag{font-size:16px !important}
-html body .cx-sec .mx-box:not(.mx-lab) .mx-big{font-size:58px !important}
-html body .cx-sec .mx-box:not(.mx-lab) .mx-head{font-size:34px !important;line-height:1.12 !important}
-html body .cx-sec .mx-box:not(.mx-lab) .mx-text{font-size:20px !important;line-height:1.5 !important}
-html body .cx-sec .mx-box:not(.mx-lab) .mx-cta{font-size:20px !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-tag{font-size:16px !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-big{font-size:58px !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-head{font-size:34px !important;line-height:1.12 !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-text{font-size:20px !important;line-height:1.5 !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-cta{font-size:20px !important}
 /* No black voids between stacked boxes: a section holding one gold box gets a small even gap */
 html body section:has(> [data-ph]){padding-top:10px !important;padding-bottom:10px !important;min-height:0 !important}
 html body section:has(> [data-ph]) > [data-ph]{margin-top:0 !important;margin-bottom:0 !important}
@@ -3237,6 +3238,76 @@ html body .hero-panel > [data-m="ritual-box"]{display:none !important}
 @media (max-width:767px){html body .cx-sec .mx-box .mx-head.mx-head-long{font-size:26px !important}}
 
 html body .wy-box{display:flex !important;flex-direction:column !important;justify-content:center !important}
+
+/* Oct 9 2026: How To Use gold timeline. Phone: line down the left, hexagons on it, words to the right. Desktop: line down the middle, steps alternate left and right */
+html body [data-m="steps"].rcx-timeline{position:relative !important;display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:40px !important;text-align:left !important}
+html body [data-m="steps"].rcx-timeline::before{content:"";position:absolute;left:36px;top:42px;bottom:42px;width:4px;border-radius:2px;background:linear-gradient(#D4A24A,#8C6A2A);transform-origin:top;z-index:0}
+@supports (animation-timeline:view()){html body [data-m="steps"].rcx-timeline::before{animation:rcxDraw linear both;animation-timeline:view();animation-range:entry 20% cover 70%}}
+@keyframes rcxDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+html body [data-m="steps"].rcx-timeline>div{display:grid !important;grid-template-columns:76px minmax(0,1fr) !important;column-gap:22px;align-items:start !important;text-align:left !important;position:relative;z-index:1}
+html body [data-m="steps"].rcx-timeline>div>div:first-child{grid-row:1 / span 2;margin:0 !important}
+html body [data-m="steps"].rcx-timeline>div>h2{margin:14px 0 8px !important}
+html body [data-m="steps"].rcx-timeline>div>p{max-width:none !important;margin:0 !important}
+html body [data-m="steps"].rcx-timeline polygon{fill:#000;transition:fill .6s ease,filter .6s ease}
+html body [data-m="steps"].rcx-timeline>div.rcx-lit polygon{fill:#2A1F0B;filter:drop-shadow(0 0 10px rgba(212,162,74,.75))}
+html body [data-m="steps"].rcx-timeline>div>h2,html body [data-m="steps"].rcx-timeline>div>p{opacity:.35;transform:translateX(14px);transition:opacity .7s ease,transform .7s ease}
+html body [data-m="steps"].rcx-timeline>div.rcx-lit>h2,html body [data-m="steps"].rcx-timeline>div.rcx-lit>p{opacity:1;transform:none}
+@media (min-width:768px){
+html body [data-m="steps"].rcx-timeline{max-width:900px !important;gap:30px !important}
+html body [data-m="steps"].rcx-timeline::before{left:50%;margin-left:-2px}
+html body [data-m="steps"].rcx-timeline>div{grid-template-columns:minmax(0,1fr) 76px minmax(0,1fr) !important;column-gap:30px}
+html body [data-m="steps"].rcx-timeline>div>div:first-child{grid-column:2;grid-row:1 / span 2}
+html body [data-m="steps"].rcx-timeline>div:nth-child(odd)>h2,html body [data-m="steps"].rcx-timeline>div:nth-child(odd)>p{grid-column:1;text-align:right;justify-self:end}
+html body [data-m="steps"].rcx-timeline>div:nth-child(even)>h2,html body [data-m="steps"].rcx-timeline>div:nth-child(even)>p{grid-column:3;text-align:left}
+html body [data-m="steps"].rcx-timeline>div:nth-child(odd)>h2,html body [data-m="steps"].rcx-timeline>div:nth-child(odd)>p{transform:translateX(-14px)}
+html body [data-m="steps"].rcx-timeline>div.rcx-lit>h2,html body [data-m="steps"].rcx-timeline>div.rcx-lit>p{transform:none}
+}
+/* Oct 9 2026: swipe carousels sit inside a rounded gold frame and turn like a wheel */
+html body .cx{border:3px solid #D4A24A;border-radius:24px;padding:22px 0 16px;background:rgba(0,0,0,.38);box-shadow:0 10px 28px rgba(0,0,0,.55),inset 0 0 40px rgba(0,0,0,.6);overflow:hidden}
+html body .cx-track.rcx-wheel{perspective:1100px;overflow-y:visible}
+html body .cx-track.rcx-wheel>*{transition:transform .18s ease-out,opacity .18s ease-out,box-shadow .3s ease;transform-style:preserve-3d;will-change:transform}
+html body .cx-track.rcx-wheel>.rcx-center{box-shadow:0 0 0 1px #D4A24A,0 14px 36px rgba(212,162,74,.28),0 10px 28px rgba(0,0,0,.65)}
+html body .cx .rit-nav{margin-top:16px}
+@media (prefers-reduced-motion:reduce){html body .cx-track.rcx-wheel>*{transform:none !important;opacity:1 !important}}
+
+@media (max-width:767px){
+html body .cx-track.rcx-wheel{grid-auto-columns:78% !important;gap:10px !important;padding-left:11% !important;padding-right:11% !important;scroll-padding-left:11% !important;scroll-padding-right:11% !important}
+html body .cx-sec .mx-box:not(.mx-lab):has(> .mx-big) .mx-head{font-size:30px !important}
+html body .cx-sec .mx-box .mx-head.mx-head-long{font-size:23px !important}
+}
+
+@media (max-width:767px){
+html body .cx-track.rcx-wheel .mx-box:not(.mx-lab) .mx-big{font-size:46px !important}
+html body .cx-track.rcx-wheel .mx-lab{padding:18px 14px !important;gap:9px !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-hd{font-size:10px !important;letter-spacing:.08em !important;line-height:1.4}
+html body .cx-track.rcx-wheel .mx-lab .lab-title{font-size:11px !important;letter-spacing:.06em !important;line-height:1.4}
+html body .cx-track.rcx-wheel .mx-lab .mx-head{font-size:21px !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-rows{gap:10px !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-row{grid-template-columns:minmax(0,1fr) !important;grid-template-areas:"n" "bar" "l" !important;row-gap:4px !important;text-align:center !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-n{font-size:24px !important;text-align:center !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-bar{height:6px !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-l{font-size:10px !important;letter-spacing:.06em !important;line-height:1.35;text-align:center !important}
+html body .cx-track.rcx-wheel .mx-lab .lab-src{font-size:10px !important}
+html body .cx-track.rcx-wheel .mx-lab .tl-row{font-size:12px !important}
+}
+
+@media (max-width:767px){
+html body .cx-track.rcx-wheel .mx-box .mx-head.mx-head-long{font-size:19px !important}
+html body .cx-track.rcx-wheel .mx-lab .tl-row{font-size:11px !important;letter-spacing:.02em !important}
+html body .cx-track.rcx-wheel .mx-lab .tl-t{white-space:normal !important}
+}
+
+@media (max-width:767px){
+html body .cx-track.rcx-wheel .mx-lab .tl-row{grid-template-columns:84px 18px minmax(0,1fr) !important}
+html body .cx-track.rcx-wheel>.mx-box{height:auto !important;min-height:400px !important}
+}
+
+@media (min-width:768px){html body .mx-big,html body .mx-sec .mx-box .mx-big{font-size:clamp(34px,2.9vw,50px) !important}}
+
+/* Big numbers scale with their own card so they always fit */
+html body .mx-box:not(.mx-lab){container-type:inline-size}
+html body .mx-box:not(.mx-lab):not(#z) .mx-big{font-size:clamp(28px,15cqi,58px) !important;white-space:nowrap !important}
+html body .mx-box:not(#z) .mx-head.mx-head-long{font-size:clamp(16px,7.4cqi,26px) !important}
 </style></div></x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;subDiscount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:0,&quot;max&quot;:30,&quot;step&quot;:5,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;comingSoon&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Commerce&quot;},&quot;sealVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;transparent&quot;,&quot;on-black&quot;],&quot;default&quot;:&quot;transparent&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Identity&quot;}}">
 class Component extends DCLogic {
