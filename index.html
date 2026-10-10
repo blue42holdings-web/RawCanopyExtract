@@ -2867,7 +2867,7 @@ html body .mx-sec[data-m="mx-tt"] .mx-title>a.mx-ic-link>img{background:linear-g
 <div data-screen-label="FAQ" style="background:#000">
 <section style="position:relative;min-height:34vh;padding:320px 28px 40px;pointer-events:none">
 <div data-m="faq-tiles" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
-<img src="assets/photo/faq/c-press-coast.jpg" alt="Pressing coffee above the sea" style="{{ tileStyle0 }}" draggable="true" data-i="0" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
+<img data-lift-probe="" data-nolift-ph="" src="assets/photo/faq/c-press-coast.jpg" alt="Pressing coffee above the sea" style="{{ tileStyle0 }}" draggable="true" data-i="0" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="{{ tileStyle1 }}" draggable="true" data-i="1" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img data-lift-probe="" data-nolift-ph="" src="assets/photo/faq/h-van-forest.webp" alt="Camp in the trees" style="{{ tileStyle2 }}" draggable="true" data-i="2" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 </div>
@@ -2880,7 +2880,7 @@ html body .mx-sec[data-m="mx-tt"] .mx-title>a.mx-ic-link>img{background:linear-g
 </section>
 <section style="position:relative;padding:0;pointer-events:none">
 <div data-m="faq-tiles2" style="position:absolute;inset:0;overflow:hidden;display:grid;grid-template-columns:1fr min(716px,60%) 1fr;gap:0;pointer-events:none">
-<img src="assets/photo/faq/desk-journal-coffee.jpg" alt="Journals and coffee on a sunlit desk" style="{{ tileStyle3 }}" draggable="true" data-i="3" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
+<img data-lift-probe="" data-nolift-ph="" src="assets/photo/faq/desk-journal-coffee.jpg" alt="Journals and coffee on a sunlit desk" style="{{ tileStyle3 }}" draggable="true" data-i="3" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img src="assets/photo/faq/f-mossy-tree.jpg" alt="Old growth from the forest floor" style="{{ tileStyle4 }}" draggable="true" data-i="4" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img data-lift-probe="" data-nolift-ph="" src="assets/photo/faq/van-rainier-stripes26.jpg" data-m="faq-van" alt="A van parked below Mount Rainier" style="{{ tileStyle5 }}" draggable="true" data-i="5" onDragStart="{{ onTileDragStart }}" onDragOver="{{ onTileDragOver }}" onDrop="{{ onTileDrop }}" loading="lazy">
 <img data-m="faq-tile-ph" src="assets/photo/faq/e-tent-dusk.jpg" alt="A lit tent on the dunes" style="display:none;width:100%;height:100%;object-fit:cover" loading="lazy">
@@ -4810,6 +4810,7 @@ html body .sd-lm section[data-m="num-lm"] .mx-title h2,html body .sd-lm section[
 html body .sd-lm section[data-m="num-lm"] .mx-title p span{color:#8a6420 !important}
 html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !important}
 }
+@media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
 <script src="species-desk.js"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
