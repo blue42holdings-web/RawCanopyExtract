@@ -132,7 +132,7 @@
       if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
       var mb = mr && mr.querySelector(':scope > div');
       if (mb) {
-        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/beach-fire-moka.jpg") center 30%/cover no-repeat', 'important'); };
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/about-water-cave.jpg") 50% 32%/cover no-repeat', 'important'); };
         if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
         if (!mb.__on) dk(0.66);
       }
@@ -220,4 +220,42 @@
     });
   }
   setInterval(slate, 1200); slate();
+})();
+
+/* Home More research box: its own photo, filling the box (Oct 10) */
+(function () {
+  function run() {
+    var home = document.querySelector('[data-screen-label="Home — hero"]');
+    if (!home || !home.getBoundingClientRect().height) return;
+    document.querySelectorAll('[data-m="more-research"] > div').forEach(function (d) {
+      if (!d.getBoundingClientRect().height) return;
+      d.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.72)),url("assets/photo/about-water-freedive.jpg") 50% 38%/cover no-repeat', 'important');
+    });
+  }
+  setInterval(run, 900); run();
+})();
+
+/* Desktop home: the "what we do" box from the phone layout, placed under the seal (Oct 10) */
+(function () {
+  function run() {
+    var desk = matchMedia('(min-width:768px)').matches;
+    var ex = document.querySelector('[data-desk-para]');
+    if (!desk) { if (ex) ex.remove(); return; }
+    var pk = document.querySelector('[data-m="pk-dup"]'); if (!pk || !pk.getBoundingClientRect().height) return;
+    var src = document.querySelector('[data-m="home-para"] p'); if (!src) return;
+    var grid = pk.parentElement;
+    if (ex && ex.nextElementSibling === grid) return;
+    if (ex) ex.remove();
+    var box = document.createElement('div'); box.setAttribute('data-desk-para', '');
+    box.style.cssText = 'display:block;grid-template-columns:none;position:relative;overflow:hidden;isolation:isolate;max-width:1080px;margin:0 auto 34px;border:3px solid #D4A24A;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.65);padding:40px 56px;text-align:center;background:#0b1d22';
+    var bg = document.createElement('div');
+    bg.style.cssText = 'position:absolute;inset:-14px;z-index:-1;background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url("assets/photo/reef-aerial.jpg") 72% 88%/cover no-repeat;transform:scale(1.9);transform-origin:72% 88%;filter:blur(2px)';
+    var p = src.cloneNode(true);
+    p.style.cssText = 'margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:30px;line-height:1.45;font-weight:500;color:#fff;text-wrap:balance;max-width:none;width:100%;text-align:center';
+    p.querySelectorAll('span').forEach(function (s) { s.style.color = '#D4A24A'; s.style.fontWeight = '600'; });
+    box.style.setProperty('display', 'block', 'important');
+    box.appendChild(bg); box.appendChild(p);
+    grid.parentNode.insertBefore(box, grid);
+  }
+  setInterval(run, 900); run();
 })();
