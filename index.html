@@ -3295,7 +3295,7 @@ html body [data-screen-label="Shop"] #shoptg-box:not(:checked) ~ .shoptg-bar .sh
 </div>
 <div data-m="foot-grid" style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:minmax(360px,1.5fr) repeat(auto-fit,minmax(180px,1fr));gap:48px;align-items:start">
 <div>
-<img src="assets/seal-on-black.svg" alt="Raw Canopy Extract" style="height:104px;width:auto;display:block;margin:0 0 20px 90px" loading="lazy">
+<img src="assets/seal-on-black.svg?v=2" alt="Raw Canopy Extract" style="height:104px;width:auto;display:block;margin:0 0 20px 90px" loading="lazy">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.14em;font-size:14px;color:#D4A24A;margin:0 0 0 90px;white-space:nowrap" data-keep-one-line="true">ONE INGREDIENT. NOTHING ELSE.</p>
 </div>
 <nav style="display:flex;flex-direction:column;gap:11px">
@@ -3598,7 +3598,7 @@ class Component extends DCLogic {
     if (!n || this.reducedMotion()) return;
     this._footBuilt = false;
     if (this._footSvg) { this.buildFooterSeal(); return; }
-    fetch('assets/seal-on-black.svg').then(r => r.text()).then(t => {
+    fetch('assets/seal-on-black.svg?v=2').then(r => r.text()).then(t => {
       if (!/^\s*<svg/i.test(t)) return;
       this._footSvg = t;
       this.buildFooterSeal();
@@ -3655,7 +3655,7 @@ class Component extends DCLogic {
   _nodes = [];
 
   sealFile() {
-    return (this.props.sealVariant || 'transparent') === 'on-black' ? 'assets/seal-on-black.svg' : 'assets/seal.svg';
+    return (this.props.sealVariant || 'transparent') === 'on-black' ? 'assets/seal-on-black.svg?v=2' : 'assets/seal.svg?v=2';
   }
 
   loadSeal() {
