@@ -130,85 +130,118 @@
     var _origCreatePanner = ctx.createStereoPanner ? ctx.createStereoPanner.bind(ctx) : null;
     if (_origCreatePanner) ctx.createStereoPanner = function () { var p = _origCreatePanner(); p._p = rnd(-0.8, 0.8); return p; };
 
-    // PAD MOODS (soft, no piano): three chords voiced wide and low
-    var MOODS = [
-      [45, 52, 59, 64, 71],   // A minor add9 feel
-      [50, 57, 64, 66, 73],   // D lydian
-      [41, 48, 57, 60, 67]    // F major 7 (add9)
+    // PAD: a stream of overlapping notes. No single note is held longer than 10 seconds,
+    // so the harmony is always moving and each tone melts into the next.
+    var SCALES = [
+      [57, 60, 62, 64, 67, 69, 71, 72, 74, 76, 79, 81],        // A minor with 9ths
+      [57, 59, 62, 64, 66, 69, 71, 74, 76, 78, 81, 83],        // D lydian color
+      [53, 57, 60, 62, 64, 65, 69, 72, 74, 76, 77, 81],        // F major 9 color
+      [55, 59, 62, 64, 67, 69, 71, 74, 76, 79, 81, 83],        // G add9
+      [57, 60, 64, 65, 67, 69, 72, 74, 76, 79, 81, 84]         // A minor, brighter
     ];
-    function padVoice(t0, dur, notes, level) {
+    padBus.gain.value = 1;
+    var lastMidi = 0;
+    function padNote(t0, midi, dur, level) {
+      var f = mtof(midi);
       var bus = ctx.createGain(); bus.gain.value = 0;
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.5;
-      lp.frequency.setValueAtTime(500, t0); lp.frequency.linearRampToValueAtTime(1400, t0 + dur * 0.5); lp.frequency.linearRampToValueAtTime(600, t0 + dur);
-      lp.connect(bus); bus.connect(padBus);
-      var att = Math.min(22, dur * 0.3), rel = Math.min(14, dur * 0.35);
-      bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(level, t0 + att);
-      bus.gain.setValueAtTime(level, t0 + dur - rel); bus.gain.linearRampToValueAtTime(0, t0 + dur);
-      notes.forEach(function (n, i) {
-        [-7, 6].forEach(function (cents) {
-          var o = ctx.createOscillator(); o.type = i < 2 ? 'sawtooth' : 'triangle';
-          o.frequency.value = mtof(n); o.detune.value = cents + rnd(-2, 2);
-          var g = ctx.createGain(); g.gain.value = (i < 2 ? 0.05 : 0.09) / (1 + i * 0.15);
-          o.connect(g); g.connect(lp); o.start(t0); o.stop(t0 + dur + 0.2);
-        });
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.4;
+      lp.frequency.setValueAtTime(Math.min(3200, f * 2.2), t0);
+      lp.frequency.linearRampToValueAtTime(Math.min(4200, f * 4.5), t0 + dur * 0.4);
+      lp.frequency.linearRampToValueAtTime(Math.min(2400, f * 2), t0 + dur);
+      var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      lp.connect(bus);
+      if (pan) { pan.pan.value = rnd(-0.6, 0.6); bus.connect(pan); pan.connect(padBus); } else bus.connect(padBus);
+      var att = dur * 0.42;
+      bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(level, t0 + att); bus.gain.linearRampToValueAtTime(0, t0 + dur);
+      [[ 'sine', -5, 1 ], [ 'triangle', 6, 0.5 ]].forEach(function (v) {
+        var o = ctx.createOscillator(); o.type = v[0]; o.frequency.value = f; o.detune.value = v[1] + rnd(-2, 2);
+        var g = ctx.createGain(); g.gain.value = v[2];
+        o.connect(g); g.connect(lp); o.start(t0); o.stop(t0 + dur + 0.3);
       });
     }
-
-    // SERIOUS: deep drones and layered low tones
-    function drones(t0, dur) {
-      var bus = ctx.createGain(); bus.gain.value = 0; bus.connect(droneBus);
-      var att = 7, rel = 9;
-      bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(1, t0 + att);
-      bus.gain.setValueAtTime(1, t0 + dur - rel); bus.gain.linearRampToValueAtTime(0, t0 + dur);
-      function tone(type, freq, gain, cutoff) {
-        var o = ctx.createOscillator(); o.type = type; o.frequency.value = freq;
-        var g = ctx.createGain(); g.gain.value = gain;
-        var f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = cutoff; f.Q.value = 1.4;
-        f.frequency.setValueAtTime(cutoff * 0.6, t0); f.frequency.linearRampToValueAtTime(cutoff * 1.4, t0 + dur * 0.55); f.frequency.linearRampToValueAtTime(cutoff * 0.7, t0 + dur);
-        o.connect(f); f.connect(g); g.connect(bus); o.start(t0); o.stop(t0 + dur + 0.2); return o;
+    function pickNote(t, reg) {
+      var sc = SCALES[Math.floor((t - T0) / 36) % SCALES.length];
+      var m = lastMidi;
+      for (var k = 0; k < 6 && (m === lastMidi || Math.abs(m - lastMidi) < 2); k++) {
+        var idx = Math.round(Math.max(0, Math.min(1, reg + rnd(-0.25, 0.25))) * (sc.length - 1));
+        m = sc[idx];
       }
-      var base = [36.71, 43.65][Math.floor(Math.random() * 2)]; // D1 or F1
-      tone('sine', base, 0.55, 200); tone('sine', base * 1.5, 0.25, 200);
-      tone('sawtooth', base * 2, 0.12, 260); tone('sawtooth', base * 2 * 1.004, 0.12, 260); // slow beating
-      tone('sawtooth', base * 4, 0.07, 520); tone('sawtooth', base * 6 * 1.003, 0.05, 520);
-      tone('sawtooth', base * 4.76, 0.045, 520); // minor third color
-      // faint dissonant shimmer high above
-      tone('sine', 587.3, 0.012, 3000); tone('sine', 622.3, 0.01, 3000);
+      lastMidi = m; return m;
+    }
+    function padStream(t0, dur, step, reg0, reg1, lv0, lv1) {
+      var t = t0;
+      while (t < t0 + dur) {
+        var p = (t - t0) / dur;
+        padNote(t, pickNote(t, reg0 + (reg1 - reg0) * p), rnd(8, 10), 0.13 * (lv0 + (lv1 - lv0) * p));
+        t += rnd(step[0], step[1]);
+      }
+    }
+
+    // DARK: low overlapping drones (also never held past 10 seconds) with a haunting wind
+    var howlBus = ctx.createGain(); howlBus.gain.value = 0; howlBus.connect(duck); howlBus.connect(revIn);
+    (function () {
+      var s = noiseSrc(), bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 9; bp.frequency.value = 620;
+      var g = ctx.createGain(); g.gain.value = 0.5;
+      s.connect(bp); bp.connect(g); g.connect(howlBus);
+      lfo(0.07, 260, bp.frequency); lfo(0.11, 140, bp.frequency);
+      var s2 = noiseSrc(), bp2 = ctx.createBiquadFilter(); bp2.type = 'bandpass'; bp2.Q.value = 14; bp2.frequency.value = 1100;
+      var g2 = ctx.createGain(); g2.gain.value = 0.22;
+      s2.connect(bp2); bp2.connect(g2); g2.connect(howlBus);
+      lfo(0.05, 380, bp2.frequency); lfo(0.13, 200, bp2.frequency);
+    })();
+    function droneNote(t0, base, mult, type, level, cutoff) {
+      var dur = rnd(8.5, 10);
+      var o = ctx.createOscillator(); o.type = type; o.frequency.value = base * mult; o.detune.value = rnd(-4, 4);
+      var f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.Q.value = 1.2;
+      f.frequency.setValueAtTime(cutoff * 0.6, t0); f.frequency.linearRampToValueAtTime(cutoff * 1.3, t0 + dur * 0.45); f.frequency.linearRampToValueAtTime(cutoff * 0.7, t0 + dur);
+      var g = ctx.createGain(); g.gain.value = 0;
+      g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(level, t0 + dur * 0.42); g.gain.linearRampToValueAtTime(0, t0 + dur);
+      o.connect(f); f.connect(g); g.connect(droneBus); o.start(t0); o.stop(t0 + dur + 0.3);
+    }
+    function darkAct(t0, dur) {
+      var base = [36.71, 43.65, 32.70][Math.floor(Math.random() * 3)];
+      droneBus.gain.setTargetAtTime(0.2, t0, 2);
+      droneBus.gain.setTargetAtTime(0, t0 + dur - 2, 3);
+      var t = t0;
+      while (t < t0 + dur) {
+        droneNote(t, base, 1, 'sine', 0.55, 200);
+        droneNote(t + 0.5, base, 1.5, 'sine', 0.2, 200);
+        droneNote(t + 1, base, 2, 'sawtooth', 0.08, 260);
+        droneNote(t + 1.5, base, [4, 4.76, 6][Math.floor(Math.random() * 3)], 'sawtooth', 0.045, 520);
+        if (Math.random() < 0.6) droneNote(t + 2, 587.3 * [1, 0.945][Math.floor(Math.random() * 2)], 1, 'sine', 0.012, 3000);
+        t += rnd(3.5, 4.5);
+      }
+      // haunting wind rises, howls, and drops back
+      howlBus.gain.setValueAtTime(0, t0); howlBus.gain.linearRampToValueAtTime(0.045, t0 + 7); howlBus.gain.setValueAtTime(0.045, t0 + dur - 8); howlBus.gain.linearRampToValueAtTime(0, t0 + dur + 4);
     }
 
     // ---------- timeline ----------
-    var tl = { t: T0 + 2, n: 0, started: false };
-    var natureStart = T0 + 60; // wind, waves and birds stay out for the first minute
-    function levelNature(t, v, rampSec) { natureBus.gain.setTargetAtTime(v, Math.max(t, natureStart), rampSec / 3); }
-    // one soft wave at the very start, then just the ambient bed
-    (function () {
-      var s = noiseSrc(), lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 420;
-      var g = ctx.createGain(); g.gain.value = 0;
-      var t = T0 + 5;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.045, t + 6); g.gain.linearRampToValueAtTime(0, t + 15);
-      lp.frequency.setValueAtTime(300, t); lp.frequency.linearRampToValueAtTime(700, t + 6); lp.frequency.linearRampToValueAtTime(300, t + 15);
-      s.connect(lp); lp.connect(g); g.connect(duck); s.stop(t + 16);
-    })();
-    function scheduleSegment() {
-      var t = tl.t, serious = tl.n > 1 && Math.random() < 0.17;
-      if (serious) {
-        var dur = rnd(26, 34);
-        padBus.gain.setTargetAtTime(0, t, 3);
-        droneBus.gain.setTargetAtTime(0.7, t, 4);
-        drones(t, dur);
-        levelNature(t, 0.06, 10); levelNature(t + dur - 9, 0.2, 20);
-        tl.t = t + dur - 6;
+    // build (pads climb to higher notes) > break (softer, nature fades in) > build (nature fades out)
+    // > sometimes a dark passage (about 10 percent of the time) > break ...
+    var natureStart = T0 + 60;
+    function natureTo(t, v, tc) { natureBus.gain.setTargetAtTime(v, Math.max(t, natureStart), tc); }
+    var acts = { t: T0 + 0.5, n: 0, next: 'build', buildCount: 0 };
+    function scheduleAct() {
+      var t = acts.t, kind = acts.next, dur;
+      if (kind === 'build') {
+        dur = acts.n === 0 ? 62 : rnd(55, 72);
+        padStream(t, dur, [2.0, 3.2], acts.n === 0 ? 0.1 : 0.2, 0.92, acts.n === 0 ? 0.55 : 0.5, 1);
+        if (acts.n > 0) natureTo(t, 0, 4);
+        acts.buildCount++;
+        acts.next = (acts.buildCount > 1 && Math.random() < 0.5) ? 'dark' : 'break';
+      } else if (kind === 'break') {
+        dur = rnd(48, 62);
+        padStream(t, dur, [3.6, 5.2], 0.35, 0.12, 0.5, 0.4);
+        natureTo(t + 2, 0.24, 3.5); // ten seconds or so to fade up, then it stays soft
+        acts.next = 'build';
       } else {
-        var d = rnd(85, 115), notes = MOODS[tl.n % 3];
-        droneBus.gain.setTargetAtTime(0, t, 5);
-        padBus.gain.setTargetAtTime(1, t, 6);
-        padVoice(t, d + 12, notes, 0.34);
-        // ambient builds a little then settles, nature comes back forward
-        levelNature(t, 0.1, 40);
-        levelNature(t + d * 0.55, 0.28, 30);
-        tl.t = t + d - 4;
-        tl.n++;
+        dur = rnd(26, 32);
+        natureTo(t, 0.03, 3);
+        darkAct(t, dur);
+        acts.next = 'break';
       }
+      acts.t = t + dur - (kind === 'dark' ? 2 : 5);
+      acts.n++;
     }
     var birdT = T0 + 80;
     function scheduleBirds(upTo) {
@@ -218,7 +251,7 @@
       }
     }
     function scheduleUntil(horizon) {
-      while (tl.t < horizon) scheduleSegment();
+      while (acts.t < horizon) scheduleAct();
       scheduleBirds(horizon);
     }
     scheduleUntil(T0 + 40);
