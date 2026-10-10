@@ -183,3 +183,41 @@
   }
   setInterval(run, 700); run();
 })();
+
+/* Desktop FAQ tiles light up under the cursor; desktop black buttons get the wet slate look (Oct 10) */
+(function () {
+  var MQ = matchMedia('(min-width:768px) and (hover:hover)');
+  var cur = null;
+  document.addEventListener('mousemove', function (e) {
+    if (!MQ.matches) return;
+    var hit = null;
+    document.querySelectorAll('[data-screen-label="FAQ"] [data-m="faq-tiles"] img,[data-screen-label="FAQ"] [data-m="faq-tiles2"] img').forEach(function (im) {
+      var r = im.getBoundingClientRect();
+      if (r.width && e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) hit = im;
+    });
+    if (hit === cur) return;
+    if (cur) cur.style.filter = cur.__f || '';
+    cur = hit;
+    if (cur) { if (cur.__f === undefined) cur.__f = cur.style.filter || ''; cur.style.transition = (cur.style.transition ? cur.style.transition + ',' : '') + 'filter .7s ease'; cur.style.filter = 'brightness(2.4) saturate(1.1)'; }
+  }, { passive: true });
+  var SL = ['wet-slate.jpeg', 'slate-v1.jpg', 'slate-v2.jpg', 'slate-v3.jpg', 'slate-v4.jpg', 'slate-v5.jpg', 'slate-v6.jpg', 'slate-v7.jpg', 'slate-v8.jpg', 'roar-wet-slate.jpg'];
+  var POS = ['20% 40%', '70% 60%', '40% 80%', '85% 25%', '10% 70%', '55% 35%', '30% 15%', '75% 85%', '50% 50%', '35% 65%'];
+  var n = 0;
+  function slate() {
+    if (!matchMedia('(min-width:768px)').matches) return;
+    document.querySelectorAll('main button, main a, main [role="button"], main [role="link"]').forEach(function (b) {
+      if (b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"]')) return;
+      var cs = getComputedStyle(b), r = b.getBoundingClientRect();
+      if (r.width < 34 || r.height < 30) return;
+      if (cs.backgroundImage !== 'none') return;
+      var m = cs.backgroundColor.match(/\d+(\.\d+)?/g); if (!m) return;
+      var a = m.length > 3 ? +m[3] : 1;
+      if (!(+m[0] < 30 && +m[1] < 30 && +m[2] < 30 && a > 0.5)) return;
+      if (!/212, 162, 74|233, 192, 121/.test(cs.borderTopColor) || parseFloat(cs.borderTopWidth) < 1) return;
+      var i = n++ % SL.length; b.__sl = 1;
+      b.style.setProperty('background', 'linear-gradient(rgba(3,3,3,.86),rgba(3,3,3,.86)),url("assets/photo/' + SL[i] + '") ' + POS[i] + '/cover no-repeat', 'important');
+      b.style.setProperty('background-color', '#050505', 'important');
+    });
+  }
+  setInterval(slate, 1200); slate();
+})();
