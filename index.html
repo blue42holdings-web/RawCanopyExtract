@@ -4734,5 +4734,9 @@ html body [data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox
 html body [data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel"]{background-image:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.88)),url('assets/photo/reef-snorkel.jpg') !important}
 </style>
 <script>(function(){var seen=new WeakSet();function scan(){document.querySelectorAll('[data-screen-label="Cordyceps"] [data-ph="summit-arms-out"],[data-screen-label="Cordyceps"] [data-m="cd-fbox"]').forEach(function(e){if(seen.has(e))return;seen.add(e);if(!('IntersectionObserver' in window)){e.classList.add('cd-lit');return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('cd-lit');io.disconnect()}})},{threshold:.35});io.observe(e)})}setInterval(scan,800);scan()})();</script>
+<style>/* Shop: soft fades between the tins section and The Research, darker volcano (Oct 10) */
+html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2){background:linear-gradient(#000 0,rgba(0,0,0,.28) 260px,rgba(0,0,0,.28) calc(100% - 320px),rgba(0,0,0,.75) calc(100% - 120px),#000 100%) !important}
+html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"]{background:linear-gradient(#000 0,rgba(0,0,0,.92) 90px,rgba(0,0,0,.72) 300px,rgba(0,0,0,.72) calc(100% - 300px),#000 calc(100% - 40px)),url('assets/photo/volcano-fountain.jpg') center/cover no-repeat !important}
+</style>
 </body>
 </html>
