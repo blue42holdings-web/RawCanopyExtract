@@ -139,28 +139,34 @@
       [55, 59, 62, 64, 67, 69, 71, 74, 76, 79, 81, 83],        // G add9
       [57, 60, 64, 65, 67, 69, 72, 74, 76, 79, 81, 84]         // A minor, brighter
     ];
+    // a different arrangement every time the music starts: shuffled harmony order,
+    // a new key, its own pace and its own color
+    for (var si = SCALES.length - 1; si > 0; si--) { var sj = Math.floor(Math.random() * (si + 1)), st = SCALES[si]; SCALES[si] = SCALES[sj]; SCALES[sj] = st; }
+    var ARR = { trans: [-5, -3, -2, 0, 2][Math.floor(Math.random() * 5)], pace: rnd(0.8, 1.35), bright: rnd(0.7, 1.15), chord: rnd(30, 48),
+      voice: [[['sine', -5, 1], ['triangle', 6, 0.5]], [['sine', -7, 1], ['sine', 7, 0.6]], [['triangle', -4, 0.8], ['sine', 12, 0.35]]][Math.floor(Math.random() * 3)] };
+    var DEEP = 0; // set per section: about half the sections drop an octave into a lower, darker tone
     padBus.gain.value = 1;
     var lastMidi = 0;
     function padNote(t0, midi, dur, level) {
-      var f = mtof(midi);
+      var f = mtof(midi + ARR.trans - (DEEP ? 12 : 0)), br = ARR.bright * (DEEP ? 0.55 : 1);
       var bus = ctx.createGain(); bus.gain.value = 0;
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.4;
-      lp.frequency.setValueAtTime(Math.min(3200, f * 2.2), t0);
-      lp.frequency.linearRampToValueAtTime(Math.min(4200, f * 4.5), t0 + dur * 0.4);
-      lp.frequency.linearRampToValueAtTime(Math.min(2400, f * 2), t0 + dur);
+      lp.frequency.setValueAtTime(Math.min(3200, f * 2.2 * br), t0);
+      lp.frequency.linearRampToValueAtTime(Math.min(4200, f * 4.5 * br), t0 + dur * 0.4);
+      lp.frequency.linearRampToValueAtTime(Math.min(2400, f * 2 * br), t0 + dur);
       var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
       lp.connect(bus);
       if (pan) { pan.pan.value = rnd(-0.6, 0.6); bus.connect(pan); pan.connect(padBus); } else bus.connect(padBus);
       var att = dur * 0.42;
       bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(level, t0 + att); bus.gain.linearRampToValueAtTime(0, t0 + dur);
-      [[ 'sine', -5, 1 ], [ 'triangle', 6, 0.5 ]].forEach(function (v) {
+      ARR.voice.forEach(function (v) {
         var o = ctx.createOscillator(); o.type = v[0]; o.frequency.value = f; o.detune.value = v[1] + rnd(-2, 2);
         var g = ctx.createGain(); g.gain.value = v[2];
         o.connect(g); g.connect(lp); o.start(t0); o.stop(t0 + dur + 0.3);
       });
     }
     function pickNote(t, reg) {
-      var sc = SCALES[Math.floor((t - T0) / 36) % SCALES.length];
+      var sc = SCALES[Math.floor((t - T0) / ARR.chord) % SCALES.length];
       var m = lastMidi;
       for (var k = 0; k < 6 && (m === lastMidi || Math.abs(m - lastMidi) < 2); k++) {
         var idx = Math.round(Math.max(0, Math.min(1, reg + rnd(-0.25, 0.25))) * (sc.length - 1));
@@ -173,7 +179,7 @@
       while (t < t0 + dur) {
         var p = (t - t0) / dur;
         padNote(t, pickNote(t, reg0 + (reg1 - reg0) * p), rnd(8, 10), 0.13 * (lv0 + (lv1 - lv0) * p));
-        t += rnd(step[0], step[1]);
+        t += rnd(step[0], step[1]) * ARR.pace;
       }
     }
 
@@ -225,13 +231,17 @@
       var t = acts.t, kind = acts.next, dur;
       if (kind === 'build') {
         dur = acts.n === 0 ? 50 : rnd(40, 52);
+        DEEP = acts.n > 0 && Math.random() < 0.5 ? 1 : 0;
         padStream(t, dur, [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, 0.6);
+        DEEP = 0;
         if (acts.n > 0) natureTo(t, 0, 4);
         acts.buildCount++;
         acts.next = (acts.buildCount > 1 && Math.random() < 0.2) ? 'dark' : 'break';
       } else if (kind === 'break') {
         dur = rnd(55, 70);
-        padStream(t, dur, [3.8, 5.4], 0.35, 0.12, 0.42, 0.32);
+        DEEP = Math.random() < 0.5 ? 1 : 0;
+        padStream(t, dur, [3.8, 5.4], 0.35, 0.12, DEEP ? 0.5 : 0.42, DEEP ? 0.4 : 0.32);
+        DEEP = 0;
         natureTo(t + 2, 0.24, 3.5); // ten seconds or so to fade up, then it stays soft
         acts.next = Math.random() < 0.55 ? 'build' : 'break';
       } else {
@@ -329,6 +339,7 @@
   }
   function firstGesture() {
     if (muted) { mkBtn(); return; }
+    if (storyOn) return; // never start or nudge anything while the story is playing
     unlockIOS();
     start();
     if (ctx && ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} }
@@ -337,6 +348,20 @@
   ['pointerdown', 'touchstart', 'touchend', 'keydown', 'click'].forEach(function (n) { document.addEventListener(n, firstGesture, true); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkBtn); else mkBtn();
 
+  // step aside while the story (Roar of the Mountain) plays: slow fade out, back in when it stops.
+  // The story's audio element is not attached to the page, so listen on it directly.
+  var storyOn = false, watched = null;
+  function storyPlay() { storyOn = true; if (kick) { try { kick.pause(); } catch (e) {} } if (eng) eng.setDuck(0, 4); }
+  function storyStop() { storyOn = false; if (eng) eng.setDuck(1, 5); }
+  setInterval(function () {
+    var a = window.__rcxAudio;
+    if (a && a !== watched) {
+      watched = a;
+      a.addEventListener('play', storyPlay); a.addEventListener('playing', storyPlay);
+      a.addEventListener('pause', storyStop); a.addEventListener('ended', storyStop);
+      if (!a.paused) storyPlay();
+    }
+  }, 300);
   // step aside while the site's own story audio is playing
   document.addEventListener('play', function (e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing++; eng.setDuck(0.0, 1.2); } }, true);
   function released(e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing = Math.max(0, playing - 1); if (!playing) eng.setDuck(1, 3); } }
