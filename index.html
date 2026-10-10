@@ -4812,5 +4812,25 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 </style>
 <script src="species-desk.js"></script>
+<style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
+@media (min-width:768px){
+html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
+html body div[data-screen-label="About"] section[data-m="about-compost"] + section{padding-bottom:230px !important}
+html body div[data-screen-label="About"]::before,html body div[data-screen-label="About"]::after{display:none !important}
+html body [data-screen-label="About"] section[data-m="about-hero"]{box-shadow:0 10px 28px rgba(0,0,0,.5) !important}
+html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"],html body [data-screen-label="About"] section[data-m="shasta"][data-m="shasta"],html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"],html body [data-screen-label="About"] section[data-m="about-compost"] + section{background:transparent !important;background-image:none !important;clip-path:none !important;min-height:0 !important}
+html body [data-screen-label="About"] section[data-m="about-brand"]::before,html body [data-screen-label="About"] section[data-m="about-brand"]::after,html body [data-screen-label="About"] section[data-m="shasta"]::before,html body [data-screen-label="About"] section[data-m="shasta"]::after{display:none !important}
+html body [data-screen-label="About"] section[data-m="shasta"] > [data-m="bgstack"]{display:none !important}
+html body [data-screen-label="About"] .ab-brand-k{color:#7a1a22 !important;text-shadow:none !important}
+html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box{background:linear-gradient(rgba(0,0,0,.74),rgba(0,0,0,.82)),url('assets/photo/about-three-dogs-2.webp') 40% 45%/cover no-repeat !important}
+html body [data-screen-label="About"] section[data-m="shasta"]{padding:40px 28px !important}
+html body [data-screen-label="About"] .ab-grid.ab-grid{max-width:1100px !important;margin:0 auto !important;display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:20px !important}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-box{min-height:220px !important;padding:30px 32px !important;display:flex !important;align-items:center !important}
+html body [data-screen-label="About"] .ab-grid .ab-box p{font-size:19px !important;line-height:1.7 !important;color:#fff !important;text-shadow:0 0 8px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.9)}
+html body [data-screen-label="About"] section[data-m="about-compost"] .cmp-box.cmp-box{position:relative;overflow:hidden;isolation:isolate;background:#0c1a1c !important}
+html body [data-screen-label="About"] section[data-m="about-compost"] .cmp-box::before{content:"";position:absolute;inset:-30px;z-index:-1;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.62)),url('assets/photo/reef-aerial.jpg') center/cover no-repeat;transform:scale(1.6);filter:blur(9px)}
+html body [data-screen-label="About"] [data-m="about-seal"] *{color:#1a1a1a}
+}
+</style>
 </body>
 </html>
