@@ -145,10 +145,18 @@
     var ARR = { trans: [-5, -3, -2, 0, 2][Math.floor(Math.random() * 5)], pace: rnd(0.8, 1.35), bright: rnd(0.7, 1.15), chord: rnd(30, 48),
       voice: [[['sine', -5, 1], ['triangle', 6, 0.5]], [['sine', -7, 1], ['sine', 7, 0.6]], [['triangle', -4, 0.8], ['sine', 12, 0.35]]][Math.floor(Math.random() * 3)] };
     var DEEP = 0; // set per section: about half the sections drop an octave into a lower, darker tone
+    var DARK_SCALES = [
+      [45, 48, 50, 52, 53, 55, 57, 60, 62, 64],   // A aeolian, low
+      [43, 46, 48, 50, 51, 55, 58, 60, 62, 63],   // G minor with flat 6
+      [40, 43, 45, 47, 48, 52, 55, 57, 59, 60],   // E minor, low
+      [41, 44, 46, 48, 49, 53, 56, 58, 60, 61]    // F phrygian color
+    ];
+    // half the time the whole piece starts in the low, serious mood; either way the two moods trade places along the way
+    var SERIOUS = Math.random() < 0.5 ? 1 : 0;
     padBus.gain.value = 1;
     var lastMidi = 0;
     function padNote(t0, midi, dur, level) {
-      var f = mtof(midi + ARR.trans - (DEEP ? 12 : 0)), br = ARR.bright * (DEEP ? 0.55 : 1);
+      var f = mtof(midi + (DEEP ? 0 : ARR.trans)), br = ARR.bright * (DEEP ? 0.42 : 1);
       var bus = ctx.createGain(); bus.gain.value = 0;
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.4;
       lp.frequency.setValueAtTime(Math.min(3200, f * 2.2 * br), t0);
@@ -166,7 +174,7 @@
       });
     }
     function pickNote(t, reg) {
-      var sc = SCALES[Math.floor((t - T0) / ARR.chord) % SCALES.length];
+      var sc = DEEP ? DARK_SCALES[Math.floor((t - T0) / (ARR.chord * 1.4)) % DARK_SCALES.length] : SCALES[Math.floor((t - T0) / ARR.chord) % SCALES.length];
       var m = lastMidi;
       for (var k = 0; k < 6 && (m === lastMidi || Math.abs(m - lastMidi) < 2); k++) {
         var idx = Math.round(Math.max(0, Math.min(1, reg + rnd(-0.25, 0.25))) * (sc.length - 1));
@@ -231,16 +239,18 @@
       var t = acts.t, kind = acts.next, dur;
       if (kind === 'build') {
         dur = acts.n === 0 ? 50 : rnd(40, 52);
-        DEEP = acts.n > 0 && Math.random() < 0.5 ? 1 : 0;
-        padStream(t, dur, [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, 0.6);
+        DEEP = (acts.n % 2 === 0) ? SERIOUS : 1 - SERIOUS;
+        if (DEEP) { droneBus.gain.setTargetAtTime(0.09, t, 4); droneBus.gain.setTargetAtTime(0, t + dur - 4, 4); var tb = t; while (tb < t + dur) { droneNote(tb, [36.71, 41.2, 32.7][acts.n % 3], 1, 'sine', 0.4, 180); droneNote(tb + 1.2, [36.71, 41.2, 32.7][acts.n % 3], 1.5, 'sine', 0.15, 200); tb += rnd(4, 5); } }
+        padStream(t, dur, DEEP ? [3.2, 4.6] : [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, DEEP ? 0.5 : 0.6);
         DEEP = 0;
         if (acts.n > 0) natureTo(t, 0, 4);
         acts.buildCount++;
         acts.next = (acts.buildCount > 1 && Math.random() < 0.2) ? 'dark' : 'break';
       } else if (kind === 'break') {
         dur = rnd(55, 70);
-        DEEP = Math.random() < 0.5 ? 1 : 0;
-        padStream(t, dur, [3.8, 5.4], 0.35, 0.12, DEEP ? 0.5 : 0.42, DEEP ? 0.4 : 0.32);
+        DEEP = (acts.n % 2 === 0) ? SERIOUS : 1 - SERIOUS;
+        if (DEEP) { droneBus.gain.setTargetAtTime(0.08, t, 4); droneBus.gain.setTargetAtTime(0, t + dur - 4, 4); var tb2 = t; while (tb2 < t + dur) { droneNote(tb2, [36.71, 41.2, 32.7][acts.n % 3], 1, 'sine', 0.38, 170); tb2 += rnd(4.5, 5.5); } }
+        padStream(t, dur, DEEP ? [4.4, 6] : [3.8, 5.4], 0.35, 0.12, DEEP ? 0.5 : 0.42, DEEP ? 0.42 : 0.32);
         DEEP = 0;
         natureTo(t + 2, 0.24, 3.5); // ten seconds or so to fade up, then it stays soft
         acts.next = Math.random() < 0.55 ? 'build' : 'break';
