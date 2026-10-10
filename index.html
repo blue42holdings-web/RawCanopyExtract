@@ -4706,5 +4706,10 @@ function tick(){var h=home(),y=window.scrollY,H=document.documentElement.scrollH
 r.classList.toggle('on',h&&y>innerHeight*.6&&y<H*.88)}
 addEventListener('scroll',tick,{passive:true});setInterval(tick,700);
 r.querySelector('button').addEventListener('click',function(){var a=[].slice.call(document.querySelectorAll('[data-page="shop"]'));var v=a.filter(function(e){return e.getBoundingClientRect().height>0})[0]||a[0];if(v){v.click();scrollTo(0,0)}})})();</script>
+<style>/* About: three dog photos inside the brand box; selfie runs through the first two story boxes (Oct 10) */
+html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box{background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url('assets/photo/about-dogs-trio.jpg') center/cover no-repeat !important;background-color:#000 !important}
+html body [data-screen-label="About"] .ab-grid .ab-box:nth-child(1),html body [data-screen-label="About"] .ab-grid .ab-box:nth-child(2){background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url('assets/photo/about-selfie.webp') !important;background-size:100% 100%,var(--sx-w,cover) var(--sx-h,auto) !important;background-position:0 0,var(--sx-x,center) var(--sx-y,center) !important;background-repeat:no-repeat !important;background-color:#000 !important}
+</style>
+<script>(function(){var R=1170/2532;function run(){var g=document.querySelector('[data-screen-label="About"] .ab-grid');if(!g)return;var b=g.querySelectorAll('.ab-box');if(b.length<2)return;var a=b[0].getBoundingClientRect(),c=b[1].getBoundingClientRect();var L=Math.min(a.left,c.left),T=Math.min(a.top,c.top),W=Math.max(a.right,c.right)-L,H=Math.max(a.bottom,c.bottom)-T;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.2;[b[0],b[1]].forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty('--sx-w',w.toFixed(1)+'px');e.style.setProperty('--sx-h',h.toFixed(1)+'px');e.style.setProperty('--sx-x',(ox-(r.left-L)-3).toFixed(1)+'px');e.style.setProperty('--sx-y',(oy-(r.top-T)-3).toFixed(1)+'px')})}addEventListener('resize',run);setInterval(run,800);run()})();</script>
 </body>
 </html>
