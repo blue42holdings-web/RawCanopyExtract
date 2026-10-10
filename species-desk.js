@@ -97,3 +97,46 @@
   }
   setInterval(run, 700); run();
 })();
+
+/* Desktop Why One Ingredient painter (Oct 10) */
+(function () {
+  var MQ = matchMedia('(min-width:768px)'), BLUE = '#24425e';
+  function run() {
+    if (!MQ.matches) return;
+    document.querySelectorAll('div[data-screen-label="Why One Ingredient"]').forEach(function (W) {
+      var hero = W.querySelector('section'); if (!hero || hero.getBoundingClientRect().height < 50) return;
+      W.classList.add('sd-kill');
+      W.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.5) 0,rgba(0,0,0,.42) 900px,rgba(36,66,94,0) 1500px),linear-gradient(transparent 0,transparent 1100px,' + BLUE + ' 1650px,' + BLUE + ' 100%),url("assets/photo/why-sunrise.webp") 50% 500px/100% auto no-repeat,' + BLUE, 'important');
+      W.querySelectorAll('*').forEach(function (e) {
+        if (e.closest('[data-ph],.mx-box,article,.cx,[data-m="wy-split"] > *,[data-m="prove-box"],a,button')) return;
+        var r = e.getBoundingClientRect(); if (r.width < 1100) return;
+        var cs = getComputedStyle(e);
+        if (/url\(/.test(cs.backgroundImage) || /rgba\(0, 0, 0, 0\.[5-9]/.test(cs.backgroundImage) || cs.backgroundColor === 'rgb(0, 0, 0)') { e.style.setProperty('background', 'transparent', 'important'); }
+        e.classList.add('sd-kill');
+      });
+      // one gold box around the whole top, photo shown once
+      hero.style.setProperty('margin', '14px 14px 0', 'important');
+      hero.style.setProperty('border', '3px solid #D4A24A', 'important');
+      hero.style.setProperty('border-radius', '22px', 'important');
+      hero.style.setProperty('overflow', 'hidden', 'important');
+      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5)),url("assets/photo/why-tent.jpg") center 45%/cover no-repeat', 'important');
+      hero.querySelectorAll('div').forEach(function (d) {
+        if (d.contains(hero.querySelector('h1')) || /url\(/.test(getComputedStyle(d).backgroundImage)) {
+          d.style.setProperty('background', 'transparent', 'important');
+          d.style.setProperty('border', '0', 'important'); d.style.setProperty('box-shadow', 'none', 'important');
+        }
+      });
+      // the More research section that follows the page: blue fading to black
+      var mr = W.parentElement && W.parentElement.querySelector('[data-m="more-research"]');
+      if (!mr) { var n = W.nextElementSibling; while (n && !mr) { if (n.matches && n.matches('[data-m="more-research"]')) mr = n; else if (n.querySelector) mr = n.querySelector('[data-m="more-research"]'); n = n.nextElementSibling; } }
+      if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
+      var mb = mr && mr.querySelector(':scope > div');
+      if (mb) {
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/beach-fire-moka.jpg") center 30%/cover no-repeat', 'important'); };
+        if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
+        if (!mb.__on) dk(0.66);
+      }
+    });
+  }
+  setInterval(run, 700); run();
+})();
