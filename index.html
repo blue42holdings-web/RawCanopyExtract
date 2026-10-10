@@ -4776,5 +4776,13 @@ html body [data-screen-label="Shop"]>section[data-m="soon-sec"]{background:trans
 }
 @keyframes shopTennisPan{from{background-position:22% 50%}to{background-position:78% 50%}}
 </style>
+<style>/* Mushrooms page (Oct 10): red runs down to the badges, matching boxes, one beach photo through both */
+html body [data-m="red-wrap"][data-m="red-wrap"]{background:linear-gradient(rgba(168,35,46,0) 0,rgba(168,35,46,.5) 140px,rgba(168,35,46,.5) 100%),#000 !important}
+html body [data-m="more-research"][data-m="more-research"]{background:linear-gradient(rgba(168,35,46,.5) 0,rgba(168,35,46,.5) 45%,rgba(168,35,46,0) 100%),#000 !important;padding-top:0 !important;padding-bottom:70px !important}
+html body [data-m="cta3-sec"][data-m="cta3-sec"]{padding-bottom:16px !important}
+html body [data-m="cta3"][data-m="cta3"],html body [data-m="more-research"] > div{max-width:1080px !important;width:100% !important;margin-left:auto !important;margin-right:auto !important;min-height:190px;box-sizing:border-box}
+html body [data-m="cta3"][data-m="cta3"],html body [data-m="more-research"][data-m="more-research"] > div{background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.66)),url('assets/photo/beach-fire-moka.jpg') !important;background-size:100% 100%,var(--sx-w,cover) var(--sx-h,auto) !important;background-position:0 0,var(--sx-x,center) var(--sx-y,center) !important;background-repeat:no-repeat !important}
+</style>
+<script>(function(){var R=640/426;function run(){var a=document.querySelector('[data-m="cta3"]'),b=document.querySelector('[data-m="more-research"] > div');if(!a||!b)return;var p=a.getBoundingClientRect(),q=b.getBoundingClientRect();if(p.width<10||q.width<10)return;var L=Math.min(p.left,q.left),T=Math.min(p.top,q.top),W=Math.max(p.right,q.right)-L,H=Math.max(p.bottom,q.bottom)-T,w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)/2;[a,b].forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty('--sx-w',w.toFixed(1)+'px');e.style.setProperty('--sx-h',h.toFixed(1)+'px');e.style.setProperty('--sx-x',(ox-(r.left-L)-3).toFixed(1)+'px');e.style.setProperty('--sx-y',(oy-(r.top-T)-3).toFixed(1)+'px')})}addEventListener('resize',run);setInterval(run,800);run()})();</script>
 </body>
 </html>
