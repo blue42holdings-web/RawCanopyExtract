@@ -954,7 +954,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261008e"></script>
 <script src="ext-links.js?v=1"></script>
-<script src="ambient.js?v=2"></script>
+<script src="ambient.js?v=3"></script>
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
 </helmet>

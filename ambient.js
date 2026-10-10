@@ -61,7 +61,7 @@
 
     var padBus = ctx.createGain(); padBus.gain.value = 0;
     var droneBus = ctx.createGain(); droneBus.gain.value = 0;
-    var natureBus = ctx.createGain(); natureBus.gain.value = 0.6;
+    var natureBus = ctx.createGain(); natureBus.gain.value = 0;
     padBus.connect(duck); padBus.connect(revIn);
     droneBus.connect(duck); droneBus.connect(revIn);
     natureBus.connect(duck);
@@ -141,7 +141,7 @@
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.5;
       lp.frequency.setValueAtTime(500, t0); lp.frequency.linearRampToValueAtTime(1400, t0 + dur * 0.5); lp.frequency.linearRampToValueAtTime(600, t0 + dur);
       lp.connect(bus); bus.connect(padBus);
-      var att = Math.min(12, dur * 0.3), rel = Math.min(14, dur * 0.35);
+      var att = Math.min(22, dur * 0.3), rel = Math.min(14, dur * 0.35);
       bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(level, t0 + att);
       bus.gain.setValueAtTime(level, t0 + dur - rel); bus.gain.linearRampToValueAtTime(0, t0 + dur);
       notes.forEach(function (n, i) {
@@ -178,33 +178,43 @@
 
     // ---------- timeline ----------
     var tl = { t: T0 + 2, n: 0, started: false };
-    function levelNature(t, v, rampSec) { natureBus.gain.setTargetAtTime(v, t, rampSec / 3); }
+    var natureStart = T0 + 60; // wind, waves and birds stay out for the first minute
+    function levelNature(t, v, rampSec) { natureBus.gain.setTargetAtTime(v, Math.max(t, natureStart), rampSec / 3); }
+    // one soft wave at the very start, then just the ambient bed
+    (function () {
+      var s = noiseSrc(), lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 420;
+      var g = ctx.createGain(); g.gain.value = 0;
+      var t = T0 + 5;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.045, t + 6); g.gain.linearRampToValueAtTime(0, t + 15);
+      lp.frequency.setValueAtTime(300, t); lp.frequency.linearRampToValueAtTime(700, t + 6); lp.frequency.linearRampToValueAtTime(300, t + 15);
+      s.connect(lp); lp.connect(g); g.connect(duck); s.stop(t + 16);
+    })();
     function scheduleSegment() {
       var t = tl.t, serious = tl.n > 1 && Math.random() < 0.17;
       if (serious) {
         var dur = rnd(26, 34);
         padBus.gain.setTargetAtTime(0, t, 3);
-        droneBus.gain.setTargetAtTime(1, t, 1.5);
+        droneBus.gain.setTargetAtTime(0.7, t, 4);
         drones(t, dur);
-        levelNature(t, 0.22, 6); levelNature(t + dur - 9, 0.6, 8);
+        levelNature(t, 0.06, 10); levelNature(t + dur - 9, 0.2, 20);
         tl.t = t + dur - 6;
       } else {
-        var d = rnd(50, 66), notes = MOODS[tl.n % 3];
-        droneBus.gain.setTargetAtTime(0, t, 3);
-        padBus.gain.setTargetAtTime(1, t, 2);
+        var d = rnd(85, 115), notes = MOODS[tl.n % 3];
+        droneBus.gain.setTargetAtTime(0, t, 5);
+        padBus.gain.setTargetAtTime(1, t, 6);
         padVoice(t, d + 12, notes, 0.34);
         // ambient builds a little then settles, nature comes back forward
-        levelNature(t, 0.45, 9);
-        levelNature(t + d * 0.55, 0.9, 12);
+        levelNature(t, 0.1, 40);
+        levelNature(t + d * 0.55, 0.28, 30);
         tl.t = t + d - 4;
         tl.n++;
       }
     }
-    var birdT = T0 + 6;
+    var birdT = T0 + 80;
     function scheduleBirds(upTo) {
       while (birdT < upTo) {
         birdPhrase(birdT);
-        birdT += rnd(6, 20);
+        birdT += rnd(15, 45);
       }
     }
     function scheduleUntil(horizon) {
@@ -257,7 +267,7 @@
       eng = build(ctx, ctx.destination);
       timer = setInterval(function () { if (ctx.state === 'running') eng.scheduleUntil(ctx.currentTime + 45); }, 8000);
       if (ctx.state === 'suspended') ctx.resume();
-      if (!muted) eng.fadeIn(6);
+      if (!muted) eng.fadeIn(30);
     } catch (e) { started = false; }
     mkBtn(); refresh();
   }
