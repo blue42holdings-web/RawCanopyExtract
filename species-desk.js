@@ -140,3 +140,46 @@
   }
   setInterval(run, 700); run();
 })();
+
+/* Desktop Receipts painter (Oct 10): climber top like Shop, white down to "How to read a lab report", then the beach that scrolls and blends into sand color */
+(function () {
+  var MQ = matchMedia('(min-width:768px)'), SAND = '#2a2520';
+  function run() {
+    if (!MQ.matches) return;
+    document.querySelectorAll('div[data-screen-label="Receipts"]').forEach(function (W) {
+      var hero = W.querySelector(':scope > section'), read = W.querySelector('[data-m="rc-read"]');
+      if (!hero || !read || hero.getBoundingClientRect().height < 50) return;
+      W.classList.add('sd-kill');
+      var h1 = hero.offsetHeight, rt = read.getBoundingClientRect().top - W.getBoundingClientRect().top;
+      W.style.setProperty('background',
+        'linear-gradient(#F1ECE1 0,#F1ECE1 ' + (rt - 260) + 'px,rgba(241,236,225,0) ' + (rt + 10) + 'px,rgba(0,0,0,0) ' + (rt + 760) + 'px,' + SAND + ' ' + (rt + 1100) + 'px,' + SAND + ' 100%),' +
+        'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url("assets/photo/receipts-beach-camp.jpg") 50% ' + (rt - 260) + 'px/100% auto no-repeat,' + SAND, 'important');
+      W.style.setProperty('background-size', '100% 100%,100% 100%,100% auto', 'important');
+      W.style.setProperty('background-position', '0 0,0 0,50% ' + (rt - 260) + 'px', 'important');
+      W.style.setProperty('background-repeat', 'no-repeat', 'important');
+      // everything between the hero and the lab report guide sits on the white
+      var n = hero.nextElementSibling;
+      while (n && n !== read) { n.style.setProperty('background', 'transparent', 'important'); n.querySelectorAll(':scope > section').forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); }); n = n.nextElementSibling; }
+      [read].concat([].slice.call(W.querySelectorAll('[data-m="rc-files"],[data-m="rc-dodges"],[data-m="rc-research"]'))).forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); });
+      // climber hero, same as the Shop top
+      hero.style.setProperty('position', 'relative', 'important'); hero.style.setProperty('overflow', 'hidden', 'important');
+      hero.style.setProperty('background', '#000', 'important');
+      if (!hero.querySelector('[data-rc-climb]')) {
+        var bg = document.createElement('div'); bg.setAttribute('data-rc-climb', 'bg');
+        bg.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;background:url("assets/photo/coffee-asset.webp") 86% 58%/cover no-repeat;transform-origin:50% 58%;transform:scaleX(-1);animation:shopPush 16s cubic-bezier(.25,.1,.25,1) .3s forwards,shopRock 16s ease-out .3s forwards';
+        var cut = document.createElement('div'); cut.setAttribute('data-rc-climb', 'cut');
+        cut.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;background:url("assets/cutouts/coffee-asset-cutout.webp") 86% 58%/cover no-repeat;transform-origin:50% 58%;transform:scaleX(-1);filter:brightness(.45);animation:shopClimber 14s cubic-bezier(.25,.1,.25,1) 1.3s forwards';
+        var fade = document.createElement('div'); fade.setAttribute('data-rc-climb', 'fade');
+        fade.style.cssText = 'position:absolute;left:0;right:0;bottom:0;height:200px;z-index:1;pointer-events:none;background:linear-gradient(rgba(241,236,225,0),#F1ECE1)';
+        hero.insertBefore(fade, hero.firstChild); hero.insertBefore(cut, hero.firstChild); hero.insertBefore(bg, hero.firstChild);
+        [].forEach.call(hero.children, function (c) { if (!c.hasAttribute('data-rc-climb')) { c.style.position = c.style.position || 'relative'; c.style.zIndex = '2'; } });
+      }
+      var intro = hero.querySelector('[data-m="rc-intro"]');
+      var ih = intro ? intro.getBoundingClientRect().top - hero.getBoundingClientRect().top : hero.offsetHeight;
+      hero.querySelectorAll('[data-rc-climb="bg"],[data-rc-climb="cut"]').forEach(function (l) { l.style.bottom = 'auto'; l.style.height = (ih + 20) + 'px'; });
+      var fd = hero.querySelector('[data-rc-climb="fade"]'); if (fd) { fd.style.bottom = 'auto'; fd.style.top = Math.max(0, ih - 170) + 'px'; fd.style.height = '200px'; }
+      hero.style.setProperty('background', 'linear-gradient(#000 0,#000 ' + ih + 'px,#F1ECE1 ' + ih + 'px)', 'important');
+    });
+  }
+  setInterval(run, 700); run();
+})();
