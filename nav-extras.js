@@ -96,3 +96,52 @@
   if (document.readyState === 'complete') setTimeout(boot, 300); else addEventListener('load', function () { setTimeout(boot, 300); });
   addEventListener('pageshow', function (e) { if (e.persisted) { var st = history.state; if (st) restore(st.p, st.y); } });
 })();
+
+/* Hold an arrow to glide the row slowly; a quick tap still moves one box. */
+(function () {
+  var st = document.createElement('style');
+  st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:none}';
+  document.head.appendChild(st);
+  var hold = null, swallow = false;
+  function stop() {
+    if (!hold) return;
+    clearTimeout(hold.timer); cancelAnimationFrame(hold.raf);
+    var h = hold; hold = null;
+    if (h.on) {
+      swallow = true; setTimeout(function () { swallow = false; }, 400);
+      h.t.style.scrollBehavior = ''; h.t.style.scrollSnapType = '';
+    }
+  }
+  document.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest && e.target.closest('.cx .rit-arrow[data-d]');
+    if (!b) return;
+    var t = b.closest('.cx').querySelector('.cx-track'); if (!t) return;
+    stop();
+    hold = { t: t, d: Number(b.dataset.d) || 1, on: false };
+    hold.timer = setTimeout(function () {
+      if (!hold) return;
+      hold.on = true; hold.start = performance.now(); hold.last = hold.start; hold.pos = t.scrollLeft;
+      t.style.scrollBehavior = 'auto'; t.style.scrollSnapType = 'none';
+      (function step(now) {
+        if (!hold) return;
+        var dt = (now - hold.last) / 1000; hold.last = now;
+        var v = 90 + Math.min(1, (now - hold.start) / 1600) * 170; // px per second, eases up a little
+        hold.pos += hold.d * v * dt; t.scrollLeft = hold.pos;
+        hold.raf = requestAnimationFrame(step);
+      })(performance.now());
+    }, 280);
+  }, true);
+  ['pointerup', 'pointercancel', 'blur'].forEach(function (ev) { addEventListener(ev, stop, true); });
+  addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.cx .rit-arrow')) e.preventDefault(); }, true);
+  addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-m="mx-mags"] .cx .rit-arrow[data-d]');
+    if (a && !swallow && matchMedia('(max-width:767px)').matches) {
+      e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
+      var tr = a.closest('.cx').querySelector('.cx-track'), k = tr.children[0];
+      var stepW = k ? k.getBoundingClientRect().width + (parseFloat(getComputedStyle(tr).columnGap) || 0) : tr.clientWidth / 2;
+      tr.scrollBy({ left: (Number(a.dataset.d) || 1) * stepW, behavior: 'smooth' });
+      return;
+    }
+    if (swallow && e.target.closest && e.target.closest('.cx .rit-arrow')) { e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault(); swallow = false; }
+  }, true);
+})();
