@@ -145,3 +145,88 @@
     if (swallow && e.target.closest && e.target.closest('.cx .rit-arrow')) { e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault(); swallow = false; }
   }, true);
 })();
+
+/* Oct 11: every page drifts slowly down on its own. Touch, swipe, wheel or keys take over; after a
+   few quiet seconds it carries on down from wherever they left it. At the bottom it rests, glides
+   back to the top, then starts down again. */
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var phone = function () { return innerWidth < 768; };
+  var DOWN = function () { return phone() ? 22 : 30; };   // px per second, really slow
+  var UP = 420;                                            // px per second on the glide back to the top
+  var IDLE = 5000;                                         // quiet time before it takes over again
+  var mode = 'wait', until = performance.now() + 3500, pos = scrollY, last = 0, lastUser = 0;
+  function user() { lastUser = performance.now(); mode = 'wait'; until = lastUser + IDLE; }
+  ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
+  // a new page starts at the top: give it a moment before moving
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { mode = 'wait'; until = performance.now() + 3500; } }, true);
+  addEventListener('popstate', function () { mode = 'wait'; until = performance.now() + 4000; });
+  function jump(y) { var h = document.documentElement, b = h.style.scrollBehavior; h.style.scrollBehavior = 'auto'; window.scrollTo(0, y); h.style.scrollBehavior = b; }
+  function blocked() {
+    if (document.hidden) return true;
+    var rail = document.getElementById('rcx-rail'); if (rail && rail.classList.contains('open')) return true;
+    var a = document.activeElement; if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return true;
+    var hs = getComputedStyle(document.documentElement).overflowY, bs = getComputedStyle(document.body).overflowY;
+    if (hs === 'hidden' || bs === 'hidden') return true;            // a menu, cart or popup has locked the page
+    return false;
+  }
+  function frame(now) {
+    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0; last = now;
+    var H = document.documentElement.scrollHeight - innerHeight;
+    if (H > 40 && !blocked()) {
+      if (Math.abs(scrollY - pos) > 3) pos = scrollY;                   // something else moved the page
+      if (mode === 'wait' && now >= until) mode = (scrollY >= H - 2) ? 'rest' : 'down', until = now + 3000;
+      if (mode === 'down') {
+        pos = Math.min(H, pos + DOWN() * dt);
+        jump(pos);
+        if (pos >= H - 1) { mode = 'rest'; until = now + 3500; }
+      } else if (mode === 'rest' && now >= until) {
+        mode = 'up';
+      } else if (mode === 'up') {
+        var v = Math.max(60, Math.min(UP, pos * 0.9));                  // eases in as it nears the top
+        pos = Math.max(0, pos - v * dt);
+        jump(pos);
+        if (pos <= 0) { mode = 'wait'; until = now + 3000; }
+      }
+    } else { pos = scrollY; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* Oct 11: the gold line on the right comes alive now and then. A flare of light runs down the line
+   (sometimes up), and the plus gives a little "tap me" pulse. */
+(function () {
+  var r = document.getElementById('rcx-rail'); if (!r) return;
+  var st = document.createElement('style');
+  st.textContent =
+    '#rcx-rail .rr-flare{position:absolute;left:50%;width:3px;height:110px;margin-left:-1.5px;border-radius:3px;pointer-events:none;opacity:0;' +
+    'background:linear-gradient(rgba(255,226,160,0),rgba(255,236,190,.95) 50%,rgba(255,226,160,0));box-shadow:0 0 10px 2px rgba(240,200,120,.55)}' +
+    '#rcx-rail .rr-flare.dn{animation:rrFlareDn 1.9s cubic-bezier(.45,0,.35,1) forwards}' +
+    '#rcx-rail .rr-flare.up{animation:rrFlareUp 1.9s cubic-bezier(.45,0,.35,1) forwards}' +
+    '@keyframes rrFlareDn{0%{top:-110px;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:100%;opacity:0}}' +
+    '@keyframes rrFlareUp{0%{top:100%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:-110px;opacity:0}}' +
+    '#rcx-rail button.rr-poke{animation:rrPoke 1.1s ease}' +
+    '#rcx-rail button.rr-poke::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid #E9C079;animation:rrRing 1.1s ease-out forwards;pointer-events:none}' +
+    '@keyframes rrPoke{0%{transform:translateY(-50%) scale(1)}18%{transform:translateY(-50%) scale(1.28) rotate(90deg);background:#D4A24A;color:#000}' +
+    '36%{transform:translateY(-50%) scale(.92) rotate(90deg)}54%{transform:translateY(-50%) scale(1.12) rotate(90deg);background:#D4A24A;color:#000}100%{transform:translateY(-50%) scale(1) rotate(90deg)}}' +
+    '@keyframes rrRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.4);opacity:0}}';
+  document.head.appendChild(st);
+  var f = document.createElement('span'); f.className = 'rr-flare'; r.insertBefore(f, r.firstChild);
+  var btn = r.querySelector('button');
+  function flare() {
+    if (r.classList.contains('on') && !r.classList.contains('open')) {
+      var up = Math.random() < 0.35;
+      f.className = 'rr-flare'; void f.offsetWidth; f.className = 'rr-flare ' + (up ? 'up' : 'dn');
+      if (Math.random() < 0.6) setTimeout(poke, 1500);
+    }
+    setTimeout(flare, 7000 + Math.random() * 9000);
+  }
+  function poke() {
+    if (!btn || r.classList.contains('open') || !r.classList.contains('on')) return;
+    btn.classList.remove('rr-poke'); void btn.offsetWidth; btn.classList.add('rr-poke');
+    setTimeout(function () { btn.classList.remove('rr-poke'); }, 1200);
+  }
+  setTimeout(flare, 4000);
+  setInterval(function () { if (Math.random() < 0.5) poke(); }, 13000);
+})();
