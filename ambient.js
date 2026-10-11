@@ -333,7 +333,7 @@
     btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
-    btn.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;width:44px;height:44px;border-radius:50%;border:2px solid #D4A24A;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent';
+    btn.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
     btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
@@ -346,7 +346,14 @@
     var want = (12 + lift) + 'px';
     if (btn.style.bottom !== want) { btn.style.transition = 'bottom .3s ease'; btn.style.bottom = want; }
   }, 120);
-  function refresh() { if (!btn) return; var on = started && !muted; btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none" ') + '<span style="position:absolute;left:50px;top:50%;transform:translateY(-50%);white-space:nowrap !important;width:max-content !important;max-width:none !important;cursor:pointer;font-family:\'Bebas Neue\',sans-serif;font-size:14px;letter-spacing:.16em;line-height:1;color:#E9C079;background:rgba(0,0,0,.72);border:1.5px solid #D4A24A;border-radius:999px;padding:6px 10px 5px">SOUND BATH <b style="font-weight:400;color:' + (on ? '#F4D99A' : '#8A7A5C') + '">' + (on ? 'ON' : 'OFF') + '</b></span>'; btn.style.overflow = 'visible'; btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on'); }
+  function refresh() {
+    if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
+    // one box: the speaker on top, SOUND above BATH underneath. The whole box turns it on and off.
+    btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none;display:block" ') +
+      '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">SOUND<br>BATH</span>';
+    btn.style.opacity = on ? '1' : '.85';
+    btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on');
+  }
 
   function start() {
     if (started || !AC) return;
