@@ -954,7 +954,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261008e"></script>
 
-<script src="ambient.js?v=10"></script>
+<script src="ambient.js?v=11"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -4732,7 +4732,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script src="site-extras.js?v=13"></script>
-<script src="nav-extras.js?v=4"></script>
+<script src="nav-extras.js?v=5"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -5151,5 +5151,23 @@ html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-mast{font-size:1
 html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-mast.pr-caps{font-size:12.5px !important}
 html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-head{font-size:12px !important}
 }
-</style><style id="mtb-phone">@media (max-width:767px){html body [data-m="mx-cd"] a.mx-box[style*="mtb-rider-side"][style*="mtb-rider-side"]{background-position:center,38% 0% !important}}</style></body>
+</style><style id="mtb-phone">@media (max-width:767px){html body [data-m="mx-cd"] a.mx-box[style*="mtb-rider-side"][style*="mtb-rider-side"]{background-position:center,38% 0% !important}}</style><style id="lab-compact">
+@media (max-width:767px){
+html body a.mx-box.mx-lab.mx-lab{height:auto !important;min-height:0 !important;padding:16px 16px 14px !important;justify-content:flex-start !important;gap:8px !important}
+html body .mx-grid>a.mx-box.mx-lab.mx-lab{grid-column:1/-1 !important}
+html body .mx-grid>.mx-box.mx-quote.mx-quote{grid-column:1/-1 !important;height:auto !important;min-height:0 !important;padding:18px 20px !important}
+html body a.mx-lab.mx-lab .lab-hd{font-size:10.5px !important;padding:5px 10px !important;white-space:normal;line-height:1.35 !important}
+html body a.mx-lab.mx-lab .lab-title{font-size:12px !important;margin:2px 0 4px !important}
+html body a.mx-lab.mx-lab .lab-rows{display:flex !important;flex-direction:column !important;gap:9px !important;width:100% !important}
+html body a.mx-lab.mx-lab .lab-row{display:grid !important;grid-template-columns:auto 1fr !important;grid-template-areas:"n l" "b b" !important;align-items:center !important;column-gap:12px !important;row-gap:5px !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left !important}
+html body a.mx-lab.mx-lab .lab-row::before,html body a.mx-lab.mx-lab .lab-row::after{display:none !important}
+html body a.mx-lab.mx-lab .lab-n{grid-area:n !important;font-size:30px !important;line-height:1 !important;text-align:left !important;min-width:0 !important;width:auto !important;margin:0 !important}
+html body a.mx-lab.mx-lab .lab-l{grid-area:l !important;font-size:11px !important;letter-spacing:.1em !important;text-align:left !important;line-height:1.25 !important;margin:0 !important}
+html body a.mx-lab.mx-lab .lab-bar{grid-area:b !important;display:block !important;height:4px !important;width:100% !important;margin:0 !important}
+html body a.mx-lab.mx-lab .lab-src{font-size:10.5px !important;margin-top:4px !important}
+html body a.mx-lab.mx-lab .mx-cta{margin-top:2px !important}
+html body a.mx-box.mx-lab.mx-lab .lab-rows .lab-row .lab-n.lab-n,html body a.mx-box.mx-lab.mx-lab .lab-rows.lab-big .lab-row:first-child .lab-n.lab-n{font-size:30px !important;line-height:1 !important}
+html body a.mx-box.mx-lab.mx-lab .lab-rows .lab-row:first-child .lab-n.lab-n{font-size:40px !important}
+}
+</style><style id="nav-swap">@media (max-width:767px){html body [data-m="nav"]>[data-m="nav-shop"]{order:1}html body [data-m="nav"]>[data-m="nav-menu-btn"]{order:2}html body [data-m="nav"]>[data-m="nav-cart"]{order:3}}</style></body>
 </html>
