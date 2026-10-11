@@ -34,8 +34,8 @@
 
   /* ---------- 2. slow brighten on still background photos ---------- */
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
-    en.forEach(function (e) { if (e.isIntersecting) { var d = e.target.__dk; if (d) d.style.opacity = '0'; io.unobserve(e.target); } });
-  }, { threshold: 0.25 }) : null;
+    en.forEach(function (e) { if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height > innerHeight * 0.35)) { var d = e.target.__dk; if (d) d.style.opacity = '0'; io.unobserve(e.target); } });
+  }, { threshold: [0, 0.05, 0.1, 0.25] }) : null;
 
   function busy(el) {
     if (el.hasAttribute('data-lift-bg') || el.hasAttribute('data-lift-once') || el.closest('[data-lift-bg]')) return true;
