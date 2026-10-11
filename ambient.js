@@ -114,7 +114,11 @@
     // a new key, its own pace and its own color
     for (var si = SCALES.length - 1; si > 0; si--) { var sj = Math.floor(Math.random() * (si + 1)), st = SCALES[si]; SCALES[si] = SCALES[sj]; SCALES[sj] = st; }
     var ARR = { trans: [-5, -3, -2, 0, 2][Math.floor(Math.random() * 5)], pace: rnd(0.8, 1.35), bright: rnd(0.7, 1.15), chord: rnd(30, 48),
-      voice: [[['sine', -5, 1], ['triangle', 6, 0.5]], [['sine', -7, 1], ['sine', 7, 0.6]], [['triangle', -4, 0.8], ['sine', 12, 0.35]]][Math.floor(Math.random() * 3)] };
+      // Oct 11: keyboard and space age synth voices only. No pure sine or triangle tones up top (they read as
+      // a flute or a plastic toy). Detuned sawtooth and square waves through a warm low pass, like an analog pad.
+      voice: [[['sawtooth', -8, 0.34], ['sawtooth', 8, 0.34], ['square', -1200, 0.12]],
+              [['sawtooth', -11, 0.32], ['sawtooth', 6, 0.32], ['sawtooth', 1195, 0.07]],
+              [['sawtooth', -6, 0.3], ['square', 5, 0.18], ['sawtooth', -1205, 0.16]]][Math.floor(Math.random() * 3)] };
     var DEEP = 0; // set per section: about half the sections drop an octave into a lower, darker tone
     var DARK_SCALES = [
       [45, 48, 50, 52, 53, 55, 57, 60, 62, 64],   // A aeolian, low
@@ -127,12 +131,13 @@
     padBus.gain.value = 1;
     var lastMidi = 0;
     function padNote(t0, midi, dur, level) {
-      var f = mtof(midi + (DEEP ? 0 : ARR.trans)), br = ARR.bright * (DEEP ? 0.42 : 1);
+      var mm = midi + (DEEP ? 0 : ARR.trans); while (mm > 74) mm -= 12;   // keep the pads out of the thin, whistly top register
+      var f = mtof(mm), br = ARR.bright * (DEEP ? 0.42 : 1);
       var bus = ctx.createGain(); bus.gain.value = 0;
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.4;
-      lp.frequency.setValueAtTime(Math.min(3200, f * 2.2 * br), t0);
-      lp.frequency.linearRampToValueAtTime(Math.min(4200, f * 4.5 * br), t0 + dur * 0.4);
-      lp.frequency.linearRampToValueAtTime(Math.min(2400, f * 2 * br), t0 + dur);
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.9;   // a little analog filter resonance as it sweeps
+      lp.frequency.setValueAtTime(Math.min(1400, f * 1.6 * br + 180), t0);
+      lp.frequency.linearRampToValueAtTime(Math.min(2600, f * 3.2 * br + 300), t0 + dur * 0.45);
+      lp.frequency.linearRampToValueAtTime(Math.min(1200, f * 1.4 * br + 160), t0 + dur);
       var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
       lp.connect(bus);
       if (pan) { pan.pan.value = rnd(-0.6, 0.6); bus.connect(pan); pan.connect(padBus); } else bus.connect(padBus);
@@ -140,7 +145,7 @@
       bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(level, t0 + att); bus.gain.linearRampToValueAtTime(0, t0 + dur);
       ARR.voice.forEach(function (v) {
         var o = ctx.createOscillator(); o.type = v[0]; o.frequency.value = f; o.detune.value = v[1] + rnd(-2, 2);
-        var g = ctx.createGain(); g.gain.value = v[2];
+        var g = ctx.createGain(); g.gain.value = v[2] * 0.45;
         o.connect(g); g.connect(lp); o.start(t0); o.stop(t0 + dur + 0.3);
       });
     }
@@ -163,9 +168,9 @@
     }
 
     // DARK: low overlapping drones (also never held past 10 seconds) with a haunting wind
-    var howlBus = ctx.createGain(); howlBus.gain.value = 0; howlBus.connect(duck); howlBus.connect(revIn);
+    var howlBus = ctx.createGain(); howlBus.gain.value = 0;   // Oct 11: synthetic howl muted (its whistle read as a flute); the real howling wind recording replaces it
     (function () {
-      var s = noiseSrc(), bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 9; bp.frequency.value = 620;
+      var s = noiseSrc(), bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 2.2; bp.frequency.value = 380;   // breathy, not a whistle
       var g = ctx.createGain(); g.gain.value = 0.5;
       s.connect(bp); bp.connect(g); g.connect(howlBus);
       lfo(0.07, 260, bp.frequency); lfo(0.11, 140, bp.frequency);
