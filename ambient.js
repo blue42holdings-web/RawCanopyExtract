@@ -281,13 +281,17 @@
     // every three minutes ONE sound comes in during a breakdown (now and then two), plays a while and
     // goes. Ocean waves and wind in the trees come up most; rivers, streams, waterfalls and rain are rare.
     // Pacific Northwest first (Oct 11): Oregon and Northern California beaches, redwood and Mount Shasta
-    // wind in the trees. Rain is light rain or mist, never hard. Rivers and waterfalls are rare and short.
+    // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 1.2, 'birds': 1.5, 'river': 0.7, 'waterfall': 0.4, 'jungle': 0.15 },
-      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 0.8, 'crows': 0.5, 'droplets': 0.5, 'frogs': 0.4, 'river': 0.5, 'waterfall': 0.25 }
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 1.2, 'birds': 1.5, 'jungle': 0.15 },
+      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 0.8, 'crows': 0.5, 'droplets': 0.5, 'frogs': 0.4 }
     };
     var recentField = [], nextFieldAt = 0;
+    // never more than three nature sounds at once (crickets and the owl count too)
+    var natureSlots = [];
+    function busy(t0, t1) { var n = 0; natureSlots.forEach(function (x) { if (x[0] < t1 && x[1] > t0) n++; }); return n; }
+    function claim(t0, t1) { natureSlots.push([t0, t1]); natureSlots = natureSlots.filter(function (x) { return x[1] > t0 - 600; }); }
     function pickOne(dark) {
       var w = FIELD_WEIGHT[dark ? 'dark' : 'bright'], tot = 0, k;
       for (k in w) if (recentField.indexOf(k) < 0) tot += w[k];
@@ -304,13 +308,15 @@
       var want = isRain ? rnd(95, 150) : rnd(55, 95); if (isFlow) want *= 0.5;   // rain lingers, rivers and waterfalls pass quickly
       var len = Math.min(end + (isRain ? 60 : 12), t0 + want) - t0;
       if (len < (isFlow ? 22 : 35)) return;
-      loadField(main);
+      if (busy(t0, t0 + len) >= 3) return;
+      loadField(main); claim(t0, t0 + len);
       layer(main, t0, len, isRain ? rnd(0.2, 0.4) : (dark ? 0.5 : 0.48), dark);   // rain sits at mist to light rain levels
       if (Math.random() < 0.12) {                                         // now and then a second, quieter sound joins for a while
-        var second = pickOne(dark); loadField(second);
-        layer(second, t0 + len * rnd(0.3, 0.45), len * rnd(0.35, 0.5), 0.3, dark);
+        var s0 = t0 + len * rnd(0.3, 0.45), sl = len * rnd(0.35, 0.5);
+        if (busy(s0, s0 + sl) < 3) { var second = pickOne(dark); loadField(second); claim(s0, s0 + sl); layer(second, s0, sl, 0.3, dark); }
       }
-      if (dark && Math.random() < 0.3) oneShot('owl', t0 + rnd(10, len - 14), 0.28);
+      var ot = t0 + rnd(10, len - 14);
+      if (dark && Math.random() < 0.3 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
       nextFieldAt = t0 + len + rnd(200, 300);                             // then a long quiet stretch before the next
     }
 
@@ -444,7 +450,7 @@
       // BREAKDOWN 3: minimal. Just the night: low wind, the ocean, crickets and frogs, all soft
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
-      if (Math.random() < 0.45) nightNature(b1 + s1, s2 + s3);          // crickets only some of the time
+      if (Math.random() < 0.45 && busy(b1 + s1, b1 + s1 + s2 + s3) < 3) { claim(b1 + s1, b1 + s1 + s2 + s3); nightNature(b1 + s1, s2 + s3); }   // crickets only some of the time
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
       if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.25 : 1.5));
       acts.t = b3 + s3 - 4;
