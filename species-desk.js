@@ -76,7 +76,13 @@
     if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
     else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
     else bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + OLIVE + ' ' + (h1 + 120) + 'px,' + OLIVE + ' ' + (sTop + 40) + 'px,#141414 ' + (sTop + 160) + 'px,#141414 ' + (sEnd - 60) + 'px,' + RED + ' ' + (sEnd + 160) + 'px,' + RED + ' 100%)';
-    if (cfg.key !== 'lm') bg = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'900\' height=\'600\' preserveAspectRatio=\'none\'><filter id=\'m\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.0025 0.9\' numOctaves=\'2\' seed=\'5\' stitchTiles=\'stitch\'/><feColorMatrix values=\'0 0 0 0 1  0 0 0 0 0.86  0 0 0 0 0.86  0 0 0 .24 -.08\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23m)\'/></svg>") 0 0/900px 260px repeat,linear-gradient(112deg,rgba(255,255,255,0) 18%,rgba(255,200,200,.10) 34%,rgba(255,255,255,0) 48%,rgba(255,215,215,.07) 66%,rgba(255,255,255,0) 82%),' + bg;
+    var mt = C.querySelector(':scope > [data-sd-metal]');
+    if (cfg.key !== 'lm') {
+      var r0 = cfg.key === 'cd' ? h1 + 40 : sEnd - 40, r1 = cfg.key === 'cd' ? sEnd : C.offsetHeight;
+      if (!mt) { mt = document.createElement('div'); mt.setAttribute('data-sd-metal', ''); mt.setAttribute('aria-hidden', 'true'); C.insertBefore(mt, C.firstChild); }
+      C.style.isolation = 'isolate';
+      mt.style.cssText = 'position:absolute;left:0;right:0;top:' + r0 + 'px;height:' + Math.max(0, r1 - r0) + 'px;z-index:-1;pointer-events:none;background:' + window.__rcxMetal + ';-webkit-mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent 100%)';
+    } else if (mt) mt.remove();
     C.style.setProperty('background', bg, 'important');
   }
 
