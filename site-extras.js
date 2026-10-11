@@ -164,10 +164,10 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-compost"]');
     if (!c) return;
-    if (!MQ.matches) { if (c.__mb) { c.style.removeProperty('background'); c.__mb = 0; } return; }
-    if (c.__mb || !window.__rcxMarble) return;
+    if (c.__mb) return;
     c.__mb = 1;
-    c.style.setProperty('background', 'linear-gradient(rgba(0,0,0,0) 0,rgba(0,0,0,0) calc(100% - 200px),rgba(0,0,0,.6) calc(100% - 90px),#000 100%),' + window.__rcxMarble(7).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
+    // Oct 11 (later): a Pacific Northwest beach at dusk instead of white marble
+    c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.45) 140px,rgba(0,0,0,.5) calc(100% - 220px),rgba(0,0,0,.7) calc(100% - 90px),#000 100%),url("assets/photo/about-beach-seastack.jpg") 50% 40%/cover no-repeat', 'important');
   }
   setInterval(run, 1000); run();
 })();
@@ -238,11 +238,12 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 (function () {
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-brand"]');
-    if (!c || !window.__rcxMarble) return;
+    if (!c) return;
     var ph = matchMedia('(max-width:767px)').matches;
     if (c.__mb !== (ph ? 2 : 1)) {
       c.__mb = ph ? 2 : 1;
-      c.style.setProperty('background', (ph ? 'linear-gradient(#000 0,rgba(0,0,0,0) 46px),' : '') + window.__rcxMarble(3).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
+      // Oct 11 (later): Mount Shasta with its lenticular clouds instead of white marble: where the brand began
+      c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.35) 150px,rgba(0,0,0,.4) calc(100% - 160px),#000 100%),url("assets/photo/about-shasta-clouds.jpg") 50% 50%/cover no-repeat', 'important');
     }
     var b = c.querySelector('.ab-brand-box');
     if (b && !b.__sl) { b.__sl = 1; b.style.setProperty('background', 'linear-gradient(rgba(3,3,3,.8),rgba(3,3,3,.84)),url("assets/photo/slate-blur-4.jpg?v=2") 60% 40%/cover no-repeat', 'important'); }
