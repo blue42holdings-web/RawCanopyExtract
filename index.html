@@ -953,7 +953,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 }
 </style>
 <script src="cutout-lift.js?v=20261008e"></script>
-<script src="ext-links.js?v=1"></script>
+
 <script src="ambient.js?v=8"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
@@ -4691,13 +4691,8 @@ html body [data-screen-label="FAQ"] [data-m="faq-box"] div:has(> button) > butto
 #rcx-rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);background:linear-gradient(rgba(212,162,74,0),rgba(212,162,74,.6) 18%,rgba(212,162,74,.6) 82%,rgba(212,162,74,0))}
 #rcx-rail button{position:relative;pointer-events:auto;width:30px;height:30px;border-radius:50%;border:1.5px solid #D4A24A;background:#000;color:#D4A24A;font-family:"Playfair Display",serif;font-size:22px;line-height:1;padding:0 0 3px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(0,0,0,.8);-webkit-tap-highlight-color:transparent}
 </style>
-<div id="rcx-rail" aria-hidden="false"><button type="button" aria-label="Go to the shop">+</button></div>
-<script>(function(){var r=document.getElementById('rcx-rail');if(!r)return;
-function home(){return !!document.querySelector('[data-screen-label="Home — mushrooms"]')}
-function tick(){var h=home(),y=window.scrollY,H=document.documentElement.scrollHeight-innerHeight;
-r.classList.toggle('on',h&&y>innerHeight*.6&&y<H*.88)}
-addEventListener('scroll',tick,{passive:true});setInterval(tick,700);
-r.querySelector('button').addEventListener('click',function(){var a=[].slice.call(document.querySelectorAll('[data-page="shop"]'));var v=a.filter(function(e){return e.getBoundingClientRect().height>0})[0]||a[0];if(v){v.click();scrollTo(0,0)}})})();</script>
+<div id="rcx-rail" aria-hidden="false"><button type="button" aria-label="Quick menu">+</button><nav class="rr-menu" aria-label="Quick menu"><a href="#" data-go="shop">SHOP</a><a href="#" data-go="m-lm">LION'S MANE</a><a href="#" data-go="m-cd">CORDYCEPS</a><a href="#" data-go="m-rs">TURKEY TAIL</a><a href="#" data-go="receipts">RECEIPTS</a><a href="#" data-go="top">BACK TO TOP</a></nav></div>
+
 <style>/* About: three dog photos inside the brand box; selfie runs through the first two story boxes (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box{background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url('assets/photo/about-dogs-trio.jpg') center/cover no-repeat !important;background-color:#000 !important}
 html body [data-screen-label="About"] .ab-grid .ab-box:nth-child(1),html body [data-screen-label="About"] .ab-grid .ab-box:nth-child(2){background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url('assets/photo/about-selfie.webp') !important;background-size:100% 100%,var(--sx-w,cover) var(--sx-h,auto) !important;background-position:0 0,var(--sx-x,center) var(--sx-y,center) !important;background-repeat:no-repeat !important;background-color:#000 !important}
@@ -4737,6 +4732,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script src="site-extras.js?v=13"></script>
+<script src="nav-extras.js?v=1"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -5121,5 +5117,15 @@ html body [data-screen-label="Turkey Tail"] div[data-ph="tank-lab"]:not(.y1):not
 html body [data-m="tt-bgwrap"][data-m="tt-bgwrap"]::before{background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.72)),url('assets/photo/tt-baggage-claim-crowd.jpg') center/cover no-repeat !important}
 </style>
 <style id="mags-gap">@media (max-width:767px){html body section.mx-sec.mx-sec[data-m="mx-mags"][data-m="mx-mags"]{padding-bottom:8px !important}html body .home-bgwrap section.mx-sec[data-m="mx-lm"][data-m="mx-lm"]{padding-top:10px !important}}@media (min-width:768px){html body section.mx-sec.mx-sec[data-m="mx-mags"][data-m="mx-mags"]{padding-bottom:10px !important}html body .home-bgwrap section.mx-sec[data-m="mx-lm"][data-m="mx-lm"]{padding-top:20px !important}}</style>
+<style id="rail-v2">
+/* Oct 11: the gold line and plus live on every page. The plus rides down the line as you scroll (how far down the page you are). Tap it for a quick menu. */
+#rcx-rail{align-items:flex-start !important}
+#rcx-rail button{position:absolute !important;left:0;top:var(--rr,0%);transform:translateY(-50%);transition:transform .35s ease,background .3s,color .3s}
+#rcx-rail.open button{transform:translateY(-50%) rotate(45deg);background:#D4A24A;color:#000}
+#rcx-rail .rr-menu{position:absolute;right:38px;top:var(--rr,0%);transform:translateY(-50%) translateX(12px);display:flex;flex-direction:column;gap:6px;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+#rcx-rail.open .rr-menu{opacity:1;transform:translateY(-50%);pointer-events:auto}
+#rcx-rail .rr-menu a{display:block;white-space:nowrap;text-align:right;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#E9C079;text-decoration:none;padding:9px 14px;border:1.5px solid #D4A24A;border-radius:999px;background:rgba(0,0,0,.86);box-shadow:0 4px 14px rgba(0,0,0,.6)}
+#rcx-rail .rr-menu a:hover{background:#D4A24A;color:#000}
+</style>
 </body>
 </html>
