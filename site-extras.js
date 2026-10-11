@@ -136,7 +136,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (e.__mv) return; e.__mv = 1;
       e.style.setProperty('background', marble(nm++), 'important');
     });
-    document.querySelectorAll('[data-pack-stage="box"],.pk-tile.pk-box,.mx-press-k').forEach(function (e) {
+    document.querySelectorAll('[data-pack-stage="box"],.pk-tile.pk-box').forEach(function (e) {
       if (e.__sv) return; e.__sv = 1;
       e.style.setProperty('background', slate(ns++, .55), 'important');
     });
@@ -251,3 +251,16 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 })();
 
 
+
+/* Oct 11: every magazine box gets its own blurred, color-boosted magazine rack photo under a dark filter */
+(function () {
+  var n = 0;
+  function run() {
+    document.querySelectorAll('a.mx-press').forEach(function (b) {
+      if (b.__mr) return; b.__mr = 1;
+      var k = (n++ % 10) + 1;
+      b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url("assets/photo/mag-rack-' + k + '.jpg") center/cover no-repeat', 'important');
+    });
+  }
+  setInterval(run, 1000); run();
+})();
