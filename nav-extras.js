@@ -146,24 +146,40 @@
   }, true);
 })();
 
-/* Oct 11: every page drifts slowly down on its own. Touch, swipe, wheel or keys take over; after a
-   few quiet seconds it carries on down from wherever they left it. At the bottom it rests, glides
-   back to the top, then starts down again. */
+/* Oct 11: every page drifts slowly down on its own. Touch, swipe, wheel or keys take over; after
+   20 quiet seconds it carries on down from wherever they left it. At the bottom it rests, glides
+   back to the top, then starts down again. Very slow to start, very slow to stop, and smooth every
+   frame: phones only scroll in whole pixels, so the leftover fraction of a pixel is carried by a
+   tiny sub pixel shift of the page (no stepping, no jitter). */
 (function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var phone = function () { return innerWidth < 768; };
-  var DOWN = function () { return phone() ? 22 : 30; };   // px per second, really slow
-  var UP = 420;                                            // px per second on the glide back to the top
-  var IDLE = 20000;                                         // quiet time before it takes over again
-  var WAIT = 20000;                                        // 20 seconds of stillness before it starts moving
-  var RAMP = 4500, ramp0 = 0;                              // ms to go from still to full speed
-  var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, lastUser = 0;
-  function user() { lastUser = performance.now(); mode = 'wait'; until = lastUser + IDLE; }
+  var DOWN = function () { return phone() ? 14 : 18; };   // px per second at full speed, very slow
+  var UP = 380;                                            // px per second on the glide back to the top
+  var IDLE = 20000, WAIT = 20000;                          // 20 seconds of stillness before it moves
+  var RAMP_IN = 7000, EASE_OUT = 360;                      // 7 seconds to reach speed; slows over the last 360px
+  var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
+  var frac = null, shifted = false;
+  function root() { return document.getElementById('dc-root'); }
+  function unshift() { if (shifted) { var r = root(); if (r) r.style.transform = ''; shifted = false; } }
+  function user() { unshift(); mode = 'wait'; until = performance.now() + IDLE; }
   ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
-  // a new page starts at the top: give it a moment before moving
-  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { mode = 'wait'; until = performance.now() + WAIT; } }, true);
-  addEventListener('popstate', function () { mode = 'wait'; until = performance.now() + WAIT; });
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { unshift(); mode = 'wait'; until = performance.now() + WAIT; } }, true);
+  addEventListener('popstate', function () { unshift(); mode = 'wait'; until = performance.now() + WAIT; });
   function jump(y) { var h = document.documentElement, b = h.style.scrollBehavior; h.style.scrollBehavior = 'auto'; window.scrollTo(0, y); h.style.scrollBehavior = b; }
+  function fixedInside() {   // the story player bar or the menu drawer are fixed inside the page; never shift the page under them
+    var r = root(); if (!r) return true;
+    var f = r.querySelectorAll('[data-m="player"],[style*="position:fixed"]');
+    for (var i = 0; i < f.length; i++) { if (f[i].getBoundingClientRect().height > 0) return true; }
+    return false;
+  }
+  function place(y) {
+    if (frac === null) { var b0 = Math.floor(y); jump(b0 + 0.5); frac = (scrollY % 1) !== 0; }   // can this browser scroll by part of a pixel?
+    if (frac || fixedInside()) { unshift(); jump(y); return; }
+    var base = Math.floor(y), r = root();
+    if (Math.round(scrollY) !== base) jump(base);
+    if (r) { r.style.transform = 'translate3d(0,' + (-(y - base)).toFixed(3) + 'px,0)'; shifted = true; }
+  }
   function blocked() {
     if (document.hidden) return true;
     var rail = document.getElementById('rcx-rail'); if (rail && rail.classList.contains('open')) return true;
@@ -171,33 +187,35 @@
     if (document.fullscreenElement || document.webkitFullscreenElement) return true;
     var st = window.__rcxAudio; if (st && !st.paused && !st.ended) return true;                                     // the story is playing and moving its own slides
     var vs = document.getElementsByTagName('video');
-    for (var i = 0; i < vs.length; i++) { var v = vs[i]; if (!v.paused && !v.ended && (!v.muted || v.controls) && v.offsetHeight > 0) return true; }  // someone is watching a video (silent background loops don't count)
+    for (var i = 0; i < vs.length; i++) { var v = vs[i]; if (!v.paused && !v.ended && (!v.muted || v.controls) && v.offsetHeight > 0) return true; }  // someone is watching a video
     var hs = getComputedStyle(document.documentElement).overflowY, bs = getComputedStyle(document.body).overflowY;
     if (hs === 'hidden' || bs === 'hidden') return true;            // a menu, cart or popup has locked the page
+    var r = root(); if (r) { var d = r.querySelectorAll('[style*="position:fixed;inset"]'); for (var j = 0; j < d.length; j++) if (d[j].getBoundingClientRect().height > 0) return true; }   // the menu drawer is open
     return false;
   }
+  function ss(x) { x = x < 0 ? 0 : x > 1 ? 1 : x; return x * x * x * (x * (x * 6 - 15) + 10); }   // smootherstep: gentle at both ends
   function frame(now) {
-    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0; last = now;
+    var dt = last ? Math.min(1 / 30, (now - last) / 1000) : 1 / 60; last = now;
+    sdt += (dt - sdt) * 0.15;                                                   // smooth out uneven frame timing
     var H = document.documentElement.scrollHeight - innerHeight;
     if (H > 40 && !blocked()) {
-      if (Math.abs(scrollY - pos) > 3) pos = scrollY;                   // something else moved the page
-      if (mode === 'wait' && now >= until) { mode = (scrollY >= H - 2) ? 'rest' : 'down'; until = now + 3000; ramp0 = now; }
+      var real = scrollY + (shifted ? (pos - Math.floor(pos)) : 0);
+      if (Math.abs(real - pos) > 3) pos = scrollY;                              // something else moved the page
+      if (mode === 'wait' && now >= until) { mode = (scrollY >= H - 2) ? 'rest' : 'down'; until = now + 3500; ramp0 = now; }
       if (mode === 'down') {
-        var k = Math.min(1, (now - ramp0) / RAMP); k = k * k * (3 - 2 * k);   // eases from standing still up to speed
-        k *= Math.min(1, 0.12 + (H - pos) / 160);                              // and settles gently at the bottom
-        pos = Math.min(H, pos + DOWN() * k * dt);
-        jump(pos);
-        if (pos >= H - 1) { mode = 'rest'; until = now + 3500; }
+        var k = ss((now - ramp0) / RAMP_IN) * Math.max(0.03, ss((H - pos) / EASE_OUT));
+        pos = Math.min(H, pos + DOWN() * k * sdt);
+        place(pos);
+        if (pos >= H - 0.5) { pos = H; unshift(); jump(H); mode = 'rest'; until = now + 3500; }
       } else if (mode === 'rest' && now >= until) {
         mode = 'up'; ramp0 = now;
       } else if (mode === 'up') {
-        var ku = Math.min(1, (now - ramp0) / RAMP); ku = ku * ku * (3 - 2 * ku);
-        var v = Math.max(8, Math.min(UP * ku, pos * 0.9));             // eases in at the start and eases out near the top
-        pos = Math.max(0, pos - v * dt);
-        jump(pos);
-        if (pos <= 0) { mode = 'wait'; until = now + WAIT; }
-      }
-    } else { pos = scrollY; }
+        var v = UP * ss((now - ramp0) / 2500) * Math.max(0.02, ss(pos / 700));
+        pos = Math.max(0, pos - Math.max(4, v) * sdt);
+        place(pos);
+        if (pos <= 0) { pos = 0; unshift(); jump(0); mode = 'wait'; until = now + WAIT; }
+      } else { unshift(); }
+    } else { unshift(); pos = scrollY; }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
