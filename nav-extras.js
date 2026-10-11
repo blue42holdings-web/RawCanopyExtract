@@ -155,6 +155,7 @@
   var DOWN = function () { return phone() ? 22 : 30; };   // px per second, really slow
   var UP = 420;                                            // px per second on the glide back to the top
   var IDLE = 5000;                                         // quiet time before it takes over again
+  var RAMP = 4500, ramp0 = 0;                              // ms to go from still to full speed
   var mode = 'wait', until = performance.now() + 3500, pos = scrollY, last = 0, lastUser = 0;
   function user() { lastUser = performance.now(); mode = 'wait'; until = lastUser + IDLE; }
   ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
@@ -165,7 +166,11 @@
   function blocked() {
     if (document.hidden) return true;
     var rail = document.getElementById('rcx-rail'); if (rail && rail.classList.contains('open')) return true;
-    var a = document.activeElement; if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return true;
+    var a = document.activeElement; if (a && /^(INPUT|TEXTAREA|SELECT|IFRAME)$/.test(a.tagName)) return true;   // an iframe gets focus when someone taps play on an embedded video
+    if (document.fullscreenElement || document.webkitFullscreenElement) return true;
+    var st = window.__rcxAudio; if (st && !st.paused && !st.ended) return true;                                     // the story is playing and moving its own slides
+    var vs = document.getElementsByTagName('video');
+    for (var i = 0; i < vs.length; i++) { var v = vs[i]; if (!v.paused && !v.ended && (!v.muted || v.controls) && v.offsetHeight > 0) return true; }  // someone is watching a video (silent background loops don't count)
     var hs = getComputedStyle(document.documentElement).overflowY, bs = getComputedStyle(document.body).overflowY;
     if (hs === 'hidden' || bs === 'hidden') return true;            // a menu, cart or popup has locked the page
     return false;
@@ -175,15 +180,18 @@
     var H = document.documentElement.scrollHeight - innerHeight;
     if (H > 40 && !blocked()) {
       if (Math.abs(scrollY - pos) > 3) pos = scrollY;                   // something else moved the page
-      if (mode === 'wait' && now >= until) mode = (scrollY >= H - 2) ? 'rest' : 'down', until = now + 3000;
+      if (mode === 'wait' && now >= until) { mode = (scrollY >= H - 2) ? 'rest' : 'down'; until = now + 3000; ramp0 = now; }
       if (mode === 'down') {
-        pos = Math.min(H, pos + DOWN() * dt);
+        var k = Math.min(1, (now - ramp0) / RAMP); k = k * k * (3 - 2 * k);   // eases from standing still up to speed
+        k *= Math.min(1, 0.12 + (H - pos) / 160);                              // and settles gently at the bottom
+        pos = Math.min(H, pos + DOWN() * k * dt);
         jump(pos);
         if (pos >= H - 1) { mode = 'rest'; until = now + 3500; }
       } else if (mode === 'rest' && now >= until) {
-        mode = 'up';
+        mode = 'up'; ramp0 = now;
       } else if (mode === 'up') {
-        var v = Math.max(60, Math.min(UP, pos * 0.9));                  // eases in as it nears the top
+        var ku = Math.min(1, (now - ramp0) / RAMP); ku = ku * ku * (3 - 2 * ku);
+        var v = Math.max(8, Math.min(UP * ku, pos * 0.9));             // eases in at the start and eases out near the top
         pos = Math.max(0, pos - v * dt);
         jump(pos);
         if (pos <= 0) { mode = 'wait'; until = now + 3000; }
