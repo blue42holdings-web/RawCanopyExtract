@@ -49,7 +49,12 @@
     return false;
   }
   function dim(el) {
-    if (el.__dk || el.__skip) return;
+    if (el.__dk) {
+      // a painter later took the photo off this element (desktop mushroom pages): drop the dark layer so it can't grey a light page
+      if (!/url\([^)]*assets\/photo\//.test(getComputedStyle(el).backgroundImage)) { el.__dk.remove(); el.__dk = null; el.__skip = 1; }
+      return;
+    }
+    if (el.__skip) return;
     var bg = getComputedStyle(el).backgroundImage;
     if (!bg || !/url\([^)]*assets\/photo\//.test(bg)) return;
     var r = el.getBoundingClientRect();
