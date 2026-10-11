@@ -4727,7 +4727,7 @@ html body [data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel
 </style>
 <script>(function(){var seen=new WeakSet();function scan(){document.querySelectorAll('[data-screen-label="Cordyceps"] [data-ph="summit-arms-out"],[data-screen-label="Cordyceps"] [data-m="cd-fbox"]').forEach(function(e){if(seen.has(e))return;seen.add(e);if(!('IntersectionObserver' in window)){e.classList.add('cd-lit');return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('cd-lit');io.disconnect()}})},{threshold:.35});io.observe(e)})}setInterval(scan,800);scan()})();</script>
 <style>/* Shop: soft fades between the tins section and The Research, darker volcano (Oct 10) */
-html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2){background:#000 !important;position:relative;isolation:isolate;overflow:hidden}html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2)::before{content:"";position:absolute;inset:-40px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.30)),url("assets/photo/reef-aerial-aqua.jpg") center 60%/cover no-repeat;filter:blur(16px) saturate(1.1);-webkit-mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 260px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 260px),transparent 100%)}
+html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2){background:linear-gradient(#000 0,#000 calc(100% - 300px),#5C1319 100%) !important;position:relative;isolation:isolate;overflow:hidden}html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2)::before{content:"";position:absolute;inset:-40px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.30)),url("assets/photo/reef-aerial-aqua.jpg") center 60%/cover no-repeat;filter:blur(16px) saturate(1.1);-webkit-mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 260px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 260px),transparent 100%)}
 @media (max-width:767px){html body [data-screen-label="Shop"] .shoptg-nav,html body [data-screen-label="Shop"] .shoptg-nav *{color:#5a3e0c !important}}
 html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"]{background:linear-gradient(#000 0,rgba(0,0,0,.92) 90px,rgba(0,0,0,.72) 300px,rgba(0,0,0,.72) calc(100% - 300px),#000 calc(100% - 40px)),url('assets/photo/volcano-fountain.jpg') center/cover no-repeat !important}
 </style>
@@ -4736,7 +4736,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"]{background:#000 !important}
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
-<script src="site-extras.js?v=9"></script>
+<script src="site-extras.js?v=10"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -5084,6 +5084,21 @@ html body .cx.pr-row a.mx-press.mx-sq .pr-head{display:-webkit-box;-webkit-line-
  html body .cx.pr-row a.mx-press.mx-sq .pr-date,html body .cx.pr-row a.mx-press.mx-sq .mx-cta{font-size:10px !important;letter-spacing:.1em !important}
  html body .cx.pr-row a.mx-press.mx-sq .pr-plate{padding:10px 8px;gap:5px}
 }
+</style>
+<style id="shop-red-band">
+/* Oct 11: under the products the reef fades into the dark red metal, which runs through What It Comes In and fades into The Research */
+html body [data-screen-label="Shop"] section[data-m="pack-sec"][data-m="pack-sec"]{background:#5C1319 !important}
+html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"]::after{content:"" !important;display:block !important;position:absolute;left:0;right:0;top:0;height:320px;z-index:-2;pointer-events:none;background:linear-gradient(#5C1319 0,rgba(92,19,25,0) 100%) !important}
+html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"]::before{background:linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.42)),url('assets/photo/volcano-fountain.jpg') 50% 40%/140% auto no-repeat !important}
+</style>
+<style id="oct11-fix2">
+/* Mushrooms page: one continuous red, no black block in the middle */
+html body section[data-m="diag-sec"][data-m="diag-sec"][data-m="diag-sec"]{background:transparent !important}
+/* Lion's Mane What it is: man pushed right so his eyes are out of frame (phone) */
+@media (max-width:767px){html body [data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15){background-position:center,36% 30% !important}}
+</style>
+<style id="cd-lava-blur">
+html body [data-screen-label="Cordyceps"][data-screen-label="Cordyceps"]::after{background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.66)),url('assets/photo/volcano-fountain-colorblur.jpg') 28% 40%/cover no-repeat !important}
 </style>
 </body>
 </html>
