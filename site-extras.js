@@ -250,23 +250,4 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   setInterval(run, 1000); run();
 })();
 
-/* Oct 11: Turkey Tail on phone: no mushroom photo behind the boxes. White marble that fades into the dark red metal. */
-(function () {
-  var MQ = matchMedia('(max-width:767px)');
-  function run() {
-    var w = document.querySelector('[data-screen-label="Turkey Tail"] [data-m="tt-bgwrap"]');
-    if (!w || !window.__rcxMarble) return;
-    if (!MQ.matches) { if (w.__mb) { w.style.removeProperty('background'); w.classList.remove('tt-nophoto'); if (w.__mt) { w.__mt.remove(); w.__mt = null; } w.__mb = 0; } return; }
-    w.querySelectorAll('div').forEach(function (d) { if (d.offsetHeight > 0 && d.offsetHeight < 4 && !d.children.length) d.style.setProperty('background', 'transparent', 'important'); });
-    if (w.__mb) return; w.__mb = 1;
-    w.classList.add('tt-nophoto');
-    w.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,0) 90px,rgba(0,0,0,0) 45%,rgba(92,19,25,.7) 62%,#5C1319 75%,#5C1319 calc(100% - 140px),#000 100%),' + window.__rcxMarble(11).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
-    if (getComputedStyle(w).position === 'static') w.style.position = 'relative';
-    w.style.isolation = 'isolate';
-    var d = document.createElement('div'); d.setAttribute('aria-hidden', 'true');
-    var mk = 'linear-gradient(transparent 0,transparent 55%,#000 75%,#000 calc(100% - 160px),transparent 100%)';
-    d.style.cssText = 'position:absolute;inset:0;z-index:-1;pointer-events:none;background:' + window.__rcxMetal + ';-webkit-mask-image:' + mk + ';mask-image:' + mk;
-    w.insertBefore(d, w.firstChild); w.__mt = d;
-  }
-  setInterval(run, 1000); run();
-})();
+
