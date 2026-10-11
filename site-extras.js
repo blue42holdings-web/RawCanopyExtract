@@ -22,6 +22,7 @@
     });
     anchor.parentNode.insertBefore(copy, anchor);
     nav.__top = copy;
+    nav.classList.add('rit-hide-bottom');
   }
   function syncLabels() {
     document.querySelectorAll('.rit-nav:not([data-top-nav])').forEach(function (nav) {
@@ -104,11 +105,11 @@
   }
   var nm = 0, ns = 0;
   function run() {
-    document.querySelectorAll('.rcx-marble,[data-pack-stage="tin"],.pk-tile.pk-tin').forEach(function (e) {
+    document.querySelectorAll('.rcx-marble,[data-pack-stage="tin"],.pk-tile.pk-tin,.mx-press-w').forEach(function (e) {
       if (e.__mv) return; e.__mv = 1;
       e.style.setProperty('background', marble(nm++), 'important');
     });
-    document.querySelectorAll('[data-pack-stage="box"],.pk-tile.pk-box').forEach(function (e) {
+    document.querySelectorAll('[data-pack-stage="box"],.pk-tile.pk-box,.mx-press-k').forEach(function (e) {
       if (e.__sv) return; e.__sv = 1;
       e.style.setProperty('background', slate(ns++, .55), 'important');
     });
