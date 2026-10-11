@@ -4735,7 +4735,7 @@ html body [data-ph="reef-snorkel"][data-ph="reef-snorkel"][data-ph="reef-snorkel
 </style>
 <script>(function(){var seen=new WeakSet();function scan(){document.querySelectorAll('[data-screen-label="Cordyceps"] [data-ph="summit-arms-out"],[data-screen-label="Cordyceps"] [data-m="cd-fbox"]').forEach(function(e){if(seen.has(e))return;seen.add(e);if(!('IntersectionObserver' in window)){e.classList.add('cd-lit');return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('cd-lit');io.disconnect()}})},{threshold:.35});io.observe(e)})}setInterval(scan,800);scan()})();</script>
 <style>/* Shop: soft fades between the tins section and The Research, darker volcano (Oct 10) */
-html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2){background:linear-gradient(#000 0,rgba(0,0,0,.28) 260px,rgba(0,0,0,.2) 420px,#F1ECE1 760px,#F1ECE1 calc(100% - 300px),rgba(0,0,0,.9) calc(100% - 80px),#000 100%) !important}
+html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2){background:linear-gradient(#000 0,#A8232E 110px,#A8232E calc(100% - 220px),#000 100%) !important}
 @media (max-width:767px){html body [data-screen-label="Shop"] .shoptg-nav,html body [data-screen-label="Shop"] .shoptg-nav *{color:#5a3e0c !important}}
 html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"]{background:linear-gradient(#000 0,rgba(0,0,0,.92) 90px,rgba(0,0,0,.72) 300px,rgba(0,0,0,.72) calc(100% - 300px),#000 calc(100% - 40px)),url('assets/photo/volcano-fountain.jpg') center/cover no-repeat !important}
 </style>
@@ -4898,6 +4898,10 @@ html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8))
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article h2{font-size:24px !important;line-height:1.1 !important}
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article p{font-size:14px !important;line-height:1.45 !important;max-width:none !important}
 }
+</style>
+<style>/* Oct 11: corner glows under the top boxes removed everywhere */
+html body [data-screen-label]{--bl:rgba(0,0,0,0) !important}
+@media (max-width:767px){html body div[data-screen-label="Shop"][data-screen-label="Shop"]::before{display:none !important}html body div[data-screen-label="Shop"]{background:#000 !important}}
 </style>
 </body>
 </html>
