@@ -207,7 +207,7 @@
     // ---------- night nature (Oct 11): no birds. Crickets and frogs, very low in the mix ----------
     function cricket(t, len) {
       var f = rnd(3900, 4700), pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-      var out = ctx.createGain(); out.gain.value = rnd(0.0038, 0.0068);
+      var out = ctx.createGain(); out.gain.value = rnd(0.0022, 0.004);
       if (pan) { pan.pan.value = rnd(-0.9, 0.9); out.connect(pan); pan.connect(natureBus); } else out.connect(natureBus);
       var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f;
       var g = ctx.createGain(); g.gain.value = 0; o.connect(g); g.connect(out);
@@ -239,7 +239,7 @@
     // birds, ocean, frogs, crows, distant thunder, cave droplets and the odd owl. Each act picks its own
     // handful, brings them in one at a time as the music thins, then lifts them out one at a time.
     var FIELD_DIR = 'assets/audio/nature/', bufs = {};
-    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.85; fieldBus.connect(duck);
+    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.38;   // Oct 11: way quieter, under the music fieldBus.connect(duck);
     function loadField(n) {
       if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
         .then(function (ab) { return ab ? new Promise(function (res) { ctx.decodeAudioData(ab, res, function () { res(null); }); }) : null; })
