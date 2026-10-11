@@ -4732,7 +4732,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script src="site-extras.js?v=13"></script>
-<script src="nav-extras.js?v=1"></script>
+<script src="nav-extras.js?v=3"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -5130,5 +5130,26 @@ html body [data-m="tt-bgwrap"][data-m="tt-bgwrap"]::before{background:linear-gra
 <style id="grandparents-oct11">
 html body [data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"]:not(.x1):not(.x2):not(.x3):not(.x4):not(.x5):not(.x6):not(.x7):not(.x8):not(.x9):not(.x10):not(.x11):not(.x12):not(.x13):not(.x14):not(.x15):not(.x16):not(.x17):not(.x18):not(.x19){background:linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.72)),url('assets/photo/lm-grandpa-football-park.jpg') 52% center/cover no-repeat !important}
 </style>
-</body>
+<style id="rc-white-oct11">
+@media (max-width:767px){
+html body div[data-screen-label="Receipts"]>div:not([data-m]){background:#fff !important;padding-bottom:36px !important}
+html body div[data-screen-label="Receipts"] [data-m="rc-read"][data-m="rc-read"],html body div[data-screen-label="Receipts"] [data-m="rc-files"][data-m="rc-files"]{background:#fff !important;background-image:none !important}
+html body div[data-screen-label="Receipts"] [data-m="rc-dodges"][data-m="rc-dodges"]{background:linear-gradient(#fff 0,rgba(255,255,255,.55) 70px,rgba(255,255,255,0) 150px) !important;padding-top:150px !important;margin-top:-1px}
+html body div[data-screen-label="Receipts"] [data-m="rc-read"] .mx-title h2,html body div[data-screen-label="Receipts"] [data-m="rc-files"] .mx-title h2,html body div[data-screen-label="Receipts"] [data-m="rc-read"] .mx-title h2 *,html body div[data-screen-label="Receipts"] [data-m="rc-files"] .mx-title h2 *{color:#1E1A15 !important;text-shadow:none !important}
+html body div[data-screen-label="Receipts"] [data-m="rc-read"] .mx-title p,html body div[data-screen-label="Receipts"] [data-m="rc-files"] .mx-title p{color:#3A332A !important;text-shadow:none !important}
+html body div[data-screen-label="Receipts"] [data-m="rc-read"] .mx-title p span,html body div[data-screen-label="Receipts"] [data-m="rc-files"] .mx-title p span,html body div[data-screen-label="Receipts"] [data-m="rc-files"] .rit-nav>span{color:#8A6420 !important;text-shadow:none !important}
+}
+html body div[data-screen-label="Receipts"] [data-m="rc-dodges"] .mx-box.mx-box[style*="freediver-surfacing"][style*="freediver-surfacing"]{background-size:100% 100%,auto 200% !important;background-repeat:no-repeat !important;background-position:0 0,47% 90% !important}
+@media (min-width:768px){html body div[data-screen-label="Receipts"] [data-m="rc-dodges"] .mx-box.mx-box[style*="freediver-surfacing"][style*="freediver-surfacing"]{background-position:0 0,46% 97% !important}}
+</style><style id="mags-two-up">
+@media (max-width:767px){
+html body section.mx-sec[data-m="mx-mags"] .cx-track.cx-track{grid-auto-columns:calc((100% - 10px) / 2) !important;gap:10px !important;padding-left:0 !important;padding-right:0 !important;margin-right:18px !important;scroll-padding-left:0 !important;scroll-padding-right:0 !important}
+html body section.mx-sec[data-m="mx-mags"] .cx-track>a.mx-box{scroll-snap-align:start !important;min-height:46vw !important}
+html body section.mx-sec[data-m="mx-mags"] a.mx-box.mx-press.mx-sq{padding:8px !important}
+html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-plate{padding:9px 6px !important}
+html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-mast{font-size:15px !important}
+html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-mast.pr-caps{font-size:12.5px !important}
+html body section.mx-sec[data-m="mx-mags"] a.mx-press.mx-sq .pr-head{font-size:12px !important}
+}
+</style></body>
 </html>
