@@ -166,7 +166,85 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     if (!MQ.matches) { if (c.__mb) { c.style.removeProperty('background'); c.__mb = 0; } return; }
     if (c.__mb || !window.__rcxMarble) return;
     c.__mb = 1;
-    c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.55) 60px,rgba(0,0,0,0) 150px,rgba(0,0,0,0) calc(100% - 260px),rgba(0,0,0,.6) calc(100% - 110px),#000 100%),' + window.__rcxMarble(7).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
+    c.style.setProperty('background', 'linear-gradient(rgba(0,0,0,0) 0,rgba(0,0,0,0) calc(100% - 200px),rgba(0,0,0,.6) calc(100% - 90px),#000 100%),' + window.__rcxMarble(7).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
+  }
+  setInterval(run, 1000); run();
+})();
+
+/* Oct 11: no hard lines between backgrounds, anywhere. Wherever a full-width block with its own
+   background meets the next one, a soft blurred band is laid over the seam (only in the empty space
+   between boxes and words, so nothing readable gets blurred). */
+(function () {
+  if (!('backdropFilter' in document.documentElement.style) && !('webkitBackdropFilter' in document.documentElement.style)) return;
+  var layer = null, sig = '';
+  function hasBg(el) {
+    var cs = getComputedStyle(el);
+    if (cs.backgroundImage && cs.backgroundImage !== 'none') return true;
+    var m = cs.backgroundColor.match(/[\d.]+/g);
+    if (m && (m.length < 4 || +m[3] > 0.05)) return true;
+    var b = getComputedStyle(el, '::before'), a = getComputedStyle(el, '::after');
+    return (b.content !== 'none' && b.backgroundImage !== 'none') || (a.content !== 'none' && a.backgroundImage !== 'none');
+  }
+  function contentRects(root) {
+    var out = [];
+    root.querySelectorAll('h1,h2,h3,h4,p,li,a,button,img,svg,video,input,label,article,figure,[class*="box"],[class*="card"],[data-ph],.rit-nav,.cx-track > *').forEach(function (e) {
+      var r = e.getBoundingClientRect();
+      if (r.width < 2 || r.height < 2) return;
+      var cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || +cs.opacity === 0) return;
+      if (r.width >= innerWidth - 4 && !/^(H\d|P|A|BUTTON|IMG|LI|LABEL)$/.test(e.tagName) && !/box|card/.test(e.className)) return; // full-width wrappers are backgrounds, not content
+      out.push([r.top + scrollY, r.bottom + scrollY]);
+    });
+    return out;
+  }
+  function run() {
+    var page = [].slice.call(document.querySelectorAll('[data-screen-label]')).filter(function (e) { var r = e.getBoundingClientRect(); return r.height > 200 && r.width >= innerWidth - 4; })[0];
+    var H = document.documentElement.scrollHeight;
+    var s = (page ? page.getAttribute('data-screen-label') : '') + '|' + H + '|' + innerWidth;
+    if (s === sig) return; sig = s;
+    if (!layer) { layer = document.createElement('div'); layer.setAttribute('aria-hidden', 'true'); layer.setAttribute('data-seams', ''); layer.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:2147482000'; document.body.appendChild(layer); }
+    layer.innerHTML = '';
+    var main = document.querySelector('main') || document.body;
+    var blocks = [].slice.call(main.querySelectorAll('section,div,footer')).filter(function (e) {
+      var r = e.getBoundingClientRect();
+      return r.height > 120 && r.width >= innerWidth - 4 && !e.closest('header,nav,[data-m="player"]') && hasBg(e);
+    });
+    var edges = [];
+    blocks.forEach(function (e) { var r = e.getBoundingClientRect(); edges.push(r.top + scrollY, r.bottom + scrollY); });
+    edges = edges.filter(function (y) { return y > 90 && y < H - 40; }).sort(function (a, b) { return a - b; });
+    var uniq = []; edges.forEach(function (y) { if (!uniq.length || y - uniq[uniq.length - 1] > 24) uniq.push(y); });
+    var cr = contentRects(main);
+    uniq.forEach(function (y) {
+      // largest free gap around the seam, up to 90px each side
+      var up = 90, dn = 90;
+      cr.forEach(function (c) {
+        if (c[1] <= y && y - c[1] < up) up = y - c[1];
+        if (c[0] >= y && c[0] - y < dn) dn = c[0] - y;
+        if (c[0] < y && c[1] > y) { up = 0; dn = 0; }
+      });
+      var h = Math.min(up, dn);
+      if (h < 18) return;
+      var d = document.createElement('div');
+      d.style.cssText = 'position:absolute;left:0;right:0;top:' + (y - h) + 'px;height:' + (2 * h) + 'px;backdrop-filter:blur(' + Math.round(h / 3.2) + 'px);-webkit-backdrop-filter:blur(' + Math.round(h / 3.2) + 'px);-webkit-mask-image:linear-gradient(transparent 0,#000 50%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 50%,transparent 100%)';
+      layer.appendChild(d);
+    });
+  }
+  setInterval(run, 1500); setTimeout(run, 600);
+  addEventListener('resize', function () { sig = ''; });
+})();
+
+/* Oct 11: About the Brand: white marble section (its own variation), black wet slate box, soft fades in and out */
+(function () {
+  function run() {
+    var c = document.querySelector('[data-screen-label="About"] section[data-m="about-brand"]');
+    if (!c || !window.__rcxMarble) return;
+    var ph = matchMedia('(max-width:767px)').matches;
+    if (c.__mb !== (ph ? 2 : 1)) {
+      c.__mb = ph ? 2 : 1;
+      c.style.setProperty('background', (ph ? 'linear-gradient(#000 0,rgba(0,0,0,0) 46px),' : '') + window.__rcxMarble(3).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
+    }
+    var b = c.querySelector('.ab-brand-box');
+    if (b && !b.__sl) { b.__sl = 1; b.style.setProperty('background', 'linear-gradient(rgba(3,3,3,.8),rgba(3,3,3,.84)),url("assets/photo/slate-blur-4.jpg?v=2") 60% 40%/cover no-repeat', 'important'); }
   }
   setInterval(run, 1000); run();
 })();
