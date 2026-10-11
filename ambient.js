@@ -363,6 +363,11 @@
   function toggle() {
     if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); return; }
     muted = !muted;
+    if (!muted && storyActive()) {   // turning the sound bath on stops the story, then the bath fades in
+      try { var sa = window.__rcxAudio; if (sa && !sa.paused) sa.pause(); } catch (e) {}
+      try { if (window.speechSynthesis && speechSynthesis.speaking) speechSynthesis.cancel(); } catch (e) {}
+      storyOn = false; if (eng) eng.setDuck(1, 1.5);
+    }
     try { if (muted) localStorage.setItem(KEY, 'off'); else localStorage.removeItem(KEY); } catch (e) {}
     if (muted) eng.fadeOut(1.5); else { if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(2.5); }
     refresh();
@@ -396,8 +401,15 @@
   // step aside while the story (Roar of the Mountain) plays: slow fade out, back in when it stops.
   // The story's audio element is not attached to the page, so listen on it directly.
   var storyOn = false, watched = null;
-  function storyPlay() { storyOn = true; if (kick) { try { kick.pause(); } catch (e) {} } if (eng) eng.setDuck(0, 4); }
-  function storyStop() { storyOn = false; if (eng) eng.setDuck(1, 5); }
+  // Oct 11: only one sound at a time. The story and the sound bath cross fade (about a second and a half).
+  function storyActive() {
+    var a = window.__rcxAudio;
+    return !!((a && !a.paused && !a.ended) || (window.speechSynthesis && speechSynthesis.speaking && !speechSynthesis.paused));
+  }
+  function storyPlay() { if (storyOn) return; storyOn = true; if (kick) { try { kick.pause(); } catch (e) {} } if (eng) eng.setDuck(0, 1.5); }
+  function storyStop() { if (!storyOn) return; storyOn = false; if (eng) eng.setDuck(1, 2.5); }
+  // poll as well as listen: a fresh story element can start before its listeners are attached
+  setInterval(function () { var on = storyActive(); if (on && !storyOn) storyPlay(); else if (!on && storyOn) storyStop(); }, 250);
   setInterval(function () {
     var a = window.__rcxAudio;
     if (a && a !== watched) {

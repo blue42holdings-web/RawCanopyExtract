@@ -230,3 +230,34 @@
   setTimeout(flare, 4000);
   setInterval(function () { if (Math.random() < 0.5) poke(); }, 13000);
 })();
+
+/* Oct 11: lab report boxes get photo backgrounds. Turkey Tail and crowd numbers: crowded airports,
+   stations, lines. Extraction and filler talk: the lab. Every other numbers box: modern transport. */
+(function () {
+  var P = 'assets/photo/';
+  var CROWD = ['tt-train-crowd.jpg', 'tt-baggage-claim-crowd.jpg', 'tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
+  var MOVE = ['tr-maglev.jpg', 'tr-bullet-tunnel.jpg', 'tr-future-train.jpg', 'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-highway-interchange.jpg', 'tr-bus-motion.jpg'];
+  var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
+  function run() {
+    var groups = new Map();
+    document.querySelectorAll('a.mx-lab').forEach(function (b) {
+      var g = b.closest('[data-screen-label]') || document.body;
+      if (!groups.has(g)) groups.set(g, []); groups.get(g).push(b);
+    });
+    var pi = 0;
+    groups.forEach(function (list) {
+      var c = 0, m = (pi++) * 3, l = 0;
+      list.forEach(function (b) {
+        var t = ((b.querySelector('.lab-title') || {}).textContent || '').toUpperCase();
+        var img;
+        if (/TURKEY|TRAMETES|POPULATION/.test(t)) img = CROWD[c++ % CROWD.length];
+        else if (/FILLER|MYCELIUM|EXTRACT/.test(t)) img = LAB[l++ % LAB.length];
+        else img = MOVE[m++ % MOVE.length];
+        if (b.__lab === img) return;
+        b.__lab = img; b.__sv = 1;
+        b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + img + '") center/cover no-repeat', 'important');
+      });
+    });
+  }
+  setInterval(run, 1200); run();
+})();
