@@ -154,14 +154,15 @@
   var phone = function () { return innerWidth < 768; };
   var DOWN = function () { return phone() ? 22 : 30; };   // px per second, really slow
   var UP = 420;                                            // px per second on the glide back to the top
-  var IDLE = 5000;                                         // quiet time before it takes over again
+  var IDLE = 20000;                                         // quiet time before it takes over again
+  var WAIT = 20000;                                        // 20 seconds of stillness before it starts moving
   var RAMP = 4500, ramp0 = 0;                              // ms to go from still to full speed
-  var mode = 'wait', until = performance.now() + 3500, pos = scrollY, last = 0, lastUser = 0;
+  var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, lastUser = 0;
   function user() { lastUser = performance.now(); mode = 'wait'; until = lastUser + IDLE; }
   ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
   // a new page starts at the top: give it a moment before moving
-  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { mode = 'wait'; until = performance.now() + 3500; } }, true);
-  addEventListener('popstate', function () { mode = 'wait'; until = performance.now() + 4000; });
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { mode = 'wait'; until = performance.now() + WAIT; } }, true);
+  addEventListener('popstate', function () { mode = 'wait'; until = performance.now() + WAIT; });
   function jump(y) { var h = document.documentElement, b = h.style.scrollBehavior; h.style.scrollBehavior = 'auto'; window.scrollTo(0, y); h.style.scrollBehavior = b; }
   function blocked() {
     if (document.hidden) return true;
@@ -194,7 +195,7 @@
         var v = Math.max(8, Math.min(UP * ku, pos * 0.9));             // eases in at the start and eases out near the top
         pos = Math.max(0, pos - v * dt);
         jump(pos);
-        if (pos <= 0) { mode = 'wait'; until = now + 3000; }
+        if (pos <= 0) { mode = 'wait'; until = now + WAIT; }
       }
     } else { pos = scrollY; }
     requestAnimationFrame(frame);
