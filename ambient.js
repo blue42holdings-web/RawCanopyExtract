@@ -241,9 +241,8 @@
         .catch(function () { return null; });
       return bufs[n];
     }
-    var BRIGHT_FIELD = ['birds', 'forest-wind', 'river', 'waterfall', 'jungle', 'rain-leaves', 'rain', 'ocean'];
-    var DARK_FIELD = ['howling-wind', 'mountain-wind', 'droplets', 'thunder', 'rain', 'river', 'frogs', 'crows', 'waterfall'];
     function layer(name, t0, dur, level, dark) {
+      if (window.__RCX_AMBIENT_TEST) console.log('field ' + name + ' at ' + Math.round(t0) + 's for ' + Math.round(dur) + 's');
       loadField(name).then(function (buf) {
         if (!buf) return;
         var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
@@ -278,30 +277,47 @@
         src.start(t);
       });
     }
-    var lastField = [];
-    function pickField(dark, k) {
-      var pool = (dark ? DARK_FIELD : BRIGHT_FIELD).filter(function (n) { return lastField.indexOf(n) < 0; });
-      for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = pool[i]; pool[i] = pool[j]; pool[j] = x; }
-      var pick = pool.slice(0, k); lastField = pick.slice(0, 2); return pick;
+    // Oct 11, second pass: spaced way out. Most of the time there is NO field sound at all. Roughly
+    // every three minutes ONE sound comes in during a breakdown (now and then two), plays a while and
+    // goes. Ocean waves and wind in the trees come up most; rivers, streams, waterfalls and rain are rare.
+    // Pacific Northwest first (Oct 11): Oregon and Northern California beaches, redwood and Mount Shasta
+    // wind in the trees. Rain is light rain or mist, never hard. Rivers and waterfalls are rare and short.
+    // The jungle almost never.
+    var FIELD_WEIGHT = {
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 1.2, 'birds': 1.5, 'river': 0.7, 'waterfall': 0.4, 'jungle': 0.15 },
+      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 0.8, 'crows': 0.5, 'droplets': 0.5, 'frogs': 0.4, 'river': 0.5, 'waterfall': 0.25 }
+    };
+    var recentField = [], nextFieldAt = 0;
+    function pickOne(dark) {
+      var w = FIELD_WEIGHT[dark ? 'dark' : 'bright'], tot = 0, k;
+      for (k in w) if (recentField.indexOf(k) < 0) tot += w[k];
+      var r = Math.random() * tot;
+      for (k in w) { if (recentField.indexOf(k) >= 0) continue; r -= w[k]; if (r <= 0) break; }
+      recentField.push(k); if (recentField.length > 3) recentField.shift();
+      return k;
     }
     function fieldAct(t, build, b1, b2, b3, end, dark, first) {
-      var L = pickField(dark, 4), from = first ? natureStart : t;
-      L.forEach(function (n) { loadField(n); });               // start loading early so nothing arrives late
-      // A: a quiet bed under the whole act
-      layer(L[0], from + rnd(0, 8), end - from + 8, dark ? 0.32 : 0.28, dark);
-      // B: joins halfway through the build, leaves during the second breakdown
-      layer(L[1], Math.max(from, t + build * 0.5), (b2 + rnd(4, 12)) - Math.max(from, t + build * 0.5), dark ? 0.42 : 0.4, dark);
-      // C: rises as the music thins, the main voice of the breakdown
-      layer(L[2], b1, (b3 + (end - b3) * 0.75) - b1, dark ? 0.6 : 0.58, dark);
-      // D: the peak, then the first to be lifted out
-      layer(L[3], b2, (b3 + (end - b3) * 0.35) - b2, dark ? 0.55 : 0.5, dark);
-      if (dark) { var n = Math.random() < 0.6 ? 2 : 1; for (var i = 0; i < n; i++) oneShot('owl', b1 + rnd(4, end - b1 - 14), 0.32); }
+      if (!nextFieldAt) nextFieldAt = natureStart;
+      if (end - 20 < nextFieldAt) return;                                 // too soon since the last one: leave it quiet
+      var main = pickOne(dark), isRain = /rain/.test(main), isFlow = main === 'river' || main === 'waterfall';
+      var t0 = Math.max(b1 + rnd(0, 10), nextFieldAt);
+      var want = isRain ? rnd(95, 150) : rnd(55, 95); if (isFlow) want *= 0.5;   // rain lingers, rivers and waterfalls pass quickly
+      var len = Math.min(end + (isRain ? 60 : 12), t0 + want) - t0;
+      if (len < (isFlow ? 22 : 35)) return;
+      loadField(main);
+      layer(main, t0, len, isRain ? rnd(0.2, 0.4) : (dark ? 0.5 : 0.48), dark);   // rain sits at mist to light rain levels
+      if (Math.random() < 0.12) {                                         // now and then a second, quieter sound joins for a while
+        var second = pickOne(dark); loadField(second);
+        layer(second, t0 + len * rnd(0.3, 0.45), len * rnd(0.35, 0.5), 0.3, dark);
+      }
+      if (dark && Math.random() < 0.3) oneShot('owl', t0 + rnd(10, len - 14), 0.28);
+      nextFieldAt = t0 + len + rnd(200, 300);                             // then a long quiet stretch before the next
     }
 
-
     // ---------- DRUMS AND BASS (Oct 11) ----------
-    // Seven grooves, all synthesized: five drum and bass (fast, 168 to 174: liquid, amen break,
-    // roller, neuro with a reese bass, jungle), the slow Miami bass 808 (74), and the Roland 909 (112).
+    // Six grooves, all synthesized: five drum and bass (fast, 168 to 174: liquid, amen break,
+    // roller, neuro with a reese bass, jungle) and the slow Miami bass 808 (74). Never a house or
+    // four on the floor beat.
     // Nothing before the three minute mark. After that a random groove comes in with a build, fades in
     // and out with the same rhythm as the other changes, and never plays during a breakdown.
     var drumBus = ctx.createGain(); drumBus.gain.value = 0; drumBus.connect(duck);
@@ -351,7 +367,7 @@
       lp.connect(g); g.connect(drumBus);
     }
     // each groove: tempo, and a function that plays one 16 step bar starting at t (r = root in Hz)
-    // Five drum and bass grooves (fast, 168 to 174), the slow Miami 808, and the Roland 909.
+    // Five drum and bass grooves (fast, 168 to 174) and the slow Miami 808.
     var GROOVES = {
       dnbLiquid: { bpm: 174, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 10, 0.65); snare(t + q * 4, 0.16, 0.15); snare(t + q * 12, 0.16, 0.15);
         for (var i = 0; i < 16; i++) hat(t + q * i, i % 2 ? 0.012 : 0.022); shaker(t + q * 7, 0.02);
@@ -368,11 +384,9 @@
         [3, 6, 7, 9, 14, 15].forEach(function (k) { rim(t + q * k, 0.05 + Math.random() * 0.04); });
         for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.018); kick808(t, r * 0.9, 1.1, 0.55, true); kick808(t + q * 8, r * 1.1, 0.9, 0.45, true); } },
       miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 1.6, 0.95, true); kick808(t + q * 10, r * 1.06, 1.2, 0.8, true); clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);
-        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } },
-      roland909: { bpm: 112, bar: function (t, q, r) { for (var i = 0; i < 16; i += 4) { kick909(t + q * i, 0.8); hat(t + q * (i + 2), 0.035, true); } clap(t + q * 12, 0.08);
-        var notes = [r, r, r * 1.5, r * 1.2]; for (var k = 0; k < 4; k++) bassNote(t + q * (k * 4 + 2), notes[k], q * 1.6, 0.2, 'triangle'); } }
+        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } }
     };
-    var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808', 'roland909'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808', 'roland909'];
+    var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808'];   // drum and bass or Miami bass only, never a house beat
     var drumJobs = [], lastGroove = '';
     function drumSection(t0, t1, dark, root) {
       var pool = (dark ? DARK_GROOVES : BRIGHT_GROOVES).filter(function (g) { return g !== lastGroove; });
@@ -384,6 +398,7 @@
       drumBus.gain.linearRampToValueAtTime(dark ? 0.5 : 0.42, t0 + barLen * 2);        // fades in over two bars
       drumBus.gain.setValueAtTime(dark ? 0.5 : 0.42, t1 - barLen * 2);
       drumBus.gain.linearRampToValueAtTime(0.0001, t1);                                  // and out over two
+      if (window.__RCX_AMBIENT_TEST) console.log('drums ' + name + ' at ' + Math.round(t0) + 's to ' + Math.round(t1) + 's');
       drumJobs.push({ t: t0, end: t1, bar: barLen, q: q, G: G, root: root });
     }
     function drumTick(horizon) {
@@ -429,7 +444,7 @@
       // BREAKDOWN 3: minimal. Just the night: low wind, the ocean, crickets and frogs, all soft
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
-      nightNature(b1, s1 + s2 + s3);
+      if (Math.random() < 0.45) nightNature(b1 + s1, s2 + s3);          // crickets only some of the time
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
       if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.25 : 1.5));
       acts.t = b3 + s3 - 4;
