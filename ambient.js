@@ -84,9 +84,7 @@
       // a thin high whistle layer
       var s2 = noiseSrc();
       var bp2 = ctx.createBiquadFilter(); bp2.type = 'bandpass'; bp2.frequency.value = 1700; bp2.Q.value = 4;
-      var g2 = ctx.createGain(); g2.gain.value = 0.012;
-      s2.connect(bp2); bp2.connect(g2); g2.connect(natureBus);
-      lfo(0.037, 0.011, g2.gain); lfo(0.029, 380, bp2.frequency);
+      // (high whistle removed Oct 11: it made the dark passages feel bright)
     })();
 
     // WAVES: low rumble that swells and recedes, with a hissy foam layer riding on top
@@ -177,7 +175,7 @@
       var sc = DEEP ? DARK_SCALES[Math.floor((t - T0) / (ARR.chord * 1.4)) % DARK_SCALES.length] : SCALES[Math.floor((t - T0) / ARR.chord) % SCALES.length];
       var m = lastMidi;
       for (var k = 0; k < 6 && (m === lastMidi || Math.abs(m - lastMidi) < 2); k++) {
-        var idx = Math.round(Math.max(0, Math.min(1, reg + rnd(-0.25, 0.25))) * (sc.length - 1));
+        var idx = Math.round(Math.max(0, Math.min(1, reg + rnd(-0.25, 0.25))) * (sc.length - 1) * (DEEP ? 0.55 : 1));
         m = sc[idx];
       }
       lastMidi = m; return m;
@@ -222,57 +220,86 @@
         droneNote(t + 0.5, base, 1.5, 'sine', 0.2, 200);
         droneNote(t + 1, base, 2, 'sawtooth', 0.08, 260);
         droneNote(t + 1.5, base, [4, 4.76, 6][Math.floor(Math.random() * 3)], 'sawtooth', 0.045, 520);
-        if (Math.random() < 0.6) droneNote(t + 2, 587.3 * [1, 0.945][Math.floor(Math.random() * 2)], 1, 'sine', 0.012, 3000);
         t += rnd(3.5, 4.5);
       }
       // haunting wind rises, howls, and drops back
       howlBus.gain.setValueAtTime(0, t0); howlBus.gain.linearRampToValueAtTime(0.045, t0 + 7); howlBus.gain.setValueAtTime(0.045, t0 + dur - 8); howlBus.gain.linearRampToValueAtTime(0, t0 + dur + 4);
     }
 
-    // ---------- timeline ----------
-    // build (pads climb to higher notes) > break (softer, nature fades in) > build (nature fades out)
-    // > sometimes a dark passage (about 10 percent of the time) > break ...
-    var natureStart = T0 + 60;
-    function natureTo(t, v, tc) { natureBus.gain.setTargetAtTime(v, Math.max(t, natureStart), tc); }
-    var acts = { t: T0 + 0.5, n: 0, next: 'build', buildCount: 0 };
-    function scheduleAct() {
-      var t = acts.t, kind = acts.next, dur;
-      if (kind === 'build') {
-        dur = acts.n === 0 ? 50 : rnd(40, 52);
-        DEEP = (acts.n % 2 === 0) ? SERIOUS : 1 - SERIOUS;
-        if (DEEP) { droneBus.gain.setTargetAtTime(0.09, t, 4); droneBus.gain.setTargetAtTime(0, t + dur - 4, 4); var tb = t; while (tb < t + dur) { droneNote(tb, [36.71, 41.2, 32.7][acts.n % 3], 1, 'sine', 0.4, 180); droneNote(tb + 1.2, [36.71, 41.2, 32.7][acts.n % 3], 1.5, 'sine', 0.15, 200); tb += rnd(4, 5); } }
-        padStream(t, dur, DEEP ? [3.2, 4.6] : [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, DEEP ? 0.5 : 0.6);
-        DEEP = 0;
-        if (acts.n > 0) natureTo(t, 0, 4);
-        acts.buildCount++;
-        acts.next = (acts.buildCount > 1 && Math.random() < 0.2) ? 'dark' : 'break';
-      } else if (kind === 'break') {
-        dur = rnd(55, 70);
-        DEEP = (acts.n % 2 === 0) ? SERIOUS : 1 - SERIOUS;
-        if (DEEP) { droneBus.gain.setTargetAtTime(0.08, t, 4); droneBus.gain.setTargetAtTime(0, t + dur - 4, 4); var tb2 = t; while (tb2 < t + dur) { droneNote(tb2, [36.71, 41.2, 32.7][acts.n % 3], 1, 'sine', 0.38, 170); tb2 += rnd(4.5, 5.5); } }
-        padStream(t, dur, DEEP ? [4.4, 6] : [3.8, 5.4], 0.35, 0.12, DEEP ? 0.5 : 0.42, DEEP ? 0.42 : 0.32);
-        DEEP = 0;
-        natureTo(t + 2, 0.24, 3.5); // ten seconds or so to fade up, then it stays soft
-        acts.next = Math.random() < 0.55 ? 'build' : 'break';
-      } else {
-        dur = rnd(26, 32);
-        natureTo(t, 0.03, 3);
-        darkAct(t, dur);
-        acts.next = 'break';
-      }
-      acts.t = t + dur - (kind === 'dark' ? 2 : 5);
-      acts.n++;
+    // ---------- night nature (Oct 11): no birds. Crickets and frogs, very low in the mix ----------
+    function cricket(t, len) {
+      var f = rnd(3900, 4700), pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      var out = ctx.createGain(); out.gain.value = rnd(0.006, 0.011);
+      if (pan) { pan.pan.value = rnd(-0.9, 0.9); out.connect(pan); pan.connect(natureBus); } else out.connect(natureBus);
+      var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+      var g = ctx.createGain(); g.gain.value = 0; o.connect(g); g.connect(out);
+      var tt = t, per = rnd(0.7, 1.1);
+      while (tt < t + len) { for (var k = 0; k < 3; k++) { var a0 = tt + k * 0.045; g.gain.setValueAtTime(0, a0); g.gain.linearRampToValueAtTime(1, a0 + 0.006); g.gain.linearRampToValueAtTime(0, a0 + 0.03); } tt += per; }
+      o.start(t); o.stop(t + len + 0.2);
     }
-    var birdT = T0 + 80;
-    function scheduleBirds(upTo) {
-      while (birdT < upTo) {
-        birdPhrase(birdT);
-        birdT += rnd(15, 45);
+    function frog(t) {
+      var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = rnd(420, 700); bp.Q.value = 3;
+      var out = ctx.createGain(); out.gain.value = rnd(0.012, 0.02);
+      bp.connect(out); if (pan) { pan.pan.value = rnd(-0.8, 0.8); out.connect(pan); pan.connect(natureBus); pan.connect(revIn); } else out.connect(natureBus);
+      var n = Math.random() < 0.5 ? 2 : 3, base = rnd(150, 230);
+      for (var k = 0; k < n; k++) {
+        var a0 = t + k * rnd(0.16, 0.22), o = ctx.createOscillator(); o.type = 'sawtooth';
+        o.frequency.setValueAtTime(base, a0); o.frequency.linearRampToValueAtTime(base * 0.86, a0 + 0.12);
+        var g = ctx.createGain(); g.gain.setValueAtTime(0, a0); g.gain.linearRampToValueAtTime(1, a0 + 0.015); g.gain.exponentialRampToValueAtTime(0.001, a0 + 0.13);
+        o.connect(g); g.connect(bp); o.start(a0); o.stop(a0 + 0.2);
       }
+    }
+    function nightNature(t0, dur) {
+      var t = t0 + rnd(2, 6);
+      while (t < t0 + dur) { cricket(t, rnd(5, 11)); t += rnd(6, 14); }
+      t = t0 + rnd(4, 10);
+      while (t < t0 + dur) { frog(t); t += rnd(7, 16); }
+    }
+
+    // ---------- timeline (Oct 11) ----------
+    // Two moods, half the time each, trading places: BRIGHT (the warm pads) and DARK (low, serious,
+    // ominous: only low drones and low pad notes, nothing high). Every cycle builds, then breaks down
+    // slowly, layers coming out one at a time until only the night nature is left, then the next mood builds.
+    var natureStart = T0 + 45;
+    function natureTo(t, v, tc) { natureBus.gain.setTargetAtTime(v, Math.max(t, natureStart), tc); }
+    var MOOD0 = Math.random() < 0.5 ? 1 : 0; // 1 = dark first
+    var acts = { t: T0 + 0.5, n: 0 };
+    function lowDrones(t0, dur, base, lv) {
+      droneBus.gain.setTargetAtTime(lv, t0, 4); droneBus.gain.setTargetAtTime(0, t0 + dur - 4, 4);
+      var tb = t0;
+      while (tb < t0 + dur) { droneNote(tb, base, 1, 'sine', 0.5, 170); droneNote(tb + 1.2, base, 1.5, 'sine', 0.16, 190); droneNote(tb + 2.2, base, 2, 'sawtooth', 0.05, 220); tb += rnd(3.8, 4.8); }
+    }
+    function scheduleAct() {
+      var t = acts.t, dark = (acts.n % 2 === 0) ? MOOD0 : 1 - MOOD0;
+      var base = [36.71, 41.2, 32.7, 38.89][acts.n % 4];
+      var build = acts.n === 0 ? 50 : rnd(42, 54), s1 = rnd(18, 24), s2 = rnd(18, 24), s3 = rnd(20, 28);
+      // BUILD: all layers in
+      natureTo(t, acts.n === 0 ? 0 : 0.02, 4);
+      if (dark) {
+        lowDrones(t, build + s1 + s2, base, 0.16);
+        DEEP = 1; padStream(t, build, [3.6, 5], 0.05, 0.42, 0.34, 0.5); DEEP = 0;
+      } else {
+        padStream(t, build, [2.4, 3.6], acts.n === 0 ? 0.1 : 0.2, 0.8, acts.n === 0 ? 0.3 : 0.32, 0.6);
+      }
+      // BREAKDOWN 1: the top layer thins out, nature starts to come up
+      var b1 = t + build - 4;
+      if (dark) { DEEP = 1; padStream(b1, s1, [5, 6.5], 0.3, 0.1, 0.4, 0.28); DEEP = 0; }
+      else padStream(b1, s1, [4, 5.6], 0.4, 0.15, 0.38, 0.26);
+      natureTo(b1 + 2, 0.12, 4);
+      // BREAKDOWN 2: one sparse low voice (dark keeps only its drones)
+      var b2 = b1 + s1;
+      if (!dark) padStream(b2, s2, [6.5, 8.5], 0.12, 0.02, 0.24, 0.12);
+      natureTo(b2, 0.18, 5);
+      // BREAKDOWN 3: minimal. Just the night: low wind, the ocean, crickets and frogs, all soft
+      var b3 = b2 + s2;
+      natureTo(b3, 0.22, 5);
+      nightNature(b1, s1 + s2 + s3);
+      acts.t = b3 + s3 - 4;
+      acts.n++;
     }
     function scheduleUntil(horizon) {
       while (acts.t < horizon) scheduleAct();
-      // birds removed by request
     }
     scheduleUntil(T0 + 40);
 
