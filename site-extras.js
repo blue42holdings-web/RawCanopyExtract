@@ -1,3 +1,28 @@
+/* Oct 11: brushed-metal sheen on the dark red, laid in as a soft layer that fades out at its edges
+   (never a hard line where it starts or stops). */
+window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='600' preserveAspectRatio='none'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.0025 0.9' numOctaves='2' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.86  0 0 0 0 0.86  0 0 0 .24 -.08'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>\") 0 0/900px 260px repeat,linear-gradient(112deg,rgba(255,255,255,0) 18%,rgba(255,200,200,.10) 34%,rgba(255,255,255,0) 48%,rgba(255,215,215,.07) 66%,rgba(255,255,255,0) 82%)";
+(function () {
+  var T = [
+    ['.home-bgwrap>[data-m="mx-rit"]', 'linear-gradient(transparent 0,#000 160px,#000 calc(100% - 170px),transparent 100%)', 0, 0],
+    ['[data-m="red-wrap"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 120px),transparent 100%)', 0, 0],
+    ['[data-m="more-research"]', 'linear-gradient(#000 0,#000 30%,transparent 85%)', 0, 0],
+    ['div[data-screen-label="About"]', 'linear-gradient(#000 0,#000 300px,transparent 760px)', 0, 900]
+  ];
+  function run() {
+    T.forEach(function (t) {
+      document.querySelectorAll(t[0]).forEach(function (el) {
+        if (el.__mt && el.__mt.isConnected) return;
+        if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
+        el.style.isolation = 'isolate';
+        var d = document.createElement('div'); d.setAttribute('aria-hidden', 'true'); d.setAttribute('data-red-metal', '');
+        d.style.cssText = 'position:absolute;left:0;right:0;top:0;' + (t[3] ? 'height:' + t[3] + 'px;' : 'bottom:0;') + 'z-index:-1;pointer-events:none;background:' + window.__rcxMetal + ';-webkit-mask-image:' + t[1] + ';mask-image:' + t[1];
+        el.insertBefore(d, el.firstChild); el.__mt = d;
+      });
+    });
+  }
+  setInterval(run, 1000); run();
+})();
+
 /* Oct 10:
    1. Every left/right arrow row under a carousel gets a matching row above it.
    2. Background photos that don't already animate start a little dark and
@@ -98,6 +123,7 @@
       "linear-gradient(" + a2 + "deg,rgba(0,0,0,0) 55%,rgba(150,140,126,.16) 58%,rgba(0,0,0,0) 62%)," +
       "linear-gradient(160deg,#FBFAF6 0%,#F1EEE6 46%,#FFFFFF 70%,#E9E5DA 100%)";
   }
+  window.__rcxMarble = marble;
   var POS = ['20% 40%', '70% 60%', '40% 80%', '85% 25%', '10% 70%', '55% 35%', '30% 15%', '75% 85%', '50% 50%', '35% 65%'];
   function slate(i, dark) {
     var k = i % 10;
@@ -126,6 +152,21 @@
       b.style.setProperty('background', slate(ns++, .82), 'important');
       b.style.setProperty('background-color', '#050505', 'important');
     });
+  }
+  setInterval(run, 1000); run();
+})();
+
+/* Oct 11: About page on phone. One background behind About the Brand (no lava), and the compost
+   area is fully white marble before its heading, fading in from black and back out at the bottom. */
+(function () {
+  var MQ = matchMedia('(max-width:767px)');
+  function run() {
+    var c = document.querySelector('[data-screen-label="About"] section[data-m="about-compost"]');
+    if (!c) return;
+    if (!MQ.matches) { if (c.__mb) { c.style.removeProperty('background'); c.__mb = 0; } return; }
+    if (c.__mb || !window.__rcxMarble) return;
+    c.__mb = 1;
+    c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.55) 60px,rgba(0,0,0,0) 150px,rgba(0,0,0,0) calc(100% - 260px),rgba(0,0,0,.6) calc(100% - 110px),#000 100%),' + window.__rcxMarble(7).split('0 0/100% 100% no-repeat').join('center/cover no-repeat'), 'important');
   }
   setInterval(run, 1000); run();
 })();
