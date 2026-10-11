@@ -241,7 +241,7 @@
     var FIELD_DIR = 'assets/audio/nature/', bufs = {};
     var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.38;   // Oct 11: way quieter, under the music fieldBus.connect(duck);
     function loadField(n) {
-      if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
+      if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3?v=2').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
         .then(function (ab) { return ab ? new Promise(function (res) { ctx.decodeAudioData(ab, res, function () { res(null); }); }) : null; })
         .catch(function () { return null; });
       return bufs[n];
