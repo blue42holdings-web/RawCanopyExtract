@@ -346,25 +346,26 @@
     }
     function kick808(t, f1, decay, lv, slide) {
       var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
-      o.frequency.setValueAtTime(f1 * 2.6, t); o.frequency.exponentialRampToValueAtTime(f1, t + 0.07);
+      f1 *= 0.78;   // Oct 11: deeper
+      o.frequency.setValueAtTime(f1 * 2.4, t); o.frequency.exponentialRampToValueAtTime(f1, t + 0.09);
       if (slide) o.frequency.exponentialRampToValueAtTime(f1 * 0.72, t + decay * 0.9);
       g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.004); g.gain.setTargetAtTime(0, t + 0.06, decay / 3.2);
       o.connect(g); g.connect(shaper); o.start(t); o.stop(t + decay + 0.3);
     }
     function kick909(t, lv) {
       var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
-      o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + 0.045);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.002); g.gain.setTargetAtTime(0, t + 0.03, 0.11);
-      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + 0.7);
-      noiseHit(t, 'highpass', 2500, 0.7, 0.012, lv * 0.35);                      // the 909 click
+      o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(41, t + 0.06);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.002); g.gain.setTargetAtTime(0, t + 0.05, 0.16);
+      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + 0.9);
+      noiseHit(t, 'bandpass', 900, 0.7, 0.012, lv * 0.2);                      // the 909 click
     }
-    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 1900, 0.8, 0.22, lv, toDelay);
-      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(150, t + 0.08);
+    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 1050, 0.8, 0.26, lv, toDelay);
+      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(105, t + 0.1);
       var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12); o.connect(g); g.connect(drumBus); o.start(t); o.stop(t + 0.15); }
-    function clap(t, lv) { for (var i = 0; i < 3; i++) noiseHit(t + i * 0.011, 'bandpass', 1300, 1.2, i < 2 ? 0.03 : 0.25, lv); }
-    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 2600, 6, 0.05, lv, toDelay); }
-    function hat(t, lv, open) { noiseHit(t, 'highpass', 7600, 0.6, open ? 0.32 : 0.045, lv); }
-    function shaker(t, lv) { noiseHit(t, 'bandpass', 5800, 1.4, 0.07, lv); }
+    function clap(t, lv) { for (var i = 0; i < 3; i++) noiseHit(t + i * 0.011, 'bandpass', 850, 1.2, i < 2 ? 0.03 : 0.25, lv); }
+    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 1400, 5, 0.06, lv, toDelay); }
+    function hat(t, lv, open) { noiseHit(t, 'bandpass', 4800, 0.8, open ? 0.3 : 0.045, lv * 0.7); }
+    function shaker(t, lv) { noiseHit(t, 'bandpass', 3800, 1.4, 0.07, lv * 0.75); }
     function bassNote(t, f, dur, lv, type) {
       var o = ctx.createOscillator(); o.type = type || 'sine'; o.frequency.value = f;
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 260; var g = ctx.createGain();
@@ -519,9 +520,10 @@
     btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on');
   }
 
+  var startedAt = 0, fresh = false;
   function start() {
     if (started || !AC) return;
-    started = true;
+    started = true; startedAt = Date.now(); fresh = true; setTimeout(function () { fresh = false; }, 1000);
     try {
       ctx = new AC();
       eng = build(ctx, ctx.destination);
@@ -533,6 +535,8 @@
     mkBtn(); refresh();
   }
   function toggle() {
+    // the very first tap on the page landed on this button: the tap already started the music, so play it (and bring it up quickly) instead of turning it off
+    if (fresh && started && !muted) { fresh = false; if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(3); refresh(); return; }
     if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); return; }
     muted = !muted;
     if (!muted && storyActive()) {   // turning the sound bath on stops the story, then the bath fades in
