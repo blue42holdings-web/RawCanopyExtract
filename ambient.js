@@ -73,34 +73,7 @@
       var g = ctx.createGain(); g.gain.value = depth; o.connect(g); g.connect(target); o.start(); return o;
     }
 
-    // WIND: pink noise, band-passed, with slow drifting gain and pitch
-    (function () {
-      var s = noiseSrc();
-      var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 520; bp.Q.value = 0.55;
-      var g = ctx.createGain(); g.gain.value = 0.16;
-      s.connect(bp); bp.connect(g); g.connect(natureBus);
-      lfo(0.043, 0.09, g.gain); lfo(0.071, 0.05, g.gain);
-      lfo(0.05, 260, bp.frequency); lfo(0.083, 140, bp.frequency);
-      // a thin high whistle layer
-      var s2 = noiseSrc();
-      var bp2 = ctx.createBiquadFilter(); bp2.type = 'bandpass'; bp2.frequency.value = 1700; bp2.Q.value = 4;
-      // (high whistle removed Oct 11: it made the dark passages feel bright)
-    })();
-
-    // WAVES: low rumble that swells and recedes, with a hissy foam layer riding on top
-    (function () {
-      var s = noiseSrc();
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 650; lp.Q.value = 0.4;
-      var g = ctx.createGain(); g.gain.value = 0.2;
-      s.connect(lp); lp.connect(g); g.connect(natureBus);
-      lfo(0.095, 0.17, g.gain); lfo(0.061, 0.08, g.gain);
-      lfo(0.095, 300, lp.frequency);
-      var s2 = noiseSrc();
-      var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 2400;
-      var g2 = ctx.createGain(); g2.gain.value = 0.02;
-      s2.connect(hp); hp.connect(g2); g2.connect(natureBus);
-      lfo(0.095, 0.017, g2.gain);
-    })();
+    // (Oct 11: the synthetic wind and waves are gone. Real recorded nature now lives in the FIELD layers below.)
 
     // BIRDS: sparse chirps scheduled on the audio clock
     function chirp(t, base) {
@@ -229,7 +202,7 @@
     // ---------- night nature (Oct 11): no birds. Crickets and frogs, very low in the mix ----------
     function cricket(t, len) {
       var f = rnd(3900, 4700), pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-      var out = ctx.createGain(); out.gain.value = rnd(0.006, 0.011);
+      var out = ctx.createGain(); out.gain.value = rnd(0.0038, 0.0068);
       if (pan) { pan.pan.value = rnd(-0.9, 0.9); out.connect(pan); pan.connect(natureBus); } else out.connect(natureBus);
       var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f;
       var g = ctx.createGain(); g.gain.value = 0; o.connect(g); g.connect(out);
@@ -253,8 +226,170 @@
     function nightNature(t0, dur) {
       var t = t0 + rnd(2, 6);
       while (t < t0 + dur) { cricket(t, rnd(5, 11)); t += rnd(6, 14); }
-      t = t0 + rnd(4, 10);
-      while (t < t0 + dur) { frog(t); t += rnd(7, 16); }
+    }
+
+
+    // ---------- FIELD (Oct 11): real recorded nature, layers rising and falling ----------
+    // Rain, rain on leaves, wind in the trees, mountain wind, howling wind, river, waterfall, jungle,
+    // birds, ocean, frogs, crows, distant thunder, cave droplets and the odd owl. Each act picks its own
+    // handful, brings them in one at a time as the music thins, then lifts them out one at a time.
+    var FIELD_DIR = 'assets/audio/nature/', bufs = {};
+    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.85; fieldBus.connect(duck);
+    function loadField(n) {
+      if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
+        .then(function (ab) { return ab ? new Promise(function (res) { ctx.decodeAudioData(ab, res, function () { res(null); }); }) : null; })
+        .catch(function () { return null; });
+      return bufs[n];
+    }
+    var BRIGHT_FIELD = ['birds', 'forest-wind', 'river', 'waterfall', 'jungle', 'rain-leaves', 'rain', 'ocean'];
+    var DARK_FIELD = ['howling-wind', 'mountain-wind', 'droplets', 'thunder', 'rain', 'river', 'frogs', 'crows', 'waterfall'];
+    function layer(name, t0, dur, level, dark) {
+      loadField(name).then(function (buf) {
+        if (!buf) return;
+        var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
+        if (end - start < 8) return;
+        var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+        if (dark) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
+        var g = ctx.createGain(); g.gain.value = 0;
+        var pan = ctx.createStereoPanner ? _origCreatePanner ? _origCreatePanner() : ctx.createStereoPanner() : null;
+        src.connect(lp); lp.connect(g);
+        var out = g; if (pan) { pan.pan.value = rnd(-0.35, 0.35); g.connect(pan); out = pan; }
+        out.connect(fieldBus);
+        if (dark) { var send = ctx.createGain(); send.gain.value = 0.5; out.connect(send); send.connect(revIn); }
+        var fin = rnd(9, 16), fout = rnd(10, 16);
+        g.gain.setValueAtTime(0, start);
+        g.gain.linearRampToValueAtTime(level, start + fin);
+        // rising and falling while it plays
+        var tt = start + fin + rnd(6, 12), lv = level;
+        while (tt < end - fout - 6) { lv = level * rnd(0.45, 1); g.gain.linearRampToValueAtTime(lv, tt); tt += rnd(9, 18); }
+        g.gain.linearRampToValueAtTime(lv, Math.max(start + fin, end - fout)); g.gain.linearRampToValueAtTime(0, end);
+        src.start(start, rnd(0, buf.duration - 1)); src.stop(end + 0.5);
+      });
+    }
+    function oneShot(name, t, level) {
+      loadField(name).then(function (buf) {
+        if (!buf || ctx.currentTime > t) return;
+        var src = ctx.createBufferSource(); src.buffer = buf; src.playbackRate.value = rnd(0.9, 1);
+        var g = ctx.createGain(); g.gain.value = level;
+        var pan = _origCreatePanner ? _origCreatePanner() : null;
+        src.connect(g); var out = g; if (pan) { pan.pan.value = rnd(-0.7, 0.7); g.connect(pan); out = pan; }
+        out.connect(fieldBus); var send = ctx.createGain(); send.gain.value = 0.8; out.connect(send); send.connect(revIn);
+        src.start(t);
+      });
+    }
+    var lastField = [];
+    function pickField(dark, k) {
+      var pool = (dark ? DARK_FIELD : BRIGHT_FIELD).filter(function (n) { return lastField.indexOf(n) < 0; });
+      for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = pool[i]; pool[i] = pool[j]; pool[j] = x; }
+      var pick = pool.slice(0, k); lastField = pick.slice(0, 2); return pick;
+    }
+    function fieldAct(t, build, b1, b2, b3, end, dark, first) {
+      var L = pickField(dark, 4), from = first ? natureStart : t;
+      L.forEach(function (n) { loadField(n); });               // start loading early so nothing arrives late
+      // A: a quiet bed under the whole act
+      layer(L[0], from + rnd(0, 8), end - from + 8, dark ? 0.32 : 0.28, dark);
+      // B: joins halfway through the build, leaves during the second breakdown
+      layer(L[1], Math.max(from, t + build * 0.5), (b2 + rnd(4, 12)) - Math.max(from, t + build * 0.5), dark ? 0.42 : 0.4, dark);
+      // C: rises as the music thins, the main voice of the breakdown
+      layer(L[2], b1, (b3 + (end - b3) * 0.75) - b1, dark ? 0.6 : 0.58, dark);
+      // D: the peak, then the first to be lifted out
+      layer(L[3], b2, (b3 + (end - b3) * 0.35) - b2, dark ? 0.55 : 0.5, dark);
+      if (dark) { var n = Math.random() < 0.6 ? 2 : 1; for (var i = 0; i < n; i++) oneShot('owl', b1 + rnd(4, end - b1 - 14), 0.32); }
+    }
+
+
+    // ---------- DRUMS AND BASS (Oct 11) ----------
+    // Seven grooves, all synthesized: five drum and bass (fast, 168 to 174: liquid, amen break,
+    // roller, neuro with a reese bass, jungle), the slow Miami bass 808 (74), and the Roland 909 (112).
+    // Nothing before the three minute mark. After that a random groove comes in with a build, fades in
+    // and out with the same rhythm as the other changes, and never plays during a breakdown.
+    var drumBus = ctx.createGain(); drumBus.gain.value = 0; drumBus.connect(duck);
+    var dly = ctx.createDelay(1.5); dly.delayTime.value = 0.45; var fb = ctx.createGain(); fb.gain.value = 0.38;
+    var dlyLp = ctx.createBiquadFilter(); dlyLp.type = 'lowpass'; dlyLp.frequency.value = 2200;
+    dly.connect(dlyLp); dlyLp.connect(fb); fb.connect(dly); dlyLp.connect(drumBus);
+    var shaper = ctx.createWaveShaper(); (function () { var n = 1024, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1) * 2 - 1; c[i] = Math.tanh(x * 1.6) / Math.tanh(1.6); } shaper.curve = c; })();
+    shaper.connect(drumBus);
+    var hiss = makeNoise(ctx, 2, false);
+    function noiseHit(t, type, freq, q, dur, lv, toDelay) {
+      var s = ctx.createBufferSource(); s.buffer = hiss; var f = ctx.createBiquadFilter(); f.type = type; f.frequency.value = freq; f.Q.value = q;
+      var g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0008, t + dur);
+      s.connect(f); f.connect(g); g.connect(drumBus); if (toDelay) { var d = ctx.createGain(); d.gain.value = toDelay; g.connect(d); d.connect(dly); }
+      s.start(t, Math.random() * 1.5); s.stop(t + dur + 0.05);
+    }
+    function kick808(t, f1, decay, lv, slide) {
+      var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
+      o.frequency.setValueAtTime(f1 * 2.6, t); o.frequency.exponentialRampToValueAtTime(f1, t + 0.07);
+      if (slide) o.frequency.exponentialRampToValueAtTime(f1 * 0.72, t + decay * 0.9);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.004); g.gain.setTargetAtTime(0, t + 0.06, decay / 3.2);
+      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + decay + 0.3);
+    }
+    function kick909(t, lv) {
+      var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
+      o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + 0.045);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.002); g.gain.setTargetAtTime(0, t + 0.03, 0.11);
+      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + 0.7);
+      noiseHit(t, 'highpass', 2500, 0.7, 0.012, lv * 0.35);                      // the 909 click
+    }
+    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 1900, 0.8, 0.22, lv, toDelay);
+      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(150, t + 0.08);
+      var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12); o.connect(g); g.connect(drumBus); o.start(t); o.stop(t + 0.15); }
+    function clap(t, lv) { for (var i = 0; i < 3; i++) noiseHit(t + i * 0.011, 'bandpass', 1300, 1.2, i < 2 ? 0.03 : 0.25, lv); }
+    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 2600, 6, 0.05, lv, toDelay); }
+    function hat(t, lv, open) { noiseHit(t, 'highpass', 7600, 0.6, open ? 0.32 : 0.045, lv); }
+    function shaker(t, lv) { noiseHit(t, 'bandpass', 5800, 1.4, 0.07, lv); }
+    function bassNote(t, f, dur, lv, type) {
+      var o = ctx.createOscillator(); o.type = type || 'sine'; o.frequency.value = f;
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 260; var g = ctx.createGain();
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.02); g.gain.setValueAtTime(lv, t + dur * 0.7); g.gain.linearRampToValueAtTime(0, t + dur);
+      o.connect(lp); lp.connect(g); g.connect(drumBus); o.start(t); o.stop(t + dur + 0.05);
+    }
+    function reese(t, f, dur, lv) {                                        // dark drum and bass bass: two detuned saws, low passed, moving
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2; lp.frequency.setValueAtTime(220, t); lp.frequency.linearRampToValueAtTime(520, t + dur * 0.5); lp.frequency.linearRampToValueAtTime(240, t + dur);
+      var g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.03); g.gain.setValueAtTime(lv, t + dur * 0.8); g.gain.linearRampToValueAtTime(0, t + dur);
+      [-9, 9].forEach(function (c) { var o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = c; o.connect(lp); o.start(t); o.stop(t + dur + 0.05); });
+      lp.connect(g); g.connect(drumBus);
+    }
+    // each groove: tempo, and a function that plays one 16 step bar starting at t (r = root in Hz)
+    // Five drum and bass grooves (fast, 168 to 174), the slow Miami 808, and the Roland 909.
+    var GROOVES = {
+      dnbLiquid: { bpm: 174, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 10, 0.65); snare(t + q * 4, 0.16, 0.15); snare(t + q * 12, 0.16, 0.15);
+        for (var i = 0; i < 16; i++) hat(t + q * i, i % 2 ? 0.012 : 0.022); shaker(t + q * 7, 0.02);
+        bassNote(t, r, q * 8, 0.24); bassNote(t + q * 8, r * 1.19, q * 8, 0.22); } },
+      dnbAmen: { bpm: 172, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 2, 0.5); kick909(t + q * 10, 0.7); kick909(t + q * 11, 0.45);
+        snare(t + q * 4, 0.17); snare(t + q * 7, 0.06); snare(t + q * 9, 0.06); snare(t + q * 12, 0.17); snare(t + q * 15, 0.07);
+        for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.022); hat(t + q * 14, 0.02, true); bassNote(t, r, q * 16, 0.22); } },
+      dnbRoller: { bpm: 174, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 6, 0.45); kick909(t + q * 10, 0.7); snare(t + q * 4, 0.15); snare(t + q * 12, 0.15);
+        for (var i = 0; i < 16; i++) shaker(t + q * i, i % 4 === 2 ? 0.024 : 0.012); hat(t + q * 2, 0.025, true); hat(t + q * 10, 0.025, true);
+        bassNote(t, r, q * 3, 0.26); bassNote(t + q * 3, r, q * 3, 0.2); bassNote(t + q * 6, r * 1.5, q * 4, 0.22); bassNote(t + q * 10, r * 1.33, q * 6, 0.24); } },
+      dnbNeuro: { bpm: 172, bar: function (t, q, r) { kick909(t, 0.8); kick909(t + q * 10, 0.75); snare(t + q * 4, 0.18, 0.2); snare(t + q * 12, 0.18, 0.2);
+        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.016 : 0.024); reese(t, r, q * 7, 0.12); reese(t + q * 8, r * 0.94, q * 8, 0.12); } },
+      dnbJungle: { bpm: 168, bar: function (t, q, r) { kick909(t, 0.7); kick909(t + q * 10, 0.6); snare(t + q * 4, 0.16); snare(t + q * 12, 0.16);
+        [3, 6, 7, 9, 14, 15].forEach(function (k) { rim(t + q * k, 0.05 + Math.random() * 0.04); });
+        for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.018); kick808(t, r * 0.9, 1.1, 0.55, true); kick808(t + q * 8, r * 1.1, 0.9, 0.45, true); } },
+      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 1.6, 0.95, true); kick808(t + q * 10, r * 1.06, 1.2, 0.8, true); clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);
+        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } },
+      roland909: { bpm: 112, bar: function (t, q, r) { for (var i = 0; i < 16; i += 4) { kick909(t + q * i, 0.8); hat(t + q * (i + 2), 0.035, true); } clap(t + q * 12, 0.08);
+        var notes = [r, r, r * 1.5, r * 1.2]; for (var k = 0; k < 4; k++) bassNote(t + q * (k * 4 + 2), notes[k], q * 1.6, 0.2, 'triangle'); } }
+    };
+    var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808', 'roland909'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808', 'roland909'];
+    var drumJobs = [], lastGroove = '';
+    function drumSection(t0, t1, dark, root) {
+      var pool = (dark ? DARK_GROOVES : BRIGHT_GROOVES).filter(function (g) { return g !== lastGroove; });
+      var name = pool[Math.floor(Math.random() * pool.length)]; lastGroove = name;
+      var G = GROOVES[name], q = 60 / G.bpm / 4, barLen = q * 16;
+      var bars = Math.floor((t1 - t0) / barLen); if (bars < 4) return;
+      t1 = t0 + bars * barLen;
+      drumBus.gain.setTargetAtTime(0.0001, t0 - 0.5, 0.1);
+      drumBus.gain.linearRampToValueAtTime(dark ? 0.5 : 0.42, t0 + barLen * 2);        // fades in over two bars
+      drumBus.gain.setValueAtTime(dark ? 0.5 : 0.42, t1 - barLen * 2);
+      drumBus.gain.linearRampToValueAtTime(0.0001, t1);                                  // and out over two
+      drumJobs.push({ t: t0, end: t1, bar: barLen, q: q, G: G, root: root });
+    }
+    function drumTick(horizon) {
+      for (var i = 0; i < drumJobs.length; i++) { var j = drumJobs[i];
+        while (j.t < j.end - 0.01 && j.t < horizon) { j.G.bar(j.t, j.q, j.root); j.t += j.bar; } }
+      drumJobs = drumJobs.filter(function (j) { return j.t < j.end - 0.01; });
     }
 
     // ---------- timeline (Oct 11) ----------
@@ -295,17 +430,20 @@
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
       nightNature(b1, s1 + s2 + s3);
+      fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
+      if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.25 : 1.5));
       acts.t = b3 + s3 - 4;
       acts.n++;
     }
     function scheduleUntil(horizon) {
       while (acts.t < horizon) scheduleAct();
+      drumTick(Math.min(horizon, ctx.currentTime + 3));
     }
     scheduleUntil(T0 + 40);
 
     return {
       master: master, duck: duck,
-      scheduleUntil: scheduleUntil,
+      scheduleUntil: scheduleUntil, drumTick: drumTick, fieldBus: fieldBus, drumBus: drumBus,
       slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.22 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
       fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
@@ -362,6 +500,7 @@
       ctx = new AC();
       eng = build(ctx, ctx.destination);
       timer = setInterval(function () { if (ctx.state === 'running') eng.scheduleUntil(ctx.currentTime + 45); }, 8000);
+      setInterval(function () { if (ctx.state === 'running') eng.drumTick(ctx.currentTime + 1.5); }, 300);
       if (ctx.state === 'suspended') ctx.resume();
       if (!muted) eng.slowIn(30);
     } catch (e) { started = false; }
