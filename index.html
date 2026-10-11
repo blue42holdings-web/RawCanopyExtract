@@ -4884,5 +4884,19 @@ html body .cx .mx-lab:has(.lab-big){padding-top:22px !important;padding-bottom:1
 html body div[data-screen-label="Receipts"] .rc-sec .mx-title h2,html body div[data-screen-label="Receipts"] [data-m="rc-read"] .mx-title h2{text-shadow:0 2px 14px rgba(0,0,0,.6)}
 }
 </style>
+<style>/* Phone Shop (Oct 11): only the chosen kind shows, full width, photo beside the words so each card is short */
+@media (max-width:767px){
+html body [data-screen-label="Shop"] #shoptg-box:not(:checked) ~ [data-m="1col"] > article:nth-child(n+5):nth-child(-n+8),html body [data-screen-label="Shop"] #shoptg-box:checked ~ [data-m="1col"] > article:nth-child(-n+4){display:none !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)){grid-template-columns:minmax(0,1fr) !important;gap:14px !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n+8){display:grid !important;grid-template-columns:118px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start;padding:14px !important;text-align:left !important;filter:none !important;opacity:1 !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article > :first-child{grid-column:1;grid-row:1 / span 5;align-self:start;margin:0 !important;width:118px !important;height:auto !important;aspect-ratio:1/1.15}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article > :not(:first-child){grid-column:2;margin:0 !important;text-align:left !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article > div:nth-last-child(-n+2){grid-column:1 / -1 !important;margin-top:8px !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article > :first-child > img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;left:0 !important;top:0 !important;object-fit:cover !important;object-position:50% 45% !important;aspect-ratio:auto !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article > :first-child{border-radius:12px;overflow:hidden !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article h2{font-size:24px !important;line-height:1.1 !important}
+html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article p{font-size:14px !important;line-height:1.45 !important;max-width:none !important}
+}
+</style>
 </body>
 </html>
