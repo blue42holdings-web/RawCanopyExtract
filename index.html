@@ -5010,5 +5010,16 @@ html body a.mx-press.mx-press-k .mx-cta{color:#D4A24A !important}
 /* left and right arrows only above each carousel, never below */
 html body .rit-nav:not([data-top-nav]).rit-hide-bottom{display:none !important}
 </style>
+<style id="mags-lava-css">
+/* Oct 11: magazines on the home page sit on the blurred lava (bottom of the lava flow), inside one gold frame */
+html body section.mx-sec[data-m="mx-mags"]{background:#000 !important;position:relative;isolation:isolate;padding:50px 0 60px !important}
+html body section.mx-sec[data-m="mx-mags"]::before{content:"";position:absolute;inset:0;z-index:-2;filter:brightness(1.25) saturate(1.2);pointer-events:none;background:url("assets/photo/volcano-flow-lava-blur.jpg") center 60%/cover no-repeat;-webkit-mask-image:linear-gradient(transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%)}
+html body .home-bgwrap>section.mx-sec.mx-sec[data-m="mx-mags"]::after,html body section.mx-sec.mx-sec[data-m="mx-mags"]::after{background:linear-gradient(#000 0,rgba(0,0,0,.08) 140px,rgba(0,0,0,.04) 50%,rgba(0,0,0,.08) calc(100% - 140px),#000 100%) !important}
+html body section.mx-sec[data-m="mx-mags"] > .mx-wrap{border:3px solid #D4A24A;border-radius:22px;padding:30px 26px 40px !important;background:rgba(0,0,0,.16);box-shadow:0 10px 28px rgba(0,0,0,.55);max-width:1300px;margin:0 auto;box-sizing:border-box}
+html body section.mx-sec[data-m="mx-mags"] .mx-title{background:radial-gradient(closest-side,rgba(0,0,0,.62),rgba(0,0,0,.38) 60%,rgba(0,0,0,0));padding:14px 30px;margin:0 auto 22px !important;width:fit-content;max-width:100%}
+html body section.mx-sec[data-m="mx-mags"] .mx-title h2,html body section.mx-sec[data-m="mx-mags"] .mx-title p{text-shadow:0 2px 6px rgba(0,0,0,.9),0 0 18px rgba(0,0,0,.75)}
+html body section.mx-sec[data-m="mx-mags"] .rit-nav span{text-shadow:0 2px 6px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.8)}
+@media (max-width:767px){html body section.mx-sec[data-m="mx-mags"] > .mx-wrap{margin:0 14px !important;padding:22px 0 28px !important}}
+</style>
 </body>
 </html>
