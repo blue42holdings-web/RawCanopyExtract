@@ -487,6 +487,18 @@
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
+      // Oct 12: nature also drifts in and out during the full music, not only in breakdowns. Quiet, random,
+      // favoring the sounds heard less often; never more than two at once here.
+      (function () {
+        var pool = dark ? ['mountain-wind', 'crows', 'frogs', 'forest-wind', 'howling-wind', 'ocean'] : ['birds', 'mountain-wind', 'forest-wind', 'jungle', 'ocean', 'birds'];
+        var n = Math.random() < 0.35 ? 2 : 1, span = Math.max(30, b1 - t - 20);
+        for (var k = 0; k < n; k++) {
+          var a0 = Math.max(natureStart, t + rnd(8, span)), a1 = a0 + rnd(28, 55);
+          if (busy(a0, a1) >= 2) continue;
+          var nm = pool[Math.floor(Math.random() * pool.length)];
+          loadField(nm); claim(a0, a1); layer(nm, a0, a1 - a0, rnd(0.16, 0.24), dark);
+        }
+      })();
       // (crickets removed Oct 11)
       // (Oct 11: no automatic drums. Beats only play from the REMIX button.)
       acts.t = b3 + s3 - 4;
