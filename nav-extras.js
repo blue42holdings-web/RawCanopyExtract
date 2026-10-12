@@ -138,7 +138,7 @@
   function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }   // slow in, slow out
   function glideTo(a, x, v0) {                     // eased move from where we are to x (v0: speed we are already moving at, px/s)
     cancelAnimationFrame(a.raf);
-    var from = a.pos, dist = x - from; if (Math.abs(dist) < 0.5) { place(a, x); end(a); return; }
+    a.goal = x; var from = a.pos, dist = x - from; if (Math.abs(dist) < 0.5) { place(a, x); end(a); return; }
     var dur = Math.max(900, Math.min(1700, 900 + Math.abs(dist) * 2.2));            // slow and deliberate
     if (v0) dur = Math.max(400, Math.min(4500, 3 * Math.abs(dist) / Math.abs(v0) * 1000));   // ease out starts at the speed we were already going
     var t0 = performance.now();
@@ -150,14 +150,18 @@
     })(t0);
   }
   function tap(t, d) {
-    var a = begin(t), S = snaps(t), cur = a.pos, x;
-    if (phone()) {
+    var a = begin(t), S = snaps(t), max = t.scrollWidth - t.clientWidth;
+    var cur = (a.raf && a.goal != null) ? a.goal : a.pos, x;     // a quick second tap carries on from where the last one is heading
+    if ((d > 0 && cur >= max - 2) || (d < 0 && cur <= 2)) x = d > 0 ? 0 : max;   // at the end: loop round to the other end
+    else if (phone()) {
       x = d > 0 ? S.filter(function (s) { return s > cur + 2; })[0] : S.filter(function (s) { return s < cur - 2; }).pop();
-      if (x === undefined) x = d > 0 ? t.scrollWidth - t.clientWidth : 0;
+      if (x === undefined) x = d > 0 ? max : 0;
     } else {
       var want = cur + d * t.clientWidth * 0.92, best = want, bd = 1e9;
       S.forEach(function (s) { var dd = Math.abs(s - want); if (dd < bd) { bd = dd; best = s; } }); x = best;
+      if (Math.abs(x - cur) < 2) x = d > 0 ? Math.min(max, cur + t.clientWidth * 0.5) : Math.max(0, cur - t.clientWidth * 0.5);
     }
+    a.goal = x;
     glideTo(a, x);
   }
   function holdStart(t, d) {
