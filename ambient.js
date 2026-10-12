@@ -344,8 +344,9 @@
       s.connect(f); f.connect(g); g.connect(drumBus); if (toDelay) { var d = ctx.createGain(); d.gain.value = toDelay; g.connect(d); d.connect(dly); }
       s.start(t, Math.random() * 1.5); s.stop(t + dur + 0.05);
     }
-    function kick808(t, f1, decay, lv, slide) {
+    function kick808(t, f1, decay, lv, slide, echo) {
       var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
+      if (echo) { var es = ctx.createGain(); es.gain.value = echo; g.connect(es); es.connect(dly); }   // the boom echoes and lingers
       f1 *= 0.78;   // Oct 11: deeper
       o.frequency.setValueAtTime(f1 * 2.4, t); o.frequency.exponentialRampToValueAtTime(f1, t + 0.09);
       if (slide) o.frequency.exponentialRampToValueAtTime(f1 * 0.72, t + decay * 0.9);
@@ -359,21 +360,28 @@
       o.connect(g); g.connect(shaper); o.start(t); o.stop(t + 0.9);
       noiseHit(t, 'bandpass', 900, 0.7, 0.012, lv * 0.2);                      // the 909 click
     }
-    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 1050, 0.8, 0.26, lv, toDelay);
-      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(105, t + 0.1);
+    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 800, 0.8, 0.28, lv, toDelay);
+      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(88, t + 0.12);
       var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12); o.connect(g); g.connect(drumBus); o.start(t); o.stop(t + 0.15); }
-    function clap(t, lv) { for (var i = 0; i < 3; i++) noiseHit(t + i * 0.011, 'bandpass', 850, 1.2, i < 2 ? 0.03 : 0.25, lv); }
-    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 1400, 5, 0.06, lv, toDelay); }
+    function clap(t, lv) {                                                  // like real hands in a room, not a drum machine
+      var n = 3 + (Math.random() < 0.5 ? 1 : 0), tt = t;
+      for (var i = 0; i < n; i++) { noiseHit(tt, 'bandpass', rnd(700, 1000), 0.9, i < n - 1 ? rnd(0.018, 0.03) : rnd(0.16, 0.22), lv * (i < n - 1 ? rnd(0.6, 1) : 1), 0); tt += rnd(0.007, 0.014); }
+      var s = ctx.createBufferSource(); s.buffer = hiss; var f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 1600;
+      var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, tt); g.gain.exponentialRampToValueAtTime(0.0008, tt + 0.35);
+      var rs = ctx.createGain(); rs.gain.value = 0.6;
+      s.connect(f); f.connect(g); g.connect(drumBus); g.connect(rs); rs.connect(revIn); s.start(tt, Math.random()); s.stop(tt + 0.4);
+    }
+    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 1000, 4, 0.07, lv, toDelay); }
     function hat(t, lv, open) { noiseHit(t, 'bandpass', 4800, 0.8, open ? 0.3 : 0.045, lv * 0.7); }
     function shaker(t, lv) { noiseHit(t, 'bandpass', 3800, 1.4, 0.07, lv * 0.75); }
     function bassNote(t, f, dur, lv, type) {
       var o = ctx.createOscillator(); o.type = type || 'sine'; o.frequency.value = f;
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 260; var g = ctx.createGain();
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 170; var g = ctx.createGain();
       g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.02); g.gain.setValueAtTime(lv, t + dur * 0.7); g.gain.linearRampToValueAtTime(0, t + dur);
-      o.connect(lp); lp.connect(g); g.connect(drumBus); o.start(t); o.stop(t + dur + 0.05);
+      o.connect(lp); lp.connect(g); g.connect(shaper);                     // through the warm saturator: deep, but still heard on small speakers o.start(t); o.stop(t + dur + 0.05);
     }
     function reese(t, f, dur, lv) {                                        // dark drum and bass bass: two detuned saws, low passed, moving
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2; lp.frequency.setValueAtTime(220, t); lp.frequency.linearRampToValueAtTime(520, t + dur * 0.5); lp.frequency.linearRampToValueAtTime(240, t + dur);
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2; lp.frequency.setValueAtTime(150, t); lp.frequency.linearRampToValueAtTime(340, t + dur * 0.5); lp.frequency.linearRampToValueAtTime(160, t + dur);
       var g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.03); g.gain.setValueAtTime(lv, t + dur * 0.8); g.gain.linearRampToValueAtTime(0, t + dur);
       [-9, 9].forEach(function (c) { var o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = c; o.connect(lp); o.start(t); o.stop(t + dur + 0.05); });
       lp.connect(g); g.connect(drumBus);
@@ -395,14 +403,17 @@
       dnbJungle: { bpm: 168, bar: function (t, q, r) { kick909(t, 0.7); kick909(t + q * 10, 0.6); snare(t + q * 4, 0.16); snare(t + q * 12, 0.16);
         [3, 6, 7, 9, 14, 15].forEach(function (k) { rim(t + q * k, 0.05 + Math.random() * 0.04); });
         for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.018); kick808(t, r * 0.9, 1.1, 0.55, true); kick808(t + q * 8, r * 1.1, 0.9, 0.45, true); } },
-      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 1.6, 0.95, true); kick808(t + q * 10, r * 1.06, 1.2, 0.8, true); clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);
+      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 2.8, 0.95, true, 0.4); kick808(t + q * 10, r * 1.06, 2.2, 0.8, true, 0.35);   // the boom hangs for a second or two and echoes clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);
         for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } }
     };
     var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808'];   // drum and bass or Miami bass only, never a house beat
-    var drumJobs = [], lastGroove = '';
+    var drumJobs = [], lastGroove = '', nextDrumAt = 0;
     function drumSection(t0, t1, dark, root) {
+      if (drumJobs.length || t0 < nextDrumAt) return;                    // only one groove at a time, and long gaps between them
       var pool = (dark ? DARK_GROOVES : BRIGHT_GROOVES).filter(function (g) { return g !== lastGroove; });
-      var name = pool[Math.floor(Math.random() * pool.length)]; lastGroove = name;
+      var name = pool[Math.floor(Math.random() * pool.length)];
+      if (window.__RCX_AMBIENT_TEST && window.__RCX_GROOVE) name = window.__RCX_GROOVE;   // for test recordings only
+      lastGroove = name;
       var G = GROOVES[name], q = 60 / G.bpm / 4, barLen = q * 16;
       var bars = Math.floor((t1 - t0) / barLen); if (bars < 4) return;
       t1 = t0 + bars * barLen;
@@ -412,6 +423,7 @@
       drumBus.gain.linearRampToValueAtTime(0.0001, t1);                                  // and out over two
       if (window.__RCX_AMBIENT_TEST) console.log('drums ' + name + ' at ' + Math.round(t0) + 's to ' + Math.round(t1) + 's');
       drumJobs.push({ t: t0, end: t1, bar: barLen, q: q, G: G, root: root });
+      nextDrumAt = t1 + 180 + rnd(0, 60);                                  // at least three minutes of no drums after this one
     }
     function drumTick(horizon) {
       for (var i = 0; i < drumJobs.length; i++) { var j = drumJobs[i];
@@ -458,7 +470,7 @@
       natureTo(b3, 0.22, 5);
       if (Math.random() < 0.45 && busy(b1 + s1, b1 + s1 + s2 + s3) < 3) { claim(b1 + s1, b1 + s1 + s2 + s3); nightNature(b1 + s1, s2 + s3); }   // crickets only some of the time
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
-      if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.25 : 1.5));
+      if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.12 : 1.25));
       acts.t = b3 + s3 - 4;
       acts.n++;
     }
