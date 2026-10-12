@@ -319,8 +319,8 @@
         var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
-      var r0 = end - rnd(0, 4), r1 = end + rnd(30, 50);
-      if (Math.random() < 0.55 && busy(r0, r1) < 3) { var rn = 'rain'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.34, 0.40), dark); }
+      var r0 = end - rnd(0, 3), r1 = end + rnd(35, 55);   // Oct 11 (later): as the new section builds back up, most of the time
+      if (Math.random() < 0.85 && busy(r0, r1) < 3) { var rn = 'rain'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.34, 0.40), dark); }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
