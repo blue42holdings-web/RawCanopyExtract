@@ -526,7 +526,7 @@
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
     btn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
-    btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
+    btn.addEventListener('click', function (ev) { ev.stopPropagation(); if (window.__rcxBeep) window.__rcxBeep(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
   setInterval(function () { if (btn && !document.body.contains(btn)) { btn = null; mkBtn(); } }, 2000);
@@ -565,7 +565,7 @@
     rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
     rbtn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
     rbtn.addEventListener('click', function (ev) {
-      ev.stopPropagation();
+      ev.stopPropagation(); if (window.__rcxBeep) window.__rcxBeep();
       if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
       else if (muted) { toggle(); }
       if (!eng) return;
