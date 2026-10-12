@@ -5,7 +5,7 @@
      Turkey Tail: olive green down through the numbers, then red after the story band.
    - Rows sit close together; the three file boxes match in size. */
 (function () {
-  var MQ = matchMedia('(min-width:768px)');
+  var MQ = matchMedia('(min-width:99999px)');
   var PAGES = {
     "Lion's Mane": { key: 'lm' },
     'Cordyceps': { key: 'cd' },
@@ -107,7 +107,7 @@
 
 /* Desktop Why One Ingredient painter (Oct 10) */
 (function () {
-  var MQ = matchMedia('(min-width:768px)'), BLUE = '#24425e';
+  var MQ = matchMedia('(min-width:99999px)'), BLUE = '#24425e';
   function run() {
     if (!MQ.matches) return;
     document.querySelectorAll('div[data-screen-label="Why One Ingredient"]').forEach(function (W) {
@@ -150,7 +150,7 @@
 
 /* Desktop Receipts painter (Oct 10): climber top like Shop, white down to "How to read a lab report", then the beach that scrolls and blends into sand color */
 (function () {
-  var MQ = matchMedia('(min-width:768px)'), SAND = '#2a2520';
+  var MQ = matchMedia('(min-width:99999px)'), SAND = '#2a2520';
   function run() {
     if (!MQ.matches) return;
     document.querySelectorAll('div[data-screen-label="Receipts"]').forEach(function (W) {
@@ -193,7 +193,7 @@
 
 /* Desktop FAQ tiles light up under the cursor; desktop black buttons get the wet slate look (Oct 10) */
 (function () {
-  var MQ = matchMedia('(min-width:768px) and (hover:hover)');
+  var MQ = matchMedia('(min-width:99999px) and (hover:hover)');
   var cur = null;
   document.addEventListener('mousemove', function (e) {
     if (!MQ.matches) return;
@@ -211,7 +211,7 @@
   var POS = ['20% 40%', '70% 60%', '40% 80%', '85% 25%', '10% 70%', '55% 35%', '30% 15%', '75% 85%', '50% 50%', '35% 65%'];
   var n = 0;
   function slate() {
-    if (!matchMedia('(min-width:768px)').matches) return;
+    if (!matchMedia('(min-width:99999px)').matches) return;
     document.querySelectorAll('main button, main a, main [role="button"], main [role="link"]').forEach(function (b) {
       if (b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"]')) return;
       var cs = getComputedStyle(b), r = b.getBoundingClientRect();
@@ -245,7 +245,7 @@
 /* Desktop home: the "what we do" box from the phone layout, placed under the seal (Oct 10) */
 (function () {
   function run() {
-    var desk = matchMedia('(min-width:768px)').matches;
+    var desk = matchMedia('(min-width:99999px)').matches;
     var ex = document.querySelector('[data-desk-para]');
     if (!desk) { if (ex) ex.remove(); return; }
     var pk = document.querySelector('[data-m="pk-dup"]'); if (!pk || !pk.getBoundingClientRect().height) return;
