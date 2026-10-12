@@ -423,3 +423,39 @@
   }, true);
   paint();
 })();
+
+/* Oct 11: phone header spacing. The mushroom stays put and the cart box stays put; SHOP and the menu lines
+   are placed so the space mushroom to SHOP, SHOP to menu, and menu to cart are exactly equal, measured on
+   what you actually see (the letters and lines, not their invisible boxes), on any phone width. */
+(function () {
+  function ink(el) {
+    if (!el) return null;
+    var r;
+    if (el.getAttribute('data-m') === 'nav-shop') {
+      var rg = document.createRange(); rg.selectNodeContents(el); r = rg.getBoundingClientRect();
+      var em = parseFloat(getComputedStyle(el).fontSize) || 21; return { left: r.left + em * 0.05, right: r.right - em * 0.14 };   // drop the letter spacing after the P and the side bearings
+    } else if (el.getAttribute('data-m') === 'nav-menu-btn') {
+      var sp = el.querySelector('span'); r = sp ? sp.getBoundingClientRect() : el.getBoundingClientRect();
+    } else if (el.getAttribute('data-m') === 'nav-mush') {
+      var sv = el.querySelector('svg'); r = sv ? sv.getBoundingClientRect() : el.getBoundingClientRect();
+      // the drawn mushroom fills about 17 of the 32 units across, centered
+      return { left: r.left + r.width * 0.25, right: r.right - r.width * 0.25 };
+    } else r = el.getBoundingClientRect();
+    return { left: r.left, right: r.right };
+  }
+  function run() {
+    var shop = document.querySelector('[data-m="nav"]>[data-m="nav-shop"]'), menu = document.querySelector('[data-m="nav"]>[data-m="nav-menu-btn"]');
+    var mush = document.querySelector('[data-m="nav"]>[data-m="nav-mush"]'), cart = document.querySelector('[data-m="nav"]>[data-m="nav-cart"]');
+    if (!shop || !menu || !mush || !cart) return;
+    if (innerWidth > 767 || !mush.offsetWidth || !menu.offsetWidth) { shop.style.removeProperty('--nx'); menu.style.removeProperty('--nx'); return; }
+    var cs = parseFloat(shop.style.getPropertyValue('--nx')) || 0, cm = parseFloat(menu.style.getPropertyValue('--nx')) || 0;
+    var M = ink(mush), S = ink(shop), N = ink(menu), C = ink(cart);
+    var sw = S.right - S.left, nw = N.right - N.left;
+    var gap = (C.left - M.right - sw - nw) / 3;
+    var sx = (M.right + gap) - (S.left - cs), nx = (M.right + gap + sw + gap) - (N.left - cm);
+    if (Math.abs(sx - cs) > 0.3) shop.style.setProperty('--nx', sx.toFixed(2) + 'px');
+    if (Math.abs(nx - cm) > 0.3) menu.style.setProperty('--nx', nx.toFixed(2) + 'px');
+  }
+  addEventListener('resize', run); if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+  setInterval(run, 800); run();
+})();
