@@ -1419,6 +1419,10 @@ html body .mx-sec[data-m="mx-cd"] .mx-title>a.mx-ic-link>img{background:linear-g
 html body .mx-sec[data-m="mx-rs"] .mx-title>a.mx-ic-link>img{background:linear-gradient(rgba(3,3,3,0.86),rgba(3,3,3,0.86)),url('assets/photo/wet-slate.jpeg') 85% 20%/auto 230% no-repeat !important;background-color:#050505 !important}
 html body .mx-sec[data-m="mx-tt"] .mx-title>a.mx-ic-link>img{background:linear-gradient(rgba(3,3,3,0.86),rgba(3,3,3,0.86)),url('assets/photo/wet-slate.jpeg') 85% 20%/auto 230% no-repeat !important;background-color:#050505 !important}
 </style>
+<style id="shop-img-center">
+/* Oct 11 (eve): phone Shop cards, the tin or box picture sits in the middle of the text block beside it, not stuck in the top corner */
+@media (max-width:767px){html body [data-screen-label="Shop"][data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(n) > :first-child:first-child{align-self:center !important}}
+</style>
 <style>html body [data-m="how-intro"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:rgba(0,0,0,.28) !important}html body [data-fb="42"] > .hw-box:nth-child(1):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/kitchen-blender-greens.jpg") center 50% / cover no-repeat !important}html body [data-fb="42"] > .hw-box:nth-child(2):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/kettle-rocks-fire.jpg") center 45% / cover no-repeat !important}html body [data-fb="42"] > .hw-box:nth-child(3):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/kettle-tripod-camp.jpg") center / cover no-repeat !important}html body [data-m="wy-split"] > .wy-box:nth-child(1):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/grow-farm-valley.jpg") center / cover no-repeat !important}html body [data-m="wy-split"] > .wy-box:nth-child(2):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/hex-lab.jpg") center / cover no-repeat !important}html body [data-m="about-hero"] > div[style*="max-width"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/hiker-summit-sunset.jpg") center 40% / cover no-repeat !important}html body [data-screen-label="Receipts"] > section:first-child > div > p:first-of-type:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14){background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.74)),url("assets/photo/tent-night-coast.jpg") center / cover no-repeat !important}</style>
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div style="position: relative">
@@ -4475,6 +4479,14 @@ class Component extends DCLogic {
       ts.connect(thp).connect(tg).connect(ctx.destination);
       const tdl = ctx.createDelay(1); tdl.delayTime.value = P.tdl; const tfb = ctx.createGain(); tfb.gain.value = P.tfb; const twet = ctx.createGain(); twet.gain.value = P.twet; const tlp = ctx.createBiquadFilter(); tlp.type = 'lowpass'; tlp.frequency.value = 5200; tg.connect(tdl); tdl.connect(tlp); tlp.connect(tfb).connect(tdl); tlp.connect(twet).connect(ctx.destination);
       ts.start(now + P.tAt);
+      /* Oct 11 (eve): a soft bubble pop layered under every click, same quiet level as the beep */
+      const pf = 360 + Math.random() * 140;
+      const po = ctx.createOscillator(); po.type = 'sine';
+      po.frequency.setValueAtTime(pf, now + P.tAt); po.frequency.exponentialRampToValueAtTime(pf * 3.1, now + P.tAt + 0.035);
+      const pg = ctx.createGain(); pg.gain.setValueAtTime(0.0001, now + P.tAt); pg.gain.exponentialRampToValueAtTime(0.07, now + P.tAt + 0.006); pg.gain.exponentialRampToValueAtTime(0.0001, now + P.tAt + 0.09);
+      const plp = ctx.createBiquadFilter(); plp.type = 'lowpass'; plp.frequency.value = 2600;
+      po.connect(plp).connect(pg).connect(ctx.destination);
+      po.start(now + P.tAt); po.stop(now + P.tAt + 0.1);
     } catch (err) {}
   };
 
