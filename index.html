@@ -4087,7 +4087,22 @@ class Component extends DCLogic {
   onQuery = (e) => this.setState({ query: e.target.value });
   clearQuery = () => this.setState({ query: '' });
 
-  cxMove = (e) => { const b = e.currentTarget, t = b.closest('.cx').querySelector('.cx-track'); const d = Number(b.dataset.d); if (window.matchMedia && window.matchMedia('(max-width:767px)').matches && t.children.length) { const kids = Array.from(t.children), tr = t.getBoundingClientRect(), mid = tr.left + tr.width / 2; let cur = 0, best = 1e9; kids.forEach((k, i) => { const r = k.getBoundingClientRect(), dd = Math.abs(r.left + r.width / 2 - mid); if (dd < best) { best = dd; cur = i; } }); const ni = Math.max(0, Math.min(kids.length - 1, cur + (d > 0 ? 1 : -1))), k = kids[ni], kr = k.getBoundingClientRect(); t.scrollTo({ left: t.scrollLeft + (kr.left + kr.width / 2 - mid), behavior: 'smooth' }); return; } t.scrollBy({ left: d * t.clientWidth, behavior: 'smooth' }); };
+  cxMove = (e) => {
+    const b = e.currentTarget, t = b.closest('.cx').querySelector('.cx-track'); const d = Number(b.dataset.d) > 0 ? 1 : -1;
+    const kids = Array.from(t.children);
+    if (window.matchMedia && window.matchMedia('(max-width:767px)').matches && kids.length) {
+      const tr = t.getBoundingClientRect(), mid = tr.left + tr.width / 2;
+      const center = (k) => { const r = k.getBoundingClientRect(); return r.left + r.width / 2 - mid + t.scrollLeft; };
+      const now = Date.now();
+      let cur = t._ci;
+      if (cur == null || now - (t._ct || 0) > 1100) { let best = 1e9; cur = 0; kids.forEach((k, i) => { const dd = Math.abs(center(k) - t.scrollLeft); if (dd < best) { best = dd; cur = i; } }); }
+      const ni = Math.max(0, Math.min(kids.length - 1, cur + d));
+      t._ci = ni; t._ct = now;
+      t.scrollTo({ left: Math.max(0, center(kids[ni])), behavior: 'smooth' });
+      return;
+    }
+    t.scrollBy({ left: d * t.clientWidth, behavior: 'smooth' });
+  };
   ritMove = () => this.setState(s => ({ rit: s.rit ? 0 : 1 }));
 
   toggleFaq = (e) => {
