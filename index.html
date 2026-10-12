@@ -5384,5 +5384,11 @@ html body .rit-arrow.rit-arrow{width:42px !important;height:42px !important;font
 /* Oct 11: the kickoff photo in the Lion's Mane row: both heads and the football in frame */
 html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-kickoff"][style*="lm-grandpa-kickoff"][style*="lm-grandpa-kickoff"][style*="lm-grandpa-kickoff"]{background-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 48%,rgba(0,0,0,.94) 53%,rgba(0,0,0,.94) 100%),url('assets/photo/lm-grandpa-kickoff.jpg') !important;background-size:100% 100%,auto 215px !important;background-position:0 0,50% 0 !important}
 </style>
+<style id="left-arrow-keep">
+/* Oct 11: on phones a tapped button stays "hovered", which turned the left arrow's chevron black on the dark circle.
+   The left arrow keeps its gold chevron in every state. */
+html body .rit-arrow[data-d="-1"]:hover,html body .rit-arrow[data-d="-1"]:active,html body .rit-arrow[data-d="-1"]:focus,html body .rit-arrow[aria-label^="Previous"]:hover,html body .rit-arrow[aria-label^="Previous"]:active,html body .rit-arrow[aria-label^="Previous"]:focus,html body .shoptg-ar[aria-label="Show tins"]:hover,html body .shoptg-ar[aria-label="Show tins"]:active{color:#E9C079 !important}
+@media (hover:none){html body .rit-arrow[data-d="1"]:hover,html body .rit-arrow[aria-label^="Next"]:hover{background:#F7F4EA !important;color:#6B4608 !important}}
+</style>
 </body>
 </html>
