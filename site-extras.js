@@ -345,3 +345,19 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   setInterval(fix, 1000); fix();
 })();
+
+/* Oct 11: Shop page. The arrow pair under the tins and boxes is gone; the same Steel Tins | Kraft Boxes switch
+   from the top is repeated there instead, so you can flip between them from either end. */
+(function () {
+  function run() {
+    var nav = document.querySelector('[data-screen-label="Shop"] .shoptg-nav');
+    var bar = document.querySelector('[data-screen-label="Shop"] .shoptg-bar:not([data-bar-copy])');
+    if (!nav || !bar) return;
+    var prev = nav.previousElementSibling;
+    if (prev && prev.hasAttribute('data-bar-copy')) return;
+    var c = bar.cloneNode(true); c.setAttribute('data-bar-copy', ''); c.removeAttribute('data-dc-tpl');
+    c.querySelectorAll('[data-dc-tpl]').forEach(function (e) { e.removeAttribute('data-dc-tpl'); });
+    nav.parentNode.insertBefore(c, nav);
+  }
+  setInterval(run, 800); run();
+})();
