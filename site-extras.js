@@ -61,8 +61,8 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 
   /* ---------- 2. slow brighten on still background photos ---------- */
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
-    en.forEach(function (e) { if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height > innerHeight * 0.35)) { var d = e.target.__dk; if (d) d.style.opacity = '0'; io.unobserve(e.target); } });
-  }, { threshold: [0, 0.05, 0.1, 0.25] }) : null;
+    en.forEach(function (e) { if (e.isIntersecting) { var d = e.target.__dk; if (d) d.style.opacity = '0'; io.unobserve(e.target); } });
+  }, { rootMargin: '-38% 0px -38% 0px', threshold: 0 }) : null;   // Oct 11: stays dark until it reaches about the middle of the screen
 
   function busy(el) {
     if (el.hasAttribute('data-lift-bg') || el.hasAttribute('data-lift-once') || el.closest('[data-lift-bg]')) return true;
@@ -273,11 +273,13 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   var NEW = /assets\/photo\/(about-beach-seastack|about-shasta-clouds|dodge03-diver|lab-hand-closeup|lab-mushroom-extraction|lab-powder-coat|lab-reishi-weighing|lab-soxhlet-extraction|lab-steel-tanks|lm-grandma-girl-puzzle|lm-grandma-puzzle|lm-grandpa-football-park|lm-grandpa-kickoff|lm-grandpa-puzzle|lm-powder-pile|mag-rack-\d+|mess-counter|mess-counter-v2|mess-floor|mess-swirl|mtb-rider-side|reef-aerial-aqua|reef-aerial-sky|tr-[a-z-]+|tt-airport-crowd|tt-airport-security-line|tt-baggage-claim-crowd|tt-feet-in-line|tt-queue-feet|tt-train-crowd|yoga-vertical)\./;
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
     en.forEach(function (e) {
-      if (e.isIntersecting && (e.intersectionRatio >= 0.25 || e.intersectionRect.height > innerHeight * 0.35)) {
+      if (e.isIntersecting) {
         var d = e.target.__nk; if (d) requestAnimationFrame(function () { d.style.opacity = '0'; }); io.unobserve(e.target);
       }
     });
-  }, { threshold: [0, 0.1, 0.25] }) : null;
+  }, { rootMargin: '-38% 0px -38% 0px', threshold: 0 }) : null;   // stays dark until about the middle of the screen
+  // at the very bottom of a page nothing more can reach the middle, so whatever is on screen lights up
+  addEventListener('scroll', function () { if (innerHeight + scrollY < document.documentElement.scrollHeight - 4) return; document.querySelectorAll('[data-new-dim]').forEach(function (d) { var r = d.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) d.style.opacity = '0'; }); }, { passive: true });
   function shade(css) { var d = document.createElement('div'); d.setAttribute('aria-hidden', 'true'); d.setAttribute('data-new-dim', ''); d.style.cssText = css + 'pointer-events:none;background:#000;opacity:.55;transition:opacity 11s cubic-bezier(.3,.1,.3,1) .5s'; return d; }
   function bg(el) {
     if (el.__nk || el.__nkSkip) return;
