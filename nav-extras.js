@@ -338,7 +338,7 @@
    stations, lines. Extraction and filler talk: the lab. Every other numbers box: modern transport. */
 (function () {
   var P = 'assets/photo/';
-  var CROWD = ['tt-train-crowd.jpg', 'tt-baggage-claim-crowd.jpg', 'tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
+  var CROWD = ['tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
   var MOVE = ['tr-maglev.jpg', 'tr-bullet-tunnel.jpg', 'tr-future-train.jpg', 'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-bus-motion.jpg'];
   var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
   function run() {
