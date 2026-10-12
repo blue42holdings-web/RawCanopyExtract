@@ -3726,11 +3726,22 @@ class Component extends DCLogic {
   };
 
   buildAboutSeal() {
+    // Oct 11: the About page seal uses the script version (Single Ingredient Organic in cursive)
     const n = this._aboutNode;
-    if (!n || !n.isConnected || !this._seal || this._aboutBuilt) return;
+    if (!n || !n.isConnected || this._aboutBuilt) return;
+    if (!this._aboutSvg) {
+      if (!this._aboutSvgLoading) {
+        this._aboutSvgLoading = true;
+        fetch('assets/seal-script.svg?v=1').then(r => r.text()).then(t => {
+          if (/^\s*<svg/i.test(t)) this._aboutSvg = t; else this._aboutSvg = this._seal;
+          this.buildAboutSeal();
+        }).catch(() => { this._aboutSvg = this._seal; this.buildAboutSeal(); });
+      }
+      return;
+    }
     this._aboutBuilt = true;
     if (this._sealObs) this._sealObs.disconnect();
-    this._sealObs = this.assembleSeal(n, true);
+    this._sealObs = this.assembleSeal(n, true, this._aboutSvg);
   }
 
   catalog = {
