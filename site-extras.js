@@ -74,7 +74,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     var pb = getComputedStyle(el, '::before'), pa = getComputedStyle(el, '::after');
     if ((pb.animationName && pb.animationName !== 'none') || (pa.animationName && pa.animationName !== 'none')) return true;
     if (/background|filter|--/.test(cs.transitionProperty) && parseFloat(cs.transitionDuration) > 0) return true;
-    if (el.classList.contains('cd-lit') || el.matches('[data-ph="summit-arms-out"],[data-m="cd-fbox"]')) return true;
+    if (el.classList.contains('cd-lit') || el.matches('[data-ph="summit-arms-out"],[data-m="cd-fbox"],section.clean-band')) return true;
     return false;
   }
   function dim(el) {
