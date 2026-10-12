@@ -225,7 +225,7 @@
   ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { unshift(); mode = 'wait'; until = performance.now() + WAIT; } }, true);
   addEventListener('popstate', function () { unshift(); mode = 'wait'; until = performance.now() + WAIT; });
-  function jump(y) { var h = document.documentElement, b = h.style.scrollBehavior; h.style.scrollBehavior = 'auto'; window.scrollTo(0, y); h.style.scrollBehavior = b; }
+  function jump(y) { try { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); } }   // no style change on the page (that forced a full restyle every step)
   function fixedInside() {   // the story player bar or the menu drawer are fixed inside the page; never shift the page under them
     var r = root(); if (!r) return true;
     var f = r.querySelectorAll('[data-m="player"],[style*="position:fixed"]');
@@ -275,6 +275,7 @@
         if (pos <= 0) { pos = 0; unshift(); jump(0); mode = 'wait'; until = now + WAIT; }
       } else { unshift(); }
     } else { unshift(); pos = scrollY; }
+    window.__rcxAutoMoving = (mode === 'down' || mode === 'up') && !blocked();   // photo effects hold still while the page drifts
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

@@ -306,3 +306,30 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   setInterval(scan, 1200); scan();
 })();
+
+/* Oct 11: the Read Aloud button sits inside the gold frame, 18px in from the top and the right, with photo
+   showing above it and beside it, never on the border. Same spot on every page. */
+(function () {
+  var IN = 18;
+  function fix() {
+    document.querySelectorAll('[data-screen-label] [data-tts-skip]:not([data-m="hdr-tts"])').forEach(function (d) {
+      if (d.closest('[data-story-titleblock]') || getComputedStyle(d).position !== 'absolute' || !d.offsetHeight) return;
+      var op = d.offsetParent, frame = null; if (!op) return;
+      for (var p = d.parentElement, n = 0; p && n < 8 && !p.hasAttribute('data-screen-label'); p = p.parentElement, n++) {
+        var c = getComputedStyle(p), bw = parseFloat(c.borderRightWidth); if (bw > 1.5 && bw < 10 && c.borderRightStyle !== 'none' && !/rgba\([^)]*,\s*0\)|transparent/.test(c.borderRightColor)) { frame = p; break; }
+      }
+      if (!frame) return;
+      var fc = getComputedStyle(frame), fr = frame.getBoundingClientRect(), oc = getComputedStyle(op), orr = op.getBoundingClientRect();
+      var fTop = fr.top + parseFloat(fc.borderRightWidth), fRight = fr.right - parseFloat(fc.borderRightWidth);
+      var oTop = orr.top + parseFloat(oc.borderTopWidth), oRight = orr.right - parseFloat(oc.borderRightWidth);
+      var t = (IN + fTop - oTop).toFixed(1) + 'px', r = (IN + oRight - fRight).toFixed(1) + 'px';
+      if (d.style.top !== t) d.style.setProperty('top', t, 'important');
+      if (d.style.right !== r) d.style.setProperty('right', r, 'important');
+      // keep the opening words clear of the button: they start below it
+      var host = d.parentElement, br = d.getBoundingClientRect(), first = null;
+      for (var k = host.firstElementChild; k; k = k.nextElementSibling) { if (k === d || k.contains(d) || !k.offsetHeight || getComputedStyle(k).position === 'absolute') continue; first = k; break; }
+      if (first) { var fb = first.getBoundingClientRect(); if (fb.left < br.right && fb.right > br.left) { var gap = fb.top - br.bottom; if (gap < 14) { var pt = parseFloat(getComputedStyle(host).paddingTop) || 0; host.style.setProperty('padding-top', (pt + 14 - gap) + 'px', 'important'); } } }
+    });
+  }
+  setInterval(fix, 1000); fix();
+})();

@@ -98,7 +98,7 @@ function setActive(el,info){
   active=st; on(st);
 }
 var px=-1,py=-1,queued=false;
-function tick(){ queued=false; if(px<0){ setActive(null); return; }
+function tick(){ queued=false; if(px<0||window.__rcxAutoMoving){ setActive(null); return; }   /* Oct 11: no zoom effects while the page scrolls itself, so the drift stays perfectly smooth */
   var els=document.elementsFromPoint(px,py), hit=null, info=null;
   for(var i=0;i<els.length;i++){ var e=els[i]; if(e===document.body||e===document.documentElement) break; var m=match(e); if(m){ hit=e; info=m; break; } }
   setActive(hit,info);
@@ -108,7 +108,7 @@ document.addEventListener('mousemove',function(e){ px=e.clientX; py=e.clientY; i
 document.addEventListener('mouseleave',function(){ px=-1; setActive(null); });
 } else {
 /* touch devices: play whichever image sits at the middle of the screen; reset when it scrolls away */
-var center=function(){ if(document.hidden) return; px=innerWidth/2; py=innerHeight/2; var pr=document.querySelectorAll('[data-lift-probe]'); for(var pi=0;pi<pr.length;pi++){ var rr=pr[pi].getBoundingClientRect(); if(rr.width&&rr.top<=py&&rr.bottom>=py&&(rr.left>px||rr.right<px)){ px=(rr.left+rr.right)/2; break; } if(rr.width&&rr.bottom<py&&rr.top>=0&&scrollY<40){ px=(rr.left+rr.right)/2; py=(rr.top+rr.bottom)/2; break; } } if(!queued){ queued=true; requestAnimationFrame(tick); } };
+var lastC=0; var center=function(){ if(document.hidden) return; var nc=performance.now(); if(nc-lastC<350) return; lastC=nc;   /* Oct 11: at most ~3 checks a second, so slow scrolling never stutters */ px=innerWidth/2; py=innerHeight/2; var pr=document.querySelectorAll('[data-lift-probe]'); for(var pi=0;pi<pr.length;pi++){ var rr=pr[pi].getBoundingClientRect(); if(rr.width&&rr.top<=py&&rr.bottom>=py&&(rr.left>px||rr.right<px)){ px=(rr.left+rr.right)/2; break; } if(rr.width&&rr.bottom<py&&rr.top>=0&&scrollY<40){ px=(rr.left+rr.right)/2; py=(rr.top+rr.bottom)/2; break; } } if(!queued){ queued=true; requestAnimationFrame(tick); } };
 window.addEventListener('scroll',center,{passive:true,capture:true}); window.addEventListener('load',center); setInterval(center,600); center();
 }
 if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
