@@ -133,6 +133,7 @@
     function padNote(t0, midi, dur, level) {
       var mm = midi + (DEEP ? 0 : ARR.trans); while (mm > 74) mm -= 12;   // keep the pads out of the thin, whistly top register
       var f = mtof(mm), br = ARR.bright * (DEEP ? 0.42 : 1);
+      if (!DEEP) level *= 1.8;   /* Oct 12: the bright music sat about 20 dB under the dark drones and could drop out of earshot; brought up a little */
       var bus = ctx.createGain(); bus.gain.value = 0;
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.9;   // a little analog filter resonance as it sweeps
       lp.frequency.setValueAtTime(Math.min(1400, f * 1.6 * br + 180), t0);
@@ -239,7 +240,8 @@
     // birds, ocean, frogs, crows, distant thunder, cave droplets and the odd owl. Each act picks its own
     // handful, brings them in one at a time as the music thins, then lifts them out one at a time.
     var FIELD_DIR = 'assets/audio/nature/', bufs = {};
-    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.57;   // Oct 11: halfway between the first level (0.85) and the quiet one (0.38) fieldBus.connect(duck);
+    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.57;   // Oct 11: halfway between the first level (0.85) and the quiet one (0.38)
+    fieldBus.connect(duck);   // Oct 12: this connection had been swallowed by the comment above, so no recorded nature ever reached the speakers
     function loadField(n) {
       if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3?v=2').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
         .then(function (ab) { return ab ? new Promise(function (res) { ctx.decodeAudioData(ab, res, function () { res(null); }); }) : null; })
@@ -315,7 +317,7 @@
       var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
       if (t1 - t0 < 25) return;
       var main = pickOne(dark);
-      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.8, 0.9) : (dark ? 0.5 : 0.48), dark); }
+      /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.8, 0.9) : (dark ? 0.5 : 0.48), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
       if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
         var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.8 : 0.34, dark);   // rain a notch up so it is noticed, still soft
@@ -386,7 +388,8 @@
       var o = ctx.createOscillator(); o.type = type || 'sine'; o.frequency.value = f;
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 170; var g = ctx.createGain();
       g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.02); g.gain.setValueAtTime(lv, t + dur * 0.7); g.gain.linearRampToValueAtTime(0, t + dur);
-      o.connect(lp); lp.connect(g); g.connect(shaper);                     // through the warm saturator: deep, but still heard on small speakers o.start(t); o.stop(t + dur + 0.05);
+      o.connect(lp); lp.connect(g); g.connect(shaper);                     // through the warm saturator: deep, but still heard on small speakers
+      o.start(t); o.stop(t + dur + 0.05);
     }
     function reese(t, f, dur, lv) {                                        // dark drum and bass bass: two detuned saws, low passed, moving
       var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2; lp.frequency.setValueAtTime(150, t); lp.frequency.linearRampToValueAtTime(340, t + dur * 0.5); lp.frequency.linearRampToValueAtTime(160, t + dur);
