@@ -4494,7 +4494,7 @@ class Component extends DCLogic {
     try { ctx = this.wakeClickCtx(); } catch (err) { return; }
     const t = e.target && e.target.closest && e.target.closest('button, a[href], [role="link"], [data-page], input[type="submit"], summary, label, .shoptg-l, .mx-tabs label');
     if (!t || t.disabled || !ctx) return;
-    const popOn = !!t.closest('[data-m="nav-mush"], [data-m="nav-panel"]');
+    const popOn = !!t.closest('[data-m="nav-mush"]');   // Oct 11: pop only on the gold header mushroom; menu taps use the normal click
     if (ctx.state === 'running') { this.renderClick(ctx, popOn); return; }
     const at = Date.now();
     try { ctx.resume().then(() => { if (ctx.state === 'running' && Date.now() - at < 400) this.renderClick(ctx, popOn); }).catch(() => {}); } catch (err) {}
