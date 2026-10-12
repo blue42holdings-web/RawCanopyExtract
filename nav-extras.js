@@ -353,12 +353,11 @@
 (function () {
   var r = document.getElementById('rcx-rail'); if (!r) return;
   var m = r.querySelector('.rr-menu'), btn = r.querySelector('button'); if (!m || !btn) return;
-  var IH = 50, VIS = 5;                                  // item height, items visible at once
+  var IH = 42, VIS = 11;                                 // item height; window tall enough that every item always shows
   var st = document.createElement('style');
   st.textContent =
     '#rcx-rail .rr-menu.rr-wheel{position:fixed !important;right:46px !important;top:var(--rw-top,0px) !important;transform:translateX(12px) !important;height:' + (IH * VIS) + 'px;overflow-y:auto;scroll-snap-type:y mandatory;' +
-      'overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0 !important;padding:' + (IH * 2) + 'px 6px;box-sizing:border-box;' +
-      '-webkit-mask-image:linear-gradient(transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 22%,#000 78%,transparent 100%)}' +
+      'overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0 !important;padding:' + (IH * 5) + 'px 6px;box-sizing:border-box;perspective:420px}' +
     '#rcx-rail.open .rr-menu.rr-wheel{transform:none !important}' +
     '#rcx-rail .rr-menu.rr-wheel::-webkit-scrollbar{display:none}' +
     '#rcx-rail .rr-menu.rr-wheel a{scroll-snap-align:center;height:' + (IH - 8) + 'px;margin:4px 0;box-sizing:border-box;display:flex !important;align-items:center;justify-content:flex-end;' +
@@ -371,11 +370,27 @@
     var c = m.scrollTop + m.clientHeight / 2, best = null, bd = 1e9;
     items.forEach(function (a) {
       var mid = a.offsetTop + a.offsetHeight / 2, d = Math.abs(mid - c) / IH;
-      var s = Math.max(0.72, 1.12 - d * 0.2), o = Math.max(0.22, 1 - d * 0.38);
-      a.style.transform = 'scale(' + s.toFixed(3) + ')'; a.style.opacity = o.toFixed(3);
+      var sd = (mid - c) / IH;                                            // signed: above or below the middle
+      var s = Math.max(0.5, 1.12 - d * 0.13), o = Math.max(0.3, 1 - d * 0.16);
+      a.style.transform = 'rotateX(' + (-sd * 13).toFixed(1) + 'deg) scale(' + s.toFixed(3) + ')'; a.style.opacity = o.toFixed(3);   // like a wheel turned a little to the side
       if (d < bd) { bd = d; best = a; }
     });
     items.forEach(function (a) { a.classList.toggle('rr-mid', a === best); });
+    if (best !== lastMid) { if (lastMid && r.classList.contains('open')) tick(); lastMid = best; }
+  }
+  // a soft dry click each time a new item rolls into the middle
+  var lastMid = null, actx = null;
+  function tick() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      if (!actx) actx = new AC(); if (actx.state === 'suspended') actx.resume();
+      var t = actx.currentTime, n = Math.floor(actx.sampleRate * 0.012), b = actx.createBuffer(1, n, actx.sampleRate), d = b.getChannelData(0);
+      for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 4);
+      var src = actx.createBufferSource(); src.buffer = b;
+      var bp = actx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2600; bp.Q.value = 1.4;
+      var g = actx.createGain(); g.gain.value = 0.22;
+      src.connect(bp); bp.connect(g); g.connect(actx.destination); src.start(t);
+    } catch (e) {}
   }
   m.addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true });
   function place() {
