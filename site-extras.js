@@ -246,7 +246,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.35) 150px,rgba(0,0,0,.4) calc(100% - 160px),#000 100%),url("assets/photo/about-shasta-clouds.jpg") 50% 50%/cover no-repeat', 'important');
     }
     var b = c.querySelector('.ab-brand-box');
-    if (b && !b.__sl) { b.__sl = 1; b.style.setProperty('background', 'linear-gradient(rgba(3,3,3,.8),rgba(3,3,3,.84)),url("assets/photo/slate-blur-4.jpg?v=2") 60% 40%/cover no-repeat', 'important'); }
+    if (b && !b.__sl) { b.__sl = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.74)),url("assets/photo/waterfall-stones.jpg") 50% 40%/cover no-repeat', 'important'); }
   }
   setInterval(run, 1000); run();
 })();
