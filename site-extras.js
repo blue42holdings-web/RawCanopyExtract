@@ -142,7 +142,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     });
     // any black clickable box or button, phone and desktop
     document.querySelectorAll('main button, main a, main label, main [role="button"], main [role="link"], main [onclick]').forEach(function (b) {
-      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"]')) return;
+      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"],.mx-tabs,.shoptg-bar')) return;   // two-way switches style themselves
       var r = b.getBoundingClientRect(); if (r.width < 30 || r.height < 26) return;
       var cs = getComputedStyle(b);
       if (cs.backgroundImage !== 'none') return;

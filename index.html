@@ -4742,7 +4742,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"]{background:#000 !important}
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
-<script src="site-extras.js?v=14"></script>
+<script src="site-extras.js?v=15"></script>
 <script src="nav-extras.js?v=17"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -5225,5 +5225,18 @@ html body [data-m="nav"]>[data-m="nav-menu-btn"][data-m="nav-menu-btn"][data-m="
 html body [data-m="nav"]>[data-m="nav-cart"][data-m="nav-cart"][data-m="nav-cart"]{padding-left:10px !important;padding-right:10px !important}
 }
 @media (max-width:385px){html body header [data-m="hdr-logo"][data-m="hdr-logo"],html body header [data-m="hdr-logo"][data-m="hdr-logo"] img,html body header [data-m="hdr-logo"][data-m="hdr-logo"] svg{max-width:112px !important;width:112px !important}}
+</style><style id="tab-invite">
+/* Oct 11: two-way switches. The side you are NOT on is smaller, dark and dimmer, with a little arrow,
+   and every few seconds it gently swells and glows to invite a tap. The side you are on stays big and gold. */
+html body .mx-r:nth-of-type(2):not(:checked) ~ .mx-tabs label:nth-child(2),html body .mx-r:nth-of-type(2):checked ~ .mx-tabs label:nth-child(1),html body #shoptg-box:not(:checked) ~ .shoptg-bar .shoptg-l2,html body #shoptg-box:checked ~ .shoptg-bar .shoptg-l1{background:rgba(8,8,8,.72) !important;color:#E9C079 !important;transform:scale(.9);opacity:.82;border-radius:999px;cursor:pointer;animation:rcxNudge 4.5s ease-in-out 2s infinite;transition:transform .3s,opacity .3s}
+html body .mx-r:nth-of-type(2):not(:checked) ~ .mx-tabs label:nth-child(2)::after,html body #shoptg-box:not(:checked) ~ .shoptg-bar .shoptg-l2::after{content:" \203A";font-family:inherit;margin-left:.35em;display:inline-block;animation:rcxArrowR 4.5s ease-in-out 2s infinite}
+html body .mx-r:nth-of-type(2):checked ~ .mx-tabs label:nth-child(1)::before,html body #shoptg-box:checked ~ .shoptg-bar .shoptg-l1::before{content:"\2039 ";font-family:inherit;margin-right:.35em;display:inline-block;animation:rcxArrowL 4.5s ease-in-out 2s infinite}
+html body .mx-tabs.mx-tabs,html body [data-screen-label="Shop"] .shoptg-bar.shoptg-bar{background:rgba(6,6,6,.62) !important;padding:4px !important;gap:4px;border-radius:999px !important}
+html body .mx-tabs.mx-tabs label,html body .shoptg-bar .shoptg-l{border-radius:999px;border-left:0 !important;white-space:nowrap !important}
+html body .mx-r:nth-of-type(2):not(:checked) ~ .mx-tabs label:nth-child(1),html body .mx-r:nth-of-type(2):checked ~ .mx-tabs label:nth-child(2),html body #shoptg-box:not(:checked) ~ .shoptg-bar .shoptg-l1,html body #shoptg-box:checked ~ .shoptg-bar .shoptg-l2{background:#D4A24A !important;color:#0B0B0B !important;transform:none;opacity:1;animation:none;border-radius:999px}
+@keyframes rcxNudge{0%,78%,100%{transform:scale(.9);box-shadow:none;opacity:.82}86%{transform:scale(.97);box-shadow:0 0 18px rgba(212,162,74,.55);opacity:1}93%{transform:scale(.9);box-shadow:0 0 6px rgba(212,162,74,.2)}}
+@keyframes rcxArrowR{0%,78%,100%{transform:none}86%{transform:translateX(4px)}93%{transform:none}}
+@keyframes rcxArrowL{0%,78%,100%{transform:none}86%{transform:translateX(-4px)}93%{transform:none}}
+@media (prefers-reduced-motion:reduce){html body .mx-r:nth-of-type(2):not(:checked) ~ .mx-tabs label:nth-child(2),html body .mx-r:nth-of-type(2):checked ~ .mx-tabs label:nth-child(1),html body #shoptg-box:not(:checked) ~ .shoptg-bar .shoptg-l2,html body #shoptg-box:checked ~ .shoptg-bar .shoptg-l1{animation:none}}
 </style></body>
 </html>
