@@ -400,7 +400,7 @@
       dnbJungle: { bpm: 168, bar: function (t, q, r) { kick909(t, 0.7); kick909(t + q * 10, 0.6); snare(t + q * 4, 0.16); snare(t + q * 12, 0.16);
         [3, 6, 7, 9, 14, 15].forEach(function (k) { rim(t + q * k, 0.05 + Math.random() * 0.04); });
         for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.018); kick808(t, r * 0.9, 1.1, 0.55, true); kick808(t + q * 8, r * 1.1, 0.9, 0.45, true); } },
-      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 2.8, 0.95, true, 0.4); kick808(t + q * 10, r * 1.06, 2.2, 0.8, true, 0.35);   // the boom hangs for a second or two and echoes clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);
+      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 2.8, 0.95, true, 0.4); kick808(t + q * 10, r * 1.06, 2.2, 0.8, true, 0.35); clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);   // the 808 boom hangs for a second or two and echoes
         for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } }
     };
     var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808'];   // drum and bass or Miami bass only, never a house beat
@@ -421,6 +421,23 @@
       if (window.__RCX_AMBIENT_TEST) console.log('drums ' + name + ' at ' + Math.round(t0) + 's to ' + Math.round(t1) + 's');
       drumJobs.push({ t: t0, end: t1, bar: barLen, q: q, G: G, root: root });
       nextDrumAt = t1 + 180 + rnd(0, 60);                                  // at least three minutes of no drums after this one
+    }
+    // REMIX button (Oct 11): each press on starts the next groove and keeps it going until pressed again
+    var REMIX = ['miami808', 'dnbLiquid', 'dnbAmen', 'dnbRoller', 'miami808', 'dnbNeuro', 'dnbJungle'], remixI = Math.floor(Math.random() * REMIX.length);
+    function remixOn() {
+      var name = REMIX[remixI % REMIX.length]; remixI++;
+      var G = GROOVES[name], q = 60 / G.bpm / 4, barLen = q * 16, t0 = ctx.currentTime + 0.15;
+      drumJobs = [];
+      drumBus.gain.cancelScheduledValues(ctx.currentTime); drumBus.gain.setValueAtTime(0.0001, ctx.currentTime);
+      drumBus.gain.linearRampToValueAtTime(0.5, t0 + barLen);                         // fades in over a bar
+      drumJobs.push({ t: t0, end: 1e12, bar: barLen, q: q, G: G, root: [36.71, 41.2, 38.89][remixI % 3] * 1.15 });
+      drumTick(ctx.currentTime + 1.5);
+      return name;
+    }
+    function remixOff() {
+      drumBus.gain.cancelScheduledValues(ctx.currentTime); drumBus.gain.setValueAtTime(drumBus.gain.value, ctx.currentTime);
+      drumBus.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
+      var j = drumJobs[0]; if (j) j.end = ctx.currentTime + 1.3;
     }
     function drumTick(horizon) {
       for (var i = 0; i < drumJobs.length; i++) { var j = drumJobs[i];
@@ -467,7 +484,7 @@
       natureTo(b3, 0.22, 5);
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
       // (crickets removed Oct 11)
-      if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.12 : 1.25));
+      // (Oct 11: no automatic drums. Beats only play from the REMIX button.)
       acts.t = b3 + s3 - 4;
       acts.n++;
     }
@@ -479,7 +496,7 @@
 
     return {
       master: master, duck: duck,
-      scheduleUntil: scheduleUntil, drumTick: drumTick, fieldBus: fieldBus, drumBus: drumBus,
+      scheduleUntil: scheduleUntil, drumTick: drumTick, remixOn: remixOn, remixOff: remixOff, fieldBus: fieldBus, drumBus: drumBus,
       slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.22 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
       fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
@@ -512,6 +529,43 @@
     document.body.appendChild(btn); refresh();
   }
   setInterval(function () { if (btn && !document.body.contains(btn)) { btn = null; mkBtn(); } }, 2000);
+  // REMIX: a little turntable above the Sound Bath box. Tap for a beat, tap again to stop, tap again for the next beat.
+  var rbtn = null, remixing = false;
+  function remixIcon(on) {
+    var c = on ? '#E9C079' : '#D4A24A';
+    return '<svg viewBox="0 0 28 24" width="26" height="22" fill="none" stroke="' + c + '" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;display:block' + (on ? ';animation:rcxSpin 1.8s linear infinite;transform-origin:11px 12px' : '') + '">' +
+      '<circle cx="11" cy="12" r="9"/><circle cx="11" cy="12" r="5.5" stroke-width="0.8" opacity=".6"/><circle cx="11" cy="12" r="1.6" fill="' + c + '"/>' +
+      '<path d="M24 3v11l-5 4" stroke-width="1.8"/><circle cx="24" cy="3" r="1.4" fill="' + c + '"/></svg>';
+  }
+  function rRefresh() {
+    if (!rbtn) return; var c = remixing ? '#F4D99A' : '#E9C079';
+    rbtn.innerHTML = remixIcon(remixing) + '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">REMIX</span>';
+    rbtn.style.boxShadow = remixing ? '0 0 16px rgba(212,162,74,.55),0 4px 14px rgba(0,0,0,.55)' : '0 4px 14px rgba(0,0,0,.55)';
+    rbtn.setAttribute('aria-label', remixing ? 'Remix on. Tap to stop the beat' : 'Remix. Tap to play a beat');
+  }
+  function mkRemix() {
+    if (!document.body) return;
+    var ex = document.querySelectorAll('[data-remix-btn]');
+    for (var i = 0; i < ex.length; i++) if (ex[i] !== rbtn) ex[i].parentNode.removeChild(ex[i]);
+    if (rbtn && document.body.contains(rbtn)) return;
+    var stl = document.createElement('style'); stl.textContent = '@keyframes rcxSpin{to{transform:rotate(360deg)}}'; document.head.appendChild(stl);
+    rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
+    rbtn.style.cssText = 'position:fixed;left:12px;bottom:92px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
+    rbtn.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
+      else if (muted) { toggle(); }
+      if (!eng) return;
+      if (ctx.state === 'suspended') ctx.resume();
+      fresh = false;
+      remixing = !remixing;
+      if (remixing) { eng.fadeIn(2); eng.remixOn(); } else eng.remixOff();
+      rRefresh(); refresh();
+    }, true);
+    document.body.appendChild(rbtn); rRefresh();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkRemix); else mkRemix();
+  setInterval(mkRemix, 2000);
   // keep the sound button clear of the story player bar: it rides up with the bar and comes back down
   setInterval(function () {
     if (!btn) return;
@@ -519,6 +573,7 @@
     if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
     var want = (12 + lift) + 'px';
     if (btn.style.bottom !== want) { btn.style.transition = 'bottom .3s ease'; btn.style.bottom = want; }
+    if (rbtn) { var rw = (12 + lift + btn.offsetHeight + 10) + 'px'; if (rbtn.style.bottom !== rw) { rbtn.style.transition = 'bottom .3s ease'; rbtn.style.bottom = rw; } }
   }, 120);
   function refresh() {
     if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
@@ -554,6 +609,7 @@
       storyOn = false; if (eng) eng.setDuck(1, 1.5);
     }
     try { if (muted) localStorage.setItem(KEY, 'off'); else localStorage.removeItem(KEY); } catch (e) {}
+    if (muted && remixing) { remixing = false; eng.remixOff(); rRefresh(); }
     if (muted) eng.fadeOut(1.5); else { if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(2.5); }
     refresh();
   }
