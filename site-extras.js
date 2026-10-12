@@ -195,7 +195,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (r.width < 2 || r.height < 2) return;
       var cs = getComputedStyle(e);
       if (cs.visibility === 'hidden' || +cs.opacity === 0) return;
-      if (r.width >= innerWidth - 4 && !/^(H\d|P|A|BUTTON|IMG|LI|LABEL)$/.test(e.tagName) && !/box|card/.test(e.className)) return; // full-width wrappers are backgrounds, not content
+      if (r.width >= innerWidth - 4 && !/^(H\d|P|A|BUTTON|IMG|LI|LABEL|svg|SVG)$/.test(e.tagName) && !/box|card/.test(e.className)) return; // full-width wrappers are backgrounds, not content
       out.push([r.top + scrollY, r.bottom + scrollY]);
     });
     return out;
@@ -217,6 +217,9 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     edges = edges.filter(function (y) { return y > 90 && y < H - 40; }).sort(function (a, b) { return a - b; });
     var uniq = []; edges.forEach(function (y) { if (!uniq.length || y - uniq[uniq.length - 1] > 24) uniq.push(y); });
     var cr = contentRects(main);
+    // Oct 12: nothing ever blurs over the home seal; skip every seam within the hero section
+    var hero = document.querySelector('section[data-m="hero"]'), hr = hero ? hero.getBoundingClientRect() : null;
+    if (hr && hr.height) uniq = uniq.filter(function (y) { return y < hr.top + scrollY - 100 || y > hr.bottom + scrollY + 100; });
     uniq.forEach(function (y) {
       // largest free gap around the seam, up to 90px each side
       var up = 90, dn = 90;
