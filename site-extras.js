@@ -439,3 +439,70 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   setInterval(run, 800); run();
 })();
+
+/* Oct 12: desktop layout. The phone design scaled up made every box a wide, short strip running edge to edge.
+   On a widescreen monitor: boxes that were stacked one per row sit side by side in two or three columns,
+   single boxes are centered with room on both sides, and any box much wider than it is tall gets extra
+   height (equal top and bottom, so its contents stay centered). Phone layout is untouched. */
+(function () {
+  var st = document.createElement('style');
+  st.textContent = '@media (min-width:1000px){' +
+    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){display:grid !important;grid-template-columns:repeat(var(--dk-cols),minmax(0,1fr)) !important;grid-auto-flow:row !important;grid-template-rows:none !important;grid-auto-rows:auto !important;gap:24px !important;width:auto !important;max-width:min(1000px,90%) !important;margin-left:auto !important;margin-right:auto !important;align-items:stretch !important;justify-items:stretch !important}' +
+    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > *{width:auto !important;max-width:none !important;min-width:0 !important;margin:0 !important;flex:none !important;grid-column:auto !important}' +
+    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > .dk-span{grid-column:1 / -1 !important}' +
+    'html body main .dk-solo.dk-solo.dk-solo:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){width:auto !important;max-width:min(820px,82%) !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important}' +
+    'html body main .dk-tall.dk-tall.dk-tall:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){padding-top:var(--dk-pt) !important;padding-bottom:var(--dk-pb) !important}' +
+    '}';
+  (document.head || document.documentElement).appendChild(st);
+  var MQ = window.matchMedia ? matchMedia('(min-width:1000px)') : { matches: false };
+  function bordered(e) {
+    var c = getComputedStyle(e), w = parseFloat(c.borderTopWidth) || 0;
+    return w >= 1 && c.borderTopStyle !== 'none' && !/,\s*0\)|transparent/.test(c.borderTopColor);
+  }
+  function excluded(e) {
+    return /^(BUTTON|FORM|INPUT|LABEL|IMG|SPAN|P|H1|H2|H3)$/.test(e.tagName) || e.closest('header,nav,footer,section[data-m="hero"],.cx-track,[data-m="player"],[data-seams]');
+  }
+  function boxes(root) {
+    return [].slice.call(root.querySelectorAll('*')).filter(function (e) { return !excluded(e) && e.offsetHeight > 40 && bordered(e); });
+  }
+  function run() {
+    if (!MQ.matches) return;
+    var main = document.querySelector('main'); if (!main) return;
+    var vw = innerWidth, list = boxes(main), fresh = [];
+    // 1. stacked siblings become a grid
+    var parents = [];
+    list.forEach(function (e) { var p = e.parentElement; if (p && parents.indexOf(p) < 0) parents.push(p); });
+    parents.forEach(function (p) {
+      if (p.classList.contains('dk-grid') || p.getAttribute('data-dk-no')) return;
+      var kids = [].slice.call(p.children).filter(function (k) { return list.indexOf(k) >= 0 && k.offsetHeight > 100; });
+      var wide = kids.filter(function (k) { return k.getBoundingClientRect().width > vw * 0.6; });
+      if (kids.length < 2 || wide.length < 2) { p.setAttribute('data-dk-no', '1'); return; }
+      var n = kids.length, cols = n % 3 === 0 || n >= 5 ? 3 : 2;
+      p.style.setProperty('--dk-cols', cols);
+      var kinds = kids.map(function (k) { return k.tagName + '.' + k.className; });
+      [].slice.call(p.children).forEach(function (k) { if (kids.indexOf(k) < 0 && kinds.indexOf(k.tagName + '.' + k.className) < 0) k.classList.add('dk-span'); });
+      p.classList.add('dk-grid');
+    });
+    // 2. single wide boxes are centered with room each side
+    list.forEach(function (e) {
+      if (e.getAttribute('data-dk')) return;
+      e.setAttribute('data-dk', '1');
+      if (e.parentElement.classList.contains('dk-grid')) return;
+      var a = e.parentElement; while (a && a !== main) { if (list.indexOf(a) >= 0) return; a = a.parentElement; }
+      if (e.getBoundingClientRect().width < vw * 0.7) return;
+      e.classList.add('dk-solo'); fresh.push(e);
+    });
+    // 3. strips get extra height so they read closer to a square
+    requestAnimationFrame(function () {
+      fresh.forEach(function (e) {
+        var w = e.offsetWidth, h = e.offsetHeight, want = w / 1.9;
+        if (h >= want || h < 100) return;
+        var c = getComputedStyle(e), add = (want - h) / 2;
+        e.style.setProperty('--dk-pt', (parseFloat(c.paddingTop) + add) + 'px');
+        e.style.setProperty('--dk-pb', (parseFloat(c.paddingBottom) + add) + 'px');
+        e.classList.add('dk-tall');
+      });
+    });
+  }
+  setInterval(run, 1200); setTimeout(run, 700);
+})();
