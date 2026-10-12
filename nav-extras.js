@@ -451,7 +451,15 @@
     if (moved > 6) { m.__dragged = true; setTimeout(function () { m.__dragged = false; }, 50); vel = Math.max(-14, Math.min(14, vel)); settle(); }
   }
   m.addEventListener('pointerup', up); m.addEventListener('pointercancel', up);
-  m.addEventListener('wheel', function (e) { e.preventDefault(); cancelAnimationFrame(raf); pos += e.deltaY / 120; vel = 0; paint(); clearTimeout(m.__wt); m.__wt = setTimeout(settle, 90); }, { passive: false });
+  // Oct 12: a mouse wheel or trackpad moves exactly one item per flick (no more quarter steps or drifting)
+  var wAcc = 0, wLock = 0;
+  m.addEventListener('wheel', function (e) {
+    e.preventDefault(); var now = performance.now();
+    if (now < wLock) return;
+    wAcc += e.deltaY; if (Math.abs(wAcc) < 24) return;
+    var dir = wAcc > 0 ? 1 : -1; wAcc = 0; wLock = now + 260;
+    rollTo(((Math.round(pos) + dir) % N + N) % N);
+  }, { passive: false });
   m.addEventListener('click', function (e) {
     var a = e.target.closest('a'); if (!a) return;
     if (m.__dragged || !a.classList.contains('rr-mid')) {
