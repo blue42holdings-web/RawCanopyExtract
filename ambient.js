@@ -525,7 +525,7 @@
     btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
-    btn.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
+    btn.style.cssText = 'position:fixed;left:12px;bottom:40px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
     btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
@@ -560,7 +560,7 @@
     if (rbtn && document.body.contains(rbtn)) return;
     var stl = document.createElement('style'); stl.textContent = '@keyframes rcxSpin{to{transform:rotate(360deg)}}'; document.head.appendChild(stl);
     rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
-    rbtn.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
+    rbtn.style.cssText = 'position:fixed;left:12px;bottom:40px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
     rbtn.addEventListener('click', function (ev) {
       ev.stopPropagation();
       if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
@@ -585,7 +585,7 @@
     // opening words; they fade in as soon as the page moves
     var hide = scrollY < 60, op = hide ? '0' : '1';
     [btn, rbtn].forEach(function (b) { if (!b) return; if (b.style.opacity !== op && !(op === '1' && b === btn && b.__dim)) { b.style.opacity = op; b.style.pointerEvents = hide ? 'none' : 'auto'; } if (!/opacity/.test(b.style.transition)) b.style.transition = 'bottom .3s ease, opacity .6s ease'; });
-    var want = (12 + lift) + 'px', rw = (12 + lift + btn.offsetHeight + 10) + 'px';   // Sound Bath at the bottom, Remix above it
+    var want = (40 + lift) + 'px', rw = (40 + lift + btn.offsetHeight + 10) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
     if (rbtn && rbtn.style.bottom !== rw) { rbtn.style.bottom = rw; }
   }, 120);
