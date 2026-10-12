@@ -508,6 +508,7 @@
 
   // ---------- page wiring ----------
   if (window.__RCX_AMBIENT_TEST) return;
+  if (window.__rcxAmbientWired) return; window.__rcxAmbientWired = 1;   // the page can run this file twice: wire the buttons and sound only once
   var ctx = null, eng = null, timer = null, muted = false, started = false, playing = 0, btn = null;
   try { muted = localStorage.getItem(KEY) === 'off'; } catch (e) {}
 
@@ -524,7 +525,7 @@
     btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
-    btn.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
+    btn.style.cssText = 'position:fixed;left:12px;bottom:84px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
     btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
@@ -532,10 +533,19 @@
   // REMIX: a little turntable above the Sound Bath box. Tap for a beat, tap again to stop, tap again for the next beat.
   var rbtn = null, remixing = false;
   function remixIcon(on) {
+    // only the record spins; the tone arm stays put in the lower right, like a real turntable
     var c = on ? '#E9C079' : '#D4A24A';
-    return '<svg viewBox="0 0 28 24" width="26" height="22" fill="none" stroke="' + c + '" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;display:block' + (on ? ';animation:rcxSpin 1.8s linear infinite;transform-origin:11px 12px' : '') + '">' +
-      '<circle cx="11" cy="12" r="9"/><circle cx="11" cy="12" r="5.5" stroke-width="0.8" opacity=".6"/><circle cx="11" cy="12" r="1.6" fill="' + c + '"/>' +
-      '<path d="M24 3v11l-5 4" stroke-width="1.8"/><circle cx="24" cy="3" r="1.4" fill="' + c + '"/></svg>';
+    return '<svg viewBox="0 0 28 24" width="26" height="22" fill="none" stroke="' + c + '" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;display:block;overflow:visible">' +
+      '<g style="transform-box:view-box;transform-origin:11px 12px' + (on ? ';animation:rcxSpin 1.6s linear infinite' : '') + '">' +
+        '<circle cx="11" cy="12" r="9" stroke-width="1.6"/>' +
+        '<circle cx="11" cy="12" r="6.6" stroke-width=".6" opacity=".55"/><circle cx="11" cy="12" r="4.6" stroke-width=".6" opacity=".55"/>' +
+        '<path d="M11 12 L11 3.6" stroke-width="1.1" opacity=".9"/>' +                      // a light streak across the grooves shows the spin
+        '<circle cx="11" cy="12" r="2.6" fill="' + c + '" fill-opacity=".35" stroke-width=".8"/>' +
+        '<circle cx="12.4" cy="11" r=".7" fill="' + c + '" stroke="none"/>' +                // a dot on the label
+      '</g>' +
+      '<circle cx="11" cy="12" r=".9" fill="#000" stroke="none"/>' +                          // the spindle
+      '<circle cx="24.5" cy="3.4" r="1.6" fill="' + c + '" stroke="none"/>' +
+      '<path d="M24.5 3.4 L24.5 13.5 L18.6 18.4" stroke-width="1.8"/><path d="M17.4 17.6 L19.8 19.6" stroke-width="2.4"/></svg>';
   }
   function rRefresh() {
     if (!rbtn) return; var c = remixing ? '#F4D99A' : '#E9C079';
@@ -550,7 +560,7 @@
     if (rbtn && document.body.contains(rbtn)) return;
     var stl = document.createElement('style'); stl.textContent = '@keyframes rcxSpin{to{transform:rotate(360deg)}}'; document.head.appendChild(stl);
     rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
-    rbtn.style.cssText = 'position:fixed;left:12px;bottom:92px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
+    rbtn.style.cssText = 'position:fixed;left:12px;bottom:84px;z-index:2147483000;width:58px;height:auto;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
     rbtn.addEventListener('click', function (ev) {
       ev.stopPropagation();
       if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
@@ -571,16 +581,20 @@
     if (!btn) return;
     var bar = document.querySelector('[data-m="player"]'), lift = 0;
     if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
-    var want = (12 + lift) + 'px';
-    if (btn.style.bottom !== want) { btn.style.transition = 'bottom .3s ease'; btn.style.bottom = want; }
-    if (rbtn) { var rw = (12 + lift + btn.offsetHeight + 10) + 'px'; if (rbtn.style.bottom !== rw) { rbtn.style.transition = 'bottom .3s ease'; rbtn.style.bottom = rw; } }
+    // Oct 11: at the very top of a page (the first thing people see) the two boxes stay out of the way of the
+    // opening words; they fade in as soon as the page moves
+    var hide = scrollY < 60, op = hide ? '0' : '1';
+    [btn, rbtn].forEach(function (b) { if (!b) return; if (b.style.opacity !== op && !(op === '1' && b === btn && b.__dim)) { b.style.opacity = op; b.style.pointerEvents = hide ? 'none' : 'auto'; } if (!/opacity/.test(b.style.transition)) b.style.transition = 'bottom .3s ease, opacity .6s ease'; });
+    // Remix sits at the bottom, the Sound Bath box right above it (Oct 11)
+    var rw = (12 + lift) + 'px', want = (12 + lift + (rbtn ? rbtn.offsetHeight + 10 : 0)) + 'px';
+    if (btn.style.bottom !== want) { btn.style.bottom = want; }
+    if (rbtn && rbtn.style.bottom !== rw) { rbtn.style.bottom = rw; }
   }, 120);
   function refresh() {
     if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
     // one box: the speaker on top, SOUND above BATH underneath. The whole box turns it on and off.
     btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none;display:block" ') +
       '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">SOUND<br>BATH</span>';
-    btn.style.opacity = on ? '1' : '.85';
     btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on');
   }
 
