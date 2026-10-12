@@ -306,24 +306,21 @@
       return k;
     }
     function fieldAct(t, build, b1, b2, b3, end, dark, first) {
-      if (!nextFieldAt) nextFieldAt = natureStart;
-      if (end - 20 < nextFieldAt) return;                                 // too soon since the last one: leave it quiet
-      var main = pickOne(dark), isRain = /rain/.test(main), isFlow = main === 'river' || main === 'waterfall';
-      var t0 = Math.max(b1 + rnd(0, 10), nextFieldAt);
-      var want = isRain ? rnd(95, 150) : rnd(55, 95); if (isFlow) want *= 0.5;   // rain lingers, rivers and waterfalls pass quickly
-      var len = Math.min(end + (isRain ? 60 : 12), t0 + want) - t0;
-      if (len < (isFlow ? 22 : 35)) return;
-      if (busy(t0, t0 + len) >= 3) return;
-      loadField(main); claim(t0, t0 + len);
-      layer(main, t0, len, isRain ? rnd(0.2, 0.4) : (dark ? 0.5 : 0.48), dark);   // rain sits at mist to light rain levels
-      if (Math.random() < 0.12) {                                         // now and then a second, quieter sound joins for a while
-        var s0 = t0 + len * rnd(0.3, 0.45), sl = len * rnd(0.35, 0.5);
-        if (busy(s0, s0 + sl) < 3) { var second = pickOne(dark); loadField(second); claim(s0, s0 + sl); layer(second, s0, sl, 0.3, dark); }
+      // Oct 11 (later): EVERY breakdown gets nature, never silence. Usually two sounds, never more than three
+      // (crickets and the owl count). The first comes in as the music starts thinning out, the second joins
+      // as it gets sparse, and both carry through to the next build.
+      var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
+      if (t1 - t0 < 25) return;
+      var main = pickOne(dark);
+      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.3, 0.42) : (dark ? 0.5 : 0.48), dark); }
+      var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
+      if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
+        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, 0.34, dark);
       }
-      var ot = t0 + rnd(10, len - 14);
-      if (dark && Math.random() < 0.3 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
-      nextFieldAt = t0 + len + rnd(200, 300);                             // then a long quiet stretch before the next
+      var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
+      if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
+
 
     // ---------- DRUMS AND BASS (Oct 11) ----------
     // Six grooves, all synthesized: five drum and bass (fast, 168 to 174: liquid, amen break,
@@ -468,8 +465,8 @@
       // BREAKDOWN 3: minimal. Just the night: low wind, the ocean, crickets and frogs, all soft
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
-      if (Math.random() < 0.45 && busy(b1 + s1, b1 + s1 + s2 + s3) < 3) { claim(b1 + s1, b1 + s1 + s2 + s3); nightNature(b1 + s1, s2 + s3); }   // crickets only some of the time
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
+      if (Math.random() < 0.35 && busy(b1 + s1, b1 + s1 + s2 + s3) < 2) { claim(b1 + s1, b1 + s1 + s2 + s3); nightNature(b1 + s1, s2 + s3); }   // crickets only some of the time
       if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.12 : 1.25));
       acts.t = b3 + s3 - 4;
       acts.n++;
