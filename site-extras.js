@@ -7,7 +7,8 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     ['[data-m="red-wrap"]', 'linear-gradient(transparent 0,#000 var(--redFull,200px),#000 calc(100% - 120px),transparent 100%)', 0, 0],
     ['[data-screen-label="Shop"] section[data-m="pack-sec"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 120px),transparent 100%)', 0, 0],
     ['[data-m="more-research"]', 'linear-gradient(#000 0,#000 30%,transparent 85%)', 0, 0],
-    ['[data-m="cd-bottom-red"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 140px),transparent 100%)', 0, 0],
+    ['[data-m="other-two-red"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 140px),transparent 100%)', 0, 0],
+    ['[data-m="cd-bottom-red"]', 'linear-gradient(#000 0,#000 calc(100% - 140px),transparent 100%)', 0, 0],
     ['div[data-screen-label="About"]', 'linear-gradient(#000 0,#000 300px,transparent 760px)', 0, 900]
   ];
   function run() {
@@ -271,7 +272,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
    once it scrolls into view (background photos and plain pictures alike). */
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var NEW = /assets\/photo\/(about-beach-seastack|about-shasta-clouds|dodge03-diver|lab-hand-closeup|lab-mushroom-extraction|lab-powder-coat|lab-reishi-weighing|lab-soxhlet-extraction|lab-steel-tanks|lm-grandma-girl-puzzle|lm-grandma-puzzle|lm-grandpa-football-park|lm-grandpa-kickoff|lm-grandpa-puzzle|lm-powder-pile|mag-rack-\d+|mess-counter|mess-counter-v2|mess-floor|mess-swirl|mtb-rider-side|reef-aerial-aqua|reef-aerial-sky|tr-[a-z-]+|tt-airport-crowd|tt-airport-security-line|tt-baggage-claim-crowd|tt-feet-in-line|tt-queue-feet|tt-train-crowd|yoga-vertical)\./;
+  var NEW = /assets\/photo\/(about-beach-seastack|about-shasta-clouds|dodge03-diver|lab-hand-closeup|lab-mushroom-extraction|lab-powder-coat|lab-reishi-weighing|lab-soxhlet-extraction|lab-steel-tanks|lm-grandma-girl-puzzle|lm-grandma-puzzle|lm-grandpa-football-park|lm-grandpa-kickoff|lm-grandpa-puzzle|lm-powder-pile|mag-rack-\d+|mess-counter|mess-counter-v2|mess-floor|mess-swirl|mtb-rider-side|microscope-screens|a-freediver-surfacing-at-sunset|coffee-made-at-camp|how-mossy-tree|camp-adventure|thermos-pour-sunrise|kitchen-shake|reef-aerial-aqua|reef-aerial-sky|tr-[a-z-]+|tt-airport-crowd|tt-airport-security-line|tt-baggage-claim-crowd|tt-feet-in-line|tt-queue-feet|tt-train-crowd|yoga-vertical)\./;
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
     en.forEach(function (e) {
       if (e.isIntersecting) {
@@ -361,4 +362,15 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     nav.parentNode.insertBefore(c, nav);
   }
   setInterval(run, 800); run();
+})();
+
+/* Oct 12: receipts files row: each card keeps its own photo under the lighter shade */
+(function () {
+  function run() {
+    document.querySelectorAll('section[data-m="rc-files"] .cx-track>.mx-box').forEach(function (b) {
+      if (b.__rc) return; var m = (b.getAttribute('style') || '').match(/url\(["'&quot;]*([^"'&)]+?\.(?:jpe?g|png|webp))/); if (!m) return;
+      b.__rc = 1; b.style.setProperty('--rcimg', "url('" + m[1] + "')");
+    });
+  }
+  setInterval(run, 1000); run();
 })();
