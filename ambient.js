@@ -255,7 +255,7 @@
         var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
         var soft = /rain/.test(name);   // Oct 11: rain is always soft and mellow, no echo, no drips
         if (dark && !soft) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
-        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(3000, 3800) : dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(6000, 8000) : dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
         var g = ctx.createGain(); g.gain.value = 0;
         var pan = ctx.createStereoPanner ? _origCreatePanner ? _origCreatePanner() : ctx.createStereoPanner() : null;
         src.connect(lp); lp.connect(g);
@@ -290,8 +290,8 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'birds': 1.5, 'jungle': 0.15 },
-      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'crows': 0.5, 'frogs': 0.4 }
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 2, 'birds': 1.5, 'jungle': 0.15 },
+      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain-leaves': 2, 'crows': 0.5, 'frogs': 0.4 }
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
@@ -319,8 +319,8 @@
         var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
-      var r0 = end - rnd(0, 3), r1 = end + rnd(35, 55);   // Oct 11 (later): as the new section builds back up, most of the time
-      if (Math.random() < 0.85 && busy(r0, r1) < 3) { var rn = 'rain'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.34, 0.40), dark); }
+      var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
+      if (Math.random() < 0.95 && busy(r0, r1) < 3) { var rn = 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.42, 0.5), dark); }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
