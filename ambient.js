@@ -531,7 +531,10 @@
   }
   setInterval(function () { if (btn && !document.body.contains(btn)) { btn = null; mkBtn(); } }, 2000);
   // REMIX: a little turntable above the Sound Bath box. Tap for a beat, tap again to stop, tap again for the next beat.
-  var rbtn = null, remixing = false;
+  var rbtn = null, remixing = false, lastWake = Date.now();
+  function wake() { lastWake = Date.now(); }
+  ['pointerdown', 'keydown'].forEach(function (ev) { document.addEventListener(ev, wake, true); });
+  addEventListener('popstate', wake); addEventListener('pageshow', wake);
   function remixIcon(on) {
     // only the record spins; the tone arm stays put in the lower right, like a real turntable
     var c = on ? '#E9C079' : '#D4A24A';
@@ -587,9 +590,11 @@
     // words) and Remix waits; once the page moves, Sound Bath lifts a little and Remix fades in above it.
     // Oct 11: Sound Bath on top and always there; Remix appears underneath it once the page moves. Both sit up off the corner.
     var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
-    [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity .6s ease'; });
-    btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
-    if (rbtn) { var op = top ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = top ? 'none' : 'auto'; } }
+    [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
+    // Oct 11: both boxes show when a page opens and whenever you tap, then fade away after 10 quiet seconds
+    var awake = Date.now() - lastWake < 10000;
+    var so = awake ? '1' : '0'; if (btn.style.opacity !== so) { btn.style.opacity = so; btn.style.pointerEvents = awake ? 'auto' : 'none'; }
+    if (rbtn) { var op = (top || !awake) ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = op === '1' ? 'auto' : 'none'; } }
     // at the very top Sound Bath waits in Remix's spot (clear of the opening words); once the page moves it rises and Remix slides in underneath
     var rw = (base + lift) + 'px', want = (base + lift + (top ? 0 : (rbtn ? rbtn.offsetHeight : 66) + 10)) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
