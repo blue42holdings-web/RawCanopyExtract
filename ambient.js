@@ -466,7 +466,7 @@
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
-      if (Math.random() < 0.35 && busy(b1 + s1, b1 + s1 + s2 + s3) < 2) { claim(b1 + s1, b1 + s1 + s2 + s3); nightNature(b1 + s1, s2 + s3); }   // crickets only some of the time
+      // (crickets removed Oct 11)
       if (t - T0 >= 170 && Math.random() < 0.8) drumSection(t + rnd(6, 12), b1 + s1 * 0.4, dark, [36.71, 41.2, 32.7, 38.89][acts.n % 4] * (dark ? 1.12 : 1.25));
       acts.t = b3 + s3 - 4;
       acts.n++;
