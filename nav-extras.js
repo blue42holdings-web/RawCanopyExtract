@@ -382,15 +382,22 @@
   }
   // a soft, dry space age beep (its own sound, nothing else on the site makes it)
   var actx = null;
-  function beep() {
+  function beep(echo) {
     try {
+      // share the Sound Bath's audio engine when it is running: opening a second one makes phones pop
       var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-      if (!actx) actx = new AC(); if (actx.state === 'suspended') actx.resume();
-      var t = actx.currentTime, o = actx.createOscillator(), g = actx.createGain(), lp = actx.createBiquadFilter();
+      var c = window.__rcxAudioCtx || actx || (actx = new AC()); if (c.state === 'suspended') c.resume();
+      var t = c.currentTime + 0.01, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
       o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
       lp.type = 'lowpass'; lp.frequency.value = 2600;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.006); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.07);
-      o.connect(lp); lp.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + 0.09);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.008); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.075);
+      o.connect(lp); lp.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.1);
+      if (echo) {                                            // a faint echo trailing off after the beep
+        var d = c.createDelay(1); d.delayTime.value = 0.2; var fb = c.createGain(); fb.gain.value = 0.32;
+        var wet = c.createGain(); wet.gain.value = 0.35; var dl = c.createBiquadFilter(); dl.type = 'lowpass'; dl.frequency.value = 1900;
+        g.connect(d); d.connect(dl); dl.connect(fb); fb.connect(d); dl.connect(wet); wet.connect(c.destination);
+        setTimeout(function () { try { fb.disconnect(); wet.disconnect(); } catch (x) {} }, 2500);
+      }
     } catch (e) {}
   }
   window.__rcxBeep = beep;                              // the Sound Bath and Remix boxes beep too
