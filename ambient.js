@@ -318,17 +318,17 @@
       var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
       if (t1 - t0 < 25) return;
       var main = pickOne(dark);
-      /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.8, 0.9) : (dark ? 0.5 : 0.48), dark); }
+      /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.4, 0.46) : (dark ? 0.5 : 0.48), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
       if (Math.random() < 0.35 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
-        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.8 : 0.34, dark);   // rain a notch up so it is noticed, still soft
+        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
       var softRain = Math.random() < 0.6;   // Oct 12: half the time a soft, soothing light rain with no wind or thunder
-      if (Math.random() < 0.45 && busy(r0, r1) < 3) { var rn = 'rain';   /* Oct 12: always the light misty rain, never the splattery leaf drops */ loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.75, 0.85) : rnd(0.9, 1.0), dark);
+      if (Math.random() < 0.45 && busy(r0, r1) < 3) { var rn = 'rain';   /* Oct 12: always the light misty rain, never the splattery leaf drops */ loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.36, 0.42) : rnd(0.42, 0.48), dark);
         // Oct 12: distant thunder rolls in under the rain most of the time, so you actually hear the storm
-        if (!softRain && Math.random() < 0.6) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.75, 0.85), dark); } }
+        if (!softRain && Math.random() < 0.6) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.42, 0.5), dark); } }
       // Oct 12: now and then a dog barks somewhere off in the distance
       if (Math.random() < 0.09) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 18) < 3) { claim(dt, dt + 18); oneShot('dogs', dt, 0.22, 0.8); if (Math.random() < 0.75) oneShot('dogs', dt + rnd(1.5, 4), 0.17, 1.14); } }   // a bigger male (deeper) and a smaller female answering
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
