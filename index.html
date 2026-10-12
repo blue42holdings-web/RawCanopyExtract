@@ -4479,7 +4479,7 @@ class Component extends DCLogic {
       o.connect(og).connect(out);
       const dl = ctx.createDelay(1); dl.delayTime.value = P.dly; const fb = ctx.createGain(); fb.gain.value = P.fb; const dg = ctx.createGain(); dg.gain.value = P.dg; const dlp = ctx.createBiquadFilter(); dlp.type = 'lowpass'; dlp.frequency.value = 900;
       out.connect(dl); dl.connect(dlp); dlp.connect(fb).connect(dl); dlp.connect(dg).connect(ctx.destination);
-      src.start(now); o.start(now); o.stop(now + P.odur + 0.02);
+      if (!popOn) { src.start(now); o.start(now); o.stop(now + P.odur + 0.02); }
       const tb = this._tickBuf || (this._tickBuf = (() => {
         const sr = ctx.sampleRate, len = Math.floor(sr * 0.022), b = ctx.createBuffer(1, len, sr), d = b.getChannelData(0);
         const tick = (at, amp, dec) => { const o0 = Math.floor(sr * at); for (let i = 0; o0 + i < len; i++) { const env = Math.exp(-i / (sr * dec)); d[o0 + i] += amp * env * ((Math.random() * 2 - 1) * 0.6 + Math.sin(i / sr * 2 * Math.PI * 4200) * 0.8); } };
