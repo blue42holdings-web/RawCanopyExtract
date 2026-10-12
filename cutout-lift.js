@@ -48,8 +48,11 @@ function feathered(src,boxW,boxH,FEATHER){
 }
 var states=new Map(), active=null;
 function mk(css){ var d=document.createElement('div'); d.setAttribute('data-lift-layer',''); d.style.cssText=css; return d; }
-function clipOf(el){ for(var p=el.parentElement;p&&p!==document.body;p=p.parentElement){ var c=getComputedStyle(p); if(c.overflow!=='visible'||c.overflowX!=='visible'||c.overflowY!=='visible') return p.getBoundingClientRect(); } return null; }
-function place(st){ var r=st.el.getBoundingClientRect(), c=clipOf(st.el)||r; var L=Math.max(r.left,c.left), T=Math.max(r.top,c.top), R=Math.min(r.right,c.right), B=Math.min(r.bottom,c.bottom); var o=st.box.style; o.left=L+'px'; o.top=T+'px'; o.width=Math.max(0,R-L)+'px'; o.height=Math.max(0,B-T)+'px'; if(st.cut){ var s=st.cut.style; s.inset='auto'; s.left=(r.left-L)+'px'; s.top=(r.top-T)+'px'; s.width=r.width+'px'; s.height=r.height+'px'; } }
+function inner(el){ var r=el.getBoundingClientRect(), c=getComputedStyle(el), bl=parseFloat(c.borderLeftWidth)||0, bt=parseFloat(c.borderTopWidth)||0, br=parseFloat(c.borderRightWidth)||0, bb=parseFloat(c.borderBottomWidth)||0; var rad=Math.max(0,(parseFloat(c.borderTopLeftRadius)||0)-Math.max(bl,bt)); return {left:r.left+bl,top:r.top+bt,right:r.right-br,bottom:r.bottom-bb,rad:rad,b:bl+bt+br+bb}; }
+// Oct 11: a lifted cutout must stay inside the gold frame. Clip to the inside edge of the nearest framed box
+// (the element itself or a parent with a border), and to any parent that clips its overflow.
+function clipOf(el){ var out=null, n=0; for(var p=el;p&&p!==document.body&&n<6;p=p.parentElement,n++){ var c=getComputedStyle(p); var framed=(parseFloat(c.borderTopWidth)||0)>0.5&&c.borderTopStyle!=='none'; var clips=p!==el&&(c.overflow!=='visible'||c.overflowX!=='visible'||c.overflowY!=='visible'); if(framed||clips){ var i=inner(p); if(!out) out=i; else { out.left=Math.max(out.left,i.left); out.top=Math.max(out.top,i.top); out.right=Math.min(out.right,i.right); out.bottom=Math.min(out.bottom,i.bottom); if(!out.rad) out.rad=i.rad; } if(framed) break; } } return out; }
+function place(st){ var r=st.el.getBoundingClientRect(), c=clipOf(st.el)||r; var L=Math.max(r.left,c.left), T=Math.max(r.top,c.top), R=Math.min(r.right,c.right), B=Math.min(r.bottom,c.bottom); var o=st.box.style; o.left=L+'px'; o.top=T+'px'; o.width=Math.max(0,R-L)+'px'; o.height=Math.max(0,B-T)+'px'; if(c&&c.rad!==undefined) o.borderRadius=c.rad+'px'; if(st.cut){ var s=st.cut.style; s.inset='auto'; s.left=(r.left-L)+'px'; s.top=(r.top-T)+'px'; s.width=r.width+'px'; s.height=r.height+'px'; } }
 var TR=function(p){ return p+' '+DUR+'ms '+EASE; };
 function build(el,info){
   var st={el:el,info:info,saved:[]}; var r=el.getBoundingClientRect(), cs=getComputedStyle(el);
