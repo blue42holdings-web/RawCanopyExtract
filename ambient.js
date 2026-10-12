@@ -585,11 +585,13 @@
     // opening words; they fade in as soon as the page moves
     // Sound Bath is always there. At the very top of a page it tucks low into the corner (clear of the opening
     // words) and Remix waits; once the page moves, Sound Bath lifts a little and Remix fades in above it.
-    var top = scrollY < 60, base = top ? 12 : 40;
+    // Oct 11: Sound Bath on top and always there; Remix appears underneath it once the page moves. Both sit up off the corner.
+    var top = scrollY < 60, base = 40;
     [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity .6s ease'; });
     btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
     if (rbtn) { var op = top ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = top ? 'none' : 'auto'; } }
-    var want = (base + lift) + 'px', rw = (base + lift + btn.offsetHeight + 10) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
+    // at the very top Sound Bath waits in Remix's spot (clear of the opening words); once the page moves it rises and Remix slides in underneath
+    var rw = (base + lift) + 'px', want = (base + lift + (top ? 0 : (rbtn ? rbtn.offsetHeight : 66) + 10)) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
     if (rbtn && rbtn.style.bottom !== rw) { rbtn.style.bottom = rw; }
   }, 120);
