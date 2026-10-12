@@ -312,10 +312,10 @@
       var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
       if (t1 - t0 < 25) return;
       var main = pickOne(dark);
-      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.3, 0.42) : (dark ? 0.5 : 0.48), dark); }
+      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.46, 0.56) : (dark ? 0.5 : 0.48), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
       if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
-        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, 0.34, dark);
+        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.46 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
