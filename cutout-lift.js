@@ -178,8 +178,9 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     var OG=el.getAttribute('data-lift-origin');
     if(OG) loadImg(el.getAttribute('data-lift-bg')).then(function(im){ var o=OG.split(/\s+/).map(parseFloat), R=imgRect(el.offsetWidth,el.offsetHeight,im.naturalWidth,im.naturalHeight,sz[sz.length-1],ps[ps.length-1]); cut.style.transformOrigin=(R.x+o[0]*R.w).toFixed(1)+'px '+(R.y+o[1]*R.h).toFixed(1)+'px'; });
     var ready=feathered(el.getAttribute('data-lift-bg'),r.width,r.height,SOFT_BG).then(function(u){ cut.style.backgroundImage='url("'+u+'")'; });
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect();
-      ready.then(function(){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LBT; if(!NB){ blur.style.backdropFilter=BLUR; blur.style.webkitBackdropFilter=BLUR; } }); }); }); }); },{rootMargin:'-38% 0px -38% 0px',threshold:0});
+    function resync(){ var c2=getComputedStyle(el), s2=splitList(c2.backgroundSize), p2=splitList(c2.backgroundPosition); cut.style.backgroundSize=s2[s2.length-1]; cut.style.backgroundPosition=p2[p2.length-1]; }   /* Oct 12: match the photo exactly at play time, so the cutout never doubles */
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect(); resync();
+      ready.then(function(){ requestAnimationFrame(function(){ resync(); requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LBT; if(!NB){ blur.style.backdropFilter=BLUR; blur.style.webkitBackdropFilter=BLUR; } }); }); }); }); },{rootMargin:'-38% 0px -38% 0px',threshold:0});
     io.observe(el);
   }
   var SOFT_BG=3;
