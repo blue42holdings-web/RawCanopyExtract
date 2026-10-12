@@ -103,7 +103,7 @@
    of a pixel is carried by a sub pixel shift of the boxes: no stepping, no jitter, no jump at the end. */
 (function () {
   var st = document.createElement('style');
-  st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:none}' +
+  st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}' +
     '.cx-track[data-glide]>*{transform:translate3d(calc(var(--sub,0) * -1px),0,0)}';
   document.head.appendChild(st);
   var phone = function () { return innerWidth < 768; };
@@ -149,7 +149,18 @@
       if (p < 1) a.raf = requestAnimationFrame(step); else end(a);
     })(t0);
   }
+  var COARSE = matchMedia('(pointer: coarse)').matches;
+  // Oct 11: on phones the arrows use the phone's own smooth scroll with snapping left on. (Turning snapping off
+  // and back on made iPhones jump straight back to the box they started from, so the arrows looked dead.)
+  function nativeTap(t, d) {
+    var S = snaps(t), max = t.scrollWidth - t.clientWidth, cur = t.__goal != null && Math.abs(t.__goal - t.scrollLeft) > 4 ? t.__goal : t.scrollLeft, x;
+    if ((d > 0 && cur >= max - 4) || (d < 0 && cur <= 4)) x = d > 0 ? 0 : max;
+    else { x = d > 0 ? S.filter(function (s) { return s > cur + 4; })[0] : S.filter(function (s) { return s < cur - 4; }).pop(); if (x === undefined) x = d > 0 ? max : 0; }
+    t.__goal = x;
+    try { t.scrollTo({ left: x, behavior: 'smooth' }); } catch (e) { t.scrollLeft = x; }
+  }
   function tap(t, d) {
+    if (COARSE) { nativeTap(t, d); return; }
     var a = begin(t), S = snaps(t), max = t.scrollWidth - t.clientWidth;
     var cur = (a.raf && a.goal != null) ? a.goal : a.pos, x;     // a quick second tap carries on from where the last one is heading
     if ((d > 0 && cur >= max - 2) || (d < 0 && cur <= 2)) x = d > 0 ? 0 : max;   // at the end: loop round to the other end
@@ -188,6 +199,7 @@
     var b = e.target.closest && e.target.closest('.cx .rit-arrow[data-d]');
     if (!b) { if (A && A.t.contains(e.target)) end(A); return; }     // a finger on the row takes over
     var t = b.closest('.cx').querySelector('.cx-track'); if (!t) return;
+    if (COARSE) return;   // phones: taps only, handled on click
     press = { t: t, d: Number(b.dataset.d) || 1, held: false };
     clearTimeout(pressTimer);
     pressTimer = setTimeout(function () { if (press) { press.held = true; holdStart(press.t, press.d); } }, 280);
