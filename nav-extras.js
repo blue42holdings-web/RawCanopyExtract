@@ -393,6 +393,7 @@
       o.connect(lp); lp.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + 0.09);
     } catch (e) {}
   }
+  window.__rcxBeep = beep;                              // the Sound Bath and Remix boxes beep too
   function settle() {                                   // glide with momentum, then ease into the nearest notch
     cancelAnimationFrame(raf);
     var last = performance.now();
