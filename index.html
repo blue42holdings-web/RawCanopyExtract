@@ -3775,7 +3775,7 @@ class Component extends DCLogic {
     if (!this._aboutSvg) {
       if (!this._aboutSvgLoading) {
         this._aboutSvgLoading = true;
-        fetch('assets/seal-script.svg?v=1').then(r => r.text()).then(t => {
+        fetch('assets/seal-script.svg?v=2').then(r => r.text()).then(t => {
           if (/^\s*<svg/i.test(t)) this._aboutSvg = t; else this._aboutSvg = this._seal;
           this.buildAboutSeal();
         }).catch(() => { this._aboutSvg = this._seal; this.buildAboutSeal(); });
