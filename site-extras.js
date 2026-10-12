@@ -335,3 +335,13 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   setInterval(fix, 1000); fix();
 })();
+
+/* Oct 11: mushroom page powder bands keep their white lead in and lead out (another script trims section padding) */
+(function () {
+  function fix() {
+    document.querySelectorAll('section.clean-band[data-cb="lions-mane"],section.clean-band[data-cb="cordyceps"],section.clean-band[data-cb="turkey-tail"]').forEach(function (s) {
+      if (s.style.getPropertyValue('padding-top') !== '130px') { s.style.setProperty('padding-top', '130px', 'important'); s.style.setProperty('padding-bottom', '130px', 'important'); s.style.setProperty('padding-left', '22px', 'important'); s.style.setProperty('padding-right', '22px', 'important'); }
+    });
+  }
+  setInterval(fix, 1000); fix();
+})();
