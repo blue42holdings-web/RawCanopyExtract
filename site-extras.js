@@ -7,6 +7,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     ['[data-m="red-wrap"]', 'linear-gradient(transparent 0,#000 var(--redFull,200px),#000 calc(100% - 120px),transparent 100%)', 0, 0],
     ['[data-screen-label="Shop"] section[data-m="pack-sec"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 120px),transparent 100%)', 0, 0],
     ['[data-m="more-research"]', 'linear-gradient(#000 0,#000 30%,transparent 85%)', 0, 0],
+    ['[data-m="cd-bottom-red"]', 'linear-gradient(transparent 0,#000 200px,#000 calc(100% - 140px),transparent 100%)', 0, 0],
     ['div[data-screen-label="About"]', 'linear-gradient(#000 0,#000 300px,transparent 760px)', 0, 900]
   ];
   function run() {
