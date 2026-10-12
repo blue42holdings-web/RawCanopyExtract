@@ -248,6 +248,8 @@
     }
     function layer(name, t0, dur, level, dark) {
       if (window.__RCX_AMBIENT_TEST) console.log('field ' + name + ' at ' + Math.round(t0) + 's for ' + Math.round(dur) + 's');
+      if (/crows/.test(name)) dur *= 0.45;            // Oct 12: the gull like calls stay on a little under half as long
+      if (name === 'forest-birds') level *= 1.4;     // quieter recording, matched up
       loadField(name).then(function (buf) {
         if (!buf) return;
         var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
@@ -290,8 +292,8 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 2, 'birds': 1.5, 'jungle': 0.15 },
-      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain-leaves': 2, 'thunder': 1.5, 'crows': 0.5, 'frogs': 0.4 }
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 2, 'birds': 1.5, 'forest-birds': 2.5, 'woodpecker': 0.8 },   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
+      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain-leaves': 2, 'thunder': 1.5, 'crows': 0.5, 'frogs': 0.4, 'forest-birds': 0.6, 'woodpecker': 0.4 }
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
@@ -323,6 +325,8 @@
       if (Math.random() < 0.95 && busy(r0, r1) < 3) { var rn = 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.9, 1.0), dark);
         // Oct 12: distant thunder rolls in under the rain most of the time, so you actually hear the storm
         if (Math.random() < 0.7) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.75, 0.85), dark); } }
+      // Oct 12: now and then a dog barks somewhere off in the distance
+      if (Math.random() < 0.18) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 14) < 3) { claim(dt, dt + 14); oneShot('dogs', dt, 0.2); } }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
@@ -492,7 +496,7 @@
       // Oct 12: nature also drifts in and out during the full music, not only in breakdowns. Quiet, random,
       // favoring the sounds heard less often; never more than two at once here.
       (function () {
-        var pool = dark ? ['mountain-wind', 'crows', 'frogs', 'forest-wind', 'howling-wind', 'ocean'] : ['birds', 'mountain-wind', 'forest-wind', 'jungle', 'ocean', 'birds'];
+        var pool = dark ? ['mountain-wind', 'crows', 'frogs', 'forest-wind', 'howling-wind', 'ocean'] : ['birds', 'mountain-wind', 'forest-wind', 'forest-birds', 'ocean', 'forest-birds', 'woodpecker'];
         var n = Math.random() < 0.35 ? 2 : 1, span = Math.max(30, b1 - t - 20);
         for (var k = 0; k < n; k++) {
           var a0 = Math.max(natureStart, t + rnd(8, span)), a1 = a0 + rnd(28, 55);
