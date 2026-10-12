@@ -198,6 +198,16 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (r.width >= innerWidth - 4 && !/^(H\d|P|A|BUTTON|IMG|LI|LABEL|svg|SVG)$/.test(e.tagName) && !/box|card/.test(e.className)) return; // full-width wrappers are backgrounds, not content
       out.push([r.top + scrollY, r.bottom + scrollY]);
     });
+    // Oct 12: a box border is never blurred or faded. Any element with a visible border counts as content,
+    // so a seam band can never land on (or near) a box edge.
+    root.querySelectorAll('*').forEach(function (e) {
+      var cs = getComputedStyle(e);
+      var bw = Math.max(parseFloat(cs.borderTopWidth) || 0, parseFloat(cs.borderBottomWidth) || 0, parseFloat(cs.borderLeftWidth) || 0);
+      if (bw < 1 || cs.borderTopStyle === 'none' && cs.borderBottomStyle === 'none' && cs.borderLeftStyle === 'none') return;
+      if (/rgba\([^)]*,\s*0\)|transparent/.test(cs.borderTopColor + cs.borderBottomColor)) return;
+      var r = e.getBoundingClientRect(); if (r.width < 2 || r.height < 2) return;
+      out.push([r.top + scrollY - 6, r.bottom + scrollY + 6]);
+    });
     return out;
   }
   function run() {

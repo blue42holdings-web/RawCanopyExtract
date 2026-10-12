@@ -240,7 +240,7 @@
     // birds, ocean, frogs, crows, distant thunder, cave droplets and the odd owl. Each act picks its own
     // handful, brings them in one at a time as the music thins, then lifts them out one at a time.
     var FIELD_DIR = 'assets/audio/nature/', bufs = {};
-    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.57;   // Oct 11: halfway between the first level (0.85) and the quiet one (0.38)
+    var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.3;   /* Oct 12: halved now that it is finally audible */   // Oct 11: halfway between the first level (0.85) and the quiet one (0.38)
     fieldBus.connect(duck);   // Oct 12: this connection had been swallowed by the comment above, so no recorded nature ever reached the speakers
     function loadField(n) {
       if (!bufs[n]) bufs[n] = fetch(FIELD_DIR + n + '.mp3?v=2').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
@@ -258,8 +258,9 @@
         if (end - start < 8) return;
         var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
         var soft = /rain/.test(name);   // Oct 11: rain is always soft and mellow, no echo, no drips
-        if (dark && !soft) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
-        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(10000, 13000) : dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
+        if (/ocean/.test(name)) src.playbackRate.value = rnd(0.78, 0.88);   /* big slow swells, not small lapping waves */
+        else if (dark && !soft) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(1800, 2600) : /ocean/.test(name) ? rnd(900, 1400) : dark ? rnd(1300, 2200) : rnd(5000, 8000);   /* Oct 12: rain is a soft distant mist and the ocean a big low surf, nothing high and hissy */ lp.Q.value = 0.3;
         var g = ctx.createGain(); g.gain.value = 0;
         var pan = ctx.createStereoPanner ? _origCreatePanner ? _origCreatePanner() : ctx.createStereoPanner() : null;
         src.connect(lp); lp.connect(g);
@@ -294,8 +295,8 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 1, 'rain': 1.5, 'birds': 1.5, 'forest-birds': 2.5, 'woodpecker': 0.8 },   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
-      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain-leaves': 2, 'thunder': 1.5, 'crows': 0.5, 'frogs': 0.4, 'forest-birds': 0.6, 'woodpecker': 0.4 }
+      bright: { 'ocean': 6, 'forest-wind': 7, 'mountain-wind': 4, 'howling-wind': 1.5, 'rain': 1.5, 'birds': 0.6, 'forest-birds': 1 },   // Oct 12: serious, not silly. Birds used sparingly; no splattery leaf rain, no woodpecker   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
+      dark: { 'ocean': 6, 'forest-wind': 4, 'howling-wind': 4, 'mountain-wind': 4, 'rain': 1.5, 'thunder': 2, 'crows': 0.5 }   // Oct 12: no frogs, birds or leaf splatter in the dark mood
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
@@ -319,17 +320,17 @@
       var main = pickOne(dark);
       /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.8, 0.9) : (dark ? 0.5 : 0.48), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
-      if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
+      if (Math.random() < 0.35 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
         var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.8 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
       var softRain = Math.random() < 0.6;   // Oct 12: half the time a soft, soothing light rain with no wind or thunder
-      if (Math.random() < 0.95 && busy(r0, r1) < 3) { var rn = softRain ? 'rain' : 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.75, 0.85) : rnd(0.9, 1.0), dark);
+      if (Math.random() < 0.45 && busy(r0, r1) < 3) { var rn = 'rain';   /* Oct 12: always the light misty rain, never the splattery leaf drops */ loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.75, 0.85) : rnd(0.9, 1.0), dark);
         // Oct 12: distant thunder rolls in under the rain most of the time, so you actually hear the storm
         if (!softRain && Math.random() < 0.6) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.75, 0.85), dark); } }
       // Oct 12: now and then a dog barks somewhere off in the distance
-      if (Math.random() < 0.18) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 18) < 3) { claim(dt, dt + 18); oneShot('dogs', dt, 0.22, 0.8); if (Math.random() < 0.75) oneShot('dogs', dt + rnd(1.5, 4), 0.17, 1.14); } }   // a bigger male (deeper) and a smaller female answering
+      if (Math.random() < 0.09) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 18) < 3) { claim(dt, dt + 18); oneShot('dogs', dt, 0.22, 0.8); if (Math.random() < 0.75) oneShot('dogs', dt + rnd(1.5, 4), 0.17, 1.14); } }   // a bigger male (deeper) and a smaller female answering
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
@@ -500,8 +501,8 @@
       // Oct 12: nature also drifts in and out during the full music, not only in breakdowns. Quiet, random,
       // favoring the sounds heard less often; never more than two at once here.
       (function () {
-        var pool = dark ? ['mountain-wind', 'crows', 'frogs', 'forest-wind', 'howling-wind', 'ocean'] : ['birds', 'mountain-wind', 'forest-wind', 'forest-birds', 'ocean', 'forest-birds', 'woodpecker'];
-        var n = Math.random() < 0.35 ? 2 : 1, span = Math.max(30, b1 - t - 20);
+        var pool = dark ? ['mountain-wind', 'crows', 'forest-wind', 'howling-wind', 'ocean'] : ['mountain-wind', 'forest-wind', 'ocean', 'forest-wind', 'birds', 'forest-birds'];
+        var n = Math.random() < 0.5 ? 1 : 0, span = Math.max(30, b1 - t - 20);
         for (var k = 0; k < n; k++) {
           var a0 = Math.max(natureStart, t + rnd(8, span)), a1 = a0 + rnd(28, 55);
           if (busy(a0, a1) >= 2) continue;
