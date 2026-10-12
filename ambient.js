@@ -583,9 +583,13 @@
     if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
     // Oct 11: at the very top of a page (the first thing people see) the two boxes stay out of the way of the
     // opening words; they fade in as soon as the page moves
-    var hide = scrollY < 60, op = hide ? '0' : '1';
-    [btn, rbtn].forEach(function (b) { if (!b) return; if (b.style.opacity !== op && !(op === '1' && b === btn && b.__dim)) { b.style.opacity = op; b.style.pointerEvents = hide ? 'none' : 'auto'; } if (!/opacity/.test(b.style.transition)) b.style.transition = 'bottom .3s ease, opacity .6s ease'; });
-    var want = (40 + lift) + 'px', rw = (40 + lift + btn.offsetHeight + 10) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
+    // Sound Bath is always there. At the very top of a page it tucks low into the corner (clear of the opening
+    // words) and Remix waits; once the page moves, Sound Bath lifts a little and Remix fades in above it.
+    var top = scrollY < 60, base = top ? 12 : 40;
+    [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity .6s ease'; });
+    btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
+    if (rbtn) { var op = top ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = top ? 'none' : 'auto'; } }
+    var want = (base + lift) + 'px', rw = (base + lift + btn.offsetHeight + 10) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
     if (rbtn && rbtn.style.bottom !== rw) { rbtn.style.bottom = rw; }
   }, 120);
