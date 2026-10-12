@@ -4821,7 +4821,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"]{background:#000 !important}
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
-<script src="site-extras.js?v=38"></script>
+<script src="site-extras.js?v=40"></script>
 <script src="nav-extras.js?v=23"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -5511,6 +5511,22 @@ html body section[data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):no
 html body section[data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16):not(.z17):not(.z18):not(.z19)::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(68px + 49vw);pointer-events:none;z-index:0;-webkit-backdrop-filter:saturate(1.9) contrast(1.08);backdrop-filter:saturate(1.9) contrast(1.08);-webkit-mask-image:linear-gradient(#000 0,#000 55%,transparent 100%);mask-image:linear-gradient(#000 0,#000 55%,transparent 100%)}
 html body section[data-m="hero"] > *{position:relative;z-index:1}
 @media (min-width:1000px){html body section[data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16):not(.z17):not(.z18):not(.z19)::after{height:344px}}
+</style>
+<style id="about-story-tight">
+/* Oct 12: About story reads as one flowing text. Photos crossfade behind the words (on a layer under all text), no big gaps between paragraphs */
+html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid{isolation:isolate;position:relative}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-box.ab-box.ab-tight{-webkit-mask-image:none !important;mask-image:none !important;margin-top:0 !important;padding-top:10px !important;padding-bottom:10px !important;background:none !important;position:relative !important;overflow:visible !important;isolation:auto !important}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight:first-child{padding-top:44px !important}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight:last-child{padding-bottom:44px !important}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight::before{content:"";position:absolute;left:0;right:0;top:-120px;bottom:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.22)),var(--abg);background-size:100% 100%,var(--abs);background-position:0 0,var(--abp);background-repeat:no-repeat;-webkit-mask-image:linear-gradient(transparent 0,#000 120px);mask-image:linear-gradient(transparent 0,#000 120px)}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight:first-child::before{top:0;-webkit-mask-image:none;mask-image:none}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight > *{position:relative;z-index:1}
+html body [data-screen-label="About"] .ab-grid .ab-box.ab-tight p{line-height:2.05 !important;margin-top:0 !important;margin-bottom:.9em !important}
+</style>
+<style id="mush-gap">
+/* Oct 12: less dead space between the Mushrooms page top box and the species files */
+html body [data-screen-label] section[data-m="mush-hero"][data-m="mush-hero"][data-m="mush-hero"]{padding-bottom:6px !important;margin-bottom:0 !important}
+html body [data-screen-label] section[data-m="mush-files"][data-m="mush-files"][data-m="mush-files"]{padding-top:14px !important;margin-top:0 !important}
 </style>
 </body>
 </html>
