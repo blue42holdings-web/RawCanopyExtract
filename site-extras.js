@@ -412,3 +412,20 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   });
   document.addEventListener('click', function (e) { if (moved > 4 && e.target.closest && e.target.closest('.cx-track')) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
 })();
+
+/* Oct 12: About story boxes hand their photo to a layer under the text so the words flow without gaps */
+(function () {
+  function run() {
+    var boxes = document.querySelectorAll('[data-screen-label="About"] .ab-grid .ab-box');
+    for (var i = 0; i < boxes.length; i++) {
+      var b = boxes[i]; if (b.classList.contains('ab-tight')) continue;
+      var c = getComputedStyle(b), first = i === 0;
+      var pos = c.backgroundPosition.split(',').map(function (p) {
+        var t = p.trim().split(/\s+/); if (first || t.length < 2 || p.trim() === '0px 0px') return p.trim();
+        var y = t[1]; if (/px$/.test(y)) y = (parseFloat(y) + 120) + 'px'; return t[0] + ' ' + y; }).join(',');
+      b.style.setProperty('--abg', c.backgroundImage); b.style.setProperty('--abs', c.backgroundSize); b.style.setProperty('--abp', pos);
+      b.classList.add('ab-tight');
+    }
+  }
+  setInterval(run, 800); run();
+})();
