@@ -162,7 +162,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 /* Oct 11: About page on phone. One background behind About the Brand (no lava), and the compost
    area is fully white marble before its heading, fading in from black and back out at the bottom. */
 (function () {
-  var MQ = matchMedia('(max-width:767px)');
+  var MQ = matchMedia('(max-width:99999px)');
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-compost"]');
     if (!c) return;
@@ -244,7 +244,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-brand"]');
     if (!c) return;
-    var ph = matchMedia('(max-width:767px)').matches;
+    var ph = matchMedia('(max-width:99999px)').matches;
     if (c.__mb !== (ph ? 2 : 1)) {
       c.__mb = ph ? 2 : 1;
       // Oct 11 (later): Mount Shasta with its lenticular clouds instead of white marble: where the brand began
@@ -387,4 +387,28 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     });
   }
   setInterval(run, 1000); run();
+})();
+
+/* Oct 12: desktop rows scroll by dragging with the mouse, the way they swipe on a phone */
+(function () {
+  if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  var t = null, x0 = 0, s0 = 0, moved = 0;
+  document.addEventListener('mousedown', function (e) {
+    if (e.button !== 0) return;
+    var el = e.target.closest && e.target.closest('.cx-track'); if (!el || el.scrollWidth <= el.clientWidth + 4) return;
+    t = el; x0 = e.clientX; s0 = el.scrollLeft; moved = 0; e.preventDefault();
+  });
+  addEventListener('mousemove', function (e) {
+    if (!t) return; var dx = e.clientX - x0; moved = Math.max(moved, Math.abs(dx));
+    if (moved > 4) t.classList.add('rcx-dragging');
+    t.scrollLeft = s0 - dx;
+  });
+  addEventListener('mouseup', function () {
+    if (!t) return; var el = t; t = null;
+    setTimeout(function () { el.classList.remove('rcx-dragging'); }, 0);
+    if (moved > 4) { var kids = [].slice.call(el.children), best = null, bd = 1e9, L = el.getBoundingClientRect().left;
+      kids.forEach(function (k) { var d = Math.abs(k.getBoundingClientRect().left - L - 10); if (d < bd) { bd = d; best = k; } });
+      if (best) el.scrollTo({ left: el.scrollLeft + best.getBoundingClientRect().left - L - 10, behavior: 'smooth' }); }
+  });
+  document.addEventListener('click', function (e) { if (moved > 4 && e.target.closest && e.target.closest('.cx-track')) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
 })();

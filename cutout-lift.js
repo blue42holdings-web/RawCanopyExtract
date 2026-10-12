@@ -15,7 +15,7 @@ function key(u){ if(!u) return null; var f; try{ f=decodeURIComponent(u.split('?
 function splitList(v){ var out=[],d=0,cur=''; for(var i=0;i<v.length;i++){ var c=v[i]; if(c==='(')d++; if(c===')')d--; if(c===','&&d===0){ out.push(cur.trim()); cur=''; } else cur+=c; } out.push(cur.trim()); return out; }
 function match(el){
   if(el.nodeType!==1||el.hasAttribute('data-lift-layer')) return null;
-  if(el.hasAttribute('data-nolift-ph')&&matchMedia('(max-width:767px)').matches) return null;
+  if(el.hasAttribute('data-nolift-ph')&&matchMedia('(max-width:99999px)').matches) return null;
   if(el.tagName==='IMG'){ var k=key(el.currentSrc||el.getAttribute('src')); return k?{kind:'img',k:k}:null; }
   var cs=getComputedStyle(el), bi=cs.backgroundImage; if(!bi||bi==='none'||bi.indexOf('url(')<0) return null;
   var layers=splitList(bi); for(var i=0;i<layers.length;i++){ var m=layers[i].match(/url\(["']?([^"')]+)["']?\)/); if(m){ var k2=key(m[1]); if(k2){ var sz=splitList(cs.backgroundSize), ps=splitList(cs.backgroundPosition); return {kind:'bg',k:k2,size:sz[i%sz.length],pos:ps[i%ps.length]}; } } }
@@ -117,7 +117,7 @@ window.addEventListener('scroll',center,{passive:true,capture:true}); window.add
 if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 /* phone only: camper photo behind the opening paragraph gets its own slow, once-only cutout (holds 1.5s, then 6s together with the shade) */
 (function(){
-  if(RM||!matchMedia('(max-width:767px)').matches||!window.IntersectionObserver) return;
+  if(RM||!matchMedia('(max-width:99999px)').matches||!window.IntersectionObserver) return;
   var CK='why-rv-desk-nopen.jpg', CSRC='assets/cutouts/why-rv-desk-nopen-cutout-v2.webp', CT=function(p){ return p+' 6000ms ease-in-out 1500ms'; };
   function arm(el){
     if(el.__camperLift) return; el.__camperLift=true;
@@ -136,7 +136,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 })();
 /* phone only: photos marked data-lift-once get the cutout lift once when they scroll into view (for background photos the tap/centre probe can't reach) */
 (function(){
-  if(RM||!matchMedia('(max-width:767px)').matches||!window.IntersectionObserver) return;
+  if(RM||!matchMedia('(max-width:99999px)').matches||!window.IntersectionObserver) return;
   function pos(el,box){ var o=box.style; o.left=el.offsetLeft+'px'; o.top=el.offsetTop+'px'; o.width=el.offsetWidth+'px'; o.height=el.offsetHeight+'px'; }
   function arm(el){
     el.setAttribute('data-lift-armed','');
@@ -156,7 +156,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
 /* phone only: hero background photos marked data-lift-bg get a slow, once-only cutout lift in step with their shade (holds 1.5s, then 6s) */
 (function(){
   if(RM||!window.IntersectionObserver) return;
-  var PH=matchMedia('(max-width:767px)').matches;
+  var PH=matchMedia('(max-width:99999px)').matches;
   function imgRect(bw,bh,iw,ih,sz,ps){
     var s=sz.trim().split(/\s+/), w, h;
     if(s[0]==='cover'||s[0]==='contain'){ var k=(s[0]==='cover'?Math.max:Math.min)(bw/iw,bh/ih); w=iw*k; h=ih*k; }
