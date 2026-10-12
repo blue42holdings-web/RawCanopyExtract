@@ -97,52 +97,111 @@
   addEventListener('pageshow', function (e) { if (e.persisted) { var st = history.state; if (st) restore(st.p, st.y); } });
 })();
 
-/* Hold an arrow to glide the row slowly; a quick tap still moves one box. */
+/* Oct 11: row arrows, smooth every frame. A tap glides one box (a page on a computer) with a slow,
+   eased start and finish. Holding glides continuously, easing up to speed, and on release it eases
+   into the next box instead of snapping. Phones only scroll in whole pixels, so the leftover fraction
+   of a pixel is carried by a sub pixel shift of the boxes: no stepping, no jitter, no jump at the end. */
 (function () {
   var st = document.createElement('style');
-  st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:none}';
+  st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:none}' +
+    '.cx-track[data-glide]>*{transform:translate3d(calc(var(--sub,0) * -1px),0,0)}';
   document.head.appendChild(st);
-  var hold = null, swallow = false;
-  function stop() {
-    if (!hold) return;
-    clearTimeout(hold.timer); cancelAnimationFrame(hold.raf);
-    var h = hold; hold = null;
-    if (h.on) {
-      swallow = true; setTimeout(function () { swallow = false; }, 400);
-      h.t.style.scrollBehavior = ''; h.t.style.scrollSnapType = '';
+  var phone = function () { return innerWidth < 768; };
+  var A = null, swallow = false, pressTimer = null, press = null;
+  function snaps(t) {
+    var tr = t.getBoundingClientRect(), cs = getComputedStyle(t), pl = parseFloat(cs.scrollPaddingLeft) || 0, out = [];
+    [].forEach.call(t.children, function (k) {
+      var r = k.getBoundingClientRect(), al = (getComputedStyle(k).scrollSnapAlign || '').split(' ').pop();
+      var x = al === 'center' ? (r.left + r.width / 2) - tr.left + t.scrollLeft - t.clientWidth / 2
+            : (r.left - tr.left) + t.scrollLeft - pl;
+      out.push(Math.round(Math.max(0, Math.min(t.scrollWidth - t.clientWidth, x))));
+    });
+    return out.sort(function (p, q) { return p - q; });
+  }
+  function begin(t) {
+    if (A && A.t !== t) end(A, true);
+    if (!A) { A = { t: t, pos: t.scrollLeft }; t.style.scrollSnapType = 'none'; t.style.scrollBehavior = 'auto'; t.setAttribute('data-glide', ''); }
+    return A;
+  }
+  function place(a, x) {
+    var max = a.t.scrollWidth - a.t.clientWidth; x = Math.max(0, Math.min(max, x)); a.pos = x;
+    var base = Math.floor(x); if (a.t.scrollLeft !== base) a.t.scrollLeft = base;
+    a.t.style.setProperty('--sub', (x - a.t.scrollLeft).toFixed(3));
+  }
+  function end(a, keep) {
+    cancelAnimationFrame(a.raf);
+    a.t.style.setProperty('--sub', '0'); a.t.removeAttribute('data-glide');
+    if (!keep) a.t.scrollLeft = Math.round(a.pos);
+    a.t.style.scrollSnapType = ''; a.t.style.scrollBehavior = '';
+    if (A === a) A = null;
+  }
+  function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }   // slow in, slow out
+  function glideTo(a, x, v0) {                     // eased move from where we are to x (v0: speed we are already moving at, px/s)
+    cancelAnimationFrame(a.raf);
+    var from = a.pos, dist = x - from; if (Math.abs(dist) < 0.5) { place(a, x); end(a); return; }
+    var dur = Math.max(900, Math.min(1700, 900 + Math.abs(dist) * 2.2));            // slow and deliberate
+    if (v0) dur = Math.max(400, Math.min(4500, 3 * Math.abs(dist) / Math.abs(v0) * 1000));   // ease out starts at the speed we were already going
+    var t0 = performance.now();
+    (function step(now) {
+      var p = Math.min(1, (now - t0) / dur);
+      var e = v0 ? 1 - Math.pow(1 - p, 3) : ease(p);   // after a hold, keep the momentum and ease out
+      place(a, from + dist * e);
+      if (p < 1) a.raf = requestAnimationFrame(step); else end(a);
+    })(t0);
+  }
+  function tap(t, d) {
+    var a = begin(t), S = snaps(t), cur = a.pos, x;
+    if (phone()) {
+      x = d > 0 ? S.filter(function (s) { return s > cur + 2; })[0] : S.filter(function (s) { return s < cur - 2; }).pop();
+      if (x === undefined) x = d > 0 ? t.scrollWidth - t.clientWidth : 0;
+    } else {
+      var want = cur + d * t.clientWidth * 0.92, best = want, bd = 1e9;
+      S.forEach(function (s) { var dd = Math.abs(s - want); if (dd < bd) { bd = dd; best = s; } }); x = best;
     }
+    glideTo(a, x);
+  }
+  function holdStart(t, d) {
+    var a = begin(t); cancelAnimationFrame(a.raf);
+    var t0 = performance.now(), last = t0, sdt = 1 / 60; a.v = 0; a.d = d; a.holding = true;
+    var vmax = phone() ? 150 : 260;
+    (function step(now) {
+      if (!a.holding) return;
+      var dt = Math.min(0.05, (now - last) / 1000); last = now; sdt += (dt - sdt) * 0.15;   // even out uneven frames
+      var k = Math.min(1, (now - t0) / 1400); k = k * k * (3 - 2 * k);    // eases up to speed
+      a.v = vmax * k; place(a, a.pos + d * a.v * sdt);
+      a.raf = requestAnimationFrame(step);
+    })(t0);
+  }
+  function holdEnd() {
+    var a = A; if (!a || !a.holding) return; a.holding = false;
+    var S = snaps(a.t), cur = a.pos, d = a.d;
+    var room = Math.max(1, (a.v || 60) * 0.4);                                      // enough distance to slow down gently
+    var x = d > 0 ? S.filter(function (s) { return s > cur + room; })[0] : S.filter(function (s) { return s < cur - room; }).pop();
+    if (x === undefined) x = d > 0 ? a.t.scrollWidth - a.t.clientWidth : 0;
+    glideTo(a, x, a.v || 60);
   }
   document.addEventListener('pointerdown', function (e) {
     var b = e.target.closest && e.target.closest('.cx .rit-arrow[data-d]');
-    if (!b) return;
+    if (!b) { if (A && A.t.contains(e.target)) end(A); return; }     // a finger on the row takes over
     var t = b.closest('.cx').querySelector('.cx-track'); if (!t) return;
-    stop();
-    hold = { t: t, d: Number(b.dataset.d) || 1, on: false };
-    hold.timer = setTimeout(function () {
-      if (!hold) return;
-      hold.on = true; hold.start = performance.now(); hold.last = hold.start; hold.pos = t.scrollLeft;
-      t.style.scrollBehavior = 'auto'; t.style.scrollSnapType = 'none';
-      (function step(now) {
-        if (!hold) return;
-        var dt = (now - hold.last) / 1000; hold.last = now;
-        var v = 90 + Math.min(1, (now - hold.start) / 1600) * 170; // px per second, eases up a little
-        hold.pos += hold.d * v * dt; t.scrollLeft = hold.pos;
-        hold.raf = requestAnimationFrame(step);
-      })(performance.now());
-    }, 280);
+    press = { t: t, d: Number(b.dataset.d) || 1, held: false };
+    clearTimeout(pressTimer);
+    pressTimer = setTimeout(function () { if (press) { press.held = true; holdStart(press.t, press.d); } }, 280);
   }, true);
-  ['pointerup', 'pointercancel', 'blur'].forEach(function (ev) { addEventListener(ev, stop, true); });
+  function release() {
+    clearTimeout(pressTimer);
+    if (press && press.held) { holdEnd(); swallow = true; setTimeout(function () { swallow = false; }, 400); }
+    press = null;
+  }
+  ['pointerup', 'pointercancel'].forEach(function (ev) { addEventListener(ev, release, true); });
+  addEventListener('blur', function () { release(); if (A) end(A); });
   addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.cx .rit-arrow')) e.preventDefault(); }, true);
   addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('[data-m="mx-mags"] .cx .rit-arrow[data-d]');
-    if (a && !swallow && matchMedia('(max-width:767px)').matches) {
-      e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
-      var tr = a.closest('.cx').querySelector('.cx-track'), k = tr.children[0];
-      var stepW = k ? k.getBoundingClientRect().width + (parseFloat(getComputedStyle(tr).columnGap) || 0) : tr.clientWidth / 2;
-      tr.scrollBy({ left: (Number(a.dataset.d) || 1) * stepW, behavior: 'smooth' });
-      return;
-    }
-    if (swallow && e.target.closest && e.target.closest('.cx .rit-arrow')) { e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault(); swallow = false; }
+    var b = e.target.closest && e.target.closest('.cx .rit-arrow[data-d]');
+    if (!b) return;
+    e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();       // our glide replaces the old jump
+    if (swallow) { swallow = false; return; }
+    var t = b.closest('.cx').querySelector('.cx-track'); if (t) tap(t, Number(b.dataset.d) || 1);
   }, true);
 })();
 
