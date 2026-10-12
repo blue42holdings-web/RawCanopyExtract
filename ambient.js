@@ -525,7 +525,7 @@
     btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
-    btn.style.cssText = 'position:fixed;left:12px;bottom:40px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
+    btn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
     btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
@@ -560,7 +560,7 @@
     if (rbtn && document.body.contains(rbtn)) return;
     var stl = document.createElement('style'); stl.textContent = '@keyframes rcxSpin{to{transform:rotate(360deg)}}'; document.head.appendChild(stl);
     rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
-    rbtn.style.cssText = 'position:fixed;left:12px;bottom:40px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
+    rbtn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
     rbtn.addEventListener('click', function (ev) {
       ev.stopPropagation();
       if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
@@ -586,7 +586,7 @@
     // Sound Bath is always there. At the very top of a page it tucks low into the corner (clear of the opening
     // words) and Remix waits; once the page moves, Sound Bath lifts a little and Remix fades in above it.
     // Oct 11: Sound Bath on top and always there; Remix appears underneath it once the page moves. Both sit up off the corner.
-    var top = scrollY < 60, base = 40;
+    var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
     [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity .6s ease'; });
     btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
     if (rbtn) { var op = top ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = top ? 'none' : 'auto'; } }
