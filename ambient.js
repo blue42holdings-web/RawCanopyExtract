@@ -274,10 +274,10 @@
         src.start(start, rnd(0, buf.duration - 1)); src.stop(end + 0.5);
       });
     }
-    function oneShot(name, t, level) {
+    function oneShot(name, t, level, rate) {
       loadField(name).then(function (buf) {
         if (!buf || ctx.currentTime > t) return;
-        var src = ctx.createBufferSource(); src.buffer = buf; src.playbackRate.value = rnd(0.9, 1);
+        var src = ctx.createBufferSource(); src.buffer = buf; src.playbackRate.value = rate || rnd(0.9, 1);
         var g = ctx.createGain(); g.gain.value = level;
         var pan = _origCreatePanner ? _origCreatePanner() : null;
         src.connect(g); var out = g; if (pan) { pan.pan.value = rnd(-0.7, 0.7); g.connect(pan); out = pan; }
@@ -292,7 +292,7 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 2, 'birds': 1.5, 'forest-birds': 2.5, 'woodpecker': 0.8 },   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain-leaves': 1, 'rain': 1.5, 'birds': 1.5, 'forest-birds': 2.5, 'woodpecker': 0.8 },   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
       dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain-leaves': 2, 'thunder': 1.5, 'crows': 0.5, 'frogs': 0.4, 'forest-birds': 0.6, 'woodpecker': 0.4 }
     };
     var recentField = [], nextFieldAt = 0;
@@ -322,11 +322,12 @@
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
-      if (Math.random() < 0.95 && busy(r0, r1) < 3) { var rn = 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.9, 1.0), dark);
+      var softRain = Math.random() < 0.6;   // Oct 12: half the time a soft, soothing light rain with no wind or thunder
+      if (Math.random() < 0.95 && busy(r0, r1) < 3) { var rn = softRain ? 'rain' : 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.75, 0.85) : rnd(0.9, 1.0), dark);
         // Oct 12: distant thunder rolls in under the rain most of the time, so you actually hear the storm
-        if (Math.random() < 0.7) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.75, 0.85), dark); } }
+        if (!softRain && Math.random() < 0.6) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.75, 0.85), dark); } }
       // Oct 12: now and then a dog barks somewhere off in the distance
-      if (Math.random() < 0.18) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 14) < 3) { claim(dt, dt + 14); oneShot('dogs', dt, 0.2); } }
+      if (Math.random() < 0.18) { var dt = b2 + rnd(4, Math.max(6, end - b2 - 16)); if (busy(dt, dt + 18) < 3) { claim(dt, dt + 18); oneShot('dogs', dt, 0.22, 0.8); if (Math.random() < 0.75) oneShot('dogs', dt + rnd(1.5, 4), 0.17, 1.14); } }   // a bigger male (deeper) and a smaller female answering
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
