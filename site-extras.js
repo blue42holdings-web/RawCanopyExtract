@@ -374,3 +374,14 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   setInterval(run, 1000); run();
 })();
+
+/* Oct 12: magazine cards: keep each cover photo under the lighter shade */
+(function () {
+  function run() {
+    document.querySelectorAll('a.mx-box.mx-press[style*="mag-rack"]').forEach(function (b) {
+      if (b.__mg) return; var m = (b.getAttribute('style') || '').match(/mag-rack-\d+\.jpg/); if (!m) return;
+      b.__mg = 1; b.style.setProperty('--mag', "url('assets/photo/" + m[0] + "')");
+    });
+  }
+  setInterval(run, 1000); run();
+})();
