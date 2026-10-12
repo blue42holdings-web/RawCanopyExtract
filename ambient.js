@@ -558,7 +558,7 @@
   }
   function rRefresh() {
     if (!rbtn) return; var c = remixing ? '#F4D99A' : '#E9C079';
-    rbtn.innerHTML = remixIcon(remixing) + '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">REMIX</span>';
+    rbtn.innerHTML = remixIcon(remixing) + '<span style="pointer-events:none;display:block;font-family:\'RCX Digits\',\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">REMIX</span>';
     rbtn.style.boxShadow = remixing ? '0 0 16px rgba(212,162,74,.55),0 4px 14px rgba(0,0,0,.55)' : '0 4px 14px rgba(0,0,0,.55)';
     rbtn.setAttribute('aria-label', remixing ? 'Remix on. Tap to stop the beat' : 'Remix. Tap to play a beat');
   }
@@ -610,7 +610,7 @@
     if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
     // one box: the speaker on top, SOUND above BATH underneath. The whole box turns it on and off.
     btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none;display:block" ') +
-      '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">SOUND<br>BATH</span>';
+      '<span style="pointer-events:none;display:block;font-family:\'RCX Digits\',\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">SOUND<br>BATH</span>';
     btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on');
   }
 
