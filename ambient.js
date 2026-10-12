@@ -253,14 +253,15 @@
         var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
         if (end - start < 8) return;
         var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
-        if (dark) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
-        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
+        var soft = /rain/.test(name);   // Oct 11: rain is always soft and mellow, no echo, no drips
+        if (dark && !soft) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(3000, 3800) : dark ? rnd(1300, 2200) : rnd(7000, 11000); lp.Q.value = 0.3;
         var g = ctx.createGain(); g.gain.value = 0;
         var pan = ctx.createStereoPanner ? _origCreatePanner ? _origCreatePanner() : ctx.createStereoPanner() : null;
         src.connect(lp); lp.connect(g);
         var out = g; if (pan) { pan.pan.value = rnd(-0.35, 0.35); g.connect(pan); out = pan; }
         out.connect(fieldBus);
-        if (dark) { var send = ctx.createGain(); send.gain.value = 0.5; out.connect(send); send.connect(revIn); }
+        if (dark && !soft) { var send = ctx.createGain(); send.gain.value = 0.5; out.connect(send); send.connect(revIn); }
         var fin = rnd(9, 16), fout = rnd(10, 16);
         g.gain.setValueAtTime(0, start);
         g.gain.linearRampToValueAtTime(level, start + fin);
@@ -289,8 +290,8 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 1.2, 'birds': 1.5, 'jungle': 0.15 },
-      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'rain-leaves': 0.8, 'crows': 0.5, 'droplets': 0.5, 'frogs': 0.4 }
+      bright: { 'ocean': 7, 'forest-wind': 7, 'mountain-wind': 3, 'rain': 2, 'birds': 1.5, 'jungle': 0.15 },
+      dark: { 'ocean': 6, 'forest-wind': 5, 'howling-wind': 3, 'mountain-wind': 3, 'rain': 2, 'crows': 0.5, 'frogs': 0.4 }
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
@@ -312,14 +313,14 @@
       var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
       if (t1 - t0 < 25) return;
       var main = pickOne(dark);
-      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.46, 0.56) : (dark ? 0.5 : 0.48), dark); }
+      if (busy(t0, t1) < 3) { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.36, 0.42) : (dark ? 0.5 : 0.48), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
       if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
-        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.46 : 0.34, dark);   // rain a notch up so it is noticed, still soft
+        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end - rnd(0, 4), r1 = end + rnd(30, 50);
-      if (Math.random() < 0.55 && busy(r0, r1) < 3) { var rn = Math.random() < 0.75 ? 'rain' : 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.44, 0.52), dark); }
+      if (Math.random() < 0.55 && busy(r0, r1) < 3) { var rn = 'rain'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.34, 0.40), dark); }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
