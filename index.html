@@ -4286,30 +4286,35 @@ class Component extends DCLogic {
         box._hexSplit = { hex: svg, num: numSvg };
       }
       return box._hexSplit;
-    });
-    let done = false; const landed = performance.now();
-    const spin = () => {
-      const t0 = performance.now(), D = 3200, STEP = 2300;
-      const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    }).filter((v, i, a) => a.indexOf(v) === i);
+    // Oct 11: one number spins at a time, every five seconds, top to bottom and around again, but only the
+    // numbers on screen. If just one is in view (centered), that one spins every five seconds.
+    const D = 3200, EVERY = 5000;
+    const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const spinOne = (it) => {
+      if (it._raf) return;
+      const t0 = performance.now();
       const f = (now) => {
-        let live = false;
-        items.forEach(({ hex, num }, i) => {
-          const x = Math.max(0, Math.min(1, (now - t0 - i * STEP) / D));
-          if (x < 1) live = true;
-          const e = ease(x);
-          hex.style.transform = 'rotateY(' + (720 * e).toFixed(2) + 'deg)';
-          num.style.transform = 'rotateY(' + (-360 * e).toFixed(2) + 'deg)';
-        });
-        if (live) this._hexRaf = requestAnimationFrame(f);
-        else items.forEach(({ hex, num }) => { hex.style.transform = ''; num.style.transform = ''; });
+        const x = Math.max(0, Math.min(1, (now - t0) / D)), e = ease(x);
+        it.hex.style.transform = 'rotateY(' + (720 * e).toFixed(2) + 'deg)';
+        it.num.style.transform = 'rotateY(' + (-360 * e).toFixed(2) + 'deg)';
+        if (x < 1) it._raf = requestAnimationFrame(f);
+        else { it._raf = 0; it.hex.style.transform = ''; it.num.style.transform = ''; }
       };
-      cancelAnimationFrame(this._hexRaf); this._hexRaf = requestAnimationFrame(f);
+      it._raf = requestAnimationFrame(f);
     };
-    this._hexObs = new IntersectionObserver(ents => ents.forEach(en => {
-      if (en.isIntersecting && !done) { done = true; const left = 5000 - (performance.now() - landed); clearTimeout(this._hexWaitT); this._hexWaitT = setTimeout(spin, Math.max(0, left)); }
-      else if (!en.isIntersecting && en.boundingClientRect.top > 0) done = false;
-    }), { rootMargin: '0px 0px -12% 0px', threshold: 0.6 });
-    this._hexObs.observe(items[0].hex.parentNode);
+    let next = 0;
+    const onScreen = (it) => { const r = it.hex.getBoundingClientRect(); return r.height > 0 && r.top >= 60 && r.bottom <= innerHeight - 20; };
+    const tick = () => {
+      if (!items[0].hex.isConnected) { clearInterval(this._hexIv); this._hexIv = null; return; }
+      if (document.hidden) return;
+      const vis = items.map((it, i) => onScreen(it) ? i : -1).filter(i => i >= 0);
+      if (!vis.length) return;
+      let pick = vis.find(i => i >= next); if (pick === undefined) pick = vis[0];
+      next = pick + 1; spinOne(items[pick]);
+    };
+    clearInterval(this._hexIv); clearTimeout(this._hexWaitT);
+    this._hexWaitT = setTimeout(() => { tick(); this._hexIv = setInterval(tick, EVERY); }, 1500);
   };
 
   setupSweeps = () => {
