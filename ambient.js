@@ -317,6 +317,9 @@
       if (Math.random() < 0.8 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
         var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.46 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
+      // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
+      var r0 = end - rnd(0, 4), r1 = end + rnd(30, 50);
+      if (Math.random() < 0.55 && busy(r0, r1) < 3) { var rn = Math.random() < 0.75 ? 'rain' : 'rain-leaves'; loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, rnd(0.44, 0.52), dark); }
       var ot = b2 + rnd(6, Math.max(8, end - b2 - 10));
       if (dark && Math.random() < 0.25 && busy(ot, ot + 14) < 3) { claim(ot, ot + 14); oneShot('owl', ot, 0.28); }
     }
@@ -500,6 +503,8 @@
       slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.22 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
       fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
+      // Oct 11: after the story stops, about three seconds of real silence, then the same slow curve as the first start
+      returnIn: function (wait, sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = x * x * x; } var t = ctx.currentTime; duck.gain.cancelScheduledValues(t); duck.gain.setValueAtTime(duck.gain.value, t); duck.gain.linearRampToValueAtTime(0, t + 0.3); duck.gain.setValueAtTime(0, t + wait); duck.gain.setValueCurveAtTime(c, t + wait, sec); },
       setDuck: function (v, sec) { duck.gain.cancelScheduledValues(ctx.currentTime); duck.gain.setValueAtTime(duck.gain.value, ctx.currentTime); duck.gain.linearRampToValueAtTime(v, ctx.currentTime + sec); }
     };
   }
@@ -672,7 +677,7 @@
     return !!((a && !a.paused && !a.ended) || (window.speechSynthesis && speechSynthesis.speaking && !speechSynthesis.paused));
   }
   function storyPlay() { if (storyOn) return; storyOn = true; if (kick) { try { kick.pause(); } catch (e) {} } if (eng) eng.setDuck(0, 1.5); }
-  function storyStop() { if (!storyOn) return; storyOn = false; if (eng) eng.setDuck(1, 2.5); }
+  function storyStop() { if (!storyOn) return; storyOn = false; if (eng) eng.returnIn(3, 24); }
   // poll as well as listen: a fresh story element can start before its listeners are attached
   setInterval(function () { var on = storyActive(); if (on && !storyOn) storyPlay(); else if (!on && storyOn) storyStop(); }, 250);
   setInterval(function () {
@@ -686,7 +691,7 @@
   }, 300);
   // step aside while the site's own story audio is playing
   document.addEventListener('play', function (e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing++; eng.setDuck(0.0, 1.2); } }, true);
-  function released(e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing = Math.max(0, playing - 1); if (!playing) eng.setDuck(1, 3); } }
+  function released(e) { if (e.target && e.target.tagName === 'AUDIO' && !e.target.hasAttribute('data-ambient-kick') && eng) { playing = Math.max(0, playing - 1); if (!playing) eng.returnIn(3, 24); } }
   document.addEventListener('pause', released, true);
   document.addEventListener('ended', released, true);
   document.addEventListener('visibilitychange', function () {
