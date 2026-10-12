@@ -348,79 +348,104 @@
   setInterval(run, 1200); run();
 })();
 
-/* Oct 11: the quick menu opens as a wheel. It always fits on screen wherever the plus is, the item in the
-   middle is large and bright, the others shrink and dim, and sliding a thumb up or down rolls the wheel. */
+/* Oct 11: the quick menu is a real wheel. It always opens fully on screen with the current item in the
+   middle and two above and two below. Drag up or down (or use a mouse wheel) and it rolls, all the way around,
+   with a soft space age beep at each notch. Tap the bright middle item to go there; tap another to roll to it. */
 (function () {
   var r = document.getElementById('rcx-rail'); if (!r) return;
   var m = r.querySelector('.rr-menu'), btn = r.querySelector('button'); if (!m || !btn) return;
-  var IH = 42, VIS = 11;                                 // item height; window tall enough that every item always shows
+  var items = [].slice.call(m.querySelectorAll('a')), N = items.length, IH = 50, H = IH * 5 + 24;
   var st = document.createElement('style');
   st.textContent =
-    '#rcx-rail .rr-menu.rr-wheel{position:fixed !important;right:46px !important;top:var(--rw-top,0px) !important;transform:translateX(12px) !important;height:' + (IH * VIS) + 'px;overflow-y:auto;scroll-snap-type:y mandatory;' +
-      'overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0 !important;padding:' + (IH * 5) + 'px 6px;box-sizing:border-box;perspective:420px}' +
-    '#rcx-rail.open .rr-menu.rr-wheel{transform:none !important}' +
-    '#rcx-rail .rr-menu.rr-wheel::-webkit-scrollbar{display:none}' +
-    '#rcx-rail .rr-menu.rr-wheel a{scroll-snap-align:center;height:' + (IH - 8) + 'px;margin:4px 0;box-sizing:border-box;display:flex !important;align-items:center;justify-content:flex-end;' +
-      'transform-origin:100% 50%;transition:transform .12s linear,opacity .12s linear,background .2s,color .2s;will-change:transform,opacity}' +
-    '#rcx-rail .rr-menu.rr-wheel a.rr-mid{background:#D4A24A !important;color:#000 !important}';
+    '#rcx-rail .rr-menu.rr-wheel2{position:fixed !important;right:44px !important;left:auto !important;top:var(--rw-top,0px) !important;width:190px;height:' + H + 'px;display:block !important;' +
+      'transform:translateX(14px) !important;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;perspective:520px;padding:0 !important;cursor:grab}' +
+    '#rcx-rail.open .rr-menu.rr-wheel2{transform:none !important}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a{position:absolute !important;right:4px;top:0;height:' + (IH - 8) + 'px;margin:0 !important;box-sizing:border-box;display:flex !important;align-items:center;justify-content:flex-end;transform-origin:100% 50%;will-change:transform,opacity;transition:background .2s,color .2s;white-space:nowrap}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a.rr-mid{background:#D4A24A !important;color:#000 !important}';
   document.head.appendChild(st);
-  m.classList.add('rr-wheel');
-  var items = [].slice.call(m.querySelectorAll('a'));
+  m.classList.remove('rr-wheel'); m.classList.add('rr-wheel2');
+  var pos = 0, vel = 0, raf = 0, lastNotch = null;
+  function wrap(d) { d = ((d % N) + N) % N; return d > N / 2 ? d - N : d; }    // shortest way around the wheel
   function paint() {
-    var c = m.scrollTop + m.clientHeight / 2, best = null, bd = 1e9;
-    items.forEach(function (a) {
-      var mid = a.offsetTop + a.offsetHeight / 2, d = Math.abs(mid - c) / IH;
-      var sd = (mid - c) / IH;                                            // signed: above or below the middle
-      var s = Math.max(0.5, 1.12 - d * 0.13), o = Math.max(0.3, 1 - d * 0.16);
-      a.style.transform = 'rotateX(' + (-sd * 13).toFixed(1) + 'deg) scale(' + s.toFixed(3) + ')'; a.style.opacity = o.toFixed(3);   // like a wheel turned a little to the side
-      if (d < bd) { bd = d; best = a; }
+    var cy = H / 2;
+    items.forEach(function (a, i) {
+      var d = wrap(i - pos), ad = Math.abs(d);
+      var y = cy + Math.sin(Math.max(-1.45, Math.min(1.45, d * 0.52))) * IH * 2.05 - (IH - 8) / 2;   // on a cylinder: spacing tightens toward the edges
+      var s = Math.max(0.55, 1.1 - ad * 0.17), o = ad > 2.6 ? 0 : Math.max(0.28, 1 - ad * 0.3);
+      a.style.transform = 'translateY(' + y.toFixed(1) + 'px) rotateX(' + (-d * 24).toFixed(1) + 'deg) scale(' + s.toFixed(3) + ')';
+      a.style.opacity = o.toFixed(3); a.style.pointerEvents = o > 0.2 ? 'auto' : 'none';
+      a.classList.toggle('rr-mid', ad < 0.5);
     });
-    items.forEach(function (a) { a.classList.toggle('rr-mid', a === best); });
-    if (best !== lastMid) { if (lastMid && r.classList.contains('open')) tick(); lastMid = best; }
+    var notch = ((Math.round(pos) % N) + N) % N;
+    if (lastNotch !== null && notch !== lastNotch && r.classList.contains('open')) beep();
+    lastNotch = notch;
   }
-  // a soft dry click each time a new item rolls into the middle
-  var lastMid = null, actx = null;
-  function tick() {
+  // a soft, dry space age beep (its own sound, nothing else on the site makes it)
+  var actx = null;
+  function beep() {
     try {
       var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
       if (!actx) actx = new AC(); if (actx.state === 'suspended') actx.resume();
-      var t = actx.currentTime, n = Math.floor(actx.sampleRate * 0.012), b = actx.createBuffer(1, n, actx.sampleRate), d = b.getChannelData(0);
-      for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 4);
-      var src = actx.createBufferSource(); src.buffer = b;
-      var bp = actx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 2600; bp.Q.value = 1.4;
-      var g = actx.createGain(); g.gain.value = 0.22;
-      src.connect(bp); bp.connect(g); g.connect(actx.destination); src.start(t);
+      var t = actx.currentTime, o = actx.createOscillator(), g = actx.createGain(), lp = actx.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
+      lp.type = 'lowpass'; lp.frequency.value = 2600;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.006); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.07);
+      o.connect(lp); lp.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + 0.09);
     } catch (e) {}
   }
-  m.addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true });
+  function settle() {                                   // glide with momentum, then ease into the nearest notch
+    cancelAnimationFrame(raf);
+    var last = performance.now();
+    (function step(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (Math.abs(vel) > 0.6) { pos += vel * dt; vel *= Math.pow(0.04, dt); }
+      else { var tgt = Math.round(pos), d = tgt - pos; pos += d * Math.min(1, dt * 12); vel = 0; if (Math.abs(d) < 0.002) { pos = tgt; paint(); return; } }
+      paint(); raf = requestAnimationFrame(step);
+    })(last);
+  }
+  function rollTo(i) { var d = wrap(i - pos); vel = 0; var from = pos, t0 = performance.now(); cancelAnimationFrame(raf);
+    (function step(now) { var p = Math.min(1, (now - t0) / 380); p = 1 - Math.pow(1 - p, 3); pos = from + d * p; paint(); if (p < 1) raf = requestAnimationFrame(step); })(t0); }
+  var drag = null;
+  m.addEventListener('pointerdown', function (e) {
+    cancelAnimationFrame(raf); vel = 0;
+    drag = { y: e.clientY, p: pos, t: performance.now(), moved: 0, lastY: e.clientY, lastT: performance.now() };
+    try { m.setPointerCapture(e.pointerId); } catch (x) {}
+    e.stopPropagation();
+  });
+  m.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dy = e.clientY - drag.y; drag.moved = Math.max(drag.moved, Math.abs(dy));
+    pos = drag.p - dy / (IH * 0.9);
+    var now = performance.now(), dt = (now - drag.lastT) / 1000;
+    if (dt > 0) vel = vel * 0.6 + (-(e.clientY - drag.lastY) / (IH * 0.9) / dt) * 0.4;
+    drag.lastY = e.clientY; drag.lastT = now;
+    paint(); e.preventDefault();
+  });
+  function up(e) {
+    if (!drag) return; var moved = drag.moved; drag = null;
+    if (moved > 6) { m.__dragged = true; setTimeout(function () { m.__dragged = false; }, 50); vel = Math.max(-14, Math.min(14, vel)); settle(); }
+  }
+  m.addEventListener('pointerup', up); m.addEventListener('pointercancel', up);
+  m.addEventListener('wheel', function (e) { e.preventDefault(); cancelAnimationFrame(raf); pos += e.deltaY / 120; vel = 0; paint(); clearTimeout(m.__wt); m.__wt = setTimeout(settle, 90); }, { passive: false });
+  m.addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a) return;
+    if (m.__dragged || !a.classList.contains('rr-mid')) {
+      e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+      if (!m.__dragged) rollTo(items.indexOf(a));
+    }
+  }, true);
   function place() {
-    var rr = r.getBoundingClientRect(), b = btn.getBoundingClientRect();
-    var H = IH * VIS, want = b.top + b.height / 2 - H / 2;               // centered on the plus
-    var minTop = 76, maxTop = innerHeight - H - 16;                      // but always fully on screen
-    want = Math.max(minTop, Math.min(maxTop, want));
+    var b = btn.getBoundingClientRect(), want = b.top + b.height / 2 - H / 2;
+    want = Math.max(76, Math.min(innerHeight - H - 16, want));
     r.style.setProperty('--rw-top', want + 'px');
   }
-  function centerOn(i) {
-    var a = items[i]; if (!a) return;
-    m.style.scrollSnapType = 'none';
-    m.scrollTop = a.offsetTop + a.offsetHeight / 2 - m.clientHeight / 2;
-    requestAnimationFrame(function () { m.style.scrollSnapType = ''; paint(); });
-  }
   new MutationObserver(function () {
-    if (r.classList.contains('open')) {
-      place();
-      // start on the item that matches where you are on the page: near the top, the top of the list; further down, further down the list
-      var H = document.documentElement.scrollHeight - innerHeight, f = H > 0 ? scrollY / H : 0;
-      centerOn(Math.round(f * (items.length - 1)));
-    }
+    if (!r.classList.contains('open')) return;
+    place();
+    var Hs = document.documentElement.scrollHeight - innerHeight, f = Hs > 0 ? scrollY / Hs : 0;
+    pos = Math.round(f * (N - 1)); vel = 0; lastNotch = null; paint();
   }).observe(r, { attributes: true, attributeFilter: ['class'] });
   addEventListener('resize', function () { if (r.classList.contains('open')) place(); });
-  // a tap on a dim item first rolls it to the middle; a tap on the bright middle one goes there
-  m.addEventListener('click', function (e) {
-    var a = e.target.closest('a'); if (!a || a.classList.contains('rr-mid')) return;
-    e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
-    m.scrollTo({ top: a.offsetTop + a.offsetHeight / 2 - m.clientHeight / 2, behavior: 'smooth' });
-  }, true);
   paint();
 })();
 
