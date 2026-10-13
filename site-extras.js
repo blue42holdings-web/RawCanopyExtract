@@ -162,7 +162,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 /* Oct 11: About page on phone. One background behind About the Brand (no lava), and the compost
    area is fully white marble before its heading, fading in from black and back out at the bottom. */
 (function () {
-  var MQ = matchMedia('(max-width:99999px)');
+  var MQ = matchMedia('(max-width:767px)');
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-compost"]');
     if (!c) return;
@@ -254,7 +254,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   function run() {
     var c = document.querySelector('[data-screen-label="About"] section[data-m="about-brand"]');
     if (!c) return;
-    var ph = matchMedia('(max-width:99999px)').matches;
+    var ph = matchMedia('(max-width:767px)').matches;
     if (c.__mb !== (ph ? 2 : 1)) {
       c.__mb = ph ? 2 : 1;
       // Oct 11 (later): Mount Shasta with its lenticular clouds instead of white marble: where the brand began
@@ -438,120 +438,4 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     }
   }
   setInterval(run, 800); run();
-})();
-
-/* Oct 12: desktop layout. The phone design scaled up made every box a wide, short strip running edge to edge.
-   On a widescreen monitor: boxes that were stacked one per row sit side by side in two or three columns,
-   single boxes are centered with room on both sides, and any box much wider than it is tall gets extra
-   height (equal top and bottom, so its contents stay centered). Phone layout is untouched. */
-(function () {
-  var st = document.createElement('style');
-  st.textContent = '@media (min-width:1000px){' +
-    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){display:grid !important;grid-template-columns:repeat(var(--dk-cols),minmax(0,1fr)) !important;grid-auto-flow:row !important;grid-template-rows:none !important;grid-auto-rows:auto !important;gap:24px !important;width:auto !important;max-width:min(1000px,90%) !important;margin-left:auto !important;margin-right:auto !important;align-items:stretch !important;justify-items:stretch !important}' +
-    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > *{width:auto !important;max-width:none !important;min-width:0 !important;margin:0 !important;flex:none !important;grid-column:auto !important}' +
-    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > .dk-span{grid-column:1 / -1 !important}' +
-    'html body main .dk-solo.dk-solo.dk-solo:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){width:auto !important;max-width:min(820px,82%) !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box !important}' +
-    'html body main .dk-tall.dk-tall.dk-tall:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){padding-top:var(--dk-pt) !important;padding-bottom:var(--dk-pb) !important}' +
-    /* Oct 12 (later): two column grids narrower so each box is a square, not a huge slab; every box in a grid is square or taller */
-    'html body main .dk-grid.dk-c1:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){max-width:min(820px,82%) !important}' +
-    'html body main .dk-grid.dk-c2:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){max-width:min(800px,84%) !important}' +
-    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > :not(.dk-span){aspect-ratio:auto !important;height:auto !important;min-height:var(--dk-sq,0px) !important}' +
-    'html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > :not(.dk-span),html body main .dk-grid.dk-grid:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > :not(.dk-span) > [data-bright-layer]{background-size:cover !important}' +
-    /* magazine and press rows: no more tall strips */
-    'html body main .cx-track a.mx-box.mx-press:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){min-height:0 !important;height:auto !important;aspect-ratio:4 / 5 !important}' +
-    'html body main .cx-track > .mx-box:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){background-size:cover !important}' +
-    'html body main .cx-track > .mx-box:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) > [data-bright-layer]{background-size:cover !important}' +
-    /* the header sits over the same centered column as the page instead of out in the far corners */
-    'html body header > div:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5){max-width:1240px !important;margin-left:auto !important;margin-right:auto !important}' +
-    '}';
-  (document.head || document.documentElement).appendChild(st);
-  var MQ = window.matchMedia ? matchMedia('(min-width:1000px)') : { matches: false };
-  function bordered(e) {
-    var c = getComputedStyle(e), w = parseFloat(c.borderTopWidth) || 0;
-    return w >= 1 && c.borderTopStyle !== 'none' && !/,\s*0\)|transparent/.test(c.borderTopColor);
-  }
-  function excluded(e) {
-    return /^(BUTTON|FORM|INPUT|LABEL|IMG|SPAN|P|H1|H2|H3)$/.test(e.tagName) || e.closest('header,nav,footer,section[data-m="hero"],.cx-track,[data-m="player"],[data-seams]');
-  }
-  function boxes(root) {
-    return [].slice.call(root.querySelectorAll('*')).filter(function (e) { return !excluded(e) && e.offsetHeight > 40 && bordered(e); });
-  }
-  function run() {
-    if (!MQ.matches) return;
-    var main = document.querySelector('main'); if (!main) return;
-    var vw = innerWidth, list = boxes(main), fresh = [];
-    // 1. stacked siblings become a grid
-    var parents = [];
-    list.forEach(function (e) { var p = e.parentElement; if (p && parents.indexOf(p) < 0) parents.push(p); });
-    parents.forEach(function (p) {
-      if (p.classList.contains('dk-grid') || p.getAttribute('data-dk-no')) return;
-      var kids = [].slice.call(p.children).filter(function (k) { return list.indexOf(k) >= 0 && k.offsetHeight > 100; });
-      var wide = kids.filter(function (k) { return k.getBoundingClientRect().width > vw * 0.6; });
-      if (kids.length < 2 || wide.length < 2) { p.setAttribute('data-dk-no', '1'); return; }
-      var n = kids.length, cols = n % 3 === 0 || n >= 5 ? 3 : 2;
-      p.style.setProperty('--dk-cols', cols);
-      p.classList.add(cols === 2 ? 'dk-c2' : 'dk-c3');
-      var kinds = kids.map(function (k) { return k.tagName + '.' + k.className; });
-      [].slice.call(p.children).forEach(function (k) { if (kids.indexOf(k) < 0 && kinds.indexOf(k.tagName + '.' + k.className) < 0) k.classList.add('dk-span'); });
-      p.classList.add('dk-grid');
-    });
-    // 2. single wide boxes are centered with room each side
-    list.forEach(function (e) {
-      if (e.getAttribute('data-dk')) return;
-      e.setAttribute('data-dk', '1');
-      if (e.parentElement.classList.contains('dk-grid')) return;
-      var a = e.parentElement; while (a && a !== main) { if (list.indexOf(a) >= 0) return; a = a.parentElement; }
-      if (e.getBoundingClientRect().width < vw * 0.7) return;
-      e.classList.add('dk-solo'); fresh.push(e);
-    });
-    // 2a. every box in a grid is at least as tall as it is wide (it can grow taller for its words)
-    [].slice.call(main.querySelectorAll('.dk-grid > :not(.dk-span)')).forEach(function (k) {
-      var w = k.offsetWidth; if (k.parentElement.classList.contains('dk-c1')) w = Math.round(w / 1.9); if (w && Math.abs((parseFloat(k.style.getPropertyValue('--dk-sq')) || 0) - w) > 2) k.style.setProperty('--dk-sq', w + 'px');
-    });
-    // 2a2. a grid whose boxes come out much taller than wide (lots of words) drops a column, down to one
-    [].slice.call(main.querySelectorAll('.dk-grid')).forEach(function (g) {
-      var cols = +g.style.getPropertyValue('--dk-cols') || 2; if (cols < 2) return;
-      var worst = 0;
-      [].slice.call(g.children).forEach(function (k) { if (k.classList.contains('dk-span') || !k.offsetWidth) return; worst = Math.max(worst, k.offsetHeight / k.offsetWidth); });
-      var nn = [].filter.call(g.children, function (k) { return !k.classList.contains('dk-span'); }).length;
-      if (worst > (nn % 2 ? 3.2 : 1.8)) {
-        var n = [].filter.call(g.children, function (k) { return !k.classList.contains('dk-span'); }).length;
-        do { cols--; } while (cols > 1 && n % cols);          // never leave a lonely box on the last row
-        g.style.setProperty('--dk-cols', cols); g.classList.remove('dk-c3', 'dk-c2'); g.classList.add(cols === 2 ? 'dk-c2' : 'dk-c1');
-      }
-    });
-    // 2b. text inside the grid boxes a step bigger, so it fills the square (once per element)
-    [].slice.call(main.querySelectorAll('.dk-grid > :not(.dk-span) *')).forEach(function (t) {
-      if (t.getAttribute('data-dk-fs') || !t.childNodes.length) return;
-      var box = t.closest('.dk-grid > *'); if (box && box.textContent.length > 320) return;   // wordy boxes keep their size
-      var own = [].some.call(t.childNodes, function (n) { return n.nodeType === 3 && n.textContent.trim(); });
-      if (!own) return;
-      t.setAttribute('data-dk-fs', '1');
-      var fs = parseFloat(getComputedStyle(t).fontSize) || 0;
-      if (fs && fs < 24) t.style.setProperty('font-size', (fs * 1.1).toFixed(1) + 'px', 'important');
-    });
-    // 2c. paper colored panels (the certificates) get the same centered column
-    [].slice.call(main.querySelectorAll('section,div')).forEach(function (e) {
-      if (e.getAttribute('data-dk-paper')) return;
-      var pa = e.parentElement, pm = null;
-      while (pa && pa !== document.body) { var q = getComputedStyle(pa).backgroundColor.match(/[\d.]+/g); if (q && (q.length < 4 || +q[3] > 0.9)) { pm = q; break; } pa = pa.parentElement; }
-      if (!pm || (pm.length > 3 && +pm[3] < 0.9) || (+pm[0] + +pm[1] + +pm[2]) < 600) return;   // only cards sitting on a white band, never the band itself
-      var m = getComputedStyle(e).backgroundColor.match(/[\d.]+/g);
-      if (!m || (m.length > 3 && +m[3] < 0.9) || (+m[0] + +m[1] + +m[2]) < 600) return;
-      if (e.getBoundingClientRect().width < vw * 0.8) return;
-      e.setAttribute('data-dk-paper', '1'); e.classList.add('dk-solo');
-    });
-    // 3. strips get extra height so they read closer to a square
-    requestAnimationFrame(function () {
-      fresh.forEach(function (e) {
-        var w = e.offsetWidth, h = e.offsetHeight, want = w / 1.9;
-        if (h >= want || h < 100) return;
-        var c = getComputedStyle(e), add = (want - h) / 2;
-        e.style.setProperty('--dk-pt', (parseFloat(c.paddingTop) + add) + 'px');
-        e.style.setProperty('--dk-pb', (parseFloat(c.paddingBottom) + add) + 'px');
-        e.classList.add('dk-tall');
-      });
-    });
-  }
-  setInterval(run, 1200); setTimeout(run, 700);
 })();
