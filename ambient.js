@@ -251,7 +251,7 @@
     function layer(name, t0, dur, level, dark) {
       if (window.__RCX_AMBIENT_TEST) console.log('field ' + name + ' at ' + Math.round(t0) + 's for ' + Math.round(dur) + 's');
       if (/crows/.test(name)) dur *= 0.45;            // Oct 12: the gull like calls stay on a little under half as long
-      if (name === 'forest-birds') level *= 1.4;     // quieter recording, matched up
+      if (/birds/.test(name)) level *= name === 'forest-birds' ? 0.6 : 0.45;   /* Oct 12: birds sit well under everything else */
       loadField(name).then(function (buf) {
         if (!buf) return;
         var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
@@ -295,8 +295,8 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 6, 'forest-wind': 7, 'mountain-wind': 4, 'howling-wind': 1.5, 'rain': 1.5, 'birds': 0.6, 'forest-birds': 1 },   // Oct 12: serious, not silly. Birds used sparingly; no splattery leaf rain, no woodpecker   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
-      dark: { 'ocean': 6, 'forest-wind': 4, 'howling-wind': 4, 'mountain-wind': 4, 'rain': 1.5, 'thunder': 2, 'crows': 0.5 }   // Oct 12: no frogs, birds or leaf splatter in the dark mood
+      bright: { 'ocean': 6, 'forest-wind': 7, 'mountain-wind': 4, 'howling-wind': 1.5, 'birds': 0.4, 'forest-birds': 0.6 },   // Oct 12: serious, not silly. Birds used sparingly; no splattery leaf rain, no woodpecker   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
+      dark: { 'ocean': 6, 'forest-wind': 4, 'howling-wind': 4, 'mountain-wind': 4, 'thunder': 1.2, 'crows': 0.5 }   // Oct 12: no frogs, birds or leaf splatter in the dark mood
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
@@ -326,7 +326,7 @@
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
       var softRain = Math.random() < 0.6;   // Oct 12: half the time a soft, soothing light rain with no wind or thunder
-      if (Math.random() < 0.45 && busy(r0, r1) < 3) { var rn = 'rain';   /* Oct 12: always the light misty rain, never the splattery leaf drops */ loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.36, 0.42) : rnd(0.42, 0.48), dark);
+      if (false && busy(r0, r1) < 3) {   /* Oct 12: no rain bed, it read as running water */ var rn = 'rain';   /* Oct 12: always the light misty rain, never the splattery leaf drops */ loadField(rn); claim(r0, r1); layer(rn, r0, r1 - r0, softRain ? rnd(0.36, 0.42) : rnd(0.42, 0.48), dark);
         // Oct 12: distant thunder rolls in under the rain most of the time, so you actually hear the storm
         if (!softRain && Math.random() < 0.6) { var th0 = r0 + rnd(6, 14); loadField('thunder'); layer('thunder', th0, Math.max(25, r1 - th0 + 6), rnd(0.42, 0.5), dark); } }
       // Oct 12: now and then a dog barks somewhere off in the distance
