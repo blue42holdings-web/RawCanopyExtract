@@ -106,7 +106,7 @@
   st.textContent = '.cx .rit-arrow[data-d]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}' +
     '.cx-track[data-glide]>*{transform:translate3d(calc(var(--sub,0) * -1px),0,0)}';
   document.head.appendChild(st);
-  var phone = function () { return true; };
+  var phone = function () { return innerWidth < 768; };
   var A = null, swallow = false, pressTimer = null, press = null;
   function snaps(t) {
     var tr = t.getBoundingClientRect(), cs = getComputedStyle(t), pl = parseFloat(cs.scrollPaddingLeft) || 0, out = [];
@@ -228,7 +228,7 @@
    tiny sub pixel shift of the page (no stepping, no jitter). */
 (function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var phone = function () { return true; };
+  var phone = function () { return innerWidth < 768; };
   var DOWN = function () { return phone() ? 14 : 18; };   // px per second at full speed, very slow
   var UP = 380;                                            // px per second on the glide back to the top
   var IDLE = 20000, WAIT = 20000;                          // 20 seconds of stillness before it moves
@@ -505,7 +505,7 @@
     var shop = document.querySelector('[data-m="nav"]>[data-m="nav-shop"]'), menu = document.querySelector('[data-m="nav"]>[data-m="nav-menu-btn"]');
     var mush = document.querySelector('[data-m="nav"]>[data-m="nav-mush"]'), cart = document.querySelector('[data-m="nav"]>[data-m="nav-cart"]');
     if (!shop || !menu || !mush || !cart) return;
-    if (false || !mush.offsetWidth || !menu.offsetWidth) { shop.style.removeProperty('--nx'); menu.style.removeProperty('--nx'); return; }
+    if (innerWidth > 767 || !mush.offsetWidth || !menu.offsetWidth) { shop.style.removeProperty('--nx'); menu.style.removeProperty('--nx'); return; }
     var cs = parseFloat(shop.style.getPropertyValue('--nx')) || 0, cm = parseFloat(menu.style.getPropertyValue('--nx')) || 0;
     var M = ink(mush), S = ink(shop), N = ink(menu), C = ink(cart);
     var sw = S.right - S.left, nw = N.right - N.left;
