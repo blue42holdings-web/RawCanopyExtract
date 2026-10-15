@@ -3523,7 +3523,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end">
 <div onClick="{{ closeDrawer }}" style="position:absolute;inset:0;background:rgba(0,0,0,.7)"></div>
-<aside style="position:relative;width:min(420px,92vw);height:100%;background:#0A0A09;border-left:1px solid rgba(212,162,74,.3);padding:30px 26px;display:flex;flex-direction:column;animation:rcxFade 260ms ease-out both;overflow-y:auto">
+<aside data-m="cart-drawer" style="position:relative;width:min(420px,92vw);height:100%;background:#0A0A09;border-left:1px solid rgba(212,162,74,.3);padding:30px 26px;display:flex;flex-direction:column;animation:rcxFade 260ms ease-out both;overflow-y:auto">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:17px;color:#D4A24A;margin:0">YOUR CART</p>
 <button onClick="{{ closeDrawer }}" aria-label="Close cart" data-m="cart-x" style="background:none;border:none;color:#CFC7B6;font-size:22px;line-height:1;padding:0">×</button>
@@ -5739,6 +5739,14 @@ html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-o
 html body .clean-band .cb-chips.cb-chips.cb-chips{display:inline-flex !important;flex-wrap:nowrap !important;justify-content:center !important;align-items:center !important;gap:4px 0 !important;border:1px solid rgba(212,162,74,.75) !important;border-radius:4px !important;padding:10px 10px !important;background:rgba(0,0,0,.35) !important;margin-top:18px !important;max-width:100% !important;box-sizing:border-box}
 html body .clean-band .cb-chips.cb-chips.cb-chips>span:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11){background:none !important;background-color:transparent !important;background-image:none !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;padding:0 5px !important;margin:0 !important;cursor:default !important;pointer-events:none;color:#E8B860 !important;font-size:min(13px,2.85vw) !important;letter-spacing:.08em !important;white-space:nowrap !important;line-height:1.6 !important;-webkit-mask-image:none !important;filter:none !important}
 html body .clean-band .cb-chips.cb-chips.cb-chips>span+span::before{content:"\00B7";margin-right:6px;color:#D4A24A}
+</style>
+<style id="cart-oct15">
+/* Oct 15: a much bigger cart on desktop, and a close button you can't miss */
+html body [data-m="cart-x"][data-m="cart-x"]{width:48px !important;height:48px !important;border:2px solid #D4A24A !important;border-radius:50% !important;color:#F1ECE1 !important;font-size:30px !important;display:flex !important;align-items:center !important;justify-content:center !important;padding:0 0 3px !important;cursor:pointer;background:#000 !important}
+html body div:has(> aside[data-m="cart-drawer"]){z-index:300 !important}
+@media (min-width:768px){
+  html body aside[data-m="cart-drawer"]{width:min(580px,46vw) !important;zoom:1.5;padding:34px 30px !important}
+}
 </style>
 </body>
 </html>
