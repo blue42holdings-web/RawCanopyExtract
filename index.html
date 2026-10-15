@@ -955,9 +955,9 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 [data-m="wte-story"] .rcx-marble{padding:24px !important;width:100% !important;max-width:560px !important;margin:0 auto !important;align-items:center !important}
 }
 </style>
-<script src="cutout-lift.js?v=20261029e"></script>
+<script src="cutout-lift.js?v=20261029f"></script>
 
-<script src="ambient.js?v=59"></script>
+<script src="ambient.js?v=60"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -4914,7 +4914,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=8"></script>
+<script src="species-desk.js?v=9"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5667,7 +5667,7 @@ html body [data-screen-label="About"] .ab-grid.ab-grid .ab-box.ab-box:nth-child(
 </style>
 <style id="shop-tennis-oct15">
 /* Oct 15: behind the tins and boxes, the tennis handshake photo, grayed out and slowly moving (no reef photo) */
-html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 40%/cover no-repeat !important;filter:grayscale(1) brightness(.9) blur(2px) !important;animation:rcxShopDrift 40s ease-in-out infinite alternate !important;transform-origin:50% 40%}
+html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 40%/cover no-repeat !important;filter:grayscale(1) brightness(.9) !important;animation:none !important}
 @keyframes rcxShopDrift{from{transform:scale(1)}to{transform:scale(1.1) translateY(-14px)}}
 @media (min-width:768px){
   /* the climber box runs edge to edge, gold border kept */
@@ -5697,6 +5697,15 @@ html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-o
   html body div[data-screen-label="Receipts"]>section:first-of-type h1::before,html body div[data-screen-label="Receipts"]>section:first-of-type h1::after{display:none !important}
   /* Why: show more of her, down to her feet */
   html body div[data-screen-label="Why One Ingredient"]>section:first-of-type>div{background-size:cover !important;background-position:center 62% !important}
+}
+</style>
+<style id="perf-oct15">
+/* Oct 15: lighter on graphics cards. A desktop computer froze while the site was open, so: no frosted glass blur
+   anywhere on desktop, and no huge layers that repaint every frame */
+@media (min-width:768px){
+  html body *,html body *::before,html body *::after{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+  html body [data-screen-label="Shop"]::before,html body [data-screen-label="Shop"] *::before{animation:none !important}
+  html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{filter:grayscale(1) brightness(.9) !important;transform:none !important}
 }
 </style>
 </body>
