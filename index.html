@@ -4844,7 +4844,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=46"></script>
+<script src="site-extras.js?v=47"></script>
 <script src="nav-extras.js?v=29"></script>
 <script src="phone-swipe.js?v=9"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
@@ -5707,6 +5707,38 @@ html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-o
   html body [data-screen-label="Shop"]::before,html body [data-screen-label="Shop"] *::before{animation:none !important}
   html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{filter:grayscale(1) brightness(.9) !important;transform:none !important}
 }
+</style>
+<style id="about-desk-oct15">
+@media (min-width:768px){
+  /* Scott's story: six boxes spread across the page, three by two, each with its own photo (his face first) */
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){max-width:1300px !important;width:calc(100% - 56px) !important;margin:0 auto !important;display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-rows:1fr !important;gap:22px !important;padding:0 !important;border:0 !important;background:transparent !important;box-shadow:none !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){border:3px solid #D4A24A !important;border-radius:20px !important;padding:40px 34px !important;min-height:360px !important;display:flex !important;align-items:center !important;margin:0 !important;-webkit-mask-image:none !important;mask-image:none !important;box-shadow:0 10px 28px rgba(0,0,0,.55) !important}
+  html body [data-screen-label="About"] .ab-grid .ab-box p{font-size:19px !important;line-height:1.6 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(1):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.58)),url('assets/photo/about-scott-face.jpg') !important;background-size:100% 100%,cover !important;background-position:center,center 30% !important;background-color:#000 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(2):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.58)),url('assets/photo/about-kayaks.jpg') !important;background-size:100% 100%,cover !important;background-position:center,center !important;background-color:#000 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(3):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.58)),url('assets/photo/about-dogs-trio.jpg') !important;background-size:100% 100%,cover !important;background-position:center,center !important;background-color:#000 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(4):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.58)),url('assets/photo/about-loaded-car-clean.webp') !important;background-size:100% 100%,cover !important;background-position:center,center !important;background-color:#000 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(5):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.66)),url('assets/photo/shasta-lenticular.jpg') !important;background-size:100% 100%,cover !important;background-position:center,center !important;background-color:#000 !important}
+  html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid .ab-box.ab-box.ab-box:nth-child(6):not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background-image:linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.58)),url('assets/photo/about-house.jpg') !important;background-size:100% 100%,cover !important;background-position:center,center !important;background-color:#000 !important}
+  html body [data-screen-label="About"] section[data-m="shasta"]{padding:50px 0 !important}
+  /* About the brand: Mount Shasta behind, the dogs in the box (no waterfall walkers) */
+  html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"][data-m="about-brand"]{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('assets/photo/about-shasta-clouds.jpg') center/cover no-repeat !important}
+  html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box.ab-brand-box:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),url('assets/photo/about-dogs-trio.jpg') center 40%/cover no-repeat !important}
+  html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box::before,html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box::after,html body [data-screen-label="About"] section[data-m="about-brand"] .ab-brand-box > div[style*="position:absolute"]{display:none !important}
+  /* the seal: on cream, the RCX monogram in gold so it reads, the promise line in gold, a short clean fade to black */
+  html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"]{background:#000 !important}
+  html body [data-screen-label="About"] section[data-m="about-compost"] + section{background:linear-gradient(#000 0,#F1ECE1 90px,#F1ECE1 calc(100% - 120px),#000 100%) !important;padding-bottom:120px !important}
+  html body [data-m="about-seal"] svg,html body [data-m="about-seal"] svg g,html body [data-m="about-seal"] svg path{color:#D4A24A !important}
+  html body [data-screen-label="About"] .ab-brand-k.ab-brand-k{color:#D4A24A !important}
+  html body [data-m="about-seal"] p:not(:first-of-type){color:#9A6A1E !important;font-weight:600}
+  html body [data-m="about-seal"] h2{color:#141414 !important}
+}
+</style>
+<style id="chips-oct15">
+/* Oct 15: the PRE-MEASURED / NO GUESSING / NO MESS line is one quiet box, not three buttons, so nothing looks clickable */
+html body .clean-band .cb-chips.cb-chips.cb-chips{display:inline-flex !important;flex-wrap:nowrap !important;justify-content:center !important;align-items:center !important;gap:4px 0 !important;border:1px solid rgba(212,162,74,.75) !important;border-radius:4px !important;padding:10px 10px !important;background:rgba(0,0,0,.35) !important;margin-top:18px !important;max-width:100% !important;box-sizing:border-box}
+html body .clean-band .cb-chips.cb-chips.cb-chips>span:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11){background:none !important;background-color:transparent !important;background-image:none !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;padding:0 5px !important;margin:0 !important;cursor:default !important;pointer-events:none;color:#E8B860 !important;font-size:min(13px,2.85vw) !important;letter-spacing:.08em !important;white-space:nowrap !important;line-height:1.6 !important;-webkit-mask-image:none !important;filter:none !important}
+html body .clean-band .cb-chips.cb-chips.cb-chips>span+span::before{content:"\00B7";margin-right:6px;color:#D4A24A}
 </style>
 </body>
 </html>
