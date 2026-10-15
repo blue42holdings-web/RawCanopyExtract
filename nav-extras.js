@@ -230,8 +230,8 @@
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var phone = function () { return innerWidth < 768; };
   var DOWN = function () { return phone() ? 14 : 18; };   // px per second at full speed, very slow
-  var UP = 380;                                            // px per second on the glide back to the top
-  var IDLE = 20000, WAIT = 20000;                          // 20 seconds of stillness before it moves
+  var UP = function () { return phone() ? 40 : 380; };     // px per second on the glide back to the top (Oct 15: slow on phones)
+  var IDLE = 20000, WAIT = 5000;   // 20s after a touch; 5s rests at top and bottom (Oct 15)
   var RAMP_IN = 7000, EASE_OUT = 360;                      // 7 seconds to reach speed; slows over the last 360px
   var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
   var frac = null, shifted = false;
@@ -276,17 +276,17 @@
     if (H > 40 && !blocked()) {
       var real = scrollY + (shifted ? (pos - Math.floor(pos)) : 0);
       if (Math.abs(real - pos) > 3) pos = scrollY;                              // something else moved the page
-      if (mode === 'wait' && now >= until) { mode = (scrollY >= H - 2) ? 'rest' : 'down'; until = now + 3500; ramp0 = now; }
+      if (mode === 'wait' && now >= until) { mode = (scrollY >= H - 2) ? 'rest' : 'down'; until = now + 5000; ramp0 = now; }
       if (mode === 'down') {
         var k = ss((now - ramp0) / RAMP_IN) * Math.max(0.03, ss((H - pos) / EASE_OUT));
         pos = Math.min(H, pos + DOWN() * k * sdt);
         place(pos);
-        if (pos >= H - 0.5) { pos = H; unshift(); jump(H); mode = 'rest'; until = now + 3500; }
+        if (pos >= H - 0.5) { pos = H; unshift(); jump(H); mode = 'rest'; until = now + 5000; }
       } else if (mode === 'rest' && now >= until) {
         mode = 'up'; ramp0 = now;
       } else if (mode === 'up') {
-        var v = UP * ss((now - ramp0) / 2500) * Math.max(0.02, ss(pos / 700));
-        pos = Math.max(0, pos - Math.max(4, v) * sdt);
+        var v = UP() * ss((now - ramp0) / 2500) * Math.max(0.02, ss(pos / 700));
+        pos = Math.max(0, pos - Math.max(phone() ? 1 : 4, v) * sdt);
         place(pos);
         if (pos <= 0) { pos = 0; unshift(); jump(0); mode = 'wait'; until = now + WAIT; }
       } else { unshift(); }
