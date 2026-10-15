@@ -5871,5 +5871,15 @@ html body div[data-screen-label="Turkey Tail"] [data-ph="palm-jungle-sun"]:not(.
 /* Oct 15: Lion's Mane How It's Made: no red tint, a lab photo like every other box */
 html body [data-screen-label="Lion's Mane"] [data-m="made-box"][data-ph="red-hanging-lab"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url("assets/photo/lab-extraction-rig.jpg") center/cover no-repeat !important;background-color:#000 !important}
 </style>
+<style id="red-strip-oct15">
+/* Oct 15: the FDA note under The Other Two sits on the same red as above, no white strip (phone) */
+@media (max-width:767px){
+  html body section[data-m="other-two-red"] + section,html body section[data-m="cd-bottom-red"] + section{background:#5c1319 !important;background-image:none !important;padding-bottom:40px !important;margin-top:-1px !important}
+  html body section[data-m="other-two-red"] + section::before,html body section[data-m="other-two-red"] + section::after,html body section[data-m="cd-bottom-red"] + section::before,html body section[data-m="cd-bottom-red"] + section::after{display:none !important}
+  html body section[data-m="other-two-red"] + section p,html body section[data-m="cd-bottom-red"] + section p{color:#E6D9C8 !important;margin-top:0 !important;padding-top:20px !important}
+  html body [data-m="lm-whitewrap"]:has(section[data-m="other-two-red"]),html body [data-m="tt-redwrap"]{background:#5c1319 !important;background-image:none !important}
+  html body section[data-m="other-two-red"] + section:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11),html body section[data-m="cd-bottom-red"] + section:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11){background:#5c1319 !important;padding-left:24px !important;padding-right:24px !important}
+}
+</style>
 </body>
 </html>
