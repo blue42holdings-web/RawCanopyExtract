@@ -1,0 +1,3 @@
+Sound bath instrument recordings: Versilian Community Sample Library (VCSL) by Versilian Studios LLC, https://github.com/sgossner/VCSL
+License: CC0 1.0 Universal (public domain). Converted to mono MP3, trimmed and level matched.
+Singing bowls and crystal bowls are synthesized in ambient.js from bowl overtone ratios.
