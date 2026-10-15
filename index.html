@@ -957,7 +957,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261029g"></script>
 
-<script src="ambient.js?v=60"></script>
+<script src="ambient.js?v=61"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -2158,7 +2158,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 </div>
 </div>
 </section>
-<div data-m="red-wrap"><div data-m="nature-line"><span data-m="nl-rule" aria-hidden="true"></span><p data-m="nl-head">Nature did the work.<br>We just measured it.</p><p data-m="nl-body">Figures are lot-specific and change with every batch; the certificates are published in full on the receipts page.</p></div><section data-m="bestform-sec" style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background:#000;padding-top:60px !important;padding-bottom:60px !important">
+<div data-m="red-wrap"><div data-m="nature-line"><span data-m="nl-rule" aria-hidden="true"></span><p data-m="nl-head">Nature did the work.<br> We just measured it.</p><p data-m="nl-body">Figures are lot-specific and change with every batch; the certificates are published in full on the receipts page.</p></div><section data-m="bestform-sec" style="min-height:560px;display:flex;flex-direction:column;justify-content:center;padding:110px 28px;box-sizing:border-box;background:#000;padding-top:60px !important;padding-bottom:60px !important">
 <div data-m="bf-shade" aria-hidden="true" style="display:none"></div>
 <div data-ph="couple-tent-pourover" style="max-width:1200px;margin:0 auto;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.74)),url('assets/photo/fruiting-body-mycelium-rainbow-crop.jpg') center/cover no-repeat !important">
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:15px;color:#D4A24A;margin:0 0 16px">THE BEST FORM FOR EACH</p>
@@ -5746,6 +5746,24 @@ html body [data-m="cart-x"][data-m="cart-x"]{width:48px !important;height:48px !
 html body div:has(> aside[data-m="cart-drawer"]){z-index:300 !important}
 @media (min-width:768px){
   html body aside[data-m="cart-drawer"]{width:min(580px,46vw) !important;zoom:1.5;padding:34px 30px !important}
+}
+</style>
+<style id="rc-research-space">
+@media (min-width:768px){html body [data-screen-label="Receipts"] section[data-m="rc-research"][data-m="rc-research"]{padding-bottom:80px !important}}
+</style>
+<style id="mush-desk-oct15">
+@media (min-width:768px){
+  /* The Mushrooms: the rainbow poster pops (lighter shade, richer color, a warm glow) and the words still read */
+  html body [data-ph="couple-tent-pourover"][data-ph="couple-tent-pourover"]:not(.r1):not(.r2):not(.r3):not(.r4):not(.r5):not(.r6):not(.r7):not(.r8):not(.r9):not(.r10):not(.r11):not(.r12):not(.r13):not(.r14):not(.r15):not(.r16):not(.r17):not(.r18):not(.r19):not(.r20){background:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.4)),url("assets/photo/fruiting-body-mycelium-rainbow-crop.jpg") 50% 50%/cover no-repeat,#000 !important;filter:saturate(1.35) contrast(1.06);height:auto !important;max-height:none !important;padding-bottom:44px !important;box-shadow:0 0 0 1px rgba(212,162,74,.5),0 0 46px rgba(255,170,80,.35),0 0 120px rgba(160,80,200,.22) !important;opacity:1 !important}
+  html body [data-ph="couple-tent-pourover"] p,html body [data-ph="couple-tent-pourover"] h2,html body [data-ph="couple-tent-pourover"] h3{text-shadow:0 0 4px #000,0 0 12px rgba(0,0,0,.95),0 0 24px rgba(0,0,0,.85) !important}
+  html body [data-ph="couple-tent-pourover"] p{font-size:19px !important;line-height:1.6 !important}
+  /* "Nature did the work. We just measured it." on one line */
+  html body [data-m="nl-head"][data-m="nl-head"]{white-space:nowrap !important;font-size:clamp(30px,2.8vw,44px) !important}
+  html body [data-m="nl-head"] br{display:none}
+  html body [data-m="nl-body"][data-m="nl-body"]{font-size:18px !important;max-width:60ch !important}
+  /* bigger words for a big screen */
+  html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] p,html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] span,html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] td{font-size:max(15px,1em) !important}
+  html body [data-screen-label="The Mushrooms"] section p{font-size:max(18px,1em)}
 }
 </style>
 </body>

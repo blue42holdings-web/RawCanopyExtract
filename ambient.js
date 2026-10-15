@@ -262,6 +262,7 @@
         if (/ocean/.test(name)) src.playbackRate.value = rnd(0.88, 0.94);   /* big slow swells, not small lapping waves */
         else if (dark && !soft) src.playbackRate.value = rnd(0.86, 0.95);            // a touch slower and deeper: moodier, a little eerie
         var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = soft ? rnd(1800, 2600) : /ocean/.test(name) ? rnd(2600, 3800) : dark ? rnd(3200, 4600) : rnd(5000, 8000);   /* Oct 12: dark nature kept bright enough to be heard on phone speakers */   /* Oct 12: rain is a soft distant mist and the ocean a big low surf, nothing high and hissy */ lp.Q.value = 0.3;
+        if (/thunder/.test(name)) { lp.frequency.value = rnd(320, 440); lp.Q.value = 0.4; src.playbackRate.value = rnd(0.8, 0.88); level *= 1.35; }   // Oct 15 (Scott): only the deep rolling thunder, no high crackle
         var g = ctx.createGain(); g.gain.value = 0;
         var pan = ctx.createStereoPanner ? _origCreatePanner ? _origCreatePanner() : ctx.createStereoPanner() : null;
         src.connect(lp); lp.connect(g);
