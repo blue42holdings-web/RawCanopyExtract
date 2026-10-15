@@ -340,11 +340,13 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       }
       if (!frame) return;
       var fc = getComputedStyle(frame), fr = frame.getBoundingClientRect(), oc = getComputedStyle(op), orr = op.getBoundingClientRect();
-      var fTop = fr.top + parseFloat(fc.borderRightWidth), fRight = fr.right - parseFloat(fc.borderRightWidth);
-      var oTop = orr.top + parseFloat(oc.borderTopWidth), oRight = orr.right - parseFloat(oc.borderRightWidth);
-      var t = (IN + fTop - oTop).toFixed(1) + 'px', r = (IN + oRight - fRight).toFixed(1) + 'px';
+      // Oct 15 (Scott): top LEFT corner on every page now
+      var fTop = fr.top + parseFloat(fc.borderRightWidth), fLeft = fr.left + parseFloat(fc.borderLeftWidth);
+      var oTop = orr.top + parseFloat(oc.borderTopWidth), oLeft = orr.left + parseFloat(oc.borderLeftWidth);
+      var t = (IN + fTop - oTop).toFixed(1) + 'px', l = (IN + 4 + fLeft - oLeft).toFixed(1) + 'px';
       if (d.style.top !== t) d.style.setProperty('top', t, 'important');
-      if (d.style.right !== r) d.style.setProperty('right', r, 'important');
+      if (d.style.left !== l) d.style.setProperty('left', l, 'important');
+      if (d.style.right !== 'auto') d.style.setProperty('right', 'auto', 'important');
       // keep the opening words clear of the button: they start below it
       var host = d.parentElement, br = d.getBoundingClientRect(), first = null;
       for (var k = host.firstElementChild; k; k = k.nextElementSibling) { if (k === d || k.contains(d) || !k.offsetHeight || getComputedStyle(k).position === 'absolute') continue; first = k; break; }

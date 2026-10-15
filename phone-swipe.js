@@ -173,6 +173,25 @@
     var rows = document.querySelectorAll('[data-m="rc-read"] .rc-grid3,[data-screen-label="Shop"] [data-m="1col"],[data-desk-row]');
     for (var j = 0; j < rows.length; j++) arrows(rows[j]);
   }
+  // Oct 15: Read Aloud sits in the top left corner of every page's top box on desktop
+  var HEROES = '[data-screen-label="Shop"]>section:first-child,div[data-screen-label="Receipts"]>section:first-of-type,section[data-m="mush-hero"],div[data-screen-label="Why One Ingredient"]>section:first-of-type,section[data-m="how-top"],section[data-m="about-hero"],section[data-m="lm-hero"],section[data-m="cdh-hero"],section[data-m="tth-hero"]';
+  function readAloud() {
+    var hs = document.querySelectorAll(HEROES);
+    for (var i = 0; i < hs.length; i++) {
+      var h = hs[i], r = h.getBoundingClientRect(); if (!r.height) continue;
+      var b = h.querySelector('div[data-tts-skip] button[aria-label]'); if (!b) continue;
+      var d = b.closest('div[data-tts-skip]'); d.setAttribute('data-rcx-ra', '');
+      var cs = getComputedStyle(h), bl = parseFloat(cs.borderLeftWidth) || 0, bt = parseFloat(cs.borderTopWidth) || 0;
+      var tx = r.left + bl + 22, ty = r.top + bt + 20;
+      if (h.matches('div[data-screen-label="Receipts"]>section')) { tx = r.left + 8 + 3 + 22; ty = r.top + 8 + 3 + 20; }
+      for (var pass = 0; pass < 2; pass++) {   // place it, measure where it landed, correct
+        var q = d.getBoundingClientRect(), L = parseFloat(d.style.left) || 0, T = parseFloat(d.style.top) || 0;
+        if (Math.abs(q.left - tx) > 1) d.style.setProperty('left', Math.round(L + tx - q.left) + 'px', 'important');
+        if (Math.abs(q.top - ty) > 1) d.style.setProperty('top', Math.round(T + ty - q.top) + 'px', 'important');
+      }
+    }
+  }
+  // (Oct 15) placement is done by the Read Aloud script in site-extras.js; readAloud() kept for reference
   function arrows(row) {
     if (!row.getBoundingClientRect().height || row.scrollWidth <= row.clientWidth + 20) return;
     var p = row.previousElementSibling; if (p && p.classList.contains('rcx-arrbar')) return;

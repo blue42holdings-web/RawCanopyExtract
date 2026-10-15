@@ -229,18 +229,18 @@
 (function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var phone = function () { return innerWidth < 768; };
-  var DOWN = function () { return phone() ? 7 : 18; };   // px per second at full speed, very slow
+  var DOWN = function () { return phone() ? 7 : 9; };   // Oct 15: desktop half as fast   // px per second at full speed, very slow
   var UP = function () { return phone() ? 25 : 380; };     // px per second on the glide back to the top (Oct 15: slow on phones)
-  var IDLE = 20000, WAIT = 5000;   // 20s after a touch; 5s rests at top and bottom (Oct 15)
+  var IDLE = 20000, WAIT = 5000, START = function () { return phone() ? WAIT : 20000; };   // Oct 15: desktop waits 20s before it starts   // 20s after a touch; 5s rests at top and bottom (Oct 15)
   var RAMP_IN = 7000, EASE_OUT = 360;                      // 7 seconds to reach speed; slows over the last 360px
-  var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
+  var mode = 'wait', until = performance.now() + START(), pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
   var frac = null, shifted = false;
   function root() { return document.getElementById('dc-root'); }
   function unshift() { if (shifted) { var r = root(); if (r) r.style.transform = ''; shifted = false; } }
   function user() { unshift(); mode = 'wait'; until = performance.now() + IDLE; }
   ['touchstart', 'touchmove', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) { addEventListener(ev, user, { passive: true, capture: true }); });
-  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { unshift(); mode = 'wait'; until = performance.now() + WAIT; } }, true);
-  addEventListener('popstate', function () { unshift(); mode = 'wait'; until = performance.now() + WAIT; });
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-page],.rr-menu a')) { unshift(); mode = 'wait'; until = performance.now() + START(); } }, true);
+  addEventListener('popstate', function () { unshift(); mode = 'wait'; until = performance.now() + START(); });
   function jump(y) { try { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); } }   // no style change on the page (that forced a full restyle every step)
   function fixedInside() {   // the story player bar or the menu drawer are fixed inside the page; never shift the page under them
     var r = root(); if (!r) return true;

@@ -163,24 +163,9 @@
       var n = hero.nextElementSibling;
       while (n && n !== read) { n.style.setProperty('background', 'transparent', 'important'); n.querySelectorAll(':scope > section').forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); }); n = n.nextElementSibling; }
       [read].concat([].slice.call(W.querySelectorAll('[data-m="rc-files"],[data-m="rc-dodges"],[data-m="rc-research"]'))).forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); });
-      // climber hero, same as the Shop top
-      hero.style.setProperty('position', 'relative', 'important'); hero.style.setProperty('overflow', 'hidden', 'important');
-      hero.style.setProperty('background', '#000', 'important');
-      if (!hero.querySelector('[data-rc-climb]')) {
-        var bg = document.createElement('div'); bg.setAttribute('data-rc-climb', 'bg');
-        bg.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;background:url("assets/photo/coffee-asset.webp") 86% 58%/cover no-repeat;transform-origin:50% 58%;transform:scaleX(-1);animation:shopPush 16s cubic-bezier(.25,.1,.25,1) .3s forwards,shopRock 16s ease-out .3s forwards';
-        var cut = document.createElement('div'); cut.setAttribute('data-rc-climb', 'cut');
-        cut.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;background:url("assets/cutouts/coffee-asset-cutout.webp") 86% 58%/cover no-repeat;transform-origin:50% 58%;transform:scaleX(-1);filter:brightness(.45);animation:shopClimber 14s cubic-bezier(.25,.1,.25,1) 1.3s forwards';
-        var fade = document.createElement('div'); fade.setAttribute('data-rc-climb', 'fade');
-        fade.style.cssText = 'position:absolute;left:0;right:0;bottom:0;height:200px;z-index:1;pointer-events:none;background:linear-gradient(rgba(241,236,225,0),#F1ECE1)';
-        hero.insertBefore(fade, hero.firstChild); hero.insertBefore(cut, hero.firstChild); hero.insertBefore(bg, hero.firstChild);
-        [].forEach.call(hero.children, function (c) { if (!c.hasAttribute('data-rc-climb')) { c.style.position = c.style.position || 'relative'; c.style.zIndex = '2'; } });
-      }
-      var intro = hero.querySelector('[data-m="rc-intro"]');
-      var ih = intro ? intro.getBoundingClientRect().top - hero.getBoundingClientRect().top : hero.offsetHeight;
-      hero.querySelectorAll('[data-rc-climb="bg"],[data-rc-climb="cut"]').forEach(function (l) { l.style.bottom = 'auto'; l.style.height = (ih + 20) + 'px'; });
-      var fd = hero.querySelector('[data-rc-climb="fade"]'); if (fd) { fd.style.bottom = 'auto'; fd.style.top = Math.max(0, ih - 170) + 'px'; fd.style.height = '200px'; }
-      hero.style.setProperty('background', 'linear-gradient(#000 0,#000 ' + ih + 'px,#F1ECE1 ' + ih + 'px)', 'important');
+      // Oct 15: the top is now a gold framed photo box drawn by the page styles (heroes2-oct15); nothing painted here
+      hero.querySelectorAll('[data-rc-climb]').forEach(function (l) { l.remove(); });
+      hero.style.setProperty('background', '#fff', 'important');
     });
   }
   setInterval(run, 700); run();
