@@ -1,7 +1,8 @@
 /* Oct 14: phone only. The page sweeps itself: all the way down, a five second stop, all the way up,
    a five second stop, and round again. A finger on the screen pauses it for a moment so the reader
    is never fought. Desktop is untouched.
-   Oct 15: steady slow speed. No speed-up on long pages, gentle start and stop, waits before the first move. */
+   Oct 15: steady slow speed. No speed-up on long pages, gentle start and stop, waits before the first move.
+   Bottom: wait 5s, slow glide to the top, wait 5s, repeat. Moves on whole device pixels with instant (not smooth) scrolling so nothing fights it. */
 (function () {
   var MQ = window.matchMedia('(max-width:767px)');
   var PAUSE = 5000, SPEED = 15, RAMP = 1.5, FIRST = 6000; /* px per second, seconds to reach speed */
@@ -17,7 +18,8 @@
       var goal = dir > 0 ? maxY() : 0, left = Math.abs(goal - pos);
       var v = SPEED * Math.min(1, (now - started) / 1000 / RAMP) * Math.min(1, left / (SPEED * RAMP) + 0.15);
       pos += dir * Math.min(left, v * dt);
-      window.scrollTo(0, pos);
+      var d = window.devicePixelRatio || 1;
+      window.scrollTo({ top: Math.round(pos * d) / d, left: 0, behavior: 'instant' });
       if (left - v * dt <= 0.5) { done(); return; }
       raf = requestAnimationFrame(step);
     }
