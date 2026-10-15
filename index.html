@@ -2887,7 +2887,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 <style>[data-screen-label="About"] .ab-grid{max-width:1100px !important;width:100%;margin:40px auto !important;padding:0 !important;background:transparent !important;border:none !important;box-shadow:none !important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.ab-box{border:3px solid #D4A24A;border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.65);background-size:cover;background-position:center;padding:28px 30px;display:flex;align-items:center}.ab-box p{margin:0 !important;font-size:clamp(17px,1.4vw,21px) !important;line-height:1.7 !important;text-wrap:pretty}[data-m="faq-box"]{background:transparent !important;border:none !important;box-shadow:none !important}[data-m="faq-box"] div:has(> button[data-i]){border:3px solid #D4A24A !important;border-radius:18px;background:rgba(0,0,0,.72);box-shadow:0 10px 28px rgba(0,0,0,.65);padding:0 22px;margin:0 0 12px}[data-m="faq-box"] button[data-i]{padding:20px 0 !important}@media (max-width:767px){[data-screen-label="About"] .ab-grid{grid-template-columns:minmax(0,1fr);margin:24px 0 !important}}</style>
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <div data-screen-label="About">
-<section data-m="about-hero" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.95) saturate(1.15)" data-lift-scale="1.06" data-lift-origin="0.7068 0.8285" data-lift-dur="14000" data-lift-delay="2500" data-lift-fade="2500" data-lift-ease="cubic-bezier(.37,0,.63,1)" data-lift-nomask="" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
+<section data-m="about-hero" data-lift-desktop="" data-lift-bg="assets/cutouts/about-colestin-windvane-flip-cutout.png" data-lift-dim="brightness(.95) saturate(1.15)" data-lift-scale="1.06" data-lift-origin="0.7068 0.8285" data-lift-dur="14000" data-lift-delay="2500" data-lift-fade="2500" data-lift-ease="cubic-bezier(.37,0,.63,1)" data-lift-nomask="" style="margin-bottom:-1px;background-color:#000;display:block;background-image:radial-gradient(120% 95% at 42% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.64),rgba(0,0,0,.66) 55%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane.jpg');background-size:100% 100%,100% 100%,100% 100%,cover;background-repeat:no-repeat;background-position:center,center,center,center 28%">
 
 
 
@@ -4844,9 +4844,9 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=45"></script>
-<script src="nav-extras.js?v=28"></script>
-<script src="phone-swipe.js?v=8"></script>
+<script src="site-extras.js?v=46"></script>
+<script src="nav-extras.js?v=29"></script>
+<script src="phone-swipe.js?v=9"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -4914,7 +4914,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=7"></script>
+<script src="species-desk.js?v=8"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5674,6 +5674,30 @@ html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-o
   html body [data-screen-label="Shop"]>section:first-child{width:calc(100% - 16px) !important;max-width:none !important;margin:8px auto 0 !important}
 }
 @media (prefers-reduced-motion:reduce){html body [data-screen-label="Shop"]>section:nth-of-type(2)::before{animation:none !important}}
+</style>
+<style id="heroes-oct15">
+/* Oct 15: every page's top box (not Home) is the same size: a gold framed box edge to edge */
+@media (min-width:768px){
+  html body [data-screen-label="Shop"]>section:first-child:not(.zz):not(.zy),html body div[data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy),html body section[data-m="mush-hero"]:not(.zz):not(.zy),html body div[data-screen-label="Why One Ingredient"]>section:first-of-type:not(.zz):not(.zy),html body section[data-m="how-top"]:not(.zz):not(.zy),html body section[data-m="about-hero"]:not(.zz):not(.zy),html body section[data-m="lm-hero"]:not(.zz):not(.zy),html body section[data-m="cdh-hero"]:not(.zz):not(.zy),html body section[data-m="tth-hero"]:not(.zz):not(.zy){width:calc(100% - 16px) !important;max-width:none !important;margin:8px auto 0 !important;height:560px !important;min-height:560px !important;max-height:560px !important;border:3px solid #D4A24A !important;border-radius:26px !important;overflow:hidden !important;box-sizing:border-box !important;position:relative !important;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+}
+</style>
+<style id="heroes2-oct15">
+@media (min-width:768px){
+  html body [data-screen-label="Shop"]>section:first-child [data-tts-skip]:not([data-m="hdr-tts"]),html body div[data-screen-label="Receipts"]>section:first-of-type [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="mush-hero"] [data-tts-skip]:not([data-m="hdr-tts"]),html body div[data-screen-label="Why One Ingredient"]>section:first-of-type [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="how-top"] [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="about-hero"] [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="lm-hero"] [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="cdh-hero"] [data-tts-skip]:not([data-m="hdr-tts"]),html body section[data-m="tth-hero"] [data-tts-skip]:not([data-m="hdr-tts"]){position:absolute !important;margin:0 !important;z-index:20 !important;right:auto !important;bottom:auto !important;transform:none !important}
+  html body div[data-screen-label="Receipts"]>section:first-of-type [data-tts-skip]:not([data-m="hdr-tts"]){top:-578px !important;left:min(33px,calc(33px - (100vw - 1080px) / 2)) !important}
+  /* About: the flipped photo, and the weather vane lifts like on the phone */
+  html body section[data-m="about-hero"][data-m="about-hero"]{background-image:radial-gradient(120% 95% at 58% 38%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.88) 100%),linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.55) 55%,rgba(0,0,0,.8) 100%),linear-gradient(rgba(212,162,74,.1),rgba(212,162,74,.1)),url('assets/photo/about-colestin-windvane-flip.jpg') !important;background-size:100% 100%,100% 100%,100% 100%,cover !important;background-position:center,center,center,center 28% !important}
+  /* Receipts: the top is a gold framed photo box like every other page; the lot lookup sits below it on white */
+  html body div[data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy){height:auto !important;min-height:0 !important;max-height:none !important;border:0 !important;box-shadow:none !important;border-radius:0 !important;overflow:visible !important;width:100% !important;margin:0 !important;padding-top:600px !important;background:#fff !important}
+  html body div[data-screen-label="Receipts"]>section:first-of-type::after{content:"";position:absolute;top:8px;left:8px;right:8px;height:560px;box-sizing:border-box;border:3px solid #D4A24A;border-radius:26px;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.5)),url("assets/photo/receipts-tennis-noblog.jpg") center 30%/cover no-repeat;box-shadow:0 14px 40px rgba(0,0,0,.35);z-index:0;pointer-events:none}
+  html body div[data-screen-label="Receipts"]>section:first-of-type [data-rc-climb]{display:none !important}
+  html body div[data-screen-label="Receipts"]>section:first-child h1:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8){background:none !important;background-image:none !important}
+  html body div[data-screen-label="Receipts"]>section:first-of-type h1{position:absolute !important;z-index:2;left:0;right:0;top:-400px;margin:0 !important;text-align:center;background:none !important;border:0 !important;box-shadow:none !important;color:#F1ECE1 !important;font-size:clamp(44px,5vw,76px) !important;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+  html body div[data-screen-label="Receipts"]>section:first-of-type h1 *,html body div[data-screen-label="Receipts"]>section:first-of-type h1::before,html body div[data-screen-label="Receipts"]>section:first-of-type h1::after{background:none !important;box-shadow:none !important;border:0 !important}
+  html body div[data-screen-label="Receipts"]>section:first-of-type h1::before,html body div[data-screen-label="Receipts"]>section:first-of-type h1::after{display:none !important}
+  /* Why: show more of her, down to her feet */
+  html body div[data-screen-label="Why One Ingredient"]>section:first-of-type>div{background-size:cover !important;background-position:center 62% !important}
+}
 </style>
 </body>
 </html>
