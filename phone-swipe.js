@@ -8,7 +8,10 @@
   css.textContent =
     '.rit-arrow{display:none !important}' +
     '.rcx-sec-row{display:contents}' +
-    '@media (max-width:767px){.rcx-click-tag{display:none !important}}' +   /* desktop: the wrapper does nothing */
+    '@media (max-width:767px){.rcx-click-tag{display:none !important}' +
+      'html body .mx-wrap .mx-grid.mx-grid.mx-grid{grid-template-rows:none !important;grid-auto-rows:auto !important;align-items:stretch !important;grid-auto-columns:80vw !important;grid-template-columns:none !important}' +
+      'html body .mx-wrap .mx-grid.mx-grid.mx-grid>.mx-box.mx-box{width:80vw !important;max-width:80vw !important;height:auto !important;min-height:80vw !important}' +   /* Oct 15: closer to square */
+    '}' +   /* desktop: the wrapper does nothing */
     '@media (max-width:767px){' +
       'html body .rcx-merge.rcx-sec-row.rcx-sec-row{align-items:stretch !important;background:#000 !important;padding:6px 7vw 28px !important}' +
       'html body .rcx-merge.rcx-sec-row.rcx-sec-row>section{display:block !important;flex:0 0 86vw !important;width:86vw !important;max-width:86vw !important;min-height:0 !important;margin:0 !important;padding:0 !important;border-radius:18px !important;overflow:hidden !important;border:0 !important;display:flex !important;flex-direction:column !important;scroll-snap-align:center;box-sizing:border-box !important;-webkit-mask-image:none !important;mask-image:none !important}' +
@@ -98,12 +101,12 @@
   }
   // a photo fills the whole card: swap "photo on top, black underneath" for an even shade over the full photo
   function fill(root) {
-    var cards = root.querySelectorAll('.rcx-swipe>*,.cx-track>*,.rcx-merge>*>*,.mx-grid>.mx-box');
+    var cards = root.querySelectorAll('.rcx-swipe>*,.cx-track>*,.rcx-merge>*>*,.mx-grid>*,.rit-grid>*,.mx-box,.sr-grid>*,.rc-grid3>*');
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i], bg = getComputedStyle(c).backgroundImage;
       if (c.dataset.rcxFill === bg) continue;
       var m = bg.match(/url\([^)]*\)/g);
-      if (!m || !/linear-gradient/.test(bg) || !/0\.9\d?\)/.test(bg)) { c.dataset.rcxFill = bg; continue; }
+      if (!m || !/linear-gradient/.test(bg) || !/(0\.(8[5-9]|9\d*)\)|rgb\(0, 0, 0\))/.test(bg)) { c.dataset.rcxFill = bg; continue; }   // Oct 15: no black in a box, ever
       var nb = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42) 35%,rgba(0,0,0,.72) 100%),' + m[m.length - 1];
       c.style.setProperty('background-image', nb, 'important');
       c.style.setProperty('background-size', 'cover', 'important');
