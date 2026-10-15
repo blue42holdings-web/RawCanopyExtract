@@ -250,7 +250,7 @@
   }
   function place(y) {
     if (frac === null) { var b0 = Math.floor(y); jump(b0 + 0.5); frac = (scrollY % 1) !== 0; }   // can this browser scroll by part of a pixel?
-    if (frac || fixedInside()) { unshift(); jump(y); return; }
+    unshift(); jump(y); return;   // Oct 15: no more sub-pixel shift of the whole page. Shifting #dc-root made the page jump 40px for one frame every 15s or so (the glitch).
     var base = Math.floor(y), r = root();
     if (Math.round(scrollY) !== base) jump(base);
     if (r) { r.style.transform = 'translate3d(0,' + (-(y - base)).toFixed(3) + 'px,0)'; shifted = true; }
