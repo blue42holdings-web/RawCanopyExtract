@@ -256,7 +256,7 @@
     var box = document.createElement('div'); box.setAttribute('data-desk-para', '');
     box.style.cssText = 'display:block;grid-template-columns:none;position:relative;overflow:hidden;isolation:isolate;max-width:1080px;margin:0 auto 34px;border:3px solid #D4A24A;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.65);padding:40px 56px;text-align:center;background:#0b1d22';
     var bg = document.createElement('div');
-    bg.style.cssText = 'position:absolute;inset:-14px;z-index:-1;background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url("assets/photo/reef-aerial.jpg") 72% 88%/cover no-repeat;transform:scale(1.9);transform-origin:72% 88%;filter:blur(2px)';
+    bg.style.cssText = 'position:absolute;inset:-14px;z-index:-1;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.62)),url("assets/photo/map-mug-camera.jpg") 50% 50%/cover no-repeat';
     var p = src.cloneNode(true);
     p.style.cssText = 'margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:30px;line-height:1.45;font-weight:500;color:#fff;text-wrap:balance;max-width:none;width:100%;text-align:center';
     p.querySelectorAll('span').forEach(function (s) { s.style.color = '#D4A24A'; s.style.fontWeight = '600'; });

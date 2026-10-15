@@ -353,9 +353,26 @@
       while (tt < t0 + dur - sw) { tt += rnd(2.2, 4.5); lv = level * rnd(crystal ? 0.85 : 0.7, 1); out.gain.linearRampToValueAtTime(lv, tt); }
       out.gain.linearRampToValueAtTime(0, t0 + dur);
     }
-    function bathTone(t0, t1, f, crystal, level) {     // a tone that never drops out: overlapping bowls carry it
+    // Oct 15 (Scott): the singing bowl tone is out. In its place a warm, round hum: low, soft edged,
+    // no beating wobble, no metal ring. Long fades in and out.
+    function warmSing(t0, dur, f, level) {
+      if (t0 + dur < natureStart - 20) return;
+      var pn = bpan(), out = ctx.createGain(); out.gain.value = 0;
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = Math.min(1400, f * 4); lp.Q.value = 0.3;
+      out.connect(lp);
+      if (pn) { pn.pan.value = rnd(-0.25, 0.25); lp.connect(pn); pn.connect(bathBus); pn.connect(bathRev); } else { lp.connect(bathBus); lp.connect(bathRev); }
+      [[1, 1], [2, 0.22], [3, 0.08], [4, 0.03]].forEach(function (p) {
+        var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f * p[0] + rnd(-0.04, 0.04);
+        var g = ctx.createGain(); g.gain.value = p[1] * 0.6; o.connect(g); g.connect(out); o.start(t0); o.stop(t0 + dur + 0.5);
+      });
+      var sw = Math.min(dur * 0.42, 14);
+      out.gain.setValueAtTime(0, t0); out.gain.linearRampToValueAtTime(level, t0 + sw);
+      out.gain.setValueAtTime(level, t0 + dur - sw); out.gain.linearRampToValueAtTime(0, t0 + dur);
+    }
+    function bathTone(t0, t1, f, crystal, level) {     // a tone that never drops out: overlapping swells carry it
       var t = t0;
-      while (t < t1) { var d = rnd(30, 38); bowlSing(t, Math.min(d, t1 - t + 12), f, level, crystal); t += d - 13; }
+      f = f / 2; level = level * 0.6;                    // an octave lower and softer than the old bowl
+      while (t < t1) { var d = rnd(30, 38); warmSing(t, Math.min(d, t1 - t + 14), f, level); t += d - 15; }
     }
     function heartbeat(t0, t1, lv) {                   // frame drum, a slow resting heartbeat
       var t = t0, span = t1 - t0;
@@ -387,7 +404,7 @@
       var len = b1 - t;
       bathSwell('ocean-drum', t + 6, rnd(48, 64), 0.18, rnd(0.88, 0.96));             // the ocean drum rolling, like waves
       bathTone(t + 18, b1, root, true, 0.07);                                          // a crystal bowl begins to sing
-      bathTone(t + len * 0.35, b1 + 20, root * 2, false, 0.04);                        // a metal bowl circled at the rim
+      bathTone(t + len * 0.35, b1 + 20, root * 1.5, false, 0.035);                     // a soft fifth joins as it builds (Oct 15: no metal bowl)
       var ps = tuned(['psaltery-c4', 'psaltery-d4'], root / 2);                        // the bowed psaltery, slowed and low
       bathSwell(ps[0], t + len * 0.55, rnd(26, 34), 0.12, ps[1]);
       bathSwell(ps[0], t + len * 0.55 + 14, rnd(24, 30), 0.08, ps[1] * 1.5);

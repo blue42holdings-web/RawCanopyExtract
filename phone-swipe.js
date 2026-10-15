@@ -7,7 +7,8 @@
   var css = document.createElement('style'); css.id = 'phone-swipe-css';
   css.textContent =
     '.rit-arrow{display:none !important}' +
-    '.rcx-sec-row{display:contents}' +   /* desktop: the wrapper does nothing */
+    '.rcx-sec-row{display:contents}' +
+    '@media (max-width:767px){.rcx-click-tag{display:none !important}}' +   /* desktop: the wrapper does nothing */
     '@media (max-width:767px){' +
       'html body .rcx-merge.rcx-sec-row.rcx-sec-row{align-items:stretch !important;background:#000 !important;padding:6px 7vw 28px !important}' +
       'html body .rcx-merge.rcx-sec-row.rcx-sec-row>section{display:block !important;flex:0 0 86vw !important;width:86vw !important;max-width:86vw !important;min-height:0 !important;margin:0 !important;padding:0 !important;border-radius:18px !important;overflow:hidden !important;border:0 !important;display:flex !important;flex-direction:column !important;scroll-snap-align:center;box-sizing:border-box !important;-webkit-mask-image:none !important;mask-image:none !important}' +
@@ -97,7 +98,7 @@
   }
   // a photo fills the whole card: swap "photo on top, black underneath" for an even shade over the full photo
   function fill(root) {
-    var cards = root.querySelectorAll('.rcx-swipe>*,.cx-track>*,.rcx-merge>*>*');
+    var cards = root.querySelectorAll('.rcx-swipe>*,.cx-track>*,.rcx-merge>*>*,.mx-grid>.mx-box');
     for (var i = 0; i < cards.length; i++) {
       var c = cards[i], bg = getComputedStyle(c).backgroundImage;
       if (c.dataset.rcxFill === bg) continue;
@@ -112,7 +113,18 @@
     }
   }
   var pend = 0;
-  function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); }, 400); }
+  function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); if (!MQ.matches) desk(); }, 400); }
+  // desktop: photos fill their whole box, and the Home mushroom boxes say they can be clicked
+  function desk() {
+    fill(document);
+    var gs = document.querySelectorAll('.mx-grid');
+    for (var i = 0; i < gs.length; i++) {
+      var g = gs[i]; if (!g.getBoundingClientRect().height || !g.querySelector('a.mx-box')) continue;
+      var p = g.previousElementSibling; if (p && p.classList.contains('rcx-click-tag')) continue;
+      var t = document.createElement('div'); t.className = 'rcx-click-tag'; t.textContent = 'CLICK ANY BOX FOR MORE INFO';
+      g.parentNode.insertBefore(t, g);
+    }
+  }
   new MutationObserver(soon).observe(document.documentElement, { childList: true, subtree: true });
   addEventListener('load', soon); setTimeout(soon, 1500); setTimeout(soon, 4000);
   if (MQ.addEventListener) MQ.addEventListener('change', soon);
