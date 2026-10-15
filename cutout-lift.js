@@ -26,7 +26,7 @@ function loadImg(src){ if(!imgCache[src]) imgCache[src]=new Promise(function(res
 function feathered(src,boxW,boxH,FEATHER){
   return loadImg(src).then(function(im){
     var iw=im.naturalWidth, ih=im.naturalHeight, s=Math.max(boxW/iw,boxH/ih)||1;
-    var c=Math.min(1,(HOVER?2000:1200)/Math.max(iw,ih)), cw=Math.round(iw*c), ch=Math.round(ih*c);
+    var c=Math.min(1,1200/Math.max(iw,ih)), cw=Math.round(iw*c), ch=Math.round(ih*c);
     var f=Math.max(2,Math.round(FEATHER*c/s)), ck=src+'|'+f;
     if(featherCache[ck]) return featherCache[ck];
     return featherCache[ck]=new Promise(function(res){
