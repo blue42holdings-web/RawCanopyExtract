@@ -8,6 +8,7 @@
   css.textContent =
     '.rit-arrow{display:none !important}' +
     '.rcx-sec-row{display:contents}' +
+    'html body .rcx-filled.rcx-filled.rcx-filled.rcx-filled.rcx-filled.rcx-filled.rcx-filled{background-size:100% 100%,var(--fsz,cover) !important;background-position:0 0,var(--fps,center) !important;background-repeat:no-repeat !important}' +
     '.rcx-arrbar{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 14px;font-family:"Bebas Neue",sans-serif;letter-spacing:.22em;font-size:16px;color:#D4A24A}' +
     '.rcx-arrbar button{width:44px;height:44px;border-radius:50%;border:2px solid #D4A24A;background:#0b0b0b;color:#E8B860;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px}' +
     '.rcx-arrbar button:hover{background:#D4A24A;color:#111}' +
@@ -133,12 +134,28 @@
       var m = bg.match(/url\([^)]*\)/g);
       if (!m || !/linear-gradient/.test(bg) || !/(0\.(8[5-9]|9\d*)\)|rgb\(0, 0, 0\))/.test(bg)) { c.dataset.rcxFill = bg; continue; }   // Oct 15: no black in a box, ever
       var nb = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42) 35%,rgba(0,0,0,.72) 100%),' + m[m.length - 1];
+      // keep the photo's own zoom and framing (the trail rider, the cutout lifts line up with it); only fall back to
+      // cover when the photo would not reach the bottom of the box
+      var cs = getComputedStyle(c), sz = cs.backgroundSize.split(','), ps = cs.backgroundPosition.split(',');
+      var psz = (sz[sz.length - 1] || 'cover').trim(), pps = (ps[ps.length - 1] || 'center').trim();
       c.style.setProperty('background-image', nb, 'important');
-      c.style.setProperty('background-size', 'cover', 'important');
-      c.style.setProperty('background-position', 'center', 'important');
-      c.style.setProperty('background-repeat', 'no-repeat', 'important');
+      c.style.setProperty('--fsz', psz); c.style.setProperty('--fps', pps); c.classList.add('rcx-filled');   // size and framing through a class, so page rules can still adjust them
+      if (psz !== 'cover') coverCheck(c, m[m.length - 1], psz, pps);
       c.dataset.rcxFill = getComputedStyle(c).backgroundImage;
     }
+  }
+  function coverCheck(c, u, psz, pps) {
+    var src = u.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''), im = new Image();
+    im.onload = function () {
+      var r = c.getBoundingClientRect(), W = r.width, H = r.height, iw = im.naturalWidth, ih = im.naturalHeight, w, h;
+      var a = psz.split(/\s+/);
+      if (psz === 'contain') { var k = Math.min(W / iw, H / ih); w = iw * k; h = ih * k; }
+      else { w = /%$/.test(a[0]) ? W * parseFloat(a[0]) / 100 : a[0] === 'auto' ? null : parseFloat(a[0]);
+             h = a[1] && a[1] !== 'auto' ? (/%$/.test(a[1]) ? H * parseFloat(a[1]) / 100 : parseFloat(a[1])) : null;
+             if (w == null && h == null) { w = iw; h = ih; } else if (h == null) h = w * ih / iw; else if (w == null) w = h * iw / ih; }
+      if (w < W - 1 || h < H - 1) c.style.setProperty('--fsz', 'cover');
+    };
+    im.src = src;
   }
   var pend = 0;
   function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); if (!MQ.matches) desk(); }, 400); }
