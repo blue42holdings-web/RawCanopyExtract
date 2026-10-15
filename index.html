@@ -3689,7 +3689,7 @@ class Component extends DCLogic {
       return d;
     };
     const ring = layer(svgRing);
-    if (ringSpins) ring.style.animation = 'rcxSealRing 60s linear infinite';
+    if (ringSpins) { ring.style.animation = 'rcxSealRing 60s linear infinite'; ring.style.animationPlayState = 'paused'; }   // Oct 15: still until you scroll to it
 
     const stage = document.createElement('div');
     stage.style.cssText = 'position:absolute;inset:0;perspective:900px';
@@ -3723,7 +3723,7 @@ class Component extends DCLogic {
 
     const io = new IntersectionObserver((es) => {
       es.forEach(e => {
-        if (e.intersectionRatio >= 0.95) { io.disconnect(); setTimeout(spin, 220); const iv = setInterval(() => { if (!n.isConnected) { clearInterval(iv); return; } if (!document.hidden) spin(); }, 10000); }
+        if (e.intersectionRatio >= 0.95) { io.disconnect(); ring.style.animationPlayState = 'running'; setTimeout(spin, 220); const iv = setInterval(() => { if (!n.isConnected) { clearInterval(iv); return; } if (!document.hidden) spin(); }, 10000); }
       });
     }, { threshold: [0, 0.95, 1] });
     io.observe(n);
@@ -5647,6 +5647,11 @@ html body [data-m="studied-sec"] [data-ph="forest-meditation-yellow"]:not(.z1):n
   html body section[data-m="more-research"][data-m="more-research"]{background:#5c1319 !important}
   html body section[data-m="more-research"] > div:first-child{background-image:none !important}
 }
+</style>
+<style id="about-oct15">
+/* Oct 15: the kayaks show once (boxes 1 and 2 share the one photo); box 3 gets its own */
+@media (max-width:767px){html body [data-screen-label="About"] .ab-grid.ab-grid .ab-box.ab-box:nth-child(2){background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url('assets/photo/about-water-freedive.jpg') !important;background-size:cover !important;background-position:center !important}}
+html body [data-screen-label="About"] .ab-grid.ab-grid .ab-box.ab-box:nth-child(3){background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url('assets/photo/about-water-cave.jpg') !important;background-size:cover !important;background-position:center !important}
 </style>
 </body>
 </html>
