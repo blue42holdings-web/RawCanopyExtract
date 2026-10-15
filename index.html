@@ -1394,7 +1394,7 @@ html body .lab-big .lab-bar{display:none !important}
 html body .lab-big .lab-l{font-size:17px !important;font-weight:700 !important;letter-spacing:.14em !important;color:#fff !important;text-shadow:0 1px 8px rgba(0,0,0,.9)}
 html body .lab-big .lab-row:first-child .lab-n{font-size:86px !important}
 </style>
-<style>html body [data-screen-label="Receipts"] [data-m="rc-intro"][data-ph="mug-fire-bricks"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14)[data-m]{position:relative;border:0 !important;border-radius:0 !important;box-shadow:none !important;background:linear-gradient(rgba(255,255,255,0) 0,#fff 78px,#fff 100%) !important;background-image:linear-gradient(rgba(255,255,255,0) 0,#fff 78px,#fff 100%) !important;margin:-26px calc(50% - 50vw) -48px !important;padding:96px 28px 64px !important}
+<style>html body [data-screen-label="Receipts"] [data-m="rc-intro"][data-ph="mug-fire-bricks"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14)[data-m]{position:relative;border:0 !important;border-radius:0 !important;box-shadow:none !important;background:linear-gradient(rgba(255,255,255,0) 0,#fff 78px,#fff 100%) !important;background-image:linear-gradient(rgba(255,255,255,0) 0,#fff 78px,#fff 100%) !important;margin:-26px 0 -48px !important;padding:96px 28px 64px !important}
 html body [data-screen-label="Receipts"]>section:first-child [data-m="rc-intro"] h2{color:#6B4608 !important;text-shadow:none !important}
 html body [data-screen-label="Receipts"]>section:first-child [data-m="rc-intro"] p{color:#14110C !important;text-shadow:none !important}
 </style>
@@ -5820,6 +5820,21 @@ html body div[data-screen-label="Turkey Tail"] [data-ph="waterfall-stones"]:not(
 html body div[data-screen-label="Turkey Tail"] [data-ph="herb-jars-book"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tt-airport-security-line.jpg") center/cover no-repeat !important}
 html body div[data-screen-label="Turkey Tail"] [data-ph="pineapple-smoothie"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tr-bus-motion.jpg") center/cover no-repeat !important}
 html body div[data-screen-label="Turkey Tail"] [data-ph="palm-jungle-sun"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tt-airport-crowd.jpg") center/cover no-repeat !important}
+}
+</style>
+<style id="shop-wide-oct15">
+@media (min-width:768px){
+  /* the old full-color tennis layer behind the whole Shop page is gone (it showed through as a color band and a white fade) */
+  html body [data-screen-label="Shop"][data-screen-label="Shop"][data-screen-label="Shop"]::before{display:none !important}
+  html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{-webkit-mask-image:linear-gradient(transparent 0,#000 120px,#000 calc(100% - 160px),transparent 100%) !important;mask-image:linear-gradient(transparent 0,#000 120px,#000 calc(100% - 160px),transparent 100%) !important;background-position:center 30% !important;inset:0 !important}
+  html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2){background:#000 !important}
+  html body [data-screen-label="Shop"]>section[data-m="badges-sec"][data-m="badges-sec"]{background:#000 !important}
+  html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2)::after{display:none !important}
+  /* the tins row uses the width of big screens: four across up to 1800px wide */
+  html body [data-screen-label="Shop"]>section:nth-of-type(2) > div{max-width:none !important}
+  html body [data-screen-label="Shop"] [data-m="1col"][data-m="1col"][data-m="1col"]{max-width:min(1800px,calc(100% - 80px)) !important;width:100% !important;margin-left:auto !important;margin-right:auto !important}
+  /* top boxes grow with the screen so the photo is never a thin strip */
+  html body [data-screen-label="Shop"]>section:first-child:not(.zz):not(.zy):not(.zx),html body div[data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy):not(.zx),html body section[data-m="mush-hero"]:not(.zz):not(.zy):not(.zx),html body div[data-screen-label="Why One Ingredient"]>section:first-of-type:not(.zz):not(.zy):not(.zx),html body section[data-m="how-top"]:not(.zz):not(.zy):not(.zx),html body section[data-m="about-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="lm-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="cdh-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="tth-hero"]:not(.zz):not(.zy):not(.zx){height:clamp(560px,34vw,880px) !important;min-height:clamp(560px,34vw,880px) !important;max-height:none !important}
 }
 </style>
 </body>
