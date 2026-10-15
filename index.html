@@ -957,7 +957,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261029e"></script>
 
-<script src="ambient.js?v=58"></script>
+<script src="ambient.js?v=59"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -4846,7 +4846,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=44"></script>
 <script src="nav-extras.js?v=28"></script>
-<script src="phone-swipe.js?v=2"></script>
+<script src="phone-swipe.js?v=3"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -4914,7 +4914,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=5"></script>
+<script src="species-desk.js?v=6"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5570,5 +5570,31 @@ html body section[data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):no
 html body [data-screen-label="About"] .ab-grid.ab-grid.ab-grid{grid-auto-rows:1fr !important}
 html body [data-screen-label="About"] .ab-grid .ab-box.ab-box.ab-box{margin:0 !important;-webkit-mask-image:none !important;mask-image:none !important;padding:44px 40px !important;min-height:0 !important;display:flex !important;align-items:center !important}
 }</style>
+<style id="oct15-desk">
+/* Oct 15: no lonely words on a line anywhere (inline styles that already set text-wrap keep theirs) */
+p,li,dd,blockquote,figcaption{text-wrap:pretty}
+h1,h2,h3,h4,h5,h6{text-wrap:balance}
+@media (min-width:768px){
+  /* home: product photo plus the three mushroom labels; labels wide enough for one line each */
+  html body div:has(> [data-m="pk-dup"]){grid-template-columns:minmax(0,1fr) max-content !important}
+  html body [data-m="rl-list"] .rcx-marble.rcx-txt p{white-space:nowrap !important}
+  html body [data-m="rl-list"] [data-m="rl-name"]{display:block !important;white-space:nowrap !important}
+  html body [data-m="rl-list"] .rcx-marble.rcx-txt{width:auto !important;min-width:0 !important;padding-left:22px !important;padding-right:22px !important}
+  /* "The power of botanical science." on one line */
+  html body #packet h2{white-space:nowrap !important;font-size:clamp(40px,4.4vw,76px) !important;text-align:center !important;max-width:none !important;width:100% !important;margin-left:0 !important;margin-right:0 !important}
+  html body #packet h2 .bs-big.bs-big{display:inline !important;font-size:1em !important;line-height:1 !important;margin:0 !important}
+  /* the mushroom boxes on Home: all four the same size */
+  html body .mx-grid.mx-grid{grid-template-rows:none !important;grid-auto-rows:430px !important}
+  html body .mx-grid.mx-grid>.mx-box{height:auto !important;min-height:0 !important}
+  .rcx-click-tag{font-family:"Bebas Neue",sans-serif;letter-spacing:.22em;font-size:16px;color:#E8B860;text-align:center;margin:4px 0 14px;pointer-events:none}
+}
+@media (max-width:767px){
+  /* the packets photo under the seal: show the whole photo, no crop */
+  html body .hero-pk.hero-pk{height:auto !important;aspect-ratio:1449/1086}
+  /* the 8 billion box: "everyday organic mushrooms" stays on one line without touching the border */
+  html body [data-m="home-para"] p{font-size:min(17.5px,4.45vw) !important;line-height:1.5 !important}
+  html body [data-m="home-para"]{padding-left:max(18px,5vw) !important;padding-right:max(18px,5vw) !important}
+}
+</style>
 </body>
 </html>
