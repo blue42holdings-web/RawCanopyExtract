@@ -159,6 +159,16 @@
   }
   var pend = 0;
   function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); if (!MQ.matches) desk(); }, 400); }
+  // Receipts lot lookup (Oct 15): a blinking line in the box until someone types
+  function caret() {
+    var inp = document.querySelector('[data-screen-label="Receipts"] [data-m="rc-lot"] input[type="text"]'); if (!inp || !inp.offsetHeight) return;
+    var host = inp.parentElement, c = host.querySelector(':scope > .rcx-caret');
+    if (!c) { c = document.createElement('span'); c.className = 'rcx-caret'; if (getComputedStyle(host).position === 'static') host.style.position = 'relative'; host.appendChild(c); }
+    var ir = inp.getBoundingClientRect(), hr = host.getBoundingClientRect();
+    c.style.left = (ir.left - hr.left + 16) + 'px'; c.style.top = (ir.top - hr.top + (ir.height - 26) / 2) + 'px';
+    c.style.display = (inp.value || document.activeElement === inp) ? 'none' : 'block';
+  }
+  setInterval(caret, 500);
   setInterval(function () { if (!MQ.matches) soon(); else { var m = document.querySelector('[data-rcx-moved]'), cb = document.querySelector('[data-screen-label="How To Use"] [data-m="steps-wrap"] > section.clean-band'); if (m && cb) { cb.appendChild(m); m.removeAttribute('data-rcx-moved'); cb.style.removeProperty('display'); } } }, 2000);
   // desktop: photos fill their whole box, and the Home mushroom boxes say they can be clicked
   function desk() {

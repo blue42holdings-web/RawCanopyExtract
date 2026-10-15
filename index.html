@@ -2008,7 +2008,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 <div data-m="rc-intro" data-ph="mug-fire-bricks"><h2 data-m="rc-take">Don't take our word for it. Here's the lab report.</h2><p>Every steel tin carries a lot number. Every lot has a certificate. Find yours below, or type the lot number from your steel tin. Compare ours to anyone else's, if you can find one for your lot.</p>
 </div>
 <div data-m="rc-lot" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;border-top:1px solid rgba(241,236,225,.16);border-bottom:1px solid rgba(241,236,225,.16);padding:18px 0"><p data-m="rc-lot-i" style="flex:0 0 100%;margin:0">Type the number that appears on your product here.</p>
-<input type="text" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Lot number" style="flex:1;min-width:220px;background:none;border:1px solid rgba(241,236,225,.24);outline:none;color:#F1ECE1;padding:12px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.04em"><button onClick="{{ clearQuery }}" style="background:none;border:1px solid rgba(241,236,225,.24);color:#CFC7B6;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:15px;padding:12px 20px" style-hover="border-color:#D4A24A;color:#D4A24A">CLEAR</button>
+<input type="text" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Type your lot number here" style="flex:1;min-width:220px;background:none;border:1px solid rgba(241,236,225,.24);outline:none;color:#F1ECE1;padding:12px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.04em"><button onClick="{{ clearQuery }}" style="background:none;border:1px solid rgba(241,236,225,.24);color:#CFC7B6;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:15px;padding:12px 20px" style-hover="border-color:#D4A24A;color:#D4A24A">CLEAR</button>
 </div>
 </div>
 </section>
@@ -4847,7 +4847,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script src="site-extras.js?v=49"></script>
 <script src="nav-extras.js?v=29"></script>
 <script src="mushroom-reveal.js?v=1"></script>
-<script src="phone-swipe.js?v=11"></script>
+<script src="phone-swipe.js?v=12"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -5904,6 +5904,43 @@ html body a.rcx-btn.rcx-invite:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(
   html body a.rcx-btn.rcx-metal:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):hover{background:#FFFFFF !important;color:#111 !important}
   html body a.rcx-btn.rcx-btn:hover *{color:inherit !important}
 }
+</style>
+<style id="shop-rc-oct15b">
+@media (min-width:768px){
+  /* SHOP top: the whole climber, on the right, full height; her photo darkens as she lifts out and drifts forward; words just left of her */
+  html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13){height:640px !important;min-height:640px !important;max-height:640px !important;background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url("assets/photo/coffee-asset.webp") center/cover no-repeat,#0e2440 !important;display:flex !important;align-items:center !important;justify-content:flex-end !important;isolation:isolate}
+  html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13)::before,html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13)::after{content:"" !important;display:block !important;position:absolute !important;top:0 !important;right:0 !important;bottom:0 !important;left:auto !important;width:960px !important;max-width:100%;pointer-events:none;transform-origin:78% 55% !important}
+  html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13)::before{z-index:0 !important;background:url("assets/photo/coffee-asset.webp") right center/auto 100% no-repeat !important;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%) !important;mask-image:linear-gradient(90deg,transparent 0,#000 30%) !important;animation:rcxClimbRock 14s ease-out .3s both !important}
+  html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13)::after{z-index:1 !important;background:url("assets/cutouts/coffee-asset-cutout.webp") right center/auto 100% no-repeat !important;animation:rcxClimbLift 12s cubic-bezier(.25,.1,.25,1) 1.3s both !important}
+  @keyframes rcxClimbRock{from{filter:brightness(.75);transform:scale(1)}to{filter:brightness(.42);transform:scale(1.06)}}
+  @keyframes rcxClimbLift{from{filter:brightness(.5);transform:scale(1)}to{filter:brightness(1.05);transform:scale(1.1)}}
+  html body [data-screen-label="Shop"]>section:first-child:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13)>div[data-dc-tpl]{position:relative !important;z-index:2 !important;top:0 !important;margin:0 440px 0 0 !important;width:auto !important;max-width:560px !important;padding:0 !important;text-align:right !important}
+  html body [data-screen-label="Shop"]>section:first-child>div[data-dc-tpl] h1{margin-left:auto !important}
+  html body [data-screen-label="Shop"]>section:first-child>div[data-dc-tpl] *{text-align:right}
+  html body [data-screen-label="Shop"]>section:first-child>div[aria-hidden],html body [data-screen-label="Shop"]>section:first-child>div[data-bright-layer]{display:none !important}
+  /* click-for-more bar: more room, bigger words, bold arrows in solid circles */
+  .rcx-arrbar.rcx-arrbar{margin:34px 0 22px !important;gap:26px !important;font-size:24px !important;letter-spacing:.24em !important;font-weight:700}
+  .rcx-arrbar.rcx-arrbar button{width:60px !important;height:60px !important;border-width:3px !important;font-size:40px !important;font-weight:700 !important;background:#D4A24A !important;color:#111 !important;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+  .rcx-arrbar.rcx-arrbar button:hover{background:#fff !important}
+  /* tennis behind the products: always color, slowly drifts forward */
+  html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{filter:none !important;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 40%/cover no-repeat !important;animation:rcxTennisFwd 30s ease-out .5s both !important;transform-origin:50% 45%}
+  @keyframes rcxTennisFwd{from{transform:scale(1)}to{transform:scale(1.08)}}
+  /* badges go straight into the powder photo, no light strip */
+  html body [data-screen-label="Shop"]>section[data-m="badges-sec"][data-m="badges-sec"]{padding-bottom:30px !important;margin-bottom:0 !important;border:0 !important}
+  html body [data-screen-label="Shop"]>section[data-m="badges-sec"] + section.clean-band{margin-top:0 !important;border-top:0 !important;box-shadow:none !important}
+  html body [data-screen-label="Shop"]>section[data-m="badges-sec"] + section.clean-band::before,html body [data-screen-label="Shop"]>section[data-m="badges-sec"] + section.clean-band::after{background-image:none !important;background-color:transparent !important}
+  /* RECEIPTS top: she sits in the middle behind the words, starts dark, then lifts on */
+  html body div[data-screen-label="Receipts"]>section:first-of-type::after{background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.45)),url("assets/photo/receipts-tennis-noblog.jpg") center 40%/cover no-repeat !important;animation:rcxRcDark 10s ease-out .3s both}
+  html body div[data-screen-label="Receipts"]>section:first-of-type::before{content:"" !important;position:absolute;top:11px;left:11px;right:11px;height:calc(clamp(560px,34vw,880px) - 6px);border-radius:23px;z-index:1;pointer-events:none;background:url("assets/cutouts/receipts-tennis-noblog-cutout.webp") center 40%/cover no-repeat;transform-origin:50% 45%;animation:rcxRcLift 9s cubic-bezier(.25,.1,.25,1) 1.6s both}
+  @keyframes rcxRcDark{from{filter:brightness(.5)}to{filter:brightness(.7)}}
+  @keyframes rcxRcLift{from{opacity:0;filter:brightness(.5);transform:scale(1)}to{opacity:1;filter:brightness(1.05);transform:scale(1.06)}}
+  html body div[data-screen-label="Receipts"]>section:first-of-type h1{z-index:3 !important}
+  /* the lot lookup in the court blue, and the input looks like somewhere to type */
+  html body [data-screen-label="Receipts"] [data-m="rc-intro"] > p:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13),html body [data-screen-label="Receipts"] [data-m="rc-lot-i"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13){background:#22607f !important;background-color:#22607f !important;color:#F1ECE1 !important}
+  html body [data-screen-label="Receipts"] [data-m="rc-lot"] input[type="text"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13){font-size:20px !important;height:56px !important;padding-left:18px !important;border:3px solid #22607f !important;caret-color:#22607f}
+}
+.rcx-caret{position:absolute;width:2px;height:26px;background:#22607f;animation:rcxBlink 1s steps(1) infinite;pointer-events:none}
+@keyframes rcxBlink{50%{opacity:0}}
 </style>
 </body>
 </html>
