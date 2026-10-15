@@ -251,7 +251,7 @@
     function layer(name, t0, dur, level, dark) {
       if (window.__RCX_AMBIENT_TEST) console.log('field ' + name + ' at ' + Math.round(t0) + 's for ' + Math.round(dur) + 's');
       if (/crows/.test(name)) dur *= 0.45;            // Oct 12: the gull like calls stay on a little under half as long
-      if (/birds/.test(name)) level *= name === 'forest-birds' ? 0.6 : 0.45;
+      if (/birds/.test(name)) level *= name === 'forest-birds' ? 0.4 : 0.3;   /* Oct 14: one bird at a time, and lower */
       if (/crows/.test(name)) level *= 0.5;   /* Oct 12: the gull calls are liked, just quieter */   /* Oct 12: birds sit well under everything else */
       loadField(name).then(function (buf) {
         if (!buf) return;
@@ -296,19 +296,24 @@
     // wind in the trees. Rain is light rain or mist, never hard. No rivers or waterfalls (taken out Oct 11).
     // The jungle almost never.
     var FIELD_WEIGHT = {
-      bright: { 'ocean': 6, 'forest-wind': 7, 'mountain-wind': 4, 'howling-wind': 1.5, 'birds': 0.4, 'forest-birds': 0.6 },   // Oct 12: serious, not silly. Birds used sparingly; no splattery leaf rain, no woodpecker   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
-      dark: { 'ocean': 6, 'forest-wind': 4, 'howling-wind': 4, 'mountain-wind': 4, 'thunder': 1.2, 'crows': 0.5 }   // Oct 12: no frogs, birds or leaf splatter in the dark mood
+      bright: { 'forest-wind': 7, 'mountain-wind': 4, 'howling-wind': 1.5, 'birds': 0.4, 'forest-birds': 0.6 },   // Oct 12: serious, not silly. Birds used sparingly; no splattery leaf rain, no woodpecker   // Oct 12: jungle out (no rainforest), redwood style forest birds and a woodpecker in
+      dark: { 'forest-wind': 4, 'howling-wind': 4, 'mountain-wind': 4, 'thunder': 1.2, 'crows': 0.5 }   // Oct 12: no frogs, birds or leaf splatter in the dark mood
     };
     var recentField = [], nextFieldAt = 0;
     // never more than three nature sounds at once (crickets and the owl count too)
     var natureSlots = [];
     function busy(t0, t1) { var n = 0; natureSlots.forEach(function (x) { if (x[0] < t1 && x[1] > t0) n++; }); return n; }
     function claim(t0, t1) { natureSlots.push([t0, t1]); natureSlots = natureSlots.filter(function (x) { return x[1] > t0 - 600; }); }
-    function pickOne(dark) {
+    // Oct 14: only ONE bird at a time. Bird calls are tracked on their own and never overlap each other.
+    var birdSlots = [];
+    function isBird(n) { return /birds/.test(n); }
+    function birdBusy(t0, t1) { return birdSlots.some(function (x) { return x[0] < t1 && x[1] > t0; }); }
+    function claimBird(t0, t1) { birdSlots.push([t0, t1]); birdSlots = birdSlots.filter(function (x) { return x[1] > t0 - 600; }); }
+    function pickOne(dark, noBirds) {
       var w = FIELD_WEIGHT[dark ? 'dark' : 'bright'], tot = 0, k;
-      for (k in w) if (recentField.indexOf(k) < 0) tot += w[k];
+      for (k in w) if (recentField.indexOf(k) < 0 && !(noBirds && isBird(k))) tot += w[k];
       var r = Math.random() * tot;
-      for (k in w) { if (recentField.indexOf(k) >= 0) continue; r -= w[k]; if (r <= 0) break; }
+      for (k in w) { if (recentField.indexOf(k) >= 0 || (noBirds && isBird(k))) continue; r -= w[k]; if (r <= 0) break; }
       recentField.push(k); if (recentField.length > 3) recentField.shift();
       return k;
     }
@@ -318,11 +323,11 @@
       // as it gets sparse, and both carry through to the next build.
       var t0 = Math.max(b1 + rnd(0, 6), natureStart), t1 = end + rnd(8, 14);
       if (t1 - t0 < 25) return;
-      var main = pickOne(dark);
-      /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.4, 0.46) : (dark ? 0.62 : 0.52), dark); }
+      var main = pickOne(dark, birdBusy(t0, t1));
+      /* Oct 12: the breakdown sound always plays, so there is never silence */ { loadField(main); claim(t0, t1); if (isBird(main)) claimBird(t0, t1); layer(main, t0, t1 - t0, /rain/.test(main) ? rnd(0.4, 0.46) : (dark ? 0.62 : 0.52), dark); }
       var s0 = b2 + rnd(0, 8), s1 = end + rnd(2, 8);
       if (Math.random() < 0.35 && s1 - s0 > 20 && busy(s0, s1) < 2) {             // usually a second one; leave room so it stays at two
-        var second = pickOne(dark); loadField(second); claim(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
+        var second = pickOne(dark, isBird(main) || birdBusy(s0, s1)); loadField(second); claim(s0, s1); if (isBird(second)) claimBird(s0, s1); layer(second, s0, s1 - s0, /rain/.test(second) ? 0.36 : 0.34, dark);   // rain a notch up so it is noticed, still soft
       }
       // Oct 11: rain as the music comes back after the breakdown, a little more often than before. Light, never hard.
       var r0 = end + 10, r1 = end + rnd(55, 75);   // Oct 12: about ten seconds into the new uplifting section   // Oct 11 (later): as the new section builds back up, most of the time
@@ -502,13 +507,14 @@
       // Oct 12: nature also drifts in and out during the full music, not only in breakdowns. Quiet, random,
       // favoring the sounds heard less often; never more than two at once here.
       (function () {
-        var pool = dark ? ['mountain-wind', 'crows', 'forest-wind', 'howling-wind', 'ocean'] : ['mountain-wind', 'forest-wind', 'ocean', 'forest-wind', 'birds', 'forest-birds'];
+        var pool = dark ? ['mountain-wind', 'crows', 'forest-wind', 'howling-wind'] : ['mountain-wind', 'forest-wind', 'forest-wind', 'birds', 'forest-birds'];
         var n = Math.random() < 0.5 ? 1 : 0, span = Math.max(30, b1 - t - 20);
         for (var k = 0; k < n; k++) {
           var a0 = Math.max(natureStart, t + rnd(8, span)), a1 = a0 + rnd(28, 55);
           if (busy(a0, a1) >= 2) continue;
           var nm = pool[Math.floor(Math.random() * pool.length)];
-          loadField(nm); claim(a0, a1); layer(nm, a0, a1 - a0, rnd(0.16, 0.24), dark);
+          if (isBird(nm) && birdBusy(a0, a1)) continue;   // Oct 14: never two birds together
+          loadField(nm); claim(a0, a1); if (isBird(nm)) claimBird(a0, a1); layer(nm, a0, a1 - a0, rnd(0.16, 0.24), dark);
         }
       })();
       // (crickets removed Oct 11)
