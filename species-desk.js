@@ -185,7 +185,7 @@
     if (hit === cur) return;
     if (cur) cur.style.filter = cur.__f || '';
     cur = hit;
-    if (cur) { if (cur.__f === undefined) cur.__f = cur.style.filter || ''; cur.style.transition = (cur.style.transition ? cur.style.transition + ',' : '') + 'filter .7s ease'; cur.style.filter = 'brightness(2.4) saturate(1.1)'; }
+    if (cur) { if (cur.__f === undefined) cur.__f = cur.style.filter || ''; cur.style.transition = (cur.style.transition ? cur.style.transition + ',' : '') + 'filter .7s ease'; cur.style.filter = 'brightness(1.15) saturate(1.05)'; /* Oct 15: was 2.4, which washed the photo out */ }
   }, { passive: true });
   var SL = ['wet-slate.jpeg', 'slate-v1.jpg', 'slate-v2.jpg', 'slate-v3.jpg', 'slate-v4.jpg', 'slate-v5.jpg', 'slate-v6.jpg', 'slate-v7.jpg', 'slate-v8.jpg', 'roar-wet-slate.jpg'];
   var POS = ['20% 40%', '70% 60%', '40% 80%', '85% 25%', '10% 70%', '55% 35%', '30% 15%', '75% 85%', '50% 50%', '35% 65%'];

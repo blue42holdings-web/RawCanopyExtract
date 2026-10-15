@@ -400,16 +400,16 @@
       bathTone(b1 - 4, end + 10, root, true, full ? 0.1 : 0.08);
       bathTone(b2, end + 6, root * 1.5, false, 0.045);
       if (!full) return;
-      ['ocean-drum', 'psaltery-c4', 'psaltery-d4', 'didgeridoo'].forEach(loadBath);
+      ['psaltery-c4', 'psaltery-d4', 'didgeridoo'].forEach(loadBath);
       var len = b1 - t;
-      bathSwell('ocean-drum', t + 6, rnd(48, 64), 0.18, rnd(0.88, 0.96));             // the ocean drum rolling, like waves
+      // Oct 15 (Scott): the ocean drum (the wind / waves sound) is out
       bathTone(t + 18, b1, root, true, 0.07);                                          // a crystal bowl begins to sing
       bathTone(t + len * 0.35, b1 + 20, root * 1.5, false, 0.035);                     // a soft fifth joins as it builds (Oct 15: no metal bowl)
       var ps = tuned(['psaltery-c4', 'psaltery-d4'], root / 2);                        // the bowed psaltery, slowed and low
       bathSwell(ps[0], t + len * 0.55, rnd(26, 34), 0.12, ps[1]);
       bathSwell(ps[0], t + len * 0.55 + 14, rnd(24, 30), 0.08, ps[1] * 1.5);
       if (dark) bathSwell('didgeridoo', t + len * 0.65, rnd(34, 44), 0.13, rnd(0.88, 0.95), 0);
-      bathSwell('ocean-drum', b2 + rnd(0, 8), rnd(40, 55), 0.14, rnd(0.85, 0.92));
+
     }
     // Oct 11, second pass: spaced way out. Most of the time there is NO field sound at all. Roughly
     // every three minutes ONE sound comes in during a breakdown (now and then two), plays a while and
