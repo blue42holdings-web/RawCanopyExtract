@@ -158,12 +158,7 @@
       if (!hero || !read || hero.getBoundingClientRect().height < 50) return;
       W.classList.add('sd-kill');
       var h1 = hero.offsetHeight, rt = read.getBoundingClientRect().top - W.getBoundingClientRect().top;
-      W.style.setProperty('background',
-        'linear-gradient(#F1ECE1 0,#F1ECE1 ' + (rt - 260) + 'px,rgba(241,236,225,0) ' + (rt + 10) + 'px,rgba(0,0,0,0) ' + (rt + 760) + 'px,' + SAND + ' ' + (rt + 1100) + 'px,' + SAND + ' 100%),' +
-        'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url("assets/photo/receipts-beach-camp.jpg") 50% ' + (rt - 260) + 'px/100% auto no-repeat,' + SAND, 'important');
-      W.style.setProperty('background-size', '100% 100%,100% 100%,100% auto', 'important');
-      W.style.setProperty('background-position', '0 0,0 0,50% ' + (rt - 260) + 'px', 'important');
-      W.style.setProperty('background-repeat', 'no-repeat', 'important');
+      W.style.setProperty('background', '#fff', 'important');   // Oct 15 (Scott): white all the way down, no beach camp photo
       // everything between the hero and the lab report guide sits on the white
       var n = hero.nextElementSibling;
       while (n && n !== read) { n.style.setProperty('background', 'transparent', 'important'); n.querySelectorAll(':scope > section').forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); }); n = n.nextElementSibling; }
