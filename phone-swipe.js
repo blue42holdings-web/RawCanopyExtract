@@ -8,6 +8,11 @@
   css.textContent =
     '.rit-arrow{display:none !important}' +
     '.rcx-sec-row{display:contents}' +
+    '.rcx-arrbar{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 14px;font-family:"Bebas Neue",sans-serif;letter-spacing:.22em;font-size:16px;color:#D4A24A}' +
+    '.rcx-arrbar button{width:44px;height:44px;border-radius:50%;border:2px solid #D4A24A;background:#0b0b0b;color:#E8B860;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px}' +
+    '.rcx-arrbar button:hover{background:#D4A24A;color:#111}' +
+    '[data-screen-label="Receipts"] .rcx-arrbar{color:#9A6A1E}' +
+    '@media (max-width:767px){.rcx-arrbar{display:none !important}}' +
     '@media (max-width:767px){.rcx-click-tag{display:none !important}' +
       'html body .mx-wrap .mx-grid.mx-grid.mx-grid{grid-template-rows:none !important;grid-auto-rows:auto !important;align-items:stretch !important;grid-auto-columns:80vw !important;grid-template-columns:none !important}' +
       'html body .mx-wrap .mx-grid.mx-grid.mx-grid>.mx-box.mx-box{width:80vw !important;max-width:80vw !important;height:auto !important;min-height:80vw !important}' +   /* Oct 15: closer to square */
@@ -67,7 +72,7 @@
       for (var k = 0; k < rs.length; k++) { tot += rs[k].height; if (k && rs[k].top < rs[k - 1].bottom - 5) ok = false; }
       if (!ok || tot < 450) continue;
       el.classList.add('rcx-swipe');
-      var tall = ch.some(function (c) { return c.getBoundingClientRect().height > c.getBoundingClientRect().width * 1.6; });
+      var tall = ch.some(function (c) { return c.getBoundingClientRect().height > c.getBoundingClientRect().width * 2; });
       if (tall) { el.classList.remove('rcx-swipe'); el.setAttribute('data-noswipe', '1'); continue; }   // text too long to make a near square card: leave it stacked
       if (!(el.previousElementSibling && el.previousElementSibling.classList.contains('rcx-swipe-tag'))) {
         el.parentNode.insertBefore(mkTag(), el); wrapParent(el.parentNode);
@@ -75,6 +80,26 @@
     }
     label(root);
     fill(root);
+    tighten(root);
+  }
+  // Oct 15 (Scott): no big empty gaps between boxes on the phone. Big top and bottom padding is cut down;
+  // bands that show a photo keep a little more so the photo and its fade still read.
+  function tighten(root) {
+    var vw = innerWidth, all = root.querySelectorAll('section,div,ul,aside');
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el.hasAttribute('data-tight')) continue;
+      var r = el.getBoundingClientRect(); if (!r.height || r.width < vw * 0.9) continue;
+      if (r.top + scrollY < 640 || el.closest('header,nav,.rcx-swipe,.rcx-merge,.cx-track,[data-m="hero"]')) continue;
+      var cs = getComputedStyle(el), photo = /url\(/.test(cs.backgroundImage), cap = photo ? 72 : 34;
+      var pt = parseFloat(cs.paddingTop), pb = parseFloat(cs.paddingBottom), mt = parseFloat(cs.marginTop), mb = parseFloat(cs.marginBottom);
+      if (pt > cap + 8) el.style.setProperty('padding-top', cap + 'px', 'important');
+      if (pb > cap + 8) el.style.setProperty('padding-bottom', cap + 'px', 'important');
+      if (mt > 40) el.style.setProperty('margin-top', '20px', 'important');
+      if (mb > 40) el.style.setProperty('margin-bottom', '20px', 'important');
+      if (!el.children.length && !(el.textContent || '').trim() && !photo && r.height > 50 && cs.position !== 'absolute' && cs.position !== 'fixed') el.style.setProperty('height', '24px', 'important');   // empty spacer
+      el.setAttribute('data-tight', '');
+    }
   }
   function wrapParent(par) {   // a label inside a side-by-side flex row would get squeezed to the left; let it sit on its own line
     var c = getComputedStyle(par);
@@ -127,6 +152,26 @@
       var t = document.createElement('div'); t.className = 'rcx-click-tag'; t.textContent = 'CLICK ANY BOX FOR MORE INFO';
       g.parentNode.insertBefore(t, g);
     }
+    // rows you click through left and right (Oct 15): an arrow bar sits right above the row
+    var rows = document.querySelectorAll('[data-m="rc-read"] .rc-grid3,[data-desk-row]');
+    for (var j = 0; j < rows.length; j++) arrows(rows[j]);
+  }
+  function arrows(row) {
+    if (!row.getBoundingClientRect().height || row.scrollWidth <= row.clientWidth + 20) return;
+    var p = row.previousElementSibling; if (p && p.classList.contains('rcx-arrbar')) return;
+    var bar = document.createElement('div'); bar.className = 'rcx-arrbar';
+    bar.innerHTML = '<button type="button" aria-label="Previous">&#8249;</button><span>CLICK FOR MORE</span><button type="button" aria-label="Next">&#8250;</button>';
+    var bs = bar.querySelectorAll('button');
+    function go(d) {
+      var k = row.children[0], step = k ? k.getBoundingClientRect().width + 18 : row.clientWidth;
+      var max = row.scrollWidth - row.clientWidth;
+      if (d > 0 && row.scrollLeft >= max - 4) row.scrollTo({ left: 0, behavior: 'smooth' });
+      else if (d < 0 && row.scrollLeft <= 4) row.scrollTo({ left: max, behavior: 'smooth' });
+      else row.scrollBy({ left: d * step, behavior: 'smooth' });
+    }
+    bs[0].addEventListener('click', function (e) { e.preventDefault(); go(-1); });
+    bs[1].addEventListener('click', function (e) { e.preventDefault(); go(1); });
+    row.parentNode.insertBefore(bar, row);
   }
   new MutationObserver(soon).observe(document.documentElement, { childList: true, subtree: true });
   addEventListener('load', soon); setTimeout(soon, 1500); setTimeout(soon, 4000);
