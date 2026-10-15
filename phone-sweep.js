@@ -4,7 +4,7 @@
    Oct 15: steady slow speed. No speed-up on long pages, gentle start and stop, waits before the first move. */
 (function () {
   var MQ = window.matchMedia('(max-width:767px)');
-  var PAUSE = 5000, SPEED = 40, RAMP = 1.5, FIRST = 6000; /* px per second, seconds to reach speed */
+  var PAUSE = 5000, SPEED = 15, RAMP = 1.5, FIRST = 6000; /* px per second, seconds to reach speed */
   var raf = 0, timer = 0, running = false, holdUntil = 0;
   function maxY() { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
   function glide(dir, done) {
