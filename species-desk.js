@@ -204,8 +204,9 @@
       if (!(+m[0] < 30 && +m[1] < 30 && +m[2] < 30 && a > 0.5)) return;
       if (!/212, 162, 74|233, 192, 121/.test(cs.borderTopColor) || parseFloat(cs.borderTopWidth) < 1) return;
       var i = n++ % SL.length; b.__sl = 1;
-      b.style.setProperty('background', 'linear-gradient(rgba(3,3,3,.82),rgba(3,3,3,.82)),url("assets/photo/slate-blur-' + (i + 1) + '.jpg?v=2") ' + POS[i] + '/cover no-repeat', 'important');
-      b.style.setProperty('background-color', '#050505', 'important');
+      // Oct 15: through a class, so a hover color can still take over (an inline !important background blocked it)
+      b.style.setProperty('--slbg', 'linear-gradient(rgba(3,3,3,.82),rgba(3,3,3,.82)),url("assets/photo/slate-blur-' + (i + 1) + '.jpg?v=2") ' + POS[i] + '/cover no-repeat');
+      b.classList.add('rcx-slate');
     });
   }
   setInterval(slate, 1200); slate();

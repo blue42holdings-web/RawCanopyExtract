@@ -152,8 +152,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       var a = m.length > 3 ? +m[3] : 1;
       if (!(+m[0] < 30 && +m[1] < 30 && +m[2] < 30 && a > 0.5)) return;
       b.__sv = 1;
-      b.style.setProperty('background', slate(ns++, .82), 'important');
-      b.style.setProperty('background-color', '#050505', 'important');
+      b.style.setProperty('--slbg', slate(ns++, .82)); b.classList.add('rcx-slate');   // Oct 15: class, so the hover color can take over
     });
   }
   setInterval(run, 1000); run();

@@ -4844,7 +4844,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=48"></script>
+<script src="site-extras.js?v=49"></script>
 <script src="nav-extras.js?v=29"></script>
 <script src="mushroom-reveal.js?v=1"></script>
 <script src="phone-swipe.js?v=11"></script>
@@ -4915,7 +4915,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=11"></script>
+<script src="species-desk.js?v=12"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5891,6 +5891,18 @@ html body div[data-screen-label="Cordyceps"] [data-ph="extraction-book"]:not(.y1
 html body div[data-screen-label="Cordyceps"] [data-ph="reactors-lab"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.65)),url("assets/photo/cd-golf-dunes.jpg") center/cover no-repeat !important}
 html body [data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"]{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url("assets/photo/receipts-tennis-noblog.jpg") !important;filter:none !important}
 html body div[data-screen-label="Cordyceps"] section:has(> [data-ph="apothecary-shop"]){background:transparent !important;background-image:none !important}
+}
+</style>
+<style id="btn-center-oct15">
+html body .rcx-slate.rcx-slate.rcx-slate{background:var(--slbg) !important;background-color:#050505 !important}
+@media (hover:hover){html body .rcx-slate.rcx-slate.rcx-slate.rcx-slate:hover{background:#D4A24A !important;color:#111 !important;border-color:#F1D08A !important;box-shadow:0 0 0 2px rgba(241,208,138,.35),0 8px 24px rgba(212,162,74,.45) !important}html body .rcx-slate:hover *{color:#111 !important}}
+/* Oct 15: every button's words sit dead center, and every button lights up under the cursor so it reads as clickable */
+html body a.rcx-btn.rcx-btn:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11),html body button.rcx-btn.rcx-btn:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11){display:inline-flex !important;align-items:center !important;justify-content:center !important;text-align:center !important;gap:8px;padding:10px 30px !important;font-family:"Bebas Neue",sans-serif !important;font-size:21px !important;letter-spacing:.14em !important;line-height:1 !important;box-sizing:border-box;transition:background .25s,color .25s,border-color .25s,box-shadow .25s,transform .25s !important;cursor:pointer}
+html body a.rcx-btn.rcx-invite:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11){color:#F1ECE1 !important}
+@media (hover:hover){
+  html body a.rcx-btn.rcx-btn:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):hover,html body button.rcx-btn.rcx-btn:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):hover{background:#D4A24A !important;background-image:none !important;color:#111 !important;border-color:#F1D08A !important;box-shadow:0 0 0 2px rgba(241,208,138,.35),0 8px 24px rgba(212,162,74,.45) !important;transform:translateY(-1px)}
+  html body a.rcx-btn.rcx-metal:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):hover{background:#FFFFFF !important;color:#111 !important}
+  html body a.rcx-btn.rcx-btn:hover *{color:inherit !important}
 }
 </style>
 </body>
