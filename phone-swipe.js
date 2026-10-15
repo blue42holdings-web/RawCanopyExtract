@@ -153,7 +153,7 @@
       g.parentNode.insertBefore(t, g);
     }
     // rows you click through left and right (Oct 15): an arrow bar sits right above the row
-    var rows = document.querySelectorAll('[data-m="rc-read"] .rc-grid3,[data-desk-row]');
+    var rows = document.querySelectorAll('[data-m="rc-read"] .rc-grid3,[data-screen-label="Shop"] [data-m="1col"],[data-desk-row]');
     for (var j = 0; j < rows.length; j++) arrows(rows[j]);
   }
   function arrows(row) {
@@ -171,6 +171,7 @@
     }
     bs[0].addEventListener('click', function (e) { e.preventDefault(); go(-1); });
     bs[1].addEventListener('click', function (e) { e.preventDefault(); go(1); });
+    if (!MQ.matches) bar.style.setProperty('display', 'flex', 'important');
     row.parentNode.insertBefore(bar, row);
   }
   new MutationObserver(soon).observe(document.documentElement, { childList: true, subtree: true });
