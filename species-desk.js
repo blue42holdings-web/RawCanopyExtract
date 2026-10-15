@@ -40,7 +40,7 @@
     what.style.setProperty('box-shadow', 'none', 'important');
     if (box) {
       box.classList.add('sd-what');
-      box.style.setProperty('background', 'transparent', 'important');
+      if (!box.parentElement.classList.contains('rcx-row2')) box.style.setProperty('background', 'transparent', 'important'); else box.style.removeProperty('background');   // Oct 15: in the side by side row it keeps its own photo
       box.style.setProperty('box-shadow', 'none', 'important');
       box.querySelectorAll(':scope > div').forEach(function (d) { if (/url\(/.test(getComputedStyle(d).backgroundImage) || d.children.length === 0) d.style.setProperty('background', 'transparent', 'important'); });
     }
@@ -52,7 +52,7 @@
       'background:linear-gradient(rgba(0,0,0,.5) 0,rgba(0,0,0,.38) 40%,rgba(0,0,0,.55) calc(100% - 260px),' + fadeTo + ' 100%),url("' + img + '") center 30%/cover no-repeat';
     // strip every background photo that is not inside a content box, and close the gaps
     C.querySelectorAll('*').forEach(function (e) {
-      if (e.hasAttribute('data-sd-hero')) return;
+      if (e.hasAttribute('data-sd-hero') || e.hasAttribute('data-rcx-burn') || e.closest('.rcx-row2')) return;
       var host = e.closest('[data-ph],section[data-m="sbox"],section[data-m$="-hero"],.cx,.mx-box,.mx-wrap,article,a,button');
       if (host && !(host === e && e.tagName === 'SECTION' && e.querySelector('[data-ph]'))) return;
       var cs = getComputedStyle(e), bb = getComputedStyle(e, '::before'), ba = getComputedStyle(e, '::after');
@@ -74,8 +74,10 @@
     var sTop = sbox ? top(sbox, C) : C.offsetHeight, sEnd = sbox ? sTop + sbox.offsetHeight : C.offsetHeight;
     var bg;
     // Oct 15 (Scott): Lion's Mane white below The Steady Burn; Cordyceps red; Turkey Tail red base with white and red sections
-    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + (sTop - 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + WHITE + ' 100%)';
-    else if (cfg.key === 'cd' || cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + (h1 - 40) + 'px,' + RED + ' ' + (h1 + 40) + 'px,' + RED + ' 100%)';
+    // Oct 15 (later): one color under the top box, no black band. Lion's Mane white, Cordyceps and Turkey Tail red.
+    var hEnd = h0 + hero.offsetHeight;
+    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' 100%)';
+    else if (cfg.key === 'cd' || cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + RED + ' ' + (hEnd + 1) + 'px,' + RED + ' 100%)';
     else if (false) bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
     else bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + OLIVE + ' ' + (h1 + 120) + 'px,' + OLIVE + ' ' + (sTop + 40) + 'px,#141414 ' + (sTop + 160) + 'px,#141414 ' + (sEnd - 60) + 'px,' + RED + ' ' + (sEnd + 160) + 'px,' + RED + ' 100%)';
     var mt = C.querySelector(':scope > [data-sd-metal]');
