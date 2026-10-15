@@ -73,8 +73,10 @@
     var sbox = C.querySelector(':scope > section[data-m="sbox"]');
     var sTop = sbox ? top(sbox, C) : C.offsetHeight, sEnd = sbox ? sTop + sbox.offsetHeight : C.offsetHeight;
     var bg;
-    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
-    else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
+    // Oct 15 (Scott): Lion's Mane white below The Steady Burn; Cordyceps red; Turkey Tail red base with white and red sections
+    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + (sTop - 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + WHITE + ' 100%)';
+    else if (cfg.key === 'cd' || cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + (h1 - 40) + 'px,' + RED + ' ' + (h1 + 40) + 'px,' + RED + ' 100%)';
+    else if (false) bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
     else bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + OLIVE + ' ' + (h1 + 120) + 'px,' + OLIVE + ' ' + (sTop + 40) + 'px,#141414 ' + (sTop + 160) + 'px,#141414 ' + (sEnd - 60) + 'px,' + RED + ' ' + (sEnd + 160) + 'px,' + RED + ' 100%)';
     var mt = C.querySelector(':scope > [data-sd-metal]');
     if (cfg.key !== 'lm') {

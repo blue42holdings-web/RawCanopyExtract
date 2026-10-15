@@ -159,6 +159,7 @@
   }
   var pend = 0;
   function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); if (!MQ.matches) desk(); }, 400); }
+  setInterval(function () { if (!MQ.matches) soon(); }, 2000);
   // desktop: photos fill their whole box, and the Home mushroom boxes say they can be clicked
   function desk() {
     fill(document);
@@ -168,6 +169,17 @@
       var p = g.previousElementSibling; if (p && p.classList.contains('rcx-click-tag')) continue;
       var t = document.createElement('div'); t.className = 'rcx-click-tag'; t.textContent = 'CLICK ANY BOX FOR MORE INFO';
       g.parentNode.insertBefore(t, g);
+    }
+    // Cordyceps (Oct 15): the ballpark photo runs behind everything from under the top box down to the story box
+    var cw = document.querySelector('div[data-screen-label="Cordyceps"]');
+    if (cw && cw.getBoundingClientRect().height) {
+      var hero = cw.querySelector('section[data-m="cdh-hero"]'), sb = cw.querySelector('section[data-m="sbox"]');
+      if (hero && sb) {
+        var bg = cw.querySelector(':scope > [data-rcx-cdbg]');
+        if (!bg) { bg = document.createElement('div'); bg.setAttribute('data-rcx-cdbg', ''); bg.setAttribute('aria-hidden', 'true'); cw.insertBefore(bg, cw.firstChild); if (getComputedStyle(cw).position === 'static') cw.style.position = 'relative'; }
+        var wr = cw.getBoundingClientRect(), t = hero.getBoundingClientRect().bottom - wr.top + 10, b = sb.getBoundingClientRect().top - wr.top;
+        bg.style.top = Math.round(t) + 'px'; bg.style.height = Math.max(0, Math.round(b - t)) + 'px';
+      }
     }
     // rows you click through left and right (Oct 15): an arrow bar sits right above the row
     var rows = document.querySelectorAll('[data-m="rc-read"] .rc-grid3,[data-screen-label="Shop"] [data-m="1col"],[data-desk-row]');
