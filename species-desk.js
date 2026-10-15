@@ -117,7 +117,21 @@
     document.querySelectorAll('div[data-screen-label="Why One Ingredient"]').forEach(function (W) {
       var hero = W.querySelector('section'); if (!hero || hero.getBoundingClientRect().height < 50) return;
       W.classList.add('sd-kill');
-      W.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.5) 0,rgba(0,0,0,.42) 900px,rgba(36,66,94,0) 1500px),linear-gradient(transparent 0,transparent 1100px,' + BLUE + ' 1650px,' + BLUE + ' 100%),url("assets/photo/why-sunrise.webp") 50% 500px/100% auto no-repeat,' + BLUE, 'important');
+      // Oct 15 (late): the man with the mug sits behind the OURS card, lots of sunset sky above him,
+      // the sunset red carries down to MAKE YOUR OWN BLEND, and the blue starts there.
+      var wr = W.getBoundingClientRect(), ww = wr.width, oursEl = W.__ours, blendEl = W.__blend;
+      if (!oursEl || !W.contains(oursEl)) { var o0 = [].filter.call(W.querySelectorAll('p,span,div'), function (e) { return /^OURS$/i.test(e.textContent.trim()) && !e.children.length; })[0]; oursEl = null; for (var q = o0, i = 0; q && i < 7; q = q.parentElement, i++) { if (parseFloat(getComputedStyle(q).borderTopWidth) > 1) { oursEl = q; break; } } W.__ours = oursEl; }
+      if (!blendEl || !W.contains(blendEl)) { blendEl = [].filter.call(W.querySelectorAll('h2,h3'), function (e) { return /MAKE YOUR OWN BLEND/i.test(e.textContent); })[0]; W.__blend = blendEl; }
+      var fx = ww * 0.8, fy = 1100, by = 2140;
+      if (oursEl) { var orr = oursEl.getBoundingClientRect(); fx = orr.left - wr.left + orr.width / 2; fy = orr.top - wr.top + 110; }
+      if (blendEl) by = blendEl.getBoundingClientRect().top - wr.top - 40;
+      var S = Math.max(ww * 1.4, 1800), IH = S * 733 / 1100, ix = Math.round(Math.min(0, Math.max(ww - S, fx - 0.67 * S))), iy = Math.round(fy - 0.27 * IH), ib = iy + IH;
+      var SKY = 'rgb(182,119,101)', RED = '#8e321f';
+      var bgv = 'linear-gradient(rgba(0,0,0,.46) 0,rgba(0,0,0,.4) ' + (iy + 300) + 'px,rgba(0,0,0,.3) ' + (ib - 200) + 'px,rgba(0,0,0,.2) ' + by + 'px,rgba(0,0,0,0) ' + (by + 120) + 'px),' +
+        'linear-gradient(transparent 0,transparent ' + (ib - 260) + 'px,' + RED + ' ' + (ib - 40) + 'px,' + RED + ' ' + (by - 60) + 'px,' + BLUE + ' ' + (by + 90) + 'px,' + BLUE + ' 100%),' +
+        'linear-gradient(rgb(58,34,56) 0,rgb(140,86,90) ' + Math.round(iy * 0.6) + 'px,' + SKY + ' ' + iy + 'px,rgba(182,119,101,0) ' + (iy + 140) + 'px) 0 0/100% ' + (iy + 140) + 'px no-repeat,' +
+        'url("assets/photo/why-sunrise.webp") ' + ix + 'px ' + iy + 'px/' + Math.round(S) + 'px auto no-repeat,' + BLUE;
+      if (W.__bgv !== bgv) { W.__bgv = bgv; W.style.setProperty('background', bgv, 'important'); }
       W.querySelectorAll('*').forEach(function (e) {
         if (e.closest('[data-ph],.mx-box,article,.cx,[data-m="wy-split"] > *,[data-m="prove-box"],a,button')) return;
         var r = e.getBoundingClientRect(); if (r.width < 1100) return;
@@ -130,7 +144,9 @@
       hero.style.setProperty('border', '3px solid #D4A24A', 'important');
       hero.style.setProperty('border-radius', '22px', 'important');
       hero.style.setProperty('overflow', 'hidden', 'important');
-      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5)),url("assets/photo/why-tent.jpg") center 78%/cover no-repeat', 'important');
+      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,var(--whk,.36)),rgba(0,0,0,calc(var(--whk,.36) + .12))),url("assets/photo/why-tent.jpg") center 50%/125% auto no-repeat', 'important');
+      // she starts darker (still in color) and slowly comes up to full light
+      if (!hero.__whk) { hero.__whk = 1; hero.classList.add('rcx-whk'); setTimeout(function () { hero.classList.add('rcx-whk-on'); }, 900); }
       hero.querySelectorAll('div').forEach(function (d) {
         if (d.contains(hero.querySelector('h1')) || /url\(/.test(getComputedStyle(d).backgroundImage)) {
           d.style.setProperty('background', 'transparent', 'important');
@@ -143,7 +159,7 @@
       if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
       var mb = mr && mr.querySelector(':scope > div');
       if (mb) {
-        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/cd-stadium-sunset.webp") 50% 40%/cover no-repeat', 'important'); };
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/own-yellowstone.jpg") 50% 55%/cover no-repeat', 'important'); };
         if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
         if (!mb.__on) dk(0.66);
       }
