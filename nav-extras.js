@@ -229,8 +229,8 @@
 (function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var phone = function () { return innerWidth < 768; };
-  var DOWN = function () { return phone() ? 14 : 18; };   // px per second at full speed, very slow
-  var UP = function () { return phone() ? 40 : 380; };     // px per second on the glide back to the top (Oct 15: slow on phones)
+  var DOWN = function () { return phone() ? 7 : 18; };   // px per second at full speed, very slow
+  var UP = function () { return phone() ? 25 : 380; };     // px per second on the glide back to the top (Oct 15: slow on phones)
   var IDLE = 20000, WAIT = 5000;   // 20s after a touch; 5s rests at top and bottom (Oct 15)
   var RAMP_IN = 7000, EASE_OUT = 360;                      // 7 seconds to reach speed; slows over the last 360px
   var mode = 'wait', until = performance.now() + WAIT, pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
