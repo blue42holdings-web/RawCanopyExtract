@@ -289,6 +289,112 @@
         src.start(t);
       });
     }
+    /* Oct 15: SOUND BATH. Real recorded, non electronic instruments (CC0, Versilian Community Sample Library):
+       gong, gong scrape, Nepalese hand bells, tingsha (finger cymbals), hand chimes, wind chimes, bell tree,
+       ocean drum, frame drum heartbeat, didgeridoo, bowed psaltery and tubular bell. Singing bowls (metal,
+       struck and rim rubbed) and crystal bowls are modeled from real bowl overtones until bowl recordings are
+       added. Every breakdown keeps a tone going, and every other section becomes a full sound bath that
+       builds layer by layer. */
+    var BATH_DIR = 'assets/audio/bath/', bathBufs = {};
+    var bathBus = ctx.createGain(); bathBus.gain.value = 0.55; bathBus.connect(duck);
+    var bathRev = ctx.createGain(); bathRev.gain.value = 0.75; bathRev.connect(revIn);
+    var BREF = { 'chime-c4': 261.63, 'chime-a4': 440, 'chime-c5': 523.25, 'psaltery-c4': 261.63, 'psaltery-d4': 293.66, 'tubular-c4': 261.63 };
+    function loadBath(n) {
+      if (!bathBufs[n]) bathBufs[n] = fetch(BATH_DIR + n + '.mp3?v=1').then(function (r) { return r.ok ? r.arrayBuffer() : null; })
+        .then(function (ab) { return ab ? new Promise(function (res) { ctx.decodeAudioData(ab, res, function () { res(null); }); }) : null; })
+        .catch(function () { return null; });
+      return bathBufs[n];
+    }
+    function bpan() { return _origCreatePanner ? _origCreatePanner() : null; }
+    function bathHit(name, t, level, rate, panV, wet) {
+      if (t < natureStart - 20) return;
+      loadBath(name).then(function (buf) {
+        if (!buf || ctx.currentTime > t - 0.02) return;
+        var src = ctx.createBufferSource(); src.buffer = buf; src.playbackRate.value = rate || 1;
+        var g = ctx.createGain(); g.gain.value = level;
+        var pn = bpan(); src.connect(g); var out = g;
+        if (pn) { pn.pan.value = panV == null ? rnd(-0.6, 0.6) : panV; g.connect(pn); out = pn; }
+        out.connect(bathBus); var w = ctx.createGain(); w.gain.value = wet == null ? 0.6 : wet; out.connect(w); w.connect(bathRev);
+        src.start(t);
+      });
+    }
+    function tuned(set, f) {          // pick the recorded note closest to the pitch and tune it there
+      var best = set[0], br = 9;
+      set.forEach(function (n) { var r = f / BREF[n]; while (r > 1.42) r /= 2; while (r < 0.71) r *= 2; if (Math.abs(Math.log(r)) < Math.abs(Math.log(br))) { best = n; br = r; } });
+      return [best, br];
+    }
+    var BOWL = [[1, 1], [2.71, 0.42], [5.15, 0.2], [8.41, 0.08]];   // overtone ratios of a hand hammered metal bowl
+    function bowlStrike(t, f, level, decay) {
+      if (t < natureStart - 20) return;
+      var pn = bpan(), out = ctx.createGain(); out.gain.value = level;
+      if (pn) { pn.pan.value = rnd(-0.5, 0.5); out.connect(pn); pn.connect(bathBus); pn.connect(bathRev); } else { out.connect(bathBus); out.connect(bathRev); }
+      BOWL.forEach(function (p, i) {
+        [-1, 1].forEach(function (sgn) {           // each overtone is a close pair, which makes the bowl's slow shimmer
+          var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f * p[0] + sgn * rnd(0.4, 1.4) * (i + 1);
+          var g = ctx.createGain(), d = decay / Math.sqrt(p[0]);
+          g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(p[1] * 0.5, t + 0.006); g.gain.setTargetAtTime(0, t + 0.01, d / 4);
+          o.connect(g); g.connect(out); o.start(t); o.stop(t + d * 1.6 + 0.2);
+        });
+      });
+    }
+    function bowlSing(t0, dur, f, level, crystal) {   // the mallet circling the rim: a slow swell with a gentle wobble
+      if (t0 + dur < natureStart - 20) return;
+      var pn = bpan(), out = ctx.createGain(); out.gain.value = 0;
+      if (pn) { pn.pan.value = rnd(-0.4, 0.4); out.connect(pn); pn.connect(bathBus); pn.connect(bathRev); } else { out.connect(bathBus); out.connect(bathRev); }
+      var parts = crystal ? [[1, 1], [2, 0.06], [3, 0.02]] : [[1, 1], [2.71, 0.28], [5.15, 0.07]];
+      parts.forEach(function (p) {
+        [-1, 1].forEach(function (sgn) {
+          var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f * p[0] + sgn * (crystal ? rnd(0.15, 0.4) : rnd(0.5, 1.2));
+          var g = ctx.createGain(); g.gain.value = p[1] * 0.5; o.connect(g); g.connect(out); o.start(t0); o.stop(t0 + dur + 0.5);
+        });
+      });
+      var sw = Math.min(dur * 0.35, crystal ? 9 : 7);
+      out.gain.setValueAtTime(0, t0); out.gain.linearRampToValueAtTime(level, t0 + sw);
+      var tt = t0 + sw, lv = level;
+      while (tt < t0 + dur - sw) { tt += rnd(2.2, 4.5); lv = level * rnd(crystal ? 0.85 : 0.7, 1); out.gain.linearRampToValueAtTime(lv, tt); }
+      out.gain.linearRampToValueAtTime(0, t0 + dur);
+    }
+    function bathTone(t0, t1, f, crystal, level) {     // a tone that never drops out: overlapping bowls carry it
+      var t = t0;
+      while (t < t1) { var d = rnd(22, 30); bowlSing(t, Math.min(d, t1 - t + 8), f, level, crystal); t += d - 9; }
+    }
+    function heartbeat(t0, t1, lv) {                   // frame drum, a slow resting heartbeat
+      var t = t0, span = t1 - t0;
+      while (t < t1) { var k = Math.sin(Math.PI * (t - t0) / span); bathHit('frame-drum', t, lv * k, rnd(0.97, 1.02), -0.15, 0.3); bathHit('frame-drum-muted', t + 0.3, lv * 0.55 * k, 1, -0.15, 0.25); t += rnd(1.05, 1.2); }
+    }
+    function bathAct(t, b1, b2, b3, end, dark, base, full) {
+      var root = base * 8, R = dark ? [1, 1.2, 1.333, 1.5, 1.8, 2] : [1, 1.125, 1.25, 1.5, 1.667, 2];
+      var nf = function () { return root * R[Math.floor(Math.random() * R.length)]; };
+      ['bell-1', 'bell-2', 'chime-c4', 'chimes-up'].forEach(loadBath);
+      // every breakdown keeps a tone going, from the first thin out to the next build
+      bathTone(b1 - 4, end + 10, root, true, full ? 0.1 : 0.08);
+      bathTone(b2, end + 6, root * 1.5, false, 0.045);
+      for (var k = 0, tc = b2 + rnd(4, 10); tc < end - 6 && k < 6; k++, tc += rnd(9, 16)) {
+        var c = tuned(['chime-c4', 'chime-a4', 'chime-c5'], nf()); bathHit(c[0], tc, rnd(0.18, 0.26), c[1]);
+      }
+      bathHit(Math.random() < 0.5 ? 'chimes-down' : 'chimes-up', b3 + rnd(2, 8), 0.16, rnd(0.92, 1.04));
+      if (!full) return;
+      // a full sound bath: the instruments arrive one at a time and build
+      ['gong-soft', 'gong-mid', 'gong-scrape', 'ocean-drum', 'tingsha', 'frame-drum', 'frame-drum-muted', 'psaltery-c4', 'psaltery-d4', 'tubular-c4', 'belltree', 'bell-3', 'didgeridoo', 'gong-light', 'chimes-down'].forEach(loadBath);
+      var len = b1 - t;
+      bathHit('ocean-drum', t + 6, 0.2, rnd(0.9, 1));                                 // 1. waves of the ocean drum
+      bathHit('chimes-up', t + 14, 0.14, rnd(0.95, 1.05));                            // 2. wind chimes
+      bathTone(t + 18, b1, root, true, 0.07);                                        // 3. a crystal bowl begins to sing
+      for (var tb = t + 30, i = 0; tb < b1 + 20; tb += rnd(11, 18), i++)               // 4. struck metal bowls
+        bowlStrike(tb, i % 3 === 2 ? root * 1.5 : root * (i % 2 ? 2 : 1), rnd(0.07, 0.1), rnd(9, 14));
+      bathHit('tingsha', t + len * 0.45, 0.2, 1, rnd(-0.3, 0.3));                      // 5. tingsha
+      for (var tn = t + len * 0.5, j = 0; tn < b1 && j < 5; tn += rnd(6, 11), j++)       // 6. Nepalese hand bells
+        bathHit(['bell-1', 'bell-2', 'bell-3'][j % 3], tn, rnd(0.12, 0.18), rnd(0.96, 1.04));
+      var ps = tuned(['psaltery-c4', 'psaltery-d4'], root);                           // 7. bowed psaltery
+      bathHit(ps[0], t + len * 0.6, 0.13, ps[1]); bathHit(ps[0], t + len * 0.6 + 7, 0.1, ps[1] * 1.5);
+      if (dark) { bathHit('didgeridoo', t + len * 0.7, 0.16, rnd(0.9, 0.97), 0, 0.35); bathHit('didgeridoo', t + len * 0.7 + 12, 0.12, rnd(0.86, 0.92), 0, 0.35); }   // 8. didgeridoo in the dark sections
+      heartbeat(t + len * 0.72, b1 + 14, 0.2);                                       // 9. a heartbeat on the frame drum
+      bathHit('bell-3', b1 - 9, 0.15, 1); bathHit('belltree', b1 - 6, 0.12, 1);
+      bathHit(Math.random() < 0.5 ? 'gong-soft' : 'gong-mid', b1 - 2, 0.3, rnd(0.94, 1), 0, 0.5);   // 10. the gong at the peak
+      bathHit('gong-scrape', b2 + rnd(2, 6), 0.12, rnd(0.9, 1), rnd(-0.3, 0.3), 0.6);
+      var tub = tuned(['tubular-c4'], root); bathHit('tubular-c4', b3 + rnd(4, 10), 0.14, tub[1]);
+      bathHit('gong-light', end - 6, 0.18, rnd(0.95, 1));
+    }
     // Oct 11, second pass: spaced way out. Most of the time there is NO field sound at all. Roughly
     // every three minutes ONE sound comes in during a breakdown (now and then two), plays a while and
     // goes. Ocean waves and wind in the trees come up most; rivers, streams, waterfalls and rain are rare.
@@ -504,6 +610,10 @@
       var b3 = b2 + s2;
       natureTo(b3, 0.22, 5);
       fieldAct(t, build, b1, b2, b3, b3 + s3, dark, acts.n === 0);
+      // Oct 15: the sound bath. Every breakdown keeps a tone; every other section (never the very first) is a full bath
+      var full = acts.n > 0 && (acts.n % 2 === 1);
+      if (full) { padBus.gain.setTargetAtTime(0.5, t, 6); padBus.gain.setTargetAtTime(1, b3 + s3 - 6, 6); }
+      bathAct(t, b1, b2, b3, b3 + s3, dark, base, full);
       // Oct 12: nature also drifts in and out during the full music, not only in breakdowns. Quiet, random,
       // favoring the sounds heard less often; never more than two at once here.
       (function () {
