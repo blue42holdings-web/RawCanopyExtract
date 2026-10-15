@@ -128,7 +128,7 @@
       hero.style.setProperty('border', '3px solid #D4A24A', 'important');
       hero.style.setProperty('border-radius', '22px', 'important');
       hero.style.setProperty('overflow', 'hidden', 'important');
-      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5)),url("assets/photo/why-tent.jpg") center 45%/cover no-repeat', 'important');
+      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.5)),url("assets/photo/why-tent.jpg") center 78%/cover no-repeat', 'important');
       hero.querySelectorAll('div').forEach(function (d) {
         if (d.contains(hero.querySelector('h1')) || /url\(/.test(getComputedStyle(d).backgroundImage)) {
           d.style.setProperty('background', 'transparent', 'important');
@@ -141,7 +141,7 @@
       if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
       var mb = mr && mr.querySelector(':scope > div');
       if (mb) {
-        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/about-water-cave.jpg") 50% 32%/cover no-repeat', 'important'); };
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/cd-stadium-sunset.webp") 50% 40%/cover no-repeat', 'important'); };
         if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
         if (!mb.__on) dk(0.66);
       }
@@ -218,7 +218,7 @@
     if (!home || !home.getBoundingClientRect().height) return;
     document.querySelectorAll('[data-m="more-research"] > div').forEach(function (d) {
       if (!d.getBoundingClientRect().height) return;
-      d.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.72)),url("assets/photo/about-water-freedive.jpg") 50% 38%/cover no-repeat', 'important');
+      d.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.72)),url("assets/photo/summit-silhouette-climb.jpg") 50% 40%/cover no-repeat', 'important');
     });
   }
   setInterval(run, 900); run();

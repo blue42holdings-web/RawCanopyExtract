@@ -159,7 +159,7 @@
   }
   var pend = 0;
   function soon() { if (pend) return; pend = setTimeout(function () { pend = 0; convert(); if (!MQ.matches) desk(); }, 400); }
-  setInterval(function () { if (!MQ.matches) soon(); }, 2000);
+  setInterval(function () { if (!MQ.matches) soon(); else { var m = document.querySelector('[data-rcx-moved]'), cb = document.querySelector('[data-screen-label="How To Use"] [data-m="steps-wrap"] > section.clean-band'); if (m && cb) { cb.appendChild(m); m.removeAttribute('data-rcx-moved'); cb.style.removeProperty('display'); } } }, 2000);
   // desktop: photos fill their whole box, and the Home mushroom boxes say they can be clicked
   function desk() {
     fill(document);
@@ -169,6 +169,12 @@
       var p = g.previousElementSibling; if (p && p.classList.contains('rcx-click-tag')) continue;
       var t = document.createElement('div'); t.className = 'rcx-click-tag'; t.textContent = 'CLICK ANY BOX FOR MORE INFO';
       g.parentNode.insertBefore(t, g);
+    }
+    // How To Use (Oct 15): Nothing To Measure becomes the fourth of the four boxes on desktop
+    var sw = document.querySelector('[data-screen-label="How To Use"] [data-m="steps-wrap"]');
+    if (sw) {
+      var cb = sw.querySelector(':scope > section.clean-band'), grid = sw.querySelector(':scope > section:last-of-type > div'), inn = cb && cb.querySelector('.cb-in');
+      if (cb && grid && inn && inn.parentElement === cb && getComputedStyle(grid).display === 'grid') { inn.setAttribute('data-rcx-moved', ''); grid.appendChild(inn); cb.style.setProperty('display', 'none', 'important'); }
     }
     // Cordyceps (Oct 15): the ballpark photo runs behind everything from under the top box down to the story box
     var cw = document.querySelector('div[data-screen-label="Cordyceps"]');

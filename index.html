@@ -4846,7 +4846,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=47"></script>
 <script src="nav-extras.js?v=29"></script>
-<script src="phone-swipe.js?v=10"></script>
+<script src="phone-swipe.js?v=11"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -4914,7 +4914,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=10"></script>
+<script src="species-desk.js?v=11"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5835,6 +5835,36 @@ html body div[data-screen-label="Turkey Tail"] [data-ph="palm-jungle-sun"]:not(.
   html body [data-screen-label="Shop"] [data-m="1col"][data-m="1col"][data-m="1col"]{max-width:min(1800px,calc(100% - 80px)) !important;width:100% !important;margin-left:auto !important;margin-right:auto !important}
   /* top boxes grow with the screen so the photo is never a thin strip */
   html body [data-screen-label="Shop"]>section:first-child:not(.zz):not(.zy):not(.zx),html body div[data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy):not(.zx),html body section[data-m="mush-hero"]:not(.zz):not(.zy):not(.zx),html body div[data-screen-label="Why One Ingredient"]>section:first-of-type:not(.zz):not(.zy):not(.zx),html body section[data-m="how-top"]:not(.zz):not(.zy):not(.zx),html body section[data-m="about-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="lm-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="cdh-hero"]:not(.zz):not(.zy):not(.zx),html body section[data-m="tth-hero"]:not(.zz):not(.zy):not(.zx){height:clamp(560px,34vw,880px) !important;min-height:clamp(560px,34vw,880px) !important;max-height:none !important}
+}
+</style>
+<style id="how-desk-oct15">
+@media (min-width:768px){
+  /* How To Use: the free diver going down runs behind the steps, like the phone */
+  html body [data-m="steps-wrap"][data-m="steps-wrap"]{position:relative !important;isolation:isolate;background:#000 !important}
+  html body [data-m="steps-wrap"] > [data-how-bg][data-how-bg]{display:block !important;position:absolute !important;inset:0 !important;z-index:-1 !important;overflow:hidden !important;pointer-events:none}
+  html body [data-m="steps-wrap"] > [data-how-bg] > img[data-dog][data-dog]{position:absolute !important;left:0 !important;top:0 !important;width:100% !important;height:100% !important;margin:0 !important;object-fit:cover !important;object-position:center 30% !important;filter:brightness(.42) !important;transform:scale(1.04);transition:transform 30s linear !important}
+  html body [data-m="steps-wrap"] > [data-how-bg] > img[data-lift-once]{display:none !important}
+  html body [data-m="steps-wrap"] > section{background:transparent !important;background-image:none !important}
+  html body [data-m="steps-wrap"] > section.clean-band{background:linear-gradient(transparent,rgba(0,0,0,.25) 30%,rgba(0,0,0,.25) 70%,transparent) !important}
+  /* Nothing To Measure joins What To Put It In, How Much and How To Mix as four equal boxes */
+  html body [data-m="steps-wrap"] > section.clean-band{padding:30px 28px 0 !important;min-height:0 !important}
+  html body [data-m="steps-wrap"] > section.clean-band .cb-in{max-width:1080px !important;margin:0 auto !important;box-sizing:border-box}
+  html body [data-m="steps-wrap"] > section:last-of-type > div{max-width:1080px !important;margin:0 auto !important;display:grid !important;grid-template-columns:1fr 1fr !important;grid-auto-rows:1fr !important;gap:20px !important}
+  html body [data-m="steps-wrap"] > section:last-of-type > div > *{min-height:300px !important;margin:0 !important;height:auto !important;box-sizing:border-box}
+  html body [data-m="steps-wrap"] [data-rcx-moved][data-rcx-moved]{max-width:none !important;width:auto !important;border:2px solid #D4A24A !important;border-radius:14px !important;padding:28px !important;background:rgba(0,0,0,.6) !important;display:flex !important;flex-direction:column !important;justify-content:center !important;align-items:center !important;text-align:center !important}
+  html body [data-m="steps-wrap"] [data-rcx-moved] h2{font-family:"Bebas Neue",sans-serif !important;letter-spacing:.14em !important;font-weight:400 !important;color:#D4A24A !important;font-size:30px !important;margin:6px 0 10px !important;text-align:left;align-self:flex-start}
+  html body [data-m="steps-wrap"] [data-rcx-moved][data-rcx-moved]{align-items:flex-start !important;text-align:left !important;justify-content:flex-start !important;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url("assets/photo/mess-counter-v2.jpg") center/cover no-repeat !important}
+  html body [data-m="steps-wrap"] [data-rcx-moved] .cb-tag{display:inline-block;background:#D4A24A;color:#111;font-family:"Bebas Neue",sans-serif;letter-spacing:.14em;font-size:13px;padding:3px 10px;border-radius:3px}
+  html body [data-m="steps-wrap"] [data-rcx-moved] p{color:#F1ECE1 !important;text-align:left !important}
+  html body [data-m="steps-wrap"] [data-rcx-moved] .cb-chips{display:flex;gap:6px;margin-top:10px;font-family:"Bebas Neue",sans-serif;letter-spacing:.12em;font-size:13px;color:#E8B860;border:1px solid rgba(212,162,74,.75);border-radius:4px;padding:8px 10px}
+  html body [data-m="steps-wrap"] [data-rcx-moved] .cb-chips span+span::before{content:"\00B7";margin-right:6px}
+  html body [data-m="steps-wrap"] [data-rcx-moved] p{max-width:none !important}
+  html body [data-m="steps-wrap"] p{font-size:18px !important;line-height:1.6 !important}
+}
+</style>
+<style id="why-desk-oct15">
+@media (min-width:768px){
+  html body [data-screen-label="Why One Ingredient"] [data-ph="lake-tea-laugh"][data-ph="lake-tea-laugh"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-surfer-deep-in-the-barrel.jpg") center/cover no-repeat !important}
 }
 </style>
 </body>
