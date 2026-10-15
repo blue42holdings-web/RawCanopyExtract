@@ -4846,7 +4846,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=47"></script>
 <script src="nav-extras.js?v=29"></script>
-<script src="phone-swipe.js?v=9"></script>
+<script src="phone-swipe.js?v=10"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -4914,7 +4914,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=9"></script>
+<script src="species-desk.js?v=10"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5764,6 +5764,62 @@ html body div:has(> aside[data-m="cart-drawer"]){z-index:300 !important}
   /* bigger words for a big screen */
   html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] p,html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] span,html body [data-screen-label="The Mushrooms"] [data-m="mush-files"] td{font-size:max(15px,1em) !important}
   html body [data-screen-label="The Mushrooms"] section p{font-size:max(18px,1em)}
+}
+</style>
+<style id="mpages-oct15">
+[data-sd-hero],[data-sd-metal]{display:none !important}
+@media (min-width:768px){
+html body div[data-screen-label="Cordyceps"] section[data-m="howto-slate"][data-m="howto-slate"][data-m="howto-slate"][data-m="howto-slate"],html body div[data-screen-label="Cordyceps"] section[data-m="cd-bottom-red"][data-m="cd-bottom-red"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Cordyceps"] section[data-m="cd-bottom-red"] > div:first-child{display:none !important}
+html body div[data-screen-label="Lion's Mane"] section[data-m="other-two-red"][data-m="other-two-red"][data-m="other-two-red"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Lion's Mane"] section[data-m="other-two-red"]::before,html body div[data-screen-label="Lion's Mane"] section[data-m="other-two-red"]::after,html body div[data-screen-label="Lion's Mane"] section[data-m="other-two-red"] > div:first-child:empty{display:none !important}
+}
+/* Oct 15: desktop mushroom pages per Scott: each top photo in its own gold box, What It Is with its own photo, Lion's Mane white below The Steady Burn, Cordyceps red with the ballpark behind the upper half, Turkey Tail white and red alternating with crowds and transport */
+@media (min-width:768px){
+html body section[data-m="lm-hero"][data-m="lm-hero"][data-m="lm-hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url("assets/photo/lm-hero-cluster.jpg") 50% 70%/cover no-repeat,#000 !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > div:not([data-m]):not([data-rcx-cdbg]):has(~ section[data-m$="hero"]){display:none !important}
+html body section[data-m="cdh-hero"][data-m="cdh-hero"][data-m="cdh-hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url("assets/photo/cd-hero-clubs.jpg") 50% 50%/cover no-repeat,#000 !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div:not([data-m]):not([data-rcx-cdbg]):has(~ section[data-m$="hero"]){display:none !important}
+html body section[data-m="tth-hero"][data-m="tth-hero"][data-m="tth-hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url("assets/photo/tt-hero-habitat.webp") 50% 50%/cover no-repeat,#000 !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] > div:not([data-m]):not([data-rcx-cdbg]):has(~ section[data-m$="hero"]){display:none !important}
+html body div[data-screen-label="Lion's Mane"] [data-ph="elder-camp-chair-mug"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/lm-how-made-desk.jpg") center 40%/cover no-repeat !important}
+html body div[data-screen-label="Cordyceps"] [data-ph="paddleboard-canyon"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/mtb-rider-side.jpg") center 45%/cover no-repeat !important}
+html body div[data-screen-label="Turkey Tail"] [data-ph="meditation-sunset-hands"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tt-train-crowd.jpg") center 50%/cover no-repeat !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"]{background:#F1ECE1 !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > section:not([data-m$="hero"]):not([data-m="sbox"]),html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > div[data-m],html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > div > section,html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] [data-m="lm-whitewrap"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > div[data-m]::before,html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > div[data-m]::after,html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > section[data-m="num-lm"]::before{display:none !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] section[data-m="num-lm"][data-m="num-lm"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > section:first-of-type + section,html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] > section[data-m="lm-burn"]{background:#000 !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] section[data-m="other-two-red"][data-m="other-two-red"]{background:transparent !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] .mx-title h2{color:#141414 !important;text-shadow:none !important}html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] .mx-title p{color:#333 !important;text-shadow:none !important}html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] .mx-title p span{color:#9A6A1E !important}
+html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/lab-hand-closeup.jpg") center/cover no-repeat !important}
+html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] section[data-m="num-lm"] .cx:not(.pr-row) > .cx-track.cx-track>*{height:540px !important;min-height:540px !important;max-height:540px !important;align-self:stretch !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] section[data-m="num-cd"] .cx:not(.pr-row) > .cx-track.cx-track>*{height:540px !important;min-height:540px !important;max-height:540px !important;align-self:stretch !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] section[data-m="num-tt"] .cx:not(.pr-row) > .cx-track.cx-track>*{height:540px !important;min-height:540px !important;max-height:540px !important;align-self:stretch !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"]{background:#5c1319 !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"]::before,html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"]::after{display:none !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > section:not([data-m$="hero"]):not([data-m="sbox"]),html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div[data-m],html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div > section,html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] section[data-m="howto-slate"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div[data-m]::before,html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div[data-m]::after,html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] [data-m="cd-where-bg"]{display:none !important}
+html body [data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"]{background-image:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/cd-stadium-sunset.webp") !important}
+html body div[data-screen-label="Cordyceps"] [data-ph="backpacker-smile"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/receipts-football-training-crop-v2.jpg") center 40%/cover no-repeat !important}
+html body div[data-screen-label="Cordyceps"] [data-ph="apothecary-shop"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tr-rail-city.jpg") center/cover no-repeat !important}
+html body div[data-screen-label] > div[data-rcx-cdbg][data-rcx-cdbg]{position:absolute !important;left:0;right:0;z-index:0 !important;margin:0 !important;pointer-events:none;background:linear-gradient(#5c1319 0,rgba(0,0,0,.35) 140px,rgba(0,0,0,.45) calc(100% - 160px),#5c1319 100%),url("assets/photo/mushrooms-baseball-lights.webp") center/cover no-repeat}
+html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > section,html body div[data-screen-label="Cordyceps"][data-screen-label="Cordyceps"] > div[data-m]{position:relative;z-index:1}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"]{background:#5c1319 !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"]::before,html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"]::after,html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] > div[data-m]::before,html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] > div[data-m]::after{display:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] > div[data-m],html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] section[data-m="howto-slate"],html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] section[data-m="other-two-red"][data-m="other-two-red"]{background:transparent !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-bgwrap"] > section:nth-of-type(1){background:#F1ECE1 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-bgwrap"] > section:nth-of-type(2){background:#5c1319 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-studied"]{background:#F1ECE1 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-bgwrap"] + section + section{background:#5c1319 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-redwrap"] > :nth-child(1){background:#F1ECE1 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-redwrap"] > :nth-child(3){background:#5c1319 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-redwrap"] > :nth-child(4){background:#F1ECE1 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"][data-screen-label="Turkey Tail"] [data-m="tt-redwrap"] > :nth-child(5){background:#5c1319 !important;background-image:none !important}
+html body div[data-screen-label="Turkey Tail"] [data-ph="waterfall-stones"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tr-highway-interchange.jpg") center/cover no-repeat !important}
+html body div[data-screen-label="Turkey Tail"] [data-ph="herb-jars-book"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tt-airport-security-line.jpg") center/cover no-repeat !important}
+html body div[data-screen-label="Turkey Tail"] [data-ph="pineapple-smoothie"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tr-bus-motion.jpg") center/cover no-repeat !important}
+html body div[data-screen-label="Turkey Tail"] [data-ph="palm-jungle-sun"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.72)),url("assets/photo/tt-airport-crowd.jpg") center/cover no-repeat !important}
 }
 </style>
 </body>
