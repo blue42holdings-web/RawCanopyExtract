@@ -1,23 +1,25 @@
 /* Oct 14: phone only. The page sweeps itself: all the way down, a five second stop, all the way up,
    a five second stop, and round again. A finger on the screen pauses it for a moment so the reader
-   is never fought. Desktop is untouched. */
+   is never fought. Desktop is untouched.
+   Oct 15: steady slow speed. No speed-up on long pages, gentle start and stop, waits before the first move. */
 (function () {
   var MQ = window.matchMedia('(max-width:767px)');
-  var PAUSE = 5000, SPEED = 200;          /* px per second, a slow read */
+  var PAUSE = 5000, SPEED = 40, RAMP = 1.5, FIRST = 6000; /* px per second, seconds to reach speed */
   var raf = 0, timer = 0, running = false, holdUntil = 0;
   function maxY() { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
-  function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
-  function glide(to, done) {
-    var from = window.scrollY, dist = Math.abs(to - from);
-    if (dist < 2) { done(); return; }
-    var dur = Math.max(4000, Math.min(90000, dist / SPEED * 1000)), t0 = null;
+  function glide(dir, done) {
+    var last = null, started = null, pos = window.scrollY;
     function step(now) {
       if (!running) return;
-      if (now < holdUntil) { t0 = null; from = window.scrollY; to = to; raf = requestAnimationFrame(step); return; }
-      if (t0 === null) { t0 = now; from = window.scrollY; dist = Math.abs(to - from); dur = Math.max(4000, Math.min(90000, dist / SPEED * 1000)); }
-      var p = Math.min(1, (now - t0) / dur);
-      window.scrollTo(0, from + (to - from) * ease(p));
-      if (p < 1) raf = requestAnimationFrame(step); else done();
+      if (now < holdUntil) { last = null; started = null; pos = window.scrollY; raf = requestAnimationFrame(step); return; }
+      if (last === null) { last = now; started = now; pos = window.scrollY; }
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var goal = dir > 0 ? maxY() : 0, left = Math.abs(goal - pos);
+      var v = SPEED * Math.min(1, (now - started) / 1000 / RAMP) * Math.min(1, left / (SPEED * RAMP) + 0.15);
+      pos += dir * Math.min(left, v * dt);
+      window.scrollTo(0, pos);
+      if (left - v * dt <= 0.5) { done(); return; }
+      raf = requestAnimationFrame(step);
     }
     raf = requestAnimationFrame(step);
   }
@@ -25,13 +27,13 @@
   function cycle() {
     if (!running) return;
     if (target === 'down') {
-      glide(maxY(), function () { target = 'up'; timer = setTimeout(cycle, PAUSE); });
+      glide(1, function () { target = 'up'; timer = setTimeout(cycle, PAUSE); });
     } else {
-      glide(0, function () { target = 'down'; timer = setTimeout(cycle, PAUSE); });
+      glide(-1, function () { target = 'down'; timer = setTimeout(cycle, PAUSE); });
     }
   }
   function stop() { running = false; cancelAnimationFrame(raf); clearTimeout(timer); }
-  function start() { if (running) return; running = true; timer = setTimeout(cycle, 2500); }
+  function start() { if (running) return; running = true; timer = setTimeout(cycle, FIRST); }
   function touched() { holdUntil = performance.now() + 4000; }
   function sync() { if (MQ.matches) start(); else stop(); }
   ['touchstart', 'wheel', 'mousedown', 'keydown'].forEach(function (ev) {
