@@ -263,7 +263,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (b.__mr) return; b.__mr = 1;
       var k = (n++ % 10) + 1, h = b.getAttribute('href') || '', img = 'assets/photo/mag-rack-' + k + '.jpg', sh = '.5),rgba(0,0,0,.62)';
       // Oct 15: each box gets the painted, blurred feel of its own magazine's cover instead of a rack photo
-      for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=3'; sh = '.16),rgba(0,0,0,.34)'; break; }
+      for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=3'; sh = '.42),rgba(0,0,0,.6)'; break; }
       b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + sh + '),url("' + img + '") center/cover no-repeat', 'important');
     });
   }
