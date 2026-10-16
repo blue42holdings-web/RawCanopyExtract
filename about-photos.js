@@ -1,8 +1,10 @@
 /* Oct 15 (late): About page photos, phone and desktop. Only Scott's own photos and his story; one dog photo;
    no divers, no beach girl, no reef, no highway. Set inline so no older rule can bring the old photos back. */
 (function () {
-  var BOX = ['own-dogs-window.jpg', 'about-kayaks.jpg', 'about-dogs-trio.jpg', 'own-loaded-hatch.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
-  var POS = ['center 45%', 'center', 'center 40%', 'center', 'center 60%', 'center'];
+  // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
+  // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
+  var BOX = ['own-loaded-hatch.jpg', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-steamers-car.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
+  var POS = ['center 35%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center'];
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -18,8 +20,8 @@
     [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], .5); });
     var sh = A.querySelector('section[data-m="shasta"]'); if (sh) photo(sh, 'own-backyard-valley.jpg', 'center 55%', .45);
     var br = A.querySelector('section[data-m="about-brand"]'); if (br) photo(br, 'own-yard-hill.jpg', 'center 45%', .45);
-    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 25%', .4);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'own-yard-dirt.jpg', 'center', .55);
+    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .36);   // Scott, the wild man in his backyard, behind About The Brand
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-dogs-trio.jpg', 'center 45%', .5);   // all three dogs
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
@@ -30,7 +32,11 @@
       var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#7a5a1e', 'important');
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
-        var W2 = 'linear-gradient(' + CREAM + ' 0,' + CREAM + ' calc(100% - 36px),#000 100%)';
+        var W2 = 'linear-gradient(' + CREAM + ' 0,' + CREAM + ' calc(100% - 10px),#000 100%)';   // white holds, then a very quick fade (long fades are only for photo to photo)
+        if (nx.style.getPropertyValue('padding-bottom') !== '64px') nx.style.setProperty('padding-bottom', '64px', 'important');
+        // the seal block sat about 90px right of center; center it under the boxes above
+        var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
+        if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
         if (nx.style.getPropertyValue('background-image') !== W2) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-color', CREAM, 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
       }
     }
