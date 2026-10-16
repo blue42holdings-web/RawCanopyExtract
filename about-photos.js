@@ -4,7 +4,7 @@
   // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   var BOX = ['own-loaded-hatch.jpg', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-steamers-car.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
-  var POS = ['center 35%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center'];
+  var POS = ['center 35%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center 92%'];
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -30,12 +30,13 @@
     }
     var boxes = A.querySelectorAll('.ab-grid .ab-box');
     [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], .5); });
+    if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (sh && br) {
-      var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 1350, (H1 + H2) / 1800) * 1.1, iw = Math.ceil(1350 * k), ih = Math.ceil(1800 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
+      var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 2000, (H1 + H2) / 1500), iw = Math.ceil(2000 * k), ih = Math.ceil(1500 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
       [[sh, y0], [br, y0 - H1]].forEach(function (z) {
-        var v = 'radial-gradient(60% 50% at 15% 10%,rgba(0,0,0,.45),rgba(0,0,0,0) 70%),linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.58)),url("assets/photo/own-yard-hill.jpg")', ps = '0 0,0 0,' + x + 'px ' + (z[1] - Math.round(ih * 0.1)) + 'px', sz = '100% 100%,100% 100%,' + iw + 'px ' + Math.round(ih) + 'px';
+        var v = 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.55)),url("assets/photo/own-oregon-coast.jpg")', ps = '0 0,0 0,' + x + 'px ' + z[1] + 'px', sz = '100% 100%,100% 100%,' + iw + 'px ' + Math.round(ih) + 'px';
         if (z[0].__yk === v + ps + sz && z[0].style.getPropertyValue('background-image')) return; z[0].__yk = v + ps + sz;
         z[0].style.setProperty('background', 'none', 'important');
         z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('background-size', sz, 'important');
@@ -44,8 +45,8 @@
         [].forEach.call(z[0].children, function (kd) { if (kd.tagName === 'DIV' && !kd.textContent.trim() && /url\(/.test(getComputedStyle(kd).backgroundImage)) kd.style.setProperty('display', 'none', 'important'); });
       });
     }
-    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .36);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-three-dogs-2.webp', innerWidth < 768 ? '21% 50%' : 'center 45%', .45);   // phone: the two labs, all heads in   // all three dogs in one photo
+    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-three-dogs-2.webp', innerWidth < 768 ? '21% 50%' : 'center 0%', .45);   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
@@ -66,4 +67,23 @@
     }
   }
   setInterval(run, 900); run();
+})();
+
+/* Oct 15 (late): About top box, desktop. The vane cutout was sized against a bigger box than the photo, so two vanes showed.
+   Pin the cutout to exactly where the photo is drawn. Headline in the middle of the box. */
+(function () {
+  var IW = 0, IH = 0, im = new Image(); im.onload = function () { IW = im.naturalWidth; IH = im.naturalHeight; }; im.src = 'assets/photo/about-colestin-windvane-flip.jpg';
+  function run() {
+    if (innerWidth < 768 || !IW) return;
+    var s = document.querySelector('section[data-m="about-hero"]'); if (!s || !s.offsetHeight) return;
+    var ph = [].filter.call(s.children, function (k) { return !k.hasAttribute('data-lift-layer') && /windvane/.test(getComputedStyle(k).backgroundImage); })[0] || s;
+    var layer = s.querySelector('[data-lift-layer]'); if (!layer) return;
+    var cut = layer.lastElementChild; if (!cut) return;
+    var pr = ph.getBoundingClientRect(), lr = layer.getBoundingClientRect();
+    var k = Math.max(pr.width / IW, pr.height / IH), w = IW * k, h = IH * k, x = (pr.width - w) * 0.5 + (pr.left - lr.left), y = (pr.height - h) * 0.28 + (pr.top - lr.top);
+    var sz = w.toFixed(1) + 'px ' + h.toFixed(1) + 'px', ps = x.toFixed(1) + 'px ' + y.toFixed(1) + 'px';
+    if (cut.style.backgroundSize !== sz) cut.style.backgroundSize = sz;
+    if (cut.style.backgroundPosition !== ps) cut.style.backgroundPosition = ps;
+  }
+  setInterval(run, 300);
 })();

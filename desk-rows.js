@@ -324,14 +324,14 @@
       }
       var mr = W.parentElement && W.parentElement.querySelector('[data-m="more-research"] > div');
       if (!mr) mr = document.querySelector('[data-why-mr] > div');
-      if (mr && mr.offsetHeight) put(mr, 'hex-lab.jpg', 'cover', 'center 20%', .5);
+      if (mr && mr.offsetHeight) put(mr, 'own-yellowstone.jpg', 'cover', 'center 100%', .45);   // the hot spring ring and its colors, no sky
       // 2 + 1: no wide gaps
       [].forEach.call(W.querySelectorAll('.mx-big'), function (e) { if (/2\s*\+\s*1/.test(e.textContent) && !e.__tight) { e.__tight = 1; e.style.setProperty('letter-spacing', '0', 'important'); e.style.setProperty('word-spacing', '-0.18em', 'important'); } });
     }
     var A = pg('About');
     if (A) {
-      var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) put(bb, 'own-scott-wildman.jpg', 'cover', 'center 45%', .48);
-      var cb = A.querySelector('.cmp-box'); if (cb) put(cb, 'about-three-dogs-2.webp', 'cover', 'center 8%', .45);
+      var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) put(bb, 'own-scott-wildman.jpg', 'cover', 'center 40%', .6);
+      var cb = A.querySelector('.cmp-box'); if (cb) put(cb, 'about-three-dogs-2.webp', 'cover', 'center 0%', .45);
     }
     // Shop: the colored tennis photo runs from the products all the way down behind the badges into the powder
     var S = pg('Shop');

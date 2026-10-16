@@ -176,7 +176,7 @@
       if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
       var mb = mr && mr.querySelector(':scope > div');
       if (mb) {
-        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/own-yellowstone.jpg") 50% 62%/cover no-repeat', 'important'); };
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/own-yellowstone.jpg") 50% 100%/cover no-repeat', 'important'); };
         if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
         if (!mb.__on) dk(0.66);
       }
