@@ -147,21 +147,21 @@
       hero.style.setProperty('border', '3px solid #D4A24A', 'important');
       hero.style.setProperty('border-radius', '22px', 'important');
       hero.style.setProperty('overflow', 'hidden', 'important');
-      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,var(--whk,.3)),rgba(0,0,0,calc(var(--whk,.3) + .12))),url("assets/photo/why-tent.jpg") center 50%/cover no-repeat', 'important');
+      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,var(--whk,.3)),rgba(0,0,0,calc(var(--whk,.3) + .12))),url("assets/photo/why-tent.jpg") center 68%/cover no-repeat', 'important');
       // Oct 15 (late, Scott): a background photo: she starts dark (still in color), slowly comes up, and lifts on as a cutout
       if (!hero.__whk) {
         hero.__whk = 1;
         hero.setAttribute('data-lift-bg', 'assets/cutouts/why-tent-cutout.webp'); hero.setAttribute('data-lift-desktop', '');
-        hero.setAttribute('data-lift-dim', 'brightness(1.18) saturate(1.1) drop-shadow(0 0 12px rgba(255,214,150,.35))'); hero.setAttribute('data-lift-scale', '1.06'); hero.setAttribute('data-lift-origin', '0.75 0.85');
+        hero.setAttribute('data-lift-dim', 'brightness(.92) saturate(1.05)'); hero.setAttribute('data-lift-scale', '1.06'); hero.setAttribute('data-lift-origin', '0.75 0.85');
         hero.setAttribute('data-lift-dur', '8000'); hero.setAttribute('data-lift-delay', '1500'); hero.setAttribute('data-lift-d-delay', '1500'); hero.setAttribute('data-lift-fade', '2500'); hero.setAttribute('data-lift-nomask', '');
       }
       // she starts dark (still in color) every time the page opens, then slowly comes up
       var vis = hero.getBoundingClientRect().height > 0;
       if (vis && !hero.__whkOn) {
         hero.__whkOn = 1;
-        hero.style.setProperty('transition', 'none', 'important'); hero.style.setProperty('--whk', '.72'); void hero.offsetWidth;
+        hero.style.setProperty('transition', 'none', 'important'); hero.style.setProperty('--whk', '.82'); void hero.offsetWidth;
         hero.style.setProperty('transition', '--whk 7s ease-in-out', 'important');
-        setTimeout(function () { hero.style.setProperty('--whk', '.42'); }, 700);
+        setTimeout(function () { hero.style.setProperty('--whk', '.55'); }, 700);
       }
       if (!vis) hero.__whkOn = 0;
       hero.querySelectorAll('div').forEach(function (d) {

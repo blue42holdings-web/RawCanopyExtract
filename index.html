@@ -2008,7 +2008,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 <div data-m="rc-intro" data-ph="mug-fire-bricks"><h2 data-m="rc-take">Don't take our word for it. Here's the lab report.</h2><p>Every steel tin carries a lot number. Every lot has a certificate. Find yours below, or type the lot number from your steel tin. Compare ours to anyone else's, if you can find one for your lot.</p>
 </div>
 <div data-m="rc-lot" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;border-top:1px solid rgba(241,236,225,.16);border-bottom:1px solid rgba(241,236,225,.16);padding:18px 0"><p data-m="rc-lot-i" style="flex:0 0 100%;margin:0">Type the number that appears on your product here.</p>
-<input type="text" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Type your lot number here" style="flex:1;min-width:220px;background:none;border:1px solid rgba(241,236,225,.24);outline:none;color:#F1ECE1;padding:12px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.04em"><button onClick="{{ clearQuery }}" style="background:none;border:1px solid rgba(241,236,225,.24);color:#CFC7B6;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:15px;padding:12px 20px" style-hover="border-color:#D4A24A;color:#D4A24A">CLEAR</button>
+<input type="text" value="{{ query }}" onInput="{{ onQuery }}" placeholder="Put your lot number in" style="flex:1;min-width:220px;background:none;border:1px solid rgba(241,236,225,.24);outline:none;color:#F1ECE1;padding:12px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.04em"><button onClick="{{ clearQuery }}" style="background:none;border:1px solid rgba(241,236,225,.24);color:#CFC7B6;font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:15px;padding:12px 20px" style-hover="border-color:#D4A24A;color:#D4A24A">CLEAR</button>
 </div>
 </div>
 </section>
@@ -2808,7 +2808,7 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 <div data-ph="volcano-fountain" data-m="prove-box" data-lift-bg="assets/cutouts/lab-extraction-rig-cutout.webp" data-lift-desktop="" data-lift-dur="9000" data-lift-delay="1200" data-lift-scale="1.12" style="max-width:1080px;margin:0 auto;text-align:center">
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,5vw,58px);color:#F1ECE1;margin:0 0 18px"><span class="wb">They promise. We prove.</span></h2>
 <p style="font-size:18px;line-height:1.75;color:#DDD5C4;margin:0 auto 38px;max-width:52ch"><span class="wb">One scientifically extracted mushroom. One scan away.</span></p>
-<button data-page="shop" onClick="{{ go }}" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.14em;padding:18px 40px" style-hover="background:#E9C079">BUY STEEL TIN</button>
+<button data-page="shop" onClick="{{ go }}" class="rcx-metal rcx-btn" style="background:#D4A24A;border:3px solid #D4A24A;border-radius:18px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.14em;padding:10px 30px">BUY STEEL TIN</button>
 </div>
 </section>
 </div>
@@ -4856,7 +4856,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script src="site-extras.js?v=51"></script>
 <script src="nav-extras.js?v=31"></script>
 <script src="mushroom-reveal.js?v=1"></script>
-<script src="desk-rows.js?v=10"></script>
+<script src="desk-rows.js?v=12"></script>
 <script src="phone-swipe.js?v=13"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -4925,7 +4925,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=23"></script>
+<script src="species-desk.js?v=24"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5867,7 +5867,7 @@ html body div[data-screen-label="Turkey Tail"] [data-ph="palm-jungle-sun"]:not(.
 </style>
 <style id="why-desk-oct15">
 @media (min-width:768px){
-  html body [data-screen-label="Why One Ingredient"] [data-ph="lake-tea-laugh"][data-ph="lake-tea-laugh"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-surfer-deep-in-the-barrel.jpg") center/cover no-repeat !important}
+  html body [data-screen-label="Why One Ingredient"] [data-ph="lake-tea-laugh"][data-ph="lake-tea-laugh"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-cup-in-the-woods.jpg") center 45%/cover no-repeat !important}
 }
 </style>
 <style id="lm-made-oct15">
@@ -6031,9 +6031,9 @@ html body div[data-screen-label="About"] section.rcx-abseal p,html body div[data
 html body div[data-screen-label="About"] .rcx-abx.rcx-abx::before,html body div[data-screen-label="About"] .rcx-abx.rcx-abx::after{background-image:none !important;-webkit-mask-image:none !important;mask-image:none !important}
 html body div[data-screen-label="About"] section.rcx-abx[data-m="about-compost"]{-webkit-mask-image:none !important;mask-image:none !important}
 html body div[data-screen-label="About"] section[data-m="about-compost"] + section,html body div[data-screen-label="About"] section[data-m="about-compost"] + section::before{-webkit-mask-image:none !important;mask-image:none !important}</style>
-<script src="about-photos.js?v=9"></script>
+<script src="about-photos.js?v=10"></script>
 <style id="shop-rc-oct15c">@keyframes rcxTennisOn{from{opacity:0;filter:brightness(.8)}to{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 10px rgba(255,214,150,.45))}}
-@media (min-width:768px){html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.z1):not(.z2):not(.z3){clip-path:inset(8px 8px calc(100% - 568px) 8px round 22px) !important}}</style>
+@media (min-width:768px){html body div[data-screen-label="Receipts"]>section:first-of-type::before{clip-path:inset(0 round 23px)}}</style>
 <style id="how-dive-oct15c">
 /* Oct 15 (late, Scott): How To Use, desktop, like the phone: one narrow gold box with HOW TO USE, the intro, and 1 2 3 4 down the middle.
    The diver is INSIDE that box, deep water, headed down, his head just below step 4. Nothing outside the box but deep blue. */
@@ -6055,5 +6055,18 @@ html body div[data-screen-label="About"] section[data-m="about-compost"] + secti
 html body section[data-m="hero"][data-m="hero"][data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4){width:calc(100% - 16px) !important;margin:8px auto 14px !important;border:3px solid #D4A24A !important;border-radius:26px !important;overflow:hidden !important;box-sizing:border-box !important;box-shadow:0 14px 40px rgba(0,0,0,.6);background-image:radial-gradient(30% 34% at 50% 30%,rgba(0,0,0,.78) 0%,rgba(0,0,0,.62) 55%,rgba(0,0,0,0) 100%),linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.22)),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:center,center,center 60% !important}
 html body div[data-screen-label="Home — hero"],html body section[data-m="hero"] + *{border-top:0 !important}
 html body .home-bgwrap{border-top:14px solid #000 !important}}</style>
+<style id="footer-field-oct15">html body footer{background:linear-gradient(rgba(6,6,5,.55),rgba(6,6,5,.55)),url("assets/pattern-field-bold.svg") center top/300px auto repeat,#060605 !important}html body footer div[style*="pattern-field-bold"]{-webkit-mask-image:none !important;mask-image:none !important}</style>
+<style>@media (min-width:768px){html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy):not(.zx):not(.zw):not(.zv){height:auto !important;max-height:none !important;min-height:0 !important;overflow:visible !important;padding-bottom:40px !important}}</style>
+<style>@media (min-width:768px){html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type::before{top:8px !important;height:560px !important;left:8px !important;right:8px !important;transform-origin:50% 50% !important;background-position:center 40% !important;clip-path:inset(3.2% round 22px) !important}}</style>
+<style id="shop-r3-oct15">@media (min-width:768px){
+html body [data-screen-label="Shop"][data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2):nth-of-type(2)::before{display:none !important}
+html body [data-screen-label="Shop"] .rcx-tcut{display:none !important}
+html body [data-screen-label="Shop"]>section:nth-of-type(2):nth-of-type(2):nth-of-type(2){background:transparent !important}
+html body [data-screen-label="Shop"]>section[data-m="badges-sec"][data-m="badges-sec"],html body [data-screen-label="Shop"]>section[data-m="badges-sec"]+*{background:transparent !important}
+html body [data-screen-label="Shop"] .rcx-tennis-run{animation:rcxTennisFwd 30s ease-out .5s both;transform-origin:50% 30%;transition:filter 1.2s ease}
+html body [data-screen-label="Shop"]:has(>section:nth-of-type(2):hover)>.rcx-tennis-run{filter:brightness(1.3) saturate(1.1)}
+html body div[data-screen-label] section.clean-band[data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"]{background:linear-gradient(to top,rgb(92,19,25) 0,rgba(92,19,25,0) 130px),url("assets/photo/mess-counter-v2.jpg") center 55%/cover no-repeat !important;-webkit-mask-image:linear-gradient(transparent 0,#000 160px) !important;mask-image:linear-gradient(transparent 0,#000 160px) !important}
+html body .rcx-arrbar.rcx-arrbar.rcx-arrbar button{width:84px !important;height:84px !important;font-size:78px !important;line-height:72px !important;padding:0 0 8px !important;display:inline-flex !important;align-items:center !important;justify-content:center !important}
+}</style>
 </body>
 </html>
