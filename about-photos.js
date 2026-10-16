@@ -30,7 +30,7 @@
       if (!vis) hero.__fadeOn = 0;
     }
     var boxes = A.querySelectorAll('.ab-grid .ab-box');
-    [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], .5); });
+    [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker
     if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
@@ -74,8 +74,8 @@
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
         if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
-        W2 = 'linear-gradient(#000 0,rgba(0,0,0,.55) 140px,rgba(0,0,0,.55) calc(100% - 80px),#000 100%),url("assets/photo/own-pink-sky-pines.jpg")';   // Oct 16 (Scott): his pink sky over the pines behind the seal
-        if (nx.style.getPropertyValue('background-image').indexOf('own-pink-sky') < 0) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-size', '100% 100%,cover', 'important'); nx.style.setProperty('background-position', '0 0,center 70%', 'important'); nx.style.setProperty('background-color', '#000', 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
+        // Oct 16 (Scott, later): plain black behind the seal; the pink sky moved to the top of the page
+        if (nx.style.getPropertyValue('background-image') !== W2) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-color', '#000', 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
       }
     }
   }
