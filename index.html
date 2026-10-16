@@ -4856,9 +4856,9 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=54"></script>
 <script src="nav-extras.js?v=34"></script>
-<script src="mushroom-reveal.js?v=1"></script>
+<script src="mushroom-reveal.js?v=4"></script>
 <script src="desk-rows.js?v=33"></script>
-<script src="phone-swipe.js?v=13"></script>
+<script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
 </style>
@@ -6133,5 +6133,11 @@ html body div[data-screen-label="Shop"] section[data-m="shop-research"] .rcx-swi
 html body div[data-screen-label="Shop"] section[data-m="soon-sec"] article{background:linear-gradient(#141210,#0A0908) !important}
 html body div[data-screen-label="Shop"] section[data-m="shop-research"] a.mx-box{box-shadow:0 4px 10px rgba(0,0,0,.22) !important}
 }</style>
+<style id="swipe-even-css">@media (max-width:767px){
+html body .cx-track [data-new-dim]{display:none !important}
+html body .cx-track>.mx-box:not(.mx-press):not(.rcx-rv){box-shadow:inset 0 0 0 2000px rgba(0,0,0,.5) !important;transition:box-shadow 7s cubic-bezier(.3,.1,.3,1) .3s !important}
+html body .cx-track[data-lit]>.mx-box:not(.mx-press):not(.rcx-rv){box-shadow:inset 0 0 0 2000px rgba(0,0,0,0) !important}
+}</style>
+<script src="swipe-even.js?v=3"></script>
 </body>
 </html>
