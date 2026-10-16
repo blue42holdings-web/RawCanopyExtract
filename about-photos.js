@@ -30,7 +30,24 @@
       if (!vis) hero.__fadeOn = 0;
     }
     var boxes = A.querySelectorAll('.ab-grid .ab-box');
-    [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker
+    if (grid && innerWidth < 768) {
+      // Oct 16 (Scott), phone: the story reads as one block of normal paragraphs; behind it the six photos
+      // stack at equal heights (the story's height divided by six)
+      grid.classList.add('ab-onestory'); grid.style.setProperty('padding', '26px 22px 8px', 'important');
+      [].forEach.call(boxes, function (b) { var q = b.querySelector('p'); if (q) q.style.setProperty('margin', '0 0 18px', 'important'); });
+      [].forEach.call(boxes, function (b) { if (b.__abv) { b.__abv = 0; b.style.removeProperty('background-image'); } b.style.setProperty('background', 'none', 'important'); });
+      var st = grid.querySelector(':scope > .ab-strip');
+      if (!st) {
+        st = document.createElement('div'); st.className = 'ab-strip'; st.setAttribute('aria-hidden', 'true');
+        BOX.forEach(function (f, i) { var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
+          d.style.backgroundImage = 'linear-gradient(rgba(0,0,0,' + dk + '),rgba(0,0,0,' + (dk + .12) + ')),url("assets/photo/' + f + '")';
+          d.style.backgroundSize = '100% 100%,cover'; d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
+        grid.insertBefore(st, grid.firstChild);
+      }
+    } else {
+      if (grid) { grid.classList.remove('ab-onestory'); grid.style.removeProperty('padding'); var st2 = grid.querySelector(':scope > .ab-strip'); if (st2) st2.remove(); }
+      [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker
+    }
     if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
