@@ -263,7 +263,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (b.__mr) return; b.__mr = 1;
       var k = (n++ % 10) + 1, h = b.getAttribute('href') || '', img = 'assets/photo/mag-rack-' + k + '.jpg', sh = '.5),rgba(0,0,0,.62)';
       // Oct 15: each box gets the painted, blurred feel of its own magazine's cover instead of a rack photo
-      for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=2'; sh = '.16),rgba(0,0,0,.34)'; break; }
+      for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=3'; sh = '.16),rgba(0,0,0,.34)'; break; }
       b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + sh + '),url("' + img + '") center/cover no-repeat', 'important');
     });
   }
@@ -316,7 +316,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 /* Oct 11: the Read Aloud button sits inside the gold frame, 18px in from the top and the right, with photo
    showing above it and beside it, never on the border. Same spot on every page. */
 (function () {
-  var IN = 18;
+  var IN = 26;
   function fix() {
     document.querySelectorAll('[data-screen-label] [data-tts-skip]:not([data-m="hdr-tts"])').forEach(function (d) {
       if (d.closest('[data-story-titleblock]') || getComputedStyle(d).position !== 'absolute' || !d.offsetHeight) return;
@@ -339,7 +339,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
       if (first) { var fb = first.getBoundingClientRect(); if (fb.left < br.right && fb.right > br.left) { var gap = fb.top - br.bottom; if (gap < 14) { var pt = parseFloat(getComputedStyle(host).paddingTop) || 0; host.style.setProperty('padding-top', (pt + 14 - gap) + 'px', 'important'); } } }
     });
   }
-  setInterval(fix, 1000); fix();
+  setInterval(fix, 150); fix();
 })();
 
 /* Oct 11: mushroom page powder bands keep their white lead in and lead out (another script trims section padding) */

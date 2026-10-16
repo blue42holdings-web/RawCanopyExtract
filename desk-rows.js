@@ -284,7 +284,7 @@
         b.style.setProperty('background-size', '100% 100%,' + Math.ceil(612 * k) + 'px ' + Math.ceil(408 * k) + 'px', 'important'); b.style.setProperty('background-position', '0 0,60% 30%', 'important'); }
     });
     var wk = document.querySelector('section[data-m="mx-rit"] a[aria-label="Athletes training on a field"]');
-    if (wk && wk.offsetHeight && !wk.__wk) { wk.__wk = 1; wk.style.setProperty('background-size', '100% 100%,auto 160%', 'important'); wk.style.setProperty('background-position', '0 0,50% 64%', 'important'); }
+    if (wk && wk.offsetHeight && !wk.__wk) { wk.__wk = 1; wk.style.setProperty('background-size', '100% 100%,auto 160%', 'important'); wk.style.setProperty('background-position', '0 0,50% 92%', 'important'); }
   }
   setInterval(run, 1200); run();
 })();
@@ -382,8 +382,10 @@
     var papers = [].filter.call(R.querySelectorAll('div'), function (d) { return d.offsetWidth > 900 && getComputedStyle(d).backgroundColor === 'rgb(244, 241, 232)'; });
     papers.forEach(function (d, i) {
       if (d.__paper) return; d.__paper = 1;
-      if (i === 0) d.style.setProperty('padding-top', '110px', 'important');
+      if (i === 0) d.style.setProperty('padding-top', '140px', 'important');
+
       d.style.setProperty('padding-bottom', '46px', 'important');
+      if (i === papers.length - 1) { var t0 = papers[0].getBoundingClientRect().top, t1 = d.getBoundingClientRect().bottom, want = Math.round(d.offsetWidth * 11 / 8.5); if (t1 - t0 < want) d.style.setProperty('padding-bottom', (46 + want - (t1 - t0)) + 'px', 'important'); }   // the whole sheet is letter size
       [].forEach.call(d.querySelectorAll('*'), function (k) { var lh = parseFloat(getComputedStyle(k).lineHeight); if (lh && k.children.length === 0) k.style.setProperty('line-height', Math.round(lh * 1.5) + 'px', 'important'); });
     });
   }
