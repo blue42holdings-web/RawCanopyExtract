@@ -39,6 +39,10 @@
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
       var cs2 = A.querySelector('section[data-m="about-compost"]'); if (cs2) cs2.style.setProperty('background-image', 'none', 'important');
+      // and white all the way up behind the story boxes too
+      if (sh && sh.style.getPropertyValue('background-image') !== CW) { sh.style.setProperty('background', 'none', 'important'); sh.style.setProperty('background-image', CW, 'important'); sh.style.setProperty('background-color', CREAM, 'important'); sh.classList.add('rcx-abx'); }
+      if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
+      if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
     }
     if (sh && br && innerWidth >= 768) {
       var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 2000, (H1 + H2) / 1500), iw = Math.ceil(2000 * k), ih = Math.ceil(1500 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
