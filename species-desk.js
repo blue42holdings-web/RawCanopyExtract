@@ -78,7 +78,16 @@
     var hEnd = h0 + hero.offsetHeight;
     // Oct 15 (late, Scott): no white on Lion's Mane. The Roar of the Mountain Shasta photo runs up behind the first two boxes,
     // and the beach photo sits behind the rest of the page.
-    if (cfg.key === 'lm') { var LW = C.offsetWidth; bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.42) ' + (hEnd + 1) + 'px,rgba(0,0,0,.38) ' + sEnd + 'px,rgba(0,0,0,.55) ' + (sEnd + 200) + 'px,rgba(0,0,0,.55) 100%),url("assets/photo/own-shasta-peak.jpg") center ' + (hEnd - Math.max(0, LW * 4 / 3 - (sEnd - hEnd)) * 0.3) + 'px/' + LW + 'px auto no-repeat,url("assets/photo/own-cannon-beach.jpg") center/cover no-repeat fixed,#0d1a24'; }
+    if (cfg.key === 'lm') {   // Oct 15 (late, Scott): Shasta, darkened evenly, down to the email box; a short slate blue band behind the numbers heading; then his beach photo to the bottom
+      var LW = C.offsetWidth, inp = C.querySelector('section[data-m="sbox"] input'), num = C.querySelector('[data-m="num-lm"]');
+      var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) + 230) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
+      var shH = Math.round(LW * 2000 / 1500), shY = Math.round(shEnd - shH);
+      var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
+      bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.5) ' + (hEnd + 1) + 'px,rgba(0,0,0,.5) 100%),' +
+        'linear-gradient(transparent 0,transparent ' + (shEnd - 50) + 'px,#24425e ' + shEnd + 'px,#24425e ' + bStart + 'px,transparent ' + (bStart + 60) + 'px,transparent 100%),' +
+        'url("assets/photo/own-cannon-beach.jpg") ' + bx + 'px ' + bStart + 'px/' + bw + 'px ' + bh + 'px no-repeat,' +
+        'url("assets/photo/own-shasta-peak.jpg") center ' + shY + 'px/' + LW + 'px ' + shH + 'px no-repeat,#24425e';
+    }
     else if (cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + RED + ' ' + (sTop + 1) + 'px,' + RED + ' 100%)';   // Oct 15 (late): white above Coming Soon, red below
     else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + RED + ' ' + (hEnd + 1) + 'px,' + RED + ' 100%)';
     else if (false) bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
