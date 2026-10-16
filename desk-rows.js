@@ -163,11 +163,11 @@
 (function () {
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
   var MAP = {
-    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'auto 128%', '62% 100%'],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
       [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'cover', 'center 50%'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
       [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
-    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, 'cd-golf-dunes.jpg', 'cover', 'center 45%'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
+    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, 'cd-golf-sea.jpg', 'cover', 'center 55%'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
       [/^HOW IT'S MADE/, 'lab-soxhlet-chrome.jpg', 'cover', 'center'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
@@ -209,8 +209,8 @@
       });
     });
     // one photo running down through two stacked boxes, so you can see what is going on in it
-    var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'a-surfer-deep-in-the-barrel.jpg', 548, 364],
-        [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 1800, 1013]],
+    var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'cd-marathon.jpg', 1800, 1200],
+        [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
       'Turkey Tail': [[/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'tt-airport-security-line.jpg', 1560, 1040], [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-baggage-claim-crowd.jpg', 1800, 1279]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
