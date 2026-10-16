@@ -4869,7 +4869,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=58"></script>
 <script src="nav-extras.js?v=35"></script>
-<script src="mushroom-reveal.js?v=4"></script>
+<script src="mushroom-reveal.js?v=5"></script>
 <script src="desk-rows.js?v=39"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
@@ -5905,7 +5905,7 @@ html body div[data-screen-label="Cordyceps"] [data-ph="paddleboard-canyon"]:not(
 html body div[data-screen-label="Cordyceps"] [data-ph="apothecary-shop"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.65)),url("assets/photo/couple-tent-beach.jpg") center/cover no-repeat !important}
 html body div[data-screen-label="Cordyceps"] [data-ph="extraction-book"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.65)),url("assets/photo/mtb-rider-side.jpg") center 45%/cover no-repeat !important}
 html body div[data-screen-label="Cordyceps"] [data-ph="reactors-lab"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.65)),url("assets/photo/cd-golf-dunes.jpg") center/cover no-repeat !important}
-html body [data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"]{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url("assets/photo/receipts-tennis-noblog.jpg") !important;filter:none !important}
+html body [data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"][data-m="cd-fbox"]{background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.62)),url("assets/photo/hiker-summit-sunset.jpg") !important;filter:none !important}
 html body div[data-screen-label="Cordyceps"] section:has(> [data-ph="apothecary-shop"]){background:transparent !important;background-image:none !important}
 }
 </style>
@@ -6304,6 +6304,25 @@ html body [data-ms-page] [data-ms="x"][data-ms="x"]{display:none !important}
 html body [data-ms-page] .ms-add{display:block;margin-top:14px !important}
 }
 </style>
-<script src="mush-short.js?v=4"></script>
+<script src="mush-short.js?v=6"></script>
+<style id="mush-rows-oct16">/* Oct 16 (Scott): phone mushroom pages read as three swipe rows, the same on all three pages */
+@media (max-width:767px){
+html body [data-ms-page] .ms-wrap{display:block !important;background:#000}
+html body [data-ms-page] .ms-row{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:4px 6vw 24px;scrollbar-width:none;align-items:stretch}
+html body [data-ms-page] .ms-row::-webkit-scrollbar{display:none}
+html body [data-ms-page] .ms-row > section[data-ms-card]{flex:0 0 78.5vw !important;width:78.5vw !important;max-width:78.5vw !important;margin:0 !important;padding:0 !important;scroll-snap-align:center;display:flex !important;flex-direction:column !important;background:none !important;min-height:0 !important}
+html body [data-ms-page] section[data-ms-card] > div{flex:1 1 auto !important;margin:0 !important;width:100% !important;max-width:none !important;box-sizing:border-box !important;border:3px solid #D4A24A !important;border-radius:18px !important;padding:24px 20px !important;min-height:0 !important}
+html body [data-ms-page] section[data-ms-card] p,html body [data-ms-page] section[data-ms-card] li{font-size:15px !important;line-height:1.55 !important}
+html body [data-ms-page] section[data-ms-card] h2,html body [data-ms-page] section[data-ms-card] h3{font-size:19px !important;letter-spacing:.2em !important;margin:0 0 12px !important}
+html body [data-ms-page] .cx-track > section[data-ms-card="studied"]{flex:0 0 var(--msw,78.5vw) !important;width:var(--msw,78.5vw) !important;max-width:var(--msw,78.5vw) !important;height:var(--msh,380px) !important;margin:0 !important;padding:0 !important;display:flex !important;flex-direction:column !important;scroll-snap-align:center;background:none !important;min-height:0 !important}
+html body [data-ms-page] section[data-ms-card="studied"] > div{overflow:hidden !important;display:flex !important;flex-direction:column !important;justify-content:center !important}
+html body [data-ms-page] section[data-ms-card="studied"] [data-ms-long]{display:none !important}
+/* Lion's Mane How It's Made: no red box. The diver beside the shark */
+html body div[data-screen-label="Lion's Mane"] [data-m="made-box"][data-m="made-box"][data-m="made-box"]{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg") center/cover no-repeat !important;background-color:#000 !important}
+}
+/* every magazine card, everywhere: one dark blur over the whole card, edge to edge */
+html body a.mx-box.mx-press.mx-press.mx-press{position:relative !important;overflow:hidden !important;display:flex !important;align-items:center !important;justify-content:center !important}
+html body a.mx-box.mx-press.mx-press .pr-plate.pr-plate.pr-plate.pr-plate{position:absolute !important;inset:0 !important;max-width:none !important;width:auto !important;border-radius:0 !important;margin:0 !important;justify-content:center !important;background:rgba(0,0,0,.55) !important;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);box-shadow:none !important;padding:12px 10px !important}
+</style>
 </body>
 </html>

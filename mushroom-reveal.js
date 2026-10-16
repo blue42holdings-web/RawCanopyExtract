@@ -8,7 +8,7 @@
   var SWAP = {
     'Turkey Tail': [[/^DATA/, 'tt-fest-big-crowd.jpg', '50% 30%'], [/^THE COMMUTE/, 'tt-subway-car.jpg', '50% 50%'], [/^THE DOUBLE BLIND/, 'tt-concert-blue.jpg', '50% 40%'],
       [/^LAB REPORT/, 'lab-soxhlet-chrome.jpg', '50% 50%'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', '50% 30%'], [/^RUSH HOUR/, 'tt-tube-boarding.jpg', '50% 50%']],
-    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '60% 50%'], [/^THE RIVER/, 'cd-golf-mountains.jpg', '50% 45%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%']]
+    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '60% 50%'], [/^THE RIVER/, 'how-kayak-whitewater.jpg', '50% 45%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%']]
   };
   var css = document.createElement('style');
   css.textContent = '@property --rk{syntax:"<number>";inherits:false;initial-value:.6}' +
@@ -26,7 +26,7 @@
   var cache = {};
   function size(url, cb) { if (cache[url]) return cb(cache[url]); var im = new Image(); im.onload = function () { cache[url] = [im.naturalWidth, im.naturalHeight]; cb(cache[url]); }; im.src = url; }
   function prep(el, page) {
-    if (el.__rv) return;
+    if (el.__rv || el.hasAttribute('data-ms-card')) return;
     var cs = getComputedStyle(el), m = cs.backgroundImage.match(/url\(["']?([^"')]*assets\/photo\/[^"')]+)["']?\)/);
     var L0 = SWAP[page], t0 = (el.innerText || '').trim().toUpperCase();
     if (!m && L0 && el.closest('.cx-track')) for (var j = 0; j < L0.length; j++) if (L0[j][0].test(t0)) { m = [0, 'assets/photo/' + L0[j][1]]; break; }   // a box with no photo yet gets one
@@ -57,7 +57,7 @@
       var w = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === p && e.offsetHeight; })[0];
       if (!w) return;
       w.querySelectorAll('[data-ph],.mx-box,.cx-track > *,[data-m="made-box"],[data-m="cd-fbox"]').forEach(function (el) { if (!el.closest('section[data-m$="-hero"]')) prep(el, p); });
-      w.querySelectorAll('[data-ph] > div,.mx-box > div,.cx-track > * > div').forEach(function (el) { if (/assets\/photo\//.test(getComputedStyle(el).backgroundImage) && el.offsetHeight > 150) { el.style.setProperty('display', 'none', 'important'); } });
+      w.querySelectorAll('[data-ph] > div,.mx-box > div,.cx-track > * > div').forEach(function (el) { if (el.closest('[data-ms-card]')) return; if (/assets\/photo\//.test(getComputedStyle(el).backgroundImage) && el.offsetHeight > 150) { el.style.setProperty('display', 'none', 'important'); } });
     });
   }
   setInterval(run, 1200); run();
