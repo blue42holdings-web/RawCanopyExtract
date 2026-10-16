@@ -517,6 +517,8 @@
     var sx = (M.right + gap) - (S.left - cs), nx = (M.right + gap + sw + gap) - (N.left - cm);
     if (Math.abs(sx - cs) > 0.3) shop.style.setProperty('--nx', sx.toFixed(2) + 'px');
     if (Math.abs(nx - cm) > 0.3) menu.style.setProperty('--nx', nx.toFixed(2) + 'px');
+    // Oct 15 (night): SHOP and the menu stay hidden until they are in their even spots, so nothing jumps on load
+    var nv = shop.parentNode; if (nv && !nv.hasAttribute('data-even')) requestAnimationFrame(function () { nv.setAttribute('data-even', ''); });
   }
   addEventListener('resize', run); if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
   setInterval(run, 800); run();
