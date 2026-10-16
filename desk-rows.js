@@ -167,11 +167,14 @@
       [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'cover', 'center 50%'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
       [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
-    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, null, 'auto 175%', '50% 92%'], [/^LAB REPORT/, 'own-river.jpg', 'cover', 'center 55%'],
+    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, 'cd-golf-dunes.jpg', 'cover', 'center 45%'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
-      [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'cd-golf-coast.jpg', 'cover', 'center 60%'], [/^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 'cover', 'center 60%']],
-    'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'tt-airport-crowd.jpg', 'cover', 'center 40%'],
-      [/^THE LOT SHIPPING/, 'tt-feet-in-line.jpg', 'cover', 'center 60%']]
+      [/^HOW IT'S MADE/, 'lab-soxhlet-chrome.jpg', 'cover', 'center'],
+      [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
+    'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'],
+      [/^WHAT IT IS/, 'own-wing-sunset.jpg', 'cover', 'center 55%'], [/^WHERE OURS COMES FROM/, 'tt-train-crowd.jpg', 'cover', 'center 40%'],
+      [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%'],
+      [/^THE COMMUTE/, 'tt-feet-in-line.jpg', 'cover', 'center 60%']]
   };
   function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
   function boxFor(root, re) {
@@ -206,7 +209,9 @@
       });
     });
     // one photo running down through two stacked boxes, so you can see what is going on in it
-    var PAIRS = { "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
+    var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'a-surfer-deep-in-the-barrel.jpg', 548, 364],
+        [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 1800, 1013]],
+      'Turkey Tail': [[/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'tt-airport-security-line.jpg', 1560, 1040], [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-baggage-claim-crowd.jpg', 1800, 1279]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
@@ -214,9 +219,9 @@
         var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect(), W = Math.max(ra.width, rb.width), H = rb.bottom - ra.top;
         var k = Math.max(W / pr[3], H / pr[4]), iw = Math.ceil(pr[3] * k), ih = Math.ceil(pr[4] * k), x = Math.round((W - iw) / 2), y0 = /puzzle/.test(pr[2]) ? Math.round(H - ih) : Math.round((H - ih) / 2);
         [[a, y0], [b, y0 - (rb.top - ra.top)]].forEach(function (z) {
-          var v = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
+          var v = 'linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.68)),url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
           if (z[0].__pk === key && z[0].style.getPropertyValue('background-image')) return; z[0].__pk = key; z[0].setAttribute('data-rcx-boxph', '');
-          z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('background-size', '100% 100%,' + iw + 'px ' + ih + 'px', 'important');
+          z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('--x', v); z[0].style.setProperty('background-size', '100% 100%,' + iw + 'px ' + ih + 'px', 'important');
           z[0].style.setProperty('background-position', '0 0,' + x + 'px ' + z[1] + 'px', 'important'); z[0].style.setProperty('background-repeat', 'no-repeat', 'important');
           z[0].style.setProperty('background-color', '#000', 'important');
           [].forEach.call(z[0].querySelectorAll(':scope > div'), function (d) { if (!d.textContent.trim() && /url\(/.test(getComputedStyle(d).backgroundImage)) d.style.setProperty('display', 'none', 'important'); });
@@ -387,6 +392,26 @@
       d.style.setProperty('padding-bottom', '46px', 'important');
       if (i === papers.length - 1) { var t0 = papers[0].getBoundingClientRect().top, t1 = d.getBoundingClientRect().bottom, want = Math.round(d.offsetWidth * 11 / 8.5); if (t1 - t0 < want) d.style.setProperty('padding-bottom', (46 + want - (t1 - t0)) + 'px', 'important'); }   // the whole sheet is letter size
       [].forEach.call(d.querySelectorAll('*'), function (k) { var lh = parseFloat(getComputedStyle(k).lineHeight); if (lh && k.children.length === 0) k.style.setProperty('line-height', Math.round(lh * 1.5) + 'px', 'important'); });
+    });
+  }
+  setInterval(run, 1200); run();
+})();
+
+
+/* Oct 15 (late, Scott): species pages, desktop: every photo box starts at the same darkness and comes up as it comes into view */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function run() {
+    if (!MQ.matches) return;
+    ["Lion's Mane", 'Cordyceps', 'Turkey Tail'].forEach(function (L) {
+      var R = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!R) return;
+      [].forEach.call(R.querySelectorAll('[data-rcx-boxph],.rcx-row2 > *'), function (b) {
+        if (b.__lit2 || !b.offsetHeight) return; b.__lit2 = 1;
+        b.style.setProperty('box-shadow', 'inset 0 0 0 3000px rgba(0,0,0,.36)', 'important');
+        b.style.setProperty('transition', 'box-shadow 5s ease-in-out', 'important');
+        var io = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io.disconnect(); setTimeout(function () { b.style.setProperty('box-shadow', 'inset 0 0 0 3000px rgba(0,0,0,0)', 'important'); }, 400); }, { threshold: 0.3 });
+        io.observe(b);
+      });
     });
   }
   setInterval(run, 1200); run();
