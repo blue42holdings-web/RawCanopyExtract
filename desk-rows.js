@@ -103,9 +103,9 @@
       var r = e.getBoundingClientRect(), k = Math.max(r.width / im.naturalWidth, r.height / im.naturalHeight), w = Math.ceil(im.naturalWidth * k), h = Math.ceil(im.naturalHeight * k);
       var cs = getComputedStyle(e), ps = cs.backgroundPosition.split(','), pos = ps[ps.length - 1].trim();
       set(e, G + ',' + u, '100% 100%,' + w + 'px ' + h + 'px', '0 0,' + pos);
-      e.style.setProperty('transition', 'background-size 9s cubic-bezier(.2,.6,.3,1)', 'important');
+      e.style.setProperty('transition', 'background-size 11s cubic-bezier(.35,.1,.35,1),box-shadow 5s ease-in-out', 'important');
       var io = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io.disconnect();
-        setTimeout(function () { e.__rcxSet = ''; set(e, G + ',' + u, '100% 100%,' + Math.ceil(w * 1.1) + 'px ' + Math.ceil(h * 1.1) + 'px', '0 0,' + pos); }, 600); }, { threshold: 0.3 });
+        setTimeout(function () { e.__rcxSet = ''; set(e, G + ',' + u, '100% 100%,' + Math.ceil(w * 1.16) + 'px ' + Math.ceil(h * 1.16) + 'px', '0 0,' + pos); }, 600); }, { threshold: 0.3 });
       io.observe(e);
     }; im.src = u.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
   }
@@ -236,4 +236,35 @@
     });
   }
   setInterval(run, 300); run();
+})();
+
+
+/* Oct 15 (late, Scott): Home, desktop. Every photo box starts a little darker (you can still see it) and comes up brighter
+   as it comes into view. Stress And Age zoomed in a touch. Training Day framed on the players. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function run() {
+    if (!MQ.matches) return;
+    var home = [].filter.call(document.querySelectorAll('.mx-wrap,.rit-grid'), function (e) { return e.offsetHeight; });
+    home.forEach(function (w) {
+      [].forEach.call(w.querySelectorAll('.mx-box,.rit-card'), function (b) {
+        if (b.__lit || !b.offsetHeight || !/url\(/.test(getComputedStyle(b).backgroundImage)) return;
+        b.__lit = 1;
+        var base = getComputedStyle(b).boxShadow; base = base === 'none' ? '' : base + ',';
+        b.style.setProperty('box-shadow', base + 'inset 0 0 0 3000px rgba(0,0,0,.34)', 'important');
+        var tr = b.style.getPropertyValue('transition'); b.style.setProperty('transition', (tr ? tr + ',' : '') + 'box-shadow 5s ease-in-out', 'important');
+        var io = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io.disconnect();
+          setTimeout(function () { b.style.setProperty('box-shadow', base + 'inset 0 0 0 3000px rgba(0,0,0,0)', 'important'); }, 400); }, { threshold: 0.3 });
+        io.observe(b);
+      });
+    });
+    [].forEach.call(document.querySelectorAll('.mx-box'), function (b) {
+      if (!b.offsetHeight) return; var t = (b.querySelector('.mx-tag') || {}).textContent || '';
+      if (/STRESS AND AGE/i.test(t) && !b.__sa) { b.__sa = 1; var r = b.getBoundingClientRect(), k = Math.max(r.width / 612, r.height / 408) * 1.14;
+        b.style.setProperty('background-size', '100% 100%,' + Math.ceil(612 * k) + 'px ' + Math.ceil(408 * k) + 'px', 'important'); b.style.setProperty('background-position', '0 0,60% 30%', 'important'); }
+    });
+    var wk = document.querySelector('section[data-m="mx-rit"] a[aria-label="Athletes training on a field"]');
+    if (wk && wk.offsetHeight && !wk.__wk) { wk.__wk = 1; wk.style.setProperty('background-size', '100% 100%,auto 160%', 'important'); wk.style.setProperty('background-position', '0 0,50% 64%', 'important'); }
+  }
+  setInterval(run, 1200); run();
 })();
