@@ -145,9 +145,16 @@
       hero.style.setProperty('border', '3px solid #D4A24A', 'important');
       hero.style.setProperty('border-radius', '22px', 'important');
       hero.style.setProperty('overflow', 'hidden', 'important');
-      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,var(--whk,.36)),rgba(0,0,0,calc(var(--whk,.36) + .12))),url("assets/photo/why-tent.jpg") center 50%/125% auto no-repeat', 'important');
-      // she starts darker (still in color) and slowly comes up to full light
-      if (!hero.__whk) { hero.__whk = 1; hero.classList.add('rcx-whk'); setTimeout(function () { hero.classList.add('rcx-whk-on'); }, 900); }
+      hero.style.setProperty('background', 'linear-gradient(rgba(0,0,0,var(--whk,.3)),rgba(0,0,0,calc(var(--whk,.3) + .12))),url("assets/photo/why-tent.jpg") center 50%/cover no-repeat', 'important');
+      // Oct 15 (late, Scott): a background photo: she starts dark (still in color), slowly comes up, and lifts on as a cutout
+      if (!hero.__whk) {
+        hero.__whk = 1;
+        hero.style.setProperty('--whk', '.72'); hero.style.setProperty('transition', '--whk 7s ease-in-out', 'important');
+        setTimeout(function () { hero.style.setProperty('--whk', '.42'); }, 900);
+        hero.setAttribute('data-lift-bg', 'assets/cutouts/why-tent-cutout.webp'); hero.setAttribute('data-lift-desktop', '');
+        hero.setAttribute('data-lift-dim', 'brightness(1.05)'); hero.setAttribute('data-lift-scale', '1.04'); hero.setAttribute('data-lift-origin', '0.75 0.85');
+        hero.setAttribute('data-lift-dur', '8000'); hero.setAttribute('data-lift-delay', '1800'); hero.setAttribute('data-lift-d-delay', '1800'); hero.setAttribute('data-lift-fade', '2500'); hero.setAttribute('data-lift-nomask', '');
+      }
       hero.querySelectorAll('div').forEach(function (d) {
         if (d.contains(hero.querySelector('h1')) || /url\(/.test(getComputedStyle(d).backgroundImage)) {
           d.style.setProperty('background', 'transparent', 'important');

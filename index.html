@@ -955,7 +955,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 [data-m="wte-story"] .rcx-marble{padding:24px !important;width:100% !important;max-width:560px !important;margin:0 auto !important;align-items:center !important}
 }
 </style>
-<script src="cutout-lift.js?v=20261029j"></script>
+<script src="cutout-lift.js?v=20261029k"></script>
 
 <script src="ambient.js?v=63"></script>
 
@@ -4916,7 +4916,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=18"></script>
+<script src="species-desk.js?v=19"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -6006,5 +6006,27 @@ html body div[data-screen-label="About"] section[data-m="about-compost"] + secti
 <script src="about-photos.js?v=7"></script>
 <style id="shop-rc-oct15c">@keyframes rcxTennisOn{from{opacity:0;filter:brightness(.8)}to{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 10px rgba(255,214,150,.45))}}
 @media (min-width:768px){html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.z1):not(.z2):not(.z3){clip-path:inset(8px 8px calc(100% - 568px) 8px round 22px) !important}}</style>
+<style id="heroes-420-oct15">
+/* Oct 15 (late, Scott): every page's top box (not Home) is 25 percent shorter on desktop, the same on every page */
+@media (min-width:768px){
+  html body [data-screen-label="Shop"]>section:first-child:not(.zz):not(.zy):not(.zx):not(.zw),html body div[data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="mush-hero"]:not(.zz):not(.zy):not(.zx):not(.zw),html body div[data-screen-label="Why One Ingredient"]>section:first-of-type:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="how-top"]:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="about-hero"]:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="lm-hero"]:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="cdh-hero"]:not(.zz):not(.zy):not(.zx):not(.zw),html body section[data-m="tth-hero"]:not(.zz):not(.zy):not(.zx):not(.zw){height:420px !important;min-height:420px !important;max-height:420px !important}
+  html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.z1):not(.z2):not(.z3):not(.z4)::before{height:414px !important}
+  html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.z1):not(.z2):not(.z3):not(.z4){clip-path:inset(8px 8px calc(100% - 428px) 8px round 22px) !important}
+}
+</style>
+<style id="how-dive-oct15c">
+/* Oct 15 (late, Scott): How To Use, desktop. No side photos. One wide gold box; the intro in its own colored box; steps 1 to 4
+   spaced all the way down so the diver shows the whole way; the four boxes sit below him in deeper water. */
+@media (min-width:900px){
+  html body .rcx-howside.rcx-howside{display:none !important}
+  html body .rcx-howgrid.rcx-howgrid{grid-template-columns:minmax(0,1fr) !important;max-width:1300px !important}
+  html body .rcx-howcol.rcx-howcol{background:rgba(0,0,0,.12) !important;padding:44px 40px 70px !important}
+  html body .rcx-howcol [data-m="how-intro"][data-m="how-intro"]{max-width:760px !important;margin:0 auto 70px !important;background:rgba(10,46,72,.86) !important;border:3px solid #D4A24A !important;border-radius:16px !important;padding:22px 30px !important;font-size:18px !important;color:#F1ECE1 !important}
+  html body .rcx-howcol [data-m="steps"][data-m="steps"][data-m="steps"]{gap:150px !important}
+  html body .rcx-howcol [data-m="steps"] > div{text-shadow:0 2px 10px rgba(0,0,0,.85)}
+  html body div[data-screen-label="How To Use"] [data-m="bgstack"][data-m="bgstack"]{display:none !important}
+  html body div[data-screen-label="How To Use"] div[data-m="steps-wrap"][data-m="steps-wrap"][data-m="steps-wrap"]{background:linear-gradient(rgba(0,0,0,.18) 0,rgba(0,0,0,.28) 50%,rgba(0,0,0,.5) 100%),url("assets/photo/how-freediver-line.jpg") center top/cover no-repeat,#0b2c46 !important}
+}
+</style>
 </body>
 </html>
