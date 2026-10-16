@@ -392,7 +392,7 @@
       if (i === 0) d.style.setProperty('padding-top', '140px', 'important');
 
       d.style.setProperty('padding-bottom', '46px', 'important');
-      if (i === papers.length - 1) { var t0 = papers[0].getBoundingClientRect().top, t1 = d.getBoundingClientRect().bottom, want = Math.round(d.offsetWidth * 11 / 8.5); if (t1 - t0 < want) d.style.setProperty('padding-bottom', (46 + want - (t1 - t0)) + 'px', 'important'); }   // the whole sheet is letter size
+      if (i === papers.length - 1) { var t0 = papers[0].getBoundingClientRect().top, t1 = d.getBoundingClientRect().bottom, want = Math.round(d.offsetWidth * 11 / 8.5); if (t1 - t0 < want) { var ty = [].filter.call(d.querySelectorAll('p'), function (p) { return /THANK YOU FOR CHECKING/i.test(p.textContent); })[0]; if (ty) ty.style.setProperty('margin-top', (20 + want - (t1 - t0)) + 'px', 'important'); else d.style.setProperty('padding-bottom', (46 + want - (t1 - t0)) + 'px', 'important'); } }   // Oct 15 (night): the spare paper goes above the thank-you, so it is the last line on the sheet   // the whole sheet is letter size
       [].forEach.call(d.querySelectorAll('*'), function (k) { var lh = parseFloat(getComputedStyle(k).lineHeight); if (lh && k.children.length === 0) k.style.setProperty('line-height', Math.round(lh * 1.5) + 'px', 'important'); });
     });
   }
