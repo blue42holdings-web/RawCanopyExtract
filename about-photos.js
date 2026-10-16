@@ -34,13 +34,13 @@
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
-      var CW = 'linear-gradient(' + CREAM + ',' + CREAM + ')';   // Oct 15 (night): white all the way, no dark strip at the top
+      var CW = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
       if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', CREAM, 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
       var cs2 = A.querySelector('section[data-m="about-compost"]'); if (cs2) cs2.style.setProperty('background-image', 'none', 'important');
       // and white all the way up behind the story boxes too
-      if (sh && sh.style.getPropertyValue('background-image') !== CW) { sh.style.setProperty('background', 'none', 'important'); sh.style.setProperty('background-image', CW, 'important'); sh.style.setProperty('background-color', CREAM, 'important'); sh.classList.add('rcx-abx'); }
+      if (sh && sh.style.getPropertyValue('background-image') !== CW) { sh.style.setProperty('background', 'none', 'important'); sh.style.setProperty('background-image', CW, 'important'); sh.style.setProperty('background-color', '#000', 'important'); sh.classList.add('rcx-abx'); }
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
     }
@@ -68,12 +68,12 @@
       var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#7a5a1e', 'important');
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
-        var W2 = 'linear-gradient(' + CREAM + ' 0,' + CREAM + ' calc(100% - 10px),#000 100%)';   // white holds, then a very quick fade (long fades are only for photo to photo)
+        var W2 = 'linear-gradient(' + CREAM + ' 0,#000 60px,#000 100%)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
         if (nx.style.getPropertyValue('padding-bottom') !== '64px') nx.style.setProperty('padding-bottom', '64px', 'important');
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
         if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
-        if (nx.style.getPropertyValue('background-image') !== W2) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-color', CREAM, 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
+        if (nx.style.getPropertyValue('background-image') !== W2) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-color', '#000', 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
       }
     }
   }
