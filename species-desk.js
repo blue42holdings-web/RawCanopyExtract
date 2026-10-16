@@ -40,7 +40,7 @@
     what.style.setProperty('box-shadow', 'none', 'important');
     if (box) {
       box.classList.add('sd-what');
-      if (!box.parentElement.classList.contains('rcx-row2')) box.style.setProperty('background', 'transparent', 'important'); else box.style.removeProperty('background');   // Oct 15: in the side by side row it keeps its own photo
+      if (box.hasAttribute('data-rcx-boxph')) {} else if (!box.parentElement.classList.contains('rcx-row2')) box.style.setProperty('background', 'transparent', 'important'); else box.style.removeProperty('background');   // Oct 15: in the side by side row it keeps its own photo
       box.style.setProperty('box-shadow', 'none', 'important');
       box.querySelectorAll(':scope > div').forEach(function (d) { if (/url\(/.test(getComputedStyle(d).backgroundImage) || d.children.length === 0) d.style.setProperty('background', 'transparent', 'important'); });
     }
@@ -80,8 +80,8 @@
     // and the beach photo sits behind the rest of the page.
     if (cfg.key === 'lm') {   // Oct 15 (late, Scott): Shasta, darkened evenly, down to the email box; a short slate blue band behind the numbers heading; then his beach photo to the bottom
       var LW = C.offsetWidth, inp = C.querySelector('section[data-m="sbox"] input'), num = C.querySelector('[data-m="num-lm"]');
-      var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) + 230) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
-      var shH = Math.round(LW * 2000 / 1500), shY = Math.round(shEnd - shH);
+      var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) - 10) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
+      var shH = Math.round(LW * 2000 / 1500), shY = Math.round(hEnd - shH * 0.04);   // the peak itself, not the trees at the bottom of the photo
       var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
       bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.5) ' + (hEnd + 1) + 'px,rgba(0,0,0,.5) 100%),' +
         'linear-gradient(transparent 0,transparent ' + (shEnd - 50) + 'px,#24425e ' + shEnd + 'px,#24425e ' + bStart + 'px,transparent ' + (bStart + 60) + 'px,transparent 100%),' +
