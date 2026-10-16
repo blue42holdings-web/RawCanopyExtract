@@ -33,7 +33,14 @@
     if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
-    if (sh && br) {
+    if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
+      var CW = 'linear-gradient(#000 0,' + CREAM + ' 36px,' + CREAM + ' 100%)';
+      if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', CREAM, 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
+      [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
+      var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
+      var cs2 = A.querySelector('section[data-m="about-compost"]'); if (cs2) cs2.style.setProperty('background-image', 'none', 'important');
+    }
+    if (sh && br && innerWidth >= 768) {
       var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 2000, (H1 + H2) / 1500), iw = Math.ceil(2000 * k), ih = Math.ceil(1500 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
       [[sh, y0], [br, y0 - H1]].forEach(function (z) {
         var v = 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.55)),url("assets/photo/own-oregon-coast.jpg")', ps = '0 0,0 0,' + x + 'px ' + z[1] + 'px', sz = '100% 100%,100% 100%,' + iw + 'px ' + Math.round(ih) + 'px';
