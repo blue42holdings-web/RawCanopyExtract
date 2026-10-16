@@ -33,9 +33,9 @@
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (sh && br) {
-      var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 1350, (H1 + H2) / 1800), iw = Math.ceil(1350 * k), ih = Math.ceil(1800 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
+      var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 1350, (H1 + H2) / 1800) * 1.1, iw = Math.ceil(1350 * k), ih = Math.ceil(1800 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
       [[sh, y0], [br, y0 - H1]].forEach(function (z) {
-        var v = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.5)),url("assets/photo/own-yard-hill.jpg")', ps = '0 0,' + x + 'px ' + z[1] + 'px', sz = '100% 100%,' + iw + 'px ' + ih + 'px';
+        var v = 'radial-gradient(60% 50% at 15% 10%,rgba(0,0,0,.45),rgba(0,0,0,0) 70%),linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.58)),url("assets/photo/own-yard-hill.jpg")', ps = '0 0,0 0,' + x + 'px ' + (z[1] - Math.round(ih * 0.1)) + 'px', sz = '100% 100%,100% 100%,' + iw + 'px ' + Math.round(ih) + 'px';
         if (z[0].__yk === v + ps + sz && z[0].style.getPropertyValue('background-image')) return; z[0].__yk = v + ps + sz;
         z[0].style.setProperty('background', 'none', 'important');
         z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('background-size', sz, 'important');

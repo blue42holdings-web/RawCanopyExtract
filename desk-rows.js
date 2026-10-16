@@ -268,3 +268,64 @@
   }
   setInterval(run, 1200); run();
 })();
+
+/* Oct 15 (late, round 3, Scott): desktop framing on Why One Ingredient and About, Shop tennis running down into the powder. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function pg(L) { return [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; }
+  function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
+  function box(root, re) {
+    var els = root.querySelectorAll('h2,h3,h4,.mx-tag,.lab-tag,span,p');
+    for (var i = 0; i < els.length; i++) { var e = els[i], t = norm(e.textContent); if (t.length > 70 || !re.test(t) || !e.offsetHeight) continue;
+      for (var p = e, n = 0; p && p !== root && n < 7; p = p.parentElement, n++) { var c = getComputedStyle(p); if (parseFloat(c.borderTopWidth) > 1.5 && p.offsetWidth > 300) return p; } }
+    return null;
+  }
+  function put(b, img, sz, pos, dark) {
+    var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + img + '")', k = v + sz + pos;
+    if (b.__r3 === k && b.style.getPropertyValue('background-image')) return; b.__r3 = k; b.setAttribute('data-rcx-boxph', '');
+    b.style.setProperty('background-image', v, 'important'); b.style.setProperty('background-size', '100% 100%,' + sz, 'important');
+    b.style.setProperty('background-position', '0 0,' + pos, 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
+    b.style.setProperty('--fsz', sz); b.style.setProperty('--fps', pos);
+  }
+  function coverPx(b, iw, ih, zoom) { var r = b.getBoundingClientRect(), k = Math.max(r.width / iw, r.height / ih) * (zoom || 1); return Math.ceil(iw * k) + 'px ' + Math.ceil(ih * k) + 'px'; }
+  function run() {
+    if (!MQ.matches) return;
+    var W = pg('Why One Ingredient');
+    if (W) {
+      var b;
+      if ((b = box(W, /^START HERE/))) put(b, 'faq-camp-table-tin.jpg', 'cover', '50% 78%', .4);
+      if ((b = box(W, /^MAKE YOUR OWN COMBO/))) put(b, 'why-pour.webp', 'cover', '45% 50%', .42);
+      if ((b = box(W, /^LAB DATA . NEARLY 100/))) put(b, 'lab-powder-coat.jpg', coverPx(b, 1218, 853, 1.45), '78% 100%', .5);
+      // the three tall boxes share the one camping photo, running across all three
+      var a = box(W, /^FRUITING BODY OR MYCELIUM/), m = box(W, /^HOW TO READ ANYONE'S LAB/), q = box(W, /^WHAT OUR QR CODE/);
+      if (a && m && q) {
+        var ra = a.getBoundingClientRect(), rq = q.getBoundingClientRect(), TW = rq.right - ra.left, TH = Math.max(ra.height, rq.height);
+        var k = Math.max(TW / 1600, TH / 900), iw = Math.ceil(1600 * k), ih = Math.ceil(900 * k);
+        [a, m, q].forEach(function (x) { var r = x.getBoundingClientRect(); put(x, 'grow-farm-valley.jpg', iw + 'px ' + ih + 'px', Math.round((TW - iw) / 2 - (r.left - ra.left)) + 'px ' + Math.round((TH - ih) / 2) + 'px', .5); });
+      }
+      var mr = W.parentElement && W.parentElement.querySelector('[data-m="more-research"] > div');
+      if (!mr) mr = document.querySelector('[data-why-mr] > div');
+      if (mr && mr.offsetHeight) put(mr, 'hex-lab.jpg', 'cover', 'center 20%', .5);
+      // 2 + 1: no wide gaps
+      [].forEach.call(W.querySelectorAll('.mx-big'), function (e) { if (/2\s*\+\s*1/.test(e.textContent) && !e.__tight) { e.__tight = 1; e.style.setProperty('letter-spacing', '0', 'important'); e.style.setProperty('word-spacing', '-0.18em', 'important'); } });
+    }
+    var A = pg('About');
+    if (A) {
+      var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) put(bb, 'own-scott-wildman.jpg', 'cover', 'center 45%', .48);
+      var cb = A.querySelector('.cmp-box'); if (cb) put(cb, 'about-three-dogs-2.webp', 'cover', 'center 8%', .45);
+    }
+    // Shop: the colored tennis photo runs from the products all the way down behind the badges into the powder
+    var S = pg('Shop');
+    if (S) {
+      var secs = S.querySelectorAll(':scope > section'), pk = secs[1], cbs = S.querySelector('section.clean-band');
+      if (pk && cbs) {
+        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 160;
+        var d = S.querySelector(':scope > .rcx-tennis-run');
+        if (!d) { d = document.createElement('div'); d.className = 'rcx-tennis-run'; d.setAttribute('aria-hidden', 'true'); S.appendChild(d); }
+        var sTop = S.getBoundingClientRect().top + scrollY, g = Math.round(top - sTop) + '|' + Math.round(bot - top);
+        if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;left:0;right:0;top:' + Math.round(top - sTop) + 'px;height:' + Math.round(bot - top) + 'px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.4) 70%,rgba(0,0,0,0) 100%),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat;-webkit-mask-image:linear-gradient(#000 calc(100% - 160px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 160px),transparent 100%);'; }
+      }
+    }
+  }
+  setInterval(run, 1000); run();
+})();
