@@ -339,7 +339,8 @@
 (function () {
   var P = 'assets/photo/';
   var CROWD = ['tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
-  var MOVE = ['tr-maglev.jpg', 'tr-bullet-tunnel.jpg', 'tr-future-train.jpg', 'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-bus-motion.jpg'];
+  var MOVE = ['tr-maglev.jpg', 'tr-future-train.jpg',   // Oct 15 (night): tr-bullet-tunnel removed for good, Scott never wants it again
+     'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-bus-motion.jpg'];
   var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
   function run() {
     var groups = new Map();
@@ -351,7 +352,7 @@
     groups.forEach(function (list, g) {
       var c = 0, m = (pi++) * 3, l = 0;
       // Oct 15 (late, Scott): Shop tells a trip story left to right: the train, then airport security, then the crowd boarding
-      var SHOPSTORY = ['tr-bullet-tunnel.jpg', 'tt-airport-security-line.jpg', 'tt-airport-crowd.jpg'];
+      var SHOPSTORY = ['tr-rail-city.jpg', 'tt-airport-security-line.jpg', 'tt-airport-crowd.jpg'];
       var isShop = g && g.getAttribute && g.getAttribute('data-screen-label') === 'Shop';
       list.forEach(function (b, bi) {
         if (isShop && bi < 3) { var im2 = SHOPSTORY[bi]; if (b.__lab !== im2) { b.__lab = im2; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + im2 + '") center/cover no-repeat', 'important'); } return; }
