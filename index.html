@@ -6038,14 +6038,14 @@ html body div[data-screen-label="Lion's Mane"] section.clean-band{background:tra
 html body section[data-m="mush-hero"][data-m="mush-hero"]{background-image:linear-gradient(rgba(0,0,0,var(--hk)) 0%,rgba(0,0,0,calc(var(--hk) + .1)) 80%,rgb(4,4,4) 100%),url("assets/photo/shop-river-canyon.jpg") !important;transition:--hk 6s ease-in-out}
 html body div[data-m="how-hero"].rcx-hk0,html body section[data-m="mush-hero"].rcx-hk0{--hk:.75;transition:none}
 html body div[data-m="how-edge"][data-m="how-edge"]{background:linear-gradient(rgba(0,0,0,0) calc(100% - 60px),rgba(0,0,0,.6) 100%) !important}}</style>
-<style id="about-oct15b">html body section[data-m="about-hero"].rcx-abfade{filter:brightness(.55);transition:none}html body section[data-m="about-hero"].rcx-abfade.rcx-abfade-on{filter:brightness(1);transition:filter 6s ease-in-out}
+<style id="about-oct15b">html body section[data-m="about-hero"].rcx-abfade{filter:brightness(.82);transition:none}html body section[data-m="about-hero"].rcx-abfade.rcx-abfade-on{filter:brightness(1);transition:filter 6s ease-in-out}
 @media (min-width:768px){html body div[data-screen-label="About"] .ab-grid.ab-grid.ab-grid.ab-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;max-width:1100px !important;margin-left:auto !important;margin-right:auto !important}}
 @media (min-width:768px){html body section[data-m="about-hero"] h1{font-size:60px !important}}
 html body div[data-screen-label="About"] section.rcx-abseal p,html body div[data-screen-label="About"] section.rcx-abseal h2,html body div[data-screen-label="About"] section.rcx-abseal h3{color:#2a2418 !important}
 html body div[data-screen-label="About"] .rcx-abx.rcx-abx::before,html body div[data-screen-label="About"] .rcx-abx.rcx-abx::after{background-image:none !important;background-color:transparent !important;-webkit-mask-image:none !important;mask-image:none !important}
 html body div[data-screen-label="About"] section.rcx-abx[data-m="about-compost"]{-webkit-mask-image:none !important;mask-image:none !important}
 html body div[data-screen-label="About"] section[data-m="about-compost"] + section,html body div[data-screen-label="About"] section[data-m="about-compost"] + section::before{-webkit-mask-image:none !important;mask-image:none !important}</style>
-<script src="about-photos.js?v=24"></script>
+<script src="about-photos.js?v=26"></script>
 <style id="shop-rc-oct15c">@keyframes rcxTennisOn{from{opacity:0;filter:brightness(.8)}to{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 10px rgba(255,214,150,.45))}}
 @media (min-width:768px){html body div[data-screen-label="Receipts"]>section:first-of-type::before{clip-path:inset(0 round 23px)}}</style>
 <style id="how-dive-oct15c">
@@ -6248,12 +6248,33 @@ html body p:has(> span[style*="D4A24A"]):is([data-m="home-para"] p,[style*="text
 <style id="para-band-oct16">/* Oct 16 (Scott): a soft dark band sits under each line of words only, not the whole photo */
 html body span.para-hl.para-hl{color:#FFFFFF !important;background:rgba(0,0,0,.34);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:2px 8px;border-radius:4px;line-height:1.75}
 </style>
-<style id="sq-para-oct16">/* Oct 16 (Scott): the phone paragraph is a square block: hand-set lines, each stretched edge to edge, on a see-through band */
+<style id="sq-para-oct16">/* Oct 16 (Scott): phone paragraph back to a regular flowing paragraph, words on a see-through band */
 @media (max-width:767px){
-html body [data-m="home-para"] p.sq-para{display:block !important;max-width:none !important;margin:0 -14px !important;padding:0 !important;text-wrap:wrap !important;font-size:var(--sqfs,18px) !important;line-height:1.55 !important;color:#fff !important}
-html body [data-m="home-para"] p.sq-para > span.sq-l.sq-l{display:block;white-space:nowrap;text-align:justify;text-align-last:justify;background:rgba(0,0,0,.34);padding:2px 8px;color:#FFFFFF !important;text-shadow:0 0 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.8) !important}
-html body [data-m="home-para"] p.sq-para .sq-l span{white-space:nowrap}
+html body [data-m="home-para"] p.sq-para{display:block !important;max-width:none !important;margin:0 !important;padding:0 !important;text-wrap:pretty !important;font-size:19px !important;line-height:1.6 !important;color:#fff !important;text-align:center !important}
+html body [data-m="home-para"] p.sq-para > span.sq-l.sq-l{display:inline;white-space:normal;background:rgba(0,0,0,.34);padding:2px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:2px 0;color:#FFFFFF !important;text-shadow:0 0 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.8) !important}
+html body [data-m="home-para"] p.sq-para > span.sq-l + span.sq-l::before{content:" "}
 }</style>
-<script>(function(){function fit(){var p=document.querySelector('[data-m="home-para"] p.sq-para');if(!p||innerWidth>767||!p.offsetWidth)return;var W=p.clientWidth-16,lo=12,hi=26;for(var k=0;k<12;k++){var m=(lo+hi)/2;p.style.setProperty('--sqfs',m+'px');var ok=true;[].forEach.call(p.children,function(l){l.style.textAlignLast='left';var r=document.createRange();r.selectNodeContents(l);if(r.getBoundingClientRect().width>W)ok=false;l.style.textAlignLast=''});if(ok)lo=m;else hi=m}p.style.setProperty('--sqfs',(lo-0.3)+'px')}addEventListener('resize',fit);setTimeout(fit,300);setTimeout(fit,1500);if(document.fonts)document.fonts.ready.then(fit)})();</script>
+<style id="about-top-sky-oct16">
+/* Oct 16 (Scott): his pink sky over the pines sits in the black around the top box of About, seen at the sides */
+html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"][data-screen-label="About"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19):not(.y20):not(.y21):not(.y22):not(.y23):not(.y24){background:#000 !important;position:relative !important;isolation:isolate !important}
+html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"]::before{display:block !important;content:"";position:absolute;left:0;right:0;top:0;height:var(--abSky,560px);z-index:-2;pointer-events:none;background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25) 75%,#000),url("assets/photo/own-pink-sky-pines.jpg") center 60%/cover no-repeat}
+@media (max-width:767px){html body div[data-screen-label="About"]{--abSky:430px}}
+@media (min-width:768px){html body div[data-screen-label="About"]{--abSky:720px}}
+html body div[data-screen-label="About"] > div[style*="svg+xml"]{display:none !important}
+/* every RCX pattern field starts with a hard edge, never a fade (all pages) */
+html body div[style*="pattern-field-bold"][style*="pattern-field-bold"]{-webkit-mask-image:none !important;mask-image:none !important}
+@media (max-width:767px){
+/* About story: every photo box the same size */
+html body div[data-screen-label="About"] .ab-grid .ab-box.ab-box{min-height:360px !important;height:360px !important;display:flex !important;flex-direction:column !important;justify-content:flex-end !important}
+/* Home: What's In The Packet sits midway between the Turkey Tail boxes and Swipe For More (swipe stays put) */
+html body section[data-m="mx-tt"][data-m="mx-tt"]{padding-bottom:9px !important}
+html body section#packet .rcx-swipe-tag{margin-top:31px !important}
+}
+@media (min-width:768px){html body div[data-screen-label="About"] section[data-m="about-hero"][data-m="about-hero"][data-m="about-hero"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19):not(.y20):not(.y21):not(.y22):not(.y23):not(.y24){margin:0 70px 30px !important;width:auto !important;max-width:none !important}}
+@media (max-width:767px){html body div[data-screen-label="About"] section[data-m="about-hero"][data-m="about-hero"][data-m="about-hero"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19):not(.y20):not(.y21):not(.y22):not(.y23):not(.y24){margin:26px 22px 20px !important}}
+html body div[data-screen-label="About"] section[data-m="about-hero"][data-m="about-hero"][data-m="about-hero"][data-m="about-hero"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19):not(.y20):not(.y21):not(.y22):not(.y23):not(.y24){box-shadow:0 10px 24px rgba(0,0,0,.45) !important;margin-top:0 !important}
+html body div[data-screen-label="About"][data-screen-label="About"]{padding-top:26px !important}
+@media (min-width:768px){html body div[data-screen-label="About"][data-screen-label="About"]{padding-top:40px !important}}
+</style>
 </body>
 </html>
