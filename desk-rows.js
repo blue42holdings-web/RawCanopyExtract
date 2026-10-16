@@ -144,8 +144,9 @@
 (function () {
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
   var MAP = {
-    "Lion's Mane": [[/^HOW IT'S MADE/, 'lm-grandma-girl-puzzle.jpg', 'cover', 'center 35%'], [/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'],
-      [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'cover', 'center 30%'], [/^THE OTHER TWO/, 'lm-grandpa-football-park.jpg', 'cover', 'center 45%']],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'cover', 'center 30%'],
+      [/^THE OTHER TWO/, 'lm-grandma-puzzle.jpg', 'cover', 'center 40%'], [/^THE LOT SHIPPING/, 'lm-grandpa-football-park.jpg', 'cover', 'center 35%'],
+      [/^LAB REPORT . HUMAN TRIAL/, 'elder-camp-chair-mug.jpg', 'cover', 'center 35%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
     'Cordyceps': [[/^WHAT'S BEEN STUDIED/, null, 'auto 175%', '50% 92%'], [/^LAB REPORT/, 'own-river.jpg', 'cover', 'center 55%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'cd-golf-coast.jpg', 'cover', 'center 60%'], [/^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 'cover', 'center 60%']],
@@ -157,7 +158,7 @@
     var els = root.querySelectorAll('h2,h3,h4,.mx-tag,.cb-tag,.lab-tag,span,p');
     for (var i = 0; i < els.length; i++) {
       var e = els[i], t = norm(e.textContent); if (t.length > 70 || !re.test(t) || !e.offsetHeight) continue;
-      for (var p = e, n = 0; p && p !== root && n < 7; p = p.parentElement, n++) { var c = getComputedStyle(p); if (parseFloat(c.borderTopWidth) > 1.5 && c.borderTopStyle !== 'none' && p.offsetWidth > 200) return p; }
+      for (var p = e, n = 0; p && p !== root && n < 7; p = p.parentElement, n++) { var c = getComputedStyle(p); if (parseFloat(c.borderTopWidth) > 1.5 && c.borderTopStyle !== 'none' && p.offsetWidth > 300) return p; }
     }
     return null;
   }
@@ -184,6 +185,24 @@
         b.setAttribute('data-rcx-boxph', '');
       });
     });
+    // one photo running down through two stacked boxes, so you can see what is going on in it
+    var PAIRS = { "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
+    Object.keys(PAIRS).forEach(function (L) {
+      var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
+      PAIRS[L].forEach(function (pr) {
+        var a = boxFor(root, pr[0]), b = boxFor(root, pr[1]); if (!a || !b) return;
+        var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect(), W = Math.max(ra.width, rb.width), H = rb.bottom - ra.top;
+        var k = Math.max(W / pr[3], H / pr[4]), iw = Math.ceil(pr[3] * k), ih = Math.ceil(pr[4] * k), x = Math.round((W - iw) / 2), y0 = Math.round((H - ih) / 2);
+        [[a, y0], [b, y0 - (rb.top - ra.top)]].forEach(function (z) {
+          var v = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
+          if (z[0].__pk === key && z[0].style.getPropertyValue('background-image')) return; z[0].__pk = key; z[0].setAttribute('data-rcx-boxph', '');
+          z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('background-size', '100% 100%,' + iw + 'px ' + ih + 'px', 'important');
+          z[0].style.setProperty('background-position', '0 0,' + x + 'px ' + z[1] + 'px', 'important'); z[0].style.setProperty('background-repeat', 'no-repeat', 'important');
+          z[0].style.setProperty('background-color', '#000', 'important');
+          [].forEach.call(z[0].querySelectorAll(':scope > div'), function (d) { if (!d.textContent.trim() && /url\(/.test(getComputedStyle(d).backgroundImage)) d.style.setProperty('display', 'none', 'important'); });
+        });
+      });
+    });
   }
   setInterval(run, 1000); run();
 })();
@@ -203,4 +222,18 @@
     if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;top:' + ps.top + ';left:' + ps.left + ';width:' + ps.width + ';height:' + ps.height + ';z-index:-1;pointer-events:none;background:url("assets/cutouts/shop-tennis-handshake-nobrand-cutout.webp") ' + ps.backgroundPosition.split(',').pop() + '/' + ps.backgroundSize.split(',').pop() + ' no-repeat;transform-origin:' + ps.transformOrigin + ';animation:rcxTennisFwd 30s ease-out .5s both,rcxTennisOn 6s ease-in-out 1.5s both;'; }
   }
   setInterval(run, 1200); run();
+})();
+
+/* Oct 15 (late): How To Use and The Mushrooms top photos start dark and come up every time the page opens */
+(function () {
+  function run() {
+    ['div[data-m="how-hero"]', 'section[data-m="mush-hero"]'].forEach(function (q) {
+      [].forEach.call(document.querySelectorAll(q), function (e) {
+        var vis = e.getBoundingClientRect().height > 0;
+        if (vis && !e.__hk) { e.__hk = 1; e.classList.add('rcx-hk0'); void e.offsetWidth; setTimeout(function () { e.classList.remove('rcx-hk0'); }, 500); }
+        if (!vis) e.__hk = 0;
+      });
+    });
+  }
+  setInterval(run, 300); run();
 })();
