@@ -227,7 +227,8 @@
     bar.innerHTML = '<button type="button" aria-label="Previous">&#8249;</button><span>CLICK FOR MORE</span><button type="button" aria-label="Next">&#8250;</button>';
     var bs = bar.querySelectorAll('button');
     function go(d) {
-      var k = row.children[0], step = k ? k.getBoundingClientRect().width + 18 : row.clientWidth;
+      // one click moves a whole page of boxes (all four tins to the next four), not one box
+      var k = row.children[0], kw = k ? k.getBoundingClientRect().width + 18 : row.clientWidth, step = Math.max(1, Math.floor((row.clientWidth + 18) / kw)) * kw;
       var max = row.scrollWidth - row.clientWidth;
       if (d > 0 && row.scrollLeft >= max - 4) row.scrollTo({ left: 0, behavior: 'smooth' });
       else if (d < 0 && row.scrollLeft <= 4) row.scrollTo({ left: max, behavior: 'smooth' });

@@ -82,3 +82,125 @@
   }
   setInterval(run, 1000); run();
 })();
+
+/* Oct 15 (late): desktop photo framing that has to be set inline, because other scripts write these boxes inline.
+   Home: the Clean No Mess cards and the Cordyceps four (same darkness, slowly moving forward).
+   Receipts: File 01 kettle and File 02 tent. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45) 35%,rgba(0,0,0,.7) 100%)';
+  function urlOf(e) { var m = getComputedStyle(e).backgroundImage.match(/url\([^)]*\)/g); return m ? m[m.length - 1] : null; }
+  function set(e, img, sz, pos) {
+    var key = img + '|' + sz + '|' + pos; if (e.__rcxSet === key) return; e.__rcxSet = key;
+    e.style.setProperty('background-image', img, 'important');
+    e.style.setProperty('background-size', sz, 'important'); e.style.setProperty('background-position', pos, 'important');
+    e.style.setProperty('background-repeat', 'no-repeat', 'important');
+    var l = sz.split(','), p = pos.split(','); e.style.setProperty('--fsz', l[l.length - 1].trim()); e.style.setProperty('--fps', p[p.length - 1].trim());
+  }
+  function forward(e) {
+    // one slow push in, using pixel sizes so it can animate (cover can't)
+    if (e.__fwd || e.hasAttribute('data-lift-bg') || e.classList.contains('mx-lab')) return; var u = urlOf(e); if (!u) return; e.__fwd = 1;
+    var im = new Image(); im.onload = function () {
+      var r = e.getBoundingClientRect(), k = Math.max(r.width / im.naturalWidth, r.height / im.naturalHeight), w = Math.ceil(im.naturalWidth * k), h = Math.ceil(im.naturalHeight * k);
+      var cs = getComputedStyle(e), ps = cs.backgroundPosition.split(','), pos = ps[ps.length - 1].trim();
+      set(e, G + ',' + u, '100% 100%,' + w + 'px ' + h + 'px', '0 0,' + pos);
+      e.style.setProperty('transition', 'background-size 9s cubic-bezier(.2,.6,.3,1)', 'important');
+      var io = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io.disconnect();
+        setTimeout(function () { e.__rcxSet = ''; set(e, G + ',' + u, '100% 100%,' + Math.ceil(w * 1.1) + 'px ' + Math.ceil(h * 1.1) + 'px', '0 0,' + pos); }, 600); }, { threshold: 0.3 });
+      io.observe(e);
+    }; im.src = u.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+  }
+  function run() {
+    if (!MQ.matches) return;
+    // Home, Clean No Mess
+    var home = document.querySelector('section[data-m="mx-rit"]');
+    if (home && home.offsetHeight) {
+      var a = home.querySelector('[data-show-mess]'); if (a && a.offsetHeight) set(a, G + ',url("assets/photo/mess-floor.jpg")', '100% 100%,auto 128%', '0 0,30% 85%');
+      var d = home.querySelector('[data-rcx-dogs]'); if (d && d.offsetHeight) set(d, G + ',url("assets/photo/own-dogs-car.jpg")', '100% 100%,auto 132%', '0 0,82% 100%');
+      var t = home.querySelector('[data-lift-bg*="a-rider-pausing"]');
+      if (t && t.offsetHeight) set(t, 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3) 40%,rgba(0,0,0,.75) 62%,#000 72%),url("assets/photo/a-rider-pausing-on-a-granite-ridge.webp")', '100% 100%,auto 70%', '0 0,100% 0');
+      [].forEach.call(home.querySelectorAll('.rit-card'), function (c) { if (c === a || c === d || c === t || !c.offsetHeight) return; var u = urlOf(c); if (u) set(c, G + ',' + u, getComputedStyle(c).backgroundSize, getComputedStyle(c).backgroundPosition); });
+    }
+    // Home, Cordyceps four
+    var q = document.querySelector('[data-rcx-cdq]');
+    if (q && q.offsetHeight) {
+      set(q, G + ',url("assets/photo/stock-outdoor-photo.jpg")', '100% 100%,cover', '0 0,12% 50%');
+      [].forEach.call(q.parentElement.children, function (c) { if (c !== q && c.offsetHeight) forward(c); });
+    }
+    // Receipts files
+    var f = document.querySelector('section[data-m="rc-files"]');
+    if (f && f.offsetHeight) {
+      [].forEach.call(f.querySelectorAll('.mx-box'), function (b) {
+        var tag = (b.querySelector('.mx-tag') || {}).textContent || '';
+        if (/FILE 01/.test(tag)) set(b, G + ',url("assets/photo/coffee-made-at-camp.jpg")', '100% 100%,auto 125%', '0 0,24% 82%');
+        if (/FILE 02/.test(tag)) set(b, G + ',url("assets/photo/tent-dock-lake.jpg")', '100% 100%,auto 130%', '0 0,50% 95%');
+      });
+    }
+  }
+  setInterval(run, 1000); run();
+})();
+
+/* Oct 15 (late): desktop boxes found by their heading, given one real photo each (inline, so no page rule can turn them
+   back into a flat tan or purple box). */
+(function () {
+  var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
+  var MAP = {
+    "Lion's Mane": [[/^HOW IT'S MADE/, 'lm-grandma-girl-puzzle.jpg', 'cover', 'center 35%'], [/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'],
+      [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'cover', 'center 30%'], [/^THE OTHER TWO/, 'lm-grandpa-football-park.jpg', 'cover', 'center 45%']],
+    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, null, 'auto 175%', '50% 92%'], [/^LAB REPORT/, 'own-river.jpg', 'cover', 'center 55%'],
+      [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
+      [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'cd-golf-coast.jpg', 'cover', 'center 60%'], [/^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 'cover', 'center 60%']],
+    'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'tt-airport-crowd.jpg', 'cover', 'center 40%'],
+      [/^THE LOT SHIPPING/, 'tt-feet-in-line.jpg', 'cover', 'center 60%']]
+  };
+  function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
+  function boxFor(root, re) {
+    var els = root.querySelectorAll('h2,h3,h4,.mx-tag,.cb-tag,.lab-tag,span,p');
+    for (var i = 0; i < els.length; i++) {
+      var e = els[i], t = norm(e.textContent); if (t.length > 70 || !re.test(t) || !e.offsetHeight) continue;
+      for (var p = e, n = 0; p && p !== root && n < 7; p = p.parentElement, n++) { var c = getComputedStyle(p); if (parseFloat(c.borderTopWidth) > 1.5 && c.borderTopStyle !== 'none' && p.offsetWidth > 200) return p; }
+    }
+    return null;
+  }
+  function run() {
+    if (!MQ.matches) return;
+    // every mushroom page's pre-measured box sits on the powder mess
+    [].forEach.call(document.querySelectorAll('section.clean-band[data-cb="lions-mane"] .cb-in,section.clean-band[data-cb="cordyceps"] .cb-in,section.clean-band[data-cb="turkey-tail"] .cb-in'), function (b) {
+      if (!b.offsetHeight || (b.style.getPropertyValue('background-image') || '').indexOf('mess-floor') >= 0) return;
+      b.style.setProperty('background-image', 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.58)),url("assets/photo/mess-floor.jpg")', 'important');
+      b.style.setProperty('background-size', '100% 100%,cover', 'important'); b.style.setProperty('background-position', '0 0,center', 'important');
+      b.style.setProperty('background-repeat', 'no-repeat', 'important'); b.style.setProperty('background-color', '#000', 'important');
+      b.style.setProperty('border', '3px solid #D4A24A', 'important');
+    });
+    Object.keys(MAP).forEach(function (L) {
+      var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
+      MAP[L].forEach(function (m) {
+        var b = boxFor(root, m[0]); if (!b) return;
+        var u = m[1] ? 'url("assets/photo/' + m[1] + '")' : (b.__rcxU || ((getComputedStyle(b).backgroundImage.match(/url\([^)]*\)/g) || []).pop()));
+        if (!u) return; b.__rcxU = u;
+        var key = u + m[2] + m[3]; if (b.__boxKey === key && (b.style.getPropertyValue('background-image') || '').indexOf('url') >= 0) return; b.__boxKey = key;
+        b.style.setProperty('background-image', G + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
+        b.style.setProperty('background-position', '0 0,' + m[3], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
+        b.style.setProperty('background-color', '#000', 'important'); b.style.setProperty('--fsz', m[2]); b.style.setProperty('--fps', m[3]);
+        b.setAttribute('data-rcx-boxph', '');
+      });
+    });
+  }
+  setInterval(run, 1000); run();
+})();
+
+/* Oct 15 (late): Shop, desktop. The tennis players behind the products light up on their own: their cutout sits exactly
+   on the photo, moves with it, and glows on in color (no second copy). */
+(function () {
+  var MQ = matchMedia('(min-width:768px)');
+  function run() {
+    if (!MQ.matches) return;
+    var S = [].filter.call(document.querySelectorAll('[data-screen-label="Shop"]'), function (e) { return e.offsetHeight; })[0]; if (!S) return;
+    var sec = S.querySelectorAll(':scope > section')[1]; if (!sec) return;
+    var ps = getComputedStyle(sec, '::before'); if (!/shop-tennis-handshake/.test(ps.backgroundImage)) return;
+    var d = sec.querySelector(':scope > .rcx-tcut');
+    if (!d) { d = document.createElement('div'); d.className = 'rcx-tcut'; d.setAttribute('aria-hidden', 'true'); sec.insertBefore(d, sec.firstChild); }
+    var g = [ps.top, ps.left, ps.width, ps.height].join('|');
+    if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;top:' + ps.top + ';left:' + ps.left + ';width:' + ps.width + ';height:' + ps.height + ';z-index:-1;pointer-events:none;background:url("assets/cutouts/shop-tennis-handshake-nobrand-cutout.webp") ' + ps.backgroundPosition.split(',').pop() + '/' + ps.backgroundSize.split(',').pop() + ' no-repeat;transform-origin:' + ps.transformOrigin + ';animation:rcxTennisFwd 30s ease-out .5s both,rcxTennisOn 6s ease-in-out 1.5s both;'; }
+  }
+  setInterval(run, 1200); run();
+})();
