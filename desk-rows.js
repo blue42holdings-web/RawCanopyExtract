@@ -163,9 +163,10 @@
 (function () {
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
   var MAP = {
-    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'cover', 'center 30%'],
-      [/^THE OTHER TWO/, 'lm-grandma-puzzle.jpg', 'cover', 'center 40%'], [/^THE LOT SHIPPING/, 'lm-grandpa-football-park.jpg', 'cover', 'center 35%'],
-      [/^LAB REPORT . HUMAN TRIAL/, 'elder-camp-chair-mug.jpg', 'cover', 'center 35%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-kickoff.jpg', 'auto 128%', '62% 100%'],
+      [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'cover', 'center 50%'],
+      [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
+      [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
     'Cordyceps': [[/^WHAT'S BEEN STUDIED/, null, 'auto 175%', '50% 92%'], [/^LAB REPORT/, 'own-river.jpg', 'cover', 'center 55%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW TO TAKE IT/, 'cd-golf-coast.jpg', 'cover', 'center 60%'], [/^THE LOT SHIPPING/, 'cd-golf-coast.jpg', 'cover', 'center 60%']],
@@ -198,7 +199,7 @@
         var u = m[1] ? 'url("assets/photo/' + m[1] + '")' : (b.__rcxU || ((getComputedStyle(b).backgroundImage.match(/url\([^)]*\)/g) || []).pop()));
         if (!u) return; b.__rcxU = u;
         var key = u + m[2] + m[3]; if (b.__boxKey === key && (b.style.getPropertyValue('background-image') || '').indexOf('url') >= 0) return; b.__boxKey = key;
-        b.style.setProperty('background-image', G + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
+        b.style.setProperty('background-image', (/kickoff/.test(u) ? 'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.72))' : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
         b.style.setProperty('background-position', '0 0,' + m[3], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important'); b.style.setProperty('--fsz', m[2]); b.style.setProperty('--fps', m[3]);
         b.setAttribute('data-rcx-boxph', '');
@@ -211,7 +212,7 @@
       PAIRS[L].forEach(function (pr) {
         var a = boxFor(root, pr[0]), b = boxFor(root, pr[1]); if (!a || !b) return;
         var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect(), W = Math.max(ra.width, rb.width), H = rb.bottom - ra.top;
-        var k = Math.max(W / pr[3], H / pr[4]), iw = Math.ceil(pr[3] * k), ih = Math.ceil(pr[4] * k), x = Math.round((W - iw) / 2), y0 = Math.round((H - ih) / 2);
+        var k = Math.max(W / pr[3], H / pr[4]), iw = Math.ceil(pr[3] * k), ih = Math.ceil(pr[4] * k), x = Math.round((W - iw) / 2), y0 = /puzzle/.test(pr[2]) ? Math.round(H - ih) : Math.round((H - ih) / 2);
         [[a, y0], [b, y0 - (rb.top - ra.top)]].forEach(function (z) {
           var v = 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
           if (z[0].__pk === key && z[0].style.getPropertyValue('background-image')) return; z[0].__pk = key; z[0].setAttribute('data-rcx-boxph', '');
