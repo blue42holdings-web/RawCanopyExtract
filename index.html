@@ -6245,15 +6245,22 @@ html body div[data-screen-label="About"] section.rcx-abseal.rcx-abseal h2 span,h
 html body p:has(> span[style*="D4A24A"]):is([data-m="home-para"] p,[style*="text-align:justify"]),html body [data-m="home-para"] p,html body [data-m="home-para"] p *,html body p[data-m="home-para-d"],html body p[data-m="home-para-d"] *{text-shadow:0 0 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.9),0 0 16px rgba(0,0,0,.75),0 1px 2px #000 !important}</style>
 <style id="para-even-oct16">html body [data-m="home-para"][data-m="home-para"] p{text-wrap:balance !important;text-align:center !important}@media (max-width:767px){html body [data-m="home-para"][data-m="home-para"] p{font-size:18px !important;text-wrap:wrap !important;line-height:1.5 !important}}</style>
 <style id="about-face-oct16">@media (max-width:767px){html body div[data-screen-label="About"] .ab-grid .ab-box:first-child{min-height:300px !important}}</style>
-<style id="para-band-oct16">/* Oct 16 (Scott): a soft dark band sits under each line of words only, not the whole photo */
-html body span.para-hl.para-hl{color:#FFFFFF !important;background:rgba(0,0,0,.34);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:2px 8px;border-radius:4px;line-height:1.75}
+<style id="para-band-oct16">/* Oct 16 (Scott): one soft blurred see-through panel behind the whole paragraph, no stripes between lines */
+html body span.para-hl.para-hl{color:#FFFFFF !important;background:none !important;padding:0 !important;line-height:1.75}
+html body p:has(> span.para-hl), html body p.sq-para.sq-para{background:rgba(0,0,0,.34) !important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:10px;padding:18px 22px !important}
+html body [data-m="home-para"] p.sq-para > span.sq-l.sq-l.sq-l{background:none !important;padding:0 !important}
 </style>
 <style id="sq-para-oct16">/* Oct 16 (Scott): phone paragraph back to a regular flowing paragraph, words on a see-through band */
 @media (max-width:767px){
 html body [data-m="home-para"] p.sq-para{display:block !important;max-width:none !important;margin:0 !important;padding:0 !important;text-wrap:pretty !important;font-size:19px !important;line-height:1.6 !important;color:#fff !important;text-align:center !important}
 html body [data-m="home-para"] p.sq-para > span.sq-l.sq-l{display:inline;white-space:normal;background:rgba(0,0,0,.34);padding:2px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:2px 0;color:#FFFFFF !important;text-shadow:0 0 3px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.8) !important}
 html body [data-m="home-para"] p.sq-para > span.sq-l + span.sq-l::before{content:" "}
-}</style>
+}
+/* all widths: each line piece is plain white text with a space between pieces (gold words keep their own gold) */
+html body p.sq-para.sq-para > span.sq-l.sq-l.sq-l{display:inline !important;white-space:normal !important;color:#FFFFFF !important;font-weight:500 !important;background:none !important;padding:0 !important}
+html body p.sq-para > span.sq-l + span.sq-l::before{content:" "}
+@media (min-width:768px){html body p.sq-para.sq-para.sq-para{max-width:1000px !important;margin:0 auto !important;text-align:center !important;color:#fff !important}}
+</style>
 <style id="about-top-sky-oct16">
 /* Oct 16 (Scott): his pink sky over the pines sits in the black around the top box of About, seen at the sides */
 html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"][data-screen-label="About"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19):not(.y20):not(.y21):not(.y22):not(.y23):not(.y24){background:#000 !important;position:relative !important;isolation:isolate !important}
