@@ -338,13 +338,35 @@
     if (S) {
       var secs = S.querySelectorAll(':scope > section'), pk = secs[1], cbs = S.querySelector('section.clean-band');
       if (pk && cbs) {
-        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 160;
+        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 50;
         var d = S.querySelector(':scope > .rcx-tennis-run');
         if (!d) { d = document.createElement('div'); d.className = 'rcx-tennis-run'; d.setAttribute('aria-hidden', 'true'); S.appendChild(d); }
         var sTop = S.getBoundingClientRect().top + scrollY, g = Math.round(top - sTop) + '|' + Math.round(bot - top);
-        if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;left:0;right:0;top:' + Math.round(top - sTop) + 'px;height:' + Math.round(bot - top) + 'px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.4) 70%,rgba(0,0,0,0) 100%),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat;-webkit-mask-image:linear-gradient(#000 calc(100% - 160px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 160px),transparent 100%);'; }
+        if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;left:0;right:0;top:' + Math.round(top - sTop) + 'px;height:' + Math.round(bot - top) + 'px;z-index:-1;pointer-events:none;background:url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat;-webkit-mask-image:linear-gradient(#000 calc(100% - 50px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 50px),transparent 100%);'; }
       }
     }
   }
   setInterval(run, 1000); run();
+})();
+
+/* Oct 15 (late): Shop top box, desktop. One climber, larger, filling the box (the second copy is gone), lifting on as a cutout. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function run() {
+    if (!MQ.matches) return;
+    var s = [].filter.call(document.querySelectorAll('div[data-screen-label="Shop"] > section'), function (e) { return e.offsetHeight; })[0]; if (!s) return;
+    var W = s.offsetWidth, H = s.offsetHeight, iw = Math.round(W * 1.25), ih = Math.round(iw / 1.5), x = Math.round((W - iw) * 0.3), y = Math.round((H - ih) * 0.5);
+    var sz = '100% 100%,' + iw + 'px ' + ih + 'px', ps = '0 0,' + x + 'px ' + y + 'px';
+    if (s.__cl !== sz + ps) {
+      s.__cl = sz + ps;
+      s.style.setProperty('background-image', 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.5)),url("assets/photo/coffee-asset.webp")', 'important');
+      s.style.setProperty('background-size', sz, 'important'); s.style.setProperty('background-position', ps, 'important'); s.style.setProperty('background-repeat', 'no-repeat', 'important');
+    }
+    if (!s.hasAttribute('data-lift-bg')) {
+      s.setAttribute('data-lift-bg', 'assets/cutouts/coffee-asset-cutout.webp'); s.setAttribute('data-lift-desktop', ''); s.setAttribute('data-lift-nomask', '');
+      s.setAttribute('data-lift-dim', 'brightness(1.12) saturate(1.1)'); s.setAttribute('data-lift-scale', '1.05'); s.setAttribute('data-lift-origin', '0.82 0.5');
+      s.setAttribute('data-lift-dur', '8000'); s.setAttribute('data-lift-delay', '1200'); s.setAttribute('data-lift-d-delay', '1200'); s.setAttribute('data-lift-fade', '2000');
+    }
+  }
+  setInterval(run, 700); run();
 })();

@@ -4853,10 +4853,10 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=51"></script>
+<script src="site-extras.js?v=52"></script>
 <script src="nav-extras.js?v=31"></script>
 <script src="mushroom-reveal.js?v=1"></script>
-<script src="desk-rows.js?v=17"></script>
+<script src="desk-rows.js?v=20"></script>
 <script src="phone-swipe.js?v=13"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -6052,7 +6052,7 @@ html body div[data-screen-label="About"] section[data-m="about-compost"] + secti
 <style>html body [data-m="home-para"] span[data-plain][data-plain],html body .rcx-box span[data-plain]{color:#FFFFFF !important;font-weight:inherit !important}</style>
 <style>@media (min-width:768px){html body .home-bgwrap>.mx-group.mx-group.mx-group{background:linear-gradient(#000 0,rgba(0,0,0,.45) 140px,rgba(0,0,0,.62) 420px,rgba(0,0,0,.62) 100%) !important}}</style>
 <style id="home-hero-oct15">@media (min-width:768px){
-html body section[data-m="hero"][data-m="hero"][data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4){width:calc(100% - 16px) !important;margin:8px auto 14px !important;border:3px solid #D4A24A !important;border-radius:26px !important;overflow:hidden !important;box-sizing:border-box !important;box-shadow:0 14px 40px rgba(0,0,0,.6);background-image:radial-gradient(30% 34% at 50% 30%,rgba(0,0,0,.78) 0%,rgba(0,0,0,.62) 55%,rgba(0,0,0,0) 100%),linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.22)),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:center,center,center 60% !important}
+html body section[data-m="hero"][data-m="hero"][data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4){width:calc(100% - 16px) !important;margin:8px auto 14px !important;border:3px solid #D4A24A !important;border-radius:26px !important;overflow:hidden !important;box-sizing:border-box !important;box-shadow:0 14px 40px rgba(0,0,0,.6);background-image:radial-gradient(24% 40% at 50% 36%,rgba(0,0,0,.95) 0%,rgba(0,0,0,.9) 50%,rgba(0,0,0,.55) 80%,rgba(0,0,0,0) 100%),linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.38)),url('assets/photo/hero-stove-pour-ridge-v10.jpg') !important;background-size:100% 100%,100% 100%,cover !important;background-position:center,center,center 60% !important}
 html body div[data-screen-label="Home — hero"],html body section[data-m="hero"] + *{border-top:0 !important}
 html body .home-bgwrap{border-top:14px solid #000 !important}}</style>
 <style id="footer-field-oct15">@media (min-width:768px){html body footer{background:linear-gradient(rgba(6,6,5,.35) 0,rgba(6,6,5,.35) 150px,#060605 200px),url("assets/pattern-field-bold.svg") center top/300px auto repeat-x,#060605 !important}}html body footer div[style*="pattern-field-bold"]{-webkit-mask-image:none !important;mask-image:none !important}</style>
@@ -6076,6 +6076,18 @@ html body div[data-screen-label] section.clean-band[data-cb="shop"][data-cb="sho
 html body .rcx-arrbar.rcx-arrbar.rcx-arrbar button{width:42px !important;height:42px !important;font-size:0 !important;padding:0 !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;position:relative}
 html body .rcx-arrbar.rcx-arrbar.rcx-arrbar button::before{content:"";width:11px;height:11px;border-top:4px solid #111;border-right:4px solid #111;transform:translateX(-3.5px) rotate(45deg)}
 html body .rcx-arrbar.rcx-arrbar.rcx-arrbar button:first-child::before{transform:translateX(3.5px) rotate(-135deg)}
+}</style>
+<style id="shop-final-oct15">@media (min-width:768px){
+html body [data-screen-label="Shop"] [data-red-metal]{opacity:.5}
+html body [data-screen-label="Shop"]>section[data-m="shop-research"][data-m="shop-research"][data-m="shop-research"][data-m="shop-research"]::before{display:none !important}
+html body [data-screen-label="Shop"]>section[data-m="shop-research"],html body [data-screen-label="Shop"]>section[data-m="soon-sec"],html body [data-screen-label="Shop"]>section[data-m="pack-sec"]{background-color:rgb(92,19,25) !important}
+html body [data-screen-label="Shop"]>section[data-m="badges-sec"][data-m="badges-sec"][data-m="badges-sec"]{padding-bottom:0 !important}
+html body div[data-screen-label] section.clean-band[data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"]{-webkit-mask-image:linear-gradient(transparent 0,#000 50px) !important;mask-image:linear-gradient(transparent 0,#000 50px) !important;padding-top:70px !important}
+@keyframes rcxTennisLight{from{filter:brightness(.45)}to{filter:brightness(.85)}}
+html body [data-screen-label="Shop"] .rcx-tennis-run{animation:rcxTennisFwd 30s ease-out .5s both,rcxTennisLight 7s ease-in-out .8s both !important}
+html body [data-screen-label="Shop"]:has(>section:nth-of-type(2):hover)>.rcx-tennis-run{filter:brightness(1.15) saturate(1.1) !important}
+}
+html body div[data-screen-label="Shop"][data-screen-label="Shop"]>section:first-of-type:not(.q0):not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19)::before,html body div[data-screen-label="Shop"][data-screen-label="Shop"]>section:first-of-type:not(.q0):not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19)::after{display:none !important}
 }</style>
 </body>
 </html>
