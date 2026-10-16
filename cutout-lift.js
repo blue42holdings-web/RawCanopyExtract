@@ -7,6 +7,7 @@ var MAP={"tt-airport-security-line.jpg":"assets/cutouts/tt-airport-security-line
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches, DUR=1200, EASE='cubic-bezier(.45,0,.55,1)';
 var SOFT={'stillness-in-the-forest.jpg':3,'kettle-tent-mist.jpg':3,'lm-how-made-desk.jpg':3,'measured-hiker-sunset-flip.jpg':3,'tt-right-form-log.webp':3,'lab-extraction-rig.jpg':3,'lions-mane.jpg':3,'tent-mug-zoom.jpg':40,'receipts-tennis-noblog.jpg':3};
 var DIM={'tt-airport-security-line.jpg':'brightness(1.2) saturate(1.45) drop-shadow(0 0 6px rgba(255,214,150,.55)) drop-shadow(0 0 16px rgba(255,200,120,.35))','tt-baggage-claim-crowd.jpg':'brightness(1.2) saturate(1.45) drop-shadow(0 0 6px rgba(255,214,150,.55)) drop-shadow(0 0 16px rgba(255,200,120,.35))','tt-train-crowd.jpg':'brightness(1.2) saturate(1.45) drop-shadow(0 0 6px rgba(255,214,150,.55)) drop-shadow(0 0 16px rgba(255,200,120,.35))','tt-queue-feet.jpg':'brightness(1.2) saturate(1.45) drop-shadow(0 0 6px rgba(255,214,150,.55)) drop-shadow(0 0 16px rgba(255,200,120,.35))','cd-tennis-gray.jpg':'brightness(.7)','receipts-tennis-noblog.jpg':'brightness(.3)','receipts-tennis-noblog.png':'brightness(.3)','lab-extraction-rig.jpg':'brightness(.3)','lab-extraction-rig.png':'brightness(.3)','tt-autumn-fans.jpg':'brightness(.45)','tt-autumn-fans.png':'brightness(.45)'};
+if(HOVER){ delete MAP['receipts-tennis-noblog.jpg']; }   /* Oct 15: the Receipts top already lifts on its own; a hover copy spilled past the frame */
 if(!HOVER){ MAP['why-desk-coffee.jpg']='assets/cutouts/why-desk-coffee-cutout-v2.png'; SOFT['why-desk-coffee.jpg']=3; DIM['why-desk-coffee.jpg']='brightness(.55)'; }
 var LIFT=RM?'none':'scale(1.02)', BLUR='blur(7px)', FEATHER=24;
 var TIGHT={'tt-airport-security-line.jpg':1,'tt-baggage-claim-crowd.jpg':1,'tt-train-crowd.jpg':1,'tt-queue-feet.jpg':1,'kettle-tripod-camp.jpg':1,'map-mug-camera.jpg':1,'cd-tennis-gray.jpg':1,'dodge03-diver.jpg':1,'a-kettle-over-the-fire.jpg':1,'two-figures-stretching-against-a-sunset-sea.jpg':1,'coconut-palm-up.webp':1}, TBLUR='blur(3px)', TFEATHER=6;
@@ -171,7 +172,8 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     var cs=getComputedStyle(el), r=el.getBoundingClientRect(), sz=splitList(cs.backgroundSize), ps=splitList(cs.backgroundPosition), M='linear-gradient(to top,transparent 0,#000 14%)';
     if(el.hasAttribute('data-lift-nomask')) M='none';
     var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:'+M+';mask-image:'+M+';');
-    var blur=mk('position:absolute;inset:0;transition:'+CT('backdrop-filter')+','+CT('-webkit-backdrop-filter')+';');
+    /* Oct 15 (late): a soft dark veil comes up behind the lifted cutout, so the photo underneath recedes and never reads as a second copy */
+    var blur=mk('position:absolute;inset:0;background:rgba(0,0,0,'+((PH||!el.classList.contains('mx-box'))?'0':(el.getAttribute('data-lift-veil')||'.34'))+');opacity:0;transition:'+CT('opacity')+';');
     var LB=el.getAttribute('data-lift-scale'), LBT=LB?'scale('+LB+')':LIFT;
     var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';filter:'+(el.getAttribute('data-lift-dim')||'none')+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+(FD?'opacity '+FD+'ms ease-out '+DE+'ms':CT('opacity'))+','+CT('transform')+';');
     box.appendChild(blur); box.appendChild(cut); el.insertBefore(box,el.firstChild);
@@ -180,7 +182,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     var ready=feathered(el.getAttribute('data-lift-bg'),r.width,r.height,SOFT_BG).then(function(u){ cut.style.backgroundImage='url("'+u+'")'; });
     function resync(){ var c2=getComputedStyle(el), s2=splitList(c2.backgroundSize), p2=splitList(c2.backgroundPosition); cut.style.backgroundSize=s2[s2.length-1]; cut.style.backgroundPosition=p2[p2.length-1]; }   /* Oct 12: match the photo exactly at play time, so the cutout never doubles */
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; io.disconnect(); resync();
-      ready.then(function(){ requestAnimationFrame(function(){ resync(); requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LBT; if(!NB){   } }); }); }); }); },{rootMargin:'-38% 0px -38% 0px',threshold:0});
+      ready.then(function(){ requestAnimationFrame(function(){ resync(); requestAnimationFrame(function(){ cut.style.opacity='1'; cut.style.transform=LBT; blur.style.opacity='1'; if(!NB){   } }); }); }); }); },{rootMargin:'-38% 0px -38% 0px',threshold:0});
     io.observe(el);
   }
   var SOFT_BG=3;
