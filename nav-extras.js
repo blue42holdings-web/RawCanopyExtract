@@ -509,7 +509,7 @@
     var cs = parseFloat(shop.style.getPropertyValue('--nx')) || 0, cm = parseFloat(menu.style.getPropertyValue('--nx')) || 0;
     var M = ink(mush), S = ink(shop), N = ink(menu), C = ink(cart);
     var sw = S.right - S.left, nw = N.right - N.left;
-    var gap = (C.left - M.right - sw - nw) / 3;
+    var gap = (C.left - M.right - sw - nw) / 5;   // Oct 15 (late): the menu sits further from the cart (that last space is three times the others) so a thumb doesn't hit the cart
     var sx = (M.right + gap) - (S.left - cs), nx = (M.right + gap + sw + gap) - (N.left - cm);
     if (Math.abs(sx - cs) > 0.3) shop.style.setProperty('--nx', sx.toFixed(2) + 'px');
     if (Math.abs(nx - cm) > 0.3) menu.style.setProperty('--nx', nx.toFixed(2) + 'px');

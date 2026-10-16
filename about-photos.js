@@ -1,8 +1,8 @@
 /* Oct 15 (late): About page photos, phone and desktop. Only Scott's own photos and his story; one dog photo;
    no divers, no beach girl, no reef, no highway. Set inline so no older rule can bring the old photos back. */
 (function () {
-  var BOX = ['about-scott-face.jpg', 'about-kayaks.jpg', 'about-dogs-trio.jpg', 'own-loaded-hatch.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
-  var POS = ['center 30%', 'center', 'center 40%', 'center', 'center 60%', 'center'];
+  var BOX = ['own-dogs-window.jpg', 'about-kayaks.jpg', 'about-dogs-trio.jpg', 'own-loaded-hatch.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
+  var POS = ['center 45%', 'center', 'center 40%', 'center', 'center 60%', 'center'];
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -18,7 +18,7 @@
     [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], .5); });
     var sh = A.querySelector('section[data-m="shasta"]'); if (sh) photo(sh, 'own-backyard-valley.jpg', 'center 55%', .45);
     var br = A.querySelector('section[data-m="about-brand"]'); if (br) photo(br, 'own-yard-hill.jpg', 'center 45%', .45);
-    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-mountain-sky.jpg', 'center 40%', .55);
+    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 25%', .4);   // Scott, the wild man in his backyard, behind About The Brand
     var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'own-yard-dirt.jpg', 'center', .55);
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
