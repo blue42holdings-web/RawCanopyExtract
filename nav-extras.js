@@ -348,9 +348,13 @@
       if (!groups.has(g)) groups.set(g, []); groups.get(g).push(b);
     });
     var pi = 0;
-    groups.forEach(function (list) {
+    groups.forEach(function (list, g) {
       var c = 0, m = (pi++) * 3, l = 0;
-      list.forEach(function (b) {
+      // Oct 15 (late, Scott): Shop tells a trip story left to right: the train, then airport security, then the crowd boarding
+      var SHOPSTORY = ['tr-bullet-tunnel.jpg', 'tt-airport-security-line.jpg', 'tt-airport-crowd.jpg'];
+      var isShop = g && g.getAttribute && g.getAttribute('data-screen-label') === 'Shop';
+      list.forEach(function (b, bi) {
+        if (isShop && bi < 3) { var im2 = SHOPSTORY[bi]; if (b.__lab !== im2) { b.__lab = im2; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + im2 + '") center/cover no-repeat', 'important'); } return; }
         var t = ((b.querySelector('.lab-title') || {}).textContent || '').toUpperCase();
         var img;
         if (/TURKEY|TRAMETES|POPULATION/.test(t)) img = CROWD[c++ % CROWD.length];

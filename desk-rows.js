@@ -370,3 +370,21 @@
   }
   setInterval(run, 700); run();
 })();
+
+/* Oct 15 (late, Scott): Receipts, desktop. The receipt reads like a real sheet of paper: room above the first species and
+   more room between lines, so it runs long like a receipt. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function run() {
+    if (!MQ.matches) return;
+    var R = [].filter.call(document.querySelectorAll('div[data-screen-label="Receipts"]'), function (e) { return e.offsetHeight; })[0]; if (!R) return;
+    var papers = [].filter.call(R.querySelectorAll('div'), function (d) { return d.offsetWidth > 900 && getComputedStyle(d).backgroundColor === 'rgb(244, 241, 232)'; });
+    papers.forEach(function (d, i) {
+      if (d.__paper) return; d.__paper = 1;
+      if (i === 0) d.style.setProperty('padding-top', '110px', 'important');
+      d.style.setProperty('padding-bottom', '46px', 'important');
+      [].forEach.call(d.querySelectorAll('*'), function (k) { var lh = parseFloat(getComputedStyle(k).lineHeight); if (lh && k.children.length === 0) k.style.setProperty('line-height', Math.round(lh * 1.5) + 'px', 'important'); });
+    });
+  }
+  setInterval(run, 1200); run();
+})();
