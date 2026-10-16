@@ -277,7 +277,7 @@
     bg.style.cssText = 'position:absolute;inset:-14px;z-index:-1;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.62)),url("assets/photo/map-mug-camera.jpg") 50% 50%/cover no-repeat';
     var p = src.cloneNode(true);
     p.style.cssText = 'margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:30px;line-height:1.45;font-weight:500;color:#fff;text-wrap:balance;max-width:none;width:100%;text-align:center';
-    p.querySelectorAll('span').forEach(function (s) { s.style.color = '#D4A24A'; s.style.fontWeight = '600'; });
+    p.querySelectorAll('span').forEach(function (s) { if (s.hasAttribute('data-plain')) { s.style.color = '#FFFFFF'; return; } s.style.color = '#D4A24A'; s.style.fontWeight = '600'; });
     box.style.setProperty('display', 'block', 'important');
     box.appendChild(bg); box.appendChild(p);
     grid.parentNode.insertBefore(box, grid);
