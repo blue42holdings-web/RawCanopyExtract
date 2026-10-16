@@ -33,7 +33,7 @@ TURKEY TAIL MUSHROOM for a stronger immune system→
 RAW CANOPY EXTRACT is an uncompromising new brand of organic, single-serving packets that you tear open and add to your favorite cup of coffee or tea. One ingredient in each. Nothing else. Made necessary by a supplement world full of healthy promises cut for profit.
 We call the published lab results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. Every tin carries a QR code. Scan it and you'll land on the page where you can look up your lot. For anyone who wants the full science, the complete lab certificate is there too.
   LINK: "look it up on our Receipts page" -> opens the "Receipts" page (on this site)
-We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail, each scientifically extracted to yield the best results for the human body. To prove it, each lot is tested by an independent lab, and we publish the results.
+We're launching with three everyday organic mushroom powders: lion's mane, cordyceps and turkey tail, each scientifically extracted so your body can absorb it. To prove it, each lot is tested by an independent lab, and we publish the results.
 Not a coffee or tea drinker? Hot water or a smoothie works just as well.One 2 gram serving per packet, small enough for your pocket or purse and made for life on the go.Elevate your favorite cup with the power of botanical science.
 [DESKTOP ONLY — hidden on phones]
   We call the published lab results the receipt. It's simple proof of what's actually in your packet: how much beta-glucan it has, the compound labs use to measure real mushroom content, and that it passed checks for contaminants. Find the lot number on the side of your recyclable steel tin and look it up on our Receipts page to see the results for the exact batch in your hands. Every tin carries a QR code. Scan it and you'll land on the page where you can look up your lot. For anyone who wants the full science, the complete lab certificate is there too.
@@ -74,7 +74,7 @@ BUTTON: "SHOP" -> opens the "Shop" page
     IMAGE: assets/photo/tins/rcx-front-cordyceps.jpg?v=9  | alt text: "Cordyceps steel tin front"
   BUTTON: "BUY · $39.99"
   HEADING: Cordyceps
-  Cordyceps militaris, two hot water extracts, fruiting body.
+  Cordyceps militaris, two hot water extracts, fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is.
   20 PACKETS · 2 GRAM SERVINGS
     IMAGE: assets/photo/tins/rcx-front-turkey-tail.jpg?v=9  | alt text: "Turkey Tail steel tin front"
   BUTTON: "BUY · $39.99"
@@ -144,7 +144,7 @@ BUTTON: "ADD TO CART"
   IMAGE: assets/photo/tins/rcx-front-cordyceps-packet.jpg?v=6  | alt text: "Cordyceps packet front"
 HEADING: Cordyceps
 20 PACKETS · 2 GRAM SERVINGS
-Cordyceps militaris, two hot water extracts, fruiting body. Grown, not gathered. Recyclable steel tin.
+Cordyceps militaris, two hot water extracts, fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is. Grown, not gathered. Recyclable steel tin.
 LOT [live: currentCd.lot] · [live: currentCd.mg] MG BETA-GLUCAN / PACKET
 $39.99
 BUTTON: "ONE-TIME"
@@ -504,7 +504,7 @@ A fruiting body is the mushroom itself. Mycelium is the root-like network it gro
   LINK: "turkey tail" -> opens the "Turkey Tail" page (on this site)
   BACKGROUND PHOTO: assets/photo/lm-crate.jpg
 HEADING: HOW IT'S MADE
-For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Hot water pulls out the beta-glucans, the compounds that make up the mushroom's cell walls. A second pass with alcohol pulls out what water can't. Lion's mane is 80 percent hot water extract and 20 percent alcohol extract, from the fruiting body. One ingredient. No grain, no filler. Forest to cup.
+For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Hot water pulls out the beta-glucans, the compounds that make up the mushroom's cell walls. A second pass with alcohol pulls out what water can't. Lion's mane is 80 percent hot water extract and 20 percent alcohol extract, from the fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is. One ingredient. No grain, no filler. Forest to cup.
   BACKGROUND PHOTO: assets/photo/lm-how-made-desk.jpg
 HEADING: WHAT'S BEEN STUDIED
 Supports focus for the challenge ahead.*
@@ -583,7 +583,7 @@ A fruiting body is the mushroom itself. Mycelium is the root-like network it gro
   LINK: "turkey tail" -> opens the "Turkey Tail" page (on this site)
   BACKGROUND PHOTO: assets/photo/cd-studied-clubs.webp
 HEADING: HOW IT'S MADE
-For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Cordyceps gets two hot water extracts and no alcohol step at all. Hot water is what pulls the beta-glucans out of the cell walls, and a second pass takes what the first left behind: two hot water extracts, fruiting body. One ingredient. No grain, no filler. Forest to cup.
+For lion's mane and cordyceps, the research points to the fruiting body, the part of the mushroom you'd commonly recognize, as the source of the best extract. So that's what we use. Cordyceps gets two hot water extracts and no alcohol step at all. Hot water is what pulls the beta-glucans out of the cell walls, and a second pass takes what the first left behind: two hot water extracts, fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is. One ingredient. No grain, no filler. Forest to cup.
   BACKGROUND PHOTO: assets/photo/cd-stadium-sunset.webp
 HEADING: WHAT'S BEEN STUDIED
 Supports energy and endurance when the day runs long.*
@@ -665,7 +665,7 @@ Turkey tail is the one mushroom in our line we don't use as a fruiting body, and
   LINK: "made from cultured mycelium" -> opens the "Receipts" page (on this site)
   BACKGROUND PHOTO: assets/photo/tt-autumn-fans.jpg
 HEADING: HOW IT'S MADE
-Turkey tail starts as cultured mycelium, not a harvested cap. It is extracted so that what goes into the packet is the part the research is about: the beta-glucans and the protein-bound polysaccharides, concentrated, with the woody bulk left behind. One species, one extract, 2 grams. One ingredient. No grain, no filler. Forest to cup.
+Turkey tail starts as cultured mycelium, not a harvested cap. It is extracted so that what goes into the packet is the part the research is about: the beta-glucans and the protein-bound polysaccharides, concentrated, with the woody bulk left behind. One species, one extract, 2 grams. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is. One ingredient. No grain, no filler. Forest to cup.
   BACKGROUND PHOTO: assets/photo/tt-plane-cabin.webp
 HEADING: WHAT'S BEEN STUDIED
 Supports a healthy immune system.*Supports healthy digestion and a balanced gut microbiome.*
