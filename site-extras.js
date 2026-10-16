@@ -146,7 +146,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     });
     // any black clickable box or button, phone and desktop
     document.querySelectorAll('main button, main a, main label, main [role="button"], main [role="link"], main [onclick]').forEach(function (b) {
-      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"],.mx-tabs,.shoptg-bar')) return;   // two-way switches style themselves
+      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"],.mx-tabs,.shoptg-bar') || b.classList.contains('mx-press')) return;   // magazine cards show their own blurred cover   // two-way switches style themselves
       var r = b.getBoundingClientRect(); if (r.width < 30 || r.height < 26) return;
       var cs = getComputedStyle(b);
       if (cs.backgroundImage !== 'none') return;
@@ -260,8 +260,9 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   var PRESS = [['nationalgeographic','natgeo'],['aol.com/lifestyle','parade'],['aol.com/articles','ny-post'],['forbes.com','forbes'],['womanandhome','woman-home'],['esquireindia','esquire'],['thehealthy','readers-digest'],['countryandtownhouse','country-town'],['dailymaverick','daily-maverick'],['newsweek','newsweek'],['popsci','popular-science'],['bloomberg','bloomberg'],['vault.si.com','sports-illustrated'],['outsideonline','outside'],['mensfitness','mens-fitness'],['which.co.uk','which'],['time.com','time']];
   function run() {
     document.querySelectorAll('a.mx-press').forEach(function (b) {
-      if (b.__mr) return; b.__mr = 1;
-      var k = (n++ % 10) + 1, h = b.getAttribute('href') || '', img = 'assets/photo/mag-rack-' + k + '.jpg', sh = '.5),rgba(0,0,0,.62)';
+      if (b.__mr && /assets\/(press|photo)\//.test(b.style.getPropertyValue('background') || b.style.getPropertyValue('background-image'))) return;   // Oct 15 (night): repaint if a re-render wiped the cover
+      if (!b.__mrk) b.__mrk = (n++ % 10) + 1; b.__mr = 1;
+      var k = b.__mrk, h = b.getAttribute('href') || '', img = 'assets/photo/mag-rack-' + k + '.jpg', sh = '.5),rgba(0,0,0,.62)';
       // Oct 15: each box gets the painted, blurred feel of its own magazine's cover instead of a rack photo
       for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=3'; sh = '.42),rgba(0,0,0,.6)'; break; }
       b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + sh + '),url("' + img + '") center/cover no-repeat', 'important');
