@@ -3645,9 +3645,9 @@ class Component extends DCLogic {
         });
         this._away = true;
       }
-      this._rotT = setTimeout(step, 4000);
+      this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);   // Oct 16 (Scott): desktop holds each word three minutes
     };
-    this._rotT = setTimeout(step, 4000);
+    this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);
   };
 
   setHeroSeal = (n) => {
@@ -6196,6 +6196,8 @@ html body .home-bgwrap .mx-sec .mx-grid > .mx-box.mx-box.mx-box:not(.mx-press){b
 html body .home-bgwrap .mx-sec .mx-grid > .mx-box [data-new-dim]{display:none !important}
 /* Turkey Tail: the world is changing (transportation line) top left, support your immune system top right */
 html body .home-bgwrap [data-m="mx-tt"] .mx-grid > .mx-box:nth-child(2){order:-1}
+/* Oct 16: as wide as the photo allows; the full height shows so the packets sit clear in the lower right */
+html body section[data-m="hero"][data-m="hero"][data-m="hero"][data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12){background-image:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.38)),radial-gradient(30% 30% at 50% 30%,rgba(0,0,0,.88) 0%,rgba(0,0,0,.75) 55%,rgba(0,0,0,0) 100%),url("assets/photo/hero-stove-pour-ridge-wide.jpg") !important;background-size:100% 100%,100% 100%,auto 100% !important;background-position:center,center,62% 100% !important}
 }</style>
 <style id="rc-d-oct15n">@media (min-width:900px){
 /* Oct 15 (night), Scott: How To Read A Lab Report cards are the same size as the Files and Research cards, and all come up together */
