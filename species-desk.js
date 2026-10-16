@@ -40,7 +40,7 @@
     what.style.setProperty('box-shadow', 'none', 'important');
     if (box) {
       box.classList.add('sd-what');
-      if (box.hasAttribute('data-rcx-boxph')) {} else if (!box.parentElement.classList.contains('rcx-row2')) box.style.setProperty('background', 'transparent', 'important'); else box.style.removeProperty('background');   // Oct 15: in the side by side row it keeps its own photo
+      if (box.hasAttribute('data-rcx-boxph')) {} else if (!box.parentElement.classList.contains('rcx-row2')) box.style.setProperty('background', 'transparent', 'important'); else {}   // Oct 15 (night): in the side by side row desk-rows.js owns the photo; removing it here made it blink   // Oct 15: in the side by side row it keeps its own photo
       box.style.setProperty('box-shadow', 'none', 'important');
       box.querySelectorAll(':scope > div').forEach(function (d) { if (/url\(/.test(getComputedStyle(d).backgroundImage) || d.children.length === 0) d.style.setProperty('background', 'transparent', 'important'); });
     }
@@ -68,7 +68,7 @@
       bx.style.setProperty('margin', '0 auto', 'important'); bx.style.setProperty('min-height', '0', 'important');
       bx.querySelectorAll(':scope > div').forEach(function (d) { if (!d.children.length) d.style.setProperty('display', 'none', 'important'); });
     });
-    if (cfg.key === 'tt') { var ot = C.querySelector('section > [data-ph="red-hanging-lab"]'); if (ot) ot.style.setProperty('background', 'linear-gradient(rgba(24,24,24,.92),rgba(24,24,24,.94))', 'important'); }
+    // Oct 15 (night): The Other Two on Turkey Tail keeps the photo desk-rows.js gives it (this line was fighting it, so it blinked)
     // page color behind everything else
     var sbox = C.querySelector(':scope > section[data-m="sbox"]');
     var sTop = sbox ? top(sbox, C) : C.offsetHeight, sEnd = sbox ? sTop + sbox.offsetHeight : C.offsetHeight;
