@@ -129,7 +129,8 @@
   function fill(root) {
     var cards = root.querySelectorAll('.rcx-swipe>*,.cx-track>*,.rcx-merge>*>*,.mx-grid>*,.rit-grid>*,.mx-box,.sr-grid>*,.rc-grid3>*');
     for (var i = 0; i < cards.length; i++) {
-      var c = cards[i], bg = getComputedStyle(c).backgroundImage;
+      var c = cards[i]; if (c.classList.contains('rcx-rv')) continue;   // Oct 15 (night): the mushroom pages' reveal owns these boxes, so every box darkens and lightens the same
+      var bg = getComputedStyle(c).backgroundImage;
       if (c.dataset.rcxFill === bg) continue;
       var m = bg.match(/url\([^)]*\)/g);
       if (!m || !/linear-gradient/.test(bg) || !/(0\.(8[5-9]|9\d*)\)|rgb\(0, 0, 0\))/.test(bg)) { c.dataset.rcxFill = bg; continue; }   // Oct 15: no black in a box, ever
