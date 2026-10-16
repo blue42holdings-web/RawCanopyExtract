@@ -254,6 +254,8 @@
       if (/crows/.test(name)) dur *= 0.45;            // Oct 12: the gull like calls stay on a little under half as long
       if (/birds/.test(name)) level *= name === 'forest-birds' ? 0.4 : 0.3;   /* Oct 14: one bird at a time, and lower */
       if (/crows/.test(name)) level *= 0.5;   /* Oct 12: the gull calls are liked, just quieter */   /* Oct 12: birds sit well under everything else */
+      // Oct 15 (late, Scott): after the thunder has rolled a while, toward the end of it, a light rain comes in, mixed low
+      if (/thunder/.test(name) && dur > 30) { loadField('rain'); layer('rain', t0 + dur * 0.62, dur * 0.38 + rnd(25, 40), rnd(0.16, 0.2), dark); }
       loadField(name).then(function (buf) {
         if (!buf) return;
         var now = ctx.currentTime, start = Math.max(t0, now + 0.1), end = t0 + dur;
