@@ -248,22 +248,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   addEventListener('resize', function () { sig = ''; });
 })();
 
-/* Oct 11: About the Brand: white marble section (its own variation), black wet slate box, soft fades in and out */
-(function () {
-  function run() {
-    var c = document.querySelector('[data-screen-label="About"] section[data-m="about-brand"]');
-    if (!c) return;
-    var ph = matchMedia('(max-width:767px)').matches;
-    if (c.__mb !== (ph ? 2 : 1)) {
-      c.__mb = ph ? 2 : 1;
-      // Oct 11 (later): Mount Shasta with its lenticular clouds instead of white marble: where the brand began
-      c.style.setProperty('background', 'linear-gradient(#000 0,rgba(0,0,0,.35) 150px,rgba(0,0,0,.4) calc(100% - 160px),#000 100%),url("assets/photo/own-shasta-road.jpg") 50% 40%/cover no-repeat', 'important');
-    }
-    var b = c.querySelector('.ab-brand-box');
-    if (b && !b.__sl) { b.__sl = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.78)),url("assets/photo/about-dogs-trio.jpg") 50% 40%/cover no-repeat', 'important'); }   // Oct 15 (Scott): his dogs, no waterfall walkers
-  }
-  setInterval(run, 1000); run();
-})();
+/* Oct 11: About the Brand painter retired Oct 15 (late): about-photos.js owns every About photo now (it was putting the dog montage back) */
 
 
 

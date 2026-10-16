@@ -149,12 +149,19 @@
       // Oct 15 (late, Scott): a background photo: she starts dark (still in color), slowly comes up, and lifts on as a cutout
       if (!hero.__whk) {
         hero.__whk = 1;
-        hero.style.setProperty('--whk', '.72'); hero.style.setProperty('transition', '--whk 7s ease-in-out', 'important');
-        setTimeout(function () { hero.style.setProperty('--whk', '.42'); }, 900);
         hero.setAttribute('data-lift-bg', 'assets/cutouts/why-tent-cutout.webp'); hero.setAttribute('data-lift-desktop', '');
-        hero.setAttribute('data-lift-dim', 'brightness(1.05)'); hero.setAttribute('data-lift-scale', '1.04'); hero.setAttribute('data-lift-origin', '0.75 0.85');
-        hero.setAttribute('data-lift-dur', '8000'); hero.setAttribute('data-lift-delay', '1800'); hero.setAttribute('data-lift-d-delay', '1800'); hero.setAttribute('data-lift-fade', '2500'); hero.setAttribute('data-lift-nomask', '');
+        hero.setAttribute('data-lift-dim', 'brightness(1.18) saturate(1.1) drop-shadow(0 0 12px rgba(255,214,150,.35))'); hero.setAttribute('data-lift-scale', '1.06'); hero.setAttribute('data-lift-origin', '0.75 0.85');
+        hero.setAttribute('data-lift-dur', '8000'); hero.setAttribute('data-lift-delay', '1500'); hero.setAttribute('data-lift-d-delay', '1500'); hero.setAttribute('data-lift-fade', '2500'); hero.setAttribute('data-lift-nomask', '');
       }
+      // she starts dark (still in color) every time the page opens, then slowly comes up
+      var vis = hero.getBoundingClientRect().height > 0;
+      if (vis && !hero.__whkOn) {
+        hero.__whkOn = 1;
+        hero.style.setProperty('transition', 'none', 'important'); hero.style.setProperty('--whk', '.72'); void hero.offsetWidth;
+        hero.style.setProperty('transition', '--whk 7s ease-in-out', 'important');
+        setTimeout(function () { hero.style.setProperty('--whk', '.42'); }, 700);
+      }
+      if (!vis) hero.__whkOn = 0;
       hero.querySelectorAll('div').forEach(function (d) {
         if (d.contains(hero.querySelector('h1')) || /url\(/.test(getComputedStyle(d).backgroundImage)) {
           d.style.setProperty('background', 'transparent', 'important');
@@ -275,3 +282,6 @@
   }
   setInterval(run, 900); run();
 })();
+
+/* Oct 15 (late): when the Why page closes, reset so the top photo fades up from dark again next time it opens */
+setInterval(function () { document.querySelectorAll('div[data-screen-label="Why One Ingredient"] > section').forEach(function (s) { if (s.getBoundingClientRect().height < 50) s.__whkOn = 0; }); }, 400);
