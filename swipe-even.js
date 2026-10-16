@@ -35,6 +35,23 @@
     // at the very bottom of a page a row may never reach the middle, so light what is on screen
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) document.querySelectorAll('[data-se-row]:not([data-lit])').forEach(function (t) { var r = t.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) t.setAttribute('data-lit', ''); });
   }
+  // phone photo swaps for single boxes (Oct 15 night, Scott): keep each box's own shade, change only the photo
+  var BOX = [["Lion's Mane", '[data-ph="vintage-bottles-labels"]', 'lm-grandpa-fishing.jpg', '50% 35%'],
+             ["Lion's Mane", '[data-ph="lab-people"]', 'lab-steel-tanks.jpg', 'center']];   // lab-people was showing twice on the page
+  function boxes() {
+    if (!MQ.matches) return;
+    BOX.forEach(function (x) {
+      document.querySelectorAll('[data-screen-label] ' + x[1]).forEach(function (el) {
+        if (pageOf(el) !== x[0]) return;
+        var bi = getComputedStyle(el).backgroundImage; if (!bi || bi === 'none' || bi.indexOf(x[2]) >= 0) return;
+        var g = bi.replace(/,?\s*url\([^)]*\)/g, ''); g = g && g !== 'none' ? g + ',' : '';
+        el.style.setProperty('background-image', g + 'url("assets/photo/' + x[2] + '")', 'important');
+        el.style.setProperty('background-size', (g ? '100% 100%,' : '') + 'cover', 'important');
+        el.style.setProperty('background-position', (g ? '0 0,' : '') + x[3], 'important');
+      });
+    });
+  }
+  setInterval(boxes, 1000); boxes();
   addEventListener('scroll', run, { passive: true });
   setInterval(run, 900); run();
 })();
