@@ -58,18 +58,19 @@
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth < 768 ? 'about-dogs-three-stack-m.jpg' : 'about-three-dogs-2.webp', innerWidth < 768 ? 'center 50%' : 'center 0%', .45);   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
+    var cb = A.querySelector('.cmp-box'); if (cb) { photo(cb, 'about-three-dogs-2.webp', 'center 0%', .45);   // Oct 16 (Scott): ONE photo with all three dogs, never a collage
+      if (innerWidth < 768) { var sz3 = '100% 100%,100% auto'; if (cb.style.getPropertyValue('background-size') !== sz3) { cb.style.setProperty('background-size', sz3, 'important'); cb.style.setProperty('background-position', '0 0,center top', 'important'); cb.style.setProperty('background-color', '#000', 'important'); } } }   // phone: the whole photo across the top of the tall box, all three dogs in it   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
-      var W1 = innerWidth < 768 ? 'linear-gradient(' + CREAM + ',' + CREAM + ')' : 'linear-gradient(#000 0,' + CREAM + ' 36px,' + CREAM + ' 100%)';   // phone: no dark line above Compost
-      if (cs.style.getPropertyValue('background-image') !== W1) { cs.style.setProperty('background', 'none', 'important'); cs.style.setProperty('background-image', W1, 'important'); cs.style.setProperty('background-color', CREAM, 'important'); }
+      var W1 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): black behind Compost The Box, above the heading too
+      if (cs.style.getPropertyValue('background-image') !== W1) { cs.style.setProperty('background', 'none', 'important'); cs.style.setProperty('background-image', W1, 'important'); cs.style.setProperty('background-color', '#000', 'important'); }
       cs.classList.add('rcx-abx');
       [].forEach.call(cs.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
-      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#7a5a1e', 'important');
+      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#D4A24A', 'important');
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
-        var W2 = 'linear-gradient(' + CREAM + ' 0,#000 60px,#000 100%)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
+        var W2 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
         if (nx.style.getPropertyValue('padding-bottom') !== '64px') nx.style.setProperty('padding-bottom', '64px', 'important');
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
