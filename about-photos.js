@@ -45,7 +45,7 @@
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .36);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-three-dogs-2.webp', 'center 45%', .45);   // all three dogs in one photo
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-three-dogs-2.webp', innerWidth < 768 ? '21% 50%' : 'center 45%', .45);   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
