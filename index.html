@@ -6169,5 +6169,16 @@ html body div[data-screen-label="About"] section[data-m="shasta"][data-m="shasta
 html body [data-screen-label="Shop"] .rcx-tennis-run.rcx-tennis-run{animation:none !important;transition:none !important;filter:none !important;transform:none !important;background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.72)),url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat !important;-webkit-mask-image:linear-gradient(#000 calc(100% - 200px),transparent 100%) !important;mask-image:linear-gradient(#000 calc(100% - 200px),transparent 100%) !important;will-change:auto !important}
 html body div[data-screen-label] section.clean-band[data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"][data-cb="shop"]{-webkit-mask-image:linear-gradient(transparent 0,#000 140px) !important;mask-image:linear-gradient(transparent 0,#000 140px) !important;padding-top:120px !important}
 }</style>
+<style id="home-d-oct15n">@media (min-width:768px){
+/* Oct 15 (night), Scott: the hero photo sits at its bottom edge so the three packets in the lower right show in full */
+html body section[data-m="hero"][data-m="hero"][data-m="hero"][data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11){background-position:center,center,center 100% !important}
+html body section[data-m="hero"][data-m="hero"] > div:has(.hero-cta){transform:translateY(-70px)}
+/* one darkening layer behind the whole home page instead of one per section; neighboring sections overlapped by 1 to 3 pixels and the doubled darkness showed as a thin line */
+html body .home-bgwrap.home-bgwrap::before{background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('assets/photo/home-bg-coast-dusk.jpg') center 40% / cover no-repeat !important}
+html body .home-bgwrap.home-bgwrap section#packet#packet::after,html body .home-bgwrap.home-bgwrap section.mx-sec.mx-sec.mx-sec:not([data-m="mx-mags"]):not([data-m="mx-rit"])::after{background:none !important}
+html body .home-bgwrap.home-bgwrap section[data-screen-label="Home — mushrooms"][data-screen-label="Home — mushrooms"]::after{background:linear-gradient(rgba(0,0,0,.74) 0,rgba(0,0,0,0) 180px) !important}
+html body .home-bgwrap.home-bgwrap section.mx-sec.mx-sec.mx-sec[data-m="mx-mags"][data-m="mx-mags"][data-m="mx-mags"]::after{background:rgba(0,0,0,.25) !important;-webkit-mask-image:linear-gradient(transparent 0,#000 170px,#000 calc(100% - 170px),transparent 100%) !important;mask-image:linear-gradient(transparent 0,#000 170px,#000 calc(100% - 170px),transparent 100%) !important}
+html body .home-bgwrap.home-bgwrap section.mx-sec.mx-sec.mx-sec[data-m="mx-rit"][data-m="mx-rit"]::after{background:linear-gradient(transparent calc(100% - 120px),#000 100%) !important}
+}</style>
 </body>
 </html>
