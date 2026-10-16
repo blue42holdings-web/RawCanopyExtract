@@ -8,7 +8,8 @@
   var ROWS = '.cx-track,.rit-grid,.rcx-swipe,.mx-grid';
   // phone framing for single photos Scott flagged (Oct 15 night): less sky, the people bigger
   var FRAME = [[/^YOUR WORKOUT ROUTINE/, null, 'auto 190%', '14% 64%'], [/^ON THE TRAIL/, 'a-rider-pausing-on-a-granite-ridge-ph-crop.jpg', 'auto 150%', '83% 72%'],
-    [/^THE BLEND TRICK/, 'mushroom-cabinet.jpg', 'cover', '50% 50%']];
+    [/^THE BLEND TRICK/, 'mushroom-cabinet.jpg', 'cover', '50% 50%'],
+    [/^WHAT TO PUT IT IN/, 'own-waterfall-arms.jpg', 'cover', '50% 30%'], [/^HOW MUCH/, 'cd-golf-woman-sky.jpg', 'cover', '50% 50%'], [/^HOW TO MIX IT/, 'hero-stove-packets.jpg', 'cover', '45% 50%']];   // How To Use: Josh at the waterfall, golf, the camp stove pour
   var MUSH = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
   function pageOf(el) { var c = el.closest('[data-screen-label]'); return c ? c.getAttribute('data-screen-label') : ''; }
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
@@ -20,16 +21,17 @@
       if (t.scrollWidth <= t.clientWidth + 30 && !t.classList.contains('cx-track')) return;   // only rows that actually swipe
       if (!t.__se) { t.__se = 1; t.setAttribute('data-se-row', ''); if (io) io.observe(t); else t.setAttribute('data-lit', ''); }
       Array.prototype.forEach.call(t.children, function (b) {
-        if (!b.classList.contains('mx-box') || b.classList.contains('mx-press') || MUSH.indexOf(pageOf(b)) >= 0) return;   // the mushroom pages have their own reveal (mushroom-reveal.js)
+        if (!(b.classList.contains('mx-box') || b.classList.contains('hw-box')) || b.classList.contains('mx-press') || MUSH.indexOf(pageOf(b)) >= 0) return;   // the mushroom pages have their own reveal (mushroom-reveal.js)
         var bi = b.style.getPropertyValue('background-image') || getComputedStyle(b).backgroundImage;
-        var m = bi && bi.match(/url\([^)]*\)/g); if (!m) return;
-        var u = m[m.length - 1], tx = (b.innerText || '').trim().toUpperCase();
+        var m = bi && bi.match(/url\([^)]*\)/g), tx = (b.innerText || '').trim().toUpperCase();
+        if (!m) { if (!FRAME.some(function (f) { return f[1] && f[0].test(tx); })) return; m = ['none']; }   // a box with no photo can still get one
+        var u = m[m.length - 1];
         for (var i = 0; i < FRAME.length; i++) if (FRAME[i][0].test(tx)) {
-          if (FRAME[i][1]) { u = 'url("assets/photo/' + FRAME[i][1] + '")'; [].forEach.call(b.children, function (k) { if (/assets\/photo\//.test(getComputedStyle(k).backgroundImage) && k.getAttribute('aria-hidden') !== null) k.style.setProperty('display', 'none', 'important'); }); }
+          if (FRAME[i][1]) { u = 'url("assets/photo/' + FRAME[i][1] + '")'; [].forEach.call(b.children, function (k) { if (/assets\/photo\//.test(getComputedStyle(k).backgroundImage) && k.tagName === 'DIV' && !k.children.length) k.style.setProperty('display', 'none', 'important'); }); }
           if (!b.__seF) { b.__seF = 1; b.style.setProperty('--fsz', FRAME[i][2]); b.style.setProperty('--fps', FRAME[i][3]); b.style.setProperty('background-size', '100% 100%,' + FRAME[i][2], 'important'); b.style.setProperty('background-position', '0 0,' + FRAME[i][3], 'important'); }
           break;
         }
-        var want = SHADE + ',' + u;
+        var want = (b.classList.contains('hw-box') ? 'linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.66))' : SHADE) + ',' + u;   // the How To Use cards are long reads
         if (b.__seV !== want) { b.__seV = want; b.style.setProperty('background-image', want, 'important'); }
       });
     });
