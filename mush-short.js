@@ -12,6 +12,7 @@
     return '';
   }
   function rank(s) {
+    if (s.hasAttribute('data-ms-card')) return 0;
     var m = s.getAttribute('data-m') || '', c = String(s.className), h = head(s);
     if (/hero/.test(m) || /hero/.test(c)) return 1;
     if (/studied-sec/.test(c + ' ' + m)) return 2;
@@ -34,6 +35,7 @@
   function place(el, inherit) {
     [].forEach.call(el.children, function (k) {
       if (k.tagName === 'SCRIPT' || k.tagName === 'STYLE') return;
+      if (k.classList.contains('ms-wrap')) { mark(k, 'k', 5); return; }
       var r = k.tagName === 'SECTION' ? rank(k) : 0, inner = hasKept(k);
       if (r && !(inner && [].some.call(k.querySelectorAll('section'), function (q) { var x = rank(q); return x && x !== r; }))) { mark(k, 'k', r); return; }
       if (inner) { mark(k, 'flat'); place(k, r || inherit); return; }
@@ -54,22 +56,59 @@
     last.parentNode.insertBefore(n, last.nextSibling);
   }
   function trimReading(P) {
-    [].forEach.call(P.querySelectorAll('section[data-ms="k"]'), function (s) {
-      if (rank(s) !== 4) return;
+    [].forEach.call(P.querySelectorAll('[data-ms-card="fr"]'), function (s) {
       var links = [].filter.call(s.querySelectorAll('a'), function (a) { return a.closest('section') === s && a.innerText.trim().length > 20; });
       links.forEach(function (a, i) { var item = a.parentElement && a.parentElement !== s && a.parentElement.querySelectorAll('a').length === 1 ? a.parentElement : a;
         if (i >= 3) { if (item.style.getPropertyValue('display') !== 'none') item.style.setProperty('display', 'none', 'important'); } });
     });
   }
+  // Oct 16 (Scott): no box after box. Row one: what it's believed to do, then the proof (What's Been Studied leads the numbers row).
+  // Row two: the magazines. Row three: How It's Made, then swipe for Further Reading. Same on all three pages.
+  function home(el) { if (!el.__msHome) el.__msHome = [el.parentNode, el.nextSibling]; }
+  function rows(P) {
+    var all = [].slice.call(P.querySelectorAll('section'));
+    var studied = P.querySelector('[data-ms-card="studied"]') || all.filter(function (x) { return rank(x) === 2; })[0];
+    var how = P.querySelector('[data-ms-card="how"]') || all.filter(function (x) { return rank(x) === 5; })[0];
+    var fr = P.querySelector('[data-ms-card="fr"]') || all.filter(function (x) { return rank(x) === 4; })[0];
+    var num = all.filter(function (x) { return rank(x) === 3; })[0];
+    if (num && studied) {
+      var track = [].filter.call(num.querySelectorAll('.cx-track'), function (t) { return !t.closest('.pr-row'); })[0];
+      if (track && studied.parentNode !== track) { addWhy(P); home(studied); studied.setAttribute('data-ms-card', 'studied'); track.insertBefore(studied, track.firstChild); track.scrollLeft = 0; setTimeout(function () { track.scrollLeft = 0; }, 400); }
+      var box = track && track.querySelector('.mx-box');
+      if (box && box.offsetWidth) { studied.style.setProperty('--msw', box.offsetWidth + 'px'); studied.style.setProperty('--msh', box.offsetHeight + 'px'); }
+      [].forEach.call(studied.querySelectorAll('p'), function (q) { var t = (q.innerText || '').trim(); if (t.length > 140 && t[0] !== '*') { q.setAttribute('data-ms-long', ''); } });
+    }
+    if (how && fr) {
+      if (!how.hasAttribute('data-ms-card')) addWhy(P);
+      var wrap = P.querySelector(':scope > .ms-wrap');
+      if (!wrap) { wrap = document.createElement('div'); wrap.className = 'ms-wrap';
+        wrap.innerHTML = '<div class="rcx-swipe-tag">SWIPE FOR MORE <b>›</b></div><div class="ms-row"></div>'; P.appendChild(wrap); }
+      var row = wrap.querySelector('.ms-row');
+      if (how.parentNode !== row) { home(how); how.setAttribute('data-ms-card', 'how'); row.appendChild(how); }
+      if (fr.parentNode !== row) { home(fr); fr.setAttribute('data-ms-card', 'fr'); row.appendChild(fr); }
+      if (!row.__ms0) { row.__ms0 = 1; row.scrollLeft = 0; }
+      // Lion's Mane How It's Made: no red box, the diver beside the shark instead (phone)
+      var mb = P.getAttribute('data-screen-label') === "Lion's Mane" && how.querySelector('[data-m="made-box"]');
+      var LMB = 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg")';
+      if (mb && mb.style.getPropertyValue('background-image') !== LMB) { mb.style.setProperty('background-image', LMB, 'important'); mb.style.setProperty('background-color', '#000', 'important'); mb.style.setProperty('background-size', 'cover', 'important'); mb.style.setProperty('background-position', '30% center', 'important'); }
+    }
+  }
+  function unrows(P) {   // desktop: everything goes back where it came from
+    ['how', 'fr', 'studied'].forEach(function (k) { var el = P.querySelector('[data-ms-card="' + k + '"]'); if (!el) return;
+      var h = el.__msHome; if (h && h[0]) h[0].insertBefore(el, h[1] && h[1].parentNode === h[0] ? h[1] : null);
+      el.removeAttribute('data-ms-card'); el.__msHome = null; });
+    var w = P.querySelector(':scope > .ms-wrap'); if (w) w.remove();
+    var mb = P.querySelector('[data-m="made-box"]'); if (mb && /shark/.test(mb.style.getPropertyValue('background-image'))) ['background-image', 'background-color', 'background-size', 'background-position'].forEach(function (k) { mb.style.removeProperty(k); });
+  }
   function run() {
     [].forEach.call(document.querySelectorAll('[data-screen-label]'), function (P) {
       if (PAGES.indexOf(P.getAttribute('data-screen-label')) < 0) return;
-      if (!MQ.matches) { if (P.hasAttribute('data-ms-page')) { P.removeAttribute('data-ms-page'); [].forEach.call(P.querySelectorAll('[data-ms]'), function (e) { e.removeAttribute('data-ms'); e.style.removeProperty('order'); }); } return; }
+      if (!MQ.matches) { if (P.hasAttribute('data-ms-page')) { unrows(P); P.removeAttribute('data-ms-page'); [].forEach.call(P.querySelectorAll('[data-ms]'), function (e) { e.removeAttribute('data-ms'); e.style.removeProperty('order'); }); } return; }
       if (!P.offsetHeight && !P.hasAttribute('data-ms-page')) return;
       P.setAttribute('data-ms-page', '');
-      addWhy(P); place(P, 0); trimReading(P);
+      rows(P); place(P, 0); trimReading(P);
       // How It's Made reads at the same size on all three pages
-      [].forEach.call(P.querySelectorAll('section[data-ms="k"] p'), function (p) { var s = p.closest('section'); if (rank(s) !== 5) return;
+      [].forEach.call(P.querySelectorAll('[data-ms-card] p'), function (p) {
         if (p.style.getPropertyValue('font-size') !== '16px') { p.style.setProperty('font-size', '16px', 'important'); p.style.setProperty('line-height', '1.6', 'important'); } });
     });
   }
