@@ -344,7 +344,7 @@
     if (S) {
       var secs = S.querySelectorAll(':scope > section'), pk = secs[1], cbs = S.querySelector('section.clean-band');
       if (pk && cbs) {
-        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 10;
+        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 140;   // Oct 15 (night): runs on under the powder so the two blend
         var d = S.querySelector(':scope > .rcx-tennis-run');
         if (!d) { d = document.createElement('div'); d.className = 'rcx-tennis-run'; d.setAttribute('aria-hidden', 'true'); S.appendChild(d); }
         var sTop = S.getBoundingClientRect().top + scrollY, g = Math.round(top - sTop) + '|' + Math.round(bot - top);
@@ -361,16 +361,18 @@
   function run() {
     if (!MQ.matches) return;
     var s = [].filter.call(document.querySelectorAll('div[data-screen-label="Shop"] > section'), function (e) { return e.offsetHeight; })[0]; if (!s) return;
-    var W = s.offsetWidth, H = s.offsetHeight, iw = Math.round(W * 1.25), ih = Math.round(iw / 1.5), x = Math.round((W - iw) * 0.3), y = Math.round((H - ih) * 0.5);
+    // Oct 15 (night, Scott): she is smaller and off to the right; the words stay centered like every other page.
+    // shop-climber-wide is the same photo with more sky on the left, so the box is filled with no gaps.
+    var W = s.offsetWidth, H = s.offsetHeight, iw = Math.max(W, Math.round(H * 1.92)), ih = Math.round(iw / 1.919), x = Math.round(W - iw), y = Math.round((H - ih) * 0.4);
     var sz = '100% 100%,' + iw + 'px ' + ih + 'px', ps = '0 0,' + x + 'px ' + y + 'px';
     if (s.__cl !== sz + ps) {
       s.__cl = sz + ps;
-      s.style.setProperty('background-image', 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.5)),url("assets/photo/coffee-asset.webp")', 'important');
+      s.style.setProperty('background-image', 'linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.5)),url("assets/photo/shop-climber-wide.webp")', 'important');
       s.style.setProperty('background-size', sz, 'important'); s.style.setProperty('background-position', ps, 'important'); s.style.setProperty('background-repeat', 'no-repeat', 'important');
     }
-    if (!s.hasAttribute('data-lift-bg')) {
-      s.setAttribute('data-lift-bg', 'assets/cutouts/coffee-asset-cutout.webp'); s.setAttribute('data-lift-desktop', ''); s.setAttribute('data-lift-nomask', '');
-      s.setAttribute('data-lift-dim', 'brightness(1.12) saturate(1.1)'); s.setAttribute('data-lift-scale', '1.05'); s.setAttribute('data-lift-origin', '0.82 0.5');
+    if (!s.hasAttribute('data-lift-bg')) {   // she lifts on by size and fade only (no brightness animation, no blur layer), which is what made it stutter
+      s.setAttribute('data-lift-bg', 'assets/cutouts/shop-climber-wide-cutout.webp'); s.setAttribute('data-lift-desktop', ''); s.setAttribute('data-lift-nomask', ''); s.setAttribute('data-lift-noblur', '');
+      s.setAttribute('data-lift-dim', 'none'); s.setAttribute('data-lift-scale', '1.04'); s.setAttribute('data-lift-origin', '0.86 0.5');
       s.setAttribute('data-lift-dur', '8000'); s.setAttribute('data-lift-delay', '1200'); s.setAttribute('data-lift-d-delay', '1200'); s.setAttribute('data-lift-fade', '2000');
     }
   }
