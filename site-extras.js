@@ -347,7 +347,8 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
 (function () {
   function fix() {
     document.querySelectorAll('section.clean-band[data-cb="lions-mane"],section.clean-band[data-cb="cordyceps"],section.clean-band[data-cb="turkey-tail"]').forEach(function (s) {
-      if (s.style.getPropertyValue('padding-top') !== '130px') { s.style.setProperty('padding-top', '130px', 'important'); s.style.setProperty('padding-bottom', '130px', 'important'); s.style.setProperty('padding-left', '22px', 'important'); s.style.setProperty('padding-right', '22px', 'important'); }
+      var pv = innerWidth >= 768 ? '24px' : '130px';   // Oct 15 (night, Scott): desktop, no big empty color band above and below the box
+      if (s.style.getPropertyValue('padding-top') !== pv) { s.style.setProperty('padding-top', pv, 'important'); s.style.setProperty('padding-bottom', pv, 'important'); s.style.setProperty('padding-left', '22px', 'important'); s.style.setProperty('padding-right', '22px', 'important'); }
     });
   }
   setInterval(fix, 1000); fix();

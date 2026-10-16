@@ -4867,10 +4867,10 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 html body [data-screen-label="About"] section[data-m="about-brand"][data-m="about-brand"]::after{background:linear-gradient(rgba(120,86,52,.55) 0,rgba(60,42,26,.6) 70px,rgba(0,0,0,.55) 220px,rgba(0,0,0,.55) calc(100% - 120px),#000 100%) !important}
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=56"></script>
+<script src="site-extras.js?v=57"></script>
 <script src="nav-extras.js?v=35"></script>
 <script src="mushroom-reveal.js?v=4"></script>
-<script src="desk-rows.js?v=35"></script>
+<script src="desk-rows.js?v=39"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -4939,7 +4939,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=29"></script>
+<script src="species-desk.js?v=30"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -6206,5 +6206,28 @@ html body div[data-screen-label="Receipts"] .rc-sec .mx-box [data-new-dim]{displ
 html body div[data-screen-label="The Mushrooms"] div[data-ph="couple-tent-pourover"][data-ph="couple-tent-pourover"][data-ph="couple-tent-pourover"]:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(.y6):not(.y7):not(.y8):not(.y9):not(.y10):not(.y11):not(.y12):not(.y13):not(.y14):not(.y15):not(.y16):not(.y17):not(.y18):not(.y19){background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.66)),url("assets/photo/packets-powder-trio.jpg") center/cover no-repeat !important;animation:none !important;filter:none !important}
 html body div[data-screen-label="The Mushrooms"] div[data-ph="couple-tent-pourover"] img[src*="fruiting-body-mycelium"]{display:none !important}
 </style>
+<style id="mush-hero-d-oct15n">@media (min-width:768px){
+/* Oct 15 (night), Scott: on all three mushroom pages the small Latin / fruiting body line sits under the gold rule, and the mushroom icon is bigger */
+html body section[data-m="lm-hero"] > div > div:has(> p),html body section[data-m="cdh-hero"] > div > div:has(> p),html body section[data-m="tth-hero"] > div > div:has(> p),
+html body section[data-m="lm-hero"] div:has(> [data-m="lm-eyebrow"]){display:flex !important;flex-direction:column !important;align-items:center !important}
+html body section:is([data-m="lm-hero"],[data-m="cdh-hero"],[data-m="tth-hero"]) div:has(> img[src*="icons/species"]) + * ~ p:first-child{order:5}
+html body section:is([data-m="lm-hero"],[data-m="cdh-hero"],[data-m="tth-hero"]) div:has(> div img[src*="icons/species"]) > p:first-child,
+html body section:is([data-m="lm-hero"],[data-m="cdh-hero"],[data-m="tth-hero"]) div:has(> div > img[src*="icons/species"]) > p:first-child{order:5 !important;margin:16px 0 0 !important}
+html body section:is([data-m="lm-hero"],[data-m="cdh-hero"],[data-m="tth-hero"]) img[src*="icons/species"]{height:112px !important;width:auto !important;max-width:none !important;max-height:none !important}
+html body section:is([data-m="lm-hero"],[data-m="cdh-hero"],[data-m="tth-hero"]) div:has(> p:first-child):has(> div img[src*="icons/species"]){display:flex !important;flex-direction:column !important;align-items:center !important}
+/* the Pre-Measured box sits close to the boxes above and below it on all three pages (was 130px of empty color each side) */
+html body div.sd-on.sd-on[data-screen-label] section.clean-band.clean-band.clean-band.clean-band[data-cb]:is([data-cb="lions-mane"],[data-cb="cordyceps"],[data-cb="turkey-tail"]){padding-top:24px !important;padding-bottom:24px !important}
+html body .sd-on .rcx-row2.rcx-row2{margin-bottom:10px !important}
+}</style>
+<style id="lm-d-oct15n">@media (min-width:768px){
+/* Oct 15 (night), Scott: the email box sits right under the Roar of the Mountain words, not way down at the bottom */
+html body div[data-screen-label="Lion's Mane"] section[data-m="sbox"] div:has(> div > form input){justify-content:flex-start !important;gap:30px !important}
+html body div[data-screen-label="Lion's Mane"] section[data-m="sbox"] div:has(> div > form input) > [data-m="flat"]{min-height:0 !important;height:auto !important;flex:0 0 auto !important}
+html body div[data-screen-label="Lion's Mane"] section[data-m="sbox"] div:has(> form input){display:flex !important;justify-content:flex-end !important}
+html body .sd-lm.sd-lm > section[data-m="sbox"] [data-m="flat"][data-m="flat"]{min-height:560px !important}
+html body .sd-lm.sd-lm > section[data-m="sbox"] div:has(> div > form input) > [data-m="flat"][data-m="flat"][data-m="flat"]{min-height:0 !important}
+html body .sd-lm.sd-lm > section[data-m="sbox"] [data-m="flat"] [data-m="flat"][data-m="flat"]{min-height:0 !important}
+html body .sd-lm.sd-lm > [data-lm-fill][data-sd-hero="fill"]{display:block !important;background-image:linear-gradient(rgba(0,0,0,0) calc(100% - 180px),rgba(0,0,0,.72) 100%),linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%) !important;z-index:0 !important}
+}</style>
 </body>
 </html>
