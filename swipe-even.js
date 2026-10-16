@@ -55,6 +55,15 @@
     });
   }
   setInterval(boxes, 1000); boxes();
+  // desktop home: hand each mushroom-row box its own photo through --hb-img so one shared shade applies to all of them
+  function homeBoxes() {
+    if (MQ.matches) return;
+    document.querySelectorAll('.home-bgwrap .mx-sec .mx-grid > .mx-box:not(.mx-press)').forEach(function (b) {
+      var bi = b.style.getPropertyValue('background-image') || getComputedStyle(b).backgroundImage, m = bi && bi.match(/url\([^)]*\)/g);
+      if (!m) return; var u = m[m.length - 1]; if (b.__hb !== u) { b.__hb = u; b.style.setProperty('--hb-img', u); }
+    });
+  }
+  setInterval(homeBoxes, 1000); homeBoxes();
   addEventListener('scroll', run, { passive: true });
   setInterval(run, 900); run();
 })();
