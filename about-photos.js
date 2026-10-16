@@ -3,8 +3,9 @@
 (function () {
   // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
-  var BOX = ['own-loaded-hatch.jpg', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-steamers-car.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
-  var POS = ['center 35%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center 92%'];
+  // Oct 16 (Scott): his face opens the story (eyes, forehead and hair in frame) instead of two car shots back to back; home loses its sky
+  var BOX = ['about-scott-face.jpg', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-steamers-car.jpg', 'own-shasta-road.jpg', 'about-house.jpg'];
+  var POS = ['center 18%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center 100%'];
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
