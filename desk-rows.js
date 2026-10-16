@@ -91,6 +91,11 @@
         b.style.setProperty('background-image', v, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[4], 'important');
         b.style.setProperty('background-position', '0 0,' + m[2], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important');
+        if (/HOW MUCH/.test(t.toUpperCase())) {   // the kettle on the right, clear of the words
+          var r = b.getBoundingClientRect(), W = Math.round(r.width * 1.0), H = Math.round(W * 1600 / 1280);
+          b.style.setProperty('background-size', '100% 100%,' + W + 'px ' + H + 'px', 'important');
+          b.style.setProperty('background-position', '0 0,' + '0px ' + Math.round(r.height * 0.7 - H * 0.42) + 'px', 'important');
+        }
       });
     });
   }
