@@ -58,8 +58,7 @@
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) { photo(cb, 'about-three-dogs-2.webp', 'center 0%', .45);   // Oct 16 (Scott): ONE photo with all three dogs, never a collage
-      if (innerWidth < 768) { var sz3 = '100% 100%,100% auto'; if (cb.style.getPropertyValue('background-size') !== sz3) { cb.style.setProperty('background-size', sz3, 'important'); cb.style.setProperty('background-position', '0 0,center top', 'important'); cb.style.setProperty('background-color', '#000', 'important'); } } }   // phone: the whole photo across the top of the tall box, all three dogs in it   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'own-two-labs-hill.jpg', 'center 30%', .5);   // Oct 16 (Scott): his two labs on the hill, towel painted out; one photo, never a collage   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
@@ -75,7 +74,8 @@
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
         if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
-        if (nx.style.getPropertyValue('background-image') !== W2) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-color', '#000', 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
+        W2 = 'linear-gradient(#000 0,rgba(0,0,0,.55) 140px,rgba(0,0,0,.55) calc(100% - 80px),#000 100%),url("assets/photo/own-pink-sky-pines.jpg")';   // Oct 16 (Scott): his pink sky over the pines behind the seal
+        if (nx.style.getPropertyValue('background-image').indexOf('own-pink-sky') < 0) { nx.style.setProperty('background-image', W2, 'important'); nx.style.setProperty('background-size', '100% 100%,cover', 'important'); nx.style.setProperty('background-position', '0 0,center 70%', 'important'); nx.style.setProperty('background-color', '#000', 'important'); nx.classList.add('rcx-abx', 'rcx-abseal'); }
       }
     }
   }
