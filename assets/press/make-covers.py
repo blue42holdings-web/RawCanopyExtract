@@ -8,7 +8,11 @@ def blob(d,cx,cy,r,col):
     for k in range(10,0,-1):
         rr=r*k/10; a=int(255*(1-k/11)*0.5)
         d.ellipse([cx-rr,cy-rr,cx+rr,cy+rr],fill=col+(a,))
+MASTS={'popular-science':(255,255,255),'bloomberg':(255,255,255),'time':(200,16,30),'natgeo':(250,205,20)}
 def cover(name,bg,mast,mast_h,photo,bars,frame=None,seed=1,mast_y=40,inset=None):
+    # Oct 15 (late, Scott): every cover gets the same masthead band, same height, same place; only lower coverlines vary
+    mast=mast or MASTS.get(name,(240,240,240)); mast_h=90; mast_y=40; inset=None; frame=None
+    bars=[b for b in bars if b[1]>=.6]
     random.seed(seed)
     im=Image.new('RGB',(W,H),bg); d=ImageDraw.Draw(im,'RGBA')
     # the cover photo: soft colored masses

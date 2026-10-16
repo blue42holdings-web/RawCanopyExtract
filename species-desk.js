@@ -76,7 +76,9 @@
     // Oct 15 (Scott): Lion's Mane white below The Steady Burn; Cordyceps red; Turkey Tail red base with white and red sections
     // Oct 15 (later): one color under the top box, no black band. Lion's Mane white, Cordyceps and Turkey Tail red.
     var hEnd = h0 + hero.offsetHeight;
-    if (cfg.key === 'lm') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' 100%)';
+    // Oct 15 (late, Scott): no white on Lion's Mane. The Roar of the Mountain Shasta photo runs up behind the first two boxes,
+    // and the beach photo sits behind the rest of the page.
+    if (cfg.key === 'lm') { var LW = C.offsetWidth; bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.42) ' + (hEnd + 1) + 'px,rgba(0,0,0,.38) ' + sEnd + 'px,rgba(0,0,0,.55) ' + (sEnd + 200) + 'px,rgba(0,0,0,.55) 100%),url("assets/photo/own-shasta-peak.jpg") center ' + (hEnd - Math.max(0, LW * 4 / 3 - (sEnd - hEnd)) * 0.3) + 'px/' + LW + 'px auto no-repeat,url("assets/photo/own-cannon-beach.jpg") center/cover no-repeat fixed,#0d1a24'; }
     else if (cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + RED + ' ' + (sTop + 1) + 'px,' + RED + ' 100%)';   // Oct 15 (late): white above Coming Soon, red below
     else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + RED + ' ' + (hEnd + 1) + 'px,' + RED + ' 100%)';
     else if (false) bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + RED + ' ' + (h1 + 120) + 'px,' + RED + ' ' + (sEnd - 200) + 'px,' + WHITE + ' ' + (sEnd + 40) + 'px,' + WHITE + ' 100%)';
@@ -128,8 +130,8 @@
       if (blendEl) by = blendEl.getBoundingClientRect().top - wr.top - 40;
       var S = Math.max(ww * 1.4, 1800), IH = S * 733 / 1100, ix = Math.round(Math.min(0, Math.max(ww - S, fx - 0.67 * S))), iy = Math.round(fy - 0.27 * IH), ib = iy + IH;
       var SKY = 'rgb(182,119,101)', RED = '#8e321f';
-      var bgv = 'linear-gradient(rgba(0,0,0,.46) 0,rgba(0,0,0,.4) ' + (iy + 300) + 'px,rgba(0,0,0,.3) ' + (ib - 200) + 'px,rgba(0,0,0,.2) ' + by + 'px,rgba(0,0,0,0) ' + (by + 120) + 'px),' +
-        'linear-gradient(transparent 0,transparent ' + (ib - 260) + 'px,' + RED + ' ' + (ib - 40) + 'px,' + RED + ' ' + (by - 60) + 'px,' + BLUE + ' ' + (by + 90) + 'px,' + BLUE + ' 100%),' +
+      var bgv = 'linear-gradient(rgba(0,0,0,.46) 0,rgba(0,0,0,.4) ' + (iy + 300) + 'px,rgba(0,0,0,.3) ' + (ib - 200) + 'px,rgba(0,0,0,0) ' + (ib + 40) + 'px),' +
+        'linear-gradient(transparent 0,transparent ' + (ib - 320) + 'px,' + BLUE + ' ' + (ib - 20) + 'px,' + BLUE + ' 100%),' +   // Oct 15 (late): the sunset fades straight into the blue, no red band
         'linear-gradient(rgb(58,34,56) 0,rgb(140,86,90) ' + Math.round(iy * 0.6) + 'px,' + SKY + ' ' + iy + 'px,rgba(182,119,101,0) ' + (iy + 140) + 'px) 0 0/100% ' + (iy + 140) + 'px no-repeat,' +
         'url("assets/photo/why-sunrise.webp") ' + ix + 'px ' + iy + 'px/' + Math.round(S) + 'px auto no-repeat,' + BLUE;
       if (W.__bgv !== bgv) { W.__bgv = bgv; W.style.setProperty('background', bgv, 'important'); }
@@ -174,7 +176,7 @@
       if (mr) mr.style.setProperty('background', 'linear-gradient(' + BLUE + ' 0,' + BLUE + ' 55%,#000 100%)', 'important');
       var mb = mr && mr.querySelector(':scope > div');
       if (mb) {
-        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/own-yellowstone.jpg") 50% 55%/cover no-repeat', 'important'); };
+        var dk = function (o) { mb.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + o + '),rgba(0,0,0,' + (o + 0.08) + ')),url("assets/photo/own-yellowstone.jpg") 50% 62%/cover no-repeat', 'important'); };
         if (!mb.__hv) { mb.__hv = 1; mb.style.transition = 'background .6s ease'; mb.addEventListener('mouseenter', function () { mb.__on = 1; dk(0.3); }); mb.addEventListener('mouseleave', function () { mb.__on = 0; dk(0.66); }); }
         if (!mb.__on) dk(0.66);
       }
