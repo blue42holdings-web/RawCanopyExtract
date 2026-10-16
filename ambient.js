@@ -193,8 +193,9 @@
       var base = [36.71, 43.65, 32.70][Math.floor(Math.random() * 3)];
       droneBus.gain.setTargetAtTime(0.2, t0, 2);
       droneBus.gain.setTargetAtTime(0, t0 + dur - 2, 3);
-      var t = t0;
+      var t = t0, b0 = base, nextMove = t0 + rnd(20, 30);
       while (t < t0 + dur) {
+        if (t >= nextMove) { base = b0 * [1, 0.75, 1.333, 0.889, 1.2][Math.floor(Math.random() * 5)]; nextMove = t + rnd(20, 30); }   // Oct 15: the drone moves every 20 to 30 seconds
         droneNote(t, base, 1, 'sine', 0.55, 200);
         droneNote(t + 0.5, base, 1.5, 'sine', 0.2, 200);
         droneNote(t + 1, base, 2, 'sawtooth', 0.08, 260);
@@ -370,10 +371,20 @@
       out.gain.setValueAtTime(0, t0); out.gain.linearRampToValueAtTime(level, t0 + sw);
       out.gain.setValueAtTime(level, t0 + dur - sw); out.gain.linearRampToValueAtTime(0, t0 + dur);
     }
-    function bathTone(t0, t1, f, crystal, level) {     // a tone that never drops out: overlapping swells carry it
-      var t = t0;
+    // Oct 15 (late, Scott): never hold one tone. Each swell lasts 20 to 32 seconds at most and the next one
+    // comes in on a different note (often lower and deeper), overlapping so there is no gap. The loudness rides a
+    // slow wave, so it builds to a crescendo, eases back down, builds again, never the same twice.
+    var BATH_STEPS = [1, 0.75, 0.667, 0.5, 1.2, 0.6, 1.333, 0.444, 0.889];
+    function bathTone(t0, t1, f, crystal, level) {
+      var t = t0, last = -1, P = rnd(70, 120), ph = rnd(0, Math.PI * 2);
       f = f / 2; level = level * 0.6;                    // an octave lower and softer than the old bowl
-      while (t < t1) { var d = rnd(30, 38); warmSing(t, Math.min(d, t1 - t + 14), f, level); t += d - 15; }
+      while (t < t1) {
+        var d = rnd(20, 32), k; do { k = Math.floor(Math.random() * BATH_STEPS.length); } while (k === last); last = k;
+        var wave = 0.5 - 0.5 * Math.cos(2 * Math.PI * (t - t0) / P + ph);       // 0 at the quiet bottom, 1 at the crescendo
+        if (Math.random() < 0.3) P = rnd(60, 130);                               // mix up how long each build takes
+        warmSing(t, Math.min(d, t1 - t + 8), f * BATH_STEPS[k], level * (0.35 + 0.75 * wave) * rnd(0.9, 1.1));
+        t += d - rnd(8, 11);
+      }
     }
     function heartbeat(t0, t1, lv) {                   // frame drum, a slow resting heartbeat
       var t = t0, span = t1 - t0;
@@ -407,9 +418,9 @@
       bathTone(t + 18, b1, root, true, 0.07);                                          // a crystal bowl begins to sing
       bathTone(t + len * 0.35, b1 + 20, root * 1.5, false, 0.035);                     // a soft fifth joins as it builds (Oct 15: no metal bowl)
       var ps = tuned(['psaltery-c4', 'psaltery-d4'], root / 2);                        // the bowed psaltery, slowed and low
-      bathSwell(ps[0], t + len * 0.55, rnd(26, 34), 0.12, ps[1]);
-      bathSwell(ps[0], t + len * 0.55 + 14, rnd(24, 30), 0.08, ps[1] * 1.5);
-      if (dark) bathSwell('didgeridoo', t + len * 0.65, rnd(34, 44), 0.13, rnd(0.88, 0.95), 0);
+      bathSwell(ps[0], t + len * 0.55, rnd(20, 28), 0.12, ps[1]);
+      bathSwell(ps[0], t + len * 0.55 + 14, rnd(20, 26), 0.08, ps[1] * 0.75);
+      if (dark) bathSwell('didgeridoo', t + len * 0.65, rnd(22, 30), 0.13, rnd(0.88, 0.95), 0);
 
     }
     // Oct 11, second pass: spaced way out. Most of the time there is NO field sound at all. Roughly
@@ -599,8 +610,8 @@
     var acts = { t: T0 + 0.5, n: 0 };
     function lowDrones(t0, dur, base, lv) {
       droneBus.gain.setTargetAtTime(lv, t0, 4); droneBus.gain.setTargetAtTime(0, t0 + dur - 4, 4);
-      var tb = t0;
-      while (tb < t0 + dur) { droneNote(tb, base, 1, 'sine', 0.5, 170); droneNote(tb + 1.2, base, 1.5, 'sine', 0.16, 190); droneNote(tb + 2.2, base, 2, 'sawtooth', 0.05, 220); tb += rnd(3.8, 4.8); }
+      var tb = t0, b0 = base, nm = t0 + rnd(20, 30);
+      while (tb < t0 + dur) { if (tb >= nm) { base = b0 * [1, 0.75, 1.333, 0.889, 1.2][Math.floor(Math.random() * 5)]; nm = tb + rnd(20, 30); } droneNote(tb, base, 1, 'sine', 0.5, 170); droneNote(tb + 1.2, base, 1.5, 'sine', 0.16, 190); droneNote(tb + 2.2, base, 2, 'sawtooth', 0.05, 220); tb += rnd(3.8, 4.8); }
     }
     function scheduleAct() {
       var t = acts.t, dark = (acts.n % 2 === 0) ? MOOD0 : 1 - MOOD0;
