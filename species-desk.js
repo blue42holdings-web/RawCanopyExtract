@@ -83,7 +83,7 @@
       var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) - 10) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
       var shH = Math.round(LW * 2000 / 1500), shY = Math.round(hEnd - shH * 0.04);   // the peak itself, not the trees at the bottom of the photo
       var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
-      bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.5) ' + (hEnd + 1) + 'px,rgba(0,0,0,.5) 100%),' +
+      bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.5) ' + (hEnd + 1) + 'px,rgba(0,0,0,.5) ' + bStart + 'px,rgba(0,0,0,.68) ' + (bStart + 120) + 'px,rgba(0,0,0,.68) 100%),' +   // Oct 15 (night): the beach gets a darker filter
         'linear-gradient(transparent 0,transparent ' + (shEnd - 50) + 'px,#24425e ' + shEnd + 'px,#24425e ' + bStart + 'px,transparent ' + (bStart + 60) + 'px,transparent 100%),' +
         'url("assets/photo/own-cannon-beach.jpg") ' + bx + 'px ' + bStart + 'px/' + bw + 'px ' + bh + 'px no-repeat,' +
         'url("assets/photo/own-shasta-peak.jpg") center ' + shY + 'px/' + LW + 'px ' + shH + 'px no-repeat,#24425e';

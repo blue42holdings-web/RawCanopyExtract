@@ -4,7 +4,9 @@
 (function () {
   var MQ = matchMedia('(min-width:768px)');
   var GROUPS = {
-    "Lion's Mane": [['[data-ph="elder-camp-chair-mug"]', '[data-rcx-burn]']],
+    "Lion's Mane": [['[data-ph="elder-camp-chair-mug"]', '[data-rcx-burn]'], ['[data-ph="vintage-bottles-labels"]', '[data-ph="desk-lm"]']],
+    // Oct 15 (night, Scott): Further Reading beside The Names It Goes By on all three pages, each with its own photo
+    'Cordyceps': [['[data-ph="backpacker-smile"]', '[data-ph="apothecary-shop"]']],
     'Turkey Tail': [['[data-ph="meditation-sunset-hands"]', '[data-ph="palm-jungle-sun"]', '[data-ph="tank-lab"]', '[data-ph="reef-snorkel"]'],
                     ['[data-ph="waterfall-stones"]', '[data-ph="herb-jars-book"]']]
   };
@@ -164,17 +166,17 @@
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
   var MAP = {
     "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
-      [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'cover', 'center 50%'],
+      [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'auto 190%', '55% 100%'],   // Oct 15 (night): hands on the puzzle, no faces
+      [/^FURTHER READING/, 'own-river.jpg', 'cover', 'center 60%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
       [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
-    'Cordyceps': [[/^WHAT'S BEEN STUDIED/, 'cd-golf-sea.jpg', 'cover', 'center 55%'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
+    'Cordyceps': [[/^FURTHER READING/, 'cd-marathon.jpg', 'cover', 'center 40%'], [/^THE NAMES IT GOES BY/, 'friends-workout.webp', 'cover', 'center'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
-      [/^HOW IT'S MADE/, 'lab-soxhlet-chrome.jpg', 'cover', 'center'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
     'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'],
-      [/^WHAT IT IS/, 'own-wing-sunset.jpg', 'cover', 'center 55%'], [/^WHERE OURS COMES FROM/, 'tt-tube-boarding.jpg', 'cover', 'center 45%'],
-      [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'tt-concert-lasers.jpg', 'cover', 'center 55%'],
-      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-fest-aerial.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', 'cover', 'center 40%'], [/^THE OTHER TWO/, 'tt-fest-dj-flames.jpg', 'cover', 'center 40%'], [/^RUSH HOUR/, 'tt-fest-big-crowd.jpg', 'cover', 'center 60%'], [/^THE DOUBLE BLIND/, 'tt-fest-cheer.jpg', 'cover', 'center 55%']]
+      [/^WHAT IT IS/, 'tt-fest-cheer.jpg', 'cover', 'center 40%'], [/^FURTHER READING/, 'tt-fest-harbor-stage.jpg', 'cover', 'center'], [/^THE NAMES IT GOES BY/, 'tt-teal-7-train.jpg', 'cover', 'center'], [/^WHERE OURS COMES FROM/, 'tt-tube-boarding.jpg', 'cover', 'center 45%'],
+      [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'tt-concert-lasers.jpg', 'cover', 'center 100%'],
+      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-fest-aerial.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', 'cover', 'center 40%'], [/^THE OTHER TWO/, 'tt-fest-dj-flames.jpg', 'cover', 'center 62%'], [/^RUSH HOUR/, 'tt-fest-big-crowd.jpg', 'cover', 'center 60%'], [/^THE DOUBLE BLIND/, 'tt-fest-cheer.jpg', 'cover', 'center 55%']]
   };
   function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
   function boxFor(root, re) {
@@ -209,9 +211,9 @@
       });
     });
     // one photo running down through two stacked boxes, so you can see what is going on in it
-    var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'cd-marathon.jpg', 1800, 1200],
+    var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lab-soxhlet-chrome.jpg', 800, 450],
         [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
-      'Turkey Tail': [[/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'tt-fest-harbor-stage.jpg', 1800, 1013], [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
+      'Turkey Tail': [[/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lab-mushroom-extraction.jpg', 900, 550]] };
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
@@ -415,6 +417,26 @@
         io.observe(b);
       });
     });
+  }
+  setInterval(run, 1200); run();
+})();
+
+/* Oct 15 (night, Scott): Lion's Mane desktop. The same dark filter and RCX pattern as The Roar of the Mountain run all the
+   way up from that band to the line under the top photo, over the Shasta photo, so the two read as one piece. */
+(function () {
+  var MQ = matchMedia('(min-width:900px)');
+  function run() {
+    if (!MQ.matches) return;
+    var C = document.querySelector('.sd-lm'); if (!C || !C.offsetHeight) return;
+    var hero = C.querySelector(':scope > section[data-m$="-hero"]'), s = C.querySelector(':scope > section[data-m="sbox"]'); if (!hero || !s) return;
+    var cr = C.getBoundingClientRect(), y0 = Math.round(hero.getBoundingClientRect().bottom - cr.top), y1 = Math.round(s.getBoundingClientRect().top - cr.top);
+    var d = C.querySelector(':scope > [data-lm-fill]');
+    if (!d) { d = document.createElement('div'); d.setAttribute('data-lm-fill', ''); d.setAttribute('data-sd-hero', 'fill'); d.setAttribute('aria-hidden', 'true'); C.insertBefore(d, hero.nextSibling); }
+    var g = y0 + '|' + y1;
+    if (d.__g === g) return; d.__g = g;
+    d.style.cssText = 'position:absolute;left:0;right:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;' +
+      'background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%)';
+    if (!d.firstChild) { var p = document.createElement('div'); p.style.cssText = 'position:absolute;inset:0;background:url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat;opacity:.3'; d.appendChild(p); }
   }
   setInterval(run, 1200); run();
 })();
