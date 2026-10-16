@@ -173,8 +173,8 @@
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
     'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'],
       [/^WHAT IT IS/, 'own-wing-sunset.jpg', 'cover', 'center 55%'], [/^WHERE OURS COMES FROM/, 'tt-tube-boarding.jpg', 'cover', 'center 45%'],
-      [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%'],
-      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-ai-street.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-escalators.jpg', 'cover', 'center'], [/^THE DOUBLE BLIND/, 'tt-platform-crowd.jpg', 'cover', 'center']]
+      [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'tt-concert-lasers.jpg', 'cover', 'center 55%'],
+      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-fest-aerial.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', 'cover', 'center 40%'], [/^THE OTHER TWO/, 'tt-fest-dj-flames.jpg', 'cover', 'center 40%'], [/^RUSH HOUR/, 'tt-fest-big-crowd.jpg', 'cover', 'center 60%'], [/^THE DOUBLE BLIND/, 'tt-fest-cheer.jpg', 'cover', 'center 55%']]
   };
   function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
   function boxFor(root, re) {
@@ -211,7 +211,7 @@
     // one photo running down through two stacked boxes, so you can see what is going on in it
     var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'cd-marathon.jpg', 1800, 1200],
         [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
-      'Turkey Tail': [[/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'tt-city-ai-walkers.jpg', 1800, 1013], [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-teal-7-train.jpg', 1080, 717]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
+      'Turkey Tail': [[/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'tt-fest-harbor-stage.jpg', 1800, 1013], [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lm-grandma-girl-puzzle.jpg', 612, 408], [/^FURTHER READING/, /^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 1200, 671]] };
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
