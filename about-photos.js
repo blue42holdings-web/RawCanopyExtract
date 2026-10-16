@@ -34,7 +34,7 @@
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
-      var CW = 'linear-gradient(#000 0,' + CREAM + ' 36px,' + CREAM + ' 100%)';
+      var CW = 'linear-gradient(' + CREAM + ',' + CREAM + ')';   // Oct 15 (night): white all the way, no dark strip at the top
       if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', CREAM, 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
@@ -57,11 +57,11 @@
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, 'about-three-dogs-2.webp', innerWidth < 768 ? '21% 50%' : 'center 0%', .45);   // phone: the two labs, all heads in   // all three dogs in one photo
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth < 768 ? 'about-dogs-three-stack-m.jpg' : 'about-three-dogs-2.webp', innerWidth < 768 ? 'center 50%' : 'center 0%', .45);   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
-      var W1 = 'linear-gradient(#000 0,' + CREAM + ' 36px,' + CREAM + ' 100%)';
+      var W1 = innerWidth < 768 ? 'linear-gradient(' + CREAM + ',' + CREAM + ')' : 'linear-gradient(#000 0,' + CREAM + ' 36px,' + CREAM + ' 100%)';   // phone: no dark line above Compost
       if (cs.style.getPropertyValue('background-image') !== W1) { cs.style.setProperty('background', 'none', 'important'); cs.style.setProperty('background-image', W1, 'important'); cs.style.setProperty('background-color', CREAM, 'important'); }
       cs.classList.add('rcx-abx');
       [].forEach.call(cs.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
