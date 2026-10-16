@@ -339,11 +339,11 @@
     if (S) {
       var secs = S.querySelectorAll(':scope > section'), pk = secs[1], cbs = S.querySelector('section.clean-band');
       if (pk && cbs) {
-        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 50;
+        var top = pk.getBoundingClientRect().top + scrollY, bot = cbs.getBoundingClientRect().top + scrollY + 10;
         var d = S.querySelector(':scope > .rcx-tennis-run');
         if (!d) { d = document.createElement('div'); d.className = 'rcx-tennis-run'; d.setAttribute('aria-hidden', 'true'); S.appendChild(d); }
         var sTop = S.getBoundingClientRect().top + scrollY, g = Math.round(top - sTop) + '|' + Math.round(bot - top);
-        if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;left:0;right:0;top:' + Math.round(top - sTop) + 'px;height:' + Math.round(bot - top) + 'px;z-index:-1;pointer-events:none;background:url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat;-webkit-mask-image:linear-gradient(#000 calc(100% - 50px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 50px),transparent 100%);'; }
+        if (d.__g !== g) { d.__g = g; d.style.cssText = 'position:absolute;left:0;right:0;top:' + Math.round(top - sTop) + 'px;height:' + Math.round(bot - top) + 'px;z-index:-1;pointer-events:none;background:url("assets/photo/shop-tennis-handshake-nobrand.jpg") center 35%/cover no-repeat;-webkit-mask-image:linear-gradient(#000 calc(100% - 30px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 30px),transparent 100%);'; }
       }
     }
   }
