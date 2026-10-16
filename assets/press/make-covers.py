@@ -11,7 +11,7 @@ def blob(d,cx,cy,r,col):
 MASTS={'popular-science':(255,255,255),'bloomberg':(255,255,255),'time':(200,16,30),'natgeo':(250,205,20)}
 def cover(name,bg,mast,mast_h,photo,bars,frame=None,seed=1,mast_y=40,inset=None):
     # Oct 15 (late, Scott): every cover gets the same masthead band, same height, same place; only lower coverlines vary
-    mast=mast or MASTS.get(name,(240,240,240)); mast_h=90; mast_y=40; inset=None; frame=None
+    mast=None; mast_h=0; mast_y=0; inset=None; frame=None   # Oct 15 (late): no colored band at the top at all, just the blur
     bars=[b for b in bars if b[1]>=.6]
     random.seed(seed)
     im=Image.new('RGB',(W,H),bg); d=ImageDraw.Draw(im,'RGBA')
