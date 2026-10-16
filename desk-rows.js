@@ -78,7 +78,21 @@
     var fb = H.querySelector('[data-fb="42"]'); if (!fb) return;
     if (fb.style.getPropertyValue('padding-bottom') !== '90px') fb.style.setProperty('padding-bottom', '90px', 'important');
     var boxes = [].filter.call(fb.children, function (e) { return e.classList.contains('hw-box') || e.classList.contains('cb-in'); });
-    boxes.forEach(function (b, i) { if (BOX[i]) paint(b, BOX[i][0], BOX[i][1], .5); });
+    // Oct 15 (late, Scott): How To Mix It top left (the woman at the blender, zoomed in), What To Put In It top right,
+    // How Much bottom left (the kettle centered, zoomed out), Nothing To Measure bottom right
+    var PL = [[/HOW TO MIX/, 'kitchen-blender-greens.jpg', '64% 88%', 1, 'auto 165%'], [/WHAT TO PUT/, 'pineapple-smoothie.jpg', 'center 50%', 2, 'cover'],
+              [/HOW MUCH/, 'kettle-rocks-fire.jpg', 'center 44%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
+    boxes.forEach(function (b) {
+      var t = (b.querySelector('h2') || {}).textContent || '';
+      PL.forEach(function (m) { if (!m[0].test(t.toUpperCase())) return;
+        b.style.setProperty('order', String(m[3]), 'important');
+        var v = 'linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url("assets/photo/' + m[1] + '")';
+        if (b.__pl === v + m[2] + m[4]) return; b.__pl = v + m[2] + m[4];
+        b.style.setProperty('background-image', v, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[4], 'important');
+        b.style.setProperty('background-position', '0 0,' + m[2], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
+        b.style.setProperty('background-color', '#000', 'important');
+      });
+    });
   }
   setInterval(run, 1000); run();
 })();
