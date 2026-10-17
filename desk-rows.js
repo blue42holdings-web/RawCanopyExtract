@@ -17,7 +17,8 @@
     if (lm) {
       var b = lm.querySelector('section[data-m="lm-burn"] > div'); if (b && !b.hasAttribute('data-rcx-burn')) b.setAttribute('data-rcx-burn', '');
       // other scripts strip these two boxes' backgrounds inline; put Scott's photos back the same way
-      [[b, 'own-backyard-valley.jpg', 'center'], [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-yosemite-domes.jpg', 'center 40%']].forEach(function (x) {
+      [[b, 'lm-lockin-golf.jpg', '65% 30%'],   // Oct 17 (Scott): Lock In is the college golfer
+        [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-yosemite-domes.jpg', 'center 40%']].forEach(function (x) {
         if (!x[0] || !x[0].parentElement.classList.contains('rcx-row2')) return;
         var v = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/' + x[1] + '")';
         if (x[0].style.getPropertyValue('background-image').indexOf(x[1]) < 0) {
@@ -439,7 +440,8 @@
     if (d.__g === g) return; d.__g = g;
     d.style.cssText = 'position:absolute;left:0;right:0;margin:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;' +
       'background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%)';
-    if (!d.firstChild) { var p = document.createElement('div'); p.style.cssText = 'position:absolute;inset:0;background:url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat;opacity:.3'; d.appendChild(p); }
+    if (!d.firstChild) { var p = document.createElement('div'); d.appendChild(p); }
+    var pp = d.firstChild; pp.style.cssText = 'position:absolute;inset:0;opacity:.3'; pp.style.setProperty('background', 'url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat', 'important');   // Oct 17: the RCX pattern must cover the whole page, set so nothing can clear it
   }
   setInterval(run, 1200); run();
 })();
