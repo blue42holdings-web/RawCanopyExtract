@@ -151,7 +151,8 @@
       var S = Math.max(ww * 1.4, 1800), IH = S * 733 / 1100, ix = Math.round(Math.min(0, Math.max(ww - S, fx - 0.67 * S))), iy = Math.round(fy - 0.27 * IH), ib = iy + IH;
       var SKY = 'rgb(182,119,101)', RED = '#8e321f';
       var bgv = 'linear-gradient(rgba(0,0,0,.46) 0,rgba(0,0,0,.4) ' + (iy + 300) + 'px,rgba(0,0,0,.3) ' + (ib - 200) + 'px,rgba(0,0,0,0) ' + (ib + 40) + 'px),' +
-        'linear-gradient(transparent 0,transparent ' + (ib - 320) + 'px,' + BLUE + ' ' + (ib - 20) + 'px,' + BLUE + ' 100%),' +   // Oct 15 (late): the sunset fades straight into the blue, no red band
+        'linear-gradient(transparent 0,transparent ' + (ib - 320) + 'px,#0b0d10 ' + (ib - 20) + 'px,rgba(11,13,16,.5) ' + (ib + 260) + 'px,rgba(0,0,0,.5) 100%),' +   // Oct 17 (Scott): no flat blue; the sunset dissolves into his Yosemite domes photo
+        'url("assets/photo/own-yosemite-domes.jpg") center ' + (ib - 20) + 'px/' + Math.max(Math.round(ww), Math.round((W.offsetHeight - ib + 40) * 2000 / 1500)) + 'px auto no-repeat,' +
         'linear-gradient(rgb(58,34,56) 0,rgb(140,86,90) ' + Math.round(iy * 0.6) + 'px,' + SKY + ' ' + iy + 'px,rgba(182,119,101,0) ' + (iy + 140) + 'px) 0 0/100% ' + (iy + 140) + 'px no-repeat,' +
         'url("assets/photo/why-sunrise.webp") ' + ix + 'px ' + iy + 'px/' + Math.round(S) + 'px auto no-repeat,' + BLUE;
       if (W.__bgv !== bgv) { W.__bgv = bgv; W.style.setProperty('background', bgv, 'important'); }

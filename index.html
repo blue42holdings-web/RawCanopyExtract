@@ -12,10 +12,11 @@
 <style id="no-under-oct17">@layer rcxguard{@media (min-width:768px){html.rcx-phwait [data-screen-label] [data-ph]:not([data-m$="hero"]),html.rcx-phwait [data-screen-label] .mx-box,html.rcx-phwait [data-screen-label] .ab-box,html.rcx-phwait [data-screen-label] .ab-brand-box,html.rcx-phwait [data-screen-label] .cb-in,html.rcx-phwait [data-screen-label] .wy-box,html.rcx-phwait div[data-screen-label="Shop"] > section:first-of-type{background-image:none !important}}@media (max-width:767px){html.rcx-phwait [data-screen-label] .mx-lab,html.rcx-phwait div[data-screen-label="Lion's Mane"] .mx-box:not(.rcx-rv),html.rcx-phwait div[data-screen-label="Cordyceps"] .mx-box:not(.rcx-rv),html.rcx-phwait div[data-screen-label="Turkey Tail"] .mx-box:not(.rcx-rv){background-image:none !important}}}</style>
 <script>/* Oct 17 (Scott): no photo may flash underneath before the right one loads. Box photos stay dark until the page scripts
    have put the real photo in place (they set it inline, which this rule does not touch), then the rule lifts. Re-arms on every page change. */
-(function(){var H=document.documentElement,t=0,last=null;function arm(){H.classList.add('rcx-phwait');clearTimeout(t);t=setTimeout(function(){H.classList.remove('rcx-phwait')},3200)}arm();
+(function(){var H=document.documentElement,t=0,last=null;function arm(){H.classList.add('rcx-phwait');clearTimeout(t);t=setTimeout(function(){H.classList.remove('rcx-phwait')},1200)}arm();
 document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('[data-page]'))arm()},true);document.addEventListener('pointerdown',function(e){if(e.target.closest&&e.target.closest('[data-page]'))arm()},true);
 new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var a=ms[i].addedNodes;for(var j=0;j<a.length;j++){var n=a[j];if(n.nodeType===1&&(n.hasAttribute('data-screen-label')||(n.querySelector&&n.querySelector('[data-screen-label]')))){arm();return}}}}).observe(document.documentElement,{childList:true,subtree:true});
 setInterval(function(){var v=null,a=document.querySelectorAll('[data-screen-label]');for(var i=0;i<a.length;i++){if(a[i].offsetHeight&&!a[i].parentElement.closest('[data-screen-label]')){v=a[i];break}}if(v&&v!==last){if(last)arm();last=v}},150)})();</script>
+<link rel="preload" as="image" href="assets/photo/hero-stove-pour-ridge-v11.jpg" fetchpriority="high">
 </head>
 <body>
 <x-dc>
@@ -964,7 +965,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 [data-m="wte-story"] .rcx-marble{padding:24px !important;width:100% !important;max-width:560px !important;margin:0 auto !important;align-items:center !important}
 }
 </style>
-<script src="cutout-lift.js?v=20261032l"></script>
+<script src="cutout-lift.js?v=20261033l"></script>
 
 <script src="ambient.js?v=64"></script>
 
@@ -4889,7 +4890,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script src="site-extras.js?v=58"></script>
 <script src="nav-extras.js?v=44"></script>
 <script src="mushroom-reveal.js?v=6"></script>
-<script src="desk-rows.js?v=57"></script>
+<script src="desk-rows.js?v=58"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -4960,7 +4961,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=39"></script>
+<script src="species-desk.js?v=41"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -5984,7 +5985,7 @@ html body a.rcx-btn.rcx-invite:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(
 @media (min-width:768px){
   html body div[data-screen-label="Cordyceps"] section[data-m="howto-slate"][data-m="howto-slate"][data-m="howto-slate"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20):not(.q21):not(.q22):not(.q23){background:transparent !important;background-image:none !important}
   html body div[data-screen-label="Cordyceps"] section[data-m="howto-slate"][data-m="howto-slate"] + section:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20):not(.q21):not(.q22):not(.q23){background:transparent !important}
-  html body div.rcx-row2.rcx-row2 > [data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"].rcx-x:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20):not(.q21):not(.q22):not(.q23):not(.q24):not(.q25):not(.q26):not(.q27):not(.q28):not(.q29){background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/own-yosemite-domes.jpg") center 40%/cover no-repeat !important;display:block !important}
+  html body div.rcx-row2.rcx-row2 > [data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"][data-ph="elder-camp-chair-mug"].rcx-x:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20):not(.q21):not(.q22):not(.q23):not(.q24):not(.q25):not(.q26):not(.q27):not(.q28):not(.q29){background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/own-tetons.jpg") center 45%/cover no-repeat !important;display:block !important}
   html body div.rcx-row2.rcx-row2 > [data-rcx-burn][data-rcx-burn].rcx-x:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20):not(.q21):not(.q22):not(.q23):not(.q24):not(.q25):not(.q26):not(.q27):not(.q28):not(.q29){background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/lm-lockin-golf.jpg") 65% 30%/cover no-repeat !important}
   .rcx-row2 > .rcx-x.rcx-x h2,.rcx-row2 > .rcx-x.rcx-x h3{color:#D4A24A !important}
 .rcx-row2{display:grid;gap:24px;max-width:1300px;width:calc(100% - 56px);margin:34px auto;align-items:stretch}
@@ -5993,7 +5994,7 @@ html body a.rcx-btn.rcx-invite:not(.y1):not(.y2):not(.y3):not(.y4):not(.y5):not(
 .rcx-row2[data-n="4"] > *{padding:28px 22px !important}.rcx-row2[data-n="4"] p{font-size:16px !important;line-height:1.6 !important}
 .rcx-row2 p{color:#F1ECE1 !important}
 [data-rcx-emptied]{display:none !important}
-html body div[data-screen-label="Lion's Mane"] [data-ph="elder-camp-chair-mug"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16).rcx-x{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/own-yosemite-domes.jpg") center 40%/cover no-repeat !important}
+html body div[data-screen-label="Lion's Mane"] [data-ph="elder-camp-chair-mug"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16).rcx-x{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/own-tetons.jpg") center 45%/cover no-repeat !important}
 html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] [data-rcx-burn].rcx-x:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/lm-lockin-golf.jpg") 65% 30%/cover no-repeat !important}
 html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] section[data-m="sbox"] [data-m="flat"][style*="story-lm-poster"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16),html body div[data-screen-label="Lion's Mane"][data-screen-label="Lion's Mane"] section[data-m="sbox"] button[data-m="flat"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16){background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55)),url("assets/photo/own-shasta-peak.jpg") center 30%/cover no-repeat !important}
 html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):not(.z6):not(.z7):not(.z8):not(.z9):not(.z10):not(.z11):not(.z12):not(.z13):not(.z14):not(.z15):not(.z16).rcx-x{background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.64)),url("assets/photo/own-cannon-beach.jpg") center/cover no-repeat !important}
