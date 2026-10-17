@@ -17,6 +17,7 @@
     if (/hero/.test(m) || /hero/.test(c)) return 1;
     if (/studied-sec/.test(c + ' ' + m)) return 2;
     if (/^num-/.test(m)) return 3;
+    if (m === 'tt-gut') return 3;   // Oct 17 (Scott): Gut Health stays on the phone, right after the numbers
     if (/^FURTHER READING/.test(h)) return 4;
     if (/^HOW IT.S MADE/.test(h)) return 5;
     if (/(^|\s)sbox(\s|$)/.test(c + ' ' + m)) return 6;
