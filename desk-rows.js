@@ -84,7 +84,7 @@
     // Oct 15 (late, Scott): How To Mix It top left (the woman at the blender, zoomed in), What To Put In It top right,
     // How Much bottom left (the kettle centered, zoomed out), Nothing To Measure bottom right
     var PL = [[/HOW TO MIX/, 'kitchen-blender-greens.jpg', '64% 88%', 1, 'auto 165%'], [/WHAT TO PUT/, 'pineapple-smoothie.jpg', 'center 50%', 2, 'cover'],
-              [/HOW MUCH/, 'own-mountain-sky.jpg', 'center 60%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
+              [/HOW MUCH/, 'lm-office-red-mugs.jpg', 'center 60%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
     boxes.forEach(function (b) {
       var t = (b.querySelector('h2') || {}).textContent || '';
       PL.forEach(function (m) { if (!m[0].test(t.toUpperCase())) return;
@@ -94,7 +94,7 @@
         b.style.setProperty('background-image', v, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[4], 'important');
         b.style.setProperty('background-position', '0 0,' + m[2], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important');
-        if (/HOW MUCH/.test(t.toUpperCase())) {   // the kettle on the right, clear of the words
+        if (false) {   // Oct 17: How Much is now the office red mugs photo, plain cover
           var r = b.getBoundingClientRect(), W = Math.round(r.width * 1.0), H = Math.round(W * 1600 / 1280);
           b.style.setProperty('background-size', '100% 100%,' + W + 'px ' + H + 'px', 'important');
           b.style.setProperty('background-position', '0 0,' + '0px ' + Math.round(r.height * 0.7 - H * 0.42) + 'px', 'important');
@@ -432,13 +432,12 @@
     var C = document.querySelector('.sd-lm'); if (!C || !C.offsetHeight) return;
     var hero = C.querySelector(':scope > section[data-m$="-hero"]'), s = C.querySelector(':scope > section[data-m="sbox"]'); if (!hero || !s) return;
     // Oct 17 (Scott): the filter and pattern start right under the top box's gold line and run all the way down to the gold border of The Other Two
-    var ot = C.querySelector('[data-m="other-two-red"]');
-    var cr = C.getBoundingClientRect(), y0 = Math.round(hero.getBoundingClientRect().bottom - cr.top), y1 = ot ? Math.round(ot.getBoundingClientRect().bottom - cr.top) : C.offsetHeight;
+    var cr = C.getBoundingClientRect(), y0 = Math.round(hero.getBoundingClientRect().bottom - cr.top), y1 = C.__lmMid ? C.__lmMid + 40 : Math.round(s.getBoundingClientRect().bottom - cr.top + 300);   // Oct 17 (Scott): filter and pattern cover the Shasta photo only, fading out into the beach
     var d = C.querySelector(':scope > [data-lm-fill]');
     if (!d) { d = document.createElement('div'); d.setAttribute('data-lm-fill', ''); d.setAttribute('data-sd-hero', 'fill'); d.setAttribute('aria-hidden', 'true'); C.insertBefore(d, hero.nextSibling); }
     var g = y0 + '|' + y1;
     if (d.__g === g) return; d.__g = g;
-    d.style.cssText = 'position:absolute;left:0;right:0;margin:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;' +
+    d.style.cssText = 'position:absolute;left:0;right:0;margin:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(#000 calc(100% - 300px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 300px),transparent 100%);' +
       'background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%)';
     if (!d.firstChild) { var p = document.createElement('div'); d.appendChild(p); }
     var pp = d.firstChild; pp.style.cssText = 'position:absolute;inset:0;opacity:.3'; pp.style.setProperty('background', 'url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat', 'important');   // Oct 17: the RCX pattern must cover the whole page, set so nothing can clear it

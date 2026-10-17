@@ -537,4 +537,4 @@
 })();
 
 /* Oct 17 (Scott): on desktop, a Swipe For More label only shows when its row really scrolls sideways */
-(function(){function run(){var d=innerWidth>=768;document.querySelectorAll('.rit-nav').forEach(function(n){var row=null,p=n.parentElement;for(var k=0;k<4&&p&&!row;k++,p=p.parentElement){row=[].filter.call(p.querySelectorAll('*'),function(x){return x.scrollWidth>x.clientWidth+4&&/auto|scroll/.test(getComputedStyle(x).overflowX)})[0]||null;}var hide=d&&!row;if(n.__h!==hide){n.__h=hide;n.style.setProperty('display',hide?'none':'',hide?'important':'');}});}setInterval(run,800);addEventListener('resize',run);run();})();
+(function(){function run(){var d=innerWidth>=768;document.querySelectorAll('.rit-nav').forEach(function(n){var box=n.closest('.cx')||n.parentElement,row=[].filter.call(box.querySelectorAll('*'),function(x){return x.scrollWidth>x.clientWidth+4&&/auto|scroll/.test(getComputedStyle(x).overflowX)})[0]||null;var hide=d&&!row;if(n.__h!==hide){n.__h=hide;n.style.setProperty('display',hide?'none':'',hide?'important':'');}});}setInterval(run,800);addEventListener('resize',run);run();})();

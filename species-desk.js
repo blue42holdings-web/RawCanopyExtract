@@ -85,12 +85,17 @@
       var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
       // Oct 17 (Scott): no blue band. Shasta on top, his beach photo below, and the two dissolve into each other through the
       // middle of the space under the Join the Movement box. The filter and RCX pattern (desk-rows.js) cover both, top to bottom.
-      var MID = shEnd + 40, XF = 280, rest2 = Math.max(400, TH - MID);
-      var bw2 = Math.max(LW, Math.round(rest2 * 2000 / 1500)), bh2 = Math.round(bw2 * 1500 / 2000), bx2 = Math.round((LW - bw2) / 2);
+      // Oct 17 (Scott, final): ONE photo, the Shasta lenticular aerial with the clouds, runs from under the top mushroom photo down
+      // through Roar of the Mountain to below Join the Movement. It carries the dark filter and RCX pattern (desk-rows.js), which
+      // fade out there into his beach photo, which has no pattern.
+      var MID = shEnd + 60, XF = 260, RH = Math.max(400, MID - hEnd);
+      var sc = Math.max(LW / 2000, RH / 1215), sw = Math.round(2000 * sc), shh = Math.round(1215 * sc), sx = Math.round((LW - sw) / 2), sy = Math.round(hEnd + (RH - shh) * 0.35);
+      var rest2 = Math.max(400, TH - MID), bw2 = Math.max(LW, Math.round(rest2 * 2000 / 1500)), bh2 = Math.round(bw2 * 1500 / 2000), bx2 = Math.round((LW - bw2) / 2);
       bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,transparent ' + (hEnd + 1) + 'px,transparent 100%),' +
-        'linear-gradient(transparent 0,transparent ' + (MID - XF) + 'px,#000 ' + MID + 'px,transparent ' + (MID + XF) + 'px,transparent 100%),' +   // the two photos dissolve through dark in the middle
+        'linear-gradient(transparent 0,transparent ' + (MID - XF) + 'px,rgba(0,0,0,.85) ' + MID + 'px,transparent ' + (MID + XF) + 'px,transparent 100%),' +
         'url("assets/photo/own-cannon-beach.jpg") ' + bx2 + 'px ' + MID + 'px/' + bw2 + 'px ' + bh2 + 'px no-repeat,' +
-        'url("assets/photo/own-shasta-peak.jpg") center ' + shY + 'px/' + LW + 'px ' + shH + 'px no-repeat,#000';
+        'url("assets/photo/shasta-lenticular.jpg") ' + sx + 'px ' + sy + 'px/' + sw + 'px ' + shh + 'px no-repeat,#000';
+      C.__lmMid = MID;
       var bz = C.querySelector(':scope > [data-sd-beach]'); if (bz) bz.remove();
     }
     else if (cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + RED + ' ' + (sTop + 1) + 'px,' + RED + ' 100%)';   // Oct 15 (late): white above Coming Soon, red below
