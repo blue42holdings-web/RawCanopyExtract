@@ -63,7 +63,8 @@
       if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
       var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '140px') bsec.style.setProperty('margin-top', '140px', 'important');
-      if (sh) { var skyH = Math.round(sh.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 140; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
+      var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('own-car-shop-lift') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
+      if (sh && carL) { var skyH = Math.round(carL.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 60; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
     }
     if (sh && br && innerWidth >= 768) {
       // Oct 16 (Scott): the Oregon coast photo is never used; the pink sky behind the top runs down behind these instead
