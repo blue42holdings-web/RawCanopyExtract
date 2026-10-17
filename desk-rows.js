@@ -17,7 +17,7 @@
     if (lm) {
       var b = lm.querySelector('section[data-m="lm-burn"] > div'); if (b && !b.hasAttribute('data-rcx-burn')) b.setAttribute('data-rcx-burn', '');
       // other scripts strip these two boxes' backgrounds inline; put Scott's photos back the same way
-      [[b, 'own-oregon-coast.jpg', 'center'], [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-yosemite-domes.jpg', 'center 40%']].forEach(function (x) {
+      [[b, 'own-backyard-valley.jpg', 'center'], [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-yosemite-domes.jpg', 'center 40%']].forEach(function (x) {
         if (!x[0] || !x[0].parentElement.classList.contains('rcx-row2')) return;
         var v = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/' + x[1] + '")';
         if (x[0].style.getPropertyValue('background-image').indexOf(x[1]) < 0) {
@@ -51,7 +51,7 @@
    their own photo. */
 (function () {
   var MQ = matchMedia('(min-width:900px)');
-  var BOX = [['pineapple-smoothie.jpg', 'center 50%'], ['kettle-rocks-fire.jpg', 'center 50%'], ['kitchen-blender-greens.jpg', 'center 45%'], ['own-palm-sunset.jpg', 'center 62%']];
+  var BOX = [['pineapple-smoothie.jpg', 'center 50%'], ['own-mountain-sky.jpg', 'center 60%'], ['kitchen-blender-greens.jpg', 'center 45%'], ['own-palm-sunset.jpg', 'center 62%']];
   function paint(e, f, pos, k) {
     var v = 'linear-gradient(rgba(0,0,0,' + k + '),rgba(0,0,0,' + (k + .1) + ')),url("assets/photo/' + f + '")';
     if (e.style.getPropertyValue('background-image') === v.replace(/"/g, '"')) return;
@@ -83,7 +83,7 @@
     // Oct 15 (late, Scott): How To Mix It top left (the woman at the blender, zoomed in), What To Put In It top right,
     // How Much bottom left (the kettle centered, zoomed out), Nothing To Measure bottom right
     var PL = [[/HOW TO MIX/, 'kitchen-blender-greens.jpg', '64% 88%', 1, 'auto 165%'], [/WHAT TO PUT/, 'pineapple-smoothie.jpg', 'center 50%', 2, 'cover'],
-              [/HOW MUCH/, 'kettle-rocks-fire.jpg', 'center 44%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
+              [/HOW MUCH/, 'own-mountain-sky.jpg', 'center 60%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
     boxes.forEach(function (b) {
       var t = (b.querySelector('h2') || {}).textContent || '';
       PL.forEach(function (m) { if (!m[0].test(t.toUpperCase())) return;
@@ -332,7 +332,7 @@
       }
       var mr = W.parentElement && W.parentElement.querySelector('[data-m="more-research"] > div');
       if (!mr) mr = document.querySelector('[data-why-mr] > div');
-      if (mr && mr.offsetHeight) put(mr, 'own-yellowstone.jpg', 'cover', 'center 100%', .45);   // the hot spring ring and its colors, no sky
+      if (mr && mr.offsetHeight) put(mr, 'own-yellowstone.jpg', 'cover', '57% 88%', .45);   // the hot spring ring and its colors, no sky
       // 2 + 1: no wide gaps
       [].forEach.call(W.querySelectorAll('.mx-big'), function (e) { if (/2\s*\+\s*1/.test(e.textContent) && !e.__tight) { e.__tight = 1; e.style.setProperty('letter-spacing', '0', 'important'); e.style.setProperty('word-spacing', '-0.18em', 'important'); } });
     }

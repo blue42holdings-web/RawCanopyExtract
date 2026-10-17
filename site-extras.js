@@ -231,6 +231,9 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     // Oct 12: nothing ever blurs over the home seal; skip every seam within the hero section
     var hero = document.querySelector('section[data-m="hero"]'), hr = hero ? hero.getBoundingClientRect() : null;
     if (hr && hr.height) uniq = uniq.filter(function (y) { return y < hr.top + scrollY - 100 || y > hr.bottom + scrollY + 100; });
+    // Oct 16 (Scott): an RCX pattern field always starts with a hard edge, so no seam blur touches one (the footer included)
+    var pf = []; [].forEach.call(document.querySelectorAll('footer,[style*="pattern-field-bold"]'), function (e) { var r = e.getBoundingClientRect(); if (r.height) pf.push(r.top + scrollY, r.bottom + scrollY); });
+    uniq = uniq.filter(function (y) { return !pf.some(function (e) { return Math.abs(e - y) < 100; }); });
     uniq.forEach(function (y) {
       // largest free gap around the seam, up to 90px each side
       var up = 90, dn = 90;

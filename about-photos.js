@@ -58,20 +58,20 @@
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
       var cs2 = A.querySelector('section[data-m="about-compost"]'); if (cs2) cs2.style.setProperty('background-image', 'none', 'important');
       // and white all the way up behind the story boxes too
-      if (sh && sh.style.getPropertyValue('background-image') !== CW) { sh.style.setProperty('background', 'none', 'important'); sh.style.setProperty('background-image', CW, 'important'); sh.style.setProperty('background-color', '#000', 'important'); sh.classList.add('rcx-abx'); }
+      if (sh && !sh.__skyThru) { sh.__skyThru = 1; sh.style.setProperty('background', 'transparent', 'important'); sh.style.setProperty('background-image', 'none', 'important'); sh.style.setProperty('background-color', 'transparent', 'important'); sh.classList.add('rcx-abx'); }   // Oct 16 (Scott): the pink sky runs down behind the story boxes, then fades to black
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
+      // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
+      if (sh) { var skyH = Math.round(sh.getBoundingClientRect().bottom - A.getBoundingClientRect().top); if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }
     }
     if (sh && br && innerWidth >= 768) {
-      var W = sh.offsetWidth, H1 = sh.offsetHeight, H2 = br.offsetHeight, k = Math.max(W / 2000, (H1 + H2) / 1500), iw = Math.ceil(2000 * k), ih = Math.ceil(1500 * k), x = Math.round((W - iw) / 2), y0 = Math.round((H1 + H2 - ih) / 2);
-      [[sh, y0], [br, y0 - H1]].forEach(function (z) {
-        var v = 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.55)),url("assets/photo/own-oregon-coast.jpg")', ps = '0 0,0 0,' + x + 'px ' + z[1] + 'px', sz = '100% 100%,100% 100%,' + iw + 'px ' + Math.round(ih) + 'px';
-        if (z[0].__yk === v + ps + sz && z[0].style.getPropertyValue('background-image')) return; z[0].__yk = v + ps + sz;
-        z[0].style.setProperty('background', 'none', 'important');
-        z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('background-size', sz, 'important');
-        z[0].style.setProperty('background-position', ps, 'important'); z[0].style.setProperty('background-repeat', 'no-repeat', 'important');
-        z[0].style.setProperty('background-color', '#1b1610', 'important'); z[0].classList.add('rcx-abx');
-        [].forEach.call(z[0].children, function (kd) { if (kd.tagName === 'DIV' && !kd.textContent.trim() && /url\(/.test(getComputedStyle(kd).backgroundImage)) kd.style.setProperty('display', 'none', 'important'); });
+      // Oct 16 (Scott): the Oregon coast photo is never used; the pink sky behind the top runs down behind these instead
+      [sh, br].forEach(function (z) {
+        if (z.__noCoast) return; z.__noCoast = 1;
+        z.style.setProperty('background', 'transparent', 'important');
+        z.style.setProperty('background-image', 'none', 'important');
+        z.style.setProperty('background-color', 'transparent', 'important'); z.classList.add('rcx-abx');
+        [].forEach.call(z.children, function (kd) { if (kd.tagName === 'DIV' && !kd.textContent.trim() && /url\(/.test(getComputedStyle(kd).backgroundImage)) kd.style.setProperty('display', 'none', 'important'); });
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
