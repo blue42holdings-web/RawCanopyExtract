@@ -84,7 +84,7 @@
     // Oct 15 (late, Scott): How To Mix It top left (the woman at the blender, zoomed in), What To Put In It top right,
     // How Much bottom left (the kettle centered, zoomed out), Nothing To Measure bottom right
     var PL = [[/HOW TO MIX/, 'kitchen-blender-greens.jpg', '64% 88%', 1, 'auto 165%'], [/WHAT TO PUT/, 'pineapple-smoothie.jpg', 'center 50%', 2, 'cover'],
-              [/HOW MUCH/, 'lm-office-red-mugs.jpg', 'center 60%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
+              [/HOW MUCH/, 'mug-dawn.jpg', 'center 60%', 3, 'cover'], [/NOTHING TO MEASURE/, 'own-palm-sunset.jpg', 'center 62%', 4, 'cover']];
     boxes.forEach(function (b) {
       var t = (b.querySelector('h2') || {}).textContent || '';
       PL.forEach(function (m) { if (!m[0].test(t.toUpperCase())) return;
@@ -167,7 +167,7 @@
 (function () {
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)', GTT = 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.34) 40%,rgba(0,0,0,.58) 100%)';   // Oct 17 (Scott): Turkey Tail boxes all start lighter, one even darkness
   var MAP = {
-    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-kickoff-fishing-sunset.jpg', 'cover', '62% center'],
       [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'auto 190%', '55% 100%'],   // Oct 15 (night): hands on the puzzle, no faces
       [/^FURTHER READING/, 'lm-ski-lesson.jpg', 'cover', 'center 45%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
@@ -207,7 +207,7 @@
         var u = m[1] ? 'url("assets/photo/' + m[1] + '")' : (b.__rcxU || ((getComputedStyle(b).backgroundImage.match(/url\([^)]*\)/g) || []).pop()));
         if (!u) return; b.__rcxU = u;
         var key = u + m[2] + m[3]; if (b.__boxKey === key && (b.style.getPropertyValue('background-image') || '').indexOf('url') >= 0) return; b.__boxKey = key;
-        b.style.setProperty('background-image', (/kickoff|ski-lesson/.test(u) ? 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76))' : L === 'Turkey Tail' ? GTT : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
+        b.style.setProperty('background-image', (/kickoff-fishing/.test(u) ? 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5))' : /kickoff|ski-lesson/.test(u) ? 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76))' : L === 'Turkey Tail' ? GTT : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
         b.style.setProperty('background-position', '0 0,' + m[3], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important'); b.style.setProperty('--fsz', m[2]); b.style.setProperty('--fps', m[3]);
         b.setAttribute('data-rcx-boxph', '');
