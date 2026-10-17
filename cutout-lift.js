@@ -173,7 +173,7 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
     if(el.hasAttribute('data-lift-nomask')) M='none';
     var box=mk('position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;-webkit-mask-image:'+M+';mask-image:'+M+';');
     /* Oct 15 (late): a soft dark veil comes up behind the lifted cutout, so the photo underneath recedes and never reads as a second copy */
-    var blur=mk('position:absolute;inset:0;background:rgba(0,0,0,'+((PH||!el.classList.contains('mx-box'))?'0':(el.getAttribute('data-lift-veil')||'.34'))+');opacity:0;transition:'+CT('opacity')+';');
+    var blur=mk('position:absolute;inset:0;background:rgba(0,0,0,'+((!PH&&el.hasAttribute('data-lift-veil-any'))?el.getAttribute('data-lift-veil-any'):(PH||!el.classList.contains('mx-box'))?'0':(el.getAttribute('data-lift-veil')||'.34'))+');opacity:0;transition:'+CT('opacity')+';');
     var LB=el.getAttribute('data-lift-scale'), LBT=LB?'scale('+LB+')':LIFT;
     var cut=mk('position:absolute;inset:0;background-repeat:no-repeat;background-size:'+sz[sz.length-1]+';background-position:'+ps[ps.length-1]+';filter:'+(el.getAttribute('data-lift-dim')||'none')+';opacity:0;transform:none;transform-origin:50% 60%;will-change:transform,opacity;transition:'+(FD?'opacity '+FD+'ms ease-out '+DE+'ms':CT('opacity'))+','+CT('transform')+';');
     box.appendChild(blur); box.appendChild(cut); el.insertBefore(box,el.firstChild);

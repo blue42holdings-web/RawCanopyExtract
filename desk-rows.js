@@ -374,7 +374,7 @@
     }
     if (!s.hasAttribute('data-lift-bg')) {   // she lifts on by size and fade only (no brightness animation, no blur layer), which is what made it stutter
       s.setAttribute('data-lift-bg', 'assets/cutouts/shop-climber-wide-cutout.webp'); s.setAttribute('data-lift-desktop', ''); s.setAttribute('data-lift-nomask', ''); s.setAttribute('data-lift-noblur', '');
-      s.setAttribute('data-lift-dim', 'none'); s.setAttribute('data-lift-scale', '1.04'); s.setAttribute('data-lift-origin', '0.86 0.5');
+      s.setAttribute('data-lift-dim', 'none'); s.setAttribute('data-lift-scale', '1.02'); s.setAttribute('data-lift-origin', '0.7465 0.431'); s.setAttribute('data-lift-veil-any', '.35');   // Oct 17 (Scott): pinned on her chin so she grows forward from there and never doubles
       s.setAttribute('data-lift-dur', '8000'); s.setAttribute('data-lift-delay', '1200'); s.setAttribute('data-lift-d-delay', '1200'); s.setAttribute('data-lift-fade', '2000');
     }
   }
