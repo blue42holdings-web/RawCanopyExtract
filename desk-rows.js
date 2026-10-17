@@ -18,7 +18,7 @@
       var b = lm.querySelector('section[data-m="lm-burn"] > div'); if (b && !b.hasAttribute('data-rcx-burn')) b.setAttribute('data-rcx-burn', '');
       // other scripts strip these two boxes' backgrounds inline; put Scott's photos back the same way
       [[b, 'lm-lockin-golf.jpg', '65% 30%'],   // Oct 17 (Scott): Lock In is the college golfer
-        [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-yosemite-domes.jpg', 'center 40%']].forEach(function (x) {
+        [lm.querySelector('[data-ph="elder-camp-chair-mug"]'), 'own-tetons.jpg', 'center 45%']].forEach(function (x) {
         if (!x[0] || !x[0].parentElement.classList.contains('rcx-row2')) return;
         var v = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url("assets/photo/' + x[1] + '")';
         if (x[0].style.getPropertyValue('background-image').indexOf(x[1]) < 0) {
