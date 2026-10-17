@@ -419,7 +419,8 @@
     try {
       // share the Sound Bath's audio engine when it is running: opening a second one makes phones pop
       var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-      var c = window.__rcxAudioCtx || actx || (actx = new AC()); if (c.state === 'suspended') c.resume();
+      // Oct 17 (Scott): no beeps unless the Sound Bath is on, so the site never interrupts music the visitor is playing
+      var c = window.__rcxAudioCtx; if (!c || c.state !== 'running') return;
       var t = c.currentTime + 0.01, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
       o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
       lp.type = 'lowpass'; lp.frequency.value = 2600;
