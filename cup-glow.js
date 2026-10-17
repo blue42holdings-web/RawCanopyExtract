@@ -1,4 +1,5 @@
-/* Oct 17 (Scott): the white enamel cup in the hand behind the home description is cut out and slowly glows on.
+/* Oct 17 (Scott, 4:53pm): the cup waits about 20 seconds longer before it glows on.
+   Oct 17 (Scott): the white enamel cup in the hand behind the home description is cut out and slowly glows on.
    Just the cup. The cut-out layer copies the photo's own size and position, so it sits exactly on the cup on phone and desktop. */
 (function () {
   if (window.__cupGlow) return; window.__cupGlow = 1;
@@ -10,7 +11,7 @@
     '@keyframes rcxCupBreath{0%,100%{filter:brightness(1.45) drop-shadow(0 0 10px rgba(255,230,180,.8)) drop-shadow(0 0 30px rgba(255,205,130,.5))}' +
     '50%{filter:brightness(1.3) drop-shadow(0 0 7px rgba(255,230,180,.6)) drop-shadow(0 0 20px rgba(255,205,130,.35))}}' +
     '[data-cup-glow]{position:absolute;inset:0;pointer-events:none;z-index:0;background-repeat:no-repeat;border-radius:inherit;opacity:0}' +
-    '[data-cup-glow].on{animation:rcxCupGlow 4.5s ease-out 1s forwards,rcxCupBreath 5s ease-in-out 5.5s infinite}' +
+    '[data-cup-glow].on{animation:rcxCupGlow 4.5s ease-out 21s forwards,rcxCupBreath 5s ease-in-out 25.5s infinite}' +
     '@media (prefers-reduced-motion:reduce){[data-cup-glow].on{animation:none;opacity:1;filter:brightness(1.35) drop-shadow(0 0 10px rgba(255,230,180,.7))}}';
   document.head.appendChild(css);
   function split(v) { var o = [], d = 0, c = ''; for (var i = 0; i < v.length; i++) { var ch = v[i]; if (ch === '(') d++; if (ch === ')') d--; if (ch === ',' && d === 0) { o.push(c.trim()); c = ''; } else c += ch; } o.push(c.trim()); return o; }
