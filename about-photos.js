@@ -61,6 +61,8 @@
       if (sh && !sh.__skyThru) { sh.__skyThru = 1; sh.style.setProperty('background', 'transparent', 'important'); sh.style.setProperty('background-image', 'none', 'important'); sh.style.setProperty('background-color', 'transparent', 'important'); sh.classList.add('rcx-abx'); }   // Oct 16 (Scott): the pink sky runs down behind the story boxes, then fades to black
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
+      // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
+      if (sh) { var skyH = Math.round(sh.getBoundingClientRect().bottom - A.getBoundingClientRect().top); if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }
     }
     if (sh && br && innerWidth >= 768) {
       // Oct 16 (Scott): the Oregon coast photo is never used; the pink sky behind the top runs down behind these instead
