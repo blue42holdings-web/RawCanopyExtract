@@ -81,7 +81,7 @@
     if (cfg.key === 'lm') {   // Oct 15 (late, Scott): Shasta, darkened evenly, down to the email box; a short slate blue band behind the numbers heading; then his beach photo to the bottom
       var LW = C.offsetWidth, inp = C.querySelector('section[data-m="sbox"] input'), num = C.querySelector('[data-m="num-lm"]');
       var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) - 10) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
-      var shH = Math.round(LW * 2000 / 1500), shY = Math.round(hEnd - shH * 0.04);   // the peak itself, not the trees at the bottom of the photo
+      var shH = Math.round(LW * 2000 / 1500), shY = Math.round(hEnd - shH * 0.17);   // Oct 17 (Scott): the peak of Shasta starts right under the top mushroom photo, no plain sky   // the peak itself, not the trees at the bottom of the photo
       var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
       // Oct 17 (Scott): no blue band. Shasta on top, his beach photo below, and the two dissolve into each other through the
       // middle of the space under the Join the Movement box. The filter and RCX pattern (desk-rows.js) cover both, top to bottom.
