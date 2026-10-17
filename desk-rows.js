@@ -163,21 +163,22 @@
 /* Oct 15 (late): desktop boxes found by their heading, given one real photo each (inline, so no page rule can turn them
    back into a flat tan or purple box). */
 (function () {
-  var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
+  var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)', GTT = 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.34) 40%,rgba(0,0,0,.58) 100%)';   // Oct 17 (Scott): Turkey Tail boxes all start lighter, one even darkness
   var MAP = {
-    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW IT'S MADE/, 'lab-mushroom-extraction.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'stillness-in-the-forest.jpg', 'cover', 'center 40%'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW IT'S MADE/, 'lab-mushroom-extraction.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'lab-mushroom-extraction.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
       [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'auto 190%', '55% 100%'],   // Oct 15 (night): hands on the puzzle, no faces
-      [/^FURTHER READING/, 'own-river.jpg', 'cover', 'center 60%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
+      [/^FURTHER READING/, 'lm-ski-lesson.jpg', 'cover', 'center 45%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
       [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
-    'Cordyceps': [[/^FURTHER READING/, 'cd-marathon.jpg', 'cover', 'center 40%'], [/^THE NAMES IT GOES BY/, 'friends-workout.webp', 'cover', 'center'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', 'cover', 'center 35%'],
-      [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'cover', 'center'],
+    'Cordyceps': [[/^FURTHER READING/, 'cd-relay-college.jpg', 'cover', 'center 30%'], [/^THE NAMES IT GOES BY/, 'friends-workout.webp', 'cover', 'center'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', '125% auto', 'center 30%'],
+      [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'auto 125%', 'center 80%'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
     'Turkey Tail': [[/^NO SCOOP|^NOTHING TO MEASURE|^PRE-MEASURED/, 'mess-floor.jpg', 'cover', 'center'],
       [/^WHAT IT IS/, 'tt-fest-cheer.jpg', 'cover', 'center 40%'], [/^FURTHER READING/, 'tt-fest-harbor-stage.jpg', 'cover', 'center'], [/^THE NAMES IT GOES BY/, 'tt-teal-7-train.jpg', 'cover', 'center'], [/^WHERE OURS COMES FROM/, 'tt-tube-boarding.jpg', 'cover', 'center 45%'],
       [/^HOW IT'S MADE/, 'lab-hand-closeup.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'tt-concert-lasers.jpg', 'cover', 'center 100%'],
-      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-fest-aerial.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', 'cover', 'center 40%'], [/^THE OTHER TWO/, 'tt-fest-dj-flames.jpg', 'cover', 'center 62%'], [/^RUSH HOUR/, 'tt-fest-big-crowd.jpg', 'cover', 'center 60%'], [/^THE DOUBLE BLIND/, 'tt-fest-cheer.jpg', 'cover', 'center 55%']]
+      [/^THE COMMUTE/, 'tt-subway-car.jpg', 'cover', 'center'], [/^RUSH HOUR/, 'tt-14th-st-boarding.jpg', 'cover', '45% center'], [/^DATA . UNITED NATIONS/, 'tt-fest-aerial.jpg', 'cover', 'center'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', 'cover', 'center 40%'], [/^HOW TO TAKE IT/, 'tt-fest-dj-flames.jpg', 'cover', 'center 62%'], [/^RUSH HOUR/, 'tt-fest-big-crowd.jpg', 'cover', 'center 60%'], [/^THE DOUBLE BLIND/, 'tt-fest-cheer.jpg', 'cover', 'center 55%']]
   };
+  window.__rcxBoxMap = MAP;   // nav-extras reads this so it never paints a box this map owns (that was the flash underneath)
   function norm(t) { return t.replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase(); }
   function boxFor(root, re) {
     var els = root.querySelectorAll('h2,h3,h4,.mx-tag,.cb-tag,.lab-tag,span,p');
@@ -204,7 +205,7 @@
         var u = m[1] ? 'url("assets/photo/' + m[1] + '")' : (b.__rcxU || ((getComputedStyle(b).backgroundImage.match(/url\([^)]*\)/g) || []).pop()));
         if (!u) return; b.__rcxU = u;
         var key = u + m[2] + m[3]; if (b.__boxKey === key && (b.style.getPropertyValue('background-image') || '').indexOf('url') >= 0) return; b.__boxKey = key;
-        b.style.setProperty('background-image', (/kickoff/.test(u) ? 'linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.72))' : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
+        b.style.setProperty('background-image', (/kickoff|ski-lesson/.test(u) ? 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76))' : L === 'Turkey Tail' ? GTT : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
         b.style.setProperty('background-position', '0 0,' + m[3], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important'); b.style.setProperty('--fsz', m[2]); b.style.setProperty('--fps', m[3]);
         b.setAttribute('data-rcx-boxph', '');
@@ -213,7 +214,7 @@
     // one photo running down through two stacked boxes, so you can see what is going on in it
     var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lab-soxhlet-chrome.jpg', 800, 450],
         [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
-      'Turkey Tail': [[/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]] };   // Oct 17 (Scott): Lion's Mane What's Been Studied gets its own meditation photo, so How It's Made keeps its own
+      'Turkey Tail': [[/^THE LOT SHIPPING/, /^THE OTHER TWO/, 'tt-concert-blue.jpg', 940, 788]] };   // Oct 17 (Scott): DJ flames moves up to How To Take It; the concert runs down through the lower two   // Oct 17 (Scott): Lion's Mane What's Been Studied gets its own meditation photo, so How It's Made keeps its own
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
@@ -221,7 +222,7 @@
         var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect(), W = Math.max(ra.width, rb.width), H = rb.bottom - ra.top;
         var k = Math.max(W / pr[3], H / pr[4]), iw = Math.ceil(pr[3] * k), ih = Math.ceil(pr[4] * k), x = Math.round((W - iw) / 2), y0 = /puzzle/.test(pr[2]) ? Math.round(H - ih) : Math.round((H - ih) / 2);
         [[a, y0], [b, y0 - (rb.top - ra.top)]].forEach(function (z) {
-          var v = 'linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.68)),url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
+          var v = (L === 'Turkey Tail' ? 'linear-gradient(rgba(0,0,0,.36),rgba(0,0,0,.5))' : 'linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.68))') + ',url("assets/photo/' + pr[2] + '")', key = v + iw + 'x' + ih + '@' + x + ',' + z[1];
           if (z[0].__pk === key && z[0].style.getPropertyValue('background-image')) return; z[0].__pk = key; z[0].setAttribute('data-rcx-boxph', '');
           z[0].style.setProperty('background-image', v, 'important'); z[0].style.setProperty('--x', v); z[0].style.setProperty('background-size', '100% 100%,' + iw + 'px ' + ih + 'px', 'important');
           z[0].style.setProperty('background-position', '0 0,' + x + 'px ' + z[1] + 'px', 'important'); z[0].style.setProperty('background-repeat', 'no-repeat', 'important');
@@ -339,7 +340,7 @@
     var A = pg('About');
     if (A) {
       var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) put(bb, 'own-scott-wildman.jpg', 'cover', 'center 40%', .6);
-      var cb = A.querySelector('.cmp-box'); if (cb) put(cb, 'about-three-dogs-2.webp', 'cover', 'center 0%', .45);
+      // Oct 17: Compost The Box photo is set only in about-photos.js (his two labs); setting it here too made one flash under the other
     }
     // Shop: the colored tennis photo runs from the products all the way down behind the badges into the powder
     var S = pg('Shop');
@@ -429,12 +430,14 @@
     if (!MQ.matches) return;
     var C = document.querySelector('.sd-lm'); if (!C || !C.offsetHeight) return;
     var hero = C.querySelector(':scope > section[data-m$="-hero"]'), s = C.querySelector(':scope > section[data-m="sbox"]'); if (!hero || !s) return;
-    var cr = C.getBoundingClientRect(), y0 = Math.round(hero.getBoundingClientRect().bottom - cr.top), y1 = Math.round(s.getBoundingClientRect().top - cr.top);
+    // Oct 17 (Scott): the filter and pattern start right under the top box's gold line and run all the way down to the gold border of The Other Two
+    var ot = C.querySelector('[data-m="other-two-red"]');
+    var cr = C.getBoundingClientRect(), y0 = Math.round(hero.getBoundingClientRect().bottom - cr.top), y1 = ot ? Math.round(ot.getBoundingClientRect().bottom - cr.top) : C.offsetHeight;
     var d = C.querySelector(':scope > [data-lm-fill]');
     if (!d) { d = document.createElement('div'); d.setAttribute('data-lm-fill', ''); d.setAttribute('data-sd-hero', 'fill'); d.setAttribute('aria-hidden', 'true'); C.insertBefore(d, hero.nextSibling); }
     var g = y0 + '|' + y1;
     if (d.__g === g) return; d.__g = g;
-    d.style.cssText = 'position:absolute;left:0;right:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;' +
+    d.style.cssText = 'position:absolute;left:0;right:0;margin:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;' +
       'background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%)';
     if (!d.firstChild) { var p = document.createElement('div'); p.style.cssText = 'position:absolute;inset:0;background:url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat;opacity:.3'; d.appendChild(p); }
   }
