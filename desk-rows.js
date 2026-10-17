@@ -168,7 +168,7 @@
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)', GTT = 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.34) 40%,rgba(0,0,0,.58) 100%)';   // Oct 17 (Scott): Turkey Tail boxes all start lighter, one even darkness
   var MAP = {
     "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-kickoff-fishing-sunset.jpg', 'cover', '62% center'],
-      [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'auto 190%', '55% 100%'],   // Oct 15 (night): hands on the puzzle, no faces
+      [/^THE GRANDPARENTS/, 'lm-grandpa-reading.jpg', 'cover', '62% center'],   // Oct 17 (Scott): grandpa reading with his grandson
       [/^FURTHER READING/, 'lm-ski-lesson.jpg', 'cover', 'center 45%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
       [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
