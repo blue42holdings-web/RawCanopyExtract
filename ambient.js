@@ -789,8 +789,14 @@
     if (started || !AC) return;
     started = true; startedAt = Date.now(); fresh = true; setTimeout(function () { fresh = false; }, 1000);
     try {
-      ctx = new AC(); window.__rcxAudioCtx = ctx;
-      eng = build(ctx, ctx.destination);
+      // Oct 17 (Scott: crackle and static on desktop): bigger audio buffers so busy page work can't starve the sound,
+      // and a safety limiter at the very end so loud moments can never clip into static
+      try { ctx = new AC({ latencyHint: 'playback' }); } catch (e) { ctx = new AC(); }
+      window.__rcxAudioCtx = ctx;
+      var lim = ctx.createDynamicsCompressor();
+      lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.12;
+      lim.connect(ctx.destination);
+      eng = build(ctx, lim);
       timer = setInterval(function () { if (ctx.state === 'running') eng.scheduleUntil(ctx.currentTime + 45); }, 8000);
       setInterval(function () { if (ctx.state === 'running') eng.drumTick(ctx.currentTime + 1.5); }, 300);
       if (ctx.state === 'suspended') ctx.resume();
