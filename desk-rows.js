@@ -171,7 +171,7 @@
       [/^THE GRANDPARENTS/, 'lm-grandpa-reading.jpg', 'cover', '62% center'],   // Oct 17 (Scott): grandpa reading with his grandson
       [/^FURTHER READING/, 'lm-ski-lesson.jpg', 'cover', 'center 45%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
-      [/^LAB REPORT . HUMAN TRIAL/, 'lm-grandma-puzzle.jpg', 'cover', 'center 60%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
+      [/^LAB REPORT . HUMAN TRIAL/, 'lm-hearts-sunset.jpg', 'cover', 'center 20%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
     'Cordyceps': [[/^FURTHER READING/, 'cd-relay-college.jpg', 'cover', 'center 30%'], [/^THE NAMES IT GOES BY/, 'friends-workout.webp', 'cover', 'center'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', '125% auto', 'center 30%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'auto 125%', 'center 80%'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
@@ -207,7 +207,7 @@
         var u = m[1] ? 'url("assets/photo/' + m[1] + '")' : (b.__rcxU || ((getComputedStyle(b).backgroundImage.match(/url\([^)]*\)/g) || []).pop()));
         if (!u) return; b.__rcxU = u;
         var key = u + m[2] + m[3]; if (b.__boxKey === key && (b.style.getPropertyValue('background-image') || '').indexOf('url') >= 0) return; b.__boxKey = key;
-        b.style.setProperty('background-image', (/kickoff-fishing/.test(u) ? 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5))' : /kickoff|ski-lesson/.test(u) ? 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76))' : L === 'Turkey Tail' ? GTT : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
+        b.style.setProperty('background-image', (/hearts-sunset/.test(u) ? 'linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.2) 40%,rgba(0,0,0,.55) 100%)' : /kickoff-fishing/.test(u) ? 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5))' : /kickoff|ski-lesson/.test(u) ? 'linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76))' : L === 'Turkey Tail' ? GTT : G) + ',' + u, 'important'); b.style.setProperty('background-size', '100% 100%,' + m[2], 'important');
         b.style.setProperty('background-position', '0 0,' + m[3], 'important'); b.style.setProperty('background-repeat', 'no-repeat', 'important');
         b.style.setProperty('background-color', '#000', 'important'); b.style.setProperty('--fsz', m[2]); b.style.setProperty('--fps', m[3]);
         b.setAttribute('data-rcx-boxph', '');
