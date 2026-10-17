@@ -83,10 +83,15 @@
       var shEnd = inp ? Math.round(top(inp, C) + 90) : sEnd, bStart = num ? Math.round(top(num, C) - 10) : shEnd + 300, TH = C.offsetHeight, rest = Math.max(400, TH - bStart);
       var shH = Math.round(LW * 2000 / 1500), shY = Math.round(hEnd - shH * 0.04);   // the peak itself, not the trees at the bottom of the photo
       var bw = Math.max(LW, Math.round(rest * 2000 / 1500)), bh = Math.round(bw * 1500 / 2000), bx = Math.round((LW - bw) / 2);
-      bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,rgba(0,0,0,.5) ' + (hEnd + 1) + 'px,rgba(0,0,0,.5) ' + bStart + 'px,rgba(0,0,0,.68) ' + (bStart + 120) + 'px,rgba(0,0,0,.68) 100%),' +   // Oct 15 (night): the beach gets a darker filter
-        'linear-gradient(transparent 0,transparent ' + (shEnd - 50) + 'px,#24425e ' + shEnd + 'px,#24425e ' + bStart + 'px,transparent ' + (bStart + 60) + 'px,transparent 100%),' +
-        'url("assets/photo/own-cannon-beach.jpg") ' + bx + 'px ' + bStart + 'px/' + bw + 'px ' + bh + 'px no-repeat,' +
-        'url("assets/photo/own-shasta-peak.jpg") center ' + shY + 'px/' + LW + 'px ' + shH + 'px no-repeat,#24425e';
+      // Oct 17 (Scott): no blue band. Shasta on top, his beach photo below, and the two dissolve into each other through the
+      // middle of the space under the Join the Movement box. The filter and RCX pattern (desk-rows.js) cover both, top to bottom.
+      var MID = shEnd + 40, XF = 280, rest2 = Math.max(400, TH - MID);
+      var bw2 = Math.max(LW, Math.round(rest2 * 2000 / 1500)), bh2 = Math.round(bw2 * 1500 / 2000), bx2 = Math.round((LW - bw2) / 2);
+      bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,transparent ' + (hEnd + 1) + 'px,transparent 100%),' +
+        'linear-gradient(transparent 0,transparent ' + (MID - XF) + 'px,#000 ' + MID + 'px,transparent ' + (MID + XF) + 'px,transparent 100%),' +   // the two photos dissolve through dark in the middle
+        'url("assets/photo/own-cannon-beach.jpg") ' + bx2 + 'px ' + MID + 'px/' + bw2 + 'px ' + bh2 + 'px no-repeat,' +
+        'url("assets/photo/own-shasta-peak.jpg") center ' + shY + 'px/' + LW + 'px ' + shH + 'px no-repeat,#000';
+      var bz = C.querySelector(':scope > [data-sd-beach]'); if (bz) bz.remove();
     }
     else if (cfg.key === 'tt') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + WHITE + ' ' + (hEnd + 1) + 'px,' + WHITE + ' ' + sTop + 'px,' + RED + ' ' + (sTop + 1) + 'px,' + RED + ' 100%)';   // Oct 15 (late): white above Coming Soon, red below
     else if (cfg.key === 'cd') bg = 'linear-gradient(#000 0,#000 ' + hEnd + 'px,' + RED + ' ' + (hEnd + 1) + 'px,' + RED + ' 100%)';
@@ -94,10 +99,11 @@
     else bg = 'linear-gradient(#000 0,#000 ' + h1 + 'px,' + OLIVE + ' ' + (h1 + 120) + 'px,' + OLIVE + ' ' + (sTop + 40) + 'px,#141414 ' + (sTop + 160) + 'px,#141414 ' + (sEnd - 60) + 'px,' + RED + ' ' + (sEnd + 160) + 'px,' + RED + ' 100%)';
     var mt = C.querySelector(':scope > [data-sd-metal]');
     if (cfg.key !== 'lm') {
-      var r0 = cfg.key === 'cd' ? h1 + 40 : sEnd - 40, r1 = cfg.key === 'cd' ? sEnd : C.offsetHeight;
+      var r0 = cfg.key === 'cd' ? hEnd : sEnd - 40, r1 = C.offsetHeight;   // Oct 17 (Scott): Cordyceps is metal red the whole way down, no flat red
       if (!mt) { mt = document.createElement('div'); mt.setAttribute('data-sd-metal', ''); mt.setAttribute('aria-hidden', 'true'); C.insertBefore(mt, C.firstChild); }
       C.style.isolation = 'isolate';
       mt.style.cssText = 'position:absolute;left:0;right:0;top:' + r0 + 'px;height:' + Math.max(0, r1 - r0) + 'px;z-index:-1;pointer-events:none;background:' + window.__rcxMetal + ';-webkit-mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 220px,#000 calc(100% - 220px),transparent 100%)';
+      mt.style.setProperty('display', 'block', 'important'); mt.style.setProperty('background', window.__rcxMetal, 'important');   // Oct 17: an old page rule was hiding it, so Cordyceps showed flat red
     } else if (mt) mt.remove();
     C.style.setProperty('background', bg, 'important');
   }
@@ -105,7 +111,7 @@
   function off(C) {
     if (!C.classList.contains('sd-on')) return;
     C.classList.remove('sd-on', 'sd-lm', 'sd-cd', 'sd-tt');
-    var ov = C.querySelector(':scope > [data-sd-hero]'); if (ov) ov.remove();
+    var ov = C.querySelector(':scope > [data-sd-hero]'); if (ov) ov.remove(); var bz0 = C.querySelector(':scope > [data-sd-beach]'); if (bz0) bz0.remove();
     C.style.removeProperty('background');
     C.querySelectorAll('section[data-m$="-hero"] div').forEach(function (d) { d.style.visibility = ''; });
   }

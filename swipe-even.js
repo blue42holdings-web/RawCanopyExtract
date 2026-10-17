@@ -39,7 +39,7 @@
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) document.querySelectorAll('[data-se-row]:not([data-lit])').forEach(function (t) { var r = t.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) t.setAttribute('data-lit', ''); });
   }
   // phone photo swaps for single boxes (Oct 15 night, Scott): keep each box's own shade, change only the photo
-  var BOX = [["Lion's Mane", '[data-ph="vintage-bottles-labels"]', 'lm-grandpa-fishing.jpg', '50% 35%'],
+  var BOX = [["Lion's Mane", '[data-ph="vintage-bottles-labels"]', 'lm-ski-lesson.jpg', '50% 45%'],   // Oct 17 (Scott): the ski lesson is Further Reading on Lion's Mane
              ["Lion's Mane", '[data-ph="lab-people"]', 'lab-steel-tanks.jpg', 'center']];   // lab-people was showing twice on the page
   function boxes() {
     if (!MQ.matches) return;

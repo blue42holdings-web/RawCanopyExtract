@@ -10,6 +10,7 @@
       [/^LAB REPORT/, 'lab-soxhlet-chrome.jpg', '50% 50%'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', '50% 30%'], [/^RUSH HOUR/, 'tt-tube-boarding.jpg', '50% 50%']],
     'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '60% 50%'], [/^THE RIVER/, 'how-kayak-whitewater.jpg', '50% 45%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%']]
   };
+  window.__rcxPhoneSwap = SWAP;   // Oct 17: nav-extras leaves these boxes alone on the phone, so nothing flashes underneath
   var css = document.createElement('style');
   css.textContent = '@property --rk{syntax:"<number>";inherits:false;initial-value:.6}' +
     '@media (max-width:767px){' +

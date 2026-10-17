@@ -339,7 +339,7 @@
 (function () {
   var P = 'assets/photo/';
   var CROWD = ['tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
-  var MOVE = ['tr-maglev.jpg', 'tr-future-train.jpg',   // Oct 15 (night): tr-bullet-tunnel removed for good, Scott never wants it again
+  var MOVE = [   // Oct 15 (night): tr-bullet-tunnel removed for good. Oct 17: the futuristic trains (maglev, future train) deleted for good too
      'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-bus-motion.jpg'];
   var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
   function run() {
@@ -352,10 +352,21 @@
     groups.forEach(function (list, g) {
       var c = 0, m = (pi++) * 3, l = 0;
       // Oct 15 (late, Scott): Shop tells a trip story left to right: the train, then airport security, then the crowd boarding
-      var SHOPSTORY = ['tr-rail-city.jpg', 'tt-airport-security-line.jpg', 'tt-airport-crowd.jpg'];
+      var SHOPSTORY = ['tr-rail-city.jpg', 'tt-airport-security-line.jpg', 'tt-fest-wristbands.jpg'];   // Oct 17 (Scott): turkey tail gets the concert crowd, hands in the air
       var isShop = g && g.getAttribute && g.getAttribute('data-screen-label') === 'Shop';
       list.forEach(function (b, bi) {
         if (isShop && bi < 3) { var im2 = SHOPSTORY[bi]; if (b.__lab !== im2) { b.__lab = im2; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + im2 + '") center/cover no-repeat', 'important'); } return; }
+        var lbl = g.getAttribute && g.getAttribute('data-screen-label'), M = window.__rcxBoxMap && window.__rcxBoxMap[lbl];
+        if (matchMedia('(min-width:900px)').matches && /Lion|Cordyceps|Turkey/.test(lbl || '')) {   // Oct 17: desk-rows.js owns these boxes on desktop
+          if (!window.__rcxBoxMap) return;
+          var t0 = (b.innerText || '').replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase();
+          if (M && M.some(function (m) { return m[0].test(t0); })) return;
+        }
+        if (matchMedia('(max-width:767px)').matches && /Lion|Cordyceps|Turkey/.test(lbl || '')) {
+          var PS = window.__rcxPhoneSwap; if (!PS) return;
+          var t1 = (b.innerText || '').replace(/\s+/g, ' ').trim().toUpperCase();
+          if ((PS[lbl] || []).some(function (m) { return m[0].test(t1); })) return;
+        }
         var t = ((b.querySelector('.lab-title') || {}).textContent || '').toUpperCase();
         var img;
         if (/TURKEY|TRAMETES|POPULATION/.test(t)) img = CROWD[c++ % CROWD.length];
@@ -363,7 +374,7 @@
         else img = MOVE[m++ % MOVE.length];
         if (b.__lab === img) return;
         b.__lab = img; b.__sv = 1;
-        b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + img + '") center/cover no-repeat', 'important');
+        b.style.setProperty('background', (g.getAttribute && g.getAttribute('data-screen-label') === 'Turkey Tail' ? 'linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.62))' : 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8))') + ',url("' + P + img + '") center/cover no-repeat', 'important');
       });
     });
   }
