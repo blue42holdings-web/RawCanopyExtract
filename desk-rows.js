@@ -139,6 +139,7 @@
       var a = home.querySelector('[data-show-mess]'); if (a && a.offsetHeight) set(a, G + ',url("assets/photo/mess-floor.jpg")', '100% 100%,auto 128%', '0 0,30% 85%');
       var d = home.querySelector('[data-rcx-dogs]'); if (d && d.offsetHeight) set(d, G + ',url("assets/photo/own-dogs-car.jpg")', '100% 100%,auto 132%', '0 0,82% 100%');
       var t = home.querySelector('[data-lift-bg*="a-rider-pausing"]');
+      if (t && !t.__still) { t.__still = 1; t.removeAttribute('data-lift-desktop'); t.querySelectorAll(':scope > [data-lift-layer]').forEach(function (l) { l.remove(); }); }   // Oct 17 (Scott): the biker shook while it zoomed; on desktop it holds still
       if (t && t.offsetHeight) set(t, 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3) 40%,rgba(0,0,0,.75) 62%,#000 72%),url("assets/photo/a-rider-pausing-on-a-granite-ridge.webp")', '100% 100%,auto 70%', '0 0,100% 0');
       [].forEach.call(home.querySelectorAll('.rit-card'), function (c) { if (c === a || c === d || c === t || !c.offsetHeight) return; var u = urlOf(c); if (u) set(c, G + ',' + u, getComputedStyle(c).backgroundSize, getComputedStyle(c).backgroundPosition); });
     }
