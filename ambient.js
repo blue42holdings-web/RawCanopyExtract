@@ -1,5 +1,5 @@
 /* RCX ambient soundscape. Everything is synthesized in the browser (no audio files).
-   Starts on the first click or tap. Layers: wind, waves, birds (nature) and soft pads (three moods
+   Starts only when the visitor presses the Sound Bath button (never on a random tap). Layers: wind, waves, birds (nature) and soft pads (three moods
    that blend into each other). About 10 percent of the time it turns serious: deep drones and
    layered low tones for a short while, then returns to calm. */
 (function () {
@@ -807,7 +807,7 @@
   function toggle() {
     // the very first tap on the page landed on this button: the tap already started the music, so play it (and bring it up quickly) instead of turning it off
     if (fresh && started && !muted) { fresh = false; if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(3); refresh(); return; }
-    if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); return; }
+    if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} unlockIOS(); start(); if (ctx && ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} } if (eng) eng.fadeIn(3); fresh = false; refresh(); return; }
     muted = !muted;
     if (!muted && storyActive()) {   // turning the sound bath on stops the story, then the bath fades in
       try { var sa = window.__rcxAudio; if (sa && !sa.paused) sa.pause(); } catch (e) {}
@@ -842,7 +842,8 @@
     if (ctx && ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} }
     if (ctx && ctx.state === 'running') ['pointerdown', 'touchend', 'keydown', 'click'].forEach(function (n) { document.removeEventListener(n, firstGesture, true); });
   }
-  ['pointerdown', 'touchstart', 'touchend', 'keydown', 'click'].forEach(function (n) { document.addEventListener(n, firstGesture, true); });
+  // Oct 17 (Scott, 4:54pm): never start on a random tap. Touching the page must not cut off music the visitor is already playing
+  // (iTunes, Spotify). The sound bath starts only when they press the Sound Bath button.
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkBtn); else mkBtn();
 
   // step aside while the story (Roar of the Mountain) plays: slow fade out, back in when it stops.
