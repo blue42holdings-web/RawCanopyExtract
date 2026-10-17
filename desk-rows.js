@@ -165,7 +165,7 @@
 (function () {
   var MQ = matchMedia('(min-width:900px)'), G = 'linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.5) 40%,rgba(0,0,0,.72) 100%)';
   var MAP = {
-    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
+    "Lion's Mane": [[/^NO SCOOP/, 'mess-floor.jpg', 'cover', 'center'], [/^HOW IT'S MADE/, 'lab-mushroom-extraction.jpg', 'cover', 'center'], [/^WHAT'S BEEN STUDIED/, 'stillness-in-the-forest.jpg', 'cover', 'center 40%'], [/^THE KICKOFF/, 'lm-grandpa-fishing.jpg', 'cover', 'center 45%'],
       [/^THE GRANDPARENTS/, 'lm-grandpa-puzzle.jpg', 'auto 190%', '55% 100%'],   // Oct 15 (night): hands on the puzzle, no faces
       [/^FURTHER READING/, 'own-river.jpg', 'cover', 'center 60%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
@@ -213,7 +213,7 @@
     // one photo running down through two stacked boxes, so you can see what is going on in it
     var PAIRS = { 'Cordyceps': [[/^WHAT IT IS/, /^WHERE OURS COMES FROM/, 'cd-yunnan-hoodoos.webp', 1200, 675], [/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lab-soxhlet-chrome.jpg', 800, 450],
         [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
-      'Turkey Tail': [[/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]], "Lion's Mane": [[/^HOW IT'S MADE/, /^WHAT'S BEEN STUDIED/, 'lab-mushroom-extraction.jpg', 900, 550]] };
+      'Turkey Tail': [[/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'tt-concert-blue.jpg', 940, 788]] };   // Oct 17 (Scott): Lion's Mane What's Been Studied gets its own meditation photo, so How It's Made keeps its own
     Object.keys(PAIRS).forEach(function (L) {
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
