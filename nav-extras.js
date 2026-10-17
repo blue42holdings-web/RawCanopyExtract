@@ -340,7 +340,7 @@
   var P = 'assets/photo/';
   var CROWD = ['tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
   var MOVE = [   // Oct 15 (night): tr-bullet-tunnel removed for good. Oct 17: the futuristic trains (maglev, future train) deleted for good too
-     'tr-train-night.jpg', 'tr-rail-city.jpg', 'tr-bus-motion.jpg'];
+     'tr-train-night.jpg', 'cd-golf-sea.jpg', 'tr-bus-motion.jpg'];   // Oct 17: tr-rail-city deleted for good
   var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
   function run() {
     var groups = new Map();
@@ -352,7 +352,7 @@
     groups.forEach(function (list, g) {
       var c = 0, m = (pi++) * 3, l = 0;
       // Oct 15 (late, Scott): Shop tells a trip story left to right: the train, then airport security, then the crowd boarding
-      var SHOPSTORY = ['tr-rail-city.jpg', 'tt-airport-security-line.jpg', 'tt-fest-wristbands.jpg'];   // Oct 17 (Scott): turkey tail gets the concert crowd, hands in the air
+      var SHOPSTORY = ['parent-and-child-outdoors.jpg', 'tt-airport-security-line.jpg', 'tt-fest-wristbands.jpg'];   // Oct 17 (Scott): turkey tail gets the concert crowd, hands in the air
       var isShop = g && g.getAttribute && g.getAttribute('data-screen-label') === 'Shop';
       list.forEach(function (b, bi) {
         if (isShop && bi < 3) { var im2 = SHOPSTORY[bi]; if (b.__lab !== im2) { b.__lab = im2; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + im2 + '") center/cover no-repeat', 'important'); } return; }
@@ -535,3 +535,6 @@
   addEventListener('resize', run); if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
   setInterval(run, 800); run();
 })();
+
+/* Oct 17 (Scott): on desktop, a Swipe For More label only shows when its row really scrolls sideways */
+(function(){function run(){var d=innerWidth>=768;document.querySelectorAll('.rit-nav').forEach(function(n){var row=null,p=n.parentElement;for(var k=0;k<4&&p&&!row;k++,p=p.parentElement){row=[].filter.call(p.querySelectorAll('*'),function(x){return x.scrollWidth>x.clientWidth+4&&/auto|scroll/.test(getComputedStyle(x).overflowX)})[0]||null;}var hide=d&&!row;if(n.__h!==hide){n.__h=hide;n.style.setProperty('display',hide?'none':'',hide?'important':'');}});}setInterval(run,800);addEventListener('resize',run);run();})();
