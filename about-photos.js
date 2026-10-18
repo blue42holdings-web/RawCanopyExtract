@@ -39,7 +39,8 @@
       var st = grid.querySelector(':scope > .ab-strip');
       if (!st) {
         st = document.createElement('div'); st.className = 'ab-strip'; st.setAttribute('aria-hidden', 'true');
-        BOX.forEach(function (f, i) { var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
+        // Oct 18 (Scott): phone, the man at the river is not him; it comes out and the other five photos stretch to fill
+        BOX.forEach(function (f, i) { if (f === 'own-river.jpg') return; var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
           d.style.backgroundImage = 'linear-gradient(rgba(0,0,0,' + dk + '),rgba(0,0,0,' + (dk + .12) + ')),url("assets/photo/' + f + '")';
           d.style.backgroundSize = '100% 100%,cover'; d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
         grid.insertBefore(st, grid.firstChild);
@@ -56,13 +57,16 @@
       if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', CREAM, 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
-      var cs2 = A.querySelector('section[data-m="about-compost"]'); if (cs2) cs2.style.setProperty('background-image', 'none', 'important');
+      
       // and white all the way up behind the story boxes too
       if (sh && !sh.__skyThru) { sh.__skyThru = 1; sh.style.setProperty('background', 'transparent', 'important'); sh.style.setProperty('background-image', 'none', 'important'); sh.style.setProperty('background-color', 'transparent', 'important'); sh.classList.add('rcx-abx'); }   // Oct 16 (Scott): the pink sky runs down behind the story boxes, then fades to black
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
-      if (br.style.getPropertyValue('background-image') !== 'none') { br.style.setProperty('background-image', 'none', 'important'); }
+      // Oct 18 (Scott): phone, only a little black under the story box, then a big 200px dissolve from black into the cream of About The Brand
+      var FADE = 'linear-gradient(#000 0px, ' + CREAM + ' 200px, ' + CREAM + ' 100%)';
+      if (br.style.getPropertyValue('background-image') !== FADE) { br.style.setProperty('background-image', FADE, 'important'); }
+      if (!br.__padFade) { br.__padFade = 1; br.style.setProperty('padding-top', (parseFloat(getComputedStyle(br).paddingTop) + 190) + 'px', 'important'); }
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
-      var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '140px') bsec.style.setProperty('margin-top', '140px', 'important');
+      var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '40px') bsec.style.setProperty('margin-top', '40px', 'important');   // Oct 18 (Scott): was 140px of black
       var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('own-car-shop-lift') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
       if (sh && carL) { var skyH = Math.round(carL.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 60; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
     }
@@ -81,11 +85,11 @@
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
-      var W1 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): black behind Compost The Box, above the heading too
+      var W1 = innerWidth < 768 ? 'linear-gradient(' + CREAM + ' 0%, ' + CREAM + ' calc(50% - 100px), #000 calc(50% + 100px), #000 100%)' : 'linear-gradient(#000,#000)';   // Oct 16 (Scott): black behind Compost The Box, above the heading too   // Oct 18 (Scott): phone, the cream from About The Brand runs on down behind Compost The Box, then halfway through a 200px dissolve to black
       if (cs.style.getPropertyValue('background-image') !== W1) { cs.style.setProperty('background', 'none', 'important'); cs.style.setProperty('background-image', W1, 'important'); cs.style.setProperty('background-color', '#000', 'important'); }
       cs.classList.add('rcx-abx');
       [].forEach.call(cs.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
-      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#D4A24A', 'important');
+      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', innerWidth < 768 ? '#7a5a1e' : '#D4A24A', 'important');   // Oct 18: phone heading sits on cream now
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
         var W2 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
