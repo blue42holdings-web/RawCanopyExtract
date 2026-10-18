@@ -5,7 +5,7 @@
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
   var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-car-shop-lift.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
-  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 42%', 'center 50%'];   // Oct 17 (Scott): house straightened, sky and ground even
+  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 85%', 'center 65%'];   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -41,7 +41,7 @@
         st = document.createElement('div'); st.className = 'ab-strip'; st.setAttribute('aria-hidden', 'true');
         BOX.forEach(function (f, i) { var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
           d.style.backgroundImage = 'linear-gradient(rgba(0,0,0,' + dk + '),rgba(0,0,0,' + (dk + .12) + ')),url("assets/photo/' + f + '")';
-          d.style.backgroundSize = '100% 100%,cover'; d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
+          d.style.backgroundSize = f === 'about-house-level.jpg' ? '100% 100%,150% auto' : '100% 100%,cover'; /* Oct 18 (Scott): house zoomed in so the sky doesn't take over */ d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
         grid.insertBefore(st, grid.firstChild);
       }
     } else {
@@ -52,8 +52,8 @@
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
-      var CW = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
-      if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', CREAM, 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
+      var CW = 'linear-gradient(rgba(0,0,0,0) 0px, ' + CREAM + ' 200px, ' + CREAM + ' 100%)';   // Oct 18 (Scott): one steady 200px dissolve from the black above into cream (was plain black)   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
+      if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', 'transparent', 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
       
@@ -61,11 +61,10 @@
       if (sh && !sh.__skyThru) { sh.__skyThru = 1; sh.style.setProperty('background', 'transparent', 'important'); sh.style.setProperty('background-image', 'none', 'important'); sh.style.setProperty('background-color', 'transparent', 'important'); sh.classList.add('rcx-abx'); }   // Oct 16 (Scott): the pink sky runs down behind the story boxes, then fades to black
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       // Oct 18 (Scott): phone, only a little black under the story box, then a big 200px dissolve from black into the cream of About The Brand
-      var FADE = 'linear-gradient(#000 0px, ' + CREAM + ' 200px, ' + CREAM + ' 100%)';
-      if (br.style.getPropertyValue('background-image') !== FADE) { br.style.setProperty('background-image', FADE, 'important'); }
-      if (!br.__padFade) { br.__padFade = 1; br.style.setProperty('padding-top', (parseFloat(getComputedStyle(br).paddingTop) + 190) + 'px', 'important'); }
+      if (!br.__padFade) { br.__padFade = 1; br.style.setProperty('padding-top', (parseFloat(getComputedStyle(br).paddingTop) + 190 + 150) + 'px', 'important'); }
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
-      var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '40px') bsec.style.setProperty('margin-top', '40px', 'important');   // Oct 18 (Scott): was 140px of black
+      var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '-110px') { bsec.style.setProperty('margin-top', '-110px', 'important'); bsec.style.setProperty('z-index', '0', 'important'); }   // Oct 18 (Scott): was 140px of black, then 40px; now the dissolve starts about an inch and a half sooner, rising up beside the bottom of the story box
+      if (sh && sh.style.getPropertyValue('z-index') !== '2') { sh.style.setProperty('position', 'relative', 'important'); sh.style.setProperty('z-index', '2', 'important'); }
       var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('own-car-shop-lift') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
       if (sh && carL) { var skyH = Math.round(carL.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 60; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
     }
