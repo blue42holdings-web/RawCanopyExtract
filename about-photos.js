@@ -5,7 +5,7 @@
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
   var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-car-shop-lift.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
-  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 85%', 'center 65%'];   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
+  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
