@@ -4,8 +4,8 @@
   // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
-  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-car-shop-lift.jpg', 'own-river.jpg', 'about-house-level.jpg'];
-  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 60%', 'center 50%'];   // Oct 17 (Scott): house straightened, sky and ground even
+  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-car-shop-lift.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
+  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 42%', 'center 50%'];   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -39,8 +39,7 @@
       var st = grid.querySelector(':scope > .ab-strip');
       if (!st) {
         st = document.createElement('div'); st.className = 'ab-strip'; st.setAttribute('aria-hidden', 'true');
-        // Oct 18 (Scott): phone, the man at the river is not him; it comes out and the other five photos stretch to fill
-        BOX.forEach(function (f, i) { if (f === 'own-river.jpg') return; var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
+        BOX.forEach(function (f, i) { var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
           d.style.backgroundImage = 'linear-gradient(rgba(0,0,0,' + dk + '),rgba(0,0,0,' + (dk + .12) + ')),url("assets/photo/' + f + '")';
           d.style.backgroundSize = '100% 100%,cover'; d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
         grid.insertBefore(st, grid.firstChild);
