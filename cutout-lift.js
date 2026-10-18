@@ -103,6 +103,8 @@ var px=-1,py=-1,queued=false;
 function tick(){ queued=false; if(px<0){ setActive(null); return; }
   var els=document.elementsFromPoint(px,py), hit=null, info=null;
   for(var i=0;i<els.length;i++){ var e=els[i]; if(e===document.body||e===document.documentElement) break; var m=match(e); if(m){ hit=e; info=m; break; } }
+  /* Oct 18 (Scott): phone About story photos sit behind the text and can't be touched, so the kayaks and the loaded car never lifted; find them by position */
+  if(!hit){ var sd=document.querySelectorAll('.ab-strip > div'); for(var j=0;j<sd.length;j++){ var q=sd[j], qr=q.getBoundingClientRect(); if(qr.height&&px>=qr.left&&px<=qr.right&&py>=qr.top&&py<=qr.bottom){ var m2=match(q); if(m2){ hit=q; info=m2; } break; } } }
   /* Oct 11: on phones a photo only plays once it is just about in the middle of the screen */
   if(hit&&!HOVER){ var hr=hit.getBoundingClientRect(), mid=(hr.top+hr.bottom)/2, room=Math.max(innerHeight*0.14,(hr.height-innerHeight)/2+innerHeight*0.14); if(Math.abs(mid-innerHeight/2)>room){ hit=null; info=null; } }
   setActive(hit,info);
