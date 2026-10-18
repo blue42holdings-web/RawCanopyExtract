@@ -3918,9 +3918,10 @@ class Component extends DCLogic {
     } catch (err) {}
   };
 
-  wakeClick = () => { this.primeAudioSession(); try { this.wakeClickCtx(); } catch (err) {} };
+  wakeClick = () => { if (!(window.__rcxAudioCtx && window.__rcxAudioCtx.state === 'running')) return; /* Oct 17 (Scott): no tap sounds or audio session unless the Sound Bath is on */ this.primeAudioSession(); try { this.wakeClickCtx(); } catch (err) {} };
 
   playClick = (e) => {
+    if (!(window.__rcxAudioCtx && window.__rcxAudioCtx.state === 'running')) return;   // Oct 17 (Scott): no tap sounds and no audio session unless the Sound Bath is on, so the site never cuts off the visitor's own music
     let ctx;
     try { ctx = this.wakeClickCtx(); } catch (err) { return; }
     const t = e.target && e.target.closest && e.target.closest('button, a[href], [role="link"], [data-page], input[type="submit"], summary');
