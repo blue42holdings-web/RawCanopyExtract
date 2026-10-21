@@ -247,3 +247,9 @@ FILES THAT CHANGED
 - cutout-lift.js (adds the slower fade-in and growth timing used by items 6 and 7)
 - RawCanopyExtract-site-text.txt (regenerated: home page text order, wording unchanged except the new line)
 - CHANGES.txt (this file)
+
+RAW CANOPY EXTRACT — DELIVERY, October 21, 2026
+1. About, About The Brand: the receipts line now reads "We publish the independent lab report for every lot and call it the receipts. Scan the QR code on your box or type in your lot number to see yours." The old sentence about a separate complete lab certificate is removed, so the site names one document, the receipts.
+FILES THAT CHANGED
+- index.html
+- CHANGES.txt
