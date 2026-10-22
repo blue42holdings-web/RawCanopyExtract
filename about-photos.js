@@ -4,7 +4,7 @@
   // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
-  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-car-shop-lift.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
+  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'about-three-dogs-2.webp', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
   var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
@@ -65,7 +65,7 @@
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
       var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '-110px') { bsec.style.setProperty('margin-top', '-110px', 'important'); bsec.style.setProperty('z-index', '0', 'important'); }   // Oct 18 (Scott): was 140px of black, then 40px; now the dissolve starts about an inch and a half sooner, rising up beside the bottom of the story box
       if (sh && sh.style.getPropertyValue('z-index') !== '2') { sh.style.setProperty('position', 'relative', 'important'); sh.style.setProperty('z-index', '2', 'important'); }
-      var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('own-car-shop-lift') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
+      var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('about-three-dogs-2') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
       if (sh && carL) { var skyH = Math.round(carL.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 60; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
     }
     if (sh && br && innerWidth >= 768) {
@@ -91,7 +91,9 @@
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
         var W2 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
-        if (nx.style.getPropertyValue('padding-bottom') !== '64px') nx.style.setProperty('padding-bottom', '64px', 'important');
+        var PB = matchMedia('(max-width:767px)').matches ? '110px' : '64px';   // Oct 22 (Scott): phone, the black under the vine matches the black above the seal
+        if (nx.style.getPropertyValue('padding-bottom') !== PB) nx.style.setProperty('padding-bottom', PB, 'important');
+        if (PB === '110px' && nx.style.getPropertyValue('padding-top') !== '110px') nx.style.setProperty('padding-top', '110px', 'important');
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
         if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
