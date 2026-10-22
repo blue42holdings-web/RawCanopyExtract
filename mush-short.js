@@ -63,6 +63,43 @@
         if (i >= 3) { if (item.style.getPropertyValue('display') !== 'none') item.style.setProperty('display', 'none', 'important'); } });
     });
   }
+  // Oct 21 (Scott): photos for the How It's Made, Further Reading and What's Been Studied cards, phone and desktop.
+  // Each photo sits on its own layer inside the box so no other script can swap it. Lion's Mane: the ski lesson runs
+  // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
+  var CARD = {
+    "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.8] },   // 0.8: the teacher sits at the middle of the right box
+    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], fr: ['mushrooms-baseball-lights.webp', '60% 72%'] },
+    'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
+  };
+  var dims = {};
+  function nat(u, cb) { if (dims[u]) return cb(dims[u]); var im = new Image(); im.onload = function () { dims[u] = [im.naturalWidth, im.naturalHeight]; cb(dims[u]); }; im.src = 'assets/photo/' + u; }
+  function boxIn(sec) { return sec && ([].filter.call(sec.children, function (k) { return k.tagName === 'DIV' && k.offsetHeight > 100; })[0] || sec); }
+  function layer(box, u, size, pos) {
+    if (!box) return;
+    [].forEach.call(box.querySelectorAll('div'), function (k) {   // old photo layers inside the box
+      if (k.className === 'rcx-mph' || k.innerText.trim() || k.querySelector('a,p,h2,h3,img')) return;
+      if (/assets\/photo\//.test(getComputedStyle(k).backgroundImage) && k.style.getPropertyValue('display') !== 'none') k.style.setProperty('display', 'none', 'important');
+    });
+    var L = box.querySelector(':scope > .rcx-mph');
+    if (!L) { L = document.createElement('div'); L.className = 'rcx-mph'; L.setAttribute('aria-hidden', 'true'); box.insertBefore(L, box.firstChild); }
+    var v = 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/' + u + '")';
+    if (L.__v !== v + size + pos) { L.__v = v + size + pos; L.style.setProperty('background-image', v, 'important'); L.style.setProperty('background-size', '100% 100%,' + size, 'important'); L.style.setProperty('background-position', '0 0,' + pos, 'important'); L.style.setProperty('background-repeat', 'no-repeat', 'important'); }
+  }
+  function cardPhotos(P, how, fr) {
+    var c = CARD[P.getAttribute('data-screen-label')]; if (!c) return;
+    var st = P.querySelector('[data-ms-card="studied"]');
+    if (c.studied && st) layer(boxIn(st), c.studied[0], 'cover', c.studied[1]);
+    if (c.fr && fr) layer(boxIn(fr), c.fr[0], 'cover', c.fr[1]);
+    if (c.span && how && fr) {
+      var a = boxIn(how), b = boxIn(fr); if (!a || !b || !a.offsetWidth) return;
+      nat(c.span[0], function (n) {
+        var x0 = a.offsetLeft, W = b.offsetLeft + b.offsetWidth - x0, H = Math.max(a.offsetHeight, b.offsetHeight);
+        var k = Math.max(W / n[0], H / n[1]) * c.span[1], iw = Math.round(n[0] * k), ih = Math.round(n[1] * k), y = Math.round((H - ih) / 2), x = Math.min(0, Math.max(W - iw, Math.round(0.75 * W - c.span[2] * iw)));
+        layer(a, c.span[0], iw + 'px ' + ih + 'px', (x - (a.offsetLeft - x0)) + 'px ' + y + 'px');
+        layer(b, c.span[0], iw + 'px ' + ih + 'px', (x - (b.offsetLeft - x0)) + 'px ' + y + 'px');
+      });
+    }
+  }
   // Oct 16 (Scott): no box after box. Row one: what it's believed to do, then the proof (What's Been Studied leads the numbers row).
   // Row two: the magazines. Row three: How It's Made, then swipe for Further Reading. Same on all three pages.
   function home(el) { if (!el.__msHome) el.__msHome = [el.parentNode, el.nextSibling]; }
@@ -88,10 +125,7 @@
       if (how.parentNode !== row) { home(how); how.setAttribute('data-ms-card', 'how'); row.appendChild(how); }
       if (fr.parentNode !== row) { home(fr); fr.setAttribute('data-ms-card', 'fr'); row.appendChild(fr); }
       if (!row.__ms0) { row.__ms0 = 1; row.scrollLeft = 0; }
-      // Lion's Mane How It's Made: no red box, the diver beside the shark instead (phone)
-      var mb = P.getAttribute('data-screen-label') === "Lion's Mane" && how.querySelector('[data-m="made-box"]');
-      var LMB = 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg")';
-      if (mb && mb.style.getPropertyValue('background-image') !== LMB) { mb.style.setProperty('background-image', LMB, 'important'); mb.style.setProperty('background-color', '#000', 'important'); mb.style.setProperty('background-size', 'cover', 'important'); mb.style.setProperty('background-position', '30% center', 'important'); }
+      cardPhotos(P, how, fr);
     }
   }
   function unrows(P) {   // desktop: everything goes back where it came from
@@ -99,7 +133,6 @@
       var h = el.__msHome; if (h && h[0]) h[0].insertBefore(el, h[1] && h[1].parentNode === h[0] ? h[1] : null);
       el.removeAttribute('data-ms-card'); el.__msHome = null; });
     var w = P.querySelector(':scope > .ms-wrap'); if (w) w.remove();
-    var mb = P.querySelector('[data-m="made-box"]'); if (mb && /shark/.test(mb.style.getPropertyValue('background-image'))) ['background-image', 'background-color', 'background-size', 'background-position'].forEach(function (k) { mb.style.removeProperty(k); });
   }
   function run() {
     [].forEach.call(document.querySelectorAll('[data-screen-label]'), function (P) {

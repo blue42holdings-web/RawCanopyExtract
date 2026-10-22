@@ -344,7 +344,7 @@
   var P = 'assets/photo/';
   var CROWD = ['tt-airport-crowd.jpg', 'tt-airport-security-line.jpg', 'tt-feet-in-line.jpg'];
   var MOVE = [   // Oct 15 (night): tr-bullet-tunnel removed for good. Oct 17: the futuristic trains (maglev, future train) deleted for good too
-     'tr-train-night.jpg', 'cd-golf-sea.jpg', 'tr-bus-motion.jpg'];   // Oct 17: tr-rail-city deleted for good
+     'tr-train-night.jpg', 'tt-platform-crowd.jpg', 'tr-bus-motion.jpg'];   // Oct 21: cd-golf-sea is the Cordyceps Game Night photo, never repeated   // Oct 17: tr-rail-city deleted for good
   var LAB = ['lab-powder-coat.jpg', 'lab-steel-tanks.jpg'];
   function run() {
     var groups = new Map();
@@ -356,7 +356,7 @@
     groups.forEach(function (list, g) {
       var c = 0, m = (pi++) * 3, l = 0;
       // Oct 15 (late, Scott): Shop tells a trip story left to right: the train, then airport security, then the crowd boarding
-      var SHOPSTORY = ['parent-and-child-outdoors.jpg', 'tt-airport-security-line.jpg', 'tt-fest-wristbands.jpg'];   // Oct 17 (Scott): turkey tail gets the concert crowd, hands in the air
+      var SHOPSTORY = ['tt-escalators.jpg', 'tt-city-ai-walkers.jpg', 'tt-town-fair.jpg'];   // Oct 21 (Scott): never repeat a photo; the old three were on the Turkey Tail page too   // Oct 17 (Scott): turkey tail gets the concert crowd, hands in the air
       var isShop = g && g.getAttribute && g.getAttribute('data-screen-label') === 'Shop';
       list.forEach(function (b, bi) {
         if (isShop && bi < 3) { var im2 = SHOPSTORY[bi]; if (b.__lab !== im2) { b.__lab = im2; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),url("' + P + im2 + '") center/cover no-repeat', 'important'); } return; }
@@ -366,7 +366,7 @@
           var t0 = (b.innerText || '').replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim().toUpperCase();
           if (M && M.some(function (m) { return m[0].test(t0); })) return;
         }
-        if (matchMedia('(max-width:767px)').matches && /Lion|Cordyceps|Turkey/.test(lbl || '')) {
+        if (/Lion|Cordyceps|Turkey/.test(lbl || '')) {   // Oct 21: desktop mushroom pages use the phone photos too
           var PS = window.__rcxPhoneSwap; if (!PS) return;
           var t1 = (b.innerText || '').replace(/\s+/g, ' ').trim().toUpperCase();
           if ((PS[lbl] || []).some(function (m) { return m[0].test(t1); })) return;
