@@ -5,7 +5,7 @@
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
     home: { h: 'Nutrient rich. Caffeine free.', s: ['A clean, single ingredient nootropic for your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
-    lm: { h: 'Brain Horsepower', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
+    lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
   };
@@ -17,8 +17,21 @@
     html += '<div class="pl-i">' + j(L.i) + '</div>';
     d.innerHTML = html; return d;
   }
+  var STEEL = 'linear-gradient(115deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.045) 52%,rgba(255,255,255,0) 74%,rgba(255,255,255,.05) 100%),' +
+    'repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0px,rgba(255,255,255,.022) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 3px),' +
+    'repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 7px),' +
+    'linear-gradient(180deg,#1d1e21 0%,#0e0f10 55%,#18191b 100%)';
+  function fitOne(b) {   // every headline on one line: shrink it only as much as it needs
+    var h = b.querySelector('.pl-h'); if (!h || !h.offsetWidth) return;
+    var w = h.clientWidth; if (h.__w === w) return; h.__w = w;
+    h.style.removeProperty('font-size'); h.style.setProperty('white-space', 'nowrap', 'important');
+    var fs = parseFloat(getComputedStyle(h).fontSize), need = h.scrollWidth;
+    if (need > w) h.style.setProperty('font-size', Math.floor(fs * w / need * 0.98) + 'px', 'important');
+  }
   function paint(b) {   // inline, so the cream and red desktop page rules can't clear the black box
-    if (b.style.getPropertyValue('background-color') !== 'rgb(11, 11, 11)') { b.style.setProperty('background-color', '#0b0b0b', 'important'); b.style.setProperty('background-image', 'none', 'important'); }
+    if (b.__steel) return; b.__steel = 1;   // Oct 22 (Scott): dark brushed steel instead of flat black
+    b.style.setProperty('background-color', '#111214', 'important');
+    b.style.setProperty('background-image', STEEL, 'important');
   }
   function fit(b, a) {
     paint(b);   // phone and home: same width as the box above it; desktop mushroom pages: a centered 1100px box under the wide photo
@@ -59,6 +72,9 @@
       var e = [].filter.call(document.querySelectorAll('[data-m="' + a[1] + '"]'), vis)[0];
       if (e) place(a[0], e);
     });
+    [].forEach.call(document.querySelectorAll('.pl-box'), function (b) { if (vis(b)) fitOne(b); });
+    // Lion's Mane top photo: BRAIN HORSEPOWER where FOR YOUR NOGGIN was (Oct 22, Scott)
+    [].forEach.call(document.querySelectorAll('[data-m="lm-hero"] *'), function (e) { if (e.children.length === 0 && /^\s*FOR YOUR NOGGIN\s*$/i.test(e.textContent)) e.textContent = 'BRAIN HORSEPOWER'; });
     // a box left behind by a re-render sits next to nothing: drop it
     [].forEach.call(document.querySelectorAll('.pl-box'), function (b) {
       if (b.classList.contains('pl-k-home') && innerWidth >= 768) return;   // desktop home box lives inside the row
