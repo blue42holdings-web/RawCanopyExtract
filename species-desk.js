@@ -125,7 +125,7 @@
     Object.keys(PAGES).forEach(function (label) {
       document.querySelectorAll('div[data-screen-label="' + label + '"],div[data-screen-label="' + label.replace("'", "\\'") + '"]').forEach(function (C) {
         if (!C.querySelector('section[data-m$="-hero"]')) return;
-        if (MQ.matches) apply(C, PAGES[label]); else off(C);
+        off(C);   // Oct 21 (Scott): desktop mushroom pages now use the phone layout (mush-short.js); this old desktop layout is switched off
       });
     });
   }
