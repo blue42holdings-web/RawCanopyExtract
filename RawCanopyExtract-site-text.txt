@@ -21,7 +21,7 @@ PAGE: HOME
   BACKGROUND PHOTO: assets/photo/why-rv-desk-nopen.jpg
 [PHONE LAYOUT VERSION of a desktop block]
     IMAGE: assets/photo/packets-powder-trio-v11.webp  | alt text: "Cordyceps, Lion's Mane and Turkey Tail packets on their mushroom powders"
-The world's getting faster and more complicated. Common sense says your body and brain need natural support. Published research led us to three mushrooms that bring the best of the forest to your cup.
+The world's getting faster and more complicated. Common sense says your body and brain need prescription free natural support. Most mushroom brands list fifteen ingredients in one messy scoop and call it a "proprietary blend." That makes it easy to skimp on the expensive extract and profit at your expense. We went the other way. Published research led us to three everyday organic mushrooms, scientifically extracted so your body can absorb them, each in its own clean, single ingredient packet, measured so you don't have to. No fillers, no carriers, just the raw, uncut truth. And to prove it, scan the QR code to see the independent lab report. Tear, pour and build your own honest blend, bringing the best of the forest to your cup.
 LION'S MANE MUSHROOM for brain health as you age→
   LINK: "LION'S MANE MUSHROOM for brain health as you age→" -> opens the "Lion's Mane" page (on this site)
 CORDYCEPS MUSHROOM for stamina and endurance→
