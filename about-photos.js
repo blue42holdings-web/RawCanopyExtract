@@ -46,9 +46,10 @@
       }
     } else {
       if (grid) { grid.classList.remove('ab-onestory'); grid.style.removeProperty('padding'); var st2 = grid.querySelector(':scope > .ab-strip'); if (st2) st2.remove(); }
-      [].forEach.call(boxes, function (b, i) { var f = i === 3 ? 'own-two-labs-hill.jpg' : BOX[i], ps = i === 3 ? 'center 35%' : POS[i]; if (f) photo(b, f, ps, i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker   // Oct 22 (Scott): desktop, the two labs looking at the camera next to the kayaks
+      [].forEach.call(boxes, function (b, i) { var f = i === 3 ? 'own-dogs-car.jpg' : BOX[i], ps = i === 3 ? '76% 56%' : POS[i]; if (f) photo(b, f, ps, i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker   // Oct 22 (Scott): desktop, the dogs hanging out the car window next to the kayaks
     }
     if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
+    if (boxes[3] && innerWidth >= 768) { boxes[3].style.setProperty('background-size', '100% 100%,auto 175%', 'important'); boxes[3].style.setProperty('background-position', '0 0,76% 56%', 'important'); }   // Oct 22 (Scott): zoomed in on the two dogs in the window
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
