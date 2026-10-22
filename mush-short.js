@@ -68,7 +68,7 @@
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
     "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
-    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', 'center top', '100% auto', 'linear-gradient(rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 22%,rgba(0,0,0,.92) 44%,#000 52%)'],   // whole photo across the top so both faces show   // Oct 22 (Scott): desktop, gym workout here; the college track photo moves to the Reaction Time box
+    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', '84% 40%'],   // Oct 22 (Scott): fill the box, centered on the woman on the right
                    fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
     'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
   };
