@@ -17,10 +17,9 @@
     html += '<div class="pl-i">' + j(L.i) + '</div>';
     d.innerHTML = html; return d;
   }
-  var STEEL = 'linear-gradient(115deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.045) 52%,rgba(255,255,255,0) 74%,rgba(255,255,255,.05) 100%),' +
-    'repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0px,rgba(255,255,255,.022) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 3px),' +
-    'repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 7px),' +
-    'linear-gradient(180deg,#1d1e21 0%,#0e0f10 55%,#18191b 100%)';
+  var STEEL = 'linear-gradient(115deg,rgba(255,255,255,.035) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,.02) 55%,rgba(255,255,255,0) 78%),' +   // Oct 22 (Scott): very black, with a faint brushed grain
+    'repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0px,rgba(255,255,255,.012) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 3px),' +
+    'linear-gradient(180deg,#070707 0%,#020202 60%,#060606 100%)';
   function fitOne(b) {   // every headline on one line: shrink it only as much as it needs
     var h = b.querySelector('.pl-h'); if (!h || !h.offsetWidth) return;
     var w = h.clientWidth; if (h.__w === w) return; h.__w = w;
@@ -29,8 +28,9 @@
     if (need > w) h.style.setProperty('font-size', Math.floor(fs * w / need * 0.98) + 'px', 'important');
   }
   function paint(b) {   // inline, so the cream and red desktop page rules can't clear the black box
-    if (b.__steel) return; b.__steel = 1;   // Oct 22 (Scott): dark brushed steel instead of flat black
-    b.style.setProperty('background-color', '#111214', 'important');
+    if (b.__steel === 2) return; b.__steel = 2;
+    b.style.setProperty('background-color', '#030303', 'important');
+    b.style.setProperty('border', '3px solid #D4A24A', 'important'); b.style.setProperty('border-radius', '18px', 'important');   // the gold box, inline so no page rule can take it off
     b.style.setProperty('background-image', STEEL, 'important');
   }
   function fit(b, a) {
