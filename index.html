@@ -36,6 +36,8 @@ html body [data-ms-page] section[data-m="sbox"].dk-end.dk-end{background-color:#
 html body [data-ms-page] section[data-m="sbox"].dk-end.dk-end-lm{background-image:linear-gradient(rgba(0,0,0,.42) 0%,rgba(0,0,0,.5) 55%,#000 100%),url("assets/photo/story-lm-poster-flip.jpg") !important;background-size:100% 100%,cover !important;background-position:0 0,center 40% !important;background-repeat:no-repeat !important}
 html body [data-ms-page] section[data-m="sbox"].dk-end.dk-end::after,html body [data-ms-page] section[data-m="sbox"].dk-end.dk-end::before{background:none !important;background-image:none !important}
 html body [data-ms-page] section[data-m="sbox"].dk-end-lm [data-m="sbox-shade"]{background:linear-gradient(100deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 50%,rgba(0,0,0,.45) 100%) !important}
+/* Oct 22 (Scott): big boxes hold still on hover, gold border stays (magazines keep their small lift) */
+html body a.mx-box:not(.mx-press):hover,html body a.mx-box:not(.mx-press):focus,html body [data-ms-card] a:hover,html body section[data-ms-card]:hover{scale:none !important;transform:none !important;filter:none !important}
 /* Cordyceps top photo: the gold lines stay readable when the photo brightens */
 html body div[data-screen-label="Cordyceps"] section[data-m="cdh-hero"] *{text-shadow:0 2px 6px rgba(0,0,0,.95),0 0 22px rgba(0,0,0,.85),0 0 2px #000 !important}
 }
@@ -4912,7 +4914,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=58"></script>
-<script src="nav-extras.js?v=48"></script>
+<script src="nav-extras.js?v=49"></script>
 <script src="mushroom-reveal.js?v=9"></script>
 <script src="desk-rows.js?v=965"></script>
 <script src="phone-swipe.js?v=14"></script>
@@ -6413,7 +6415,7 @@ html body div[data-screen-label="Receipts"] section[data-m="rc-files"][data-m="r
 html body section[data-ms-card] > div{position:relative !important;isolation:isolate !important}
 html body .rcx-mph{position:absolute !important;inset:0 !important;z-index:-1 !important;border-radius:15px !important;background-repeat:no-repeat !important;pointer-events:none !important;display:block !important}
 </style>
-<script src="mush-short.js?v=15"></script>
+<script src="mush-short.js?v=16"></script>
 <style id="mush-rows-oct16">/* Oct 16 (Scott): phone mushroom pages read as three swipe rows, the same on all three pages */
 @media all{   /* Oct 21 (Scott): same rows on desktop */
 html body [data-ms-page] .ms-wrap{display:block !important;background:#000}
@@ -6482,7 +6484,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <style id="shop-punch-oct17">@media (min-width:768px){html body h1.shop-h1.shop-h1{max-width:none !important;white-space:nowrap !important}}</style>
 <script src="cup-glow.js?v=2"></script>
 <script src="punch-lines.js?v=7"></script>
-<script src="desk-oct22.js?v=5"></script>
+<script src="desk-oct22.js?v=6"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
 <style id="tt-four-oct17">@media (min-width:900px){html body div[data-screen-label="Turkey Tail"] .rcx-row2:has([data-ph="tank-lab"]){display:grid !important;grid-template-columns:1fr 1fr !important;gap:20px !important;max-width:1384px !important;margin-left:auto !important;margin-right:auto !important;padding:0 28px !important;box-sizing:border-box !important}html body div[data-screen-label="Turkey Tail"] .rcx-row2:has([data-ph="tank-lab"]) > [data-ph]{width:auto !important;max-width:none !important;margin:0 !important;height:440px !important;min-height:0 !important;box-sizing:border-box !important}}</style>
 <style id="about-m-fade-oct17">@media (max-width:767px){html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"][data-screen-label="About"]::before{background:linear-gradient(rgba(0,0,0,.25) 0,rgba(0,0,0,.3) calc(100% - 150px),rgba(0,0,0,.55) calc(100% - 95px),rgba(0,0,0,.85) calc(100% - 40px),#000 100%),url("assets/photo/own-pink-sky-pines-hc3.jpg") center top/cover no-repeat !important}}</style>

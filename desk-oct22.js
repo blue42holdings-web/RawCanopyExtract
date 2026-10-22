@@ -22,13 +22,14 @@
     return null;
   }
   function swipes() {
-    var tags = [].filter.call(document.querySelectorAll('.rcx-swipe-tag, p, div, span'), function (e) {
+    var tags = [].filter.call(document.querySelectorAll('.rcx-swipe-tag, .rit-nav *, .rcx-arrbar *'), function (e) {
       return e.children.length < 3 && /^\s*(‹\s*)?SWIPE FOR /i.test(e.textContent || '') && (e.textContent || '').length < 40 && !e.querySelector('.rcx-swipe-tag');
     });
     tags.forEach(function (t) {
       if (!desk()) { if (t.hasAttribute('data-dk-noswipe')) { t.removeAttribute('data-dk-noswipe'); t.style.removeProperty('display'); } return; }
       if (t.closest('.pl-box')) return;
-      var sc = scroller(t), moves = sc && sc.scrollWidth > sc.clientWidth + 4;
+      var sc = scroller(t), moves = sc && sc.scrollWidth > sc.clientWidth + 40;   // a row a few pixels too wide doesn't really swipe
+      if (sc && !moves && sc.style.getPropertyValue('overflow-x') !== 'hidden') setI(sc, 'overflow-x', 'hidden');
       if (!moves) { t.setAttribute('data-dk-noswipe', ''); setI(t, 'display', 'none'); }
       else if (t.hasAttribute('data-dk-noswipe')) { t.removeAttribute('data-dk-noswipe'); t.style.removeProperty('display'); }
     });
@@ -104,5 +105,5 @@
       story(P); cdReaction(P); cdHero(P);
     });
   }
-  setInterval(run, 1000); run(); addEventListener('resize', run);
+  setInterval(run, 1500); run(); addEventListener('resize', run);
 })();

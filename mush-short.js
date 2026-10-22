@@ -68,14 +68,14 @@
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
     "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
-    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', '50% 40%'],   // Oct 22 (Scott): desktop, gym workout here; the college track photo moves to the Reaction Time box
+    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', 'center top', '100% auto', 'linear-gradient(rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 22%,rgba(0,0,0,.92) 44%,#000 52%)'],   // whole photo across the top so both faces show   // Oct 22 (Scott): desktop, gym workout here; the college track photo moves to the Reaction Time box
                    fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
     'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
   };
   var dims = {};
   function nat(u, cb) { if (dims[u]) return cb(dims[u]); var im = new Image(); im.onload = function () { dims[u] = [im.naturalWidth, im.naturalHeight]; cb(dims[u]); }; im.src = 'assets/photo/' + u; }
   function boxIn(sec) { return sec && ([].filter.call(sec.children, function (k) { return k.tagName === 'DIV' && k.offsetHeight > 100; })[0] || sec); }
-  function layer(box, u, size, pos) {
+  function layer(box, u, size, pos, grad) {
     if (!box) return;
     [].forEach.call(box.querySelectorAll('div'), function (k) {   // old photo layers inside the box
       if (k.className === 'rcx-mph' || k.innerText.trim() || k.querySelector('a,p,h2,h3,img')) return;
@@ -83,14 +83,14 @@
     });
     var L = box.querySelector(':scope > .rcx-mph');
     if (!L) { L = document.createElement('div'); L.className = 'rcx-mph'; L.setAttribute('aria-hidden', 'true'); box.insertBefore(L, box.firstChild); }
-    var v = 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/' + u + '")';
+    var v = (grad || 'linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68))') + ',url("assets/photo/' + u + '")';
     if (L.__v !== v + size + pos) { L.__v = v + size + pos; L.style.setProperty('background-image', v, 'important'); L.style.setProperty('background-size', '100% 100%,' + size, 'important'); L.style.setProperty('background-position', '0 0,' + pos, 'important'); L.style.setProperty('background-repeat', 'no-repeat', 'important'); }
   }
   function cardPhotos(P, how, fr) {
     var c = CARD[P.getAttribute('data-screen-label')]; if (!c) return;
     var st = P.querySelector('[data-ms-card="studied"]');
     var sp = (c.studiedDesk && innerWidth >= 768) ? c.studiedDesk : c.studied;
-    if (sp && st) layer(boxIn(st), sp[0], 'cover', sp[1]);
+    if (sp && st) layer(boxIn(st), sp[0], sp[2] || 'cover', sp[1], sp[3]);
     if (c.fr && fr) layer(boxIn(fr), c.fr[0], c.fr[2] || 'cover', c.fr[1]);
     if (c.span && how && fr) {
       var a = boxIn(how), b = boxIn(fr); if (!a || !b || !a.offsetWidth) return;
