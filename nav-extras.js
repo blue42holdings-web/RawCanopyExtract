@@ -272,7 +272,7 @@
   function frame(now) {
     if (!phone()) {   // Oct 21 (Scott): the page drifts on its own on PHONES ONLY. Desktop never auto scrolls.
       unshift(); pos = scrollY; last = 0; mode = 'wait'; until = now + START(); window.__rcxAutoMoving = false;
-      requestAnimationFrame(frame); return;
+      setTimeout(function () { requestAnimationFrame(frame); }, 500); return;   // Oct 22 (Scott): desktop idles instead of running every frame, lighter on computers
     }
     var dt = last ? Math.min(1 / 30, (now - last) / 1000) : 1 / 60; last = now;
     sdt += (dt - sdt) * 0.15;                                                   // smooth out uneven frame timing
