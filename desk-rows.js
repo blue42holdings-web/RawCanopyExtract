@@ -201,7 +201,9 @@
       b.style.setProperty('background-repeat', 'no-repeat', 'important'); b.style.setProperty('background-color', '#000', 'important');
       b.style.setProperty('border', '3px solid #D4A24A', 'important');
     });
+    var MUSH = /^(Lion's Mane|Cordyceps|Turkey Tail)$/;   // Oct 21 (Scott): desktop mushroom pages use the phone photos (mushroom-reveal.js, mush-short.js)
     Object.keys(MAP).forEach(function (L) {
+      if (MUSH.test(L)) return;
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       MAP[L].forEach(function (m) {
         var b = boxFor(root, m[0]); if (!b) return;
@@ -220,6 +222,7 @@
         [/^HOW TO TAKE IT/, /^THE LOT SHIPPING/, 'cd-golf-orange.jpg', 1280, 854]],
       'Turkey Tail': [[/^THE LOT SHIPPING/, /^THE OTHER TWO/, 'tt-concert-blue.jpg', 940, 788]] };   // Oct 17 (Scott): DJ flames moves up to How To Take It; the concert runs down through the lower two   // Oct 17 (Scott): Lion's Mane What's Been Studied gets its own meditation photo, so How It's Made keeps its own
     Object.keys(PAIRS).forEach(function (L) {
+      if (MUSH.test(L)) return;
       var root = [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === L && e.offsetHeight; })[0]; if (!root) return;
       PAIRS[L].forEach(function (pr) {
         var a = boxFor(root, pr[0]), b = boxFor(root, pr[1]); if (!a || !b) return;

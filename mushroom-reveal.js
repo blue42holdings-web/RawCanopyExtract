@@ -2,18 +2,24 @@
    Every photo box: the photo is always visible and in full color, starts a little darker, then slowly gets
    lighter and drifts forward when it comes into view. The old extra dark layers are switched off here. */
 (function () {
-  var MQ = matchMedia('(max-width:767px)'), RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MQ = matchMedia('all'), RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var PAGES = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
   // Oct 15 (night): phone photo swaps in the swipe rows, keyed by the box's first line. Scott's new photos, for variety.
   var SWAP = {
     'Turkey Tail': [[/^DATA/, 'tt-fest-big-crowd.jpg', '50% 30%'], [/^THE COMMUTE/, 'tt-subway-car.jpg', '50% 50%'], [/^THE DOUBLE BLIND/, 'tt-concert-blue.jpg', '50% 40%'],
       [/^LAB REPORT/, 'lab-soxhlet-chrome.jpg', '50% 50%'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', '50% 30%'], [/^RUSH HOUR/, 'tt-tube-boarding.jpg', '50% 50%']],
-    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '60% 50%'], [/^THE RIVER/, 'how-kayak-whitewater.jpg', '50% 45%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%']]
+    // Oct 21 (Scott): golfer no longer cut off; the paddle boarder in the ocean replaces the whitewater (that one is on How To Use); lab cards get their own lab photos, no repeats
+    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '47% 50%'], [/^THE RIVER/, 'how-paddle-sunset.jpg', '42% 50%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%'],
+      [/^LAB REPORT . HUMAN/, 'mushroom-jars-lab.jpg', '50% 60%'], [/^LAB REPORT . PUBMED/, 'lab-soxhlet-extraction.jpg', '50% 50%']],
+    // Oct 21 (Scott): The First Cast zoomed in so the fishing pole shows; the mountain biker and the paddle boarder are gone (never use the biker);
+    // The Morning is office thinking, The Next Generation is a parent reading with the kids; lab cards get their own lab photos
+    "Lion's Mane": [[/^THE FIRST CAST/, 'lm-kickoff-fishing-sunset.jpg', '55% 45%', 1.5], [/^THE MORNING/, 'lm-office-red-mugs.jpg', '70% 50%'],
+      [/^THE NEXT GENERATION/, 'lm-family-reading.jpg', '50% 40%'], [/^LAB REPORT . HUMAN/, 'lab-lm-gloves.jpg', '50% 50%'], [/^LAB REPORT . PUBMED/, 'lab-lm-rack-aisle.jpg', '50% 50%']]
   };
   window.__rcxPhoneSwap = SWAP;   // Oct 17: nav-extras leaves these boxes alone on the phone, so nothing flashes underneath
   var css = document.createElement('style');
   css.textContent = '@property --rk{syntax:"<number>";inherits:false;initial-value:.6}' +
-    '@media (max-width:767px){' +
+    '@media all{' +
     '.rcx-rv.rcx-rv.rcx-rv.rcx-rv.rcx-rv{background-image:linear-gradient(rgba(0,0,0,var(--rk)),rgba(0,0,0,calc(var(--rk) + .14))),var(--rimg) !important;background-size:100% 100%,var(--rsz) !important;background-position:0 0,var(--rpos) !important;background-repeat:no-repeat !important;filter:none !important;--rk:.6;transition:--rk 9s cubic-bezier(.25,.1,.25,1) .4s,background-size 24s linear .4s !important}' +
     '.rcx-rv.rcx-on.rcx-on.rcx-on.rcx-on.rcx-on{--rk:.34;background-size:100% 100%,var(--rsz2) !important}' +
     '.rcx-rv > .rcx-dk{display:none !important}' +
@@ -39,9 +45,10 @@
     var url = m[1], ps = cs.backgroundPosition.split(','), pos = (ps[ps.length - 1] || 'center').trim();
     if (page === 'Turkey Tail') pos = '50% 62%';   // close on the people, no headroom
     var L = SWAP[page], tx = (el.innerText || '').trim().toUpperCase();
-    if (L && el.closest('.cx-track')) for (var i = 0; i < L.length; i++) if (L[i][0].test(tx)) { url = 'assets/photo/' + L[i][1]; pos = L[i][2]; break; }
+    var zoom = 1;
+    if (L && el.closest('.cx-track')) for (var i = 0; i < L.length; i++) if (L[i][0].test(tx)) { url = 'assets/photo/' + L[i][1]; pos = L[i][2]; zoom = L[i][3] || 1; break; }
     size(url, function (s) {
-      var W = el.offsetWidth, H = el.offsetHeight, k = Math.max(W / s[0], H / s[1]) * (page === 'Turkey Tail' ? 1.12 : 1);
+      var W = el.offsetWidth, H = el.offsetHeight, k = Math.max(W / s[0], H / s[1]) * (page === 'Turkey Tail' ? 1.12 : 1) * zoom;
       var w = Math.ceil(s[0] * k), h = Math.ceil(s[1] * k);
       el.style.setProperty('--rimg', 'url("' + url + '")');
       el.style.setProperty('--rsz', w + 'px ' + h + 'px');
