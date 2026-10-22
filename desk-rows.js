@@ -4,13 +4,15 @@
 (function () {
   var MQ = matchMedia('(min-width:768px)');
   var GROUPS = {
-    "Lion's Mane": [['[data-ph="vintage-bottles-labels"]', '[data-ph="desk-lm"]']],   // Oct 21: What It Is now sits in desk-short.js's two by two grid
+    "Lion's Mane": [['[data-ph="elder-camp-chair-mug"]', '[data-rcx-burn]'], ['[data-ph="vintage-bottles-labels"]', '[data-ph="desk-lm"]']],
     // Oct 15 (night, Scott): Further Reading beside The Names It Goes By on all three pages, each with its own photo
     'Cordyceps': [['[data-ph="backpacker-smile"]', '[data-ph="apothecary-shop"]']],
-    'Turkey Tail': [['[data-ph="waterfall-stones"]', '[data-ph="herb-jars-book"]']]   // Oct 21: the four boxes moved to desk-short.js's grid
+    'Turkey Tail': [['[data-ph="meditation-sunset-hands"]', '[data-ph="palm-jungle-sun"]', '[data-ph="tank-lab"]', '[data-ph="reef-snorkel"]'],
+                    ['[data-ph="waterfall-stones"]', '[data-ph="herb-jars-book"]']]
   };
   function page(label) { return [].filter.call(document.querySelectorAll('[data-screen-label]'), function (e) { return e.getAttribute('data-screen-label') === label && e.offsetHeight; })[0]; }
   function run() {
+    return;   // Oct 21 (Scott): desktop mushroom pages now use the phone layout (mush-short.js)
     if (!MQ.matches) return;
     var lm = page("Lion's Mane");
     if (lm) {

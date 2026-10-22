@@ -4891,7 +4891,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script src="site-extras.js?v=58"></script>
 <script src="nav-extras.js?v=46"></script>
 <script src="mushroom-reveal.js?v=6"></script>
-<script src="desk-rows.js?v=962"></script>
+<script src="desk-rows.js?v=964"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -4962,7 +4962,7 @@ html body .sd-lm > section[data-m="sbox"] [data-m="flat"]{min-height:820px !impo
 }
 @media (min-width:768px){html body [data-screen-label="FAQ"] img[src*="f-mossy-tree"]{object-position:50% 0% !important;transform:scale(1.18);transform-origin:50% 0}}
 </style>
-<script src="species-desk.js?v=43"></script>
+<script src="species-desk.js?v=44"></script>
 <style>/* Desktop About (Oct 10): red at the top fading into white for the rest; story boxes in a clean grid; dark dogs; blurred reef in the compost box */
 @media (min-width:768px){
 html body div[data-screen-label="About"]{background:linear-gradient(#5c1319 0,#5c1319 380px,#F1ECE1 900px,#F1ECE1 calc(100% - 200px),#000 100%) !important;isolation:isolate}
@@ -6337,26 +6337,17 @@ html body div[data-screen-label="About"][data-screen-label="About"]{padding-top:
 </style>
 <style id="mush-short-oct16">/* Oct 16 (Scott): short phone mushroom pages (mush-short.js) */
 .ms-add{display:none}
-@media (max-width:767px){
+@media all{   /* Oct 21 (Scott): desktop mushroom pages now use the phone content too */
 html body [data-ms-page][data-ms-page]{display:flex !important;flex-direction:column !important}
 html body [data-ms-page] [data-ms="flat"][data-ms="flat"]{display:contents !important}
-html body [data-ms-page] [data-ms="x"][data-ms="x"]{display:none !important}
+html body [data-ms-page] [data-ms="x"][data-ms="x"]{display:none !important;position:absolute !important;left:-99999px !important;width:1px !important;height:1px !important;overflow:hidden !important;visibility:hidden !important;pointer-events:none !important}
 html body [data-ms-page] .ms-add{display:block;margin-top:14px !important}
 }
 </style>
-<style id="desk-short-oct21">/* Oct 21 (Scott): short desktop mushroom pages (desk-short.js) */
-@media (min-width:768px){
-html body [data-screen-label="Lion's Mane"] [data-m="lm-whitewrap"],html body [data-screen-label="Turkey Tail"] [data-m="tt-redwrap"],html body [data-screen-label="Lion's Mane"] section[data-m="clean-band"],html body [data-screen-label="Cordyceps"] section[data-m="clean-band"],html body [data-screen-label="Turkey Tail"] section[data-m="clean-band"],html body [data-screen-label="Cordyceps"] section[data-m="howto-slate"],html body [data-screen-label="Cordyceps"] section[data-m="cd-bottom-red"]{display:none !important}
-html body [data-dk-page] [data-dk-hide][data-dk-hide]{display:none !important}
-html body [data-dk-page] .dk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:1080px;margin:28px auto;padding:0 28px;box-sizing:content-box;align-items:stretch}
-html body [data-dk-page] .dk-grid > *{box-shadow:inset 0 0 0 3000px rgba(0,0,0,.38) !important;max-width:none !important;width:auto !important;margin:0 !important;min-height:0 !important;height:auto !important;box-sizing:border-box}
-html body [data-dk-page] .dk-grid > * > *{grid-template-columns:minmax(0,1fr) !important}
-}
-</style>
-<script src="desk-short.js?v=2"></script>
-<script src="mush-short.js?v=7"></script>
+
+<script src="mush-short.js?v=9"></script>
 <style id="mush-rows-oct16">/* Oct 16 (Scott): phone mushroom pages read as three swipe rows, the same on all three pages */
-@media (max-width:767px){
+@media all{   /* Oct 21 (Scott): same rows on desktop */
 html body [data-ms-page] .ms-wrap{display:block !important;background:#000}
 html body [data-ms-page] .ms-row{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:4px 6vw 24px;scrollbar-width:none;align-items:stretch}
 html body [data-ms-page] .ms-row::-webkit-scrollbar{display:none}
@@ -6369,6 +6360,12 @@ html body [data-ms-page] section[data-ms-card="studied"] > div{overflow:hidden !
 html body [data-ms-page] section[data-ms-card="studied"] [data-ms-long]{display:none !important}
 /* Lion's Mane How It's Made: no red box. The diver beside the shark */
 html body div[data-screen-label="Lion's Mane"] [data-m="made-box"][data-m="made-box"][data-m="made-box"]{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.68)),url("assets/photo/a-diver-signalling-underwater-alongside-a-shark.jpg") center/cover no-repeat !important;background-color:#000 !important}
+}
+@media (min-width:768px){
+html body [data-ms-page] .ms-row{padding:4px max(28px,calc((100vw - 1100px)/2)) 30px !important;gap:24px !important}
+html body [data-ms-page] .ms-row > section[data-ms-card]{flex:0 0 540px !important;width:540px !important;max-width:540px !important}
+html body [data-ms-page] section[data-ms-card] p,html body [data-ms-page] section[data-ms-card] li{font-size:16px !important}
+html body [data-ms-page] .ms-wrap .rcx-swipe-tag{text-align:center !important}
 }
 /* every magazine card, everywhere: one dark blur over the whole card, edge to edge */
 html body a.mx-box.mx-press.mx-press.mx-press{position:relative !important;overflow:hidden !important;display:flex !important;align-items:center !important;justify-content:center !important}

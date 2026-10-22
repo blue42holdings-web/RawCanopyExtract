@@ -4,7 +4,7 @@
    Everything else is hidden on the phone only. Desktop keeps the full, in-depth page.
    The full phone version is saved in backups/index-before-short-mushroom-2026-10-16.html. */
 (function () {
-  var MQ = matchMedia('(max-width:767px)');
+  var MQ = matchMedia('all');   // Oct 21 (Scott): desktop uses the same short mushroom pages as the phone
   var PAGES = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
   function head(s) {   // the section's own first heading
     var hs = s.querySelectorAll('h1,h2,h3');
@@ -114,4 +114,17 @@
     });
   }
   setInterval(run, 1200); run(); addEventListener('resize', run);
+  // Oct 21 (Scott): run the moment a mushroom page is drawn, before the screen paints, so the long page never flashes up first
+  var busy = false;
+  new MutationObserver(function (ms) {
+    if (busy) return;
+    for (var i = 0; i < ms.length; i++) {
+      var t = ms[i].target; var el = t.nodeType === 1 ? t : t.parentElement;
+      var P = el && el.closest && el.closest('[data-screen-label]');
+      var L = P && P.getAttribute('data-screen-label');
+      if (PAGES.indexOf(L) >= 0 || (ms[i].addedNodes.length && [].some.call(ms[i].addedNodes, function (n) { return n.nodeType === 1 && (n.matches('[data-screen-label]') || n.querySelector('[data-screen-label]')); }))) {
+        busy = true; try { run(); } finally { busy = false; } return;
+      }
+    }
+  }).observe(document.body, { childList: true, subtree: true });
 })();
