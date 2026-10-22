@@ -68,7 +68,8 @@
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
     "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
-    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
+    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', '50% 40%'],   // Oct 22 (Scott): desktop, gym workout here; the college track photo moves to the Reaction Time box
+                   fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
     'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
   };
   var dims = {};
@@ -88,7 +89,8 @@
   function cardPhotos(P, how, fr) {
     var c = CARD[P.getAttribute('data-screen-label')]; if (!c) return;
     var st = P.querySelector('[data-ms-card="studied"]');
-    if (c.studied && st) layer(boxIn(st), c.studied[0], 'cover', c.studied[1]);
+    var sp = (c.studiedDesk && innerWidth >= 768) ? c.studiedDesk : c.studied;
+    if (sp && st) layer(boxIn(st), sp[0], 'cover', sp[1]);
     if (c.fr && fr) layer(boxIn(fr), c.fr[0], c.fr[2] || 'cover', c.fr[1]);
     if (c.span && how && fr) {
       var a = boxIn(how), b = boxIn(fr); if (!a || !b || !a.offsetWidth) return;
