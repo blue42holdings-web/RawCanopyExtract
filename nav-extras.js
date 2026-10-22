@@ -270,6 +270,10 @@
   }
   function ss(x) { x = x < 0 ? 0 : x > 1 ? 1 : x; return x * x * x * (x * (x * 6 - 15) + 10); }   // smootherstep: gentle at both ends
   function frame(now) {
+    if (!phone()) {   // Oct 21 (Scott): the page drifts on its own on PHONES ONLY. Desktop never auto scrolls.
+      unshift(); pos = scrollY; last = 0; mode = 'wait'; until = now + START(); window.__rcxAutoMoving = false;
+      requestAnimationFrame(frame); return;
+    }
     var dt = last ? Math.min(1 / 30, (now - last) / 1000) : 1 / 60; last = now;
     sdt += (dt - sdt) * 0.15;                                                   // smooth out uneven frame timing
     var H = document.documentElement.scrollHeight - innerHeight;
