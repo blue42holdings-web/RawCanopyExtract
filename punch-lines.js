@@ -4,10 +4,10 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Caffeine free. Nutrient rich. No fillers.', s: ['A clean, single ingredient nootropic for your morning cup.'], i: 'For the chronic stress of a world that won’t slow down.' },
-    lm: { h: 'Brain Horsepower', s: ['Fuel for the mind. Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion’s mane.' },
-    cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy for the whole workout.*'], i: 'For the days the couch is winning.' },
-    tt: { h: 'Keeps things moving.', s: ['Supports healthy digestion. Keeps you regular.*'], i: 'Built for a world of processed food.' }
+    home: { h: 'Nutrient rich. Caffeine free.', s: ['A clean, single ingredient nootropic for your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
+    lm: { h: 'Brain Horsepower', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
+    cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
+    tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
   };
   function box(k) {
     var L = LINES[k], d = document.createElement('section');

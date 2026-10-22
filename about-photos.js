@@ -46,7 +46,7 @@
       }
     } else {
       if (grid) { grid.classList.remove('ab-onestory'); grid.style.removeProperty('padding'); var st2 = grid.querySelector(':scope > .ab-strip'); if (st2) st2.remove(); }
-      [].forEach.call(boxes, function (b, i) { if (BOX[i]) photo(b, BOX[i], POS[i], i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker
+      [].forEach.call(boxes, function (b, i) { var f = i === 3 ? 'own-two-labs-hill.jpg' : BOX[i], ps = i === 3 ? 'center 35%' : POS[i]; if (f) photo(b, f, ps, i === 0 ? .62 : .5); });   // Oct 16 (Scott): his selfie a little darker   // Oct 22 (Scott): desktop, the two labs looking at the camera next to the kayaks
     }
     if (boxes[5] && innerWidth >= 768) boxes[5].style.setProperty('background-size', '100% 100%,150% auto', 'important');
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
