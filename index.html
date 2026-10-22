@@ -4891,7 +4891,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script src="site-extras.js?v=58"></script>
 <script src="nav-extras.js?v=46"></script>
 <script src="mushroom-reveal.js?v=6"></script>
-<script src="desk-rows.js?v=62"></script>
+<script src="desk-rows.js?v=962"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
 html body [data-screen-label="About"] section[data-m="about-compost"][data-m="about-compost"][data-m="about-compost"]{background:linear-gradient(#000 0,rgba(241,236,225,.55) 40px,#F1ECE1 110px,#F1ECE1 55%,rgba(241,236,225,.4) 85%,#000 100%) !important}
@@ -6330,6 +6330,15 @@ html body [data-ms-page] [data-ms="x"][data-ms="x"]{display:none !important}
 html body [data-ms-page] .ms-add{display:block;margin-top:14px !important}
 }
 </style>
+<style id="desk-short-oct21">/* Oct 21 (Scott): short desktop mushroom pages (desk-short.js) */
+@media (min-width:768px){
+html body [data-dk-page] [data-dk-hide][data-dk-hide]{display:none !important}
+html body [data-dk-page] .dk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:1080px;margin:28px auto;padding:0 28px;box-sizing:content-box;align-items:stretch}
+html body [data-dk-page] .dk-grid > *{box-shadow:inset 0 0 0 3000px rgba(0,0,0,.38) !important;max-width:none !important;width:auto !important;margin:0 !important;min-height:0 !important;height:auto !important;box-sizing:border-box}
+html body [data-dk-page] .dk-grid > * > *{grid-template-columns:minmax(0,1fr) !important}
+}
+</style>
+<script src="desk-short.js?v=2"></script>
 <script src="mush-short.js?v=7"></script>
 <style id="mush-rows-oct16">/* Oct 16 (Scott): phone mushroom pages read as three swipe rows, the same on all three pages */
 @media (max-width:767px){
