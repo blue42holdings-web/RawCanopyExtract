@@ -67,7 +67,7 @@
   // Each photo sits on its own layer inside the box so no other script can swap it. Lion's Mane: the ski lesson runs
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
-    "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.8] },   // 0.8: the teacher sits at the middle of the right box
+    "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
     'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], fr: ['mushrooms-baseball-lights.webp', '60% 72%'] },
     'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
   };
@@ -103,6 +103,16 @@
   // Oct 16 (Scott): no box after box. Row one: what it's believed to do, then the proof (What's Been Studied leads the numbers row).
   // Row two: the magazines. Row three: How It's Made, then swipe for Further Reading. Same on all three pages.
   function home(el) { if (!el.__msHome) el.__msHome = [el.parentNode, el.nextSibling]; }
+  // Oct 22 (Scott): Cordyceps, Game Night (the golfer) and the stadium box trade places in the numbers row
+  function swapCards(P) {
+    if (P.getAttribute('data-screen-label') !== 'Cordyceps') return;
+    var num = P.querySelector('section[data-m^="num-"]'); if (!num) return;
+    var t = [].filter.call(num.querySelectorAll('.cx-track'), function (x) { return !x.closest('.pr-row'); })[0]; if (!t) return;
+    var kids = [].slice.call(t.children), a = -1, b = -1;
+    kids.forEach(function (k, i) { var tx = (k.innerText || '').trim().toUpperCase(); if (/^GAME NIGHT/.test(tx)) a = i; if (/^THE REACTION TIME/.test(tx)) b = i; });
+    if (a < 0 || b < 0) return;
+    kids.forEach(function (k, i) { var o = String(i === a ? b : i === b ? a : i); if (k.style.getPropertyValue('order') !== o) k.style.setProperty('order', o, 'important'); });
+  }
   function rows(P) {
     var all = [].slice.call(P.querySelectorAll('section'));
     var studied = P.querySelector('[data-ms-card="studied"]') || all.filter(function (x) { return rank(x) === 2; })[0];
@@ -123,6 +133,10 @@
         wrap.innerHTML = '<div class="rcx-swipe-tag">SWIPE FOR MORE <b>›</b></div><div class="ms-row"></div>'; P.appendChild(wrap); }
       var row = wrap.querySelector('.ms-row');
       if (how.parentNode !== row) { home(how); how.setAttribute('data-ms-card', 'how'); row.appendChild(how); }
+      // Oct 22 (Scott): Turkey Tail's Gut Health box joins this swipe row, first, so the row ends on Further Reading
+      var gut = P.querySelector('section[data-m="tt-gut"]');
+      if (gut && gut.parentNode !== row) { home(gut); gut.setAttribute('data-ms-card', 'gut'); row.insertBefore(gut, how); }
+      if (gut && gut.nextSibling !== how) row.insertBefore(gut, how);
       if (fr.parentNode !== row) { home(fr); fr.setAttribute('data-ms-card', 'fr'); row.appendChild(fr); }
       if (!row.__ms0) { row.__ms0 = 1; row.scrollLeft = 0; }
       cardPhotos(P, how, fr);
@@ -140,7 +154,7 @@
       if (!MQ.matches) { if (P.hasAttribute('data-ms-page')) { unrows(P); P.removeAttribute('data-ms-page'); [].forEach.call(P.querySelectorAll('[data-ms]'), function (e) { e.removeAttribute('data-ms'); e.style.removeProperty('order'); }); } return; }
       if (!P.offsetHeight && !P.hasAttribute('data-ms-page')) return;
       P.setAttribute('data-ms-page', '');
-      rows(P); place(P, 0); trimReading(P);
+      rows(P); swapCards(P); place(P, 0); trimReading(P);
       // How It's Made reads at the same size on all three pages
       [].forEach.call(P.querySelectorAll('[data-ms-card] p'), function (p) {
         if (p.style.getPropertyValue('font-size') !== '16px') { p.style.setProperty('font-size', '16px', 'important'); p.style.setProperty('line-height', '1.6', 'important'); } });

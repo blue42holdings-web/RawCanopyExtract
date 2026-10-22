@@ -4890,7 +4890,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=58"></script>
 <script src="nav-extras.js?v=48"></script>
-<script src="mushroom-reveal.js?v=7"></script>
+<script src="mushroom-reveal.js?v=8"></script>
 <script src="desk-rows.js?v=965"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
@@ -6345,6 +6345,10 @@ html body [data-ms-page] .ms-add{display:block;margin-top:14px !important}
 }
 </style>
 
+<style id="signup-nofade-oct22">/* Oct 22 (Scott): the sign up under Coming Soon never fades out, every page, phone and desktop */
+html body section[data-m="sbox"][data-m="sbox"][data-m="sbox"]{-webkit-mask-image:none !important;mask-image:none !important}
+html body [data-ms-page] .ms-row > section[data-ms-card="gut"]{background:none !important}
+</style>
 <style id="notes-oct21-late">
 /* Oct 21 (Scott): Receipts, the Files Opened And Checked row is gone, phone and desktop */
 html body div[data-screen-label="Receipts"] section[data-m="rc-files"][data-m="rc-files"]{display:none !important;position:absolute !important;left:-99999px !important;width:1px !important;height:1px !important;overflow:hidden !important;visibility:hidden !important}
@@ -6354,7 +6358,7 @@ html body div[data-screen-label="Receipts"] section[data-m="rc-files"][data-m="r
 html body section[data-ms-card] > div{position:relative !important;isolation:isolate !important}
 html body .rcx-mph{position:absolute !important;inset:0 !important;z-index:-1 !important;border-radius:15px !important;background-repeat:no-repeat !important;pointer-events:none !important;display:block !important}
 </style>
-<script src="mush-short.js?v=12"></script>
+<script src="mush-short.js?v=13"></script>
 <style id="mush-rows-oct16">/* Oct 16 (Scott): phone mushroom pages read as three swipe rows, the same on all three pages */
 @media all{   /* Oct 21 (Scott): same rows on desktop */
 html body [data-ms-page] .ms-wrap{display:block !important;background:#000}
