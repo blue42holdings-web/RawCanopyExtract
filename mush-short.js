@@ -68,7 +68,7 @@
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
     "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
-    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], fr: ['mushrooms-baseball-lights.webp', '60% 72%'] },
+    'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
     'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
   };
   var dims = {};
@@ -89,7 +89,7 @@
     var c = CARD[P.getAttribute('data-screen-label')]; if (!c) return;
     var st = P.querySelector('[data-ms-card="studied"]');
     if (c.studied && st) layer(boxIn(st), c.studied[0], 'cover', c.studied[1]);
-    if (c.fr && fr) layer(boxIn(fr), c.fr[0], 'cover', c.fr[1]);
+    if (c.fr && fr) layer(boxIn(fr), c.fr[0], c.fr[2] || 'cover', c.fr[1]);
     if (c.span && how && fr) {
       var a = boxIn(how), b = boxIn(fr); if (!a || !b || !a.offsetWidth) return;
       nat(c.span[0], function (n) {

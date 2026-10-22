@@ -9,11 +9,11 @@
     'Turkey Tail': [[/^DATA/, 'tt-fest-big-crowd.jpg', '50% 30%'], [/^THE COMMUTE/, 'tt-subway-car.jpg', '50% 50%'], [/^THE DOUBLE BLIND/, 'tt-concert-blue.jpg', '50% 40%'],
       [/^LAB REPORT/, 'lab-soxhlet-chrome.jpg', '50% 50%'], [/^THE GUT STUDY/, 'tt-fest-wristbands.jpg', '50% 30%'], [/^RUSH HOUR/, 'tt-tube-boarding.jpg', '50% 50%']],
     // Oct 21 (Scott): golfer no longer cut off; the paddle boarder in the ocean replaces the whitewater (that one is on How To Use); lab cards get their own lab photos, no repeats
-    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '85% 50%']   /* Oct 22: the golfer is on the right of the photo */, [/^THE RIVER/, 'how-paddle-sunset.jpg', '42% 50%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%'],
+    'Cordyceps': [[/^GAME NIGHT/, 'cd-golf-sea.jpg', '80% 40%', 1.35]   /* Oct 22: the golfer is on the right of the photo */, [/^THE RIVER/, 'how-paddle-sunset.jpg', '42% 50%'], [/^THE LONG HAUL/, 'cd-marathon.jpg', '50% 40%'], [/^THE TRACK/, 'cd-track-runner.jpg', '50% 40%'],
       [/^LAB REPORT . HUMAN/, 'mushroom-jars-lab.jpg', '50% 60%'], [/^LAB REPORT . PUBMED/, 'lab-soxhlet-extraction.jpg', '50% 50%']],
     // Oct 21 (Scott): The First Cast zoomed in so the fishing pole shows; the mountain biker and the paddle boarder are gone (never use the biker);
     // The Morning is office thinking, The Next Generation is a parent reading with the kids; lab cards get their own lab photos
-    "Lion's Mane": [[/^THE FIRST CAST/, 'lm-kickoff-fishing-sunset.jpg', '55% 45%', 1.5], [/^THE MORNING/, 'lm-office-red-mugs.jpg', '70% 50%'],
+    "Lion's Mane": [[/^THE FIRST CAST/, 'lm-kickoff-fishing-sunset.jpg', '66% 45%', 1.2], [/^THE MORNING/, 'lm-office-red-mugs.jpg', '70% 50%'],
       [/^THE NEXT GENERATION/, 'lm-family-reading.jpg', '50% 40%'], [/^LAB REPORT . HUMAN/, 'lab-lm-gloves.jpg', '50% 50%'], [/^LAB REPORT . PUBMED/, 'lab-lm-rack-aisle.jpg', '50% 50%']]
   };
   window.__rcxPhoneSwap = SWAP;   // Oct 17: nav-extras leaves these boxes alone on the phone, so nothing flashes underneath
