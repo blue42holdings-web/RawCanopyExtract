@@ -44,13 +44,24 @@
     return null;
   }
   function run() {
-    var h = homeAnchor(); if (h) place('home', h);
+    // home, desktop: the box goes inside the row under the paragraph (the packets photo and the three mushrooms),
+    // spanning the full row at the top. Another script always keeps the paragraph right before that row, so
+    // putting the box between them made the two fight and the box jumped above and below (Oct 22, Scott).
+    var rl = [].filter.call(document.querySelectorAll('[data-m="rl-list"]'), vis)[0];
+    var grid = null; for (var x = rl; x && x !== document.body; x = x.parentElement) { if (getComputedStyle(x).display === 'grid') { grid = x; break; } }
+    if (innerWidth >= 768 && grid) {
+      var hb = grid.querySelector(':scope > .pl-k-home');
+      if (!hb) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb = box('home'); grid.insertBefore(hb, grid.firstChild); }
+      paint(hb); hb.style.setProperty('grid-column', '1 / -1', 'important'); hb.style.setProperty('order', '-5', 'important');
+      hb.style.setProperty('max-width', 'none', 'important'); hb.style.setProperty('width', 'auto', 'important'); hb.style.setProperty('margin', '0 0 24px', 'important');
+    } else if (innerWidth < 768) { var h = homeAnchor(); if (h) place('home', h); }
     [['lm', 'lm-hero'], ['cd', 'cdh-hero'], ['tt', 'tth-hero']].forEach(function (a) {
       var e = [].filter.call(document.querySelectorAll('[data-m="' + a[1] + '"]'), vis)[0];
       if (e) place(a[0], e);
     });
     // a box left behind by a re-render sits next to nothing: drop it
     [].forEach.call(document.querySelectorAll('.pl-box'), function (b) {
+      if (b.classList.contains('pl-k-home') && innerWidth >= 768) return;   // desktop home box lives inside the row
       var pv = b.previousElementSibling; if (!pv) { b.remove(); return; }
       var want = (pv && vis(pv)) ? 'block' : 'none';
       if (b.style.getPropertyValue('display') !== want) b.style.setProperty('display', want, 'important');
