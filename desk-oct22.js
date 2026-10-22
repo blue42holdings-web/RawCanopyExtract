@@ -72,6 +72,7 @@
       if (/url\(|gradient/.test(getComputedStyle(k).backgroundImage)) { setI(k, '-webkit-mask-image', 'linear-gradient(#000 0%,#000 62%,transparent 100%)'); setI(k, 'mask-image', 'linear-gradient(#000 0%,#000 62%,transparent 100%)'); }
     });
     if (lm) [].forEach.call(sb.querySelectorAll('[data-m="sbox-shade"]'), function (d) { setI(d, 'display', 'none'); });
+    if (lm) { var f = sb.querySelector('form'); if (f && f.parentElement) setI(f.parentElement, 'justify-content', 'center'); }   // email box centered under the paragraph
     // the RCX field behind the story box goes; the box ends in black
     [].forEach.call(sb.querySelectorAll('div'), function (d) { if (!d.textContent.trim() && /pattern-field/.test(getComputedStyle(d).backgroundImage)) setI(d, 'display', 'none'); });
   }
