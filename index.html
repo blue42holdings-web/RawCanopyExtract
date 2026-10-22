@@ -550,7 +550,7 @@ header button[data-page="home"]{padding:10px 0 !important;margin:-10px 0 !import
 [data-dogs]:not([data-how-bg]) > img[data-dog]{filter:brightness(.16) !important;transition:filter 8s ease-in-out 1.5s !important}
 [data-dogs]:not([data-how-bg])[data-lit] > img[data-dog]{filter:brightness(.4) !important}
 [data-m="why-blend"]{background-size:100% 100%,118% auto !important;background-position:center 60%,90% 42% !important}
-[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 138% !important;background-position:0 0,50% 82% !important}
+[data-m="lm-hero"]{background-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 3%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%),url('assets/photo/lm-hero-cluster.jpg') !important;background-size:100% 100%,auto 110% !important;background-position:0 0,55% 35% !important}
 [data-m="lm-eyebrow"]::before{display:none !important}
 [data-m="lm-hero"] [data-m="lm-eyebrow"],[data-m="lm-hero"] p[style*="italic"]{background:none !important;box-shadow:none !important;text-shadow:0 0 3px #000,0 0 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.85),0 0 26px rgba(0,0,0,.6) !important}
 [data-m="lm-hero"] > div[style*="max-width:1080px"]{text-shadow:0 0 8px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8),0 1px 2px #000}
@@ -6345,6 +6345,16 @@ html body [data-ms-page] .ms-add{display:block;margin-top:14px !important}
 }
 </style>
 
+<script>/* Oct 22 (Scott): above every magazine row, on every page, phone and desktop, the swipe label says what's in there: the proof */
+(function(){var NEW='SWIPE FOR THE PROOF';
+function fix(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n;while(n=w.nextNode()){if(/SWIPE FOR MORE/i.test(n.nodeValue)){n.nodeValue=n.nodeValue.replace(/SWIPE FOR MORE/i,NEW)}}}
+function run(){var seen=[];document.querySelectorAll('a.mx-press').forEach(function(a){var row=a.closest('.pr-row')||a.closest('.cx')||a.parentElement;if(!row||seen.indexOf(row)>=0)return;seen.push(row);
+ row.querySelectorAll('.rit-nav,.rcx-swipe-tag').forEach(fix);
+ for(var x=row,k=0;x&&k<3;x=x.parentElement,k++){var p=x.previousElementSibling;if(p&&/^\s*(‹\s*)?SWIPE FOR MORE/i.test(p.textContent||'')&&(p.textContent||'').length<40){fix(p);break}}});}
+setInterval(run,800);run();})();</script>
+<style id="rider-one-oct22">/* Oct 22 (Scott): home, the switchbacks rider showed twice (a big cutout over the small photo). One rider only, phone and desktop */
+html body [data-lift-bg*="a-rider-pausing"] > div:not([class]){display:none !important}
+</style>
 <style id="spacing-oct22b">
 /* Oct 22 (Scott): Receipts phone, the space above The Three Dodges matches the space above The Research */
 @media (max-width:767px){html body div[data-screen-label="Receipts"] section[data-m="rc-read"][data-m="rc-read"][data-m="rc-read"]{padding-bottom:5px !important}}
