@@ -77,6 +77,7 @@
     'html body .hg .hg-cap{font-size:17px !important;line-height:1.35 !important;max-width:none !important}',
     'html body .hg .hg-ts{font-size:14px !important;line-height:1.3 !important}',
     'html body .hg .hg-end{font-size:16px !important;white-space:nowrap !important}',
+    '.hg [data-hg-go]{cursor:pointer;transition:transform .15s,box-shadow .15s}.hg [data-hg-go]:active{transform:scale(.97)}@media (hover:hover){.hg [data-hg-go]:hover{box-shadow:0 0 0 2px #D4A24A,0 0 18px rgba(212,162,74,.45)}}',
     '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}'
   ].join('\n');
   document.head.appendChild(css);
@@ -86,10 +87,10 @@
     var qr = '<svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><g fill="#D4A24A"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zM16 5v3h3V5zM3 14h7v7H3zM5 16v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></g></svg>';
     return '<iframe class="hg-slot" src="find-the-mushroom.html?embed=1" title="Find the mushroom: a slot machine game" scrolling="no" loading="lazy"></iframe>' +
       '<div class="hg-box hg-b2"><div class="hg-q" role="heading" aria-level="2">UNCOMPROMISING, BY DESIGN</div><div class="hg-tiles">' +
-      '<div class="hg-t"><div class="hg-ic hg-sp"><img src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt=""></div><div class="hg-tt">Backed by published research</div><div class="hg-ts">Three organic mushrooms.<br>Nature’s raw harvest.</div></div>' +
-      '<div class="hg-t"><div class="hg-ic"><img src="assets/icons/extracted.svg" alt=""></div><div class="hg-tt">Scientifically extracted</div><div class="hg-ts">Unlocked so your body can actually absorb it.</div></div>' +
-      '<div class="hg-t"><div class="hg-ic"><img src="assets/icons/single-ingredient.svg" alt=""></div><div class="hg-tt">Measured so you don’t have to</div><div class="hg-ts">One clean, single ingredient packet.</div></div>' +
-      '<div class="hg-t"><div class="hg-ic">' + qr + '</div><div class="hg-tt">Check the receipts</div><div class="hg-ts">Scan the QR for the independent lab report.</div></div>' +
+      '<div class="hg-t" role="link" tabindex="0" data-hg-go="shop|shop-research"><div class="hg-ic hg-sp"><img src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt=""></div><div class="hg-tt">Backed by published research</div><div class="hg-ts">Three organic mushrooms.<br>Nature’s raw harvest.</div></div>' +
+      '<div class="hg-t" role="link" tabindex="0" data-hg-go="home|packet"><div class="hg-ic"><img src="assets/icons/extracted.svg" alt=""></div><div class="hg-tt">Scientifically extracted</div><div class="hg-ts">Unlocked so your body can actually absorb it.</div></div>' +
+      '<div class="hg-t" role="link" tabindex="0" data-hg-go="how|"><div class="hg-ic"><img src="assets/icons/single-ingredient.svg" alt=""></div><div class="hg-tt">Measured so you don’t have to</div><div class="hg-ts">One clean, single ingredient packet.</div></div>' +
+      '<div class="hg-t" role="link" tabindex="0" data-hg-go="receipts|"><div class="hg-ic">' + qr + '</div><div class="hg-tt">Check the receipts</div><div class="hg-ts">Scan the QR for the independent lab report.</div></div>' +
       '</div><div class="hg-flow"><span>TEAR</span><b>›</b><span>POUR</span><b>›</b><span>BUILD YOUR HONEST BLEND</span></div>' +
       '<div class="hg-end">Prescription free. Caffeine free. Forest to cup.</div></div>';
   }
@@ -181,6 +182,27 @@
     a.style.setProperty('display', 'none', 'important'); hidden = a;
     noShopTag(); fit(); rail();
   }
+
+  /* Oct 23 (Scott): each of the four squares takes you to its place on the site */
+  function hgGo(t) {
+    var v = (t.getAttribute('data-hg-go') || '').split('|'), pgn = v[0], at = v[1];
+    var sel = at === 'packet' ? '#packet p' : at ? '[data-m="' + at + '"]' : '';
+    if (pgn !== 'home') { var l = document.querySelector('[data-page="' + pgn + '"]'); if (l) l.click(); }
+    if (!sel) return;
+    var yOf = function (e) { return e.getBoundingClientRect().top + scrollY - 80; };
+    var n = 0, iv = setInterval(function () {
+      var e = document.querySelector(sel);
+      if (e && e.offsetHeight) {
+        clearInterval(iv); scrollTo(0, yOf(e));
+        // photos and rows above it keep loading and push it down; follow it for a moment so it lands right
+        var k = 0, fix = setInterval(function () { var d = yOf(e) - scrollY; if (Math.abs(d) > 4) scrollTo(0, yOf(e)); if (++k > 12) clearInterval(fix); }, 150);
+        var stop = function () { clearInterval(fix); removeEventListener('touchstart', stop); removeEventListener('wheel', stop); };
+        addEventListener('touchstart', stop, { passive: true }); addEventListener('wheel', stop, { passive: true });
+      } else if (++n > 40) clearInterval(iv);
+    }, pgn === 'home' ? 10 : 150);
+  }
+  document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('.hg [data-hg-go]'); if (t) { e.preventDefault(); hgGo(t); } });
+  document.addEventListener('keydown', function (e) { if (e.key !== 'Enter' && e.key !== ' ') return; var t = e.target.closest && e.target.closest('.hg [data-hg-go]'); if (t) { e.preventDefault(); hgGo(t); } });
   addEventListener('message', function (e) { if (e.data && e.data.fmHeight && g) { var f = g.querySelector('.hg-slot'); if (f && e.source === f.contentWindow) f.style.height = e.data.fmHeight + 'px'; } });
   addEventListener('resize', function () { run(); fit(); });
   setInterval(run, 1000); run();
