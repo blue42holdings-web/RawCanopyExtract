@@ -14,7 +14,14 @@
     '.hg-q{font-family:"Bebas Neue",sans-serif;color:#F1ECE1;letter-spacing:.04em;line-height:1.08;white-space:nowrap;text-align:center;margin:0 0 4px;font-weight:400}',
     '.hg-lab{display:flex;justify-content:space-between;align-items:baseline;font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:20px;color:#F1ECE1;margin:16px 0 6px}',
     '.hg-lab span:last-child{font-size:15px;letter-spacing:.06em}',
-    '.hg-them .hg-lab{margin-bottom:24px}',
+    '.hg-who{display:flex;align-items:center;gap:14px;margin:18px 0 8px}',
+    '.hg-them .hg-who{margin-bottom:26px}',
+    'html body .hg .hg-big{font-family:"Bebas Neue",sans-serif;font-size:64px !important;line-height:.85;letter-spacing:.04em;color:#F1ECE1}',
+    'html body .hg .hg-sub{font-family:"Bebas Neue",sans-serif;font-size:20px !important;line-height:1.1;letter-spacing:.08em;color:#F1ECE1;opacity:.92;border-left:2px solid rgba(241,236,225,.5);padding-left:12px}',
+    '.hg-us .hg-big{color:#F6D58E !important}',
+    'html body .hg .hg-them .hg-bar{height:165px !important}',
+    'html body .hg .hg-them .hg-bar em{font-size:12px !important;line-height:1 !important;letter-spacing:.05em !important}',
+    'html body .hg .hg-them .hg-bar i.hg-m em{font-size:13.5px !important}',
     '.hg-bar{display:flex;border-radius:6px}',
     '.hg-them .hg-bar{height:150px;gap:2px}',
     '.hg-them .hg-bar i{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;font-style:normal}',
@@ -47,9 +54,9 @@
     var segs = ING.map(function (x) { return x[1] ? '<i style="background:' + x[1] + '"><em>' + x[0] + '</em></i>' : '<i class="hg-m"><em>' + x[0] + '</em></i>'; }).join('');
     var qr = '<svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><g fill="#D4A24A"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zM16 5v3h3V5zM3 14h7v7H3zM5 16v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></g></svg>';
     return '<div class="hg-box hg-b1"><div class="hg-q" role="heading" aria-level="2">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>' +
-      '<div class="hg-them"><div class="hg-lab"><span>THEM · THE MESSY SCOOP</span><span>15 INGREDIENTS</span></div><div class="hg-bar" role="img" aria-label="A typical blend: fifteen ingredients, the mushroom is one of them">' + segs + '</div>' +
+      '<div class="hg-them"><div class="hg-who"><span class="hg-big">THEM</span><span class="hg-sub">The messy scoop<br>15 ingredients</span></div><div class="hg-bar" role="img" aria-label="A typical blend: fifteen ingredients, the mushroom is one of them">' + segs + '</div>' +
       '<p class="hg-cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p></div>' +
-      '<div class="hg-us"><div class="hg-lab"><span>US · ONE CLEAN PACKET</span><span>1 INGREDIENT</span></div><div class="hg-bar">100% ORGANIC MUSHROOM EXTRACT</div>' +
+      '<div class="hg-us"><div class="hg-who"><span class="hg-big">US</span><span class="hg-sub">One clean packet<br>1 ingredient</span></div><div class="hg-bar">100% ORGANIC MUSHROOM EXTRACT</div>' +
       '<p class="hg-cap">No fillers. No carriers. Just the raw, uncut truth.</p></div></div>' +
       '<div class="hg-box hg-b2"><div class="hg-q" role="heading" aria-level="2">UNCOMPROMISING, BY DESIGN</div><div class="hg-tiles">' +
       '<div class="hg-t"><div class="hg-ic hg-sp"><img src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt=""></div><div class="hg-tt">Backed by published research</div><div class="hg-ts">Three organic mushrooms.<br>Nature’s raw harvest.</div></div>' +
@@ -77,7 +84,7 @@
   function run() {
     var phone = innerWidth < 768;
     if (!phone) { if (g) { g.remove(); g = null; } if (hidden) { hidden.style.removeProperty('display'); hidden = null; } return; }
-    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') return;
+    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { fit(); return; }
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
