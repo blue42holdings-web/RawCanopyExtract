@@ -3,7 +3,7 @@
    box two, on the river forest: Uncompromising, by design (four tiles), Tear > Pour > Build your honest blend.
    Desktop keeps the paragraph for now. */
 (function () {
-  var ING = [['RICE FLOUR', '#7a1f1f'], ['MALTODEXTRIN', '#5b4a44'], ['NATURAL FLAVORS', '#9b2c2c'], ['XANTHAN GUM', '#6e3b2e'], ['MCT POWDER', '#4a4440'], ['GUAR GUM', '#a8432e'], ['SILICA', '#3f3a37'], ['MUSHROOM', ''], ['STEVIA', '#8c2a2a'], ['CACAO', '#6a5a52'], ['CINNAMON', '#b0472f'], ['SUNFLOWER LECITHIN', '#4d3b35'], ['TURMERIC', '#7d2424'], ['ASHWAGANDHA', '#5e5550'], ['BLACK PEPPER', '#963528']];
+  var ING = [['RICE FLOUR', '#7a1f1f'], ['MALTODEXTRIN', '#5b4a44'], ['NATURAL FLAVORS', '#9b2c2c'], ['XANTHAN GUM', '#6e3b2e'], ['CORN STARCH', '#4a4440'], ['GUAR GUM', '#a8432e'], ['SILICA', '#3f3a37'], ['MUSHROOM', ''], ['SUCRALOSE', '#8c2a2a'], ['DEXTROSE', '#6a5a52'], ['CARAMEL COLOR', '#b0472f'], ['SOY LECITHIN', '#4d3b35'], ['MAGNESIUM STEARATE', '#7d2424'], ['CARRAGEENAN', '#5e5550'], ['CANE SUGAR', '#963528']];
   var css = document.createElement('style'); css.id = 'home-graphic-css';
   css.textContent = [
     '.hg{padding:6px 0 4px;font-family:Oswald,sans-serif;text-align:left}',
