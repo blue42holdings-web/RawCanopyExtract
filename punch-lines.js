@@ -4,7 +4,7 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['Each mushroom scientifically extracted for bioavailability, the way published research supports, so your body can truly absorb it.', 'The proof is one scan away.'] },
+    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: [] },
     lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
