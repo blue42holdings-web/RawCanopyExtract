@@ -4,7 +4,7 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
+    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'Endurance for the chronic stress of a changing world that won\u2019t slow down.' },
     lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
@@ -80,7 +80,9 @@
       if (g && g.parentNode) {
         var pv0 = g.previousElementSibling, hb0 = pv0 && pv0.classList && pv0.classList.contains('pl-k-home') ? pv0 : null;
         if (!hb0) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb0 = box('home'); g.parentNode.insertBefore(hb0, g); }
-        fit(hb0, g); hb0.style.setProperty('margin-bottom', '16px', 'important'); hb0.style.setProperty('display', 'block', 'important');
+        fit(hb0, g); hb0.style.setProperty('margin-bottom', '16px', 'important'); hb0.style.setProperty('margin-top', '0', 'important');
+        var sec0 = hb0.parentElement && hb0.parentElement.closest ? hb0.parentElement.closest('section') : null; if (sec0) sec0.style.setProperty('padding-top', '0', 'important');   // no gap between the packets photo and this box (Oct 22, Scott)
+        hb0.style.setProperty('display', 'block', 'important');
       } else { var h = rl || homeAnchor(); if (h) place('home', h); }
     }
     [['lm', 'lm-hero'], ['cd', 'cdh-hero'], ['tt', 'tth-hero']].forEach(function (a) {
