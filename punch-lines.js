@@ -4,7 +4,7 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Nutrient rich. Caffeine free.', s: ['A clean, single ingredient nootropic for your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
+    home: { h: 'Nutrient rich. Mushroom extract.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
     lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
@@ -67,7 +67,15 @@
       if (!hb) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb = box('home'); grid.insertBefore(hb, grid.firstChild); }
       paint(hb); hb.style.setProperty('grid-column', '1 / -1', 'important'); hb.style.setProperty('order', '-5', 'important');
       hb.style.setProperty('max-width', 'none', 'important'); hb.style.setProperty('width', 'auto', 'important'); hb.style.setProperty('margin', '0 0 24px', 'important');
-    } else if (innerWidth < 768) { var h = rl || homeAnchor(); if (h) place('home', h); }   // phone: under the three mushrooms you tap (Oct 22, Scott)
+    } else if (innerWidth < 768) {
+      // phone: right above the slot machines, so people read what we make before they play (Oct 22, Scott)
+      var g = document.querySelector('.hg');
+      if (g && g.parentNode) {
+        var pv0 = g.previousElementSibling, hb0 = pv0 && pv0.classList && pv0.classList.contains('pl-k-home') ? pv0 : null;
+        if (!hb0) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb0 = box('home'); g.parentNode.insertBefore(hb0, g); }
+        fit(hb0, g); hb0.style.setProperty('margin-bottom', '16px', 'important'); hb0.style.setProperty('display', 'block', 'important');
+      } else { var h = rl || homeAnchor(); if (h) place('home', h); }
+    }
     [['lm', 'lm-hero'], ['cd', 'cdh-hero'], ['tt', 'tth-hero']].forEach(function (a) {
       var e = [].filter.call(document.querySelectorAll('[data-m="' + a[1] + '"]'), vis)[0];
       if (e) place(a[0], e);
@@ -78,6 +86,7 @@
     // a box left behind by a re-render sits next to nothing: drop it
     [].forEach.call(document.querySelectorAll('.pl-box'), function (b) {
       if (b.classList.contains('pl-k-home') && innerWidth >= 768) return;   // desktop home box lives inside the row
+      if (b.classList.contains('pl-k-home') && b.nextElementSibling && b.nextElementSibling.classList.contains('hg')) return;   // phone: sits above the game
       var pv = b.previousElementSibling; if (!pv) { b.remove(); return; }
       var want = (pv && vis(pv)) ? 'block' : 'none';
       if (b.style.getPropertyValue('display') !== want) b.style.setProperty('display', want, 'important');
