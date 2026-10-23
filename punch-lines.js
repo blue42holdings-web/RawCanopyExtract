@@ -4,34 +4,41 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Nutrient rich. Mushroom extract.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
+    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'For the chronic stress of a world that won\u2019t slow down.' },
     lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
   };
+  var st = document.createElement('style');   // another script balances the lines; that would wrap a line we want whole
+  st.textContent = 'html body section.pl-box .pl-ph{text-wrap:nowrap !important;white-space:nowrap !important}';
+  document.head.appendChild(st);
   function box(k) {
     var L = LINES[k], d = document.createElement('section');
     d.className = 'pl-box pl-hero pl-k-' + k;   // 'hero' in the class keeps mush-short.js from hiding it; it sorts right after the top photo 
-    var html = '<div class="pl-h">' + L.h.split(/(?<=\.) /).map(function (t) { return '<span class="pl-ph">' + t + '</span>'; }).join(' ') + '</div>';   // headline only breaks between phrases
+    var two = L.h.indexOf('|') > -1;   // a "|" in the headline is a forced line break: two lines, each on its own
+    var html = '<div class="pl-h">' + (two ? L.h.split('|') : L.h.split(/(?<=\.) /)).map(function (t) { return '<span class="pl-ph"' + (two ? ' style="display:block"' : '') + '>' + t + '</span>'; }).join(two ? '' : ' ') + '</div>';   // headline only breaks between phrases
     L.s.forEach(function (t) { html += '<div class="pl-s">' + j(t) + '</div>'; });
     html += '<div class="pl-i">' + j(L.i) + '</div>';
     d.innerHTML = html; return d;
   }
+  var HEX = 'linear-gradient(rgba(3,3,3,.8),rgba(3,3,3,.8)),url("assets/pattern-honeycomb-seamless.svg")';   // Oct 22 (Scott): super dark, with a design: the brand honeycomb
   var STEEL = 'linear-gradient(115deg,rgba(255,255,255,.035) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,.02) 55%,rgba(255,255,255,0) 78%),' +   // Oct 22 (Scott): very black, with a faint brushed grain
     'repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0px,rgba(255,255,255,.012) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 3px),' +
     'linear-gradient(180deg,#070707 0%,#020202 60%,#060606 100%)';
   function fitOne(b) {   // every headline on one line: shrink it only as much as it needs
     var h = b.querySelector('.pl-h'); if (!h || !h.offsetWidth) return;
-    var w = h.clientWidth; if (h.__w === w) return; h.__w = w;
+    var w = h.clientWidth; if (h.__w === w && h.scrollWidth <= w + 1) return; h.__w = w;   // also re-fit when a late font makes it overflow
     h.style.removeProperty('font-size'); h.style.setProperty('white-space', 'nowrap', 'important');
     var fs = parseFloat(getComputedStyle(h).fontSize), need = h.scrollWidth;
     if (need > w) h.style.setProperty('font-size', Math.floor(fs * w / need * 0.98) + 'px', 'important');
   }
   function paint(b) {   // inline, so the cream and red desktop page rules can't clear the black box
-    if (b.__steel === 2) return; b.__steel = 2;
+    var hex = b.classList.contains('pl-k-home');
+    if (b.__steel === (hex ? 3 : 2)) return; b.__steel = hex ? 3 : 2;
     b.style.setProperty('background-color', '#030303', 'important');
     b.style.setProperty('border', '3px solid #D4A24A', 'important'); b.style.setProperty('border-radius', '18px', 'important');   // the gold box, inline so no page rule can take it off
-    b.style.setProperty('background-image', STEEL, 'important');
+    b.style.setProperty('background-image', hex ? HEX : STEEL, 'important');
+    if (hex) { b.style.setProperty('background-size', '100% 100%, 33px auto', 'important'); b.style.setProperty('background-repeat', 'no-repeat, repeat', 'important'); b.style.setProperty('background-position', 'center top, center top', 'important'); }
   }
   function fit(b, a) {
     paint(b);   // phone and home: same width as the box above it; desktop mushroom pages: a centered 1100px box under the wide photo
