@@ -5,7 +5,7 @@
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
   var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-dogs-car.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
-  var POS = ['center 56%', 'center 40%', 'center 40%', '62% 45%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
+  var POS = ['center 56%', 'center 40%', 'center 40%', '78% 50%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -41,7 +41,7 @@
         st = document.createElement('div'); st.className = 'ab-strip'; st.setAttribute('aria-hidden', 'true');
         BOX.forEach(function (f, i) { var d = document.createElement('div'); var dk = i === 0 ? .62 : .5;
           d.style.backgroundImage = 'linear-gradient(rgba(0,0,0,' + dk + '),rgba(0,0,0,' + (dk + .12) + ')),url("assets/photo/' + f + '")';
-          d.style.backgroundSize = f === 'about-house-level.jpg' ? '100% 100%,150% auto' : '100% 100%,cover'; /* Oct 18 (Scott): house zoomed in so the sky doesn't take over */ d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
+          d.style.backgroundSize = f === 'about-house-level.jpg' ? '100% 100%,150% auto' : f === 'own-dogs-car.jpg' ? '100% 100%,auto 210%' : '100% 100%,cover';   /* Oct 23 (Scott): close on the back window and the dogs, no driver */ /* Oct 18 (Scott): house zoomed in so the sky doesn't take over */ d.style.backgroundPosition = '0 0,' + POS[i]; st.appendChild(d); });
         grid.insertBefore(st, grid.firstChild);
       }
     } else {
