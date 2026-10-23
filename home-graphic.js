@@ -92,7 +92,7 @@
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="how|"><div class="hg-ic"><img src="assets/icons/single-ingredient.svg" alt=""></div><div class="hg-tt">Measured so you don’t have to</div><div class="hg-ts">One clean, single ingredient packet.</div></div>' +
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="receipts|"><div class="hg-ic">' + qr + '</div><div class="hg-tt">Check the receipts</div><div class="hg-ts">Scan the QR for the independent lab report.</div></div>' +
       '</div><div class="hg-flow"><span>TEAR</span><b>›</b><span>POUR</span><b>›</b><span>BUILD YOUR HONEST BLEND</span></div>' +
-      '<div class="hg-end">Prescription free. Caffeine free. Forest to cup.</div></div>';
+      '<div class="hg-end">Prescription free. Caffeine free. Guilt free.</div></div>';
   }
   function rail() {   // the box in the middle is the big one
     var r = g && g.querySelector('.hg-rail'); if (!r) return;
