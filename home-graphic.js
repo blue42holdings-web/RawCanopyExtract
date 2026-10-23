@@ -39,6 +39,9 @@
     'html body .hg .hg-ing.hg-m{background:linear-gradient(180deg,#F6D58E,#D4A24A 30%,#c9973c);box-shadow:0 0 18px rgba(246,213,142,.8),0 0 2px #fff}',
     'html body .hg .hg-ing.hg-m em{color:#111}',
     'html body .hg .rcx-swipe-tag{display:none !important}',
+    '@media (min-width:768px){html body .hg.hg-desk{display:block !important;width:calc(100% - 40px) !important;margin:26px auto 0 !important}html body .hg.hg-desk>*{width:100% !important;max-width:none !important}html body .hg.hg-desk .hg-tiles{grid-template-columns:repeat(4,1fr) !important;gap:14px !important}html body .hg.hg-desk .hg-b2{padding:26px 28px 24px}html body .hg.hg-desk .hg-q{font-size:34px !important}html body .hg.hg-desk .hg-t{padding:18px 12px}html body .hg.hg-desk .hg-flow{font-size:22px}}',
+    'html body .hg-shop{font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:20px;color:#F6D58E;text-align:center;margin:2px 0 10px;text-shadow:0 0 8px rgba(246,213,142,.55),0 1px 3px #000;width:100%}',
+    'html body .hg-shop span{color:#F1ECE1;margin:0 4px}html body .hg-shop b{display:inline-block;font-weight:400;animation:rcxSwArr 1.8s ease-in-out infinite}',
     'html body .hg .hg-slot{display:block;width:100%;height:1750px;border:0;margin:0 0 16px;background:transparent;overflow:hidden}',
     '.hg-marq{position:relative;margin:4px auto 2px;padding:9px 10px 7px;border-radius:10px;background:#1a0606;text-align:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:19px;white-space:nowrap;color:#F6D58E;text-shadow:0 0 8px rgba(246,213,142,.8);border:2px solid #D4A24A}',
     '.hg-marq:before{content:"";position:absolute;inset:-6px;border-radius:13px;background:radial-gradient(circle,#FFE7A8 0 2.2px,transparent 2.6px) 0 0/14px 14px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:4px;animation:hgBulb 0.9s steps(2) infinite;pointer-events:none}',
@@ -144,25 +147,32 @@
     for (var x = rl; x && g && x !== document.body; x = x.parentNode) if (x.parentNode === g.parentNode) return x;
     return null;
   }
+  function shopTag() {   // Oct 22 (Scott): tell people the mushroom buttons are where you buy
+    var rl = [].filter.call(document.querySelectorAll('[data-m="rl-list"]'), function (e) { return e.offsetHeight > 0; })[0];
+    if (!rl || (rl.previousElementSibling && rl.previousElementSibling.classList.contains('hg-shop'))) return;
+    [].forEach.call(document.querySelectorAll('.hg-shop'), function (o) { o.remove(); });
+    var t = document.createElement('div'); t.className = 'hg-shop'; t.innerHTML = 'SHOP NOW <span>\u00B7</span> CLICK A MUSHROOM <b>\u203A</b>';
+    rl.parentNode.insertBefore(t, rl);
+  }
   function place() {   // phone order (Oct 22, Scott): the box, then our mushrooms for sale, then the slot machines
     var w = g && rlWrap(); if (w && g.previousElementSibling !== w) g.parentNode.insertBefore(g, w.nextSibling);
   }
   function run() {
-    var phone = innerWidth < 768;
-    if (!phone) { if (g) { g.remove(); g = null; } if (hidden) { hidden.style.removeProperty('display'); hidden = null; } return; }
-    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); fit(); rail(); return; }
+    var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
+    if (g && g.__phone !== undefined && g.__phone !== phone) { g.remove(); g = null; }
+    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); shopTag(); fit(); rail(); return; }
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
-      g = document.createElement('div'); g.className = 'hg'; g.setAttribute('data-noswipe', '1'); g.innerHTML = html();
+      g = document.createElement('div'); g.className = 'hg' + (phone ? '' : ' hg-desk'); g.__phone = phone; g.setAttribute('data-noswipe', '1'); g.innerHTML = phone ? html() : html().replace('embed=1', 'embed=1&wide=1');
       [].forEach.call(g.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
-      var cs = getComputedStyle(a); g.style.maxWidth = a.offsetWidth + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
+      var cs = getComputedStyle(a); g.style.maxWidth = (phone ? a.offsetWidth : 1300) + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
       a.parentNode.insertBefore(g, a.nextSibling);
       place();
       new MutationObserver(function () { [].forEach.call(g.querySelectorAll('.rcx-swipe-tag'), function (t) { t.remove(); }); }).observe(g, { childList: true, subtree: true });
     }
     a.style.setProperty('display', 'none', 'important'); hidden = a;
-    fit(); rail();
+    shopTag(); fit(); rail();
   }
   addEventListener('message', function (e) { if (e.data && e.data.fmHeight && g) { var f = g.querySelector('.hg-slot'); if (f && e.source === f.contentWindow) f.style.height = e.data.fmHeight + 'px'; } });
   addEventListener('resize', function () { run(); fit(); });
