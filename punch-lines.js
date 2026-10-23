@@ -67,7 +67,7 @@
       if (!hb) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb = box('home'); grid.insertBefore(hb, grid.firstChild); }
       paint(hb); hb.style.setProperty('grid-column', '1 / -1', 'important'); hb.style.setProperty('order', '-5', 'important');
       hb.style.setProperty('max-width', 'none', 'important'); hb.style.setProperty('width', 'auto', 'important'); hb.style.setProperty('margin', '0 0 24px', 'important');
-    } else if (innerWidth < 768) { var h = homeAnchor(); if (h) place('home', h); }
+    } else if (innerWidth < 768) { var h = rl || homeAnchor(); if (h) place('home', h); }   // phone: under the three mushrooms you tap (Oct 22, Scott)
     [['lm', 'lm-hero'], ['cd', 'cdh-hero'], ['tt', 'tth-hero']].forEach(function (a) {
       var e = [].filter.call(document.querySelectorAll('[data-m="' + a[1] + '"]'), vis)[0];
       if (e) place(a[0], e);
