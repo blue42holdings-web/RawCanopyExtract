@@ -16,13 +16,41 @@
     return ctx;
   }
   function noiseBuf() { var n = ctx.sampleRate * 3, b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0), last = 0; for (var i = 0; i < n; i++) { var w = Math.random() * 2 - 1; last = (last + 0.04 * w) / 1.04; d[i] = last * 3.2; } return b; }
-  var crowd = null;
-  function startCrowd() {   // the room: a low, warm murmur that drifts
-    var s = ctx.createBufferSource(); s.buffer = noiseBuf(); s.loop = true;
-    var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 520; bp.Q.value = 0.7;
-    var g = ctx.createGain(); g.gain.value = 0.22;
-    var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 0.13; lg.gain.value = 0.08; lfo.connect(lg); lg.connect(g.gain); lfo.start();
-    s.connect(bp); bp.connect(g); g.connect(out); s.start(); crowd = [s, lfo];
+  var crowd = null, voiceT = [];
+  // Oct 23 (Scott): no ocean-like hiss. The room is "walla": many far off voices talking, made from voice-like
+  // tones shaped into vowels and syllables, each voice starting and stopping at random.
+  var VOW = [[730, 1090], [270, 2290], [530, 1840], [570, 840], [300, 870], [660, 1720], [490, 1350]];   // ah ee eh aw oo ae uh
+  function voice(bus) {
+    var o = ctx.createOscillator(), f1 = ctx.createBiquadFilter(), f2 = ctx.createBiquadFilter(), g = ctx.createGain(), m1 = ctx.createGain(), m2 = ctx.createGain();
+    var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null, pitch = 95 + Math.random() * 130;
+    o.type = 'sawtooth'; o.frequency.value = pitch;
+    f1.type = 'bandpass'; f1.Q.value = 9; f2.type = 'bandpass'; f2.Q.value = 12; m1.gain.value = 1; m2.gain.value = 0.5;
+    g.gain.value = 0;
+    o.connect(f1); o.connect(f2); f1.connect(m1); f2.connect(m2); m1.connect(g); m2.connect(g);
+    if (pan) { pan.pan.value = Math.random() * 1.6 - 0.8; g.connect(pan); pan.connect(bus); } else g.connect(bus);
+    o.start();
+    function phrase() {
+      if (!on) return;
+      var t = now() + 0.02, n = 3 + Math.floor(Math.random() * 9), tt = t;
+      for (var i = 0; i < n; i++) {
+        var v = VOW[Math.floor(Math.random() * VOW.length)], d = 0.09 + Math.random() * 0.17, lv = 0.05 + Math.random() * 0.06;
+        f1.frequency.setTargetAtTime(v[0], tt, 0.02); f2.frequency.setTargetAtTime(v[1], tt, 0.02);
+        o.frequency.setTargetAtTime(pitch * (0.9 + Math.random() * 0.25), tt, 0.05);
+        g.gain.setTargetAtTime(lv, tt, 0.015); g.gain.setTargetAtTime(0.0, tt + d * 0.75, 0.02);
+        tt += d + Math.random() * 0.04;
+      }
+      voiceT.push(setTimeout(phrase, (tt - t) * 1000 + 300 + Math.random() * 2200));
+    }
+    voiceT.push(setTimeout(phrase, Math.random() * 1500));
+    return o;
+  }
+  function startCrowd() {   // the room: a dozen people talking across the floor, soft and far away
+    var bus = ctx.createGain(); bus.gain.value = 0.55;
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2200;
+    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 160;
+    bus.connect(hp); hp.connect(lp); lp.connect(out);
+    var vs = []; for (var i = 0; i < 12; i++) vs.push(voice(bus));
+    crowd = vs;
   }
   function note(f, t, len, vol, type, pan, lp) {
     var o = ctx.createOscillator(), g = ctx.createGain(), p = ctx.createStereoPanner ? ctx.createStereoPanner() : null, f2 = ctx.createBiquadFilter();
@@ -57,7 +85,7 @@
   function stop() {
     if (!on) return; on = false; timers.forEach(clearTimeout); timers = [];
     out.gain.cancelScheduledValues(now()); out.gain.setValueAtTime(out.gain.value, now()); out.gain.linearRampToValueAtTime(0, now() + 2.5);
-    var c = crowd; crowd = null; setTimeout(function () { if (c) { try { c[0].stop(); c[1].stop(); } catch (e) {} } }, 2700);
+    var c = crowd; crowd = null; voiceT.forEach(clearTimeout); voiceT = []; setTimeout(function () { if (c) c.forEach(function (o) { try { o.stop(); } catch (e) {} }); }, 2700);
     if (window.__rcxBathDuck) window.__rcxBathDuck(1, 3);
   }
   function decide() { var want = inView && !document.hidden && (wanted || (window.__rcxBathOn && window.__rcxBathOn())); if (want) start(); else stop(); }
