@@ -30,8 +30,17 @@
     '.hg-them .hg-bar i.hg-m{margin:-16px 0;border-radius:5px;background:linear-gradient(180deg,#F6D58E,#D4A24A 30%,#c9973c);box-shadow:0 0 16px rgba(246,213,142,.75),0 0 2px #fff;position:relative;z-index:2}',
     '.hg-them .hg-bar i.hg-m em{color:#111;font-size:14px;font-weight:600;letter-spacing:.1em}',
     '.hg-us .hg-bar{height:50px;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:19px;letter-spacing:.08em;color:#111;background:linear-gradient(100deg,#b8862f 0%,#E8B860 30%,#F6D58E 48%,#E8B860 62%,#c9973c 100%);box-shadow:0 0 18px rgba(212,162,74,.35)}',
+    '.hg-hint{font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:15px;color:#F6D58E;text-align:center;margin:0 0 2px}',
+    '.hg-hint b{display:inline-block;font-weight:400;animation:rcxSwArr 1.8s ease-in-out infinite}',
+    'html body .hg .hg-rail{display:flex !important;overflow-x:auto !important;overflow-y:hidden !important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:6px;align-items:center;height:215px;margin:0 -16px;padding:0 calc(50% - 32px) !important}',
+    '.hg-rail::-webkit-scrollbar{display:none}',
+    'html body .hg .hg-ing{flex:0 0 64px !important;width:64px !important;height:150px;border-radius:8px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;transform-origin:50% 50%;transition:transform .12s linear,opacity .12s linear;font-style:normal}',
+    'html body .hg .hg-ing em{font-style:normal;writing-mode:vertical-rl;transform:rotate(180deg);font-family:"Bebas Neue",sans-serif;font-size:20px !important;letter-spacing:.08em;color:#F1ECE1;white-space:nowrap;line-height:1 !important}',
+    'html body .hg .hg-ing.hg-m{background:linear-gradient(180deg,#F6D58E,#D4A24A 30%,#c9973c);box-shadow:0 0 18px rgba(246,213,142,.8),0 0 2px #fff}',
+    'html body .hg .hg-ing.hg-m em{color:#111}',
+    'html body .hg .rcx-swipe-tag{display:none !important}',
     '.hg-cap{margin:8px 0 0;font-size:17px;color:#F1ECE1;line-height:1.35;text-align:left}',
-    '.hg-them .hg-cap{margin-top:26px}',
+    '.hg-them .hg-cap{margin-top:8px}',
     '.hg-cap b{color:#D4A24A;font-weight:500}',
     '.hg-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}',
     '.hg-t{border:1.5px solid rgba(212,162,74,.65);border-radius:12px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}',
@@ -51,10 +60,10 @@
   document.head.appendChild(css);
 
   function html() {
-    var segs = ING.map(function (x) { return x[1] ? '<i style="background:' + x[1] + '"><em>' + x[0] + '</em></i>' : '<i class="hg-m"><em>' + x[0] + '</em></i>'; }).join('');
+    var segs = ING.map(function (x) { return x[1] ? '<i class="hg-ing" style="background:' + x[1] + '"><em>' + x[0] + '</em></i>' : '<i class="hg-ing hg-m"><em>' + x[0] + '</em></i>'; }).join('');
     var qr = '<svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><g fill="#D4A24A"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zM16 5v3h3V5zM3 14h7v7H3zM5 16v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></g></svg>';
     return '<div class="hg-box hg-b1"><div class="hg-q" role="heading" aria-level="2">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>' +
-      '<div class="hg-them"><div class="hg-who"><span class="hg-big">THEM</span><span class="hg-sub">The messy scoop<br>15 ingredients</span></div><div class="hg-bar" role="img" aria-label="A typical blend: fifteen ingredients, the mushroom is one of them">' + segs + '</div>' +
+      '<div class="hg-them"><div class="hg-who"><span class="hg-big">THEM</span><span class="hg-sub">The messy scoop<br>15 ingredients</span></div><div class="hg-hint">SWIPE TO SEE THEIR INGREDIENTS <b>\u203A</b></div><div class="hg-rail" data-noswipe="1" aria-label="A typical blend: fifteen ingredients, the mushroom is one of them">' + segs + '</div>' +
       '<p class="hg-cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p></div>' +
       '<div class="hg-us"><div class="hg-who"><span class="hg-big">US</span><span class="hg-sub">One clean packet<br>1 ingredient</span></div><div class="hg-bar">100% ORGANIC MUSHROOM EXTRACT</div>' +
       '<p class="hg-cap">No fillers. No carriers. Just the raw, uncut truth.</p></div></div>' +
@@ -65,6 +74,21 @@
       '<div class="hg-t"><div class="hg-ic">' + qr + '</div><div class="hg-tt">Check the receipts</div><div class="hg-ts">Scan the QR for the independent lab report.</div></div>' +
       '</div><div class="hg-flow"><span>TEAR</span><b>›</b><span>POUR</span><b>›</b><span>BUILD YOUR HONEST BLEND</span></div>' +
       '<div class="hg-end">Prescription free. Caffeine free. Forest to cup.</div></div>';
+  }
+  function rail() {   // the box in the middle is the big one
+    var r = g && g.querySelector('.hg-rail'); if (!r) return;
+    [].forEach.call(g.querySelectorAll('.rcx-swipe-tag'), function (t) { t.remove(); });   // our own hint says it; no second label
+    if (!r.__hg) { r.__hg = 1; r.addEventListener('scroll', function () { if (!r.__raf) r.__raf = requestAnimationFrame(function () { r.__raf = 0; scale(r); }); }, { passive: true }); }
+    scale(r);
+  }
+  function scale(r) {
+    var c = r.getBoundingClientRect(), mid = c.left + c.width / 2;
+    [].forEach.call(r.children, function (k) {
+      var b = k.getBoundingClientRect(), d = Math.abs(b.left + b.width / 2 - mid) / 70, t = Math.max(0, 1 - d);
+      k.style.transform = 'scale(' + (0.86 + 0.34 * t).toFixed(3) + ')';
+      k.style.opacity = (0.55 + 0.45 * t).toFixed(2);
+      k.style.zIndex = t > 0.5 ? 2 : 1;
+    });
   }
   function vis(e) { return e && e.offsetHeight > 0; }
   function anchor() {   // the bordered box holding the brand paragraph
@@ -84,7 +108,7 @@
   function run() {
     var phone = innerWidth < 768;
     if (!phone) { if (g) { g.remove(); g = null; } if (hidden) { hidden.style.removeProperty('display'); hidden = null; } return; }
-    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { fit(); return; }
+    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { fit(); rail(); return; }
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
@@ -94,7 +118,7 @@
       a.parentNode.insertBefore(g, a.nextSibling);
     }
     a.style.setProperty('display', 'none', 'important'); hidden = a;
-    fit();
+    fit(); rail();
   }
   addEventListener('resize', function () { run(); fit(); });
   setInterval(run, 1000); run();
