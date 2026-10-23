@@ -119,11 +119,22 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .pull.fail{padding:4.4px 0 0 1.8px !important}
 .pull small{display:block;margin:0}
 .pull.fail small{display:none !important}
+
+/* Oct 22 2026 (Scott): the blinking bulbs that ran down the left and right now run all the way around each machine. */
+.sidebulbs{display:none !important}
+.ring{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.ring rect{fill:none;stroke-width:7;stroke-dasharray:6 8}
+.ring .ra{stroke:#fff;filter:drop-shadow(0 0 4px #4fd2ff);animation:ringA .6s steps(1) infinite}
+.ring .rb{stroke:#ffd84f;stroke-dashoffset:-7;filter:drop-shadow(0 0 4px #ff4fd8);animation:ringB .6s steps(1) infinite}
+@keyframes ringA{0%{opacity:1}50%{opacity:0}}
+@keyframes ringB{0%{opacity:0}50%{opacity:1}}
+.machine.won .ring rect{animation-duration:.2s}
+#umachine .title{white-space:nowrap}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
 <div class="q">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>
 <div class="machine" id="machine">
-  <div class="burst"></div><div class="lights"></div><div class="sidebulbs l"></div><div class="sidebulbs r"></div>
+  <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
   <div class="band"><span class="who-big">THEM</span><span class="who-sub">THE MESSY SCOOP<br>15 INGREDIENTS</span></div>
   <div class="sign"><div class="title">FIND THE MUSHROOM</div><div class="tag">STOP GAMBLING WITH YOUR HEALTH</div></div>
   <div class="leds"><div class="led"><small>PULLS</small><b id="count">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="found">0</b></div></div>
@@ -136,7 +147,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 <p class="cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
 <div class="us">
 <div class="machine gold" id="umachine">
-  <div class="burst"></div><div class="lights"></div><div class="sidebulbs l"></div><div class="sidebulbs r"></div>
+  <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
   <div class="band"><span class="who-big">US</span><span class="who-sub">ONE CLEAN PACKET<br>1 INGREDIENT</span></div>
   <div class="sign"><div class="title">EVERY PULL HITS</div><div class="tag">100% ORGANIC MUSHROOM EXTRACT</div></div>
   <div class="leds"><div class="led"><small>PULLS</small><b id="ucount">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="ufound">0</b></div></div>
@@ -302,6 +313,17 @@ window.SFX=(function(){
   set();var cs=getComputedStyle(b),avail=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-12;
   while(k>.5&&big.offsetWidth+sub.scrollWidth>avail){k-=.03;set();}})}
 f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();
+
+(function(){   // ring size = machine size; one-line title and tags shrink to fit
+  function ring(){[].forEach.call(document.querySelectorAll('.ring'),function(r){var m=r.parentElement,w=m.clientWidth,h=m.clientHeight;if(!w||!h)return;r.setAttribute('viewBox','0 0 '+w+' '+h);
+    [].forEach.call(r.children,function(e){e.setAttribute('x',5);e.setAttribute('y',5);e.setAttribute('width',w-10);e.setAttribute('height',h-10);e.setAttribute('rx',17);});});}
+  function line(el,base){el.style.fontSize=base+'px';var z=base;while(el.scrollWidth>el.clientWidth+1&&z>9){z-=.5;el.style.fontSize=z+'px';}}
+  function fits(){var t=document.querySelector('#umachine .title');if(t)line(t,31);[].forEach.call(document.querySelectorAll('.tag'),function(e){line(e,13)});}
+  function all(){fits();ring();}
+  all();addEventListener('resize',all);addEventListener('load',all);if(document.fonts)document.fonts.ready.then(all);
+  if(window.ResizeObserver){var ro=new ResizeObserver(ring);[].forEach.call(document.querySelectorAll('.machine'),function(m){ro.observe(m)});}
+  setInterval(ring,1500);
+})();
 (function fit(){var h=document.querySelector('.q');function f(){h.style.fontSize='20px';var w=h.clientWidth;if(h.scrollWidth>w)h.style.fontSize=Math.floor(20*w/h.scrollWidth*.98)+'px'}f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();
 (function(){if(!/embed/.test(location.search))return;var last=0;function post(){var h=Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height);if(h!==last){last=h;parent.postMessage({fmHeight:h},'*');}}
 if(window.ResizeObserver)new ResizeObserver(post).observe(document.querySelector('.wrap'));addEventListener('load',post);setInterval(post,1000);post();})();
