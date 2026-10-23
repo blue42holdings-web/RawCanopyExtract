@@ -13,7 +13,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .who{display:flex;align-items:center;gap:14px;margin:14px 0 10px}
 .big{font-family:'Bebas Neue';font-size:64px;line-height:.85;letter-spacing:.04em}
 .sub{font-family:'Bebas Neue';font-size:20px;line-height:1.1;letter-spacing:.08em;border-left:2px solid rgba(241,236,225,.5);padding-left:12px}
-.machine{position:relative;margin:16px 30px 8px 0;padding:12px 10px 14px;border-radius:22px;
+.machine{position:relative;margin:16px 24px 8px;padding:12px 10px 14px;border-radius:22px;
  background:radial-gradient(120% 80% at 50% 0%,#5a1fa8 0%,#2a0b5e 45%,#12052b 100%);
  border:3px solid #ff4fd8;box-shadow:0 0 0 3px #12052b,0 0 0 6px #4fd2ff,0 0 26px #ff4fd8,0 0 46px rgba(79,210,255,.6),inset 0 0 30px rgba(0,0,0,.7)}
 .lights{position:absolute;inset:-14px;border-radius:30px;pointer-events:none;padding:5px;
@@ -119,6 +119,64 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 </div></div>
 <script>
 if(/embed/.test(location.search))document.documentElement.classList.add('embed');
+/* Oct 22 2026 (Scott): casino sounds for both machines. Made in code (Web Audio), nothing here is used anywhere else on the site.
+   press = arcade button, spin = fast "bing bing bing", bad = their buzzer, good = our sparkle. */
+window.SFX=(function(){
+  var ctx=null,master=null,tick=null,kick=null;
+  function ac(){
+    if(!ctx){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;
+      try{ctx=new AC();var comp=ctx.createDynamicsCompressor();master=ctx.createGain();master.gain.value=.7;master.connect(comp);comp.connect(ctx.destination);}catch(e){ctx=null;return null;}}
+    if(ctx.state==='suspended'){try{ctx.resume();}catch(e){}}
+    return ctx;
+  }
+  // one note: type, start freq, optional end freq, start time, length, volume
+  function tone(type,f0,f1,t,len,vol,attack){
+    var c=ctx,o=c.createOscillator(),g=c.createGain();
+    o.type=type;o.frequency.setValueAtTime(f0,t);
+    if(f1)o.frequency.exponentialRampToValueAtTime(f1,t+len);
+    var a=attack||.005;
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+a);g.gain.exponentialRampToValueAtTime(0.0001,t+len);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+len+.02);
+  }
+  function bing(){   // one bright casino bell hit
+    var c=ac();if(!c)return;var t=c.currentTime;
+    tone('square',2093,null,t,.16,.07,.002);
+    tone('sine',2093,null,t,.22,.16,.002);
+    tone('sine',4186,null,t,.1,.07,.002);
+    tone('sine',3136,null,t,.14,.05,.002);
+  }
+  return {
+    press:function(){   // chunky arcade button: a thump, then two quick coin blips
+      var c=ac();if(!c)return;var t=c.currentTime;
+      tone('triangle',190,70,t,.12,.5,.002);
+      tone('square',880,null,t+.04,.07,.09,.002);
+      tone('square',1320,null,t+.1,.12,.09,.002);
+    },
+    spin:function(){   // bing bing bing bing while the reels turn
+      this.stopSpin();
+      kick=setTimeout(function(){bing();tick=setInterval(bing,95);},140);
+    },
+    stopSpin:function(){clearTimeout(kick);clearInterval(tick);kick=tick=null;},
+    bad:function(){    // their result: a flat, annoying game-show buzzer, twice, the second one lower
+      var c=ac();if(!c)return;var t=c.currentTime+.04;
+      [[0,.22,170],[.27,.62,110]].forEach(function(b){
+        tone('sawtooth',b[2],b[2]*.94,t+b[0],b[1],.34,.01);
+        tone('square',b[2]*1.012,b[2]*.95,t+b[0],b[1],.2,.01);
+      });
+    },
+    good:function(){   // our result: a fairy-dust run up the scale, then a long shimmering chime
+      var c=ac();if(!c)return;var t=c.currentTime+.04;
+      [1047,1319,1568,2093,2637,3136,4186].forEach(function(f,i){
+        tone('sine',f,null,t+i*.06,.55,.17,.004);
+        tone('triangle',f*2,null,t+i*.06,.3,.05,.004);
+      });
+      var end=t+7*.06;
+      tone('sine',4186,null,end,1.3,.17,.004);tone('sine',3136,null,end,1.1,.1,.004);tone('sine',2093,null,end,1.5,.1,.004);
+      for(var k=0;k<9;k++){tone('sine',3000+Math.random()*2800,null,end+.1+k*.09,.28,.045,.003);}   // the twinkles
+    }
+  };
+})();
+
 (function(){
   var SYM={"RICE FLOUR": "<path d=\"M22 40 Q30 18 44 10 M42 40 Q40 22 44 10\" stroke=\"#3a7a1e\" stroke-width=\"3\" fill=\"none\"/><path d=\"M44 10 Q56 6 58 16 Q48 18 44 10Z\" fill=\"#4caf2a\"/><circle cx=\"20\" cy=\"44\" r=\"12\" fill=\"#e0182d\"/><circle cx=\"42\" cy=\"46\" r=\"12\" fill=\"#c8102e\"/><circle cx=\"16\" cy=\"40\" r=\"3.5\" fill=\"#ff8a8a\"/><circle cx=\"38\" cy=\"42\" r=\"3.5\" fill=\"#ff8a8a\"/>", "MALTO-DEXTRIN": "<ellipse cx=\"32\" cy=\"34\" rx=\"22\" ry=\"16\" fill=\"#ffd21f\" stroke=\"#d9a400\" stroke-width=\"2\"/><ellipse cx=\"25\" cy=\"29\" rx=\"7\" ry=\"4\" fill=\"#fff3a0\"/><path d=\"M52 30 l6 -2 -1 6z\" fill=\"#d9a400\"/>", "NATURAL FLAVORS": "<path d=\"M6 26 A26 26 0 0 0 58 26 Z\" fill=\"#2e9b3e\"/><path d=\"M11 26 A21 21 0 0 0 53 26 Z\" fill=\"#f2f7d0\"/><path d=\"M14 26 A18 18 0 0 0 50 26 Z\" fill=\"#ff3b4e\"/><g fill=\"#222\"><ellipse cx=\"24\" cy=\"32\" rx=\"1.6\" ry=\"2.6\"/><ellipse cx=\"32\" cy=\"36\" rx=\"1.6\" ry=\"2.6\"/><ellipse cx=\"40\" cy=\"32\" rx=\"1.6\" ry=\"2.6\"/><ellipse cx=\"32\" cy=\"29\" rx=\"1.6\" ry=\"2.6\"/></g>", "XANTHAN GUM": "<path d=\"M32 8 C18 8 16 24 16 34 L10 44 H54 L48 34 C48 24 46 8 32 8Z\" fill=\"#ffc21f\" stroke=\"#c98a00\" stroke-width=\"2\"/><circle cx=\"32\" cy=\"50\" r=\"5\" fill=\"#c98a00\"/><rect x=\"29\" y=\"4\" width=\"6\" height=\"6\" rx=\"2\" fill=\"#c98a00\"/><path d=\"M22 20 Q24 14 30 12\" stroke=\"#fff3b0\" stroke-width=\"3\" fill=\"none\"/>", "MCT POWDER": "<path d=\"M32 6 L39 24 L58 24 L43 36 L49 56 L32 44 L15 56 L21 36 L6 24 L25 24Z\" fill=\"#ffcf1f\" stroke=\"#e08a00\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/>", "GUAR GUM": "<path d=\"M18 12 H46 L58 26 L32 56 L6 26Z\" fill=\"#3fb6ff\" stroke=\"#1a6fd0\" stroke-width=\"2\"/><path d=\"M6 26 H58 M18 12 L26 26 L32 56 L38 26 L46 12\" stroke=\"#1a6fd0\" stroke-width=\"1.5\" fill=\"none\"/><path d=\"M20 16 L25 24\" stroke=\"#d6f2ff\" stroke-width=\"3\"/>", "SILICA": "<text x=\"32\" y=\"54\" text-anchor=\"middle\" font-family=\"Georgia,serif\" font-weight=\"900\" font-size=\"58\" fill=\"#e0182d\" stroke=\"#7a0010\" stroke-width=\"2.5\">7</text>", "STEVIA": "<rect x=\"6\" y=\"20\" width=\"52\" height=\"24\" rx=\"4\" fill=\"#111\" stroke=\"#ffcf1f\" stroke-width=\"2.5\"/><text x=\"32\" y=\"38.5\" text-anchor=\"middle\" font-family=\"Arial Black,Arial,sans-serif\" font-weight=\"900\" font-size=\"15\" fill=\"#fff\">BAR</text>", "CACAO": "<path d=\"M32 8 V16\" stroke=\"#3a7a1e\" stroke-width=\"3\"/><path d=\"M33 12 Q44 6 48 14 Q40 16 33 12Z\" fill=\"#4caf2a\"/><g fill=\"#7b2fbe\"><circle cx=\"24\" cy=\"22\" r=\"7\"/><circle cx=\"38\" cy=\"22\" r=\"7\"/><circle cx=\"18\" cy=\"34\" r=\"7\"/><circle cx=\"31\" cy=\"34\" r=\"7\"/><circle cx=\"44\" cy=\"34\" r=\"7\"/><circle cx=\"24\" cy=\"46\" r=\"7\"/><circle cx=\"38\" cy=\"46\" r=\"7\"/><circle cx=\"31\" cy=\"57\" r=\"6\"/></g>", "CINNAMON": "<circle cx=\"32\" cy=\"36\" r=\"20\" fill=\"#ff8a1f\" stroke=\"#d45f00\" stroke-width=\"2\"/><path d=\"M32 16 Q40 6 48 12 Q40 18 32 16Z\" fill=\"#4caf2a\"/><circle cx=\"25\" cy=\"29\" r=\"4\" fill=\"#ffc48a\"/>", "SUNFLOWER LECITHIN": "<ellipse cx=\"32\" cy=\"36\" rx=\"18\" ry=\"20\" fill=\"#8b2a8f\"/><path d=\"M32 18 Q30 28 32 54\" stroke=\"#6a1a6e\" stroke-width=\"2\" fill=\"none\"/><path d=\"M32 16 V8\" stroke=\"#5a3a1e\" stroke-width=\"3\"/><ellipse cx=\"25\" cy=\"28\" rx=\"4\" ry=\"6\" fill=\"#c96fcc\"/>", "TURMERIC": "<path d=\"M16 10 V36 A16 16 0 0 0 48 36 V10 H40 V36 A8 8 0 0 1 24 36 V10Z\" fill=\"#d4a24a\" stroke=\"#8a6416\" stroke-width=\"2\"/><g fill=\"#8a6416\"><circle cx=\"20\" cy=\"18\" r=\"1.8\"/><circle cx=\"20\" cy=\"28\" r=\"1.8\"/><circle cx=\"44\" cy=\"18\" r=\"1.8\"/><circle cx=\"44\" cy=\"28\" r=\"1.8\"/></g>", "ASHWA-GANDHA": "<g fill=\"#27a844\"><circle cx=\"24\" cy=\"22\" r=\"10\"/><circle cx=\"40\" cy=\"22\" r=\"10\"/><circle cx=\"24\" cy=\"38\" r=\"10\"/><circle cx=\"40\" cy=\"38\" r=\"10\"/></g><path d=\"M32 32 Q34 48 42 58\" stroke=\"#1d7a33\" stroke-width=\"3\" fill=\"none\"/>", "BLACK PEPPER": "<path d=\"M8 46 L12 18 L24 32 L32 12 L40 32 L52 18 L56 46Z\" fill=\"#ffcf1f\" stroke=\"#c98a00\" stroke-width=\"2\"/><rect x=\"8\" y=\"46\" width=\"48\" height=\"8\" rx=\"2\" fill=\"#e0a800\"/><circle cx=\"32\" cy=\"12\" r=\"3.5\" fill=\"#e0182d\"/><circle cx=\"12\" cy=\"18\" r=\"3\" fill=\"#3fb6ff\"/><circle cx=\"52\" cy=\"18\" r=\"3\" fill=\"#3fb6ff\"/>", "MUSHROOM": "<path d=\"M6 32 C6 14 58 14 58 32 Q58 36 52 36 H12 Q6 36 6 32Z\" fill=\"#fff3c4\" stroke=\"#111\" stroke-width=\"2\"/><path d=\"M24 36 Q22 52 26 58 H38 Q42 52 40 36Z\" fill=\"#fffaf0\" stroke=\"#111\" stroke-width=\"2\"/><g fill=\"#d4a24a\"><circle cx=\"22\" cy=\"26\" r=\"3.5\"/><circle cx=\"34\" cy=\"21\" r=\"3\"/><circle cx=\"44\" cy=\"27\" r=\"3.5\"/></g>"};
   var FILL=["RICE FLOUR", "MALTO-DEXTRIN", "NATURAL FLAVORS", "XANTHAN GUM", "MCT POWDER", "GUAR GUM", "SILICA", "STEVIA", "CACAO", "CINNAMON", "SUNFLOWER LECITHIN", "TURMERIC", "ASHWA-GANDHA", "BLACK PEPPER"];
@@ -131,7 +189,7 @@ if(/embed/.test(location.search))document.documentElement.classList.add('embed')
   // the mushroom is rare: about 1 pull in 6, and never fewer than 3 pulls in, always by pull 6
   function hits(){ if(pulls<3) return false; if(pulls>=6) return true; return Math.random()<0.18 }
   function go(){
-    if(busy) return; busy=true; btn.disabled=true; pulls++;
+    if(busy) return; busy=true; btn.disabled=true; pulls++; SFX.press(); SFX.spin();
     [].forEach.call(reels.children,function(r){r.classList.remove('hit')});
     res.classList.remove('win'); res.innerHTML='Spinning...'; document.getElementById('machine').classList.remove('won');
     var win=hits(), wi=win?Math.floor(Math.random()*N):-1, finals=[], done=0;
@@ -149,7 +207,7 @@ if(/embed/.test(location.search))document.documentElement.classList.add('embed')
         if(++done===N) finish(); });})(i,s);
     }
     function finish(){
-      busy=false; btn.disabled=false;
+      busy=false; btn.disabled=false; SFX.stopSpin(); SFX.bad();
       if(wi>=0){ document.getElementById('machine').classList.add('won'); reels.children[wi].classList.add('hit'); res.classList.add('win'); res.innerHTML='JACKPOT! FOUND IT ON PULL '+pulls+'.<br>One mushroom in a scoop of fillers.';  }
       else { var u=finals.filter(function(x,i){return finals.indexOf(x)===i}).slice(0,2),names=u.join(' and ').replace(/-/g,''); res.innerHTML='NO MUSHROOM. JUST '+names+'.<br>Pull again?'; }
       cnt.textContent=('00'+pulls).slice(-3); if(wi>=0){found++;} fnd.textContent=found;
@@ -174,14 +232,14 @@ if(/embed/.test(location.search))document.documentElement.classList.add('embed')
   function cell(o){var d=document.createElement('div');d.className='cell';d.innerHTML='<img class="ic" src="'+o[1]+'" alt=""><span class="nm">'+o[0]+'</span>';return d}
   for(var i=0;i<N;i++){var r=document.createElement('div');r.className='reel hit';var s=document.createElement('div');s.className='strip';s.appendChild(cell(OURS[i]));r.appendChild(s);reels.appendChild(r);strips.push(s)}
   function go(){
-    if(busy)return;busy=true;btn.disabled=true;pulls++;mach.classList.remove('won');
+    if(busy)return;busy=true;btn.disabled=true;pulls++;mach.classList.remove('won');SFX.press();SFX.spin();
     [].forEach.call(reels.children,function(r){r.classList.remove('hit')});res.innerHTML='Spinning...';
     var finals=[],done=0;
     for(var i=0;i<N;i++){var s=strips[i];s.style.transition='none';s.style.transform='translateY(0)';while(s.children.length>1)s.removeChild(s.firstChild);
       for(var k=0;k<12+i*5;k++)s.appendChild(cell(pick()));var f=pick();s.appendChild(cell(f));finals.push(f[0]);s.offsetHeight;
       s.style.transition='transform '+(1.0+i*0.4)+'s cubic-bezier(.12,.75,.2,1)';s.style.transform='translateY(-'+((s.children.length-1)*H)+'px)';
       (function(s){s.addEventListener('transitionend',function f(){s.removeEventListener('transitionend',f);while(s.children.length>1)s.removeChild(s.firstChild);s.style.transition='none';s.style.transform='translateY(0)';if(++done===N)finish();});})(s);}
-    function finish(){busy=false;btn.disabled=false;found+=N;mach.classList.add('won');[].forEach.call(reels.children,function(r){r.classList.add('hit')});
+    function finish(){busy=false;btn.disabled=false;SFX.stopSpin();SFX.good();found+=N;mach.classList.add('won');[].forEach.call(reels.children,function(r){r.classList.add('hit')});
       cnt.textContent=('00'+pulls).slice(-3);fnd.textContent=found;
       res.innerHTML='JACKPOT! 3 FOR 3.<br>Every packet is pure mushroom.';}
   }
