@@ -130,9 +130,13 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 @keyframes ringB{0%{opacity:0}50%{opacity:1}}
 .machine.won .ring rect{animation-duration:.2s}
 #umachine .title{white-space:nowrap}
+
+/* Oct 22 2026 (Scott): every result and paragraph is a pyramid, short line on top, longest at the bottom, centered. */
+.res,.cap{text-align:center}
+.cap{margin-left:auto;margin-right:auto}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
-<div class="q">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>
+<div class="q">WHAT’S REALLY IN THEIR MESSY MUSHROOM SCOOP?</div>
 <div class="machine" id="machine">
   <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
   <div class="band"><span class="who-big">THEM</span><span class="who-sub">THE MESSY SCOOP<br>15 INGREDIENTS</span></div>
@@ -144,7 +148,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
   <div class="lever" id="lever" aria-label="Pull the handle" role="button" tabindex="0"><div class="base"></div><div class="arm" id="arm"><div class="ball"></div></div></div>
   <div class="hint">PULL<br>ME</div>
 </div>
-<p class="cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
+<p class="cap" id="cap1">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
 <div class="us">
 <div class="machine gold" id="umachine">
   <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
@@ -157,7 +161,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
   <div class="lever" id="ulever" aria-label="Pull the handle" role="button" tabindex="0"><div class="base"></div><div class="arm" id="uarm"><div class="ball"></div></div></div>
   <div class="hint">PULL<br>ME</div>
 </div>
-<p class="cap">Every packet hits. No fillers. No carriers. Just the raw, uncut truth.</p></div>
+<p class="cap" id="cap2">Clean, pre-measured, single serving packets. No fillers. No binders. The power of the forest, in your cup.</p></div>
 </div></div>
 <script>
 if(/embed/.test(location.search))document.documentElement.classList.add('embed');
@@ -165,6 +169,63 @@ if(/embed/.test(location.search))document.documentElement.classList.add('embed')
    press = arcade button, spin = fast "bing bing bing", bad = their buzzer, good = our sparkle. */
 
 window.fitNm=function(span,txt,box,n,base){var w=(box.clientWidth-8-(n-1)*4)/n-6;if(w<=0)return;var L=0;txt.split(/[\s-]+/).forEach(function(x){L=Math.max(L,x.length)});var sz=Math.min(base,w/(L*.44));span.style.fontSize=sz.toFixed(1)+'px';};
+
+/* Pyramid: breaks the words into lines that grow from top to bottom. Tries every way to break, keeps the best shape. */
+(function(){
+  var list=[],meas=null;
+  function widths(el,toks){
+    var cs=getComputedStyle(el);
+    if(!meas){meas=document.createElement('span');document.body.appendChild(meas);}
+    meas.style.cssText='position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;font:'+cs.font+';letter-spacing:'+cs.letterSpacing+';text-transform:'+cs.textTransform;
+    var w=toks.map(function(t){meas.innerHTML=t;return meas.getBoundingClientRect().width;});
+    meas.innerHTML='&nbsp;';var sp=meas.getBoundingClientRect().width;
+    return {w:w,sp:sp};
+  }
+  function layout(el){
+    var toks=(el.__t||'').split(/[ \t\n]+/).filter(Boolean),n=toks.length;
+    if(!n){el.innerHTML='';return;}
+    var cs=getComputedStyle(el),maxW=el.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    if(maxW<=0){el.innerHTML=el.__t;return;}
+    var m=widths(el,toks),tot=0;m.w.forEach(function(x){tot+=x});tot+=m.sp*(n-1);
+    if(tot<=maxW){el.innerHTML=toks.join(' ');return;}
+    var best=null,bs=1e9,kmin=Math.ceil(tot/maxW);
+    function score(brk){   // brk: array of booleans, true = line ends after this word
+      var ws=[],lw=0,count=0;
+      for(var i=0;i<n;i++){lw+=(count?m.sp:0)+m.w[i];count++;if(i===n-1||brk[i]){if(lw>maxW)return null;ws.push([lw,count]);lw=0;count=0;}}
+      var k=ws.length,sc=(k-kmin)*18,inv=0;
+      for(var j=0;j<k-1;j++){inv+=Math.max(0,ws[j][0]-ws[j+1][0]);}
+      sc+=inv*4;
+      if(k>1){ws.forEach(function(x){if(x[1]===1&&n>2)sc+=60;});}   // never one word alone on a line
+      return sc+(maxW-ws[k-1][0])*0.03;
+    }
+    if(n<=14){
+      for(var mask=0;mask<(1<<(n-1));mask++){var brk=[];for(var q=0;q<n;q++)brk.push(!!((mask>>q)&1));var sc=score(brk);if(sc!==null&&sc<bs){bs=sc;best=brk;}}
+    }else{
+      for(var k2=kmin;k2<=kmin+3;k2++){for(var g=.15;g<=.7;g+=.05){
+        var tw=0,t=[],sum=0;for(var j2=0;j2<k2;j2++){t.push(1+g*j2);sum+=t[j2];}
+        var net=tot-m.sp*(n-1)+m.sp*(n-k2),brk2=[],lw2=0,li=0,cnt=0;
+        for(var i3=0;i3<n;i3++){
+          var add=(cnt?m.sp:0)+m.w[i3],tgt=net*t[li]/sum;
+          if(li<k2-1&&cnt>0&&lw2+add/2>tgt){brk2[i3-1]=true;li++;lw2=0;cnt=0;add=m.w[i3];}
+          lw2+=add;cnt++;
+        }
+        for(var z=0;z<n;z++)brk2[z]=!!brk2[z];
+        var sc2=score(brk2);if(sc2!==null&&sc2<bs){bs=sc2;best=brk2;}
+      }}
+    }
+    if(best===null){el.innerHTML=el.__t;return;}
+    var out=[],line=[];
+    for(var i2=0;i2<n;i2++){line.push(toks[i2]);if(i2===n-1||best[i2]){out.push(line.join(' '));line=[];}}
+    el.innerHTML=out.join('<br>');
+  }
+  window.PYR=function(el,text){el.__t=text;if(list.indexOf(el)<0)list.push(el);layout(el);};
+  function again(){list.forEach(layout);}
+  addEventListener('resize',again);addEventListener('load',again);if(document.fonts)document.fonts.ready.then(again);
+  document.addEventListener('DOMContentLoaded',function(){
+    ['res','ures','cap1','cap2'].forEach(function(id){var e=document.getElementById(id);if(e)PYR(e,e.innerHTML.replace(/<br\s*\/?>/g,' '));});
+  });
+  setInterval(function(){list.forEach(function(e){var w=e.clientWidth;if(e.__w!==w){e.__w=w;layout(e);}})},700);
+})();
 window.SFX=(function(){
   var ctx=null,master=null,tick=null,kick=null;
   function ac(){
@@ -242,7 +303,7 @@ window.SFX=(function(){
   function go(){
     if(busy) return; unfail(); busy=true; btn.disabled=true; pulls++; SFX.press(); SFX.spin();
     [].forEach.call(reels.children,function(r){r.classList.remove('hit')});
-    res.classList.remove('win'); res.innerHTML='Spinning...'; document.getElementById('machine').classList.remove('won');
+    res.classList.remove('win'); PYR(res,'Spinning...'); document.getElementById('machine').classList.remove('won');
     var win=hits(), wi=win?Math.floor(Math.random()*N):-1, finals=[], done=0;
     for(var i=0;i<N;i++){
       var s=strips[i], cur=s.lastChild.textContent, n=14+i*5;
@@ -259,8 +320,8 @@ window.SFX=(function(){
     }
     function finish(){
       busy=false; btn.disabled=false; SFX.stopSpin(); if(wi>=0){SFX.weak();}else{SFX.bad(); fail();}
-      if(wi>=0){ document.getElementById('machine').classList.add('won'); reels.children[wi].classList.add('hit'); res.classList.add('win'); res.innerHTML='JACKPOT! FOUND IT ON PULL '+pulls+'.<br>One mushroom in a scoop of fillers.';  }
-      else { var u=finals.filter(function(x,i){return finals.indexOf(x)===i}).slice(0,2),names=u.join(' and ').replace(/-/g,''); res.innerHTML='NO MUSHROOM. JUST '+names+'.<br>Pull again?'; }
+      if(wi>=0){ document.getElementById('machine').classList.add('won'); reels.children[wi].classList.add('hit'); res.classList.add('win'); PYR(res,'JACKPOT! FOUND\u00a0IT ON\u00a0PULL\u00a0'+pulls+'. One mushroom in a scoop of\u00a0fillers.');  }
+      else { var u=finals.filter(function(x,i){return finals.indexOf(x)===i}).slice(0,2),names=u.join(' and ').replace(/-/g,''); PYR(res,'NO\u00a0MUSHROOM. JUST '+names.replace(/ /g,'\u00a0').replace(/\u00a0and\u00a0/,' and ')+'. Pull\u00a0again?'); }
       cnt.textContent=('00'+pulls).slice(-3); if(wi>=0){found++;} fnd.textContent=found;
     }
   }
@@ -288,7 +349,7 @@ window.SFX=(function(){
   for(var i=0;i<N;i++){var r=document.createElement('div');r.className='reel hit';var s=document.createElement('div');s.className='strip';s.appendChild(cell(OURS[i]));r.appendChild(s);reels.appendChild(r);strips.push(s)}
   function go(){
     if(busy)return;busy=true;btn.disabled=true;pulls++;mach.classList.remove('won');SFX.press();SFX.spin();
-    [].forEach.call(reels.children,function(r){r.classList.remove('hit')});res.innerHTML='Spinning...';
+    [].forEach.call(reels.children,function(r){r.classList.remove('hit')});PYR(res,'Spinning...');
     var finals=[],done=0;
     for(var i=0;i<N;i++){var s=strips[i];s.style.transition='none';s.style.transform='translateY(0)';while(s.children.length>1)s.removeChild(s.firstChild);
       for(var k=0;k<12+i*5;k++)s.appendChild(cell(pick()));var f=pick();s.appendChild(cell(f));finals.push(f[0]);s.offsetHeight;
@@ -296,7 +357,7 @@ window.SFX=(function(){
       (function(s){s.addEventListener('transitionend',function f(){s.removeEventListener('transitionend',f);while(s.children.length>1)s.removeChild(s.firstChild);s.style.transition='none';s.style.transform='translateY(0)';if(++done===N)finish();});})(s);}
     function finish(){busy=false;btn.disabled=false;SFX.stopSpin();SFX.good();found+=N;mach.classList.add('won');[].forEach.call(reels.children,function(r){r.classList.add('hit')});
       cnt.textContent=('00'+pulls).slice(-3);fnd.textContent=found;
-      res.innerHTML='JACKPOT! 3 FOR 3.<br>Every packet is pure mushroom.';}
+      PYR(res,'JACKPOT! 3\u00a0FOR\u00a03. Every packet is pure mushroom.');}
   }
   btn.addEventListener('click',go);
   var lever=document.getElementById('ulever'),arm=document.getElementById('uarm'),y0=null,pulled=false;
