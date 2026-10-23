@@ -39,6 +39,7 @@
     'html body .hg .hg-ing.hg-m{background:linear-gradient(180deg,#F6D58E,#D4A24A 30%,#c9973c);box-shadow:0 0 18px rgba(246,213,142,.8),0 0 2px #fff}',
     'html body .hg .hg-ing.hg-m em{color:#111}',
     'html body .hg .rcx-swipe-tag{display:none !important}',
+    'html body .hg .hg-slot{display:block;width:100%;height:1750px;border:0;margin:0 0 16px;background:transparent;overflow:hidden}',
     '.hg-marq{position:relative;margin:4px auto 2px;padding:9px 10px 7px;border-radius:10px;background:#1a0606;text-align:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:19px;white-space:nowrap;color:#F6D58E;text-shadow:0 0 8px rgba(246,213,142,.8);border:2px solid #D4A24A}',
     '.hg-marq:before{content:"";position:absolute;inset:-6px;border-radius:13px;background:radial-gradient(circle,#FFE7A8 0 2.2px,transparent 2.6px) 0 0/14px 14px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:4px;animation:hgBulb 0.9s steps(2) infinite;pointer-events:none}',
     '@keyframes hgBulb{0%{opacity:1}50%{opacity:.35}}',
@@ -74,11 +75,7 @@
   function html() {
     var segs = ING.map(function (x) { return x[1] ? '<i class="hg-ing" style="background:' + x[1] + '"><em>' + x[0] + '</em></i>' : '<i class="hg-ing hg-m"><em>' + x[0] + '</em></i>'; }).join('');
     var qr = '<svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><g fill="#D4A24A"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zM16 5v3h3V5zM3 14h7v7H3zM5 16v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></g></svg>';
-    return '<div class="hg-box hg-b1"><div class="hg-q" role="heading" aria-level="2">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>' +
-      '<div class="hg-them"><div class="hg-who"><span class="hg-big">THEM</span><span class="hg-sub">The messy scoop<br>15 ingredients</span></div><div class="hg-marq"><span>STOP GAMBLING WITH YOUR HEALTH</span></div><div class="hg-wheel"><div class="hg-rail" data-noswipe="1" aria-label="A typical blend: fifteen ingredients, the mushroom is one of them">' + segs + '</div></div><div class="hg-spinrow"><button type="button" class="hg-spin">SPIN THEIR SCOOP</button><div class="hg-res">1 in 15 chance you land on the mushroom.</div></div>' +
-      '<p class="hg-cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p></div>' +
-      '<div class="hg-us"><div class="hg-who"><span class="hg-big">US</span><span class="hg-sub">One clean packet<br>1 ingredient</span></div><div class="hg-bar">100% ORGANIC MUSHROOM EXTRACT</div>' +
-      '<p class="hg-cap">No fillers. No carriers. Just the raw, uncut truth.</p></div></div>' +
+    return '<iframe class="hg-slot" src="find-the-mushroom.html?embed=1" title="Find the mushroom: a slot machine game" scrolling="no" loading="lazy"></iframe>' +
       '<div class="hg-box hg-b2"><div class="hg-q" role="heading" aria-level="2">UNCOMPROMISING, BY DESIGN</div><div class="hg-tiles">' +
       '<div class="hg-t"><div class="hg-ic hg-sp"><img src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt=""></div><div class="hg-tt">Backed by published research</div><div class="hg-ts">Three organic mushrooms.<br>Nature’s raw harvest.</div></div>' +
       '<div class="hg-t"><div class="hg-ic"><img src="assets/icons/extracted.svg" alt=""></div><div class="hg-tt">Scientifically extracted</div><div class="hg-ts">Unlocked so your body can actually absorb it.</div></div>' +
@@ -158,6 +155,7 @@
     a.style.setProperty('display', 'none', 'important'); hidden = a;
     fit(); rail();
   }
+  addEventListener('message', function (e) { if (e.data && e.data.fmHeight && g) { var f = g.querySelector('.hg-slot'); if (f && e.source === f.contentWindow) f.style.height = e.data.fmHeight + 'px'; } });
   addEventListener('resize', function () { run(); fit(); });
   setInterval(run, 1000); run();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
