@@ -269,12 +269,17 @@ window.SFX=(function(){
         tone('square',b[2]*1.012,b[2]*.95,t+b[0],b[1],.2,.01);
       });
     },
-    weak:function(){   // their mushroom finally turns up: a thin, half-hearted "yay"
+    weak:function(){   // their mushroom finally turns up: it climbs like a win... then sinks back down, deflated
       var c=ac();if(!c)return;var t=c.currentTime+.04;
-      tone('triangle',523,null,t,.14,.12,.004);
-      tone('triangle',659,null,t+.13,.14,.12,.004);
-      tone('triangle',784,740,t+.26,.34,.12,.004);
-      tone('sine',1568,1480,t+.26,.3,.03,.004);
+      // hopeful climb
+      [523,659,784].forEach(function(f,i){tone('triangle',f,null,t+i*.11,.13,.13,.004);tone('sine',f*2,null,t+i*.11,.1,.03,.004);});
+      // a held high note that hangs for a beat...
+      tone('triangle',1047,null,t+.34,.22,.13,.004);
+      // ...then it slides back down, wah wah wah waaah
+      var d=t+.62;
+      [[784,740,.2],[740,698,.2],[698,659,.2],[659,523,.75]].forEach(function(n,i){
+        var st=d+i*.24;tone('sawtooth',n[0],n[1],st,n[2],.07,.02);tone('triangle',n[0],n[1],st,n[2],.12,.02);
+      });
     },
     good:function(){   // our result: a fairy-dust run up the scale, then a long shimmering chime
       var c=ac();if(!c)return;var t=c.currentTime+.04;
