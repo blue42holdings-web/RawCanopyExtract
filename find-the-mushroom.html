@@ -89,12 +89,27 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .reels.three .cell .ic{width:60px;height:60px;filter:drop-shadow(0 0 6px rgba(255,216,79,.7))}
 .reels.three .cell .nm{color:#F6D58E;font-size:14px}
 .reels.three .reel.hit{box-shadow:0 0 0 3px #ffd84f,0 0 22px #ffd84f}
+
+/* Oct 22 2026 (Scott): THEM / US banner across the top of each machine, big and easy to read. The sign sits under it. */
+.band{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;padding:8px 12px 6px;border-radius:12px;background:linear-gradient(180deg,#0a0218,#1a0636);border:2px solid #ff4fd8;box-shadow:0 0 14px rgba(255,79,216,.7),inset 0 0 12px rgba(255,79,216,.25)}
+.who-big{font-family:'Bebas Neue';font-size:66px;line-height:.82;letter-spacing:.05em;color:#fff;text-shadow:0 0 8px #ff4fd8,0 0 18px #ff4fd8}
+.who-sub{flex:none;margin-left:auto;white-space:nowrap;text-align:right;font-family:'Bebas Neue';font-size:23px;line-height:1.08;letter-spacing:.07em;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.5)}
+.machine.gold .band{border-color:#ffd84f;background:linear-gradient(180deg,#0a0702,#2a1d05);box-shadow:0 0 14px rgba(255,216,79,.7),inset 0 0 12px rgba(255,216,79,.25)}
+.machine.gold .who-big{color:#F6D58E;text-shadow:0 0 8px #ffd84f,0 0 18px #ffd84f}
+.machine.gold .who-sub{color:#fff3c4}
+.sign{margin-top:0 !important}
+.machine,.machine.gold{margin-top:16px !important}
+.sidebulbs{top:150px !important;bottom:120px !important}
+/* their button goes red and says FAIL when the reels land */
+.pull.fail{color:#fff;background:radial-gradient(circle at 40% 30%,#ff9d9d,#ff2b2b 40%,#8a0000 85%);border-color:#5a0000;box-shadow:0 6px 0 #3d0000,0 0 22px rgba(255,43,43,.9);animation:failblink .32s steps(2) infinite}
+@keyframes failblink{50%{background:radial-gradient(circle at 40% 30%,#5a0000,#8a0000 45%,#2a0000 90%);box-shadow:0 6px 0 #1a0000,0 0 4px rgba(255,43,43,.3)}}
+.pull.fail small{visibility:hidden}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
 <div class="q">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>
-<div class="who"><span class="big">THEM</span><span class="sub">The messy scoop<br>15 ingredients</span></div>
 <div class="machine" id="machine">
   <div class="burst"></div><div class="lights"></div><div class="sidebulbs l"></div><div class="sidebulbs r"></div>
+  <div class="band"><span class="who-big">THEM</span><span class="who-sub">THE MESSY SCOOP<br>15 INGREDIENTS</span></div>
   <div class="sign"><div class="title">FIND THE MUSHROOM</div><div class="tag">STOP GAMBLING WITH YOUR HEALTH</div></div>
   <div class="leds"><div class="led"><small>PULLS</small><b id="count">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="found">0</b></div></div>
   <div class="reelbox"><div class="reels" id="reels"></div><div class="payline"></div></div>
@@ -104,9 +119,10 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
   <div class="hint">PULL<br>ME</div>
 </div>
 <p class="cap">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
-<div class="us"><div class="who"><span class="big">US</span><span class="sub">One clean packet<br>1 ingredient</span></div>
+<div class="us">
 <div class="machine gold" id="umachine">
   <div class="burst"></div><div class="lights"></div><div class="sidebulbs l"></div><div class="sidebulbs r"></div>
+  <div class="band"><span class="who-big">US</span><span class="who-sub">ONE CLEAN PACKET<br>1 INGREDIENT</span></div>
   <div class="sign"><div class="title">EVERY PULL HITS</div><div class="tag">100% ORGANIC MUSHROOM EXTRACT</div></div>
   <div class="leds"><div class="led"><small>PULLS</small><b id="ucount">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="ufound">0</b></div></div>
   <div class="reelbox"><div class="reels three" id="ureels"></div><div class="payline"></div></div>
@@ -189,7 +205,7 @@ window.SFX=(function(){
   // the mushroom is rare: about 1 pull in 6, and never fewer than 3 pulls in, always by pull 6
   function hits(){ if(pulls<3) return false; if(pulls>=6) return true; return Math.random()<0.18 }
   function go(){
-    if(busy) return; busy=true; btn.disabled=true; pulls++; SFX.press(); SFX.spin();
+    if(busy) return; unfail(); busy=true; btn.disabled=true; pulls++; SFX.press(); SFX.spin();
     [].forEach.call(reels.children,function(r){r.classList.remove('hit')});
     res.classList.remove('win'); res.innerHTML='Spinning...'; document.getElementById('machine').classList.remove('won');
     var win=hits(), wi=win?Math.floor(Math.random()*N):-1, finals=[], done=0;
@@ -207,13 +223,17 @@ window.SFX=(function(){
         if(++done===N) finish(); });})(i,s);
     }
     function finish(){
-      busy=false; btn.disabled=false; SFX.stopSpin(); SFX.bad();
+      busy=false; btn.disabled=false; SFX.stopSpin(); SFX.bad(); fail();
       if(wi>=0){ document.getElementById('machine').classList.add('won'); reels.children[wi].classList.add('hit'); res.classList.add('win'); res.innerHTML='JACKPOT! FOUND IT ON PULL '+pulls+'.<br>One mushroom in a scoop of fillers.';  }
       else { var u=finals.filter(function(x,i){return finals.indexOf(x)===i}).slice(0,2),names=u.join(' and ').replace(/-/g,''); res.innerHTML='NO MUSHROOM. JUST '+names+'.<br>Pull again?'; }
       cnt.textContent=('00'+pulls).slice(-3); if(wi>=0){found++;} fnd.textContent=found;
     }
   }
   btn.addEventListener('click',go);
+  var failT=null,okHTML=btn.innerHTML;
+  function unfail(){clearTimeout(failT);btn.classList.remove('fail');btn.innerHTML=okHTML;}
+  function fail(){unfail();btn.classList.add('fail');btn.innerHTML='FAIL<small>&nbsp;</small>';failT=setTimeout(unfail,2600);}
+  window.__theirFail=fail;window.__theirUnfail=unfail;
   // the handle: drag it down (or tap it) and it springs back as the reels go
   var lever=document.getElementById('lever'), arm=document.getElementById('arm'), y0=null, pulled=false;
   function setArm(f){arm.style.transform='scaleY('+(1-0.82*f).toFixed(3)+')';}
@@ -253,6 +273,11 @@ window.SFX=(function(){
   lever.addEventListener('pointerup',function(e){if(y0===null)return;if(Math.abs(e.clientY-y0)<=6)tapPull();else release(pulled);});
   lever.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tapPull();}});
 })();
+(function(){function f(){[].forEach.call(document.querySelectorAll('.band'),function(b){var big=b.querySelector('.who-big'),sub=b.querySelector('.who-sub'),k=1;
+  function set(){big.style.fontSize=(66*k)+'px';sub.style.fontSize=(23*k)+'px'}
+  set();var cs=getComputedStyle(b),avail=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-12;
+  while(k>.5&&big.offsetWidth+sub.scrollWidth>avail){k-=.03;set();}})}
+f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();
 (function fit(){var h=document.querySelector('.q');function f(){h.style.fontSize='20px';var w=h.clientWidth;if(h.scrollWidth>w)h.style.fontSize=Math.floor(20*w/h.scrollWidth*.98)+'px'}f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();
 (function(){if(!/embed/.test(location.search))return;var last=0;function post(){var h=Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height);if(h!==last){last=h;parent.postMessage({fmHeight:h},'*');}}
 if(window.ResizeObserver)new ResizeObserver(post).observe(document.querySelector('.wrap'));addEventListener('load',post);setInterval(post,1000);post();})();
