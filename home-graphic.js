@@ -47,7 +47,7 @@
     '@keyframes rcxBeckon{0%,30%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(246,213,142,0)}10%{transform:scale(1.09);box-shadow:0 0 0 2px #F6D58E,0 0 24px rgba(246,213,142,.85)}20%{transform:scale(1);box-shadow:0 0 0 1px rgba(246,213,142,.4),0 0 10px rgba(246,213,142,.3)}}',
     'html body .hg-shop{font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:20px;color:#F6D58E;text-align:center;margin:2px 0 10px;text-shadow:0 0 8px rgba(246,213,142,.55),0 1px 3px #000;width:100%}',
     'html body .hg-shop span{color:#F1ECE1;margin:0 4px}html body .hg-shop b{display:inline-block;font-weight:400;animation:rcxSwArr 1.8s ease-in-out infinite}',
-    '@media (max-width:767px){html body .hg{margin-top:19px !important}}',   // Oct 23 (Scott): the casino stays put, leaving black under the buttons
+    '@media (max-width:767px){html body .hg{margin-top:9px !important}}',   // Oct 23 (Scott): the casino stays put, leaving black under the buttons
     'html body .hg .hg-slot{display:block;width:100%;height:1750px;border:0;margin:0 0 16px;background:transparent;overflow:hidden}',
     '.hg-marq{position:relative;margin:4px auto 2px;padding:9px 10px 7px;border-radius:10px;background:#1a0606;text-align:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:19px;white-space:nowrap;color:#F6D58E;text-shadow:0 0 8px rgba(246,213,142,.8);border:2px solid #D4A24A}',
     '.hg-marq:before{content:"";position:absolute;inset:-6px;border-radius:13px;background:radial-gradient(circle,#FFE7A8 0 2.2px,transparent 2.6px) 0 0/14px 14px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:4px;animation:hgBulb 0.9s steps(2) infinite;pointer-events:none}',
