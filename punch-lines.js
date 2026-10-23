@@ -34,7 +34,11 @@
   }
   function paint(b) {   // inline, so the cream and red desktop page rules can't clear the black box
     var hex = b.classList.contains('pl-k-home');
-    if (b.__steel === (hex ? 3 : 2)) return; b.__steel = hex ? 3 : 2;
+    if (b.__steel === (hex ? 4 : 2)) return; b.__steel = hex ? 4 : 2;
+    if (hex) {   // Oct 23 (Scott): the home headline sits on its own, no box around it
+      ['background-color', 'background-image', 'border', 'box-shadow'].forEach(function (q) { b.style.setProperty(q, q === 'border' ? '0' : (q === 'background-color' ? 'transparent' : 'none'), 'important'); });
+      return;
+    }
     b.style.setProperty('background-color', '#030303', 'important');
     b.style.setProperty('border', '3px solid #D4A24A', 'important'); b.style.setProperty('border-radius', '18px', 'important');   // the gold box, inline so no page rule can take it off
     b.style.setProperty('background-image', hex ? HEX : STEEL, 'important');
