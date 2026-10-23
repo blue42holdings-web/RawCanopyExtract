@@ -4,8 +4,8 @@
   // Oct 15 (late, Scott): the boxes tell the story in order: the loaded car in the garage, the stuffed cargo up close, kayaks on the roof,
   // on the road, the Shasta road, and home. No dog photo up here; all three dogs go in Compost The Box.
   // Oct 16 (Scott): his selfie looking down, hair hanging (the original About photo of him), opens the story instead of two car shots back to back; home loses its sky
-  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'about-three-dogs-2.webp', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
-  var POS = ['center 56%', 'center 40%', 'center 40%', 'center 60%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
+  var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-dogs-car.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
+  var POS = ['center 56%', 'center 40%', 'center 40%', '62% 45%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
   function photo(e, f, pos, dark) {
     var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
@@ -66,7 +66,7 @@
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
       var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '-110px') { bsec.style.setProperty('margin-top', '-110px', 'important'); bsec.style.setProperty('z-index', '0', 'important'); }   // Oct 18 (Scott): was 140px of black, then 40px; now the dissolve starts about an inch and a half sooner, rising up beside the bottom of the story box
       if (sh && sh.style.getPropertyValue('z-index') !== '2') { sh.style.setProperty('position', 'relative', 'important'); sh.style.setProperty('z-index', '2', 'important'); }
-      var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('about-three-dogs-2') >= 0; })[0];   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
+      var carL = [].filter.call(A.querySelectorAll('div,section,figure'), function (e) { return e.offsetHeight > 50 && getComputedStyle(e).backgroundImage.indexOf('own-dogs-car') >= 0; })[0];   // Oct 23 (Scott): the dogs out the car window replace the three dogs   // Oct 17 (Scott, 4:52pm): phone, sky zoomed out and fades to black under the second car photo
       if (sh && carL) { var skyH = Math.round(carL.getBoundingClientRect().bottom - A.getBoundingClientRect().top) + 60; if (skyH > 600 && A.__skyH !== skyH) { A.__skyH = skyH; A.style.setProperty('--abSky', skyH + 'px'); } }   // Oct 17 (Scott, later): the sky runs 190px past the story box and dissolves to black there, so it never ends on a hard line
     }
     if (sh && br && innerWidth >= 768) {
