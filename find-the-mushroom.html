@@ -254,10 +254,9 @@ window.SFX=(function(){
   }
   function bing(){   // one bright casino bell hit
     var c=ac();if(!c)return;var t=c.currentTime;
-    tone('square',2093,null,t,.16,.07,.002);
-    tone('sine',2093,null,t,.22,.16,.002);
-    tone('sine',4186,null,t,.1,.07,.002);
-    tone('sine',3136,null,t,.14,.05,.002);
+    tone('square',1047,null,t,.16,.06,.002);   // Oct 23 (Scott): an octave lower, nothing shrill
+    tone('sine',1047,null,t,.22,.16,.002);
+    tone('sine',1568,null,t,.14,.05,.002);
   }
   return {
     press:function(){   // chunky arcade button: a thump, then two quick coin blips
@@ -292,13 +291,13 @@ window.SFX=(function(){
     },
     good:function(){   // our result: a fairy-dust run up the scale, then a long shimmering chime
       var c=ac();if(!c)return;var t=c.currentTime+.04;
-      [1047,1319,1568,2093,2637,3136,4186].forEach(function(f,i){
-        tone('sine',f,null,t+i*.06,.55,.17,.004);
-        tone('triangle',f*2,null,t+i*.06,.3,.05,.004);
+      // Oct 23 (Scott): the standard five note run and a warm chord; no high twinkles
+      [523,659,784,1047,1319].forEach(function(f,i){
+        tone('sine',f,null,t+i*.08,.55,.17,.004);
+        tone('triangle',f,null,t+i*.08,.3,.06,.004);
       });
-      var end=t+7*.06;
-      tone('sine',4186,null,end,1.3,.17,.004);tone('sine',3136,null,end,1.1,.1,.004);tone('sine',2093,null,end,1.5,.1,.004);
-      for(var k=0;k<9;k++){tone('sine',3000+Math.random()*2800,null,end+.1+k*.09,.28,.045,.003);}   // the twinkles
+      var end=t+5*.08;
+      tone('sine',1047,null,end,1.4,.16,.004);tone('sine',784,null,end,1.2,.12,.004);tone('sine',523,null,end,1.5,.12,.004);
     }
   };
 })();
