@@ -104,6 +104,15 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .pull.fail{color:#fff;background:radial-gradient(circle at 40% 30%,#ff9d9d,#ff2b2b 40%,#8a0000 85%);border-color:#5a0000;box-shadow:0 6px 0 #3d0000,0 0 22px rgba(255,43,43,.9);animation:failblink .32s steps(2) infinite}
 @keyframes failblink{50%{background:radial-gradient(circle at 40% 30%,#5a0000,#8a0000 45%,#2a0000 90%);box-shadow:0 6px 0 #1a0000,0 0 4px rgba(255,43,43,.3)}}
 .pull.fail small{visibility:hidden}
+
+/* Oct 22 2026 (Scott): the word sits ON the icon, and both sit on the payline, so it reads. */
+.payline{top:calc(50% - 1px) !important}
+.reel:after{background:linear-gradient(180deg,rgba(20,0,40,.45),transparent 20%,transparent 80%,rgba(20,0,40,.45)) !important}
+.cell{position:relative}
+.cell .nm,.cell.m .nm,.reels.three .cell .nm{position:absolute;left:1px;right:1px;top:50%;transform:translateY(-50%);min-height:0;justify-content:center;text-align:center;
+ font-size:13.5px;line-height:.92;letter-spacing:.02em;color:#fff;-webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:0 1px 2px rgba(0,0,0,.8);z-index:2}
+.reels.three .cell .nm{font-size:16px}
+.cell .ic{position:relative;z-index:1}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
 <div class="q">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>
@@ -137,6 +146,8 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 if(/embed/.test(location.search))document.documentElement.classList.add('embed');
 /* Oct 22 2026 (Scott): casino sounds for both machines. Made in code (Web Audio), nothing here is used anywhere else on the site.
    press = arcade button, spin = fast "bing bing bing", bad = their buzzer, good = our sparkle. */
+
+window.fitNm=function(span,txt,box,n,base){var w=(box.clientWidth-8-(n-1)*4)/n-6;if(w<=0)return;var L=0;txt.split(/[\s-]+/).forEach(function(x){L=Math.max(L,x.length)});var sz=Math.min(base,w/(L*.44));span.style.fontSize=sz.toFixed(1)+'px';};
 window.SFX=(function(){
   var ctx=null,master=null,tick=null,kick=null;
   function ac(){
@@ -200,7 +211,7 @@ window.SFX=(function(){
   var reels=document.getElementById('reels'), res=document.getElementById('res'), cnt=document.getElementById('count'), fnd=document.getElementById('found'), btn=document.getElementById('pull'), found=0;
   var strips=[];
   function pick(){return FILL[Math.floor(Math.random()*FILL.length)]}
-  function cell(t){var d=document.createElement('div');d.className='cell'+(t===M?' m':'');d.innerHTML='<svg class="ic" viewBox="0 0 64 64" aria-hidden="true">'+SYM[t]+'</svg><span class="nm">'+t+'</span>';return d}
+  function cell(t){var d=document.createElement('div');d.className='cell'+(t===M?' m':'');d.innerHTML='<svg class="ic" viewBox="0 0 64 64" aria-hidden="true">'+SYM[t]+'</svg><span class="nm">'+t+'</span>';fitNm(d.lastChild,t,reels,N,13.5);return d}
   for(var i=0;i<N;i++){var r=document.createElement('div');r.className='reel';var s=document.createElement('div');s.className='strip';s.appendChild(cell(pick()));r.appendChild(s);reels.appendChild(r);strips.push(s)}
   // the mushroom is rare: about 1 pull in 6, and never fewer than 3 pulls in, always by pull 6
   function hits(){ if(pulls<3) return false; if(pulls>=6) return true; return Math.random()<0.18 }
@@ -249,7 +260,7 @@ window.SFX=(function(){
   var H=104,N=3,pulls=0,found=0,busy=false;
   var reels=document.getElementById('ureels'),res=document.getElementById('ures'),cnt=document.getElementById('ucount'),fnd=document.getElementById('ufound'),btn=document.getElementById('upull'),mach=document.getElementById('umachine'),strips=[];
   function pick(){return OURS[Math.floor(Math.random()*3)]}
-  function cell(o){var d=document.createElement('div');d.className='cell';d.innerHTML='<img class="ic" src="'+o[1]+'" alt=""><span class="nm">'+o[0]+'</span>';return d}
+  function cell(o){var d=document.createElement('div');d.className='cell';d.innerHTML='<img class="ic" src="'+o[1]+'" alt=""><span class="nm">'+o[0]+'</span>';fitNm(d.lastChild,o[0],reels,N,16);return d}
   for(var i=0;i<N;i++){var r=document.createElement('div');r.className='reel hit';var s=document.createElement('div');s.className='strip';s.appendChild(cell(OURS[i]));r.appendChild(s);reels.appendChild(r);strips.push(s)}
   function go(){
     if(busy)return;busy=true;btn.disabled=true;pulls++;mach.classList.remove('won');SFX.press();SFX.spin();
