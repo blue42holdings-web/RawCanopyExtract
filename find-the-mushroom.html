@@ -92,7 +92,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 
 /* Oct 22 2026 (Scott): THEM / US banner across the top of each machine, big and easy to read. The sign sits under it. */
 .band{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;padding:8px 12px 6px;border-radius:12px;background:linear-gradient(180deg,#0a0218,#1a0636);border:2px solid #ff4fd8;box-shadow:0 0 14px rgba(255,79,216,.7),inset 0 0 12px rgba(255,79,216,.25)}
-.who-big{font-family:'Bebas Neue';font-size:66px;line-height:.82;letter-spacing:.05em;color:#fff;text-shadow:0 0 8px #ff4fd8,0 0 18px #ff4fd8}
+.who-big{margin-left:18px;font-family:'Bebas Neue';font-size:66px;line-height:.82;letter-spacing:.05em;color:#fff;text-shadow:0 0 8px #ff4fd8,0 0 18px #ff4fd8}
 .who-sub{flex:none;margin-left:auto;white-space:nowrap;text-align:right;font-family:'Bebas Neue';font-size:23px;line-height:1.08;letter-spacing:.07em;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.5)}
 .machine.gold .band{border-color:#ffd84f;background:linear-gradient(180deg,#0a0702,#2a1d05);box-shadow:0 0 14px rgba(255,216,79,.7),inset 0 0 12px rgba(255,216,79,.25)}
 .machine.gold .who-big{color:#F6D58E;text-shadow:0 0 8px #ffd84f,0 0 18px #ffd84f}
@@ -161,7 +161,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 <div class="us">
 <div class="machine gold" id="umachine">
   <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
-  <div class="band"><span class="who-big">US</span><span class="who-sub">ONE CLEAN PACKET<br>1 INGREDIENT</span></div>
+  <div class="band"><span class="who-big">US</span><span class="who-sub">ONE CLEAN PACKET<br>1 TESTED INGREDIENT</span></div>
   <div class="sign"><div class="title">EVERY PULL HITS</div><div class="tag">100% ORGANIC MUSHROOM EXTRACT</div></div>
   <div class="leds"><div class="led"><small>PULLS</small><b id="ucount">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="ufound">0</b></div></div>
   <div class="reelbox"><div class="reels three" id="ureels"></div><div class="payline"></div></div>
@@ -270,12 +270,22 @@ window.SFX=(function(){
       kick=setTimeout(function(){bing();tick=setInterval(bing,95);},140);
     },
     stopSpin:function(){clearTimeout(kick);clearInterval(tick);kick=tick=null;},
-    bad:function(){    // their result: a flat, annoying game-show buzzer, twice, the second one lower
+    bad:function(){    // their result, Oct 23 (Scott): same two beats, the second lower, played on a muted comedy trombone ("wah wah")
       var c=ac();if(!c)return;var t=c.currentTime+.04;
-      [[0,.22,170],[.27,.62,110]].forEach(function(b){
-        tone('sawtooth',b[2],b[2]*.94,t+b[0],b[1],.34,.01);
-        tone('square',b[2]*1.012,b[2]*.95,t+b[0],b[1],.2,.01);
-      });
+      function bone(f,st,len,bend){
+        var o=c.createOscillator(),o2=c.createOscillator(),lp=c.createBiquadFilter(),g=c.createGain(),v=c.createOscillator(),vg=c.createGain();
+        o.type='sawtooth';o2.type='sawtooth';o2.detune.value=7;
+        o.frequency.setValueAtTime(f*.97,st);o.frequency.linearRampToValueAtTime(f,st+.05);o.frequency.setValueAtTime(f,st+len*.45);o.frequency.exponentialRampToValueAtTime(f*bend,st+len);
+        o2.frequency.setValueAtTime(f*.97,st);o2.frequency.linearRampToValueAtTime(f,st+.05);o2.frequency.setValueAtTime(f,st+len*.45);o2.frequency.exponentialRampToValueAtTime(f*bend,st+len);
+        v.frequency.value=5.5;vg.gain.setValueAtTime(0,st);vg.gain.linearRampToValueAtTime(f*.025,st+len);v.connect(vg);vg.connect(o.frequency);vg.connect(o2.frequency);
+        lp.type='lowpass';lp.Q.value=6;   // the plunger mute: closed, opens ("wah"), closes again
+        lp.frequency.setValueAtTime(280,st);lp.frequency.linearRampToValueAtTime(1300,st+len*.35);lp.frequency.linearRampToValueAtTime(420,st+len);
+        g.gain.setValueAtTime(.0001,st);g.gain.exponentialRampToValueAtTime(.42,st+.04);g.gain.setValueAtTime(.42,st+len*.75);g.gain.exponentialRampToValueAtTime(.0001,st+len+.05);
+        o.connect(lp);o2.connect(lp);lp.connect(g);g.connect(master);
+        [o,o2,v].forEach(function(x){x.start(st);x.stop(st+len+.1);});
+      }
+      bone(233,t,.3,.985);       // wah
+      bone(207.7,t+.36,.8,.9);   // waaah, sagging down
     },
     weak:function(){   // their mushroom finally turns up: it climbs like a win... then sinks back down, deflated
       var c=ac();if(!c)return;var t=c.currentTime+.04;
@@ -384,7 +394,7 @@ window.SFX=(function(){
 })();
 (function(){function f(){[].forEach.call(document.querySelectorAll('.band'),function(b){var big=b.querySelector('.who-big'),sub=b.querySelector('.who-sub'),k=1;
   function set(){big.style.fontSize=(66*k)+'px';sub.style.fontSize=(23*k)+'px'}
-  set();var cs=getComputedStyle(b),avail=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-12;
+  set();var cs=getComputedStyle(b),avail=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-30;
   while(k>.5&&big.offsetWidth+sub.scrollWidth>avail){k-=.03;set();}})}
 f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)})();
 
