@@ -4,7 +4,7 @@
   var NB = ' ';
   function j(s) { return s.replace(/ (\S+)$/, NB + '$1'); } // keep the last two words together
   var LINES = {
-    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['A clean, single ingredient nootropic. Add it to your morning cup.'], i: 'Endurance for the chronic stress of a changing world that won\u2019t slow down.' },
+    home: { h: 'Three nutrient rich|functional mushroom extracts.', s: ['A clean nootropic bringing the best of the forest to your cup.'] },
     lm: { h: 'For your noggin', s: ['Losing focus? Brain nutrition, straight from the forest.', 'Sustained focus. No jitter.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
     cd: { h: 'Pre workout. No crash.', s: ['No caffeine. No sugar spike. Sustained energy that lasts the whole session.*'], i: 'For the days the couch is winning.' },
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
@@ -18,7 +18,7 @@
     var two = L.h.indexOf('|') > -1;   // a "|" in the headline is a forced line break: two lines, each on its own
     var html = '<div class="pl-h">' + (two ? L.h.split('|') : L.h.split(/(?<=\.) /)).map(function (t) { return '<span class="pl-ph"' + (two ? ' style="display:block"' : '') + '>' + t + '</span>'; }).join(two ? '' : ' ') + '</div>';   // headline only breaks between phrases
     L.s.forEach(function (t) { html += '<div class="pl-s">' + j(t) + '</div>'; });
-    html += '<div class="pl-i">' + j(L.i) + '</div>';
+    if (L.i) html += '<div class="pl-i">' + j(L.i) + '</div>';
     d.innerHTML = html; return d;
   }
   var HEX = 'linear-gradient(rgba(3,3,3,.8),rgba(3,3,3,.8)),url("assets/pattern-honeycomb-seamless.svg")';   // Oct 22 (Scott): super dark, with a design: the brand honeycomb
