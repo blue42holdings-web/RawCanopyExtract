@@ -78,8 +78,10 @@
       // phone: right above the slot machines, so people read what we make before they play (Oct 22, Scott)
       var g = document.querySelector('.hg');
       if (g && g.parentNode) {
-        var pv0 = g.previousElementSibling, hb0 = pv0 && pv0.classList && pv0.classList.contains('pl-k-home') ? pv0 : null;
-        if (!hb0) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb0 = box('home'); g.parentNode.insertBefore(hb0, g); }
+        // Oct 22 (Scott): the box, then our mushrooms for sale (the white buttons), then the slot machines
+        var tgt = g; for (var y = rl; y && y !== document.body; y = y.parentNode) if (y.parentNode === g.parentNode) { tgt = y; break; }
+        var pv0 = tgt.previousElementSibling, hb0 = pv0 && pv0.classList && pv0.classList.contains('pl-k-home') ? pv0 : null;
+        if (!hb0) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb0 = box('home'); g.parentNode.insertBefore(hb0, tgt); }
         fit(hb0, g); hb0.style.setProperty('margin-bottom', '16px', 'important'); hb0.style.setProperty('margin-top', '0', 'important');
         var sec0 = hb0.parentElement && hb0.parentElement.closest ? hb0.parentElement.closest('section') : null; if (sec0) sec0.style.setProperty('padding-top', '0', 'important');   // no gap between the packets photo and this box (Oct 22, Scott)
         hb0.style.setProperty('display', 'block', 'important');
@@ -94,7 +96,7 @@
     [].forEach.call(document.querySelectorAll('[data-m="lm-hero"] *'), function (e) { if (e.children.length === 0 && /^\s*FOR YOUR NOGGIN\s*$/i.test(e.textContent)) e.textContent = 'BRAIN HORSEPOWER'; });
     // a box left behind by a re-render sits next to nothing: drop it
     [].forEach.call(document.querySelectorAll('.pl-box'), function (b) {
-      if (b.classList.contains('pl-k-home') && innerWidth >= 768) return;   // desktop home box lives inside the row
+      if (b.classList.contains('pl-k-home') && (innerWidth >= 768 || document.querySelector('.hg'))) return;   // the home box is placed on purpose (phone: above our mushrooms)   // desktop home box lives inside the row
       if (b.classList.contains('pl-k-home') && b.nextElementSibling && b.nextElementSibling.classList.contains('hg')) return;   // phone: sits above the game
       var pv = b.previousElementSibling; if (!pv) { b.remove(); return; }
       var want = (pv && vis(pv)) ? 'block' : 'none';

@@ -139,10 +139,18 @@
     hs.forEach(function (h) { var w = h.clientWidth; if (h.scrollWidth > w && w > 0) m = Math.min(m, Math.floor(30 * w / h.scrollWidth * 0.98)); });
     hs.forEach(function (h) { h.style.setProperty('font-size', m + 'px', 'important'); });
   }
+  function rlWrap() {   // the row of three mushrooms with the white buttons, as it sits next to us
+    var rl = [].filter.call(document.querySelectorAll('[data-m="rl-list"]'), function (e) { return e.offsetHeight > 0; })[0];
+    for (var x = rl; x && g && x !== document.body; x = x.parentNode) if (x.parentNode === g.parentNode) return x;
+    return null;
+  }
+  function place() {   // phone order (Oct 22, Scott): the box, then our mushrooms for sale, then the slot machines
+    var w = g && rlWrap(); if (w && g.previousElementSibling !== w) g.parentNode.insertBefore(g, w.nextSibling);
+  }
   function run() {
     var phone = innerWidth < 768;
     if (!phone) { if (g) { g.remove(); g = null; } if (hidden) { hidden.style.removeProperty('display'); hidden = null; } return; }
-    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { fit(); rail(); return; }
+    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); fit(); rail(); return; }
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
@@ -150,6 +158,7 @@
       [].forEach.call(g.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
       var cs = getComputedStyle(a); g.style.maxWidth = a.offsetWidth + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
       a.parentNode.insertBefore(g, a.nextSibling);
+      place();
       new MutationObserver(function () { [].forEach.call(g.querySelectorAll('.rcx-swipe-tag'), function (t) { t.remove(); }); }).observe(g, { childList: true, subtree: true });
     }
     a.style.setProperty('display', 'none', 'important'); hidden = a;
