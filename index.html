@@ -5646,6 +5646,8 @@ html body section[data-m="hero"]:not(.z1):not(.z2):not(.z3):not(.z4):not(.z5):no
 <style id="roar-shasta-oct23">/* Oct 23 (Scott): Lion's Mane, the Roar of the Mountain box shows Mount Shasta only: no RCX field pattern over it, no stacked dark layers */html body section[data-m="sbox"][data-sbox="lm"] div[style*="pattern-field-bold"]{display:none !important}html body section[data-m="sbox"][data-sbox="lm"]>div[aria-hidden="true"][style*="background: rgb(0, 0, 0)"],html body section[data-m="sbox"][data-sbox="lm"]>div[aria-hidden="true"][style*="background:#000"]{display:none !important}</style>
 <style id="punch-tight-oct23">/* Oct 23 (Scott): every punch box: lines closer together, the script line white */html body section.pl-box.pl-box:not(.pl-k-home) .pl-s{line-height:1.22 !important;margin-top:7px !important}html body section.pl-box.pl-box:not(.pl-k-home) .pl-h+.pl-s{margin-top:10px !important}html body section.pl-box.pl-box:not(.pl-k-home) .pl-i{color:#FFFFFF !important;-webkit-text-fill-color:#FFFFFF !important;line-height:1.22 !important;margin-top:9px !important}</style>
 <style id="stadium-fix-oct23">/* Oct 23 (Scott): Cordyceps swipe, the football field card showed black on his phone. Its own photo (jpg), a touch closer, framed higher with a little sky */@media (max-width:767px){html body div[data-screen-label="Cordyceps"] .cx-track.cx-track>.mx-box.mx-box.mx-box[style*="cd-stadium"],html body div[data-screen-label="Cordyceps"] .cx-track.cx-track>.mx-box.mx-box.mx-box[style*="cd-stadium"].rcx-rv.rcx-rv.rcx-rv.rcx-rv.rcx-rv,html body div[data-screen-label="Cordyceps"] .cx-track.cx-track>.mx-box.mx-box.mx-box[style*="cd-stadium"].rcx-rv.rcx-on.rcx-on.rcx-on.rcx-on.rcx-on{background-image:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.42) 50%,rgba(0,0,0,.12) 100%),url("assets/photo/cd-stadium-sunset.jpg") !important;background-size:100% 100%,auto 150% !important;background-position:0 0,45% 80% !important;background-repeat:no-repeat !important;background-color:#1a1410 !important}}</style>
+<style id="foot-gap-oct23">/* Oct 23 (Scott): every page, phone: the black under the RCX pattern band down to the seal matches the black above the band (34px) */@media (max-width:767px){html body footer>[data-m="foot-grid"][data-m="foot-grid"]{margin-top:-18px !important}html body:has(div[data-screen-label="Lion's Mane"] section[data-m="sbox"]) footer{margin-top:-30px !important;position:relative}}</style>
+<style id="about-seal-gap-oct23">/* Oct 23 (Scott): About phone, half the black above the spinning seal */@media (max-width:767px){html body [data-screen-label="About"] [data-m="about-seal"][data-m="about-seal"]{padding-top:10px !important}}</style>
 <style id="home-cta-off-oct23">/* Oct 23 (Scott): home, no Shop Steel Tins / Check the Receipts buttons under the box; the four squares link instead */html body .home-bgwrap .cta-dup.cta-dup.cta-dup{display:none !important}</style>
 <style id="rit-one-row-oct23">/* Oct 23 (Scott): home, Clean. No Mess. is one swipe row of all six on the phone; desktop keeps its two sets */@media (min-width:768px){html body .rit-grid>.rit-ph{display:none !important}}@media (max-width:767px){html body section[data-m="mx-rit"] .rit-grid.rit-g2{display:none !important}}</style>
 <style id="rit-phone-rows">@media (max-width:767px){html body section[data-m="mx-rit"] .rit-nav{display:none !important}html body section[data-m="mx-rit"] .rit-grid>*{align-self:start !important}}</style>
@@ -6122,7 +6124,7 @@ html body div[data-screen-label="About"][data-screen-label="About"][data-screen-
 }
 @media (max-width:767px){html body div[data-screen-label="About"][data-screen-label="About"][data-screen-label="About"] .ab-grid.ab-grid.ab-grid.ab-grid > .ab-box.ab-box.ab-box.ab-box:not(.zz1):not(.zz2):not(.zz3){background:none !important}}
 </style>
-<script src="about-photos.js?v=43"></script>
+<script src="about-photos.js?v=44"></script>
 <style id="shop-rc-oct15c">@keyframes rcxTennisOn{from{opacity:0;filter:brightness(.8)}to{opacity:1;filter:brightness(1.12) saturate(1.15) drop-shadow(0 0 10px rgba(255,214,150,.45))}}
 @media (min-width:768px){html body div[data-screen-label="Receipts"]>section:first-of-type::before{clip-path:inset(0 round 23px)}}</style>
 <style id="how-dive-oct15c">
@@ -6425,7 +6427,7 @@ html body [data-ms-page] .ms-row > section[data-ms-card="gut"]{background:none !
 /* Oct 21 (Scott): Receipts, the Files Opened And Checked row is gone, phone and desktop */
 html body div[data-screen-label="Receipts"] section[data-m="rc-files"][data-m="rc-files"]{display:none !important;position:absolute !important;left:-99999px !important;width:1px !important;height:1px !important;overflow:hidden !important;visibility:hidden !important}
 /* Oct 21 (Scott): About phone, more black space under Compost The Box before the seal comes in */
-@media (max-width:767px){html body div[data-screen-label="About"] section.rcx-abseal.rcx-abseal.rcx-abseal{padding-top:110px !important;background-color:#000 !important}}
+@media (max-width:767px){html body div[data-screen-label="About"] section.rcx-abseal.rcx-abseal.rcx-abseal{padding-top:40px !important;background-color:#000 !important}}
 /* photo layer inside the mushroom page cards (mush-short.js) */
 html body section[data-ms-card] > div{position:relative !important;isolation:isolate !important}
 html body .rcx-mph{position:absolute !important;inset:0 !important;z-index:-1 !important;border-radius:15px !important;background-repeat:no-repeat !important;pointer-events:none !important;display:block !important}
@@ -6501,8 +6503,8 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=23"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=20"></script>
-<script src="vegas-amb.js?v=4"></script>
+<script src="home-graphic.js?v=21"></script>
+<script src="vegas-amb.js?v=5"></script>
 <script src="desk-oct22.js?v=7"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
 <style id="tt-four-oct17">@media (min-width:900px){html body div[data-screen-label="Turkey Tail"] .rcx-row2:has([data-ph="tank-lab"]){display:grid !important;grid-template-columns:1fr 1fr !important;gap:20px !important;max-width:1384px !important;margin-left:auto !important;margin-right:auto !important;padding:0 28px !important;box-sizing:border-box !important}html body div[data-screen-label="Turkey Tail"] .rcx-row2:has([data-ph="tank-lab"]) > [data-ph]{width:auto !important;max-width:none !important;margin:0 !important;height:440px !important;min-height:0 !important;box-sizing:border-box !important}}</style>

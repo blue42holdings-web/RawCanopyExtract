@@ -67,11 +67,12 @@
     timers.push(setTimeout(pad, 4000));
   }
   function jingle() {   // a machine across the room pays out
-    if (!on) return; var t = now() + 0.05, base = [1046.5, 1174.7, 1318.5, 1568, 1760][Math.floor(Math.random() * 5)], pan = Math.random() * 1.6 - 0.8, k = 3 + Math.floor(Math.random() * 4);
-    for (var i = 0; i < k; i++) note(base * [1, 1.26, 1.5, 2, 1.5, 2.52][i % 6], t + i * 0.085, 0.22, 0.018, 'square', pan, 3200);
+    if (!on) return; var t = now() + 0.05, base = [523.25, 587.33, 659.26][Math.floor(Math.random() * 3)], pan = Math.random() * 1.6 - 0.8, k = 4 + Math.floor(Math.random() * 2);   // Oct 23 (Scott): only the standard four or five note figure, never the high ones
+    for (var i = 0; i < k; i++) note(base * [1, 1.26, 1.5, 2, 1.5][i], t + i * 0.085, 0.22, 0.018, 'square', pan, 2200);
     timers.push(setTimeout(jingle, 900 + Math.random() * 2600));
   }
-  function coins() {   // a few coins dropping in a tray
+  function coins() {   // Oct 23 (Scott): the coin tinkle was the high-pitched sound; off
+    return;
     if (!on) return; var t = now() + 0.05, pan = Math.random() * 1.4 - 0.7, n = 2 + Math.floor(Math.random() * 5);
     for (var i = 0; i < n; i++) note(3200 + Math.random() * 1800, t + i * (0.05 + Math.random() * 0.06), 0.09, 0.014, 'triangle', pan, 9000);
     timers.push(setTimeout(coins, 2500 + Math.random() * 5000));

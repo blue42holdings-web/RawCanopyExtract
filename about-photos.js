@@ -92,9 +92,9 @@
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
         var W2 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
-        var PB = matchMedia('(max-width:767px)').matches ? '110px' : '64px';   // Oct 22 (Scott): phone, the black under the vine matches the black above the seal
+        var PH = matchMedia('(max-width:767px)').matches, PB = PH ? '55px' : '64px';   // Oct 23 (Scott): phone, half the black above the seal (and under the vine)   // Oct 22 (Scott): phone, the black under the vine matches the black above the seal
         if (nx.style.getPropertyValue('padding-bottom') !== PB) nx.style.setProperty('padding-bottom', PB, 'important');
-        if (PB === '110px' && nx.style.getPropertyValue('padding-top') !== '110px') nx.style.setProperty('padding-top', '110px', 'important');
+        if (PH && nx.style.getPropertyValue('padding-top') !== '40px') nx.style.setProperty('padding-top', '40px', 'important');
         // the seal block sat about 90px right of center; center it under the boxes above
         var sv = [].slice.call(nx.querySelectorAll('svg')).sort(function (a, b) { return b.getBoundingClientRect().width - a.getBoundingClientRect().width; })[0]; for (var q = sv, n = 0; q && q !== nx && n < 7; q = q.parentElement, n++) { if (parseFloat(getComputedStyle(q).marginLeft) > 40 && q.offsetWidth < nx.offsetWidth - 40) { q.style.setProperty('margin-left', 'auto', 'important'); q.style.setProperty('margin-right', 'auto', 'important'); } if (parseFloat(getComputedStyle(q).left) > 10 && getComputedStyle(q).position === 'relative') q.style.setProperty('left', '0px', 'important'); }
         if (nx.style.getPropertyValue('padding-left') !== '0px') { nx.style.setProperty('padding-left', '0px', 'important'); nx.style.setProperty('padding-right', '0px', 'important'); }
