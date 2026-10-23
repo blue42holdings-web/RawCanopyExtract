@@ -113,6 +113,12 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
  font-size:13.5px;line-height:.92;letter-spacing:.02em;color:#fff;-webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:0 1px 2px rgba(0,0,0,.8);z-index:2}
 .reels.three .cell .nm{font-size:16px}
 .cell .ic{position:relative;z-index:1}
+
+/* Oct 22 2026 (Scott): the words sit dead center in the round buttons. */
+.pull{display:flex !important;flex-direction:column;align-items:center;justify-content:center;padding:1.6px 0 0 1.8px !important;text-align:center}   /* the nudges cancel Bebas's high-sitting letters and the trailing letter-spacing, measured */
+.pull.fail{padding:4.4px 0 0 1.8px !important}
+.pull small{display:block;margin:0}
+.pull.fail small{display:none !important}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
 <div class="q">WHAT’S REALLY IN YOUR “FUNCTIONAL” MUSHROOM SCOOP?</div>
@@ -191,6 +197,13 @@ window.SFX=(function(){
         tone('square',b[2]*1.012,b[2]*.95,t+b[0],b[1],.2,.01);
       });
     },
+    weak:function(){   // their mushroom finally turns up: a thin, half-hearted "yay"
+      var c=ac();if(!c)return;var t=c.currentTime+.04;
+      tone('triangle',523,null,t,.14,.12,.004);
+      tone('triangle',659,null,t+.13,.14,.12,.004);
+      tone('triangle',784,740,t+.26,.34,.12,.004);
+      tone('sine',1568,1480,t+.26,.3,.03,.004);
+    },
     good:function(){   // our result: a fairy-dust run up the scale, then a long shimmering chime
       var c=ac();if(!c)return;var t=c.currentTime+.04;
       [1047,1319,1568,2093,2637,3136,4186].forEach(function(f,i){
@@ -234,7 +247,7 @@ window.SFX=(function(){
         if(++done===N) finish(); });})(i,s);
     }
     function finish(){
-      busy=false; btn.disabled=false; SFX.stopSpin(); SFX.bad(); fail();
+      busy=false; btn.disabled=false; SFX.stopSpin(); if(wi>=0){SFX.weak();}else{SFX.bad(); fail();}
       if(wi>=0){ document.getElementById('machine').classList.add('won'); reels.children[wi].classList.add('hit'); res.classList.add('win'); res.innerHTML='JACKPOT! FOUND IT ON PULL '+pulls+'.<br>One mushroom in a scoop of fillers.';  }
       else { var u=finals.filter(function(x,i){return finals.indexOf(x)===i}).slice(0,2),names=u.join(' and ').replace(/-/g,''); res.innerHTML='NO MUSHROOM. JUST '+names+'.<br>Pull again?'; }
       cnt.textContent=('00'+pulls).slice(-3); if(wi>=0){found++;} fnd.textContent=found;
