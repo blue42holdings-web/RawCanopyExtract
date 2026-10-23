@@ -86,7 +86,7 @@
         var tgt = g; for (var y = rl; y && y !== document.body; y = y.parentNode) if (y.parentNode === g.parentNode) { tgt = y; break; }
         var pv0 = tgt.previousElementSibling, hb0 = pv0 && pv0.classList && pv0.classList.contains('pl-k-home') ? pv0 : null;
         if (!hb0) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb0 = box('home'); g.parentNode.insertBefore(hb0, tgt); }
-        fit(hb0, g); hb0.style.setProperty('margin-bottom', '16px', 'important'); hb0.style.setProperty('margin-top', '0', 'important');
+        fit(hb0, g); hb0.style.setProperty('margin-bottom', '8px', 'important'); /* Oct 23 (Scott): buttons move up, same black under the headline as above it */ hb0.style.setProperty('margin-top', '0', 'important');
         var sec0 = hb0.parentElement && hb0.parentElement.closest ? hb0.parentElement.closest('section') : null; if (sec0) sec0.style.setProperty('padding-top', '0', 'important');   // no gap between the packets photo and this box (Oct 22, Scott)
         hb0.style.setProperty('display', 'block', 'important');
       } else { var h = rl || homeAnchor(); if (h) place('home', h); }
