@@ -40,6 +40,11 @@
     'html body .hg .hg-ing.hg-m em{color:#111}',
     'html body .hg .rcx-swipe-tag{display:none !important}',
     '@media (min-width:768px){html body .hg.hg-desk{display:block !important;width:calc(100% - 40px) !important;margin:26px auto 0 !important}html body .hg.hg-desk>*{width:100% !important;max-width:none !important}html body .hg.hg-desk .hg-tiles{grid-template-columns:repeat(4,1fr) !important;gap:14px !important}html body .hg.hg-desk .hg-b2{padding:26px 28px 24px}html body .hg.hg-desk .hg-q{font-size:34px !important}html body .hg.hg-desk .hg-t{padding:18px 12px}html body .hg.hg-desk .hg-flow{font-size:22px}}',
+    'html body [data-m="rl-list"] .rcx-row:nth-child(1) a.rcx-logo{animation:rcxBeckon 6s ease-in-out 1.5s infinite}',
+    'html body [data-m="rl-list"] .rcx-row:nth-child(2) a.rcx-logo{animation:rcxBeckon 6s ease-in-out 3.5s infinite}',
+    'html body [data-m="rl-list"] .rcx-row:nth-child(3) a.rcx-logo{animation:rcxBeckon 6s ease-in-out 5.5s infinite}',
+    'html body [data-m="rl-list"] a.rcx-logo:hover{animation-play-state:paused;transform:scale(1.08);box-shadow:0 0 0 2px #F6D58E,0 0 22px rgba(246,213,142,.75)}',
+    '@keyframes rcxBeckon{0%,30%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(246,213,142,0)}10%{transform:scale(1.09);box-shadow:0 0 0 2px #F6D58E,0 0 24px rgba(246,213,142,.85)}20%{transform:scale(1);box-shadow:0 0 0 1px rgba(246,213,142,.4),0 0 10px rgba(246,213,142,.3)}}',
     'html body .hg-shop{font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:20px;color:#F6D58E;text-align:center;margin:2px 0 10px;text-shadow:0 0 8px rgba(246,213,142,.55),0 1px 3px #000;width:100%}',
     'html body .hg-shop span{color:#F1ECE1;margin:0 4px}html body .hg-shop b{display:inline-block;font-weight:400;animation:rcxSwArr 1.8s ease-in-out infinite}',
     'html body .hg .hg-slot{display:block;width:100%;height:1750px;border:0;margin:0 0 16px;background:transparent;overflow:hidden}',
@@ -147,6 +152,7 @@
     for (var x = rl; x && g && x !== document.body; x = x.parentNode) if (x.parentNode === g.parentNode) return x;
     return null;
   }
+  function noShopTag() { [].forEach.call(document.querySelectorAll('.hg-shop'), function (o) { o.remove(); }); }   // Oct 23 (Scott): no "shop now" wording; the icons invite the click instead
   function shopTag() {   // Oct 22 (Scott): tell people the mushroom buttons are where you buy
     var rl = [].filter.call(document.querySelectorAll('[data-m="rl-list"]'), function (e) { return e.offsetHeight > 0; })[0];
     if (!rl || (rl.previousElementSibling && rl.previousElementSibling.classList.contains('hg-shop'))) return;
@@ -160,7 +166,7 @@
   function run() {
     var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
     if (g && g.__phone !== undefined && g.__phone !== phone) { g.remove(); g = null; }
-    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); shopTag(); fit(); rail(); return; }
+    if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); noShopTag(); fit(); rail(); return; }
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
@@ -172,7 +178,7 @@
       new MutationObserver(function () { [].forEach.call(g.querySelectorAll('.rcx-swipe-tag'), function (t) { t.remove(); }); }).observe(g, { childList: true, subtree: true });
     }
     a.style.setProperty('display', 'none', 'important'); hidden = a;
-    shopTag(); fit(); rail();
+    noShopTag(); fit(); rail();
   }
   addEventListener('message', function (e) { if (e.data && e.data.fmHeight && g) { var f = g.querySelector('.hg-slot'); if (f && e.source === f.contentWindow) f.style.height = e.data.fmHeight + 'px'; } });
   addEventListener('resize', function () { run(); fit(); });
