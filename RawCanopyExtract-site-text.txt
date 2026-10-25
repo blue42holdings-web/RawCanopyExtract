@@ -67,22 +67,22 @@ BUTTON: "SHOP" -> opens the "Shop" page
   HEADING: Nothing but single-serving packets of organic mushroom extract powder inside four recyclable steel tins.
   BUTTON: "SHOP STEEL TINS" -> opens the "Shop" page
     IMAGE: assets/photo/tins/rcx-front-lions-mane.jpg?v=9  | alt text: "Lion's Mane steel tin front"
-  BUTTON: "BUY · $39.99"
+  BUTTON: "BUY · $42.99"
   HEADING: Lion's Mane
   Hericium erinaceus, hot water plus alcohol extracts, fruiting body.
   20 PACKETS · 2 GRAM SERVINGS
     IMAGE: assets/photo/tins/rcx-front-cordyceps.jpg?v=9  | alt text: "Cordyceps steel tin front"
-  BUTTON: "BUY · $39.99"
+  BUTTON: "BUY · $42.99"
   HEADING: Cordyceps
   Cordyceps militaris, two hot water extracts, fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is.
   20 PACKETS · 2 GRAM SERVINGS
     IMAGE: assets/photo/tins/rcx-front-turkey-tail.jpg?v=9  | alt text: "Turkey Tail steel tin front"
-  BUTTON: "BUY · $39.99"
+  BUTTON: "BUY · $42.99"
   HEADING: Turkey Tail
   Trametes versicolor, mycelium extract.
   20 PACKETS · 2 GRAM SERVINGS
     IMAGE: assets/photo/tins/rcx-front-combo.jpg?v=8  | alt text: "Mushroom Combo packet front"
-  BUTTON: "BUY · $59.99"
+  BUTTON: "BUY · $62.99"
   HEADING: Mushroom Combo
   Lion's mane: hot water plus alcohol extracts. Cordyceps: two hot water extracts. Both fruiting body. Turkey tail: mycelium extract.
   30 PACKETS · 2 GRAM SERVINGS
@@ -132,7 +132,7 @@ HEADING: Lion's Mane
 20 PACKETS · 2 GRAM SERVINGS
 Hericium erinaceus, hot water plus alcohol extracts, fruiting body. Nothing else in the packet. Recyclable steel tin.
 LOT [live: currentLm.lot] · [live: currentLm.mg] MG BETA-GLUCAN / PACKET
-$39.99
+$42.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubLm]
@@ -146,7 +146,7 @@ HEADING: Cordyceps
 20 PACKETS · 2 GRAM SERVINGS
 Cordyceps militaris, two hot water extracts, fruiting body. A mushroom's cell walls are too tough for your body to break down on its own. Extraction opens them first, so what's in the packet is in a form your body can absorb. That's why how a mushroom is extracted matters as much as which mushroom it is. Grown, not gathered. Recyclable steel tin.
 LOT [live: currentCd.lot] · [live: currentCd.mg] MG BETA-GLUCAN / PACKET
-$39.99
+$42.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubCd]
@@ -160,7 +160,7 @@ HEADING: Turkey Tail
 20 PACKETS · 2 GRAM SERVINGS
 Trametes versicolor, mycelium extract. The cloud mushroom. Recyclable steel tin.
 LOT [live: currentRs.lot] · [live: currentRs.mg] MG BETA-GLUCAN / PACKET
-$39.99
+$42.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubRs]
@@ -174,7 +174,7 @@ HEADING: Mushroom Combo
 30 PACKETS · 2 GRAM SERVINGS
 All three in one steel tin: ten lion's mane, ten cordyceps, ten turkey tail. Thirty packets.
 LOTS [live: currentLm.lot] · [live: currentCd.lot] · [live: currentRs.lot]
-$59.99
+$62.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubCombo]
@@ -190,7 +190,7 @@ RECYCLABLE BOX
 40 PACKETS · 2 GRAM SERVINGS
 Forty lion's mane packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
 UNCOATED FSC KRAFT · RECYCLABLE
-$69.99
+$72.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubLmr]
@@ -206,7 +206,7 @@ RECYCLABLE BOX
 40 PACKETS · 2 GRAM SERVINGS
 Forty cordyceps packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
 UNCOATED FSC KRAFT · RECYCLABLE
-$69.99
+$72.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubCdr]
@@ -222,7 +222,7 @@ RECYCLABLE BOX
 40 PACKETS · 2 GRAM SERVINGS
 Forty turkey tail packets in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. The box is recyclable. The steel tin is the smaller amount in something you keep. This is the larger amount, plainly packed.
 UNCOATED FSC KRAFT · RECYCLABLE
-$69.99
+$72.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubRsr]
@@ -238,7 +238,7 @@ RECYCLABLE BOX
 60 PACKETS · 2 GRAM SERVINGS
 Twenty lion's mane, twenty cordyceps, twenty turkey tail in uncoated FSC kraft: no lamination, no coating, a gold foil wordmark and nothing else. All three, a month of each, plainly packed and recyclable.
 UNCOATED FSC KRAFT · RECYCLABLE
-$99.99
+$102.99
 BUTTON: "ONE-TIME"
 BUTTON: "[live: subLabel]"
 [ONLY SHOWN WHEN: isSubCbr]
