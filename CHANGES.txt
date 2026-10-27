@@ -253,3 +253,12 @@ RAW CANOPY EXTRACT — DELIVERY, October 21, 2026
 FILES THAT CHANGED
 - index.html
 - CHANGES.txt
+
+RAW CANOPY EXTRACT — DELIVERY, October 27, 2026
+1. Food line, all four mushroom pages (Lion's Mane, Cordyceps, Turkey Tail, and the main How To Use block): "Recommended with food, not on an empty stomach, because it's a highly concentrated extract." now reads "Take with food, not on an empty stomach. It's a highly concentrated extract." Wording change only, desktop and phone.
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- site/index.html and site/404.html (kept in step)
+- RawCanopyExtract-site-text.txt (regenerated wording)
+- CHANGES.txt
