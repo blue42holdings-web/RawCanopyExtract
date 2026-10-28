@@ -298,3 +298,5 @@ Oct 27 2026 (night, last): (1) hero seal now has a full black disc from the very
 Oct 27 2026 (night, last+1): coming-soon strips now read "QUARTER STEPS MUSHROOM ORIGIN STORY COMING SOON" (Cordyceps) and "TURKEY TAIL ORIGIN STORY COMING SOON". Every round "CLICK" story button (home strip and the four story cards) now shows the universal play triangle instead of the word CLICK.
 
 Oct 27 2026 (night, last+2): the heading above the slot machines now reads WHY WE'RE DIFFERENT (the box below already says the scoop line).
+
+Oct 27 2026 (night, last+3): WHY WE'RE DIFFERENT heading made larger (fills the line) and the black gap above it removed.

@@ -61,7 +61,7 @@
     'html body .hg .hg-res{font-family:"Bebas Neue",sans-serif;letter-spacing:.08em;font-size:17px !important;color:#F1ECE1;text-align:center;min-height:20px}',
     'html body .hg .hg-res.win{color:#F6D58E;text-shadow:0 0 10px rgba(246,213,142,.9)}',
 
-    'html body .hg .hg-title{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:6px 0 14px;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
+    'html body .hg .hg-title{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:0 0 12px;padding:0;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
     '.hg-cap{margin:8px 0 0;font-size:17px;color:#F1ECE1;line-height:1.35;text-align:left}',
     '.hg-them .hg-cap{margin-top:8px}',
     '.hg-cap b{color:#D4A24A;font-weight:500}',
@@ -81,7 +81,8 @@
     '.hg [data-hg-go]{cursor:pointer;transition:transform .15s,box-shadow .15s}.hg [data-hg-go]:active{transform:scale(.97)}@media (hover:hover){.hg [data-hg-go]:hover{box-shadow:0 0 0 2px #D4A24A,0 0 18px rgba(212,162,74,.45)}}',
     '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}',
     'html body .hg-two{margin-top:16px !important}',
-    'html body .hg-two .hg-box{margin-bottom:16px}'
+    'html body .hg-two .hg-box{margin-bottom:0}',
+    'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}'
   ].join('\n');
   document.head.appendChild(css);
 
@@ -146,12 +147,11 @@
     return null;
   }
   var g = null, g2 = null, hidden = null;
-  function fitTitle() {
+  function fitTitle() {   // Oct 27 (Scott): bigger, fills the line
     var t = document.querySelector('.hg-title'); if (!t || !t.offsetWidth) return;
-    var ref = document.querySelector('.pl-k-home .pl-h'), fs = ref ? parseFloat(getComputedStyle(ref).fontSize) : 30;
-    t.style.setProperty('font-size', fs + 'px', 'important');
+    t.style.setProperty('font-size', '40px', 'important');
     var w = t.clientWidth, need = t.firstChild.getBoundingClientRect().width;
-    if (need > w) t.style.setProperty('font-size', Math.floor(fs * w / need * 0.98) + 'px', 'important');
+    if (need > 0) t.style.setProperty('font-size', Math.max(24, Math.min(64, Math.floor(40 * w / need * 0.96))) + 'px', 'important');
   }
   function fit() {
     fitTitle();   // both headings on one line, the same size
