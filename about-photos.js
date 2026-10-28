@@ -84,11 +84,11 @@
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
-      var W1 = innerWidth < 768 ? 'linear-gradient(' + CREAM + ' 0%, ' + CREAM + ' calc(50% - 100px), #000 calc(50% + 100px), #000 100%)' : 'linear-gradient(#000,#000)';   // Oct 16 (Scott): black behind Compost The Box, above the heading too   // Oct 18 (Scott): phone, the cream from About The Brand runs on down behind Compost The Box, then halfway through a 200px dissolve to black
+      var W1 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): black behind Compost The Box, above the heading too   // Oct 18 (Scott): phone, the cream from About The Brand runs on down behind Compost The Box, then halfway through a 200px dissolve to black
       if (cs.style.getPropertyValue('background-image') !== W1) { cs.style.setProperty('background', 'none', 'important'); cs.style.setProperty('background-image', W1, 'important'); cs.style.setProperty('background-color', '#000', 'important'); }
       cs.classList.add('rcx-abx');
       [].forEach.call(cs.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
-      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', innerWidth < 768 ? '#7a5a1e' : '#D4A24A', 'important');   // Oct 18: phone heading sits on cream now
+      var k = cs.querySelector('.ab-brand-k'); if (k) k.style.setProperty('color', '#D4A24A', 'important');   // Oct 18: phone heading sits on cream now
       var nx = cs.nextElementSibling;
       if (nx && nx.tagName === 'SECTION') {
         var W2 = 'linear-gradient(#000,#000)';   // Oct 16 (Scott): no white behind the seal at the bottom; a short fade from the compost white into black   // white holds, then a very quick fade (long fades are only for photo to photo)
