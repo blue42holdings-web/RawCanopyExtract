@@ -82,13 +82,12 @@
     on = true; jingle();   // Oct 28 (Scott): no lounge piano/organ bed, machines only
     coins();   // Oct 23 (Scott): no room walla, no talking
     out.gain.cancelScheduledValues(now()); out.gain.setValueAtTime(out.gain.value, now()); out.gain.linearRampToValueAtTime(0.32, now() + 3);
-    if (window.__rcxBathDuck) window.__rcxBathDuck(0, 2.5);
+    // Oct 28 (Scott): the sound bath keeps playing under the machines, it no longer steps aside
   }
   function stop() {
     if (!on) return; on = false; timers.forEach(clearTimeout); timers = [];
     out.gain.cancelScheduledValues(now()); out.gain.setValueAtTime(out.gain.value, now()); out.gain.linearRampToValueAtTime(0, now() + 2.5);
     var c = crowd; crowd = null; voiceT.forEach(clearTimeout); voiceT = []; setTimeout(function () { if (c) c.forEach(function (o) { try { o.stop(); } catch (e) {} }); }, 2700);
-    if (window.__rcxBathDuck) window.__rcxBathDuck(1, 3);
   }
   function decide() { var want = inView && !document.hidden && (wanted || (window.__rcxBathOn && window.__rcxBathOn())); if (want) start(); else stop(); }
   addEventListener('message', function (e) { if (e.data && e.data.fmPull) { wanted = true; decide(); } });
