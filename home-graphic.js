@@ -67,6 +67,8 @@
     'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title h2{grid-column:2;font-size:clamp(19px,5.6vw,26px) !important;letter-spacing:.08em !important;text-align:left !important;line-height:1.05}',
     'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title p{grid-column:2;font-size:clamp(15px,4.2vw,19px) !important;text-align:left !important}}',
     '@media (max-width:767px){html body .home-bgwrap>.mx-group.mx-group.mx-group.mx-group{background:linear-gradient(#000 0,#000 var(--hgfade,560px),rgba(0,0,0,.6) calc(var(--hgfade,560px) + 170px),rgba(0,0,0,.66) calc(100% - 24px),#000 100%),url("assets/photo/home-bg-coast-dusk.jpg") center / cover no-repeat #000 !important}}',   // Oct 27 (Scott): the magazines and Meet the three sit on pure black; the ocean fades up just under the Life / Proof switch of Lion's Mane
+    'html body .hg-press{padding-bottom:2px !important}html body .hg-meet{padding-top:6px !important}',   // Oct 27 (Scott): remove the space under IN THE MAGAZINES and above MEET THE THREE
+    'html body section.mx-sec[data-m="mx-mags"]{padding-top:2px !important;padding-bottom:0 !important}',
     'html body .hg-press,html body .hg-meet{position:relative;z-index:9999}',
     'html body .hg .hg-title,html body .hg-press,html body .hg-meet{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:0;padding:19px 0 17px;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
     '.hg-cap{margin:8px 0 0;font-size:17px;color:#F1ECE1;line-height:1.35;text-align:left}',
