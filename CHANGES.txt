@@ -308,3 +308,5 @@ Oct 27 2026 (night, last+5): gap above the green box cut from 22 px to 8 px, the
 Oct 27 2026 (night, last+6): gold line IN THE MAGAZINES above the magazine row; gold line MEET THE THREE above the Lion's Mane section (introduces the three mushroom sections; deliberately NOT 'holy trinity'). On phone the mushroom symbol box now sits to the LEFT of the mushroom name (Lion's Mane, Cordyceps, Turkey Tail sections). Desktop keeps the icon above for now.
 
 Oct 27 2026 (night, last+7): coming-soon strips now start with the mushroom name and say fictional: 'QUARTER STEPS: FICTIONAL ORIGIN STORY COMING SOON' and 'TURKEY TAIL: FICTIONAL ORIGIN STORY COMING SOON'.
+
+Oct 27 2026 (night, last+8): phone: the group behind IN THE MAGAZINES, the magazine row and MEET THE THREE is pure black; the ocean background fades up just under the Lion's Mane Life / Proof switch (home-graphic.js, --hgfade measured live).
