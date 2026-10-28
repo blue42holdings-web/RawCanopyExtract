@@ -371,6 +371,7 @@
           var t1 = (b.innerText || '').replace(/\s+/g, ' ').trim().toUpperCase();
           if ((PS[lbl] || []).some(function (m) { return m[0].test(t1); })) return;
         }
+        if (/18844328/.test(b.getAttribute('href') || '')) return;   // Oct 28 (Scott): the Lion's Mane human trial box on the phone has no photo, plain black
         var t = ((b.querySelector('.lab-title') || {}).textContent || '').toUpperCase();
         var img;
         if (/TURKEY|TRAMETES|POPULATION/.test(t)) img = CROWD[c++ % CROWD.length];
