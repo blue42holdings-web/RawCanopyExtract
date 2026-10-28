@@ -146,6 +146,7 @@
     }
   }
   function coverCheck(c, u, psz, pps) {
+    if (!c.getClientRects().length) { if (!c.__ccW && window.IntersectionObserver) { c.__ccW = 1; var wio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { wio.disconnect(); c.__ccW = 0; coverCheck(c, u, psz, pps); } }); wio.observe(c); } return; }   // Oct 27: a hidden box must not download its photo
     var src = u.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''), im = new Image();
     im.onload = function () {
       var r = c.getBoundingClientRect(), W = r.width, H = r.height, iw = im.naturalWidth, ih = im.naturalHeight, w, h;
