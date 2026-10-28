@@ -224,8 +224,23 @@
     var t = g2 || w; if (g.previousElementSibling !== t) p.insertBefore(g, t.nextSibling);
   }
 
+  // Oct 28 (Scott): the three mushroom name boxes lower on the page (Lion's Mane, Cordyceps, Turkey Tail) get the same white marble
+  // look as the three buttons at the top, with dark words so they read.
+  function marbleTitles() {
+    var src = [].filter.call(document.querySelectorAll('.rcx-marble'), function (e) { return e.offsetHeight > 0; })[0]; if (!src) return;
+    var cs = getComputedStyle(src);
+    [].forEach.call(document.querySelectorAll('.mx-sec .mx-title'), function (t) {
+      if (!t.offsetHeight || !t.querySelector('h2')) return;
+      if (parseFloat(getComputedStyle(t).borderTopWidth) < 1) return;
+      ['background-image', 'background-size', 'background-position', 'background-repeat', 'background-color', 'box-shadow'].forEach(function (p) { t.style.setProperty(p, cs.getPropertyValue(p), 'important'); });
+      var h = t.querySelector('h2'), pp = t.querySelector('p'), sp = pp && pp.querySelector('span');
+      if (h) { h.style.setProperty('color', '#14110C', 'important'); h.style.setProperty('text-shadow', 'none', 'important'); }
+      if (pp) { pp.style.setProperty('color', '#14110C', 'important'); pp.style.setProperty('text-shadow', 'none', 'important'); }
+      if (sp) { sp.style.setProperty('color', '#6B4608', 'important'); sp.style.setProperty('text-shadow', 'none', 'important'); }
+    });
+  }
   function run() {
-    placePress(); placeMeet(); setFade();
+    placePress(); placeMeet(); setFade(); marbleTitles();
     var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
     if (g && g.__phone !== undefined && g.__phone !== phone) { g.remove(); g = null; }
     if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); noShopTag(); fit(); rail(); return; }
