@@ -80,7 +80,7 @@
     'html body .hg .hg-end{font-size:16px !important;white-space:nowrap !important}',
     '.hg [data-hg-go]{cursor:pointer;transition:transform .15s,box-shadow .15s}.hg [data-hg-go]:active{transform:scale(.97)}@media (hover:hover){.hg [data-hg-go]:hover{box-shadow:0 0 0 2px #D4A24A,0 0 18px rgba(212,162,74,.45)}}',
     '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}',
-    'html body .hg-two{margin-top:16px !important}',
+    'html body .hg-two{margin-top:0 !important;padding-top:8px !important}',
     'html body .hg-two .hg-box{margin-bottom:0}',
     'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}'
   ].join('\n');
