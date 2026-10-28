@@ -3417,9 +3417,12 @@ class Component extends DCLogic {
     html.style.scrollBehavior = 'auto'; body.style.scrollBehavior = 'auto';
     if (instant || this.reduceMotion() || Math.abs(y1 - y0) < 2) { window.scrollTo(0, y1); this.cancelMove(); return; }
     const left = this._a ? this.CUES[i] - this._a.currentTime : this.MOVE;
-    const dur = Math.max(1.2, Math.min(this.MOVE, left)) * 1000;
+    /* Oct 27 (Scott: the scroll stuttered): a page can only scroll in whole pixels. The old glide (4.5 seconds, slow cosine start and stop) spent about 60 percent of its frames moving 0 or 1 pixel, which reads as stutter. Now the glide covers the distance at a steady pace of about 170 pixels a second (never longer than the lead in), ramps up quickly, and settles softly, so almost every frame moves 2 or more whole pixels. */
+    const lead = Math.max(1.2, Math.min(this.MOVE, left));
+    const dur = Math.max(0.6, Math.min(lead, Math.abs(y1 - y0) / 170)) * 1000;
     const start = performance.now();
-    const ease = p => (1 - Math.cos(Math.PI * p)) / 2;
+    const EA = 0.12, EB = 0.3, EV = 1 / (1 - (EA + EB) / 2);
+    const ease = u => u < EA ? EV * u * u / (2 * EA) : u <= 1 - EB ? EV * (EA / 2 + (u - EA)) : 1 - EV * (1 - u) * (1 - u) / (2 * EB);
     const step = (now) => {
       const p = Math.min(1, (now - start) / dur);
       if (p >= 1) { window.scrollTo(0, y1); this.cancelMove(); return; }
