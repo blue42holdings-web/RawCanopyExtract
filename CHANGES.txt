@@ -262,3 +262,14 @@ FILES THAT CHANGED
 - site/index.html and site/404.html (kept in step)
 - RawCanopyExtract-site-text.txt (regenerated wording)
 - CHANGES.txt
+
+RAW CANOPY EXTRACT — DELIVERY, October 27, 2026 (evening)
+1. Home page, phone and desktop: a new strip right under the Lion's Mane row, "Listen to the fictional origin story, The Roar of the Mountain · Lion's Mane", with a play button. It opens the Lion's Mane origin story page.
+2. Desktop menu: hovering Lion's Mane under The Mushrooms now opens a small menu to the right with ORIGIN STORY.
+3. Phone menu: ORIGIN STORY now sits indented under Lion's Mane.
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- site/index.html and site/404.html (kept in step)
+- backups/index-before-2026-10-27-origin.html and backups/404-before-2026-10-27-origin.html (copies before this change)
+- CHANGES.txt
