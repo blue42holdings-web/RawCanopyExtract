@@ -335,3 +335,4 @@ Oct 28 2026 (morning): Lab Report page is white top to bottom again (removed the
 Oct 28 2026 (morning): the three mushroom name boxes lower on the main page (Lion's Mane, Cordyceps, Turkey Tail) now have the same white marble look as the three buttons at the top (home-graphic.js v34, marbleTitles).
 Oct 28 afternoon: new phone landing screen (packets photo, seal badge, headline saying what is sold, shop button); old seal hero hidden on phone only. Desktop unchanged.
 Oct 28 afternoon: phone landing now has the Tear/Pour/Stir to Measured/Tested/Published animation back, and a boxed description with the packaging details.
+Oct 28 afternoon: heading MEET OUR TRIPLE POWER FUNGI; black logos and black text on the white mushroom boxes; Tear Pour Stir tucked under the seal on phone; landing box rewritten shorter (100% organic mushroom extract, one mushroom per packet).
