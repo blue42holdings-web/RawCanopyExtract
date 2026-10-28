@@ -79,9 +79,8 @@
     'html body .hg .hg-end{font-size:16px !important;white-space:nowrap !important}',
     '.hg [data-hg-go]{cursor:pointer;transition:transform .15s,box-shadow .15s}.hg [data-hg-go]:active{transform:scale(.97)}@media (hover:hover){.hg [data-hg-go]:hover{box-shadow:0 0 0 2px #D4A24A,0 0 18px rgba(212,162,74,.45)}}',
     '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}',
-    'html body .home-bgwrap{display:flex !important;flex-direction:column}',
-    'html body .home-bgwrap>.hg-two{order:-1 !important;width:100%;box-sizing:border-box;padding:0 14px;margin:0 auto !important;background:#000;padding-top:18px;padding-bottom:6px}',
-    'html body .hg-two .hg-box{margin-bottom:10px}'
+    'html body .hg-two{margin-top:16px !important}',
+    'html body .hg-two .hg-box{margin-bottom:16px}'
   ].join('\n');
   document.head.appendChild(css);
 
@@ -165,15 +164,13 @@
     var t = document.createElement('div'); t.className = 'hg-shop'; t.innerHTML = 'SHOP NOW <span>\u00B7</span> CLICK A MUSHROOM <b>\u203A</b>';
     rl.parentNode.insertBefore(t, rl);
   }
-  function place() {   // phone order (Oct 22, Scott): the box, then our mushrooms for sale, then the slot machines
-    var w = g && rlWrap(); if (w && g.previousElementSibling !== w) g.parentNode.insertBefore(g, w.nextSibling);
-    place2();
+  function place() {   // order: the three white mushroom buttons, the green box (Oct 27, Scott), then the slot machines
+    var w = g && rlWrap(); if (!w) return;
+    var p = w.parentNode;
+    if (g2 && g2.previousElementSibling !== w) p.insertBefore(g2, w.nextSibling);
+    var t = g2 || w; if (g.previousElementSibling !== t) p.insertBefore(g, t.nextSibling);
   }
-  function place2() {   // Oct 27 (Scott): seal + three packets photo (hero), then the green box, then the three white mushrooms (order set in CSS)
-    var wrap = document.querySelector('.home-bgwrap');
-    if (!g2 || !wrap) return;
-    if (g2.parentNode !== wrap) wrap.insertBefore(g2, wrap.firstChild);
-  }
+
   function run() {
     var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
     if (g && g.__phone !== undefined && g.__phone !== phone) { g.remove(); g = null; }
@@ -187,7 +184,7 @@
       a.parentNode.insertBefore(g, a.nextSibling);
       // Oct 27 (Scott): the green "Uncompromising, by design" box lives right under the three packets (see place2)
       var b2 = g.querySelector('.hg-b2');
-      g2 = document.createElement('div'); g2.className = 'hg hg-two' + (phone ? '' : ' hg-desk'); g2.setAttribute('data-noswipe', '1'); g2.__phone = phone;
+      g2 = document.createElement('div'); g2.className = 'hg hg-two' + (phone ? '' : ' hg-desk'); g2.setAttribute('data-noswipe', '1'); g2.__phone = phone; g2.style.maxWidth = g.style.maxWidth;
       if (b2) g2.appendChild(b2);
       [].forEach.call(g2.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
       place();
