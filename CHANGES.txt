@@ -285,3 +285,6 @@ Oct 27 (night): origin story strip on the home page now carries the round CLICK 
 - Scott asked for a CLICK button like the one on the Lion's Mane story card. The strip's small play arrow is replaced by the same round black button with the gold ring and CLICK (58 px on the strip, the story card's is 62 px). Strip stays skinny (88 px high on desktop).
 - Files: index.html (strip), 404.html, site/index.html, site/404.html (style block kept in step)
 - Checked on desktop 1440 wide and phone 390 wide: no word left alone on a line, the whole strip still opens The Roar of the Mountain page.
+
+Oct 27 2026 (night): RCX field pattern fixed everywhere. assets/pattern-field-bold.svg (spaced hexagons) replaced with the touching honeycomb version; sizes set to 33px (20px on small bands) in index.html, 404.html, site/ copies and desk-rows.js. Old spaced file kept at backups/pattern-field-bold-spaced-2026-10-27.svg. RULE: the RCX field pattern hexagons ALWAYS TOUCH. Never use a spaced version.
+Oct 27 2026 (night): slot machine losing sound ("wah wah") dropped two octaves with a low sub thud (find-the-mushroom.html).

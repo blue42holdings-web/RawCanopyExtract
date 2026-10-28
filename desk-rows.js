@@ -446,7 +446,7 @@
     d.style.cssText = 'position:absolute;left:0;right:0;margin:0;top:' + y0 + 'px;height:' + Math.max(0, y1 - y0) + 'px;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(#000 calc(100% - 300px),transparent 100%);mask-image:linear-gradient(#000 calc(100% - 300px),transparent 100%);' +
       'background:linear-gradient(100deg,rgba(0,0,0,.83) 0%,rgba(0,0,0,.63) 46%,rgba(0,0,0,.65) 70%,rgba(0,0,0,.79) 100%)';
     if (!d.firstChild) { var p = document.createElement('div'); d.appendChild(p); }
-    var pp = d.firstChild; pp.style.cssText = 'position:absolute;inset:0;opacity:.3'; pp.style.setProperty('background', 'url("assets/pattern-field-bold.svg") 50% 0/300px 220px repeat', 'important');   // Oct 17: the RCX pattern must cover the whole page, set so nothing can clear it
+    var pp = d.firstChild; pp.style.cssText = 'position:absolute;inset:0;opacity:.3'; pp.style.setProperty('background', 'url("assets/pattern-field-bold.svg") 50% 0/33px auto repeat', 'important');   // Oct 17: the RCX pattern must cover the whole page, set so nothing can clear it
   }
   setInterval(run, 1200); run();
 })();
