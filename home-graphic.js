@@ -63,9 +63,9 @@
 
     '@media (max-width:767px){html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title{display:grid !important;grid-template-columns:auto auto;column-gap:12px;row-gap:1px;align-items:center;justify-items:start;justify-content:center;text-align:left !important;width:fit-content;max-width:100%;margin:0 auto 16px !important}',
     'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title>a.mx-ic-link{grid-row:1 / span 2;grid-column:1;margin:0 !important}',
-    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title>a.mx-ic-link>img{height:34px !important;padding:9px 11px !important;border-width:2px !important;border-radius:12px !important}',
-    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title h2{grid-column:2;font-size:clamp(19px,5.6vw,26px) !important;letter-spacing:.08em !important;text-align:left !important;line-height:1.05}',
-    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title p{grid-column:2;font-size:clamp(15px,4.2vw,19px) !important;text-align:left !important}}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title>a.mx-ic-link>img{height:40px !important;padding:10px 12px !important;border-width:2px !important;border-radius:12px !important}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title h2{grid-column:2;font-size:clamp(23px,6.9vw,30px) !important;letter-spacing:.06em !important;text-align:left !important;line-height:1.05}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title p{grid-column:2;font-size:clamp(17px,5vw,21px) !important;line-height:1.2 !important;text-wrap:balance;text-align:left !important}}',
     '@media (max-width:767px){html body .home-bgwrap>.mx-group.mx-group.mx-group.mx-group{background:linear-gradient(#000 0,#000 var(--hgfade,560px),rgba(0,0,0,.6) calc(var(--hgfade,560px) + 170px),rgba(0,0,0,.66) calc(100% - 24px),#000 100%),url("assets/photo/home-bg-coast-dusk.jpg") center / cover no-repeat #000 !important}}',   // Oct 27 (Scott): the magazines and Meet the three sit on pure black; the ocean fades up just under the Life / Proof switch of Lion's Mane
     'html body .hg-press{padding-bottom:2px !important}html body .hg-meet{padding-top:6px !important}',   // Oct 27 (Scott): remove the space under IN THE MAGAZINES and above MEET THE THREE
     'html body section.mx-sec[data-m="mx-mags"]{padding-top:2px !important;padding-bottom:0 !important}',
