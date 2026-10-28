@@ -61,7 +61,13 @@
     'html body .hg .hg-res{font-family:"Bebas Neue",sans-serif;letter-spacing:.08em;font-size:17px !important;color:#F1ECE1;text-align:center;min-height:20px}',
     'html body .hg .hg-res.win{color:#F6D58E;text-shadow:0 0 10px rgba(246,213,142,.9)}',
 
-    'html body .hg .hg-title{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:0;padding:19px 0 17px;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
+    '@media (max-width:767px){html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title{display:grid !important;grid-template-columns:auto auto;column-gap:12px;row-gap:1px;align-items:center;justify-items:start;justify-content:center;text-align:left !important;width:fit-content;max-width:100%;margin:0 auto 16px !important}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title>a.mx-ic-link{grid-row:1 / span 2;grid-column:1;margin:0 !important}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title>a.mx-ic-link>img{height:34px !important;padding:9px 11px !important;border-width:2px !important;border-radius:12px !important}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title h2{grid-column:2;font-size:clamp(19px,5.6vw,26px) !important;letter-spacing:.08em !important;text-align:left !important;line-height:1.05}',
+    'html body .home-bgwrap .mx-group .mx-sec:not([data-m="mx-mags"]) .mx-title p{grid-column:2;font-size:clamp(15px,4.2vw,19px) !important;text-align:left !important}}',
+    'html body .hg-press,html body .hg-meet{position:relative;z-index:9999}',
+    'html body .hg .hg-title,html body .hg-press,html body .hg-meet{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:0;padding:19px 0 17px;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
     '.hg-cap{margin:8px 0 0;font-size:17px;color:#F1ECE1;line-height:1.35;text-align:left}',
     '.hg-them .hg-cap{margin-top:8px}',
     '.hg-cap b{color:#D4A24A;font-weight:500}',
@@ -147,11 +153,36 @@
     return null;
   }
   var g = null, g2 = null, hidden = null;
-  function fitTitle() {   // Oct 27 (Scott): bigger, fills the line
-    var t = document.querySelector('.hg-title'); if (!t || !t.offsetWidth) return;
+  function fitTitle() {   // Oct 27 (Scott): bigger, fills the line; the press heading copies its size
+    var t = document.querySelector('.hg .hg-title'); if (!t || !t.offsetWidth) return;
     t.style.setProperty('font-size', '40px', 'important');
     var w = t.clientWidth, need = t.firstChild.getBoundingClientRect().width;
     if (need > 0) t.style.setProperty('font-size', Math.max(24, Math.min(64, Math.floor(40 * w / need * 0.84))) + 'px', 'important');
+    [].forEach.call(document.querySelectorAll('.hg-press,.hg-meet'), function (p) {
+    if (p && p.offsetWidth) {
+      p.style.setProperty('font-size', t.style.getPropertyValue('font-size'), 'important');
+      var pw = p.clientWidth, pn = p.firstChild.getBoundingClientRect().width;
+      if (pn > pw) p.style.setProperty('font-size', Math.floor(parseFloat(t.style.getPropertyValue('font-size')) * pw / pn * 0.98) + 'px', 'important');
+    }
+    });
+  }
+  function placeMeet() {   // Oct 27 (Scott): a gold line that introduces the three mushrooms underneath it
+    var m = [].filter.call(document.querySelectorAll('[data-m="mx-lm"]'), function (e) { return e.offsetHeight > 0 && e.parentNode.classList.contains('mx-group'); })[0];
+    if (!m) return;
+    var pv = m.previousElementSibling; if (pv && pv.classList.contains('hg-meet')) return;
+    [].forEach.call(document.querySelectorAll('.hg-meet'), function (o) { o.remove(); });
+    var d = document.createElement('div'); d.className = 'hg-meet'; d.setAttribute('data-noswipe', '1');
+    d.innerHTML = '<span>MEET THE THREE</span>';
+    m.parentNode.insertBefore(d, m);
+  }
+  function placePress() {   // Oct 27 (Scott): a gold line above the magazines
+    var m = [].filter.call(document.querySelectorAll('[data-m="mx-mags"]'), function (e) { return e.offsetHeight > 0; })[0];
+    if (!m || !m.parentNode) return;
+    var pv = m.previousElementSibling; if (pv && pv.classList.contains('hg-press')) return;
+    [].forEach.call(document.querySelectorAll('.hg-press'), function (o) { o.remove(); });
+    var d = document.createElement('div'); d.className = 'hg-press'; d.setAttribute('data-noswipe', '1');
+    d.innerHTML = '<span>IN THE MAGAZINES</span>';
+    m.parentNode.insertBefore(d, m);
   }
   function fit() {
     fitTitle();   // both headings on one line, the same size
@@ -182,6 +213,7 @@
   }
 
   function run() {
+    placePress(); placeMeet();
     var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
     if (g && g.__phone !== undefined && g.__phone !== phone) { g.remove(); g = null; }
     if (g && g.isConnected && hidden && hidden.isConnected && hidden.style.getPropertyValue('display') === 'none') { place(); noShopTag(); fit(); rail(); return; }

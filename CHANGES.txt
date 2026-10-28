@@ -304,3 +304,5 @@ Oct 27 2026 (night, last+3): WHY WE'RE DIFFERENT heading made larger (fills the 
 Oct 27 2026 (night, last+4): WHY WE'RE DIFFERENT slightly smaller and centered vertically between the green box and the slot machine box (measured 27 px above, 27 px below).
 
 Oct 27 2026 (night, last+5): gap above the green box cut from 22 px to 8 px, the same spacing as between the mushroom rows.
+
+Oct 27 2026 (night, last+6): gold line IN THE MAGAZINES above the magazine row; gold line MEET THE THREE above the Lion's Mane section (introduces the three mushroom sections; deliberately NOT 'holy trinity'). On phone the mushroom symbol box now sits to the LEFT of the mushroom name (Lion's Mane, Cordyceps, Turkey Tail sections). Desktop keeps the icon above for now.
