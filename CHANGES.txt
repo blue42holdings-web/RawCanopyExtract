@@ -330,3 +330,4 @@ Oct 28 2026 (morning): phone: Lion's Mane human trial box gets his ocean shot (h
 Oct 28 2026 (morning): phone: the three teaching boxes at the bottom of the Lab Report page swipe left and right (style block rc-teach-swipe-oct28).
 Oct 28 2026 (morning): Shop page: everything behind the boxes is black (blue sky behind the tins, the cream bands); only the messy tub band keeps its photo (style block shop-bg-black-oct28b).
 Oct 28 2026 (morning): the mountain biker is gone for good: front page Cordyceps THE TRAIL box now the gym photo (how-gym-coffee-crop.jpg), Cordyceps page How It's Made box now the gym high five (friends-workout.webp).
+Oct 28 2026 (morning): main page heading now TRIPLE POWER FUNGI (home-graphic.js v33).
