@@ -79,7 +79,8 @@
   }
   function start() {
     if (on || !getCtx()) return; if (ctx.state === 'suspended') { try { ctx.resume(); } catch (e) {} }
-    on = true; pad(); jingle(); coins();   // Oct 23 (Scott): no room walla, no talking
+    on = true; jingle();   // Oct 28 (Scott): no lounge piano/organ bed, machines only
+    coins();   // Oct 23 (Scott): no room walla, no talking
     out.gain.cancelScheduledValues(now()); out.gain.setValueAtTime(out.gain.value, now()); out.gain.linearRampToValueAtTime(0.32, now() + 3);
     if (window.__rcxBathDuck) window.__rcxBathDuck(0, 2.5);
   }

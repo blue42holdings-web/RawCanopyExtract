@@ -709,7 +709,8 @@
   // REMIX: a little turntable above the Sound Bath box. Tap for a beat, tap again to stop, tap again for the next beat.
   var rbtn = null, remixing = false, lastWake = Date.now();
   function wake() { lastWake = Date.now(); }
-  ['pointerdown', 'keydown'].forEach(function (ev) { document.addEventListener(ev, wake, true); });
+  ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, wake, true); });   // Oct 28 (Scott): they only appear while the page is moving, not on every click, so they stay out of the way of the bottom of the page
+  document.addEventListener('pointermove', function (e) { if (e.clientX < 160 && e.clientY > innerHeight - 190) wake(); }, true);   // or when the pointer goes to their corner
   addEventListener('popstate', wake); addEventListener('pageshow', wake);
   function remixIcon(on) {
     // only the record spins; the tone arm stays put in the lower right, like a real turntable
@@ -768,7 +769,7 @@
     var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
     [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
     // Oct 11: both boxes show when a page opens and whenever you tap, then fade away after 10 quiet seconds
-    var awake = Date.now() - lastWake < 10000;
+    var awake = Date.now() - lastWake < 3500;
     var so = awake ? '1' : '0'; if (btn.style.opacity !== so) { btn.style.opacity = so; btn.style.pointerEvents = awake ? 'auto' : 'none'; }
     if (rbtn) { var op = (top || !awake) ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = op === '1' ? 'auto' : 'none'; } }
     // at the very top Sound Bath waits in Remix's spot (clear of the opening words); once the page moves it rises and Remix slides in underneath

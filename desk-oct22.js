@@ -57,7 +57,7 @@
     var lm = P.getAttribute('data-screen-label') === "Lion's Mane";
     if (lm && !sb.querySelector('.dk-live')) {   // LIVE NOW, right above the CLICK button's line
       var t = [].filter.call(sb.querySelectorAll('div,p,span,h2,h3'), function (e) { return /^THE FICTIONAL ORIGIN STORY/i.test(txt(e)) && e.children.length < 3; })[0];
-      if (t) { var b = document.createElement('div'); b.className = 'dk-live'; b.textContent = 'LIVE NOW · WATCH THE STORY'; t.parentNode.insertBefore(b, t); }
+      if (t) { var b = document.createElement('div'); b.className = 'dk-live'; b.textContent = 'LIVE NOW · WATCH OR LISTEN, ABOUT 22 MIN'; t.parentNode.insertBefore(b, t); }
     }
     if (!desk()) { if (sb.__dk) { sb.__dk = 0; sb.classList.remove('dk-end'); ['background-color', 'background-image', 'background-size', 'background-position', 'background-repeat', 'border-bottom'].forEach(function (q) { sb.style.removeProperty(q); }); sb.style.setProperty('background', 'rgb(0, 0, 0)'); } return; }
     sb.__dk = 1; sb.classList.add('dk-end'); if (lm) sb.classList.add('dk-end-lm');

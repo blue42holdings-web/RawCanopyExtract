@@ -53,7 +53,8 @@
     // Scott's backyard, the wide shot with Buddy coming up the hill, behind the story boxes and on down behind About The Brand as one picture
     var sh = A.querySelector('section[data-m="shasta"]'), br = A.querySelector('section[data-m="about-brand"]');
     if (br && innerWidth < 768) {   // Oct 15 (late, Scott): phone, cream from About The Brand on down (his photo stays in the box)
-      var CW = 'linear-gradient(rgba(0,0,0,0) 0px, ' + CREAM + ' 200px, ' + CREAM + ' 100%)';   // Oct 18 (Scott): one steady 200px dissolve from the black above into cream (was plain black)   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
+      var CW = 'linear-gradient(#000,#000)';   // Oct 28 (Scott): About is plain black, no cream, no photos behind the brand box
+        // Oct 18 (Scott): one steady 200px dissolve from the black above into cream (was plain black)   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
       if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', 'transparent', 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
@@ -79,7 +80,7 @@
         [].forEach.call(z.children, function (kd) { if (kd.tagName === 'DIV' && !kd.textContent.trim() && /url\(/.test(getComputedStyle(kd).backgroundImage)) kd.style.setProperty('display', 'none', 'important'); });
       });
     }
-    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
+    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb && bb.style.getPropertyValue('background-image') !== 'linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0))') { bb.style.setProperty('background', '#000', 'important'); bb.style.setProperty('background-image', 'linear-gradient(#000,#000)', 'important'); [].forEach.call(bb.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim()) k.style.setProperty('display', 'none', 'important'); }); }   // Scott, the wild man in his backyard, behind About The Brand
     var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth >= 768 ? 'about-three-dogs-wide.jpg' : 'own-two-labs-hill.jpg', innerWidth >= 768 ? 'center 0%' : 'center 30%', .5);   // Oct 17: desktop zoomed all the way out, sides filled softly, no black bars   // Oct 16 (Scott): his two labs on the hill, towel painted out; one photo, never a collage   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
