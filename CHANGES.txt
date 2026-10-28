@@ -316,3 +316,4 @@ Oct 27 (late): Cordyceps strip fixed (was misheard as QUARTER STEPS); Lion's Man
 Oct 27 (late): fixed blur band that sat over IN THE MAGAZINES; seam blur now skips the gold section headings.
 Oct 28: story strips are one line, larger, full brightness: LIVE NOW: LION'S MANE ORIGIN STORY / COMING SOON: CORDYCEPS ORIGIN STORY / COMING SOON: TURKEY TAIL ORIGIN STORY ('fictional' dropped to fit one line).
 Oct 28: home page background is plain black everywhere (no beach photo behind the mushrooms, no red behind Clean. No mess.). Temporary until Scott's sunset photos.
+Oct 28: phone mushroom headers under MEET THE THREE are one full gold rectangle: symbol box left, name and subtitle centered in the rest. Gold section headings no longer ride over the sticky header.
