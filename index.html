@@ -1520,17 +1520,22 @@ html body .cx-sec .cx-track>.mx-box[style*="lm-grandpa-football-park"][style*="l
 .mland{display:none}
 @media (max-width:767px){
 html body .mland{display:block;background:#000;position:relative;margin-bottom:-1px;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);overflow:visible}
-html body section[data-m="hero"]{display:none !important}
+html body div:has(> section[data-m="hero"]){display:flex !important;flex-direction:column}
+html body section[data-m="hero"],html body section[data-m="hero"] > div{display:contents !important}
+html body section[data-m="hero"] > div > *:not([data-rcx-rotator]){display:none !important}
+html body .mland-t{order:-3}
+html body [data-m="hero"] [data-rcx-rotator]{order:-2;margin:0 !important;padding:78px 22px 0;background:#000;font-size:30px !important;justify-content:center;display:flex !important}
+html body .mland-b{order:-1}
 .mland-ph{position:relative;margin-top:0;width:100%;aspect-ratio:4/3;overflow:visible;border-bottom:3px solid #D4A24A}
 .mland-ph img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 .mland-seal{position:absolute;left:50%;bottom:-58px;width:116px;height:116px;border-radius:50%;background:#000;overflow:hidden;box-shadow:0 0 0 4px #000,0 6px 18px rgba(0,0,0,.7);transform:translateX(-50%);z-index:2}
 .mland-seal img{width:100%;height:100%;display:block;transform:scale(1.14)}
-.mland-body{padding:78px 22px 8px;text-align:center}
+.mland-body{padding:16px 22px 8px;text-align:center}
 .mland-proof{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.14em;color:#D4A24A}
 .mland-proof i{font-style:normal;color:#F1ECE1;opacity:.6}
-.mland h1{margin:14px 0 0;font-family:'Playfair Display',serif;font-weight:700;font-size:31px;line-height:1.1;color:#F1ECE1;text-wrap:balance}
+.mland h1{margin:0;font-family:'Playfair Display',serif;font-weight:700;font-size:27px;line-height:1.15;color:#F1ECE1}
 .mland h1 span{color:#D4A24A}
-.mland-sub{margin:14px auto 0;max-width:360px;font-family:'Playfair Display',serif;font-size:19px;line-height:1.45;color:#E7E1D3;text-wrap:pretty}
+.mland-box .mland-sub{margin-top:14px}.mland-rule{width:120px;height:2px;background:#D4A24A;margin:18px auto 0}.mland-det{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;text-align:center}.mland-det li{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.1em;line-height:1.2;color:#D4A24A}.mland-box .mland-end{color:#F1ECE1;font-style:italic;margin-top:16px}.mland-box{border:3px solid #D4A24A;border-radius:18px;padding:24px 20px;background:rgba(212,162,74,.06);box-shadow:0 10px 28px rgba(0,0,0,.65)}.mland-box .mland-sub{text-align:center;max-width:none;font-family:'Playfair Display',serif;font-size:18px;line-height:1.5;color:#E7E1D3;text-wrap:balance}
 .mland-list{margin:22px 0 0;display:flex;flex-direction:column;gap:10px;text-align:left}
 .mland-list a{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1.5px solid rgba(212,162,74,.7);border-radius:14px;background:rgba(212,162,74,.07);text-decoration:none;color:#fff;cursor:pointer}
 .mland-list img{width:38px;height:38px;flex:0 0 auto}
@@ -1542,7 +1547,7 @@ html body section[data-m="hero"]{display:none !important}
 .mland-gap{height:34px}
 }
 </style>
-<section class="mland" data-screen-label="Home — mobile landing"><div class="mland-ph"><img class="ph" src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail mushroom extract packets on their mushroom powders"><div class="mland-seal"><img src="assets/seal-single-ingredient-organic.svg" alt="Raw Canopy Extract, single ingredient organic"></div></div><div class="mland-body"><div class="mland-proof"><span>MEASURED</span><i>&bull;</i><span>TESTED</span><i>&bull;</i><span>PUBLISHED</span></div><h1>Organic mushroom extract. <span>One ingredient. Nothing else.</span></h1><p class="mland-sub">Lion&rsquo;s mane, cordyceps and turkey tail, each in its own 2 gram packet. Tear one open and pour it into your coffee, tea or water.</p><div class="mland-cta"><a href="#" data-page="shop" onClick="{{ go }}" class="rcx-metal rcx-btn">SHOP THE PACKETS</a><a href="#" data-page="receipts" onClick="{{ go }}" class="rcx-btn rcx-invite">READ YOUR LAB REPORT<span class="inv-ar">&#8250;</span></a></div><p class="mland-price">20 packets from $39.99</p><div class="mland-gap"></div></div></section>
+<section class="mland mland-t" data-screen-label="Home — mobile landing"><div class="mland-ph"><img class="ph" src="assets/photo/packets-powder-trio-v11.webp" alt="Cordyceps, Lion's Mane and Turkey Tail mushroom extract packets on their mushroom powders"><div class="mland-seal"><img src="assets/seal-single-ingredient-organic.svg" alt="Raw Canopy Extract, single ingredient organic"></div></div></section><section class="mland mland-b" data-screen-label="Home — mobile landing text"><div class="mland-body"><div class="mland-box"><h1>Organic mushroom<br>extract. <span>One ingredient.<br>Nothing else.</span></h1><p class="mland-sub">Three everyday organic mushrooms, lion&rsquo;s mane, cordyceps and turkey tail, each in its own single ingredient 2 gram packet. No proprietary blends and no messy scoops.</p><div class="mland-rule"></div><ul class="mland-det"><li>Scientifically extracted for max absorption</li><li>Pre-measured clean packet</li><li>Tear. Pour. Coffee, tea or smoothie.</li></ul><p class="mland-sub mland-end">Elevate your daily ritual.</p></div><div class="mland-cta"><a href="#" data-page="shop" onClick="{{ go }}" class="rcx-metal rcx-btn">SHOP THE PACKETS</a><a href="#" data-page="receipts" onClick="{{ go }}" class="rcx-btn rcx-invite">READ YOUR LAB REPORT<span class="inv-ar">&#8250;</span></a></div><p class="mland-price">20 packets from $39.99</p><div class="mland-gap"></div></div></section>
 <section data-screen-label="Home — hero" data-m="hero" style="margin-bottom:-1px;background-color:#000;position:relative;width:100%;max-width:100%;min-height:920px;padding:90px 0;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background-image:radial-gradient(70% 62% at 50% 34%,rgba(0,0,0,.96) 0%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.5) 100%),url('assets/photo/hero-stove-pour-ridge-v10.jpg');background-size:cover;background-repeat:no-repeat;background-position:center 82%">
 <div style="padding:0 28px;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;max-width:940px">
 <div ref="{{ setHeroSeal }}" style="width:min(430px,76vw);aspect-ratio:1/1;border-radius:50%;background:#000"></div>
