@@ -80,7 +80,7 @@
         [].forEach.call(z.children, function (kd) { if (kd.tagName === 'DIV' && !kd.textContent.trim() && /url\(/.test(getComputedStyle(kd).backgroundImage)) kd.style.setProperty('display', 'none', 'important'); });
       });
     }
-    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb && bb.style.getPropertyValue('background-image') !== 'linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0))') { bb.style.setProperty('background', '#000', 'important'); bb.style.setProperty('background-image', 'linear-gradient(#000,#000)', 'important'); [].forEach.call(bb.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim()) k.style.setProperty('display', 'none', 'important'); }); }   // Scott, the wild man in his backyard, behind About The Brand
+    var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
     var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth >= 768 ? 'about-three-dogs-wide.jpg' : 'own-two-labs-hill.jpg', innerWidth >= 768 ? 'center 0%' : 'center 30%', .5);   // Oct 17: desktop zoomed all the way out, sides filled softly, no black bars   // Oct 16 (Scott): his two labs on the hill, towel painted out; one photo, never a collage   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
