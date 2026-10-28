@@ -78,7 +78,10 @@
     'html body .hg .hg-ts{font-size:14px !important;line-height:1.3 !important}',
     'html body .hg .hg-end{font-size:16px !important;white-space:nowrap !important}',
     '.hg [data-hg-go]{cursor:pointer;transition:transform .15s,box-shadow .15s}.hg [data-hg-go]:active{transform:scale(.97)}@media (hover:hover){.hg [data-hg-go]:hover{box-shadow:0 0 0 2px #D4A24A,0 0 18px rgba(212,162,74,.45)}}',
-    '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}'
+    '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}',
+    'html body .home-bgwrap{display:flex !important;flex-direction:column}',
+    'html body .home-bgwrap>.hg-two{order:-1 !important;width:100%;box-sizing:border-box;padding:0 14px;margin:0 auto !important;background:#000;padding-top:18px;padding-bottom:6px}',
+    'html body .hg-two .hg-box{margin-bottom:10px}'
   ].join('\n');
   document.head.appendChild(css);
 
@@ -141,10 +144,10 @@
     for (var x = p; x && x !== document.body; x = x.parentElement) { var cs = getComputedStyle(x); if (parseFloat(cs.borderTopWidth) >= 1.5 && x.offsetWidth > 280) return x; }
     return null;
   }
-  var g = null, hidden = null;
+  var g = null, g2 = null, hidden = null;
   function fit() {   // both headings on one line, the same size
     if (!g) return;
-    var hs = [].slice.call(g.querySelectorAll('.hg-q')), m = 30;
+    var hs = [].slice.call(document.querySelectorAll('.hg .hg-q')), m = 30;
     hs.forEach(function (h) { h.style.setProperty('font-size', '30px', 'important'); });
     hs.forEach(function (h) { var w = h.clientWidth; if (h.scrollWidth > w && w > 0) m = Math.min(m, Math.floor(30 * w / h.scrollWidth * 0.98)); });
     hs.forEach(function (h) { h.style.setProperty('font-size', m + 'px', 'important'); });
@@ -164,6 +167,12 @@
   }
   function place() {   // phone order (Oct 22, Scott): the box, then our mushrooms for sale, then the slot machines
     var w = g && rlWrap(); if (w && g.previousElementSibling !== w) g.parentNode.insertBefore(g, w.nextSibling);
+    place2();
+  }
+  function place2() {   // Oct 27 (Scott): seal + three packets photo (hero), then the green box, then the three white mushrooms (order set in CSS)
+    var wrap = document.querySelector('.home-bgwrap');
+    if (!g2 || !wrap) return;
+    if (g2.parentNode !== wrap) wrap.insertBefore(g2, wrap.firstChild);
   }
   function run() {
     var phone = innerWidth < 768;   // Oct 22 (Scott): desktop gets the same new top as phone
@@ -176,6 +185,11 @@
       [].forEach.call(g.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
       var cs = getComputedStyle(a); g.style.maxWidth = (phone ? a.offsetWidth : 1300) + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
       a.parentNode.insertBefore(g, a.nextSibling);
+      // Oct 27 (Scott): the green "Uncompromising, by design" box lives right under the three packets (see place2)
+      var b2 = g.querySelector('.hg-b2');
+      g2 = document.createElement('div'); g2.className = 'hg hg-two' + (phone ? '' : ' hg-desk'); g2.setAttribute('data-noswipe', '1'); g2.__phone = phone;
+      if (b2) g2.appendChild(b2);
+      [].forEach.call(g2.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
       place();
       new MutationObserver(function () { [].forEach.call(g.querySelectorAll('.rcx-swipe-tag'), function (t) { t.remove(); }); }).observe(g, { childList: true, subtree: true });
     }

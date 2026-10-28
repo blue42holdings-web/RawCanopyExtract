@@ -288,3 +288,5 @@ Oct 27 (night): origin story strip on the home page now carries the round CLICK 
 
 Oct 27 2026 (night): RCX field pattern fixed everywhere. assets/pattern-field-bold.svg (spaced hexagons) replaced with the touching honeycomb version; sizes set to 33px (20px on small bands) in index.html, 404.html, site/ copies and desk-rows.js. Old spaced file kept at backups/pattern-field-bold-spaced-2026-10-27.svg. RULE: the RCX field pattern hexagons ALWAYS TOUCH. Never use a spaced version.
 Oct 27 2026 (night): slot machine losing sound ("wah wah") dropped two octaves with a low sub thud (find-the-mushroom.html).
+
+Oct 27 2026 (night): home page order is now seal + three packets (hero), the green "Uncompromising, by design" box, then the three white mushroom buttons (home-graphic.js splits the box out and orders it first in .home-bgwrap). Origin-story strip made low profile (about 50px tall, one line, small CLICK circle). Rotator words: Portion/Tear (line 1), Pour (line 2), Stir (line 3) added to the random pool.
