@@ -235,7 +235,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     var pf = []; [].forEach.call(document.querySelectorAll('footer,[style*="pattern-field-bold"]'), function (e) { var r = e.getBoundingClientRect(); if (r.height) pf.push(r.top + scrollY, r.bottom + scrollY); });
     uniq = uniq.filter(function (y) { return !pf.some(function (e) { return Math.abs(e - y) < 100; }); });
     // Oct 23 (Scott): a Swipe For More label is never blurred or fogged by a seam
-    var tg = []; [].forEach.call(document.querySelectorAll('.rcx-swipe-tag,.rit-nav'), function (e) { var r = e.getBoundingClientRect(); if (r.height) tg.push([r.top + scrollY - 70, r.bottom + scrollY + 70]); });
+    var tg = []; [].forEach.call(document.querySelectorAll('.rcx-swipe-tag,.rit-nav,.hg-title,.hg-press,.hg-meet'), function (e) { var r = e.getBoundingClientRect(); if (r.height) tg.push([r.top + scrollY - 70, r.bottom + scrollY + 70]); });
     uniq = uniq.filter(function (y) { return !tg.some(function (t) { return y > t[0] && y < t[1]; }); });
     uniq.forEach(function (y) {
       // largest free gap around the seam, up to 90px each side
