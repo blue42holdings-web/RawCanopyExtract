@@ -3683,21 +3683,37 @@ class Component extends DCLogic {
     if (this._firstDone == null) this._firstDone = false;
     const step = () => {
       if (this._away) {
-        const i = this._lastSlot;
-        this.setState(s => {
-          const rot = s.rot.slice(), flash = s.flash.slice();
-          rot[i] = 0;
-          flash[i] = (flash[i] + 1) % 2;
-          return { rot: rot, flash: flash, changed: i };
-        });
+        // back from a single swap, or back from the all-at-once Tear/Pour/Stir moment
+        if (this._lastSlot === -2) {
+          this.setState(s => ({ rot: [0, 0, 0], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
+        } else {
+          const i = this._lastSlot;
+          this.setState(s => {
+            const rot = s.rot.slice(), flash = s.flash.slice();
+            rot[i] = 0;
+            flash[i] = (flash[i] + 1) % 2;
+            return { rot: rot, flash: flash, changed: i };
+          });
+        }
         this._away = false;
       } else {
+        this._n = (this._n || 0) + 1;
+        if (this._firstDone && this._n % 4 === 0) {
+          // Oct 27 (Scott): Tear, Pour, Stir land together, all three lines at once
+          this._lastSlot = -2;
+          this.setState(s => ({
+            rot: this.wordPools.map(p => p.length - 1),
+            flash: s.flash.map(f => (f + 1) % 2),
+            changed: -2
+          }));
+          this._away = true;
+        } else {
         let i, v;
         if (!this._firstDone) { i = 2; v = 1; this._firstDone = true; }
         else {
           i = Math.floor(Math.random() * 3);
           if (i === this._lastSlot) i = (i + 1 + Math.floor(Math.random() * 2)) % 3;
-          v = 1 + Math.floor(Math.random() * (this.wordPools[i].length - 1));
+          v = 1 + Math.floor(Math.random() * (this.wordPools[i].length - 2));
         }
         this._lastSlot = i;
         this.setState(s => {
@@ -3707,6 +3723,7 @@ class Component extends DCLogic {
           return { rot: rot, flash: flash, changed: i };
         });
         this._away = true;
+        }
       }
       this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);   // Oct 16 (Scott): desktop holds each word three minutes
     };
@@ -3826,7 +3843,7 @@ class Component extends DCLogic {
 
   slotVals(i) {
     const idx = this.state.rot[i] || 0;
-    const anim = this._rotRunning && this.state.changed === i && !this.reducedMotion()
+    const anim = this._rotRunning && (this.state.changed === i || this.state.changed === -2) && !this.reducedMotion()
       ? (this.state.flash[i] ? 'rcxGlitchB' : 'rcxGlitchA') + ' 170ms steps(5,end) 1'
       : 'none';
     return {

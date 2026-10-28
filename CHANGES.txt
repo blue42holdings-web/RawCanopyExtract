@@ -310,3 +310,4 @@ Oct 27 2026 (night, last+6): gold line IN THE MAGAZINES above the magazine row; 
 Oct 27 2026 (night, last+7): coming-soon strips now start with the mushroom name and say fictional: 'QUARTER STEPS: FICTIONAL ORIGIN STORY COMING SOON' and 'TURKEY TAIL: FICTIONAL ORIGIN STORY COMING SOON'.
 
 Oct 27 2026 (night, last+8): phone: the group behind IN THE MAGAZINES, the magazine row and MEET THE THREE is pure black; the ocean background fades up just under the Lion's Mane Life / Proof switch (home-graphic.js, --hgfade measured live).
+Oct 27 (late): Tear/Pour/Stir now land together on all three rotator lines, then everything flips back; tighter spacing under IN THE MAGAZINES and above MEET THE THREE.
