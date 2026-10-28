@@ -332,3 +332,4 @@ Oct 28 2026 (morning): Shop page: everything behind the boxes is black (blue sky
 Oct 28 2026 (morning): the mountain biker is gone for good: front page Cordyceps THE TRAIL box now the gym photo (how-gym-coffee-crop.jpg), Cordyceps page How It's Made box now the gym high five (friends-workout.webp).
 Oct 28 2026 (morning): main page heading now TRIPLE POWER FUNGI (home-graphic.js v33).
 Oct 28 2026 (morning): Lab Report page is white top to bottom again (removed the black page override receipts-black-oct28, white lot number band, white teaching section; boxes stay black with gold frames).
+Oct 28 2026 (morning): the three mushroom name boxes lower on the main page (Lion's Mane, Cordyceps, Turkey Tail) now have the same white marble look as the three buttons at the top (home-graphic.js v34, marbleTitles).
