@@ -290,3 +290,5 @@ Oct 27 2026 (night): RCX field pattern fixed everywhere. assets/pattern-field-bo
 Oct 27 2026 (night): slot machine losing sound ("wah wah") dropped two octaves with a low sub thud (find-the-mushroom.html).
 
 Oct 27 2026 (night): home page order is now seal + three packets (hero), the green "Uncompromising, by design" box, then the three white mushroom buttons (home-graphic.js splits the box out and orders it first in .home-bgwrap). Origin-story strip made low profile (about 50px tall, one line, small CLICK circle). Rotator words: Portion/Tear (line 1), Pour (line 2), Stir (line 3) added to the random pool.
+
+Oct 27 2026 (night, later): green "Uncompromising, by design" box moved again, now directly under the three white mushroom buttons (above the slot machines). Replaces the earlier under-the-hero placement.
