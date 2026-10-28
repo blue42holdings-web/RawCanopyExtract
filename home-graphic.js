@@ -178,7 +178,7 @@
     var pv = m.previousElementSibling; if (pv && pv.classList.contains('hg-meet')) return;
     [].forEach.call(document.querySelectorAll('.hg-meet'), function (o) { o.remove(); });
     var d = document.createElement('div'); d.className = 'hg-meet'; d.setAttribute('data-noswipe', '1');
-    d.innerHTML = '<span>TRIPLE POWER FUNGI</span>';
+    d.innerHTML = '<span>MEET OUR TRIPLE POWER FUNGI</span>';
     m.parentNode.insertBefore(d, m);
   }
   function setFade() {   // distance from the top of the group to just under the Lion's Mane Life / Proof switch
@@ -236,7 +236,7 @@
       var h = t.querySelector('h2'), pp = t.querySelector('p'), sp = pp && pp.querySelector('span');
       if (h) { h.style.setProperty('color', '#14110C', 'important'); h.style.setProperty('text-shadow', 'none', 'important'); }
       if (pp) { pp.style.setProperty('color', '#14110C', 'important'); pp.style.setProperty('text-shadow', 'none', 'important'); }
-      if (sp) { sp.style.setProperty('color', '#6B4608', 'important'); sp.style.setProperty('text-shadow', 'none', 'important'); }
+      if (sp) { sp.style.setProperty('color', '#14110C', 'important'); sp.style.setProperty('text-shadow', 'none', 'important'); }
     });
   }
   function run() {
