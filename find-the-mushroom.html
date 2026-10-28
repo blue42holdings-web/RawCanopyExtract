@@ -285,9 +285,9 @@ window.SFX=(function(){
         [o,o2,v].forEach(function(x){x.start(st);x.stop(st+len+.1);});
       }
       // Oct 27 (Scott): deeper. Everything two octaves down (tuba territory), darker mute, plus a low sub thud under each beat.
-      tone('sine',58,40,t,.28,.55,.004);tone('sine',46,30,t+.36,.8,.6,.004);
-      bone(58.3,t,.3,.985);      // wah
-      bone(51.9,t+.36,.8,.85);   // waaah, sagging down
+      // Oct 28 (Scott): only the second of the two tones, the long sagging waaah, starting right away
+      tone('sine',46,30,t,.8,.6,.004);
+      bone(51.9,t,.8,.85);   // waaah, sagging down
     },
     weak:function(){   // their mushroom finally turns up: it climbs like a win... then sinks back down, deflated
       var c=ac();if(!c)return;var t=c.currentTime+.04;
