@@ -57,13 +57,13 @@
         // Oct 18 (Scott): one steady 200px dissolve from the black above into cream (was plain black)   // Oct 16 (Scott): no white at the top of About; black behind the top box and the story boxes
       if (br.style.getPropertyValue('background-image') !== CW) { br.style.setProperty('background', 'none', 'important'); br.style.setProperty('background-image', CW, 'important'); br.style.setProperty('background-color', 'transparent', 'important'); br.classList.add('rcx-abx', 'rcx-abwhite'); }
       [].forEach.call(br.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
-      var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#7a5a1e', 'important');
+      var bk = br.querySelector('.ab-brand-k'); if (bk) bk.style.setProperty('color', '#D4A24A', 'important');
       
       // and white all the way up behind the story boxes too
       if (sh && !sh.__skyThru) { sh.__skyThru = 1; sh.style.setProperty('background', 'transparent', 'important'); sh.style.setProperty('background-image', 'none', 'important'); sh.style.setProperty('background-color', 'transparent', 'important'); sh.classList.add('rcx-abx'); }   // Oct 16 (Scott): the pink sky runs down behind the story boxes, then fades to black
       if (sh) [].forEach.call(sh.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && k.style.display !== 'none') k.style.setProperty('display', 'none', 'important'); });
       // Oct 18 (Scott): phone, only a little black under the story box, then a big 200px dissolve from black into the cream of About The Brand
-      if (br.style.getPropertyValue('padding-top') !== '153px') br.style.setProperty('padding-top', '153px', 'important');   // Oct 20 (Scott): same space above About The Brand as above Compost The Box (67px from the story box); set outright every pass so nothing resets it
+      if (br.style.getPropertyValue('padding-top') !== '118px') br.style.setProperty('padding-top', '118px', 'important');   // Oct 20 (Scott): same space above About The Brand as above Compost The Box (67px from the story box); set outright every pass so nothing resets it
       // Oct 17 (Scott): phone, the pink sky runs the full length of the story boxes, fading to black right where About The Brand begins
       var bsec = A.querySelector('section[data-m="about-brand"]'); if (bsec && bsec.style.getPropertyValue('margin-top') !== '-110px') { bsec.style.setProperty('margin-top', '-110px', 'important'); bsec.style.setProperty('z-index', '0', 'important'); }   // Oct 18 (Scott): was 140px of black, then 40px; now the dissolve starts about an inch and a half sooner, rising up beside the bottom of the story box
       if (sh && sh.style.getPropertyValue('z-index') !== '2') { sh.style.setProperty('position', 'relative', 'important'); sh.style.setProperty('z-index', '2', 'important'); }
