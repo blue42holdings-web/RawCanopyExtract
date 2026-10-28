@@ -313,3 +313,4 @@ Oct 27 2026 (night, last+8): phone: the group behind IN THE MAGAZINES, the magaz
 Oct 27 (late): Tear/Pour/Stir now land together on all three rotator lines, then everything flips back; tighter spacing under IN THE MAGAZINES and above MEET THE THREE.
 Oct 27 (late): phone mushroom titles/subtitles larger; subtitles now 'a nootropic for focus and memory as you age', 'an adaptogen for stamina and endurance / a stronger immune system'.
 Oct 27 (late): Cordyceps strip fixed (was misheard as QUARTER STEPS); Lion's Mane strip now LIVE NOW; coming soon strips muted.
+Oct 27 (late): fixed blur band that sat over IN THE MAGAZINES; seam blur now skips the gold section headings.
