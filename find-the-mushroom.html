@@ -239,7 +239,8 @@ window.SFX=(function(){
   var ctx=null,master=null,tick=null,kick=null;
   function ac(){
     if(!ctx){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;
-      try{ctx=new AC();var comp=ctx.createDynamicsCompressor();master=ctx.createGain();master.gain.value=.7;master.connect(comp);comp.connect(ctx.destination);}catch(e){ctx=null;return null;}}
+      try{var P=null;try{if(parent!==window&&parent.__rcxAudioCtx&&parent.__rcxAudioCtx.state!=='closed')P=parent.__rcxAudioCtx;}catch(e){}   /* Oct 28 (Scott): share the page's own audio so the Sound Bath is never interrupted by a second audio engine */
+        ctx=P||new AC();var comp=ctx.createDynamicsCompressor();master=ctx.createGain();master.gain.value=.7;master.connect(comp);comp.connect(ctx.destination);}catch(e){ctx=null;return null;}}
     if(ctx.state==='suspended'){try{ctx.resume();}catch(e){}}
     return ctx;
   }
