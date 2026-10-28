@@ -302,3 +302,5 @@ Oct 27 2026 (night, last+2): the heading above the slot machines now reads WHY W
 Oct 27 2026 (night, last+3): WHY WE'RE DIFFERENT heading made larger (fills the line) and the black gap above it removed.
 
 Oct 27 2026 (night, last+4): WHY WE'RE DIFFERENT slightly smaller and centered vertically between the green box and the slot machine box (measured 27 px above, 27 px below).
+
+Oct 27 2026 (night, last+5): gap above the green box cut from 22 px to 8 px, the same spacing as between the mushroom rows.
