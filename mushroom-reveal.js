@@ -14,7 +14,7 @@
     // Oct 21 (Scott): The First Cast zoomed in so the fishing pole shows; the mountain biker and the paddle boarder are gone (never use the biker);
     // The Morning is office thinking, The Next Generation is a parent reading with the kids; lab cards get their own lab photos
     "Lion's Mane": [[/^THE FIRST CAST/, 'lm-kickoff-fishing-sunset.jpg', '66% 45%', 1.2], [/^THE MORNING/, 'lm-office-red-mugs.jpg', '70% 50%'],
-      [/^THE NEXT GENERATION/, 'lm-family-reading.jpg', '50% 40%'], [/^LAB REPORT . HUMAN/, 'lab-lm-gloves.jpg', '50% 50%'], [/^LAB REPORT . PUBMED/, 'lab-lm-rack-aisle.jpg', '50% 50%']]
+      [/^THE NEXT GENERATION/, 'lm-family-reading.jpg', '50% 40%'], [/^LAB REPORT . PUBMED/, 'lab-lm-rack-aisle.jpg', '50% 50%']]
   };
   window.__rcxPhoneSwap = SWAP;   // Oct 17: nav-extras leaves these boxes alone on the phone, so nothing flashes underneath
   var css = document.createElement('style');
