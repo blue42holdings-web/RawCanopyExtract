@@ -769,7 +769,7 @@
     var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
     [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
     // Oct 11: both boxes show when a page opens and whenever you tap, then fade away after 10 quiet seconds
-    var mn = document.querySelector('button[data-page="receipts"]:not([data-m])'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
+    var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
     var awake = !menuOpen && Date.now() - lastWake < 3500;
     if (menuOpen) [btn, rbtn].forEach(function (b) { if (b) { b.style.transition = 'opacity .1s'; b.style.opacity = '0'; b.style.pointerEvents = 'none'; } }); else [btn, rbtn].forEach(function (b) { if (b && b.style.transition === 'opacity .1s') b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
     var so = awake ? '1' : '0'; if (btn.style.opacity !== so) { btn.style.opacity = so; btn.style.pointerEvents = awake ? 'auto' : 'none'; }
