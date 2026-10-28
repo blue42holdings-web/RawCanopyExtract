@@ -3025,7 +3025,7 @@ class Component extends DCLogic {
     plan: { lm: 'once', cd: 'once', rs: 'once', combo: 'once', lmr: 'once', cdr: 'once', rsr: 'once', cbr: 'once' },
     qty: { lm: 1, cd: 1, rs: 1, combo: 1, lmr: 1, cdr: 1, rsr: 1, cbr: 1 },
     notified: {}, signedUp: false,
-    rot: [0, 0, 0], flash: [0, 0, 0], changed: -1
+    rot: (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) ? [0, 0, 0] : [3, 3, 4], flash: [0, 0, 0], changed: -1
   };
 
   wordPools = [
@@ -3061,6 +3061,14 @@ class Component extends DCLogic {
     if (this._away == null) this._away = false;
     if (this._firstDone == null) this._firstDone = false;
     const step = () => {
+      if (!this._introDone) {
+        // Oct 28 (Scott): opens on Tear. Pour. Stir. for five seconds, then Measured. Tested. Published.
+        this._introDone = true;
+        this.setState(s => ({ rot: [0, 0, 0], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
+        this._away = false;
+        this._rotT = setTimeout(step, 4000);
+        return;
+      }
       if (this._away) {
         // back from a single swap, or back from the all-at-once Tear/Pour/Stir moment
         if (this._lastSlot === -2) {
@@ -3106,7 +3114,7 @@ class Component extends DCLogic {
       }
       this._rotT = setTimeout(step, 4000);
     };
-    this._rotT = setTimeout(step, 4000);
+    this._rotT = setTimeout(step, this._introDone ? 4000 : 5000);
   };
 
   setHeroSeal = (n) => {

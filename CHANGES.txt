@@ -321,3 +321,4 @@ Oct 28: removed the SOON circle from the two coming-soon strips.
 Oct 28: removed the brushed streak texture behind CLEAN. NO MESS. and tightened the space above it.
 Oct 28: badge band on every page: RECYCLABLE STEEL TIN now RECYCLABLE; every label one line; space above symbols equals space below words (34px); RCX field shifted up 10px and scrolls with the page.
 Oct 28: Lion's Mane By The Numbers photo removed (black); Receipts lab report cards redone (black, gold frame, Bebas + Playfair); Why One Ingredient red removed at bottom; About: cream removed behind About The Brand and Compost The Box, gold headings, less space above Compost; FAQ forest removed (black).
+Oct 28: the site opens on TEAR. POUR. STIR. for five seconds, then flips to MEASURED. TESTED. PUBLISHED. and carries on rotating.
