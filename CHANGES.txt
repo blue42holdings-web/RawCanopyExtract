@@ -312,3 +312,4 @@ Oct 27 2026 (night, last+7): coming-soon strips now start with the mushroom name
 Oct 27 2026 (night, last+8): phone: the group behind IN THE MAGAZINES, the magazine row and MEET THE THREE is pure black; the ocean background fades up just under the Lion's Mane Life / Proof switch (home-graphic.js, --hgfade measured live).
 Oct 27 (late): Tear/Pour/Stir now land together on all three rotator lines, then everything flips back; tighter spacing under IN THE MAGAZINES and above MEET THE THREE.
 Oct 27 (late): phone mushroom titles/subtitles larger; subtitles now 'a nootropic for focus and memory as you age', 'an adaptogen for stamina and endurance / a stronger immune system'.
+Oct 27 (late): Cordyceps strip fixed (was misheard as QUARTER STEPS); Lion's Mane strip now LIVE NOW; coming soon strips muted.
