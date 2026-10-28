@@ -109,9 +109,11 @@
 /* Oct 15 (late): About top box, desktop. The vane cutout was sized against a bigger box than the photo, so two vanes showed.
    Pin the cutout to exactly where the photo is drawn. Headline in the middle of the box. */
 (function () {
-  var IW = 0, IH = 0, im = new Image(); im.onload = function () { IW = im.naturalWidth; IH = im.naturalHeight; }; im.src = 'assets/photo/about-colestin-windvane-flip.jpg';
+  var IW = 0, IH = 0, im = new Image(); im.onload = function () { IW = im.naturalWidth; IH = im.naturalHeight; };
   function run() {
-    if (innerWidth < 768 || !IW) return;
+    if (innerWidth < 768) return;
+    if (!im.src) { var s0 = document.querySelector('section[data-m="about-hero"]'); if (s0 && s0.offsetHeight) im.src = 'assets/photo/about-colestin-windvane-flip.jpg'; }   // Oct 27: only fetched once the About page is showing
+    if (!IW) return;
     var s = document.querySelector('section[data-m="about-hero"]'); if (!s || !s.offsetHeight) return;
     var ph = [].filter.call(s.children, function (k) { return !k.hasAttribute('data-lift-layer') && /windvane/.test(getComputedStyle(k).backgroundImage); })[0] || s;
     var layer = s.querySelector('[data-lift-layer]'); if (!layer) return;

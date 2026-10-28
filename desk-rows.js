@@ -121,7 +121,9 @@
   }
   function forward(e) {
     // one slow push in, using pixel sizes so it can animate (cover can't)
-    if (e.__fwd || e.hasAttribute('data-lift-bg') || e.classList.contains('mx-lab')) return; var u = urlOf(e); if (!u) return; e.__fwd = 1;
+    if (e.__fwd || e.hasAttribute('data-lift-bg') || e.classList.contains('mx-lab')) return; var u = urlOf(e); if (!u) return;
+    if (!e.getClientRects().length) { if (!e.__fwdW && window.IntersectionObserver) { e.__fwdW = 1; var wio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { wio.disconnect(); e.__fwdW = 0; forward(e); } }); wio.observe(e); } return; }   // Oct 27: a hidden box must not download its photo
+    e.__fwd = 1;
     var im = new Image(); im.onload = function () {
       var r = e.getBoundingClientRect(), k = Math.max(r.width / im.naturalWidth, r.height / im.naturalHeight), w = Math.ceil(im.naturalWidth * k), h = Math.ceil(im.naturalHeight * k);
       var cs = getComputedStyle(e), ps = cs.backgroundPosition.split(','), pos = ps[ps.length - 1].trim();

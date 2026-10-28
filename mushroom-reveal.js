@@ -34,6 +34,7 @@
   function size(url, cb) { if (cache[url]) return cb(cache[url]); var im = new Image(); im.onload = function () { cache[url] = [im.naturalWidth, im.naturalHeight]; cb(cache[url]); }; im.src = url; }
   function prep(el, page) {
     if (el.__rv || el.hasAttribute('data-ms-card')) return;
+    if (!el.getClientRects().length) return;   // Oct 27: a hidden box must not download its photo
     var cs = getComputedStyle(el), m = cs.backgroundImage.match(/url\(["']?([^"')]*assets\/photo\/[^"')]+)["']?\)/);
     var L0 = SWAP[page], t0 = (el.innerText || '').trim().toUpperCase();
     if (!m && L0 && el.closest('.cx-track')) for (var j = 0; j < L0.length; j++) if (L0[j][0].test(t0)) { m = [0, 'assets/photo/' + L0[j][1]]; break; }   // a box with no photo yet gets one
