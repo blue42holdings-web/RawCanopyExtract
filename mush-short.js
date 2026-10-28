@@ -70,7 +70,7 @@
     "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
     'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', '84% 40%'],   // Oct 22 (Scott): fill the box, centered on the woman on the right
                    fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
-    'Turkey Tail': { fr: ['waterfall-stones.jpg', '62% 50%'] }
+    'Turkey Tail': { fr: ['tt-fest-wristbands.jpg', '42% 50%'] }   // Oct 28 (Scott): the concert wristbands replace the hiker
   };
   var dims = {};
   function nat(u, cb) { if (dims[u]) return cb(dims[u]); var im = new Image(); im.onload = function () { dims[u] = [im.naturalWidth, im.naturalHeight]; cb(dims[u]); }; im.src = 'assets/photo/' + u; }
