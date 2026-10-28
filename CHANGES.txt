@@ -280,3 +280,8 @@ Oct 27 (late evening): smoother auto scroll on THE ROAR OF THE MOUNTAIN page (Sc
 - Files: index.html, 404.html (kept in step), site/index.html and site/404.html (kept in step)
 - Backups: backups/index-before-2026-10-27-smooth.html and backups/404-before-2026-10-27-smooth.html
 - To dial the pace back: change 170 in moveTo (smaller number = slower, longer glide)
+
+Oct 27 (night): origin story strip on the home page now carries the round CLICK button
+- Scott asked for a CLICK button like the one on the Lion's Mane story card. The strip's small play arrow is replaced by the same round black button with the gold ring and CLICK (58 px on the strip, the story card's is 62 px). Strip stays skinny (88 px high on desktop).
+- Files: index.html (strip), 404.html, site/index.html, site/404.html (style block kept in step)
+- Checked on desktop 1440 wide and phone 390 wide: no word left alone on a line, the whole strip still opens The Roar of the Mountain page.
