@@ -262,3 +262,21 @@ FILES THAT CHANGED
 - site/index.html and site/404.html (kept in step)
 - RawCanopyExtract-site-text.txt (regenerated wording)
 - CHANGES.txt
+
+RAW CANOPY EXTRACT — DELIVERY, October 27, 2026 (evening)
+1. Home page, phone and desktop: a new strip right under the Lion's Mane row, "Listen to the fictional origin story, The Roar of the Mountain · Lion's Mane", with a play button. It opens the Lion's Mane origin story page.
+2. Desktop menu: hovering Lion's Mane under The Mushrooms now opens a small menu to the right with ORIGIN STORY.
+3. Phone menu: ORIGIN STORY now sits indented under Lion's Mane.
+FILES THAT CHANGED
+- index.html
+- 404.html (kept in step with index.html)
+- site/index.html and site/404.html (kept in step)
+- backups/index-before-2026-10-27-origin.html and backups/404-before-2026-10-27-origin.html (copies before this change)
+- CHANGES.txt
+
+Oct 27 (late evening): smoother auto scroll on THE ROAR OF THE MOUNTAIN page (Scott watched it on desktop with a friend: the scroll stuttered)
+- Cause: the film scrolls the page to each picture on its own. A page only scrolls in whole pixels, and the old 4.5 second cosine glide spent about 60 percent of its frames moving 0 or 1 pixel (the stutter). Measured before: 142 of 244 frames at 1 pixel or less, 33 frames that did not move at all.
+- Fix (moveTo in index.html): the glide now covers the distance at about 170 pixels a second (never longer than the old lead in, never shorter than 0.6 seconds), ramps up quickly and settles softly. Measured after: 12 to 16 frames at 1 pixel or less, 2 frames that did not move. Same cue times, the picture simply arrives sooner in the lead in and then rests while it slowly zooms.
+- Files: index.html, 404.html (kept in step), site/index.html and site/404.html (kept in step)
+- Backups: backups/index-before-2026-10-27-smooth.html and backups/404-before-2026-10-27-smooth.html
+- To dial the pace back: change 170 in moveTo (smaller number = slower, longer glide)
