@@ -315,3 +315,4 @@ Oct 27 (late): phone mushroom titles/subtitles larger; subtitles now 'a nootropi
 Oct 27 (late): Cordyceps strip fixed (was misheard as QUARTER STEPS); Lion's Mane strip now LIVE NOW; coming soon strips muted.
 Oct 27 (late): fixed blur band that sat over IN THE MAGAZINES; seam blur now skips the gold section headings.
 Oct 28: story strips are one line, larger, full brightness: LIVE NOW: LION'S MANE ORIGIN STORY / COMING SOON: CORDYCEPS ORIGIN STORY / COMING SOON: TURKEY TAIL ORIGIN STORY ('fictional' dropped to fit one line).
+Oct 28: home page background is plain black everywhere (no beach photo behind the mushrooms, no red behind Clean. No mess.). Temporary until Scott's sunset photos.
