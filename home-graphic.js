@@ -170,7 +170,7 @@
       p.style.setProperty('white-space', 'nowrap', 'important');
       if (p.firstChild && p.firstChild.style) p.firstChild.style.setProperty('white-space', 'nowrap', 'important');
       var pw = p.clientWidth, pn = p.firstChild.getBoundingClientRect().width;
-      if (pn > pw) p.style.setProperty('font-size', Math.floor(parseFloat(t.style.getPropertyValue('font-size')) * pw / pn * 0.98) + 'px', 'important');
+      if (pn > pw * 0.9) p.style.setProperty('font-size', Math.floor(parseFloat(t.style.getPropertyValue('font-size')) * pw * 0.9 / pn) + 'px', 'important');
     }
     });
   }
