@@ -18,7 +18,7 @@
     var nat = natural(p);
     if (!nat || avail <= 0) return;
     var want = Math.max(MIN, Math.min(BIG, Math.floor(cur * avail / nat * 0.97)));
-    if (/^Tear\. Pour\. Stir\.$/.test(text)) want = Math.min(BIG, Math.floor(cur * avail / nat * 0.97));
+    want = Math.min(BIG, Math.floor(cur * avail / nat * 0.97));
     if (Math.abs(want - cur) < 1) return;
     p.style.setProperty('transition', 'font-size .35s ease');
     p.style.setProperty('font-size', want + 'px', 'important');
