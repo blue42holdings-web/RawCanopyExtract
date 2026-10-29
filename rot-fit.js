@@ -1,6 +1,6 @@
 /* Oct 28 (Scott): on the phone landing, Tear. Pour. Stir. runs large; every other word set is sized down so the whole line fits on the page, then it grows again when Tear. Pour. Stir. comes back. */
 (function () {
-  var BIG = 40, MIN = 17, timer = null, node = null;
+  var BIG = 33, MIN = 17, timer = null, node = null;
   function slots(p) { return [].slice.call(p.children); }
   function natural(p) {   // width of the words at the current font size, not the animated slot widths
     var w = 0, kids = slots(p);
