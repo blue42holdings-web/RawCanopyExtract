@@ -1272,7 +1272,7 @@ html body [data-screen-label="Receipts"]>section:first-child>div>div[style*="bor
 <style>html body [data-screen-label="Shop"] .shoptg-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin:26px 0 0;font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;font-size:18px;color:#D4A24A}html body [data-screen-label="Shop"] .shoptg-ar{width:56px;height:56px;border-radius:50%;border:3px solid #D4A24A;background:#000;color:#D4A24A;font-size:30px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;-webkit-tap-highlight-color:transparent}html body [data-screen-label="Shop"] .shoptg-ar:active{background:#D4A24A;color:#000}html body [data-screen-label="Shop"] .shoptg-nl{min-width:90px;text-align:center}html body [data-screen-label="Shop"] #shoptg-box:not(:checked) ~ .shoptg-nav .shoptg-nl2,html body [data-screen-label="Shop"] #shoptg-box:checked ~ .shoptg-nav .shoptg-nl1{display:none}html body [data-screen-label="Shop"]::after{background:transparent !important}html body [data-screen-label="Shop"]>section:nth-of-type(2){background:linear-gradient(#000 0,rgba(0,0,0,.28) 260px,rgba(0,0,0,.28) calc(100% - 260px),rgba(0,0,0,.88) 100%) !important}html body [data-screen-label="Shop"]>section[data-m="shop-research"]{background:linear-gradient(rgba(0,0,0,.88) 0,rgba(0,0,0,.35) 220px,rgba(0,0,0,.35) calc(100% - 300px),#000 calc(100% - 40px)),url('assets/photo/volcano-fountain.jpg') center/cover no-repeat !important}html body [data-screen-label="Shop"]>section[data-m="soon-sec"]{background:rgba(0,0,0,.88) !important}</style>
 <style>html body [data-screen-label="Shop"] [data-m="1col"]>article{background:linear-gradient(rgba(10,10,9,.68),rgba(0,0,0,.76)) !important}</style>
 <style>[data-m="lm-bgwrap"]{position:relative;isolation:isolate;clip-path:inset(0)}[data-m="lm-bgwrap"]::before{content:"";display:block;position:sticky;top:0;height:100vh;margin-bottom:-100vh;z-index:-2;pointer-events:none;background:url('assets/photo/reef-aerial-aqua.jpg') center/cover no-repeat}[data-m="lm-bgwrap"]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#000 0,rgba(0,0,0,.7) 170px,rgba(0,0,0,.7) calc(100% - 170px),#000 100%)}html body [data-m="lm-bgwrap"]>section{background:transparent !important;background-image:none !important}html body [data-m="sbox"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),#000)}@media (max-width:767px){html body section[data-m="lm-hero"]+section{padding-left:12px !important;padding-right:12px !important}html body [data-screen-label="Shop"] .sr-sec{padding-bottom:28px !important}}</style>
-<style>[data-m="cd-bgwrap"]{position:relative;isolation:isolate;clip-path:inset(0)}[data-m="cd-bgwrap"]::before,[data-m="cd-bgwrap"]::after{display:none !important}html body [data-m="cd-bgwrap"] div:not([data-lift-layer]),html body [data-m="cd-bgwrap"] section.cx-sec{background-image:none !important}html body [data-m="cd-bgwrap"] section:not([data-m="num-cd"]),html body [data-m="cd-bgwrap"] [data-m="cd-studied"],html body [data-m="cd-bgwrap"]>div{background-color:transparent !important}html body [data-m="cd-bgwrap"] [data-m="num-cd"]{background:transparent !important}
+<style>[data-m="cd-bgwrap"]{position:relative;isolation:isolate;clip-path:inset(0)}[data-m="cd-bgwrap"]::before,[data-m="cd-bgwrap"]::after{display:none !important}html body [data-m="cd-bgwrap"] div:not([data-lift-layer]):not(.ml-img),html body [data-m="cd-bgwrap"] section.cx-sec{background-image:none !important}html body [data-m="cd-bgwrap"] section:not([data-m="num-cd"]),html body [data-m="cd-bgwrap"] [data-m="cd-studied"],html body [data-m="cd-bgwrap"]>div{background-color:transparent !important}html body [data-m="cd-bgwrap"] [data-m="num-cd"]{background:transparent !important}
 html body [data-m="cd-fbox"]{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),url('assets/photo/cd-stadium-sunset.webp') center/cover no-repeat !important;border:2px solid #D4A24A !important;border-radius:18px !important;padding:20px 18px !important;max-width:none !important}
 @media (max-width:767px){html body [data-m="cd-bgwrap"] section:not([data-m="num-cd"]){padding:16px 12px !important;min-height:0 !important}html body [data-m="cd-bgwrap"] [data-m="made-box"],html body [data-m="cd-bgwrap"] [data-m="cd-fbox"]{padding:16px 16px !important}html body [data-m="cd-bgwrap"] [data-m="made-box"] p,html body [data-m="cd-fbox"] p{font-size:16px !important;line-height:1.6 !important}html body [data-m="cd-bgwrap"] h2{margin-bottom:12px !important}html body [data-m="cd-bgwrap"] .cx-sec{padding:28px 0 !important}}</style>
 <style>html body [data-m="cd-bgwrap"] section.cx-sec.cx-sec[data-m="num-cd"]{background:transparent !important;background-color:transparent !important;background-image:none !important}html body [data-m="cd-bgwrap"] section.cx-sec .mx-wrap{background:transparent !important}</style>
@@ -3582,7 +3582,7 @@ class Component extends DCLogic {
   wordPools = [
     ['Open.', 'Rip.', 'Tear.'],
     ['Add.', 'Mix.', 'Pour.'],
-    ['Whisk.', 'Blend.', 'Stir.']
+    ['Whisk.', 'Blend.', '\u2003\u200C']
   ];
 
   reducedMotion() {
@@ -4891,7 +4891,7 @@ html body [data-screen-label="About"] section[data-m="about-brand"][data-m="abou
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
 <script src="site-extras.js?v=60"></script>
 <script src="nav-extras.js?v=50"></script>
-<script src="mushroom-reveal.js?v=11"></script>
+<script src="mushroom-reveal.js?v=12"></script>
 <script src="desk-rows.js?v=965"></script>
 <script src="phone-swipe.js?v=14"></script>
 <style>/* About: white comes in just above the compost box and fades back out below (Oct 10) */
@@ -6489,7 +6489,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=24"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=22"></script>
+<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=22"></script><script src="mug-slot.js?v=6"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=9"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
@@ -6590,7 +6590,7 @@ html body .ms-wrap .ml-shop button{font-family:'Bebas Neue',sans-serif;font-size
 .ml-hist .ml-btn{margin-top:auto}
 .ml-btn{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.16em;color:#D4A24A;background:none;border:2px solid #D4A24A;border-radius:999px;padding:10px 22px;text-decoration:none;cursor:pointer}
 .ml-card .cx-hd{display:none}</style>
-<script src="mush-lean.js?v=3"></script>
+<script src="mush-lean.js?v=4"></script>
 <style id="rc-top-oct28">/* Oct 28 (Scott): Lab Report page, no white showing through the corners of the top photo; no space above How To Read A Lab Report or The Three Dodges */
 html body [data-screen-label="Receipts"] aside.rc-hero{border-radius:0 !important}
 html body [data-screen-label="Receipts"] section.rc-sec[data-m="rc-read"][data-m="rc-read"],html body [data-screen-label="Receipts"] section.rc-sec[data-m="rc-dodges"][data-m="rc-dodges"]{padding-top:0 !important;margin-top:0 !important}
@@ -6626,5 +6626,6 @@ html body section[data-m="lm-hero"] > div:not([aria-hidden]) > div,html body sec
 html body section[data-m="lm-hero"] > div:not([aria-hidden]) > p,html body section[data-m="cdh-hero"] > div:not([aria-hidden]) > p,html body section[data-m="tth-hero"] > div:not([aria-hidden]) > p{width:100% !important;max-width:100% !important}
 html body section[data-m="lm-hero"] div:has(> span > button[aria-label]),html body section[data-m="cdh-hero"] div:has(> span > button[aria-label]),html body section[data-m="tth-hero"] div:has(> span > button[aria-label]){transform:translateX(calc(50vw - 120px)) !important}
 }</style>
+<style id="ml-card-black-oct28">html body .ml-card,html body .ml-card.ml-card{background-image:linear-gradient(160deg,#16120b,#0a0a0a) !important;background-color:#0a0a0a !important}</style>
 </body>
 </html>
