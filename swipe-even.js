@@ -8,7 +8,7 @@
   var ROWS = '.cx-track,.rit-grid,.rcx-swipe,.mx-grid';
   // phone framing for single photos Scott flagged (Oct 15 night): less sky, the people bigger
   var FRAME = [[/^YOUR WORKOUT ROUTINE/, null, 'auto 190%', '14% 64%'], [/^ON THE TRAIL/, 'a-rider-pausing-on-a-granite-ridge-ph-crop.jpg', 'auto 150%', '83% 72%'],
-    [/^THE BLEND TRICK/, 'mushroom-cabinet.jpg', 'cover', '50% 50%'],
+    [/^THE BLEND TRICK/, 'lm-macro-closeup.jpg', 'cover', '50% 50%'],
     [/^WHAT TO PUT IT IN/, 'own-waterfall-arms.jpg', 'cover', '50% 30%'], [/^HOW MUCH/, 'cd-golf-woman-sky.jpg', 'cover', '50% 50%'], [/^HOW TO MIX IT/, 'kitchen-shake.jpg', 'cover', '82% 45%']];   // How To Use: Josh at the waterfall, golf, mixing in the kitchen (Oct 21: the camp stove pour is the home seal photo, never here)
   var MUSH = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
   function pageOf(el) { var c = el.closest('[data-screen-label]'); return c ? c.getAttribute('data-screen-label') : ''; }
