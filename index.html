@@ -3576,13 +3576,13 @@ class Component extends DCLogic {
     plan: { lm: 'once', cd: 'once', rs: 'once', combo: 'once', lmr: 'once', cdr: 'once', rsr: 'once', cbr: 'once' },
     qty: { lm: 1, cd: 1, rs: 1, combo: 1, lmr: 1, cdr: 1, rsr: 1, cbr: 1 },
     notified: {}, signedUp: false,
-    rot: (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) ? [0, 0, 0] : [3, 3, 4], flash: [0, 0, 0], changed: -1
+    rot: (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) ? [2, 2, 2] : [2, 2, 2], flash: [0, 0, 0], changed: -1
   };
 
   wordPools = [
-    ['Measured.', 'Weighed.', 'Portion.', 'Tear.'],
-    ['Tested.', 'Assayed.', 'Screened.', 'Pour.'],
-    ['Published.', 'Portioned.', 'Posted.', 'Documented.', 'Stir.']
+    ['Open.', 'Rip.', 'Tear.'],
+    ['Add.', 'Mix.', 'Pour.'],
+    ['Whisk.', 'Blend.', 'Stir.']
   ];
 
   reducedMotion() {
@@ -3615,7 +3615,7 @@ class Component extends DCLogic {
       if (!this._introDone) {
         // Oct 28 (Scott): the site opens on Tear. Pour. Stir. for five seconds, then flips to Measured. Tested. Published.
         this._introDone = true;
-        this.setState(s => ({ rot: [0, 0, 0], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
+        this.setState(s => ({ rot: [2, 2, 2], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
         this._away = false;
         this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);
         return;
@@ -3623,12 +3623,12 @@ class Component extends DCLogic {
       if (this._away) {
         // back from a single swap, or back from the all-at-once Tear/Pour/Stir moment
         if (this._lastSlot === -2) {
-          this.setState(s => ({ rot: [0, 0, 0], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
+          this.setState(s => ({ rot: [2, 2, 2], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
         } else {
           const i = this._lastSlot;
           this.setState(s => {
             const rot = s.rot.slice(), flash = s.flash.slice();
-            rot[i] = 0;
+            rot[i] = 2;
             flash[i] = (flash[i] + 1) % 2;
             return { rot: rot, flash: flash, changed: i };
           });
@@ -3647,11 +3647,11 @@ class Component extends DCLogic {
           this._away = true;
         } else {
         let i, v;
-        if (!this._firstDone) { i = 2; v = 1; this._firstDone = true; }
+        if (!this._firstDone) { i = 2; v = 0; this._firstDone = true; }
         else {
           i = Math.floor(Math.random() * 3);
           if (i === this._lastSlot) i = (i + 1 + Math.floor(Math.random() * 2)) % 3;
-          v = 1 + Math.floor(Math.random() * (this.wordPools[i].length - 2));
+          v = Math.floor(Math.random() * (this.wordPools[i].length - 1));
         }
         this._lastSlot = i;
         this.setState(s => {
@@ -6489,7 +6489,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=24"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=1"></script>
+<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=2"></script><script src="foot-say.js?v=1"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=9"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
