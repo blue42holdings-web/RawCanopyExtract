@@ -231,10 +231,10 @@
   var phone = function () { return innerWidth < 768; };
   var DOWN = function () { return phone() ? 7 : 9; };   // Oct 15: desktop half as fast   // px per second at full speed, very slow
   var UP = function () { return phone() ? 25 : 9; };   // Oct 15 (late, Scott): desktop glides back up at the same slow speed it goes down     // px per second on the glide back to the top (Oct 15: slow on phones)
-  var IDLE = 20000, WAIT = 5000, START = function () { return phone() ? WAIT : 20000; };   // Oct 15: desktop waits 20s before it starts   // 20s after a touch; 5s rests at top and bottom (Oct 15)
+  var IDLE = 60000, WAIT = 45000, START = function () { return phone() ? WAIT : 20000; };   // Oct 29 (Scott): starts 40 seconds later than before: 45s after load, after a page change and at the top, 60s after a touch; the rest at the bottom stays 5s
   var RAMP_IN = 7000, EASE_OUT = 360;                      // 7 seconds to reach speed; slows over the last 360px
   var mode = 'wait', until = performance.now() + START(), pos = scrollY, last = 0, sdt = 1 / 60, ramp0 = 0;
-  var frac = null, shifted = false;
+  var shifted = false;
   function root() { return document.getElementById('dc-root'); }
   function unshift() { if (shifted) { var r = root(); if (r) r.style.transform = ''; shifted = false; } }
   function user() { unshift(); mode = 'wait'; until = performance.now() + IDLE; }
@@ -249,11 +249,7 @@
     return false;
   }
   function place(y) {
-    if (frac === null) { var b0 = Math.floor(y); jump(b0 + 0.5); frac = (scrollY % 1) !== 0; }   // can this browser scroll by part of a pixel?
-    unshift(); jump(y); return;   // Oct 15: no more sub-pixel shift of the whole page. Shifting #dc-root made the page jump 40px for one frame every 15s or so (the glitch).
-    var base = Math.floor(y), r = root();
-    if (Math.round(scrollY) !== base) jump(base);
-    if (r) { r.style.transform = 'translate3d(0,' + (-(y - base)).toFixed(3) + 'px,0)'; shifted = true; }
+    unshift(); var d = window.devicePixelRatio || 1; jump(Math.round(y * d) / d);   // whole device pixels only, so every step is the same size (no jitter)
   }
   function blocked() {
     if (document.hidden) return true;
