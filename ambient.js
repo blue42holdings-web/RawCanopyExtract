@@ -126,6 +126,7 @@
       [40, 43, 45, 47, 48, 52, 55, 57, 59, 60],   // E minor, low
       [41, 44, 46, 48, 49, 53, 56, 58, 60, 61]    // F phrygian color
     ];
+    for (var di = DARK_SCALES.length - 1; di > 0; di--) { var dj = Math.floor(Math.random() * (di + 1)), dt = DARK_SCALES[di]; DARK_SCALES[di] = DARK_SCALES[dj]; DARK_SCALES[dj] = dt; }   // Oct 28: random opening key
     // half the time the whole piece starts in the low, serious mood; either way the two moods trade places along the way
     var SERIOUS = Math.random() < 0.5 ? 1 : 0;
     padBus.gain.value = 1;
@@ -615,9 +616,10 @@
       var tb = t0, b0 = base, nm = t0 + rnd(20, 30);
       while (tb < t0 + dur) { if (tb >= nm) { base = b0 * [1, 0.75, 1.333, 0.889, 1.2][Math.floor(Math.random() * 5)]; nm = tb + rnd(20, 30); } droneNote(tb, base, 1, 'sine', 0.5, 170); droneNote(tb + 1.2, base, 1.5, 'sine', 0.16, 190); droneNote(tb + 2.2, base, 2, 'sawtooth', 0.05, 220); tb += rnd(3.8, 4.8); }
     }
+    var BASES = [36.71, 41.2, 32.7, 38.89, 43.65, 34.65, 30.87], BASE0 = Math.floor(Math.random() * BASES.length);
     function scheduleAct() {
       var t = acts.t, dark = (acts.n % 2 === 0) ? MOOD0 : 1 - MOOD0;
-      var base = [36.71, 41.2, 32.7, 38.89][acts.n % 4];
+      var base = BASES[(BASE0 + acts.n) % BASES.length];   // Oct 28 (Scott): a different starting tone every time
       var build = acts.n === 0 ? 50 : rnd(42, 54), s1 = rnd(18, 24), s2 = rnd(18, 24), s3 = rnd(20, 28);
       // BUILD: all layers in
       natureTo(t, acts.n === 0 ? 0 : 0.02, 4);
