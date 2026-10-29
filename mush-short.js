@@ -2,7 +2,7 @@
    the top photo, then the evidence (what's been studied, the numbers and lab reports, the magazines and research),
    then how it's made (and why ours is made that way when most products are not), then the story box, then the fine print.
    Everything else is hidden on the phone only. Desktop keeps the full, in-depth page.
-   The full phone version is saved in backups/index-before-short-mushroom-2026-10-16.html. */
+   */
 (function () {
   var MQ = matchMedia('all');   // Oct 21 (Scott): desktop uses the same short mushroom pages as the phone
   var PAGES = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
