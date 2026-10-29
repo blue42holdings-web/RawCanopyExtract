@@ -1,7 +1,7 @@
 /* Oct 28 (Scott): pastel mushroom buttons, straight, gold framed, claim fills the box, gold shimmer, black and gold icon tile that pops */
 (function(){
 var P={'mx-lm':{bg:'#D3E6F7',bg2:'#BFD9F2',deep:'#1B3F6B',ink:'#1F2733',glow:'#8EC5F5'},
-'mx-cd':{bg:'#FCDCC8',bg2:'#F8C8AC',deep:'#8A3A10',ink:'#33241C',glow:'#FFB68A'},
+'mx-cd':{bg:'#D9F0D6',bg2:'#BFE5BA',deep:'#1F6B36',ink:'#1F3324',glow:'#8FD39A'},
 'mx-tt':{bg:'#E3D9F4',bg2:'#D2C3EE',deep:'#4B2A8A',ink:'#2B2340',glow:'#C6AEF2'}};
 var R={'m-lm':'mx-lm','m-cd':'mx-cd','m-rs':'mx-tt'};
 var GOLD='#D4A24A';
