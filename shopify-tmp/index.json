@@ -1,0 +1,12 @@
+{
+  "layout": "rcx",
+  "sections": {
+    "rcx_home": {
+      "type": "rcx-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "rcx_home"
+  ]
+}
