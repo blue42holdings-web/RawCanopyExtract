@@ -165,7 +165,7 @@
       [/^THE GRANDPARENTS/, 'lm-grandpa-reading.jpg', 'cover', '62% center'],   // Oct 17 (Scott): grandpa reading with his grandson
       [/^FURTHER READING/, 'lm-ski-lesson.jpg', 'cover', 'center 45%'], [/^THE NAMES IT GOES BY/, 'lm-how-made-desk.jpg', 'cover', 'center'],
       [/^THE OTHER TWO/, 'lm-crate.jpg', 'cover', 'center 45%'], [/^THE LOT SHIPPING/, 'extraction-book.jpg', 'cover', 'center 40%'],
-      [/^LAB REPORT . HUMAN TRIAL/, 'lm-hearts-sunset.jpg', 'cover', 'center 20%'], [/^LAB REPORT . PUBMED/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
+      [/^LAB REPORT . HUMAN TRIAL/, 'lm-hearts-sunset.jpg', 'cover', 'center 20%'], [/^LAB REPORT . NATIONAL LIBRARY/, 'parent-and-child-outdoors.jpg', 'cover', 'center 40%']],
     'Cordyceps': [[/^FURTHER READING/, 'cd-relay-college.jpg', 'cover', 'center 30%'], [/^THE NAMES IT GOES BY/, 'friends-workout.webp', 'cover', 'center'], [/^THE TRACK/, 'cd-track-runner.jpg', 'cover', '60% center'], [/^THE LONG HAUL/, 'cd-golf-mountains.jpg', 'cover', '35% center'], [/^THE REACTION TIME/, 'cd-golf-woman-sky.jpg', 'cover', '62% center'], [/^LAB REPORT . HUMAN/, 'own-baseball.jpg', '125% auto', 'center 30%'],
       [/^GAME NIGHT/, 'why-ballfield-dusk-vignette-v2.jpg', 'cover', 'center'], [/^THE RIVER/, 'how-paddleboard-river.webp', 'auto 125%', 'center 80%'],
       [/^MEASURED/, 'mess-floor.jpg', 'cover', 'center']],
