@@ -16,12 +16,12 @@
     if (ls.length !== 3) return;
     var W = Math.round(0.8 * Math.min(box.clientWidth - 2, isPh ? 9999 : 980)); if (W <= 0) return;   // Oct 29 (Scott): the whole block is 20% smaller
     var bs = getComputedStyle(box), ratio = parseFloat(bs.letterSpacing) / parseFloat(bs.fontSize); if (!isFinite(ratio)) ratio = .05;   // the box's letter spacing as a fraction of its size
-    ls.forEach(function (l) {
-      var w = width100(l, l.textContent.replace(/\s+/g, ' ').trim(), ratio);
-      if (w <= 0) return;
-      var fs = (W * 100 / w).toFixed(2);
+    var fs = ls.map(function (l) { var w = width100(l, l.textContent.replace(/\s+/g, ' ').trim(), ratio); return w > 0 ? W * 100 / w : 0; });
+    fs[0] = fs[2] = Math.min(fs[0], fs[2]);   // Oct 29 (Scott): the first and last lines are the same size; the long middle line is the smaller one
+    ls.forEach(function (l, i) {
+      if (!fs[i]) return;
       l.style.setProperty('display', 'block', 'important'); l.style.setProperty('white-space', 'nowrap', 'important');
-      l.style.setProperty('font-size', fs + 'px', 'important'); l.style.setProperty('line-height', '1.12', 'important');
+      l.style.setProperty('font-size', fs[i].toFixed(2) + 'px', 'important'); l.style.setProperty('line-height', '1.12', 'important');
       l.style.setProperty('letter-spacing', ratio + 'em', 'important');
     });
   }

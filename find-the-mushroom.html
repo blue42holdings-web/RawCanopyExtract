@@ -54,8 +54,6 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .lever .arm{position:absolute;left:11px;bottom:30px;width:8px;height:120px;border-radius:4px;background:linear-gradient(90deg,#7c7c90,#ffffff 50%,#7c7c90);transform-origin:50% 100%}
 .lever .ball{position:absolute;left:-1px;top:-24px;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb3b3,#ff2b2b 45%,#8a0000 90%);box-shadow:0 0 14px rgba(255,43,43,.9)}
 .hint{position:absolute;right:-33px;top:250px;width:30px;font-size:11px !important;text-align:center;font-family:'Bebas Neue';font-size:12px;letter-spacing:.1em;color:#ffd84f;text-shadow:0 0 6px #ffd84f;line-height:1.05}
-.cap{font-size:17px;line-height:1.35;margin:12px 0 0}
-.cap b{color:#D4A24A;font-weight:500}
 .bar{height:50px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:19px;letter-spacing:.08em;color:#111;background:linear-gradient(100deg,#b8862f 0%,#E8B860 30%,#F6D58E 48%,#E8B860 62%,#c9973c 100%);box-shadow:0 0 18px rgba(212,162,74,.35)}
 
 .machine{isolation:isolate;animation:neon 2.4s ease-in-out infinite}
@@ -123,13 +121,10 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .machine.won .ring rect{animation-duration:.2s}
 
 /* Oct 22 2026 (Scott): every result and paragraph is a pyramid, short line on top, longest at the bottom, centered. */
-.res,.cap{text-align:center}
-.cap{margin-left:auto;margin-right:auto}
+.res{text-align:center}
 .wide .wrap{max-width:none !important}
 .wide .box{padding:22px 28px 24px}
-#cap2{color:#F6D58E}
 .wide .machine{max-width:470px;margin-left:auto !important;margin-right:auto !important}
-.wide .cap{text-align:center;max-width:470px;margin-left:auto;margin-right:auto}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
 </style></head><body><div class="wrap"><div class="box">
 <div class="q">WHAT’S REALLY IN THEIR MESSY MUSHROOM SCOOP?</div>
@@ -144,8 +139,6 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
   <div class="lever" id="lever" aria-label="Pull the handle" role="button" tabindex="0"><div class="base"></div><div class="arm" id="arm"><div class="ball"></div></div></div>
   <div class="hint">PULL<br>ME</div>
 </div>
-<p class="cap" id="cap1">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
-<p class="cap" id="cap2">Pre-measured packets, each with a single ingredient. Nothing hidden, everything gained.</p>
 </div>
 <script>
 if(/embed/.test(location.search))document.documentElement.classList.add('embed');if(/wide/.test(location.search))document.documentElement.classList.add('wide');
@@ -206,7 +199,7 @@ window.fitNm=function(span,txt,box,n,base){var w=(box.clientWidth-8-(n-1)*4)/n-6
   function again(){list.forEach(layout);}
   addEventListener('resize',again);addEventListener('load',again);if(document.fonts)document.fonts.ready.then(again);
   document.addEventListener('DOMContentLoaded',function(){
-    ['res','cap1','cap2'].forEach(function(id){var e=document.getElementById(id);if(e)PYR(e,e.innerHTML.replace(/<br\s*\/?>/g,' '));});
+    ['res'].forEach(function(id){var e=document.getElementById(id);if(e)PYR(e,e.innerHTML.replace(/<br\s*\/?>/g,' '));});
   });
   setInterval(function(){list.forEach(function(e){var w=e.clientWidth;if(e.__w!==w){e.__w=w;layout(e);}})},700);
 })();
