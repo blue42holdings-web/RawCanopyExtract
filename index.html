@@ -3353,7 +3353,7 @@ class Component extends DCLogic {
   wordPools = [
     ['Open.', 'Rip.', 'Tear.'],
     ['Add.', 'Mix.', 'Pour.'],
-    ['Whisk.', 'Blend.', '\uE000']
+    ['Whisk.', 'Blend.', 'Stir.', '\uE000']
   ];
 
   reducedMotion() {
@@ -3383,14 +3383,7 @@ class Component extends DCLogic {
     if (this._away == null) this._away = false;
     if (this._firstDone == null) this._firstDone = false;
     const step = () => {
-      if (!this._introDone) {
-        // Oct 28 (Scott): the site opens on Tear. Pour. Stir. for five seconds, then flips to Measured. Tested. Published.
-        this._introDone = true;
-        this.setState(s => ({ rot: [2, 2, 2], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
-        this._away = false;
-        this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);
-        return;
-      }
+      this._introDone = true;   // Oct 29 (Scott): the site opens on Tear. Pour. Stir. and holds; the first move is Stir. turning into the coffee cup, once
       if (this._away) {
         // back from a single swap, or back from the all-at-once Tear/Pour/Stir moment
         if (this._lastSlot === -2) {
@@ -3418,11 +3411,12 @@ class Component extends DCLogic {
           this._away = true;
         } else {
         let i, v;
-        if (!this._firstDone) { i = 2; v = 0; this._firstDone = true; }
+        if (!this._firstDone) { i = 2; v = this.wordPools[2].length - 1; this._firstDone = true; }
         else {
           i = Math.floor(Math.random() * 3);
           if (i === this._lastSlot) i = (i + 1 + Math.floor(Math.random() * 2)) % 3;
-          v = Math.floor(Math.random() * (this.wordPools[i].length - 1));
+          const opts = this.wordPools[i].map((_, k) => k).filter(k => k !== 2);
+          v = opts[Math.floor(Math.random() * opts.length)];
         }
         this._lastSlot = i;
         this.setState(s => {
@@ -6223,7 +6217,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=24"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=28"></script><script src="mug-slot.js?v=11"></script>
+<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=28"></script><script src="mug-slot.js?v=15"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=9"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
