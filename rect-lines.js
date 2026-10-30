@@ -13,11 +13,10 @@
   }
   function fit(box, isPh) {
     var ls = [].slice.call(box.children).filter(function (c) { return c.tagName === 'SPAN'; });
-    if (ls.length !== 3) return;
+    if (ls.length < 2) return;
     var W = Math.round(0.8 * Math.min(box.clientWidth - 2, isPh ? 9999 : 980)); if (W <= 0) return;   // Oct 29 (Scott): the whole block is 20% smaller
     var bs = getComputedStyle(box), ratio = parseFloat(bs.letterSpacing) / parseFloat(bs.fontSize); if (!isFinite(ratio)) ratio = .05;   // the box's letter spacing as a fraction of its size
     var fs = ls.map(function (l) { var w = width100(l, l.textContent.replace(/\s+/g, ' ').trim(), ratio); return w > 0 ? W * 100 / w : 0; });
-    fs[0] = fs[2] = Math.min(fs[0], fs[2]);   // Oct 29 (Scott): the first and last lines are the same size; the long middle line is the smaller one
     ls.forEach(function (l, i) {
       if (!fs[i]) return;
       l.style.setProperty('display', 'block', 'important'); l.style.setProperty('white-space', 'nowrap', 'important');
