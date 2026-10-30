@@ -1,6 +1,6 @@
 /* Oct 28 (Scott): the small seal at the top of the phone landing still spins its middle hexagon when tapped (same build as the big seal). */
 (function () {
-  var SRC = 'assets/seal-single-ingredient-organic.svg', txt = null;
+  var SRC = 'assets/seal-single-ingredient-organic.svg?v=4', txt = null;
   function monoOf(svg) { var k = [].filter.call(svg.children, function (e) { return e.tagName.toLowerCase() !== 'defs'; }); return k[k.length - 1]; }
   function mk() { var d = document.createElement('div'); d.innerHTML = txt; return d.firstElementChild; }
   function layer(el) { var d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;backface-visibility:hidden'; d.appendChild(el); return d; }
