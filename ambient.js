@@ -772,7 +772,7 @@
     [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
     // Oct 11: both boxes show when a page opens and whenever you tap, then fade away after 10 quiet seconds
     var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
-    var awake = !menuOpen && Date.now() - lastWake < 3500;
+    var awake = !menuOpen && !(top && innerWidth < 768) && Date.now() - lastWake < 3500;   // Oct 29 (Scott): on a phone, at the very top of a page the box stays hidden so it never covers the mushroom names; it appears once the page moves
     if (menuOpen) [btn, rbtn].forEach(function (b) { if (b) { b.style.transition = 'opacity .1s'; b.style.opacity = '0'; b.style.pointerEvents = 'none'; } }); else [btn, rbtn].forEach(function (b) { if (b && b.style.transition === 'opacity .1s') b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
     var so = awake ? '1' : '0'; if (btn.style.opacity !== so) { btn.style.opacity = so; btn.style.pointerEvents = awake ? 'auto' : 'none'; }
     if (rbtn) { var op = (top || !awake) ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = op === '1' ? 'auto' : 'none'; } }

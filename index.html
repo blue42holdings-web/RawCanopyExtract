@@ -981,7 +981,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261033m"></script>
 
-<script src="ambient.js?v=70"></script>
+<script src="ambient.js?v=71"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -1160,7 +1160,7 @@ html body [data-screen-label="Shop"]>section:first-child::after{background:url("
 @media (max-width:767px){
 
 html body [data-screen-label="Receipts"]>section:first-child h1{display:none !important}
-html body [data-screen-label="Receipts"]>section:first-child .rc-hero{display:block;position:relative;min-height:340px;margin:0 0 22px;border:3px solid #D4A24A;border-radius:22px;overflow:hidden;background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.92)),url("assets/photo/receipts-tennis-noblog.jpg") 50% 100% / auto 74% no-repeat;background-color:#000;box-shadow:0 0 0 14px #000,0 10px 28px rgba(0,0,0,.65)}
+html body [data-screen-label="Receipts"]>section:first-child .rc-hero{display:block;position:relative;min-height:340px;margin:0 0 22px;border:3px solid #D4A24A;border-radius:22px;overflow:hidden;background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.92)),url("assets/photo/receipts-tennis-noblog.jpg") 50% 92% / 100% auto no-repeat;background-color:#000;box-shadow:0 0 0 14px #000,0 10px 28px rgba(0,0,0,.65)}
 
 .rc-ttl{position:absolute;left:0;right:0;top:0;z-index:2;padding:24px 22px 0;font-family:"Playfair Display",serif;font-weight:500;font-size:42px;line-height:1.05;color:#D4A24A;text-shadow:0 2px 14px rgba(0,0,0,.9)}
 @keyframes rcPush{from{filter:brightness(.18);transform:scale(1.12)}to{filter:brightness(1);transform:scale(1.28)}}}
@@ -1944,7 +1944,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div data-screen-label="Receipts" style="background:#050504">
 
 <section style="position:relative;padding:88px 28px 0;background-image:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.95)),url('assets/photo/receipts-tennis-noblog.jpg');background-size:cover;background-position:center">
-<aside class="rc-hero" aria-hidden="true" data-lift-bg="assets/cutouts/receipts-tennis-noblog-cutout.webp" data-lift-dur="13000" data-lift-delay="1500" data-lift-scale="1.1" data-lift-dim="brightness(.95)" data-lift-nomask=""><div class="rc-ttl">Check the receipts.<span class="rc-def">receipts = the independent lab report</span></div></aside>
+<aside class="rc-hero" aria-hidden="true" data-lift-bg="assets/cutouts/receipts-tennis-noblog-cutout.webp" data-lift-dur="13000" data-lift-delay="1500" data-lift-scale="1.02" data-lift-dim="brightness(.95)" data-lift-nomask=""><div class="rc-ttl">Check the receipts.<span class="rc-def">receipts = the independent lab report</span></div></aside>
 <div style="position:relative;max-width:1080px;margin:0 auto">
 <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(36px,4.6vw,58px);color:#F1ECE1;margin:0 0 22px">Check the receipts.</h1>
 <sc-if value="{{ ttsOk }}" hint-placeholder-val="{{ false }}"><div data-tts-skip="true" style="margin:-10px 0 22px;position:relative;z-index:3"><span style="display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center"><button onClick="{{ ttsToggle }}" aria-label="{{ ttsLabel }}" style="background:#000;border:1px solid rgba(212,162,74,.5);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.13em;padding:8px 14px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">{{ ttsLabel }}</button><sc-if value="{{ ttsActive }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ttsStop }}" aria-label="Stop reading" style="background:none;border:1px solid rgba(212,162,74,.35);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.13em;padding:8px 10px;cursor:pointer" style-hover="background:rgba(212,162,74,.12)">STOP</button></sc-if></span></div></sc-if>
@@ -6309,5 +6309,6 @@ html body section[data-m="lm-hero"] div:has(> span > button[aria-label]),html bo
 }</style>
 <style id="ml-card-black-oct28">html body .ml-card,html body .ml-card.ml-card{background-image:linear-gradient(160deg,#16120b,#0a0a0a) !important;background-color:#0a0a0a !important}</style>
 <style id="shop-count-oct29">html body .sh-count{display:flex !important;flex-direction:column;align-items:center;gap:2px;border-top:1px solid rgba(212,162,74,.45);border-bottom:1px solid rgba(212,162,74,.45);padding:8px 0 10px;margin:4px 0 14px !important}html body .sh-count .sh-n{font-size:68px;line-height:.95;letter-spacing:.04em;color:#F1ECE1}html body .sh-count .sh-l{font-size:15px;letter-spacing:.2em;color:#D4A24A}@media (max-width:767px){html body .sh-count .sh-n{font-size:56px}html body .sh-count .sh-l{font-size:12px !important;letter-spacing:.06em !important;white-space:nowrap !important}}</style>
+<style id="rc-corner-oct29">@media (min-width:768px){html body div[data-screen-label="Receipts"][data-screen-label="Receipts"]>section:first-of-type:not(.zz):not(.zy):not(.zx):not(.zw):not(.zv):not(.zu):not(.zt){box-shadow:inset 0 568px 0 0 #000 !important}}</style>
 </body>
 </html>
