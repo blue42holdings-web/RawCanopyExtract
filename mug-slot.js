@@ -4,21 +4,21 @@
 (function(){
   var ICONS=['coffee','tea','smoothie'];   // \uE000 coffee, \uE001 tea, \uE002 smoothie
   var touched=[];   // styles this file set on the word slot, put back exactly when Stir. returns
-  function put(el,p,v,pr){var o={el:el,p:p,v:el.style.getPropertyValue(p),pr:el.style.getPropertyPriority(p)};touched.push(o);el.style.setProperty(p,v,pr||'');}
-  function undo(){touched.reverse().forEach(function(o){if(o.v)o.el.style.setProperty(o.p,o.v,o.pr);else o.el.style.removeProperty(o.p);if(o.p==='width'){var k=o.el.firstElementChild;if(k)o.el.style.width=k.getBoundingClientRect().width+'px';}});touched=[];}   // the slot's width is measured again from the word that came back
+  function put(el,p,v,pr,g){var o={g:g||el,el:el,p:p,v:el.style.getPropertyValue(p),pr:el.style.getPropertyPriority(p)};touched.push(o);el.style.setProperty(p,v,pr||'');}
+  function undo(g){var keep=[];touched.reverse().forEach(function(o){if(g&&o.g!==g){keep.push(o);return;}o.el.__mug=0;if(o.v)o.el.style.setProperty(o.p,o.v,o.pr);else o.el.style.removeProperty(o.p);if(o.p==='width'){var k=o.el.firstElementChild;if(k)o.el.style.width=k.getBoundingClientRect().width+'px';}});touched=keep.reverse();}   // the slot's width is measured again from the word that came back
   var host=null;   // the headline lines, found once, so the 4 times a second check never walks the whole page
   function run(){
     if(host&&!host.isConnected)host=null;
     if(!host)host=document.querySelector('[data-rcx-rotator]');   // the headline itself, so the very first cup is placed the moment the word changes
-    var found=false;
+    var found=false,live=[];
     (host||document).querySelectorAll('span').forEach(function(e){
       if(!/^[\uE000-\uE002]$/.test(e.textContent)||e.querySelector('span'))return;
-      found=true;
+      found=true;live.push(e.parentNode);
       if(!host)host=e.closest('p')||null;
-      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width','1em','important');put(sl,'overflow','visible','important');}
-      if(!e.__mug){e.__mug=1;put(e,'color','transparent','important');}
+      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width','1em','important',sl);put(sl,'overflow','visible','important',sl);}
+      if(!e.__mug){e.__mug=1;put(e,'color','transparent','important',sl);}
       for(var a=e.parentNode,n=0;a&&n<4;a=a.parentNode,n++){   // the word slot clips the sliding words; let the cup's handle show to the right
-        if(!a.__mug&&getComputedStyle(a).overflow==='hidden'){a.__mug=1;put(a,'overflow','visible','important');put(a,'clip-path','inset(0 -.6em 0 0)','important');}
+        if(!a.__mug&&getComputedStyle(a).overflow==='hidden'){a.__mug=1;put(a,'overflow','visible','important',sl);put(a,'clip-path','inset(0 -.6em 0 0)','important',sl);}
       }
       if(e.querySelector('[data-mug]'))return;
       var u='url("assets/icons/drink/'+ICONS[e.textContent.charCodeAt(0)-0xE000]+'.png")';
@@ -29,7 +29,7 @@
       c.backgroundColor='#F1ECE1';c.webkitMaskImage=u;c.maskImage=u;c.webkitMaskRepeat='no-repeat';c.maskRepeat='no-repeat';
       c.webkitMaskPosition='center bottom';c.maskPosition='center bottom';c.webkitMaskSize='contain';c.maskSize='contain';
     });
-    if(!found&&touched.length){touched.forEach(function(o){o.el.__mug=0;});undo();}
+    var gone=[];touched.forEach(function(o){if(live.indexOf(o.g)<0&&gone.indexOf(o.g)<0)gone.push(o.g);});gone.forEach(function(g){g.__mug=0;undo(g);});
   }
   // run inside the same tick as the word change (before the page measures the slot), so the cup is there with the first frame of the swap and Stir. gets its full width back at once
   try{new MutationObserver(function(){if(host)run();}).observe(document.body,{childList:true,subtree:true,characterData:true});}catch(x){}

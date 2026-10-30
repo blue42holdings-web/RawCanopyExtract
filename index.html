@@ -1048,11 +1048,6 @@ html body [data-m="home-para"]{visibility:hidden}
 <style>@media (max-width:767px){
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)){grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:repeat(4,auto) !important;grid-auto-flow:column !important;gap:14px 10px !important;padding:0 8px !important}
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+8){position:relative;border:2px solid #D4A24A !important;border-radius:14px;overflow:hidden}
-html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+8)::before{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:3;font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:14px;line-height:1;padding:5px 12px;border-radius:999px;background:#D4A24A;color:#0A0A09;white-space:nowrap}
-html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+3)::before{content:"20 COUNT"}
-html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(4)::before{content:"30 COUNT"}
-html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(n/**/+5):nth-child(-n/**/+7)::before{content:"40 COUNT"}
-html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(8)::before{content:"60 COUNT"}
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+8) h2{font-size:19px !important;line-height:1.15 !important;white-space:normal !important;text-align:center}
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+8) p{text-align:center}
 html body [data-screen-label="Shop"] [data-m="1col"]:has(> article:nth-child(8)) > article:nth-child(-n/**/+8) p[style*="Bebas"]{font-size:12px !important;letter-spacing:.1em !important;margin-bottom:8px !important}
@@ -1676,7 +1671,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-20-lm.webp?v=1" alt="Lion's Mane 20 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Lion's Mane</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">20</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Hericium erinaceus, hot water plus alcohol extract of the fruiting body. Twenty tear and pour packets standing on edge in a printed black box. Nothing else inside.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentLm.lot }} · {{ currentLm.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$39.99</p>
@@ -1699,7 +1694,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-20-cd.webp?v=1" alt="Cordyceps 20 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Cordyceps</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">20</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Cordyceps militaris, hot water extract of the fruiting body. Twenty tear and pour packets standing on edge in a printed black box. Nothing else inside.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentCd.lot }} · {{ currentCd.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$39.99</p>
@@ -1722,7 +1717,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-20-tt.webp?v=1" alt="Turkey Tail 20 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Turkey Tail</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">20 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">20</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Trametes versicolor, mycelium extract. Twenty tear and pour packets standing on edge in a printed black box. Nothing else inside.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentRs.lot }} · {{ currentRs.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$39.99</p>
@@ -1745,7 +1740,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-30-combo.webp?v=1" alt="Triple Power 30 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Triple Power</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">30 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">30</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">All three in one red box: ten lion's mane, ten cordyceps, ten turkey tail. Thirty packets, each one a single mushroom.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOTS {{ currentLm.lot }} · {{ currentCd.lot }} · {{ currentRs.lot }}</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$59.99</p>
@@ -1768,7 +1763,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-40-lm.webp?v=1" alt="Lion's Mane 40 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Lion's Mane</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">40 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">40</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Forty packets of 100% organic lion's mane extract in a printed black box. The bigger box for the daily ritual.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentLm.lot }} · {{ currentLm.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$69.99</p>
@@ -1791,7 +1786,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-40-cd.webp?v=1" alt="Cordyceps 40 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Cordyceps</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">40 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">40</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Forty packets of 100% organic cordyceps extract in a printed black box. The bigger box for the daily ritual.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentCd.lot }} · {{ currentCd.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$69.99</p>
@@ -1814,7 +1809,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-40-tt.webp?v=1" alt="Turkey Tail 40 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Turkey Tail</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">40 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">40</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Forty packets of 100% organic turkey tail extract in a printed black box. The bigger box for the daily ritual.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOT {{ currentRs.lot }} · {{ currentRs.mg }} MG BETA-GLUCAN / PACKET</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$69.99</p>
@@ -1837,7 +1832,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <img src="assets/photo/pack/rcx-box-60-combo.webp?v=1" alt="Triple Power 60 count box" style="position:absolute;left:50%;top:50%;width:104%;height:auto;max-width:none;transform:translate(-50%,-50%);display:block" loading="lazy" decoding="async">
 </div>
 <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.4vw,36px);color:#F1ECE1;margin:0 0 8px;white-space:nowrap">Triple Power</h2>
-<p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:15px;color:#D4A24A;margin:0 0 14px">60 COUNT · 2 GRAM PACKETS</p>
+<p class="sh-count" style="font-family:\'Bebas Neue\',sans-serif;margin:0 0 14px;text-align:center"><span class="sh-n">60</span><span class="sh-l">PACKETS · 2 GRAM EACH</span></p>
 <p class="bx-d" style="font-size:17px;line-height:1.6;color:#CFC7B6;margin:0 0 14px;flex:1">Twenty lion's mane, twenty cordyceps, twenty turkey tail in one red box. All three, a month of each.</p>
 <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#8C8574;margin:0 0 18px">LOTS {{ currentLm.lot }} · {{ currentCd.lot }} · {{ currentRs.lot }}</p>
 <p style="font-family:'Playfair Display',serif;font-size:34px;color:#F1ECE1;margin:0 0 18px">$99.99</p>
@@ -3353,9 +3348,9 @@ class Component extends DCLogic {
   // Oct 29 (Scott): the headline opens on Tear. Pour. Stir. Then it reads as three thoughts, each ending on a drink symbol:
   // Tear. Mix. (coffee)   Pour. Froth. (tea)   Add. Blend. (smoothie). Each slot holds one word per step; \uE000 to \uE002 are the three symbols.
   wordPools = [
-    ['Tear.', 'Tear.', 'Pour.', 'Add.'],
-    ['Pour.', 'Mix.', 'Froth.', 'Blend.'],
-    ['Stir.', '\uE000', '\uE001', '\uE002']
+    ['Tear.', 'Tear.', 'Pour.', 'Open.'],
+    ['Pour.', 'Mix.', 'Froth.', '\uE002'],
+    ['Stir.', '\uE000', '\uE001', 'Enjoy.']
   ];
 
   reducedMotion() {
@@ -6180,7 +6175,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=24"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=29"></script><script src="mug-slot.js?v=17"></script>
+<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=29"></script><script src="mug-slot.js?v=18"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=9"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
@@ -6244,11 +6239,6 @@ html body [data-screen-label="Shop"] .shoptg-nav,html body [data-screen-label="S
 html body [data-screen-label="Shop"] [data-m="boxgrid"]{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:16px !important}
 html body [data-screen-label="Shop"] [data-m="boxgrid"] > article{position:relative;transform:none !important;opacity:1 !important;filter:none !important;display:flex !important;flex-direction:column !important}
 html body [data-screen-label="Shop"] [data-m="boxgrid"] > article > div[data-pack-stage]{aspect-ratio:1/.8 !important;height:auto !important;padding:0 !important}
-html body [data-screen-label="Shop"] [data-m="boxgrid"] > article::before{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:3;font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:14px;line-height:1;padding:5px 12px;border-radius:999px;background:#D4A24A;color:#0A0A09;white-space:nowrap}
-html body [data-screen-label="Shop"] [data-m="boxgrid"] > article:nth-child(-n/**/+3)::before{content:"20 COUNT"}
-html body [data-screen-label="Shop"] [data-m="boxgrid"] > article:nth-child(4)::before{content:"30 COUNT"}
-html body [data-screen-label="Shop"] [data-m="boxgrid"] > article:nth-child(n/**/+5):nth-child(-n/**/+7)::before{content:"40 COUNT"}
-html body [data-screen-label="Shop"] [data-m="boxgrid"] > article:nth-child(8)::before{content:"60 COUNT"}
 @media (max-width:767px){
 html body [data-screen-label="Shop"] [data-m="boxgrid"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px 10px !important;padding:0 8px !important}
 html body [data-screen-label="Shop"] [data-m="boxgrid"] > article{padding:10px !important}
@@ -6318,5 +6308,6 @@ html body section[data-m="lm-hero"] > div:not([aria-hidden]) > p,html body secti
 html body section[data-m="lm-hero"] div:has(> span > button[aria-label]),html body section[data-m="cdh-hero"] div:has(> span > button[aria-label]),html body section[data-m="tth-hero"] div:has(> span > button[aria-label]){transform:translateX(calc(50vw - 120px)) !important}
 }</style>
 <style id="ml-card-black-oct28">html body .ml-card,html body .ml-card.ml-card{background-image:linear-gradient(160deg,#16120b,#0a0a0a) !important;background-color:#0a0a0a !important}</style>
+<style id="shop-count-oct29">html body .sh-count{display:flex !important;flex-direction:column;align-items:center;gap:2px;border-top:1px solid rgba(212,162,74,.45);border-bottom:1px solid rgba(212,162,74,.45);padding:8px 0 10px;margin:4px 0 14px !important}html body .sh-count .sh-n{font-size:68px;line-height:.95;letter-spacing:.04em;color:#F1ECE1}html body .sh-count .sh-l{font-size:15px;letter-spacing:.2em;color:#D4A24A}@media (max-width:767px){html body .sh-count .sh-n{font-size:56px}html body .sh-count .sh-l{font-size:12px !important;letter-spacing:.06em !important;white-space:nowrap !important}}</style>
 </body>
 </html>
