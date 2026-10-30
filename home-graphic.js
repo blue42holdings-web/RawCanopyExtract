@@ -74,6 +74,9 @@
     'html body .home-bgwrap>section[data-m=\"mx-rit\"][data-m=\"mx-rit\"][data-m=\"mx-rit\"]{background:#000 !important;background-image:none !important}html body .home-bgwrap>section[data-m=\"mx-rit\"]::before,html body .home-bgwrap>section[data-m=\"mx-rit\"]::after{background:none !important;background-image:none !important}',
     'html body .home-bgwrap>section[data-m=\"mx-rit\"][data-m=\"mx-rit\"][data-m=\"mx-rit\"]{padding-top:0 !important}html body .home-bgwrap>section[data-m=\"mx-rit\"][data-m=\"mx-rit\"][data-m=\"mx-rit\"]>div:first-child{background-image:none !important;background:none !important}',
     'html body .hg-press,html body .hg-meet{position:relative;z-index:1}',
+    'html body .hg-press,html body .hg-meet{display:flex !important;align-items:center;justify-content:center;gap:12px}',   // Oct 30 (Scott): short gold dash on each side, like the packaging
+    'html body .hg-press::before,html body .hg-press::after,html body .hg-meet::before,html body .hg-meet::after{content:"";flex:0 0 auto;width:26px;height:2px;background:#D4A24A;position:relative;top:-.04em}',
+
     'html body .hg .hg-title,html body .hg-press,html body .hg-meet{font-family:"Bebas Neue",sans-serif;color:#D4A24A;font-size:34px;letter-spacing:.06em;line-height:1.02;text-transform:uppercase;text-align:center;white-space:nowrap;margin:0;padding:19px 0 17px;overflow:visible}',   // Oct 27 (Scott): same look as the "Three nutrient rich / functional mushroom extracts" heading, one line, above the slot machines
     '.hg-cap{margin:8px 0 0;font-size:17px;color:#F1ECE1;line-height:1.35;text-align:left}',
     '.hg-them .hg-cap{margin-top:8px}',
@@ -182,7 +185,7 @@
     var pv = m.previousElementSibling; if (pv && pv.classList.contains('hg-meet')) return;
     [].forEach.call(document.querySelectorAll('.hg-meet'), function (o) { o.remove(); });
     var d = document.createElement('div'); d.className = 'hg-meet'; d.setAttribute('data-noswipe', '1');
-    d.innerHTML = '<span>THE HOLY TRINITY</span>';
+    d.innerHTML = '<span>OUR PRODUCTS</span>';
     m.parentNode.insertBefore(d, m);
   }
   function setFade() {   // distance from the top of the group to just under the Lion's Mane Life / Proof switch

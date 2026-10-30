@@ -2,6 +2,13 @@
    so the middle line (the longest) is smaller than the lines above and below it. Phone: the h1 in the mobile landing. Desktop: the .pl-h box.
    Widths come from an off-screen copy at 100px, so the word-by-word shine on the page never throws the measurement off. */
 (function () {
+  var dcss = document.createElement('style');   // Oct 30 (Scott): a short gold dash left of the first word and right of the last word of the top line
+  dcss.textContent = 'html body .mland-box h1 span[data-rl]:first-child,html body .pl-k-home .pl-ph:first-child{position:relative;width:max-content !important;max-width:none !important;margin-left:auto !important;margin-right:auto !important}' +
+    'html body .mland-box h1 span[data-rl]:first-child::before,html body .mland-box h1 span[data-rl]:first-child::after,html body .pl-k-home .pl-ph:first-child::before,html body .pl-k-home .pl-ph:first-child::after{content:"";position:absolute;top:52%;width:22px;height:2px;background:#D4A24A}' +
+    'html body .mland-box h1 span[data-rl]:first-child::before,html body .pl-k-home .pl-ph:first-child::before{right:100%;margin-right:8px}' +
+    'html body .mland-box h1 span[data-rl]:first-child::after,html body .pl-k-home .pl-ph:first-child::after{left:100%;margin-left:8px}' +
+    '@media (min-width:768px){html body .pl-k-home .pl-ph:first-child::before,html body .pl-k-home .pl-ph:first-child::after{width:44px;height:3px;margin-left:16px;margin-right:16px}}';
+  document.head.appendChild(dcss);
   var SEL = '.mland-box h1, .pl-k-home .pl-h', meas = null;
   function width100(el, text, ratio) {
     var cs = getComputedStyle(el);
