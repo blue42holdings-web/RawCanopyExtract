@@ -182,7 +182,7 @@
     var pv = m.previousElementSibling; if (pv && pv.classList.contains('hg-meet')) return;
     [].forEach.call(document.querySelectorAll('.hg-meet'), function (o) { o.remove(); });
     var d = document.createElement('div'); d.className = 'hg-meet'; d.setAttribute('data-noswipe', '1');
-    d.innerHTML = '<span>THE HOLY TRINITY OF FUNGI</span>';
+    d.innerHTML = '<span>THE HOLY TRINITY</span>';
     m.parentNode.insertBefore(d, m);
   }
   function setFade() {   // distance from the top of the group to just under the Lion's Mane Life / Proof switch
