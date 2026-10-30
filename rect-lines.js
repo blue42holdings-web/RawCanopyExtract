@@ -14,7 +14,7 @@
   function fit(box, isPh) {
     var ls = [].slice.call(box.children).filter(function (c) { return c.tagName === 'SPAN'; });
     if (ls.length !== 3) return;
-    var W = Math.round(Math.min(box.clientWidth - 2, isPh ? 9999 : 980)); if (W <= 0) return;
+    var W = Math.round(0.8 * Math.min(box.clientWidth - 2, isPh ? 9999 : 980)); if (W <= 0) return;   // Oct 29 (Scott): the whole block is 20% smaller
     var bs = getComputedStyle(box), ratio = parseFloat(bs.letterSpacing) / parseFloat(bs.fontSize); if (!isFinite(ratio)) ratio = .05;   // the box's letter spacing as a fraction of its size
     ls.forEach(function (l) {
       var w = width100(l, l.textContent.replace(/\s+/g, ' ').trim(), ratio);
