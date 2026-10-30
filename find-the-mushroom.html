@@ -56,7 +56,6 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .hint{position:absolute;right:-33px;top:250px;width:30px;font-size:11px !important;text-align:center;font-family:'Bebas Neue';font-size:12px;letter-spacing:.1em;color:#ffd84f;text-shadow:0 0 6px #ffd84f;line-height:1.05}
 .cap{font-size:17px;line-height:1.35;margin:12px 0 0}
 .cap b{color:#D4A24A;font-weight:500}
-.us .big{color:#F6D58E}
 .bar{height:50px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:19px;letter-spacing:.08em;color:#111;background:linear-gradient(100deg,#b8862f 0%,#E8B860 30%,#F6D58E 48%,#E8B860 62%,#c9973c 100%);box-shadow:0 0 18px rgba(212,162,74,.35)}
 
 .machine{isolation:isolate;animation:neon 2.4s ease-in-out infinite}
@@ -78,11 +77,7 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 @keyframes rainbow{0%{text-shadow:0 0 10px #ff4fd8,0 0 24px #ff4fd8}33%{text-shadow:0 0 10px #ffd84f,0 0 24px #ffd84f}66%{text-shadow:0 0 10px #4fd2ff,0 0 24px #4fd2ff}}
 .box{overflow:hidden}
 
-.machine.gold{margin-top:40px;background:radial-gradient(120% 80% at 50% 0%,#3a2a08 0%,#1a1204 50%,#0a0702 100%);border-color:#ffd84f;animation:neong 2.4s ease-in-out infinite}
 @keyframes neong{0%,100%{box-shadow:0 0 0 3px #0a0702,0 0 0 6px #D4A24A,0 0 26px #ffd84f,0 0 46px rgba(255,216,79,.55),inset 0 0 30px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 3px #0a0702,0 0 0 6px #fff3c4,0 0 34px #ffd84f,0 0 64px rgba(255,216,79,.8),inset 0 0 30px rgba(0,0,0,.7)}}
-.machine.gold .title{text-shadow:0 0 6px #ffd84f,0 0 14px #ffd84f,0 0 26px #D4A24A}
-.machine.gold .tag{color:#fff3c4;text-shadow:0 0 8px #ffd84f}
-.machine.gold .burst{background:repeating-conic-gradient(from 0deg,rgba(255,216,79,.6) 0 6deg,transparent 6deg 15deg,rgba(255,243,196,.45) 15deg 21deg,transparent 21deg 30deg)}
 .reels.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .reels.three .cell{background:radial-gradient(circle at 50% 42%,#2a2010,#0b0b0b 75%)}
 .reels.three .reel{background:#0b0b0b}
@@ -94,11 +89,8 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 .band{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;padding:8px 12px 6px;border-radius:12px;background:linear-gradient(180deg,#0a0218,#1a0636);border:2px solid #ff4fd8;box-shadow:0 0 14px rgba(255,79,216,.7),inset 0 0 12px rgba(255,79,216,.25)}
 .who-big{margin-left:18px;font-family:'Bebas Neue';font-size:66px;line-height:.82;letter-spacing:.05em;color:#fff;text-shadow:0 0 8px #ff4fd8,0 0 18px #ff4fd8}
 .who-sub{flex:none;margin-left:auto;white-space:nowrap;text-align:right;font-family:'Bebas Neue';font-size:23px;line-height:1.08;letter-spacing:.07em;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.5)}
-.machine.gold .band{border-color:#ffd84f;background:linear-gradient(180deg,#0a0702,#2a1d05);box-shadow:0 0 14px rgba(255,216,79,.7),inset 0 0 12px rgba(255,216,79,.25)}
-.machine.gold .who-big{color:#F6D58E;text-shadow:0 0 8px #ffd84f,0 0 18px #ffd84f}
-.machine.gold .who-sub{color:#fff3c4}
 .sign{margin-top:0 !important}
-.machine,.machine.gold{margin-top:16px !important}
+.machine{margin-top:16px !important}
 .sidebulbs{top:150px !important;bottom:120px !important}
 /* their button goes red and says FAIL when the reels land */
 .pull.fail{color:#fff;background:radial-gradient(circle at 40% 30%,#ff9d9d,#ff2b2b 40%,#8a0000 85%);border-color:#5a0000;box-shadow:0 6px 0 #3d0000,0 0 22px rgba(255,43,43,.9);animation:failblink .32s steps(2) infinite}
@@ -129,18 +121,13 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
 @keyframes ringA{0%{opacity:1}50%{opacity:0}}
 @keyframes ringB{0%{opacity:0}50%{opacity:1}}
 .machine.won .ring rect{animation-duration:.2s}
-#umachine .title{white-space:nowrap}
 
 /* Oct 22 2026 (Scott): every result and paragraph is a pyramid, short line on top, longest at the bottom, centered. */
 .res,.cap{text-align:center}
 .cap{margin-left:auto;margin-right:auto}
 .wide .wrap{max-width:none !important}
-.wide .box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:70px;align-items:start;padding:22px 64px 24px 28px}
-.wide .box>.q{grid-column:1/-1}
-.wide .box>#machine{grid-column:1;grid-row:2}
-.wide .box>#cap1{grid-column:1;grid-row:3}
-.wide .box>.us{grid-column:2;grid-row:2/span 2}
-.wide .machine.gold{margin-top:16px !important}
+.wide .box{padding:22px 28px 24px}
+#cap2{color:#F6D58E}
 .wide .machine{max-width:470px;margin-left:auto !important;margin-right:auto !important}
 .wide .cap{text-align:center;max-width:470px;margin-left:auto;margin-right:auto}
 .embed,.embed body{background:transparent !important}.embed .wrap{padding:0 !important;max-width:none !important}
@@ -158,20 +145,8 @@ html,body{margin:0;background:#000;color:#F1ECE1;font-family:Oswald,sans-serif}
   <div class="hint">PULL<br>ME</div>
 </div>
 <p class="cap" id="cap1">Fifteen ingredients, one messy scoop, cut for profit. The <b>mushroom</b> is a sliver of a “proprietary blend.” How much? They won’t tell us.</p>
-<div class="us">
-<div class="machine gold" id="umachine">
-  <div class="burst"></div><div class="lights"></div><svg class="ring" aria-hidden="true"><rect class="ra"/><rect class="rb"/></svg>
-  <div class="band"><span class="who-big">US</span><span class="who-sub">ONE CLEAN PACKET<br>1 TESTED INGREDIENT</span></div>
-  <div class="sign"><div class="title">EVERY PULL HITS</div><div class="tag">100% ORGANIC MUSHROOM EXTRACT</div></div>
-  <div class="leds"><div class="led"><small>PULLS</small><b id="ucount">000</b></div><div class="led c"><small>MUSHROOMS</small><b id="ufound">0</b></div></div>
-  <div class="reelbox"><div class="reels three" id="ureels"></div><div class="payline"></div></div>
-  <div class="btns"><button class="pull" id="upull" type="button">SPIN<small>OUR PACKETS</small></button></div>
-  <div class="res win" id="ures">One clean packet. One mushroom.<br>Pull it. You can't miss.</div>
-  <div class="lever" id="ulever" aria-label="Pull the handle" role="button" tabindex="0"><div class="base"></div><div class="arm" id="uarm"><div class="ball"></div></div></div>
-  <div class="hint">PULL<br>ME</div>
+<p class="cap" id="cap2">Pre-measured packets. Each with a single ingredient. Nothing else. No fillers.</p>
 </div>
-<p class="cap" id="cap2">Clean, pre-measured, single serving packets. No fillers. No binders. The power of the forest, in your cup.</p></div>
-</div></div>
 <script>
 if(/embed/.test(location.search))document.documentElement.classList.add('embed');if(/wide/.test(location.search))document.documentElement.classList.add('wide');
 /* Oct 22 2026 (Scott): casino sounds for both machines. Made in code (Web Audio), nothing here is used anywhere else on the site.
@@ -231,7 +206,7 @@ window.fitNm=function(span,txt,box,n,base){var w=(box.clientWidth-8-(n-1)*4)/n-6
   function again(){list.forEach(layout);}
   addEventListener('resize',again);addEventListener('load',again);if(document.fonts)document.fonts.ready.then(again);
   document.addEventListener('DOMContentLoaded',function(){
-    ['res','ures','cap1','cap2'].forEach(function(id){var e=document.getElementById(id);if(e)PYR(e,e.innerHTML.replace(/<br\s*\/?>/g,' '));});
+    ['res','cap1','cap2'].forEach(function(id){var e=document.getElementById(id);if(e)PYR(e,e.innerHTML.replace(/<br\s*\/?>/g,' '));});
   });
   setInterval(function(){list.forEach(function(e){var w=e.clientWidth;if(e.__w!==w){e.__w=w;layout(e);}})},700);
 })();
@@ -366,35 +341,7 @@ window.SFX=(function(){
   lever.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();arm.style.transition='transform .18s ease-in';setArm(1);setTimeout(function(){release(true);},180);}});
 })();
 
-(function(){
-  var OURS=[["LION'S MANE","assets/icons/species/rcx-sym-lions-mane-gold.svg"],["CORDYCEPS","assets/icons/species/rcx-sym-cordyceps-gold.svg"],["TURKEY TAIL","assets/icons/species/rcx-sym-turkey-tail-gold.svg"]];
-  var H=104,N=3,pulls=0,found=0,busy=false;
-  var reels=document.getElementById('ureels'),res=document.getElementById('ures'),cnt=document.getElementById('ucount'),fnd=document.getElementById('ufound'),btn=document.getElementById('upull'),mach=document.getElementById('umachine'),strips=[];
-  function pick(){return OURS[Math.floor(Math.random()*3)]}
-  function cell(o){var d=document.createElement('div');d.className='cell';d.innerHTML='<img class="ic" src="'+o[1]+'" alt=""><span class="nm">'+o[0]+'</span>';fitNm(d.lastChild,o[0],reels,N,16);return d}
-  for(var i=0;i<N;i++){var r=document.createElement('div');r.className='reel hit';var s=document.createElement('div');s.className='strip';s.appendChild(cell(OURS[i]));r.appendChild(s);reels.appendChild(r);strips.push(s)}
-  function go(){try{if(parent!==window)parent.postMessage({fmPull:1},'*');}catch(e){}
-    if(busy)return;busy=true;btn.disabled=true;pulls++;mach.classList.remove('won');SFX.press();SFX.spin();
-    [].forEach.call(reels.children,function(r){r.classList.remove('hit')});PYR(res,'Spinning...');
-    var finals=[],done=0;
-    for(var i=0;i<N;i++){var s=strips[i];s.style.transition='none';s.style.transform='translateY(0)';while(s.children.length>1)s.removeChild(s.firstChild);
-      for(var k=0;k<12+i*5;k++)s.appendChild(cell(pick()));var f=pick();s.appendChild(cell(f));finals.push(f[0]);s.offsetHeight;
-      s.style.transition='transform '+(1.0+i*0.4)+'s cubic-bezier(.12,.75,.2,1)';s.style.transform='translateY(-'+((s.children.length-1)*H)+'px)';
-      (function(s){s.addEventListener('transitionend',function f(){s.removeEventListener('transitionend',f);while(s.children.length>1)s.removeChild(s.firstChild);s.style.transition='none';s.style.transform='translateY(0)';if(++done===N)finish();});})(s);}
-    function finish(){busy=false;btn.disabled=false;SFX.stopSpin();SFX.good();found+=N;mach.classList.add('won');[].forEach.call(reels.children,function(r){r.classList.add('hit')});
-      cnt.textContent=('00'+pulls).slice(-3);fnd.textContent=found;
-      PYR(res,'JACKPOT! 3\u00a0FOR\u00a03. Every packet is pure mushroom.');}
-  }
-  btn.addEventListener('click',go);
-  var lever=document.getElementById('ulever'),arm=document.getElementById('uarm'),y0=null,pulled=false;
-  function setArm(f){arm.style.transform='scaleY('+(1-0.82*f).toFixed(3)+')';}
-  function release(fire){y0=null;arm.style.transition='transform .45s cubic-bezier(.3,1.6,.5,1)';setArm(0);setTimeout(function(){arm.style.transition='';},460);if(fire&&!busy)go();}
-  function tapPull(){arm.style.transition='transform .18s ease-in';setArm(1);setTimeout(function(){release(true);},180);}
-  lever.addEventListener('pointerdown',function(e){if(busy)return;y0=e.clientY;pulled=false;arm.style.transition='';lever.setPointerCapture(e.pointerId);});
-  lever.addEventListener('pointermove',function(e){if(y0===null)return;var f=Math.max(0,Math.min(1,(e.clientY-y0)/110));setArm(f);if(f>0.75)pulled=true;});
-  lever.addEventListener('pointerup',function(e){if(y0===null)return;if(Math.abs(e.clientY-y0)<=6)tapPull();else release(pulled);});
-  lever.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tapPull();}});
-})();
+
 (function(){function f(){[].forEach.call(document.querySelectorAll('.band'),function(b){var big=b.querySelector('.who-big'),sub=b.querySelector('.who-sub'),k=1;
   function set(){big.style.fontSize=(66*k)+'px';sub.style.fontSize=(23*k)+'px'}
   set();var cs=getComputedStyle(b),avail=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-30;
@@ -405,7 +352,7 @@ f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)}
   function ring(){[].forEach.call(document.querySelectorAll('.ring'),function(r){var m=r.parentElement,w=m.clientWidth,h=m.clientHeight;if(!w||!h)return;r.setAttribute('viewBox','0 0 '+w+' '+h);
     [].forEach.call(r.children,function(e){e.setAttribute('x',5);e.setAttribute('y',5);e.setAttribute('width',w-10);e.setAttribute('height',h-10);e.setAttribute('rx',17);});});}
   function line(el,base){el.style.fontSize=base+'px';var z=base;while(el.scrollWidth>el.clientWidth+1&&z>9){z-=.5;el.style.fontSize=z+'px';}}
-  function fits(){var t=document.querySelector('#umachine .title');if(t)line(t,31);[].forEach.call(document.querySelectorAll('.tag'),function(e){line(e,13)});}
+  function fits(){[].forEach.call(document.querySelectorAll('.tag'),function(e){line(e,13)});}
   function all(){fits();ring();}
   all();addEventListener('resize',all);addEventListener('load',all);if(document.fonts)document.fonts.ready.then(all);
   if(window.ResizeObserver){var ro=new ResizeObserver(ring);[].forEach.call(document.querySelectorAll('.machine'),function(m){ro.observe(m)});}
