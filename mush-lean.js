@@ -23,7 +23,7 @@
     ] }
   };
   function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-  function im(c) { return c.img ? '<div class="ml-img' + (/lm-how-made-desk/.test(c.img) ? ' ml-fade ml-bright' : '') + '" style="background-image:url(assets/photo/' + c.img + ')' + (c.pos ? ';background-position:' + c.pos : '') + '"></div>' : ''; }
+  function im(c) { return c.img ? '<div class="ml-img' + '' + '" style="background-image:url(assets/photo/' + c.img + ')' + (c.pos ? ';background-position:' + c.pos : '') + '"></div>' : ''; }
   function card(c) {
     if (c.hist) return '<div class="ml-card ml-hist">' + im(c) + '<h3>' + c.h + '</h3><div class="ml-clip">' + c.hist.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div><button type="button" class="ml-btn ml-more">READ MORE</button></div>';
     return '<div class="ml-card">' + im(c) + '<h3>' + c.h + '</h3><div class="ml-big">' + c.big + '</div><p>' + esc(c.t) + '</p><div class="ml-src">' + esc(c.s) + '</div><a class="ml-btn" target="_blank" rel="noopener" href="' + c.u + '">' + c.b + ' →</a></div>';
@@ -55,10 +55,4 @@
   }
   setInterval(run, 1200); run();
   new MutationObserver(function () { run(); }).observe(document.body, { childList: true, subtree: true });
-})();
-/* Oct 29 (Scott): the father-and-son desk photo starts bright, then settles dark once it is on screen */
-(function () {
-  if (!window.IntersectionObserver) return;
-  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio > 0.6) { var el = e.target; setTimeout(function () { el.classList.remove('ml-bright'); }, 700); io.unobserve(el); } }); }, { threshold: [0.6] });
-  setInterval(function () { [].forEach.call(document.querySelectorAll('.ml-img.ml-bright:not([data-bo])'), function (el) { el.setAttribute('data-bo', '1'); io.observe(el); }); }, 500);
 })();
