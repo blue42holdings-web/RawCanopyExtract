@@ -4,10 +4,23 @@
 {%- render 'meta-tags' -%}
 {%- if settings.favicon != blank -%}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">{%- endif -%}
 <link rel="preload" as="image" href="{{ 'rcx-packets.webp' | asset_url }}" imagesrcset="{{ 'rcx-packets-800.webp' | asset_url }} 800w, {{ 'rcx-packets.webp' | asset_url }} 1449w" imagesizes="(max-width:800px) 100vw, 760px" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 {{ content_for_header }}
-<style>html,body{margin:0;background:#000}</style>
+<style>
+html,body{margin:0;background:#000}
+.rcx-nav{background:#000;border-bottom:1px solid rgba(212,162,74,.35)}
+.rcx-nav-in{max-width:980px;margin:0 auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.rcx-nav a{font-family:'Bebas Neue',sans-serif;font-weight:400;text-decoration:none;line-height:1}
+.rcx-nav .brand{font-size:26px;letter-spacing:.12em;color:#D4A24A;white-space:nowrap}
+.rcx-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:26px}
+.rcx-nav ul a{font-size:19px;letter-spacing:.16em;color:#F1ECE1}
+.rcx-nav ul a:hover,.rcx-nav ul a[aria-current]{color:#D4A24A}
+@media (max-width:560px){.rcx-nav-in{justify-content:center;padding:16px 16px 14px}.rcx-nav ul{gap:22px}}
+</style>
 </head>
 <body>
+<header class="rcx-nav"><div class="rcx-nav-in"><a class="brand" href="{{ routes.root_url }}">RAW CANOPY EXTRACT</a><nav aria-label="Main"><ul>{%- for link in linklists['main-menu'].links -%}<li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | upcase }}</a></li>{%- endfor -%}</ul></nav></div></header>
 <main id="MainContent" role="main">{{ content_for_layout }}</main>
 </body>
 </html>
