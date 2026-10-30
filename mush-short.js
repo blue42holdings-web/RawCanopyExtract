@@ -67,10 +67,10 @@
   // Each photo sits on its own layer inside the box so no other script can swap it. Lion's Mane: the ski lesson runs
   // through both boxes as one photo, the teacher in the right box (no diver with the shark, ever).
   var CARD = {
-    "Lion's Mane": { span: ['lm-ski-lesson.jpg', 1.0, 0.72] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
+    "Lion's Mane": { how: ['lm-kickoff-fishing-sunset.jpg', '-380px 0', '970px auto', 'linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45))'] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
     'Cordyceps': { studied: ['cd-relay-college.jpg', '55% 40%'], studiedDesk: ['friends-workout.webp', '84% 40%'],   // Oct 22 (Scott): fill the box, centered on the woman on the right
                    fr: ['mushrooms-baseball-lights.webp', '60% 100%', 'auto 130%'] },   // Oct 22: zoomed in on home plate
-    'Turkey Tail': { fr: ['tt-fest-wristbands.jpg', '42% 50%'] }   // Oct 28 (Scott): the concert wristbands replace the hiker
+    'Turkey Tail': { how: ['tt-concert-lasers.jpg', '50% 50%'], fr: ['tt-platform-crowd.jpg', '50% 50%'] }   // Oct 28 (Scott): the concert wristbands replace the hiker
   };
   var dims = {};
   function nat(u, cb) { if (dims[u]) return cb(dims[u]); var im = new Image(); im.onload = function () { dims[u] = [im.naturalWidth, im.naturalHeight]; cb(dims[u]); }; im.src = 'assets/photo/' + u; }
@@ -91,6 +91,7 @@
     var st = P.querySelector('[data-ms-card="studied"]');
     var sp = (c.studiedDesk && innerWidth >= 768) ? c.studiedDesk : c.studied;
     if (sp && st) layer(boxIn(st), sp[0], sp[2] || 'cover', sp[1], sp[3]);
+    if (c.how && how) layer(boxIn(how), c.how[0], c.how[2] || 'cover', c.how[1]);
     if (c.fr && fr) layer(boxIn(fr), c.fr[0], c.fr[2] || 'cover', c.fr[1]);
     if (c.span && how && fr) {
       var a = boxIn(how), b = boxIn(fr); if (!a || !b || !a.offsetWidth) return;
