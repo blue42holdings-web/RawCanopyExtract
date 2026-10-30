@@ -219,7 +219,7 @@
       // everything between the hero and the lab report guide sits on the white
       var n = hero.nextElementSibling;
       while (n && n !== read) { n.style.setProperty('background', 'transparent', 'important'); n.querySelectorAll(':scope > section').forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); }); n = n.nextElementSibling; }
-      [read].concat([].slice.call(W.querySelectorAll('[data-m="rc-files"],[data-m="rc-dodges"],[data-m="rc-research"]'))).forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); });
+      [read].concat([].slice.call(W.querySelectorAll('[data-m="rc-dodges"],[data-m="rc-research"]'))).forEach(function (x) { x.style.setProperty('background', 'transparent', 'important'); });
       // Oct 15: the top is now a gold framed photo box drawn by the page styles (heroes2-oct15); nothing painted here
       hero.querySelectorAll('[data-rc-climb]').forEach(function (l) { l.remove(); });
       hero.style.setProperty('background', '#fff', 'important');

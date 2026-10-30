@@ -376,17 +376,6 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   setInterval(run, 800); run();
 })();
 
-/* Oct 12: receipts files row: each card keeps its own photo under the lighter shade */
-(function () {
-  function run() {
-    document.querySelectorAll('section[data-m="rc-files"] .cx-track>.mx-box').forEach(function (b) {
-      if (b.__rc) return; var m = (b.getAttribute('style') || '').match(/url\(["'&quot;]*([^"'&)]+?\.(?:jpe?g|png|webp))/); if (!m) return;
-      b.__rc = 1; b.style.setProperty('--rcimg', "url('" + m[1] + "')");
-    });
-  }
-  setInterval(run, 1000); run();
-})();
-
 /* Oct 12: magazine cards: keep each cover photo under the lighter shade */
 (function () {
   function run() {

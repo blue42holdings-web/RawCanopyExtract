@@ -152,15 +152,6 @@
       set(q, G + ',url("assets/photo/stock-outdoor-photo.jpg")', '100% 100%,cover', '0 0,12% 50%');
       [].forEach.call(q.parentElement.children, function (c) { if (c !== q && c.offsetHeight) forward(c); });
     }
-    // Receipts files
-    var f = document.querySelector('section[data-m="rc-files"]');
-    if (f && f.offsetHeight) {
-      [].forEach.call(f.querySelectorAll('.mx-box'), function (b) {
-        var tag = (b.querySelector('.mx-tag') || {}).textContent || '';
-        if (/FILE 01/.test(tag)) set(b, G + ',url("assets/photo/coffee-made-at-camp.jpg")', '100% 100%,auto 125%', '0 0,24% 82%');
-        if (/FILE 02/.test(tag)) set(b, G + ',url("assets/photo/tent-dock-lake.jpg")', '100% 100%,auto 130%', '0 0,50% 95%');
-      });
-    }
   }
   setInterval(run, 1000); run();
 })();
