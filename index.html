@@ -3347,13 +3347,15 @@ class Component extends DCLogic {
     plan: { lm: 'once', cd: 'once', rs: 'once', combo: 'once', lmr: 'once', cdr: 'once', rsr: 'once', cbr: 'once' },
     qty: { lm: 1, cd: 1, rs: 1, combo: 1, lmr: 1, cdr: 1, rsr: 1, cbr: 1 },
     notified: {}, signedUp: false,
-    rot: (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) ? [2, 2, 2] : [2, 2, 2], flash: [0, 0, 0], changed: -1
+    rot: [0, 0, 0], prev: [0, 0, 0], flash: [0, 0, 0], changed: -1
   };
 
+  // Oct 29 (Scott): the headline opens on Tear. Pour. Stir. Then it reads as three thoughts, each ending on a drink symbol:
+  // Tear. Mix. (coffee)   Pour. Froth. (tea)   Add. Blend. (smoothie). Each slot holds one word per step; \uE000 to \uE002 are the three symbols.
   wordPools = [
-    ['Open.', 'Rip.', 'Tear.'],
-    ['Add.', 'Mix.', 'Pour.'],
-    ['Whisk.', 'Blend.', 'Stir.', '\uE000']
+    ['Tear.', 'Tear.', 'Pour.', 'Add.'],
+    ['Pour.', 'Mix.', 'Froth.', 'Blend.'],
+    ['Stir.', '\uE000', '\uE001', '\uE002']
   ];
 
   reducedMotion() {
@@ -3383,54 +3385,14 @@ class Component extends DCLogic {
     if (this._away == null) this._away = false;
     if (this._firstDone == null) this._firstDone = false;
     const step = () => {
-      this._introDone = true;   // Oct 29 (Scott): the site opens on Tear. Pour. Stir. and holds; the first move is Stir. turning into the coffee cup, once
-      if (this._away) {
-        // back from a single swap, or back from the all-at-once Tear/Pour/Stir moment
-        if (this._lastSlot === -2) {
-          this.setState(s => ({ rot: [2, 2, 2], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
-        } else {
-          const i = this._lastSlot;
-          this.setState(s => {
-            const rot = s.rot.slice(), flash = s.flash.slice();
-            rot[i] = 2;
-            flash[i] = (flash[i] + 1) % 2;
-            return { rot: rot, flash: flash, changed: i };
-          });
-        }
-        this._away = false;
-      } else {
-        this._n = (this._n || 0) + 1;
-        if (this._firstDone && this._n % 4 === 0) {
-          // Oct 27 (Scott): Tear, Pour, Stir land together, all three lines at once
-          this._lastSlot = -2;
-          this.setState(s => ({
-            rot: this.wordPools.map(p => p.length - 1),
-            flash: s.flash.map(f => (f + 1) % 2),
-            changed: -2
-          }));
-          this._away = true;
-        } else {
-        let i, v;
-        if (!this._firstDone) { i = 2; v = this.wordPools[2].length - 1; this._firstDone = true; }
-        else {
-          i = Math.floor(Math.random() * 3);
-          if (i === this._lastSlot) i = (i + 1 + Math.floor(Math.random() * 2)) % 3;
-          const opts = this.wordPools[i].map((_, k) => k).filter(k => k !== 2);
-          v = opts[Math.floor(Math.random() * opts.length)];
-        }
-        this._lastSlot = i;
-        this.setState(s => {
-          const rot = s.rot.slice(), flash = s.flash.slice();
-          rot[i] = v;
-          flash[i] = (flash[i] + 1) % 2;
-          return { rot: rot, flash: flash, changed: i };
-        });
-        this._away = true;
-        }
-      }
-      this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);   // Oct 16 (Scott): desktop holds each word three minutes
+      this._introDone = true;
+      // the next thought: 1, 2, 3, then round again. Only the words that change animate, so the first move is Pour. and Stir. turning into Mix. and the coffee cup together
+      this._k = this._k ? (this._k % 3) + 1 : 1;
+      const k = this._k;
+      this.setState(s => ({ prev: s.rot, rot: [k, k, k], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
+      this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);   // Oct 16 (Scott): desktop holds each thought three minutes
     };
-    this._rotT = setTimeout(step, this._introDone ? (innerWidth >= 768 ? 180000 : 4000) : 5000);
+    this._rotT = setTimeout(step, this._introDone ? (innerWidth >= 768 ? 180000 : 4000) : 30000);
   };
 
   setHeroSeal = (n) => {
@@ -3546,7 +3508,8 @@ class Component extends DCLogic {
 
   slotVals(i) {
     const idx = this.state.rot[i] || 0;
-    const anim = this._rotRunning && (this.state.changed === i || this.state.changed === -2) && !this.reducedMotion()
+    const pv = this.state.prev || [0, 0, 0];
+    const anim = this._rotRunning && this.state.changed === -2 && this.wordPools[i][pv[i]] !== this.wordPools[i][idx] && !this.reducedMotion()
       ? (this.state.flash[i] ? 'rcxGlitchB' : 'rcxGlitchA') + ' 170ms steps(5,end) 1'
       : 'none';
     return {
@@ -6217,7 +6180,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="punch-lines.js?v=24"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=28"></script><script src="mug-slot.js?v=15"></script>
+<script src="home-graphic.js?v=42"></script><script src="rot-fit.js?v=3"></script><script src="foot-say.js?v=1"></script><script src="mland-seal.js?v=1"></script><script src="pastel-btn.js?v=28"></script><script src="mug-slot.js?v=17"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=9"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>

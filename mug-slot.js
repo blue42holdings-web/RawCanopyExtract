@@ -2,16 +2,17 @@
    Coffee, tea and smoothie take turns, in Scott's own art, all in the same box, sitting on the same line as Tear and Pour.
    The rotator's third word is a private-use character; this turns that character into the symbol, colored like the words around it. */
 (function(){
-  var ICONS=['coffee','tea','smoothie'], next=0;
+  var ICONS=['coffee','tea','smoothie'];   // \uE000 coffee, \uE001 tea, \uE002 smoothie
   var touched=[];   // styles this file set on the word slot, put back exactly when Stir. returns
   function put(el,p,v,pr){var o={el:el,p:p,v:el.style.getPropertyValue(p),pr:el.style.getPropertyPriority(p)};touched.push(o);el.style.setProperty(p,v,pr||'');}
   function undo(){touched.reverse().forEach(function(o){if(o.v)o.el.style.setProperty(o.p,o.v,o.pr);else o.el.style.removeProperty(o.p);if(o.p==='width'){var k=o.el.firstElementChild;if(k)o.el.style.width=k.getBoundingClientRect().width+'px';}});touched=[];}   // the slot's width is measured again from the word that came back
   var host=null;   // the headline lines, found once, so the 4 times a second check never walks the whole page
   function run(){
     if(host&&!host.isConnected)host=null;
+    if(!host)host=document.querySelector('[data-rcx-rotator]');   // the headline itself, so the very first cup is placed the moment the word changes
     var found=false;
     (host||document).querySelectorAll('span').forEach(function(e){
-      if(e.textContent!=='\uE000'||e.querySelector('span'))return;
+      if(!/^[\uE000-\uE002]$/.test(e.textContent)||e.querySelector('span'))return;
       found=true;
       if(!host)host=e.closest('p')||null;
       var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width','1em','important');put(sl,'overflow','visible','important');}
@@ -20,7 +21,7 @@
         if(!a.__mug&&getComputedStyle(a).overflow==='hidden'){a.__mug=1;put(a,'overflow','visible','important');put(a,'clip-path','inset(0 -.6em 0 0)','important');}
       }
       if(e.querySelector('[data-mug]'))return;
-      var u='url("assets/icons/drink/'+ICONS[next++%ICONS.length]+'.png")';
+      var u='url("assets/icons/drink/'+ICONS[e.textContent.charCodeAt(0)-0xE000]+'.png")';
       var m=document.createElement('i');m.setAttribute('data-mug','');e.insertBefore(m,e.firstChild);   // zero size, bottom edge sits on the text line
       var h=m.style;h.display='inline-block';h.verticalAlign='baseline';h.width='0';h.height='0';h.position='relative';h.overflow='visible';h.pointerEvents='none';
       var d=document.createElement('b');m.appendChild(d);
