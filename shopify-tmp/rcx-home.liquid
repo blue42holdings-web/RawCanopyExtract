@@ -2,6 +2,7 @@
 <div class="rcx">
 <div class="rcx-field" aria-hidden="true"></div>
 <div class="rcx-in">
+<nav class="rcx-nav" aria-label="Main"><div class="rcx-nav-in"><a class="brand" href="{{ routes.root_url }}">RAW CANOPY EXTRACT</a><ul>{%- for link in linklists['main-menu'].links -%}<li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | upcase }}</a></li>{%- endfor -%}</ul></div></nav>
 <section class="rcx-hero">
 <div class="rcx-pk"><img src="{{ 'rcx-packets.webp' | asset_url }}" srcset="{{ 'rcx-packets-800.webp' | asset_url }} 800w, {{ 'rcx-packets.webp' | asset_url }} 1449w" sizes="(max-width:800px) 100vw, 760px" width="1449" height="1086" fetchpriority="high" alt="Raw Canopy Extract lion's mane, cordyceps and turkey tail packets"></div>
 <div class="rcx-seal" id="rcx-seal" role="button" tabindex="0" aria-label="Raw Canopy Extract seal">{% render 'rcx-seal-svg' %}</div>
