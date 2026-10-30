@@ -38,3 +38,32 @@ document.querySelectorAll('.rcx-row > .rcx-marble.rcx-txt').forEach(function(e){
 function pill(){if(innerWidth>767)return;document.querySelectorAll('section[data-m="lm-hero"],section[data-m="cdh-hero"],section[data-m="tth-hero"]').forEach(function(sec){sec.querySelectorAll('div[data-tts-skip]').forEach(function(d){var w=d.getBoundingClientRect(),W=innerWidth;var cur=d.getAttribute('data-px')||'0';var base=w.left-parseFloat(cur);var dx=(W-w.width)/2-base;d.setAttribute('data-px',dx);d.style.setProperty('transform','translateX('+dx+'px)','important')})})}
 paint();setInterval(function(){paint();pill()},200);
 })();
+
+/* Oct 29 (Scott): the three mushroom names in the colored boxes (the top set and the lower set) are the product, so they run at double the old size,
+   always on one line. Where double will not fit the box, they take the largest size that does, and all three in a set share the same size. */
+(function () {
+  var BASE = 17, S0 = 20;
+  function textW(el) { var r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; }
+  function fit(list) {
+    list = list.filter(function (e) { return e.offsetParent && e.parentElement; });
+    if (list.length < 2) return;
+    var size = BASE * 2;
+    list.forEach(function (e) {
+      var host = e.tagName === 'H2' ? e : e.parentElement, cs = getComputedStyle(host);
+      var avail = host.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0) - 6;
+      var save = e.style.getPropertyValue('font-size'); e.style.setProperty('font-size', S0 + 'px', 'important');
+      var w = textW(e); e.style.setProperty('font-size', save || S0 + 'px', 'important');
+      if (w > 0 && avail > 0) size = Math.min(size, Math.floor(S0 * avail / w * 10 * 0.98) / 10);
+    });
+    list.forEach(function (e) {
+      var v = size + 'px';
+      if (e.style.getPropertyValue('font-size') !== v) e.style.setProperty('font-size', v, 'important');
+      if (e.tagName !== 'H2') { e.style.setProperty('width', '100%', 'important'); e.style.setProperty('padding-left', '0', 'important'); e.style.setProperty('padding-right', '0', 'important'); }
+    });
+  }
+  function run() {
+    fit([].slice.call(document.querySelectorAll('.rcx-row > .rcx-marble.rcx-txt span[data-m="rl-name"]')));
+    fit([].slice.call(document.querySelectorAll('.mx-sec .mx-title h2')).filter(function (h) { return /MUSHROOM\s*$/i.test(h.textContent); }));
+  }
+  setInterval(run, 400); addEventListener('resize', run); run();
+})();
