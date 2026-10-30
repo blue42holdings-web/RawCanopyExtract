@@ -15,7 +15,7 @@
       if(!/^[\uE000-\uE002]$/.test(e.textContent)||e.querySelector('span'))return;
       found=true;live.push(e.parentNode);
       if(!host)host=e.closest('p')||null;
-      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width',(e.textContent.charCodeAt(0)===0xE002?'.76em':'1em'),'important',sl);put(sl,'overflow','visible','important',sl);if(e.textContent.charCodeAt(0)===0xE002)put(sl,'text-align','left','important',sl);}
+      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width',['1em','1.4em','.7em'][e.textContent.charCodeAt(0)-0xE000],'important',sl);put(sl,'overflow','visible','important',sl);if(e.textContent.charCodeAt(0)===0xE002)put(sl,'text-align','left','important',sl);}
       if(!e.__mug){e.__mug=1;put(e,'color','transparent','important',sl);}
       for(var a=e.parentNode,n=0;a&&n<4;a=a.parentNode,n++){   // the word slot clips the sliding words; let the cup's handle show to the right
         if(!a.__mug&&getComputedStyle(a).overflow==='hidden'){a.__mug=1;put(a,'overflow','visible','important',sl);put(a,'clip-path','inset(0 -.6em 0 0)','important',sl);}
@@ -25,8 +25,8 @@
       var m=document.createElement('i');m.setAttribute('data-mug','');e.insertBefore(m,e.firstChild);   // zero size, bottom edge sits on the text line
       var h=m.style;h.display='inline-block';h.verticalAlign='baseline';h.width='0';h.height='0';h.position='relative';h.overflow='visible';h.pointerEvents='none';
       var bl=e.textContent.charCodeAt(0)===0xE002;var d=document.createElement('b');m.appendChild(d);
-      if(bl){var dot=document.createElement('b');var q=dot.style;q.position='absolute';q.left='.63em';q.bottom='.04em';q.width='.12em';q.height='.12em';q.borderRadius='50%';q.backgroundColor='#F1ECE1';m.appendChild(dot);}   // a drawn dot, not text, so the symbol check still sees one private character}   // Oct 29 (Scott): the blender reads as a word, with its own period after it
-      var c=d.style;c.position='absolute';c.left=bl?'0':'.02em';c.bottom='-.08em';c.width=bl?'.6em':'.96em';c.height=bl?'.98em':'.86em';
+      if(bl){var dot=document.createElement('b');var q=dot.style;q.position='absolute';q.left='.56em';q.bottom='.04em';q.width='.12em';q.height='.12em';q.borderRadius='50%';q.backgroundColor='#F1ECE1';m.appendChild(dot);}   // a drawn dot, not text, so the symbol check still sees one private character}   // Oct 29 (Scott): the blender reads as a word, with its own period after it
+      var c=d.style;c.position='absolute';c.left=bl?'0':'.02em';c.bottom='-.08em';var ix=e.textContent.charCodeAt(0)-0xE000;c.width=['.96em','1.36em','.53em'][ix];c.height='.82em';   // Oct 29 (Scott): coffee, tea and blender are the same height
       c.backgroundColor='#F1ECE1';c.webkitMaskImage=u;c.maskImage=u;c.webkitMaskRepeat='no-repeat';c.maskRepeat='no-repeat';
       c.webkitMaskPosition=bl?'left bottom':'center bottom';c.maskPosition=bl?'left bottom':'center bottom';c.webkitMaskSize='contain';c.maskSize='contain';
     });
