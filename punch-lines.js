@@ -10,7 +10,7 @@
     tt: { h: 'Made for the crowd.', s: ['Long flights. Packed terminals. A world that keeps changing.', 'Supports a healthy immune system.*', 'Keeps things moving, too. Supports healthy digestion.*'], i: 'Built for a world of processed food.' }
   };
   var st = document.createElement('style');   // another script balances the lines; that would wrap a line we want whole
-  st.textContent = 'html body section.pl-box .pl-ph{text-wrap:nowrap !important;white-space:nowrap !important}';
+  st.textContent = 'html body section.pl-box .pl-ph{text-wrap:nowrap !important;white-space:nowrap !important}@media (min-width:768px){html body section.pl-box.pl-k-home .pl-h{font-size:clamp(60px,7.4vw,96px) !important}}';
   document.head.appendChild(st);
   function box(k) {
     var L = LINES[k], d = document.createElement('section');
