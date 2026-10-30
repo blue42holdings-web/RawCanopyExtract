@@ -15,7 +15,7 @@
       if(!/^[\uE000-\uE002]$/.test(e.textContent)||e.querySelector('span'))return;
       found=true;live.push(e.parentNode);
       if(!host)host=e.closest('p')||null;
-      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width','1em','important',sl);put(sl,'overflow','visible','important',sl);}
+      var sl=e.parentNode;if(sl&&sl.style&&!sl.__mug){sl.__mug=1;put(sl,'width',(e.textContent.charCodeAt(0)===0xE002?'1.15em':'1em'),'important',sl);put(sl,'overflow','visible','important',sl);}
       if(!e.__mug){e.__mug=1;put(e,'color','transparent','important',sl);}
       for(var a=e.parentNode,n=0;a&&n<4;a=a.parentNode,n++){   // the word slot clips the sliding words; let the cup's handle show to the right
         if(!a.__mug&&getComputedStyle(a).overflow==='hidden'){a.__mug=1;put(a,'overflow','visible','important',sl);put(a,'clip-path','inset(0 -.6em 0 0)','important',sl);}
@@ -24,10 +24,11 @@
       var u='url("assets/icons/drink/'+ICONS[e.textContent.charCodeAt(0)-0xE000]+'.png")';
       var m=document.createElement('i');m.setAttribute('data-mug','');e.insertBefore(m,e.firstChild);   // zero size, bottom edge sits on the text line
       var h=m.style;h.display='inline-block';h.verticalAlign='baseline';h.width='0';h.height='0';h.position='relative';h.overflow='visible';h.pointerEvents='none';
-      var d=document.createElement('b');m.appendChild(d);
-      var c=d.style;c.position='absolute';c.left='.02em';c.bottom='-.08em';c.width='.96em';c.height='.86em';
+      var bl=e.textContent.charCodeAt(0)===0xE002;var d=document.createElement('b');m.appendChild(d);
+      if(bl){var dot=document.createElement('b');var q=dot.style;q.position='absolute';q.left='.68em';q.bottom='.04em';q.width='.115em';q.height='.115em';q.borderRadius='50%';q.backgroundColor='#F1ECE1';m.appendChild(dot);}   // a drawn dot, not text, so the symbol check still sees one private character}   // Oct 29 (Scott): the blender reads as a word, with its own period after it
+      var c=d.style;c.position='absolute';c.left='.02em';c.bottom='-.08em';c.width=bl?'.6em':'.96em';c.height=bl?'.98em':'.86em';
       c.backgroundColor='#F1ECE1';c.webkitMaskImage=u;c.maskImage=u;c.webkitMaskRepeat='no-repeat';c.maskRepeat='no-repeat';
-      c.webkitMaskPosition='center bottom';c.maskPosition='center bottom';c.webkitMaskSize='contain';c.maskSize='contain';
+      c.webkitMaskPosition=bl?'left bottom':'center bottom';c.maskPosition=bl?'left bottom':'center bottom';c.webkitMaskSize='contain';c.maskSize='contain';
     });
     var gone=[];touched.forEach(function(o){if(live.indexOf(o.g)<0&&gone.indexOf(o.g)<0)gone.push(o.g);});gone.forEach(function(g){g.__mug=0;undo(g);});
   }
