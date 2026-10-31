@@ -37,4 +37,5 @@ function drift(){if(RM)return;var IDLE=20000,SPEED=8,raf=0,last=0,acc=0,timer=0,
 function init(){seal();drift();(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){setTimeout(sweeps,300)})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+(function(){function why(){var n=document.querySelector('.rcx-whybox .rcx-side-r');if(!n)return;var b=n.parentElement,o=b.querySelectorAll('p:not(.rcx-side) .rcx-ob');if(!o.length)return;var br=b.getBoundingClientRect(),a=o[0].getBoundingClientRect(),z=o[o.length-1].getBoundingClientRect();n.style.top=((a.top+z.bottom)/2-br.top)+'px'}why();addEventListener('load',why);addEventListener('resize',why);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(why)})();
 </script>
