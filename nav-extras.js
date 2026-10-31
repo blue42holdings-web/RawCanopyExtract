@@ -435,7 +435,7 @@
       }
     } catch (e) {}
   }
-  window.__rcxBeep = beep;                              // the Sound Bath and Remix boxes beep too
+  window.__rcxBeep = beep;                              // the Sound Bath box beeps too
   function settle() {                                   // glide with momentum, then ease into the nearest notch
     cancelAnimationFrame(raf);
     var last = performance.now();

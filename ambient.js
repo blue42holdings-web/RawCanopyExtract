@@ -479,130 +479,6 @@
     }
 
 
-    // ---------- DRUMS AND BASS (Oct 11) ----------
-    // Six grooves, all synthesized: five drum and bass (fast, 168 to 174: liquid, amen break,
-    // roller, neuro with a reese bass, jungle) and the slow Miami bass 808 (74). Never a house or
-    // four on the floor beat.
-    // Nothing before the three minute mark. After that a random groove comes in with a build, fades in
-    // and out with the same rhythm as the other changes, and never plays during a breakdown.
-    var drumBus = ctx.createGain(); drumBus.gain.value = 0; drumBus.connect(duck);
-    var dly = ctx.createDelay(1.5); dly.delayTime.value = 0.45; var fb = ctx.createGain(); fb.gain.value = 0.38;
-    var dlyLp = ctx.createBiquadFilter(); dlyLp.type = 'lowpass'; dlyLp.frequency.value = 2200;
-    dly.connect(dlyLp); dlyLp.connect(fb); fb.connect(dly); dlyLp.connect(drumBus);
-    var shaper = ctx.createWaveShaper(); (function () { var n = 1024, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1) * 2 - 1; c[i] = Math.tanh(x * 1.6) / Math.tanh(1.6); } shaper.curve = c; })();
-    shaper.connect(drumBus);
-    var hiss = makeNoise(ctx, 2, false);
-    function noiseHit(t, type, freq, q, dur, lv, toDelay) {
-      var s = ctx.createBufferSource(); s.buffer = hiss; var f = ctx.createBiquadFilter(); f.type = type; f.frequency.value = freq; f.Q.value = q;
-      var g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0008, t + dur);
-      s.connect(f); f.connect(g); g.connect(drumBus); if (toDelay) { var d = ctx.createGain(); d.gain.value = toDelay; g.connect(d); d.connect(dly); }
-      s.start(t, Math.random() * 1.5); s.stop(t + dur + 0.05);
-    }
-    function kick808(t, f1, decay, lv, slide, echo) {
-      var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
-      if (echo) { var es = ctx.createGain(); es.gain.value = echo; g.connect(es); es.connect(dly); }   // the boom echoes and lingers
-      f1 *= 0.78;   // Oct 11: deeper
-      o.frequency.setValueAtTime(f1 * 2.4, t); o.frequency.exponentialRampToValueAtTime(f1, t + 0.09);
-      if (slide) o.frequency.exponentialRampToValueAtTime(f1 * 0.72, t + decay * 0.9);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.004); g.gain.setTargetAtTime(0, t + 0.06, decay / 3.2);
-      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + decay + 0.3);
-    }
-    function kick909(t, lv) {
-      var o = ctx.createOscillator(); o.type = 'sine'; var g = ctx.createGain();
-      o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(41, t + 0.06);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.002); g.gain.setTargetAtTime(0, t + 0.05, 0.16);
-      o.connect(g); g.connect(shaper); o.start(t); o.stop(t + 0.9);
-      noiseHit(t, 'bandpass', 900, 0.7, 0.012, lv * 0.2);                      // the 909 click
-    }
-    function snare(t, lv, toDelay) { noiseHit(t, 'bandpass', 800, 0.8, 0.28, lv, toDelay);
-      var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(88, t + 0.12);
-      var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12); o.connect(g); g.connect(drumBus); o.start(t); o.stop(t + 0.15); }
-    function clap(t, lv) {                                                  // like real hands in a room, not a drum machine
-      var n = 3 + (Math.random() < 0.5 ? 1 : 0), tt = t;
-      for (var i = 0; i < n; i++) { noiseHit(tt, 'bandpass', rnd(700, 1000), 0.9, i < n - 1 ? rnd(0.018, 0.03) : rnd(0.16, 0.22), lv * (i < n - 1 ? rnd(0.6, 1) : 1), 0); tt += rnd(0.007, 0.014); }
-      var s = ctx.createBufferSource(); s.buffer = hiss; var f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 1600;
-      var g = ctx.createGain(); g.gain.setValueAtTime(lv * 0.5, tt); g.gain.exponentialRampToValueAtTime(0.0008, tt + 0.35);
-      var rs = ctx.createGain(); rs.gain.value = 0.6;
-      s.connect(f); f.connect(g); g.connect(drumBus); g.connect(rs); rs.connect(revIn); s.start(tt, Math.random()); s.stop(tt + 0.4);
-    }
-    function rim(t, lv, toDelay) { noiseHit(t, 'bandpass', 1000, 4, 0.07, lv, toDelay); }
-    function hat(t, lv, open) { noiseHit(t, 'bandpass', 4800, 0.8, open ? 0.3 : 0.045, lv * 0.7); }
-    function shaker(t, lv) { noiseHit(t, 'bandpass', 3800, 1.4, 0.07, lv * 0.75); }
-    function bassNote(t, f, dur, lv, type) {
-      var o = ctx.createOscillator(); o.type = type || 'sine'; o.frequency.value = f;
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 170; var g = ctx.createGain();
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.02); g.gain.setValueAtTime(lv, t + dur * 0.7); g.gain.linearRampToValueAtTime(0, t + dur);
-      o.connect(lp); lp.connect(g); g.connect(shaper);                     // through the warm saturator: deep, but still heard on small speakers
-      o.start(t); o.stop(t + dur + 0.05);
-    }
-    function reese(t, f, dur, lv) {                                        // dark drum and bass bass: two detuned saws, low passed, moving
-      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2; lp.frequency.setValueAtTime(150, t); lp.frequency.linearRampToValueAtTime(340, t + dur * 0.5); lp.frequency.linearRampToValueAtTime(160, t + dur);
-      var g = ctx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(lv, t + 0.03); g.gain.setValueAtTime(lv, t + dur * 0.8); g.gain.linearRampToValueAtTime(0, t + dur);
-      [-9, 9].forEach(function (c) { var o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = c; o.connect(lp); o.start(t); o.stop(t + dur + 0.05); });
-      lp.connect(g); g.connect(drumBus);
-    }
-    // each groove: tempo, and a function that plays one 16 step bar starting at t (r = root in Hz)
-    // Five drum and bass grooves (fast, 168 to 174) and the slow Miami 808.
-    var GROOVES = {
-      dnbLiquid: { bpm: 174, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 10, 0.65); snare(t + q * 4, 0.16, 0.15); snare(t + q * 12, 0.16, 0.15);
-        for (var i = 0; i < 16; i++) hat(t + q * i, i % 2 ? 0.012 : 0.022); shaker(t + q * 7, 0.02);
-        bassNote(t, r, q * 8, 0.24); bassNote(t + q * 8, r * 1.19, q * 8, 0.22); } },
-      dnbAmen: { bpm: 172, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 2, 0.5); kick909(t + q * 10, 0.7); kick909(t + q * 11, 0.45);
-        snare(t + q * 4, 0.17); snare(t + q * 7, 0.06); snare(t + q * 9, 0.06); snare(t + q * 12, 0.17); snare(t + q * 15, 0.07);
-        for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.022); hat(t + q * 14, 0.02, true); bassNote(t, r, q * 16, 0.22); } },
-      dnbRoller: { bpm: 174, bar: function (t, q, r) { kick909(t, 0.75); kick909(t + q * 6, 0.45); kick909(t + q * 10, 0.7); snare(t + q * 4, 0.15); snare(t + q * 12, 0.15);
-        for (var i = 0; i < 16; i++) shaker(t + q * i, i % 4 === 2 ? 0.024 : 0.012); hat(t + q * 2, 0.025, true); hat(t + q * 10, 0.025, true);
-        bassNote(t, r, q * 3, 0.26); bassNote(t + q * 3, r, q * 3, 0.2); bassNote(t + q * 6, r * 1.5, q * 4, 0.22); bassNote(t + q * 10, r * 1.33, q * 6, 0.24); } },
-      dnbNeuro: { bpm: 172, bar: function (t, q, r) { kick909(t, 0.8); kick909(t + q * 10, 0.75); snare(t + q * 4, 0.18, 0.2); snare(t + q * 12, 0.18, 0.2);
-        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.016 : 0.024); reese(t, r, q * 7, 0.12); reese(t + q * 8, r * 0.94, q * 8, 0.12); } },
-      dnbJungle: { bpm: 168, bar: function (t, q, r) { kick909(t, 0.7); kick909(t + q * 10, 0.6); snare(t + q * 4, 0.16); snare(t + q * 12, 0.16);
-        [3, 6, 7, 9, 14, 15].forEach(function (k) { rim(t + q * k, 0.05 + Math.random() * 0.04); });
-        for (var i = 0; i < 16; i += 2) hat(t + q * i, 0.018); kick808(t, r * 0.9, 1.1, 0.55, true); kick808(t + q * 8, r * 1.1, 0.9, 0.45, true); } },
-      miami808: { bpm: 74, bar: function (t, q, r) { kick808(t, r, 2.8, 0.95, true, 0.4); kick808(t + q * 10, r * 1.06, 2.2, 0.8, true, 0.35); clap(t + q * 4, 0.16); clap(t + q * 12, 0.16);   // the 808 boom hangs for a second or two and echoes
-        for (var i = 0; i < 16; i += 2) hat(t + q * i, i % 4 ? 0.025 : 0.04); hat(t + q * 15, 0.02); } }
-    };
-    var DARK_GROOVES = ['dnbNeuro', 'dnbJungle', 'dnbAmen', 'miami808'], BRIGHT_GROOVES = ['dnbLiquid', 'dnbRoller', 'dnbAmen', 'miami808'];   // drum and bass or Miami bass only, never a house beat
-    var drumJobs = [], lastGroove = '', nextDrumAt = 0;
-    function drumSection(t0, t1, dark, root) {
-      if (drumJobs.length || t0 < nextDrumAt) return;                    // only one groove at a time, and long gaps between them
-      var pool = (dark ? DARK_GROOVES : BRIGHT_GROOVES).filter(function (g) { return g !== lastGroove; });
-      var name = pool[Math.floor(Math.random() * pool.length)];
-      if (window.__RCX_AMBIENT_TEST && window.__RCX_GROOVE) name = window.__RCX_GROOVE;   // for test recordings only
-      lastGroove = name;
-      var G = GROOVES[name], q = 60 / G.bpm / 4, barLen = q * 16;
-      var bars = Math.floor((t1 - t0) / barLen); if (bars < 4) return;
-      t1 = t0 + bars * barLen;
-      drumBus.gain.setTargetAtTime(0.0001, t0 - 0.5, 0.1);
-      drumBus.gain.linearRampToValueAtTime(dark ? 0.5 : 0.42, t0 + barLen * 2);        // fades in over two bars
-      drumBus.gain.setValueAtTime(dark ? 0.5 : 0.42, t1 - barLen * 2);
-      drumBus.gain.linearRampToValueAtTime(0.0001, t1);                                  // and out over two
-      if (window.__RCX_AMBIENT_TEST) console.log('drums ' + name + ' at ' + Math.round(t0) + 's to ' + Math.round(t1) + 's');
-      drumJobs.push({ t: t0, end: t1, bar: barLen, q: q, G: G, root: root });
-      nextDrumAt = t1 + 180 + rnd(0, 60);                                  // at least three minutes of no drums after this one
-    }
-    // REMIX button (Oct 11): each press on starts the next groove and keeps it going until pressed again
-    var REMIX = ['miami808', 'dnbLiquid', 'dnbAmen', 'dnbRoller', 'miami808', 'dnbNeuro', 'dnbJungle'], remixI = Math.floor(Math.random() * REMIX.length);
-    function remixOn() {
-      var name = REMIX[remixI % REMIX.length]; remixI++;
-      var G = GROOVES[name], q = 60 / G.bpm / 4, barLen = q * 16, t0 = ctx.currentTime + 0.15;
-      drumJobs = [];
-      drumBus.gain.cancelScheduledValues(ctx.currentTime); drumBus.gain.setValueAtTime(0.0001, ctx.currentTime);
-      drumBus.gain.linearRampToValueAtTime(0.5, t0 + barLen);                         // fades in over a bar
-      drumJobs.push({ t: t0, end: 1e12, bar: barLen, q: q, G: G, root: [36.71, 41.2, 38.89][remixI % 3] * 1.15 });
-      drumTick(ctx.currentTime + 1.5);
-      return name;
-    }
-    function remixOff() {
-      drumBus.gain.cancelScheduledValues(ctx.currentTime); drumBus.gain.setValueAtTime(drumBus.gain.value, ctx.currentTime);
-      drumBus.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
-      var j = drumJobs[0]; if (j) j.end = ctx.currentTime + 1.3;
-    }
-    function drumTick(horizon) {
-      for (var i = 0; i < drumJobs.length; i++) { var j = drumJobs[i];
-        while (j.t < j.end - 0.01 && j.t < horizon) { j.G.bar(j.t, j.q, j.root); j.t += j.bar; } }
-      drumJobs = drumJobs.filter(function (j) { return j.t < j.end - 0.01; });
-    }
-
     // ---------- timeline (Oct 11) ----------
     // Two moods, half the time each, trading places: BRIGHT (the warm pads) and DARK (low, serious,
     // ominous: only low drones and low pad notes, nothing high). Every cycle builds, then breaks down
@@ -660,19 +536,17 @@
         }
       })();
       // (crickets removed Oct 11)
-      // (Oct 11: no automatic drums. Beats only play from the REMIX button.)
       acts.t = b3 + s3 - 4;
       acts.n++;
     }
     function scheduleUntil(horizon) {
       while (acts.t < horizon) scheduleAct();
-      drumTick(Math.min(horizon, ctx.currentTime + 3));
     }
     scheduleUntil(T0 + 40);
 
     return {
       master: master, duck: duck,
-      scheduleUntil: scheduleUntil, drumTick: drumTick, remixOn: remixOn, remixOff: remixOff, fieldBus: fieldBus, drumBus: drumBus,
+      scheduleUntil: scheduleUntil, fieldBus: fieldBus,
       slowIn: function (sec) { var n = 256, c = new Float32Array(n); for (var i = 0; i < n; i++) { var x = i / (n - 1); c[i] = 0.22 * x * x * x; } master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.setValueCurveAtTime(c, ctx.currentTime, sec); },
       fadeIn: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0.22, ctx.currentTime + sec); },
       fadeOut: function (sec) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value, ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + sec); },
@@ -708,78 +582,27 @@
     document.body.appendChild(btn); refresh();
   }
   setInterval(function () { if (btn && !document.body.contains(btn)) { btn = null; mkBtn(); } }, 2000);
-  // REMIX: a little turntable above the Sound Bath box. Tap for a beat, tap again to stop, tap again for the next beat.
-  var rbtn = null, remixing = false, lastWake = Date.now();
+  var lastWake = Date.now();   // the Sound Bath box shows while the page is moving
   function wake() { lastWake = Date.now(); }
   ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, wake, true); });   // Oct 28 (Scott): they only appear while the page is moving, not on every click, so they stay out of the way of the bottom of the page
   document.addEventListener('pointermove', function (e) { if (e.clientX < 160 && e.clientY > innerHeight - 190) wake(); }, true);   // or when the pointer goes to their corner
   addEventListener('popstate', wake); addEventListener('pageshow', wake);
-  function remixIcon(on) {
-    // only the record spins; the tone arm stays put in the lower right, like a real turntable
-    var c = on ? '#E9C079' : '#D4A24A';
-    return '<svg viewBox="0 0 28 24" width="26" height="22" fill="none" stroke="' + c + '" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;display:block;overflow:visible">' +
-      '<g style="transform-box:view-box;transform-origin:11px 12px' + (on ? ';animation:rcxSpin 1.6s linear infinite' : '') + '">' +
-        '<circle cx="11" cy="12" r="9" stroke-width="1.6"/>' +
-        '<circle cx="11" cy="12" r="6.6" stroke-width=".6" opacity=".55"/><circle cx="11" cy="12" r="4.6" stroke-width=".6" opacity=".55"/>' +
-        '<path d="M11 12 L11 3.6" stroke-width="1.1" opacity=".9"/>' +                      // a light streak across the grooves shows the spin
-        '<circle cx="11" cy="12" r="2.6" fill="' + c + '" fill-opacity=".35" stroke-width=".8"/>' +
-        '<circle cx="12.4" cy="11" r=".7" fill="' + c + '" stroke="none"/>' +                // a dot on the label
-      '</g>' +
-      '<circle cx="11" cy="12" r=".9" fill="#000" stroke="none"/>' +                          // the spindle
-      '<circle cx="24.5" cy="3.4" r="1.6" fill="' + c + '" stroke="none"/>' +
-      '<path d="M24.5 3.4 L24.5 13.5 L18.6 18.4" stroke-width="1.8"/><path d="M17.4 17.6 L19.8 19.6" stroke-width="2.4"/></svg>';
-  }
-  function rRefresh() {
-    if (!rbtn) return; var c = remixing ? '#F4D99A' : '#E9C079';
-    rbtn.innerHTML = remixIcon(remixing) + '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">REMIX</span>';
-    rbtn.style.boxShadow = remixing ? '0 0 16px rgba(212,162,74,.55),0 4px 14px rgba(0,0,0,.55)' : '0 4px 14px rgba(0,0,0,.55)';
-    rbtn.setAttribute('aria-label', remixing ? 'Remix on. Tap to stop the beat' : 'Remix. Tap to play a beat');
-  }
-  function mkRemix() {
-    if (!document.body) return;
-    var ex = document.querySelectorAll('[data-remix-btn]');
-    for (var i = 0; i < ex.length; i++) if (ex[i] !== rbtn) ex[i].parentNode.removeChild(ex[i]);
-    if (rbtn && document.body.contains(rbtn)) return;
-    var stl = document.createElement('style'); stl.textContent = '@keyframes rcxSpin{to{transform:rotate(360deg)}}'; document.head.appendChild(stl);
-    rbtn = document.createElement('button'); rbtn.type = 'button'; rbtn.setAttribute('data-remix-btn', '');
-    rbtn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;cursor:pointer;-webkit-tap-highlight-color:transparent';
-    rbtn.addEventListener('click', function (ev) {
-      ev.stopPropagation();
-      if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} start(); }
-      else if (muted) { toggle(); }
-      if (!eng) return;
-      if (ctx.state === 'suspended') ctx.resume();
-      fresh = false;
-      remixing = !remixing;
-      if (remixing) { eng.fadeIn(2); eng.remixOn(); } else eng.remixOff();
-      rRefresh(); refresh();
-    }, true);
-    document.body.appendChild(rbtn); rRefresh();
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkRemix); else mkRemix();
-  setInterval(mkRemix, 2000);
   // keep the sound button clear of the story player bar: it rides up with the bar and comes back down
   setInterval(function () {
     if (!btn) return;
     var bar = document.querySelector('[data-m="player"]'), lift = 0;
     if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
-    // Oct 11: at the very top of a page (the first thing people see) the two boxes stay out of the way of the
-    // opening words; they fade in as soon as the page moves
-    // Sound Bath is always there. At the very top of a page it tucks low into the corner (clear of the opening
-    // words) and Remix waits; once the page moves, Sound Bath lifts a little and Remix fades in above it.
-    // Oct 11: Sound Bath on top and always there; Remix appears underneath it once the page moves. Both sit up off the corner.
+    // Oct 11: at the very top of a page (the first thing people see) the box stays out of the way of the
+    // opening words; it fades in as soon as the page moves
     var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
-    [btn, rbtn].forEach(function (b) { if (b && !/opacity/.test(b.style.transition)) b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
-    // Oct 11: both boxes show when a page opens and whenever you tap, then fade away after 10 quiet seconds
+    if (!/opacity/.test(btn.style.transition)) btn.style.transition = 'bottom .4s ease, opacity 1.2s ease';
+    // Oct 11: the box shows when a page opens and while the page moves, then fades away when it is still
     var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
     var awake = !menuOpen && !(top && innerWidth < 768) && Date.now() - lastWake < 3500;   // Oct 29 (Scott): on a phone, at the very top of a page the box stays hidden so it never covers the mushroom names; it appears once the page moves
-    if (menuOpen) [btn, rbtn].forEach(function (b) { if (b) { b.style.transition = 'opacity .1s'; b.style.opacity = '0'; b.style.pointerEvents = 'none'; } }); else [btn, rbtn].forEach(function (b) { if (b && b.style.transition === 'opacity .1s') b.style.transition = 'bottom .4s ease, opacity 1.2s ease'; });
+    if (menuOpen) { btn.style.transition = 'opacity .1s'; btn.style.opacity = '0'; btn.style.pointerEvents = 'none'; } else if (btn.style.transition === 'opacity .1s') btn.style.transition = 'bottom .4s ease, opacity 1.2s ease';
     var so = awake ? '1' : '0'; if (btn.style.opacity !== so) { btn.style.opacity = so; btn.style.pointerEvents = awake ? 'auto' : 'none'; }
-    if (rbtn) { var op = (top || !awake) ? '0' : '1'; if (rbtn.style.opacity !== op) { rbtn.style.opacity = op; rbtn.style.pointerEvents = op === '1' ? 'auto' : 'none'; } }
-    // at the very top Sound Bath waits in Remix's spot (clear of the opening words); once the page moves it rises and Remix slides in underneath
-    var rw = (base + lift) + 'px', want = (base + lift + (top ? 0 : (rbtn ? rbtn.offsetHeight : 66) + 10)) + 'px';   // raised off the bottom corner (Oct 11)   // Sound Bath at the bottom, Remix above it
+    var want = (base + lift) + 'px';   // raised off the bottom corner once the page moves (Oct 11)
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
-    if (rbtn && rbtn.style.bottom !== rw) { rbtn.style.bottom = rw; }
   }, 120);
   function refresh() {
     if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
@@ -806,7 +629,6 @@
       lim.connect(ctx.destination);
       eng = build(ctx, lim);
       timer = setInterval(function () { if (ctx.state === 'running') eng.scheduleUntil(ctx.currentTime + 45); }, 8000);
-      setInterval(function () { if (ctx.state === 'running') eng.drumTick(ctx.currentTime + 1.5); }, 300);
       if (ctx.state === 'suspended') ctx.resume();
       if (!muted) eng.slowIn(30);
     } catch (e) { started = false; }
@@ -823,7 +645,6 @@
       storyOn = false; if (eng) eng.setDuck(1, 1.5);
     }
     try { if (muted) localStorage.setItem(KEY, 'off'); else localStorage.removeItem(KEY); } catch (e) {}
-    if (muted && remixing) { remixing = false; eng.remixOff(); rRefresh(); }
     if (muted) eng.fadeOut(1.5); else { if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(2.5); }
     refresh();
   }
