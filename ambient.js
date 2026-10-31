@@ -1,4 +1,5 @@
-/* RCX ambient soundscape. Everything is synthesized in the browser (no audio files).
+/* RCX ambient soundscape. Pads and drones are synthesized in the browser; nature (wind, waves, birds) and the bath
+   instruments are real recordings in assets/audio.
    Starts only when the visitor presses the Sound Bath button (never on a random tap). Layers: wind, waves, birds (nature) and soft pads (three moods
    that blend into each other). About 10 percent of the time it turns serious: deep drones and
    layered low tones for a short while, then returns to calm. */
@@ -241,7 +242,8 @@
     // Rain, rain on leaves, wind in the trees, mountain wind, howling wind, river, waterfall, jungle,
     // birds, ocean, frogs, crows, distant thunder, cave droplets and the odd owl. Each act picks its own
     // handful, brings them in one at a time as the music thins, then lifts them out one at a time.
-    var FIELD_DIR = 'assets/audio/nature/', bufs = {};
+    var AB = window.__rcxAssetBase;   // Oct 31: on the Shopify page the recordings live in Shopify's own asset folder
+    var FIELD_DIR = AB ? AB + 'rcx-n-' : 'assets/audio/nature/', bufs = {};
     var fieldBus = ctx.createGain(); fieldBus.gain.value = 0.38;   /* Oct 12: halved now that it is finally audible */   // Oct 11: halfway between the first level (0.85) and the quiet one (0.38)
     fieldBus.connect(duck);   // Oct 12: this connection had been swallowed by the comment above, so no recorded nature ever reached the speakers
     function loadField(n) {
@@ -299,7 +301,7 @@
        struck and rim rubbed) and crystal bowls are modeled from real bowl overtones until bowl recordings are
        added. Every breakdown keeps a tone going, and every other section becomes a full sound bath that
        builds layer by layer. */
-    var BATH_DIR = 'assets/audio/bath/', bathBufs = {};
+    var BATH_DIR = AB ? AB + 'rcx-b-' : 'assets/audio/bath/', bathBufs = {};
     var bathBus = ctx.createGain(); bathBus.gain.value = 0.55; bathBus.connect(duck);
     var bathRev = ctx.createGain(); bathRev.gain.value = 0.75; bathRev.connect(revIn);
     var BREF = { 'chime-c4': 261.63, 'chime-a4': 440, 'chime-c5': 523.25, 'psaltery-c4': 261.63, 'psaltery-d4': 293.66, 'tubular-c4': 261.63 };
