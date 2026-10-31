@@ -598,6 +598,7 @@
     // opening words; it fades in as soon as the page moves
     var desk = innerWidth >= 768, top = scrollY < 60, base = desk ? (top ? 30 : 64) : (top ? 6 : 40);   // at the very top it sits low, clear of the opening words. Oct 31 (Scott): on a computer it sits further in from the corner, right and up
     var L = desk ? '34px' : '12px'; if (btn.style.left !== L) btn.style.left = L;
+    var Z = desk ? 'scale(2)' : ''; if (btn.style.transform !== Z) { btn.style.transformOrigin = 'left bottom'; btn.style.transform = Z; }   // Oct 31 (Scott): twice the size on a computer
     if (!/opacity/.test(btn.style.transition)) btn.style.transition = 'bottom .4s ease, opacity 1.2s ease';
     // Oct 11: the box shows when a page opens and while the page moves, then fades away when it is still
     var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
