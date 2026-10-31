@@ -66,5 +66,122 @@
   setTimeout(flare, 4000);
   setInterval(function () { if (Math.random() < 0.5) poke(); }, 13000);
 })();
+/* Oct 11: the quick menu is a real wheel. It always opens fully on screen with the current item in the
+   middle and two above and two below. Drag up or down (or use a mouse wheel) and it rolls, all the way around,
+   with a soft space age beep at each notch. Tap the bright middle item to go there; tap another to roll to it. */
+(function () {
+  var r = document.getElementById('rcx-rail'); if (!r) return;
+  var m = r.querySelector('.rr-menu'), btn = r.querySelector('button'); if (!m || !btn) return;
+  var items = [].slice.call(m.querySelectorAll('a')), N = items.length, IH = 50, H = IH * 5 + 24;
+  var st = document.createElement('style');
+  st.textContent =
+    '#rcx-rail .rr-menu.rr-wheel2{position:fixed !important;right:44px !important;left:auto !important;top:var(--rw-top,0px) !important;width:190px;height:' + H + 'px;display:block !important;' +
+      'transform:translateX(14px) !important;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;perspective:520px;padding:0 !important;cursor:grab}' +
+    '#rcx-rail.open .rr-menu.rr-wheel2{transform:none !important}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a{position:absolute !important;right:4px;top:0;height:' + (IH - 8) + 'px;margin:0 !important;box-sizing:border-box;display:flex !important;align-items:center;justify-content:flex-end;transform-origin:100% 50%;will-change:transform,opacity;transition:background .2s,color .2s;white-space:nowrap}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a.rr-mid{background:#D4A24A !important;color:#000 !important}';
+  document.head.appendChild(st);
+  m.classList.remove('rr-wheel'); m.classList.add('rr-wheel2');
+  var pos = 0, vel = 0, raf = 0, lastNotch = null;
+  function wrap(d) { d = ((d % N) + N) % N; return d > N / 2 ? d - N : d; }    // shortest way around the wheel
+  function paint() {
+    var cy = H / 2;
+    items.forEach(function (a, i) {
+      var d = wrap(i - pos), ad = Math.abs(d);
+      var y = cy + Math.sin(Math.max(-1.45, Math.min(1.45, d * 0.52))) * IH * 2.05 - (IH - 8) / 2;   // on a cylinder: spacing tightens toward the edges
+      var s = Math.max(0.55, 1.1 - ad * 0.17), o = ad > 2.6 ? 0 : Math.max(0.28, 1 - ad * 0.3);
+      a.style.transform = 'translateY(' + y.toFixed(1) + 'px) rotateX(' + (-d * 24).toFixed(1) + 'deg) scale(' + s.toFixed(3) + ')';
+      a.style.opacity = o.toFixed(3); a.style.pointerEvents = o > 0.2 ? 'auto' : 'none';
+      a.classList.toggle('rr-mid', ad < 0.5);
+    });
+    var notch = ((Math.round(pos) % N) + N) % N;
+    if (lastNotch !== null && notch !== lastNotch && r.classList.contains('open')) beep();
+    lastNotch = notch;
+  }
+  // a soft, dry space age beep (its own sound, nothing else on the site makes it)
+  var actx = null;
+  function beep(echo) {
+    try {
+      // share the Sound Bath's audio engine when it is running: opening a second one makes phones pop
+      var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      // Oct 17 (Scott): no beeps unless the Sound Bath is on, so the site never interrupts music the visitor is playing
+      var c = window.__rcxAudioCtx; if (!c || c.state !== 'running') return;
+      var t = c.currentTime + 0.01, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
+      lp.type = 'lowpass'; lp.frequency.value = 2600;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.008); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.075);
+      o.connect(lp); lp.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.1);
+      if (echo) {                                            // a faint echo trailing off after the beep
+        var d = c.createDelay(1); d.delayTime.value = 0.2; var fb = c.createGain(); fb.gain.value = 0.32;
+        var wet = c.createGain(); wet.gain.value = 0.35; var dl = c.createBiquadFilter(); dl.type = 'lowpass'; dl.frequency.value = 1900;
+        g.connect(d); d.connect(dl); dl.connect(fb); fb.connect(d); dl.connect(wet); wet.connect(c.destination);
+        setTimeout(function () { try { fb.disconnect(); wet.disconnect(); } catch (x) {} }, 2500);
+      }
+    } catch (e) {}
+  }
+  window.__rcxBeep = beep;                              // the Sound Bath box beeps too
+  function settle() {                                   // glide with momentum, then ease into the nearest notch
+    cancelAnimationFrame(raf);
+    var last = performance.now();
+    (function step(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (Math.abs(vel) > 0.6) { pos += vel * dt; vel *= Math.pow(0.04, dt); }
+      else { var tgt = Math.round(pos), d = tgt - pos; pos += d * Math.min(1, dt * 12); vel = 0; if (Math.abs(d) < 0.002) { pos = tgt; paint(); return; } }
+      paint(); raf = requestAnimationFrame(step);
+    })(last);
+  }
+  function rollTo(i) { var d = wrap(i - pos); vel = 0; var from = pos, t0 = performance.now(); cancelAnimationFrame(raf);
+    (function step(now) { var p = Math.min(1, (now - t0) / 380); p = 1 - Math.pow(1 - p, 3); pos = from + d * p; paint(); if (p < 1) raf = requestAnimationFrame(step); })(t0); }
+  var drag = null;
+  m.addEventListener('pointerdown', function (e) {
+    cancelAnimationFrame(raf); vel = 0;
+    drag = { y: e.clientY, p: pos, t: performance.now(), moved: 0, lastY: e.clientY, lastT: performance.now() };
+    try { m.setPointerCapture(e.pointerId); } catch (x) {}
+    e.stopPropagation();
+  });
+  m.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dy = e.clientY - drag.y; drag.moved = Math.max(drag.moved, Math.abs(dy));
+    pos = drag.p - dy / (IH * 0.9);
+    var now = performance.now(), dt = (now - drag.lastT) / 1000;
+    if (dt > 0) vel = vel * 0.6 + (-(e.clientY - drag.lastY) / (IH * 0.9) / dt) * 0.4;
+    drag.lastY = e.clientY; drag.lastT = now;
+    paint(); e.preventDefault();
+  });
+  function up(e) {
+    if (!drag) return; var moved = drag.moved; drag = null;
+    if (moved > 6) { m.__dragged = true; setTimeout(function () { m.__dragged = false; }, 50); vel = Math.max(-14, Math.min(14, vel)); settle(); }
+  }
+  m.addEventListener('pointerup', up); m.addEventListener('pointercancel', up);
+  // Oct 12: a mouse wheel or trackpad moves exactly one item per flick (no more quarter steps or drifting)
+  var wAcc = 0, wLock = 0;
+  m.addEventListener('wheel', function (e) {
+    e.preventDefault(); var now = performance.now();
+    if (now < wLock) return;
+    wAcc += e.deltaY; if (Math.abs(wAcc) < 24) return;
+    var dir = wAcc > 0 ? 1 : -1; wAcc = 0; wLock = now + 260;
+    rollTo(((Math.round(pos) + dir) % N + N) % N);
+  }, { passive: false });
+  m.addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a) return;
+    if (m.__dragged || !a.classList.contains('rr-mid')) {
+      e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+      if (!m.__dragged) rollTo(items.indexOf(a));
+    }
+  }, true);
+  function place() {
+    var b = btn.getBoundingClientRect(), want = b.top + b.height / 2 - H / 2;
+    want = Math.max(76, Math.min(innerHeight - H - 16, want));
+    r.style.setProperty('--rw-top', want + 'px');
+  }
+  new MutationObserver(function () {
+    if (!r.classList.contains('open')) return;
+    place();
+    var Hs = document.documentElement.scrollHeight - innerHeight, f = Hs > 0 ? scrollY / Hs : 0;
+    pos = Math.round(f * (N - 1)); vel = 0; lastNotch = null; paint();
+  }).observe(r, { attributes: true, attributeFilter: ['class'] });
+  addEventListener('resize', function () { if (r.classList.contains('open')) place(); });
+  paint();
+})();
 </script>
 <script src="{{ 'rcx-ambient.js' | asset_url }}" defer></script>
