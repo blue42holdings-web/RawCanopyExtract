@@ -596,7 +596,8 @@
     if (bar) { var r = bar.getBoundingClientRect(); if (r.height > 0 && r.top < innerHeight) lift = Math.max(0, innerHeight - r.top); }
     // Oct 11: at the very top of a page (the first thing people see) the box stays out of the way of the
     // opening words; it fades in as soon as the page moves
-    var top = scrollY < 60, base = top ? 6 : 40;   // at the very top it sits low in the corner, clear of the opening words
+    var desk = innerWidth >= 768, top = scrollY < 60, base = desk ? (top ? 30 : 64) : (top ? 6 : 40);   // at the very top it sits low, clear of the opening words. Oct 31 (Scott): on a computer it sits further in from the corner, right and up
+    var L = desk ? '34px' : '12px'; if (btn.style.left !== L) btn.style.left = L;
     if (!/opacity/.test(btn.style.transition)) btn.style.transition = 'bottom .4s ease, opacity 1.2s ease';
     // Oct 11: the box shows when a page opens and while the page moves, then fades away when it is still
     var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
