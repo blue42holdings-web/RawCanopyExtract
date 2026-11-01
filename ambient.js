@@ -566,11 +566,17 @@
   var ctx = null, eng = null, timer = null, muted = false, started = false, playing = 0, btn = null;
   try { muted = localStorage.getItem(KEY) === 'off'; } catch (e) {}
 
-  function icon(on) {
-    return on
-      ? '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D4A24A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a8 8 0 0 1 0 11"/></svg>'
-      : '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D4A24A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
-  }
+  // Oct 31 (Scott): his Sound Bath badge. Double gold ring, play button on top (pause while it plays), praying hands, SOUND BATH
+  function badge(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
+'<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
+'<circle cx="50" cy="20.5" r="8.4" stroke-width="1.6"/>'+
+(on?'<path d="M47.4 16.8V24.2M52.6 16.8V24.2" stroke-width="2.4"/>':'<path d="M47.6 16.9L54.2 20.5L47.6 24.1Z" fill="'+G+'" stroke-width="1.2"/>')+
+'<g stroke-width="1.6"><path d="M50 34.4V60.6"/>'+
+'<path d="M50 35.6C49.6 33.6 47.8 33.6 47.6 35.6C47.2 41 45.4 46.4 43.4 50.4C42.9 51.4 42.9 52.6 42.9 54.4C42.9 57 41.6 58.6 38.8 60.2C35.6 62 31.4 63.2 27.4 64.2"/>'+
+'<path d="M50 35.6C50.4 33.6 52.2 33.6 52.4 35.6C52.8 41 54.6 46.4 56.6 50.4C57.1 51.4 57.1 52.6 57.1 54.4C57.1 57 58.4 58.6 61.2 60.2C64.4 62 68.6 63.2 72.6 64.2"/>'+
+'<path d="M50 44.4C49.6 42.6 48 42.6 47.8 44.4C47.4 47.4 46.6 49.4 45.4 50.6"/><path d="M50 44.4C50.4 42.6 52 42.6 52.2 44.4C52.6 47.4 53.4 49.4 54.6 50.6"/>'+
+'<path d="M50 59.8C48.4 61.6 45.4 63.4 41.4 65.4"/><path d="M50 59.8C51.6 61.6 54.6 63.4 58.6 65.4"/></g>'+
+'<text x="50" y="80.4" text-anchor="middle" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="12.4" letter-spacing="1.1">SOUND BATH</text></svg>';}
   function mkBtn() {
     var ex = document.querySelectorAll('[data-ambient-btn]');
     for (var i = 1; i < ex.length; i++) ex[i].parentNode.removeChild(ex[i]);
@@ -579,7 +585,7 @@
     btn = document.createElement('button');
     btn.type = 'button';
     btn.setAttribute('data-ambient-btn', '');
-    btn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:58px;height:66px;box-sizing:border-box;border-radius:14px;border:2px solid #D4A24A;background:rgba(0,0,0,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 0 7px;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
+    btn.style.cssText = 'position:fixed;left:12px;bottom:6px;z-index:2147483000;width:76px;height:76px;box-sizing:border-box;border-radius:50%;border:0;background:none;display:block;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.55);cursor:pointer;-webkit-tap-highlight-color:transparent';
     btn.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); }, true);
     document.body.appendChild(btn); refresh();
   }
@@ -598,7 +604,7 @@
     // opening words; it fades in as soon as the page moves
     var desk = innerWidth >= 768, top = scrollY < 60, base = desk ? (top ? 30 : 64) : (top ? 6 : 40);   // at the very top it sits low, clear of the opening words. Oct 31 (Scott): on a computer it sits further in from the corner, right and up
     var L = desk ? '34px' : '12px'; if (btn.style.left !== L) btn.style.left = L;
-    var Z = desk ? 'scale(2)' : ''; if (btn.style.transform !== Z) { btn.style.transformOrigin = 'left bottom'; btn.style.transform = Z; }   // Oct 31 (Scott): twice the size on a computer
+    var Z = desk ? 'scale(1.6)' : ''; if (btn.style.transform !== Z) { btn.style.transformOrigin = 'left bottom'; btn.style.transform = Z; }   // Oct 31 (Scott): his round badge, about the same footprint on a computer as the old box at twice size
     if (!/opacity/.test(btn.style.transition)) btn.style.transition = 'bottom .4s ease, opacity 1.2s ease';
     // Oct 11: the box shows when a page opens and while the page moves, then fades away when it is still
     var mn = document.querySelector('button[data-page="receipts"][style*="min-height"]'), menuOpen = !!(mn && mn.offsetHeight > 0 && mn.getBoundingClientRect().width > 0);   // Oct 28 (Scott): never over the open menu
@@ -609,12 +615,11 @@
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
   }, 120);
   function refresh() {
-    if (!btn) return; var on = started && !muted, c = on ? '#E9C079' : '#8A7A5C';
-    // one box: the speaker on top, SOUND above BATH underneath. The whole box turns it on and off.
-    btn.innerHTML = icon(on).replace('<svg ', '<svg style="pointer-events:none;display:block" ') +
-      '<span style="pointer-events:none;display:block;font-family:\'Bebas Neue\',sans-serif;font-size:12.5px;letter-spacing:.12em;line-height:1.05;text-align:center;padding-left:.14em;color:' + c + '">SOUND<br>BATH</span>';
+    if (!btn) return; var on = started && !muted;
+    btn.innerHTML = badge(on);   // the whole badge turns it on and off
     btn.setAttribute('aria-label', on ? 'Sound bath on. Tap to turn it off' : 'Sound bath off. Tap to turn it on');
   }
+
 
   // Oct 22 (Scott): while the slot machines are on screen, the sound bath steps aside for the casino floor (vegas-amb.js)
   window.__rcxBathOn = function () { return !!(started && !muted && ctx && ctx.state === 'running'); };
