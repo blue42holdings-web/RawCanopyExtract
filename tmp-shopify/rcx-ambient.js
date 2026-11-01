@@ -643,7 +643,23 @@
     } catch (e) { started = false; }
     mkBtn(); refresh();
   }
-  function toggle() {
+  // Oct 31 (Scott): pressing the badge to play gives the same soft space age beep with a faint echo as the main site
+  function echoBeep() {
+    try {
+      var c = ctx; if (!c) return;
+      var t = c.currentTime + 0.02, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
+      lp.type = 'lowpass'; lp.frequency.value = 2600;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.008); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.075);
+      o.connect(lp); lp.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.1);
+      var d = c.createDelay(1); d.delayTime.value = 0.2; var fb = c.createGain(); fb.gain.value = 0.32;
+      var wet = c.createGain(); wet.gain.value = 0.35; var dl = c.createBiquadFilter(); dl.type = 'lowpass'; dl.frequency.value = 1900;
+      g.connect(d); d.connect(dl); dl.connect(fb); fb.connect(d); dl.connect(wet); wet.connect(c.destination);
+      setTimeout(function () { try { fb.disconnect(); wet.disconnect(); } catch (x) {} }, 2500);
+    } catch (e) {}
+  }
+  function toggle() { var was = started && !muted; doToggle(); if (!was && started && !muted) setTimeout(echoBeep, 40); }
+  function doToggle() {
     // the very first tap on the page landed on this button: the tap already started the music, so play it (and bring it up quickly) instead of turning it off
     if (fresh && started && !muted) { fresh = false; if (ctx.state === 'suspended') ctx.resume(); eng.fadeIn(3); refresh(); return; }
     if (!started) { muted = false; try { localStorage.removeItem(KEY); } catch (e) {} unlockIOS(); start(); if (ctx && ctx.state !== 'running') { try { ctx.resume(); } catch (e) {} } if (eng) eng.fadeIn(3); fresh = false; refresh(); return; }
