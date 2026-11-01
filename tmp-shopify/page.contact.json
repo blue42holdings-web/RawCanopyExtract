@@ -1,0 +1,12 @@
+{
+  "layout": "rcx",
+  "sections": {
+    "main": {
+      "type": "rcx-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
