@@ -1,0 +1,183 @@
+<style>
+#rcx-rail{position:fixed;right:5px;top:20vh;bottom:20vh;width:30px;z-index:58;display:flex;align-items:flex-start;justify-content:center;pointer-events:none;opacity:0;transition:opacity .5s ease}
+#rcx-rail.on{opacity:1}
+#rcx-rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);background:linear-gradient(rgba(212,162,74,0),rgba(212,162,74,.6) 18%,rgba(212,162,74,.6) 82%,rgba(212,162,74,0))}
+#rcx-rail button{position:absolute;left:0;top:var(--rr,0%);transform:translateY(-50%);transition:transform .35s ease,background .3s,color .3s;pointer-events:auto;width:30px;height:30px;box-sizing:border-box;border-radius:50%;border:2.5px solid #D4A24A;background:#000;color:#D4A24A;font-size:0;line-height:0;padding:0;cursor:pointer;display:block;box-shadow:0 0 12px rgba(0,0,0,.8);-webkit-tap-highlight-color:transparent}
+#rcx-rail button .rr-x,#rcx-rail button .rr-x::before{position:absolute;left:50%;top:50%;width:13px;height:2.5px;margin:-1.25px 0 0 -6.5px;border-radius:2px;background:currentColor;pointer-events:none}
+#rcx-rail button .rr-x::before{content:"";left:0;top:0;margin:0;transform:rotate(90deg)}
+#rcx-rail.open button{transform:translateY(-50%) rotate(45deg);background:#D4A24A;color:#000}
+#rcx-rail .rr-menu{position:absolute;right:38px;top:var(--rr,0%);transform:translateY(-50%) translateX(12px);display:flex;flex-direction:column;gap:6px;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+#rcx-rail.open .rr-menu{opacity:1;transform:translateY(-50%);pointer-events:auto}
+#rcx-rail .rr-menu a{display:block;white-space:nowrap;text-align:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:16px;line-height:1;color:#E9C079;text-decoration:none;padding:3px 0 0 .15em;border:2.5px solid #D4A24A;border-radius:999px;background:rgba(0,0,0,.9);box-shadow:0 4px 14px rgba(0,0,0,.6);-webkit-font-smoothing:antialiased}
+#rcx-rail .rr-menu a span{display:block;transform:translateY(-.375px);pointer-events:none}
+#rcx-rail .rr-menu a:hover{background:#D4A24A;color:#000}
+</style>
+<div id="rcx-rail"><button type="button" aria-label="Quick menu"><i class="rr-x"></i></button><nav class="rr-menu" aria-label="Quick menu">{%- for link in linklists['main-menu'].links -%}<a href="{{ link.url }}"><span>{{ link.title | upcase }}</span></a>{%- endfor -%}<a href="#" data-go="top"><span>BACK TO TOP</span></a></nav></div>
+<script>
+(function () {
+  var r = document.getElementById('rcx-rail'); if (!r) return;
+  var btn = r.querySelector('button');
+  function tick() {
+    var y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
+    r.classList.toggle('on', y > innerHeight * 0.35 || r.classList.contains('open'));
+    var f = H > 0 ? Math.min(1, Math.max(0, y / H)) : 0;
+    r.style.setProperty('--rr', (6 + f * 88).toFixed(1) + '%');
+  }
+  addEventListener('scroll', tick, { passive: true }); setInterval(tick, 700); tick();
+  btn.addEventListener('click', function (e) { e.stopPropagation(); r.classList.toggle('open'); tick(); });
+  r.querySelectorAll('.rr-menu a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      r.classList.remove('open');
+      if (a.getAttribute('data-go') === 'top') { e.preventDefault(); try { scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { scrollTo(0, 0); } }
+    });
+  });
+  document.addEventListener('click', function (e) { if (!r.contains(e.target)) r.classList.remove('open'); });
+})();
+/* Oct 11: the gold line on the right comes alive now and then. A flare of light runs down the line
+   (sometimes up), and the plus gives a little "tap me" pulse. */
+(function () {
+  var r = document.getElementById('rcx-rail'); if (!r) return;
+  var st = document.createElement('style');
+  st.textContent =
+    '#rcx-rail .rr-flare{position:absolute;left:50%;width:3px;height:110px;margin-left:-1.5px;border-radius:3px;pointer-events:none;opacity:0;' +
+    'background:linear-gradient(rgba(255,226,160,0),rgba(255,236,190,.95) 50%,rgba(255,226,160,0));box-shadow:0 0 10px 2px rgba(240,200,120,.55)}' +
+    '#rcx-rail .rr-flare.dn{animation:rrFlareDn 1.9s cubic-bezier(.45,0,.35,1) forwards}' +
+    '#rcx-rail .rr-flare.up{animation:rrFlareUp 1.9s cubic-bezier(.45,0,.35,1) forwards}' +
+    '@keyframes rrFlareDn{0%{top:-110px;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:100%;opacity:0}}' +
+    '@keyframes rrFlareUp{0%{top:100%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:-110px;opacity:0}}' +
+    '#rcx-rail button.rr-poke{animation:rrPoke 1.1s ease}' +
+    '#rcx-rail button.rr-poke::after{content:"";position:absolute;inset:-2.5px;border-radius:50%;border:2px solid #E9C079;animation:rrRing 1.1s ease-out forwards;pointer-events:none}' +
+    '@keyframes rrPoke{0%{transform:translateY(-50%) scale(1)}18%{transform:translateY(-50%) scale(1.28) rotate(90deg);background:#D4A24A;color:#000}' +
+    '36%{transform:translateY(-50%) scale(.92) rotate(90deg)}54%{transform:translateY(-50%) scale(1.12) rotate(90deg);background:#D4A24A;color:#000}100%{transform:translateY(-50%) scale(1) rotate(90deg)}}' +
+    '@keyframes rrRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.4);opacity:0}}';
+  document.head.appendChild(st);
+  var f = document.createElement('span'); f.className = 'rr-flare'; r.insertBefore(f, r.firstChild);
+  var btn = r.querySelector('button');
+  function flare() {
+    if (r.classList.contains('on') && !r.classList.contains('open')) {
+      var up = Math.random() < 0.35;
+      f.className = 'rr-flare'; void f.offsetWidth; f.className = 'rr-flare ' + (up ? 'up' : 'dn');
+      if (Math.random() < 0.6) setTimeout(poke, 1500);
+    }
+    setTimeout(flare, 7000 + Math.random() * 9000);
+  }
+  function poke() {
+    if (!btn || r.classList.contains('open') || !r.classList.contains('on')) return;
+    btn.classList.remove('rr-poke'); void btn.offsetWidth; btn.classList.add('rr-poke');
+    setTimeout(function () { btn.classList.remove('rr-poke'); }, 1200);
+  }
+  setTimeout(flare, 4000);
+  setInterval(function () { if (Math.random() < 0.5) poke(); }, 13000);
+})();
+/* Oct 11: the quick menu is a real wheel. It always opens fully on screen with the current item in the
+   middle and two above and two below. Drag up or down (or use a mouse wheel) and it rolls, all the way around,
+   with a soft space age beep at each notch. Tap the bright middle item to go there; tap another to roll to it.
+   Oct 31 (Scott): every button the same width with its words dead centered, a bolder gold ring, the waiting
+   buttons smaller than the middle one, and no 3D tilt or enlarging, so the words stay sharp instead of blurry. */
+(function () {
+  var r = document.getElementById('rcx-rail'); if (!r) return;
+  var m = r.querySelector('.rr-menu'), btn = r.querySelector('button'); if (!m || !btn) return;
+  var items = [].slice.call(m.querySelectorAll('a')), N = items.length, IH = 50, H = IH * 5 + 24, PW = 166;
+  var st = document.createElement('style');
+  st.textContent =
+    '#rcx-rail .rr-menu.rr-wheel2{position:fixed !important;right:44px !important;left:auto !important;top:var(--rw-top,0px) !important;width:190px;height:' + H + 'px;display:block !important;' +
+      'transform:translateX(14px) !important;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;padding:0 !important;cursor:grab}' +
+    '#rcx-rail.open .rr-menu.rr-wheel2{transform:none !important}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a{position:absolute !important;left:' + ((190 - PW) / 2) + 'px;top:0;width:' + PW + 'px;height:' + (IH - 8) + 'px;margin:0 !important;box-sizing:border-box;display:flex !important;align-items:center;justify-content:center;transform-origin:50% 50%;transition:background .2s,color .2s;white-space:nowrap}' +
+    '#rcx-rail .rr-menu.rr-wheel2 a.rr-mid{background:#D4A24A !important;color:#000 !important}';
+  document.head.appendChild(st);
+  m.classList.remove('rr-wheel'); m.classList.add('rr-wheel2');
+  var pos = 0, vel = 0, raf = 0, lastNotch = null;
+  function wrap(d) { d = ((d % N) + N) % N; return d > N / 2 ? d - N : d; }    // shortest way around the wheel
+  function paint() {
+    var cy = H / 2;
+    items.forEach(function (a, i) {
+      var d = wrap(i - pos), ad = Math.abs(d);
+      var y = cy + Math.sin(Math.max(-1.45, Math.min(1.45, d * 0.52))) * IH * 2.05 - (IH - 8) / 2;   // on a cylinder: spacing tightens toward the edges
+      var s = ad < 1 ? 1 - ad * 0.22 : Math.max(0.56, 0.78 - (ad - 1) * 0.16), o = ad > 2.6 ? 0 : Math.max(0.3, 1 - ad * 0.3);
+      a.style.transform = 'translateY(' + Math.round(y) + 'px) scale(' + s.toFixed(3) + ')';
+      a.style.opacity = o.toFixed(3); a.style.pointerEvents = o > 0.2 ? 'auto' : 'none';
+      a.classList.toggle('rr-mid', ad < 0.5);
+    });
+    var notch = ((Math.round(pos) % N) + N) % N;
+    if (lastNotch !== null && notch !== lastNotch && r.classList.contains('open')) beep();
+    lastNotch = notch;
+  }
+  // a soft, dry space age beep (its own sound, nothing else on the site makes it)
+  function beep() {
+    try {
+      // Oct 17 (Scott): no beeps unless the Sound Bath is on, so the site never interrupts music the visitor is playing
+      var c = window.__rcxAudioCtx; if (!c || c.state !== 'running') return;
+      var t = c.currentTime + 0.01, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(1320, t); o.frequency.exponentialRampToValueAtTime(1580, t + 0.05);
+      lp.type = 'lowpass'; lp.frequency.value = 2600;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.008); g.gain.setValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.075);
+      o.connect(lp); lp.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.1);
+    } catch (e) {}
+  }
+  function settle() {                                   // glide with momentum, then ease into the nearest notch
+    cancelAnimationFrame(raf);
+    var last = performance.now();
+    (function step(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (Math.abs(vel) > 0.6) { pos += vel * dt; vel *= Math.pow(0.04, dt); }
+      else { var tgt = Math.round(pos), d = tgt - pos; pos += d * Math.min(1, dt * 12); vel = 0; if (Math.abs(d) < 0.002) { pos = tgt; paint(); return; } }
+      paint(); raf = requestAnimationFrame(step);
+    })(last);
+  }
+  function rollTo(i) { var d = wrap(i - pos); vel = 0; var from = pos, t0 = performance.now(); cancelAnimationFrame(raf);
+    (function step(now) { var p = Math.min(1, (now - t0) / 380); p = 1 - Math.pow(1 - p, 3); pos = from + d * p; paint(); if (p < 1) raf = requestAnimationFrame(step); })(t0); }
+  var drag = null;
+  m.addEventListener('pointerdown', function (e) {
+    cancelAnimationFrame(raf); vel = 0;
+    drag = { y: e.clientY, p: pos, t: performance.now(), moved: 0, lastY: e.clientY, lastT: performance.now() };
+    try { m.setPointerCapture(e.pointerId); } catch (x) {}
+    e.stopPropagation();
+  });
+  m.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dy = e.clientY - drag.y; drag.moved = Math.max(drag.moved, Math.abs(dy));
+    pos = drag.p - dy / (IH * 0.9);
+    var now = performance.now(), dt = (now - drag.lastT) / 1000;
+    if (dt > 0) vel = vel * 0.6 + (-(e.clientY - drag.lastY) / (IH * 0.9) / dt) * 0.4;
+    drag.lastY = e.clientY; drag.lastT = now;
+    paint(); e.preventDefault();
+  });
+  function up(e) {
+    if (!drag) return; var moved = drag.moved; drag = null;
+    if (moved > 6) { m.__dragged = true; setTimeout(function () { m.__dragged = false; }, 50); vel = Math.max(-14, Math.min(14, vel)); settle(); }
+  }
+  m.addEventListener('pointerup', up); m.addEventListener('pointercancel', up);
+  // Oct 12: a mouse wheel or trackpad moves exactly one item per flick (no more quarter steps or drifting)
+  var wAcc = 0, wLock = 0;
+  m.addEventListener('wheel', function (e) {
+    e.preventDefault(); var now = performance.now();
+    if (now < wLock) return;
+    wAcc += e.deltaY; if (Math.abs(wAcc) < 24) return;
+    var dir = wAcc > 0 ? 1 : -1; wAcc = 0; wLock = now + 260;
+    rollTo(((Math.round(pos) + dir) % N + N) % N);
+  }, { passive: false });
+  m.addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a) return;
+    if (m.__dragged || !a.classList.contains('rr-mid')) {
+      e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+      if (!m.__dragged) rollTo(items.indexOf(a));
+    }
+  }, true);
+  function place() {
+    var b = btn.getBoundingClientRect(), want = b.top + b.height / 2 - H / 2;
+    want = Math.max(76, Math.min(innerHeight - H - 16, want));
+    r.style.setProperty('--rw-top', Math.round(want) + 'px');
+  }
+  new MutationObserver(function () {
+    if (!r.classList.contains('open')) return;
+    place();
+    var Hs = document.documentElement.scrollHeight - innerHeight, f = Hs > 0 ? scrollY / Hs : 0;
+    pos = Math.round(f * (N - 1)); vel = 0; lastNotch = null; paint();
+  }).observe(r, { attributes: true, attributeFilter: ['class'] });
+  addEventListener('resize', function () { if (r.classList.contains('open')) place(); });
+  paint();
+})();
+</script>
+<script>window.__rcxAssetBase = "{{ 'rcx-ambient.js' | asset_url | split: 'rcx-ambient.js' | first }}";</script>
+<script src="{{ 'rcx-ambient.js' | asset_url }}" defer></script>
