@@ -59,14 +59,7 @@
     var b = box(k); anchor.parentNode.insertBefore(b, anchor.nextSibling); fit(b, anchor);
     [].forEach.call(document.querySelectorAll('.pl-k-' + k), function (o) { if (o !== b && o.previousElementSibling === null) o.remove(); });
   }
-  function homeAnchor() {
-    var p = [].filter.call(document.querySelectorAll('.sq-para'), vis)[0]; if (!p) return null;
-    for (var x = p; x && x !== document.body; x = x.parentElement) {
-      var cs = getComputedStyle(x);
-      if (parseFloat(cs.borderTopWidth) >= 1.5 && x.offsetWidth > 280) return x;
-    }
-    return null;
-  }
+  function homeAnchor() { return document.querySelector('[data-m="home-para"]'); }
   function run() {
     // home, desktop: the box goes inside the row under the paragraph (the packets photo and the three mushrooms),
     // spanning the full row at the top. Another script always keeps the paragraph right before that row, so

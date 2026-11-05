@@ -280,30 +280,5 @@
   setInterval(run, 900); run();
 })();
 
-/* Desktop home: the "what we do" box from the phone layout, placed under the seal (Oct 10) */
-(function () {
-  function run() {
-    var desk = matchMedia('(min-width:768px)').matches;
-    var ex = document.querySelector('[data-desk-para]');
-    if (!desk) { if (ex) ex.remove(); return; }
-    var pk = document.querySelector('[data-m="pk-dup"]'); if (!pk || !pk.getBoundingClientRect().height) return;
-    var src = document.querySelector('[data-m="home-para"] p'); if (!src) return;
-    var grid = pk.parentElement;
-    if (ex && ex.nextElementSibling === grid) return;
-    if (ex) ex.remove();
-    var box = document.createElement('div'); box.setAttribute('data-desk-para', '');
-    box.style.cssText = 'display:block;grid-template-columns:none;position:relative;overflow:hidden;isolation:isolate;max-width:1080px;margin:0 auto 34px;border:3px solid #D4A24A;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.65);padding:40px 56px;text-align:center;background:#0b1d22';
-    var bg = document.createElement('div');
-    bg.style.cssText = 'position:absolute;inset:-14px;z-index:-1;background:radial-gradient(ellipse 20% 62% at 50% 36%,rgba(0,0,0,.1),rgba(0,0,0,.58) 100%),url("assets/photo/map-mug-camera.jpg") 50% 50%/cover no-repeat';
-    var p = src.cloneNode(true);
-    p.style.cssText = 'margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:30px;line-height:1.45;font-weight:500;color:#fff;text-wrap:balance;max-width:none;width:100%;text-align:center';
-    p.querySelectorAll('span').forEach(function (s) { if (s.hasAttribute('data-plain')) { s.style.color = '#FFFFFF'; return; } s.style.color = '#D4A24A'; s.style.fontWeight = '600'; });
-    box.style.setProperty('display', 'block', 'important');
-    box.appendChild(bg); box.appendChild(p);
-    grid.parentNode.insertBefore(box, grid);
-  }
-  setInterval(run, 900); run();
-})();
-
 /* Oct 15 (late): when the Why page closes, reset so the top photo fades up from dark again next time it opens */
 setInterval(function () { document.querySelectorAll('div[data-screen-label="Why One Ingredient"] > section').forEach(function (s) { if (s.getBoundingClientRect().height < 50) s.__whkOn = 0; }); }, 400);

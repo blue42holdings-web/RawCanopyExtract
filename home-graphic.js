@@ -98,7 +98,8 @@
     '.hg-end{margin-top:14px;text-align:center;color:#F1ECE1;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.35}',
     'html body .hg-two{margin-top:0 !important;padding-top:8px !important}',
     'html body .hg-two .hg-box{margin-bottom:0}',
-    'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}'
+    'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}',
+    '@media (min-width:768px){html body .hg.hg-desk .hg-slot{width:600px !important;max-width:100% !important;margin:0 auto 16px !important}html body .hg.hg-desk .hg-box.hg-pm{width:600px !important;max-width:100% !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;padding:30px 24px 28px !important}}'   // Nov 5 (Scott): desktop boxes fit what's inside them, no big black space
   ].join('\n');
   document.head.appendChild(css);
 
@@ -157,11 +158,9 @@
     });
   }
   function vis(e) { return e && e.offsetHeight > 0; }
-  function anchor() {   // the bordered box holding the brand paragraph
-    var p = [].filter.call(document.querySelectorAll('.sq-para'), function (e) { return e.offsetParent !== null || e.__hgHid; })[0];
-    if (!p) return null;
-    for (var x = p; x && x !== document.body; x = x.parentElement) { var cs = getComputedStyle(x); if (parseFloat(cs.borderTopWidth) >= 1.5 && x.offsetWidth > 280) return x; }
-    return null;
+  function anchor() {   // Nov 5 (Scott): the old brand paragraph is gone; its empty, hidden spot marks where the game goes
+    var a = document.querySelector('[data-m="home-para"]');
+    return a && a.isConnected && a.parentNode ? a : null;
   }
   var g = null, g2 = null, hidden = null;
   function fitTitle() {   // Oct 27 (Scott): bigger, fills the line; the press heading copies its size
@@ -207,7 +206,7 @@
     [].forEach.call(document.querySelectorAll('.hg-pm'), function (b) {
       if (!b.offsetWidth) return;
       var cs = getComputedStyle(b), W = b.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0); if (W <= 0) return;
-      [['.hg-pmh', 34], ['.hg-pmb', 18]].forEach(function (g) {
+      (innerWidth >= 768 ? [['.hg-pmh', 56], ['.hg-pmb', 28]] : [['.hg-pmh', 34], ['.hg-pmb', 18]]).forEach(function (g) {
         var ls = [].slice.call(b.querySelectorAll(g[0])), m = g[1];
         ls.forEach(function (l) { l.style.setProperty('font-size', '20px', 'important'); l.style.setProperty('display', 'inline-block', 'important'); var w = l.getBoundingClientRect().width; if (w > 0) m = Math.min(m, Math.floor(20 * W / w * 0.98)); });
         ls.forEach(function (l) { l.style.setProperty('font-size', m + 'px', 'important'); l.style.setProperty('display', 'block', 'important'); });
@@ -268,7 +267,7 @@
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
       g = document.createElement('div'); g.className = 'hg' + (phone ? '' : ' hg-desk'); g.__phone = phone; g.setAttribute('data-noswipe', '1'); g.innerHTML = phone ? html() : html().replace('embed=1', 'embed=1&wide=1');
       [].forEach.call(g.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
-      var cs = getComputedStyle(a); g.style.maxWidth = (phone ? a.offsetWidth : 1300) + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
+      var cs = getComputedStyle(a), pcs = getComputedStyle(a.parentNode), aw = a.offsetWidth || (a.parentNode.clientWidth - parseFloat(pcs.paddingLeft) - parseFloat(pcs.paddingRight)); g.style.maxWidth = (phone ? aw : 1300) + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
       a.parentNode.insertBefore(g, a.nextSibling);
       // Oct 27 (Scott): the green "Uncompromising, by design" box lives right under the three packets (see place2)
       var b2 = g.querySelector('.hg-b2');
