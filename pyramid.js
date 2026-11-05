@@ -14,8 +14,13 @@
     for (var j = 0; j < parents.length; j++) parents[j].normalize();
   }
 
+  // Never touch text the page builder (React) made: changing it crashes the whole page when it re-renders.
+  // Those lines get their breaks in the page text instead. Only boxes added by our own scripts are fixed here.
+  function reactOwned(n) { for (var k in n) if (k.indexOf('__reactFiber') === 0 || k.indexOf('__reactProps') === 0) return true; return false; }
   function eligible(el) {
     if (el.closest(SKIP)) return false;
+    if (reactOwned(el)) return false;
+    var all = el.querySelectorAll('*'); for (var q = 0; q < all.length; q++) if (reactOwned(all[q])) return false;
     var cs = getComputedStyle(el);
     if (cs.textAlign !== 'center' || /nowrap|pre/.test(cs.whiteSpace) || cs.display === 'none') return false;
     if (el.querySelector('br:not([data-pyr]), p, div, ul, ol, img, svg, video, button, input')) return false;
