@@ -159,6 +159,13 @@
   }
   function vis(e) { return e && e.offsetHeight > 0; }
   function anchor() {   // Nov 5 (Scott): the old brand paragraph is gone; its empty, hidden spot marks where the game goes
+    if (innerWidth >= 768) {   // desktop: the game goes under the packets row, full width, never inside the packets grid
+      var pk = document.querySelector('[data-m="pk-dup"]'), grid = pk && pk.getBoundingClientRect().height && pk.parentElement;
+      if (!grid || !grid.parentNode) return null;   // wait until the packets row has been built
+      var m = grid.previousElementSibling;   // same spot the old desktop paragraph box used, so the page builder never trips
+      if (!(m && m.hasAttribute('data-hg-mark'))) { m = document.createElement('div'); m.setAttribute('data-hg-mark', ''); grid.parentNode.insertBefore(m, grid); }
+      return m;
+    }
     var a = document.querySelector('[data-m="home-para"]');
     return a && a.isConnected && a.parentNode ? a : null;
   }
