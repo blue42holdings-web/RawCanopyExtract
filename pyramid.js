@@ -19,6 +19,7 @@
   function reactOwned(n) { for (var k in n) if (k.indexOf('__reactFiber') === 0 || k.indexOf('__reactProps') === 0) return true; return false; }
   function eligible(el) {
     if (el.closest(SKIP)) return false;
+    if (!el.closest('section.pl-box, .hg')) return false;   // only boxes our own scripts build; anything else could be page-builder text moved by another script
     if (reactOwned(el)) return false;
     var all = el.querySelectorAll('*'); for (var q = 0; q < all.length; q++) if (reactOwned(all[q])) return false;
     var cs = getComputedStyle(el);
