@@ -2,7 +2,7 @@
    below it, and no line is a single word left alone when it can be helped. Runs on every page and every
    screen size: it measures the words, then chooses the line breaks from the bottom up. */
 (function () {
-  var SEL = 'p, h1, h2, h3, h4, h5, .sh-l';
+  var SEL = 'p, h1, h2, h3, h4, h5, div, .sh-l';
   var SKIP = 'header, nav, button, a, [data-m="player"], [data-ambient-btn], [data-m^="nav"], #rcx-rail, input, textarea, [contenteditable], [data-no-pyramid]';
   var busy = false, timer = 0;
 
@@ -72,12 +72,18 @@
     var ws = words(el); if (!ws || ws.length < 2) return;
     var lines = lineCount(ws); if (lines < 2) return;
     var cs = getComputedStyle(el), W = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 1;
-    var sp = spaceWidth(ws, el), best = null;
-    for (var w = W; w >= W * 0.55; w -= 3) {
+    var sp = spaceWidth(ws, el), best = null, bestScore = -1, seen = {};
+    // try every width that keeps the same number of lines; among the ones that make a pyramid,
+    // prefer the one whose line breaks fall at the end of sentences (after . ? !)
+    for (var w = W; w >= W * 0.5; w -= 2) {
       var st = fromBottom(ws, w, sp);
-      if (st.length !== lines) { if (st.length > lines) break; continue; }
-      if (ok(ws, st, sp)) { best = st; break; }
-      if (!best) best = st;   // pyramid holds even if the top line ends up one word; keep it as the fallback
+      if (st.length > lines) break;
+      if (st.length !== lines || seen[st.join(',')]) continue;
+      seen[st.join(',')] = 1;
+      if (!ok(ws, st, sp)) { if (!best) { best = st; bestScore = -1; } continue; }
+      var score = 1;
+      for (var q = 1; q < st.length; q++) { var prev = ws[st[q] - 1], txt = prev.node.data.slice(prev.start, prev.end); if (/[.?!]["'”’)]*$/.test(txt)) score += 10; else if (/[,;:]$/.test(txt)) score += 3; }
+      if (score > bestScore) { best = st; bestScore = score; }
     }
     if (!best) return;
     for (var k = best.length - 1; k >= 1; k--) {
