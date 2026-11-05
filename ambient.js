@@ -567,7 +567,13 @@
   try { muted = localStorage.getItem(KEY) === 'off'; } catch (e) {}
 
   // Oct 31 (Scott): his Sound Bath badge. Double gold ring, play button on top (pause while it plays), praying hands, SOUND BATH
-  function badge(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
+  // Nov 4 (Scott): on a phone the badge drops the figure and gives the room to a bigger play button and a bigger SOUND BATH, so both read at a glance. Desktop keeps the full badge
+  function badgePhone(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
+'<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
+'<circle cx="50" cy="40.5" r="17" stroke-width="2.2"/>'+
+(on?'<path d="M44.6 33V48M55.4 33V48" stroke-width="4.2"/>':'<path d="M44.8 31.7L59.2 40.5L44.8 49.3Z" fill="'+G+'" stroke-width="1.6"/>')+
+'<text x="50" y="76.5" text-anchor="middle" textLength="66" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="17">SOUND BATH</text></svg>';}
+  function badge(on) {if (innerWidth < 768) return badgePhone(on); var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
 '<circle cx="50" cy="20.5" r="8.4" stroke-width="1.6"/>'+
 (on?'<path d="M47.4 16.8V24.2M52.6 16.8V24.2" stroke-width="2.4"/>':'<path d="M47.6 16.9L54.2 20.5L47.6 24.1Z" fill="'+G+'" stroke-width="1.2"/>')+
@@ -614,6 +620,7 @@
     var want = (base + lift) + 'px';   // raised off the bottom corner once the page moves (Oct 11)
     if (btn.style.bottom !== want) { btn.style.bottom = want; }
   }, 120);
+  addEventListener('resize', function () { var ph = innerWidth < 768; if (ph !== window.__rcxBadgePh) { window.__rcxBadgePh = ph; refresh(); } });   // swap badge layout when the phone turns or the window changes
   function refresh() {
     if (!btn) return; var on = started && !muted;
     btn.innerHTML = badge(on);   // the whole badge turns it on and off
