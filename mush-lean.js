@@ -32,9 +32,8 @@
     [].forEach.call(document.querySelectorAll('[data-screen-label]'), function (P) {
       var L = P.getAttribute('data-screen-label'), D = DATA[L]; if (!D || !P.offsetHeight) return;
       var num = P.querySelector('section[data-m^="num-"]'); if (!num) return;
-      var main = [].filter.call(num.querySelectorAll('.cx-track'), function (t) { return !t.closest('.pr-row'); })[0];
+      var main = [].filter.call(num.querySelectorAll('.cx-track'), function (t) { return true; })[0];
       if (main) {
-        [].forEach.call(main.children, function (k) { if (!k.classList.contains('ml-card') && k.getAttribute('data-lean') !== 'x') k.setAttribute('data-lean', 'x'); });
         if (!main.querySelector('.ml-card')) {
           var tmp = document.createElement('div'); tmp.innerHTML = D.cards.map(card).join('');
           [].slice.call(tmp.children).forEach(function (n) { main.appendChild(n); });
@@ -42,8 +41,6 @@
           main.scrollLeft = 0;
         }
       }
-      // magazines and the extras row: front page only
-      [].forEach.call(num.querySelectorAll('.pr-row'), function (r) { r.setAttribute('data-lean', 'x'); var s = r.previousElementSibling; if (s && /swipe/i.test(s.innerText || '')) s.setAttribute('data-lean', 'x'); });
       var wrap = P.querySelector(':scope > .ms-wrap');
       if (wrap && !wrap.querySelector('.ml-shop')) {
         var d = document.createElement('div'); d.className = 'ml-shop';

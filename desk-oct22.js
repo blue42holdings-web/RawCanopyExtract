@@ -1,10 +1,8 @@
 /* Oct 22 2026 (Scott): desktop notes.
    1. No "Swipe for more" on desktop where nothing swipes.
-   2. Turkey Tail: the three boxes at the bottom sit centered, lined up under the magazines.
    3. Mushroom page endings, all three the same: the story box, then a fade to black, a beat of black,
       then the RCX field pattern cuts on hard. Lion's Mane's story box sits on the blue Mount Shasta photo.
    4. Lion's Mane story box says LIVE NOW (desktop and phone).
-   5. Cordyceps: the Reaction Time box gets the college track photo.
    (6. About's two labs photo lives in about-photos.js.) */
 (function () {
   var PAGES = ["Lion's Mane", 'Cordyceps', 'Turkey Tail'];
@@ -35,22 +33,6 @@
     });
   }
 
-  // 2. Turkey Tail bottom row: three boxes the same width as the magazine row above
-  function ttRow(P) {
-    var row = P.querySelector('.ms-row'); if (!row) return;
-    var cards = [].filter.call(row.children, vis);
-    if (!desk() || cards.length < 3) { if (row.__dk) { row.__dk = 0; row.style.removeProperty('padding-left'); row.style.removeProperty('padding-right'); row.style.removeProperty('overflow-x'); cards.forEach(function (c) { ['flex', 'width', 'max-width'].forEach(function (p) { c.style.removeProperty(p); }); }); } return; }
-    var mags = [].filter.call(P.querySelectorAll('.pr-row .mx-press, .pr-row .mx-box'), vis);
-    if (!mags.length) return;
-    var L = Infinity, R = -Infinity;
-    mags.forEach(function (m) { var r = m.getBoundingClientRect(); L = Math.min(L, r.left); R = Math.max(R, r.right); });
-    var rr = row.getBoundingClientRect(), gap = 24, n = cards.length, w = Math.floor((R - L - gap * (n - 1)) / n);
-    if (w < 200) return;
-    row.__dk = 1;
-    setI(row, 'padding-left', Math.round(L - rr.left) + 'px'); setI(row, 'padding-right', Math.round(rr.right - R) + 'px'); setI(row, 'overflow-x', 'hidden'); setI(row, 'gap', gap + 'px');
-    cards.forEach(function (c) { setI(c, 'flex', '0 0 ' + w + 'px'); setI(c, 'width', w + 'px'); setI(c, 'max-width', w + 'px'); });
-  }
-
   // 3 + 4. story box endings
   function story(P) {
     var sb = [].filter.call(P.querySelectorAll('section[data-m="sbox"]'), vis)[0]; if (!sb) return;
@@ -77,17 +59,6 @@
     [].forEach.call(sb.querySelectorAll('div'), function (d) { if (!d.textContent.trim() && /pattern-field/.test(getComputedStyle(d).backgroundImage)) setI(d, 'display', 'none'); });
   }
 
-  // 5. Cordyceps Reaction Time box: the college track photo
-  function cdReaction(P) {
-    if (P.getAttribute('data-screen-label') !== 'Cordyceps') return;
-    var box = [].filter.call(P.querySelectorAll('.mx-box'), function (b) { var tg = b.querySelector('.mx-tag'); return tg && /^THE REACTION TIME/i.test(txt(tg)); })[0];
-    if (!box) return;
-    if (!desk()) { if (box.__dk) { box.__dk = 0; box.style.removeProperty('background-image'); box.style.removeProperty('background-size'); box.style.removeProperty('background-position'); } return; }
-    box.__dk = 1;
-    setI(box, 'background-image', 'linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.72)),url("assets/photo/cd-relay-college.jpg")');
-    setI(box, 'background-size', '100% 100%,cover'); setI(box, 'background-position', '0 0,center 40%');
-  }
-
   // 7. Cordyceps top photo: a soft dark pool behind the words so the gold reads when the photo brightens
   function cdHero(P) {
     if (P.getAttribute('data-screen-label') !== 'Cordyceps') return;
@@ -102,8 +73,7 @@
     swipes();
     [].forEach.call(document.querySelectorAll('[data-screen-label]'), function (P) {
       if (PAGES.indexOf(P.getAttribute('data-screen-label')) < 0 || !vis(P)) return;
-      if (P.getAttribute('data-screen-label') === 'Turkey Tail') ttRow(P);
-      story(P); cdReaction(P); cdHero(P);
+      story(P); cdHero(P);
     });
   }
   setInterval(run, 1500); run(); addEventListener('resize', run);

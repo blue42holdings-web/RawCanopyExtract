@@ -2,7 +2,7 @@
    home under the brand paragraph, each mushroom page right under its top photo. Desktop and phone. */
 (function () {
   var NB = ' ';
-  function j(s) { return s.replace(/ (\S+)$/, NB + '$1').replace(/\|/g, '<br class="m-br">'); } // keep the last two words together; a "|" is a phone line break
+  function j(s) { return s.replace(/ (\S+)$/, NB + '$1').replace(/\|/g, ' <br class="m-br">'); } // keep the last two words together; a "|" is a phone line break
   var LINES = {
     home: { h: 'Natural vitality|from mushroom extract powder,|easily taken anywhere', s: [] },
     lm: { h: 'For your noggin', s: ['Losing focus?|Try some brain nutrition.', 'Sustained focus. No jitters.', 'Chronic stress. Constant noise. Real support.*'], i: 'Inspired by the neuroscience on lion\u2019s mane.' },
