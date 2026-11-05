@@ -91,14 +91,19 @@
     try { var els = document.querySelectorAll(SEL); for (var i = 0; i < els.length; i++) { var r = els[i].getBoundingClientRect(); if (r.height > 0 && r.width > 0) fix(els[i]); } } catch (e) {}
     setTimeout(function () { busy = false; }, 0);
   }
-  function soon(ms) { clearTimeout(timer); timer = setTimeout(run, ms || 250); }
+  // throttle, not debounce: the site animates all the time, so waiting for a quiet moment would never run
+  function soon(ms) { if (timer) return; timer = setTimeout(function () { timer = 0; run(); }, ms || 250); }
+  var lastW = innerWidth;
 
-  addEventListener('resize', function () { soon(200); });
+  addEventListener('resize', function () { if (innerWidth !== lastW) { lastW = innerWidth; clearTimeout(timer); timer = 0; soon(200); } });
   addEventListener('orientationchange', function () { soon(300); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { soon(50); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { soon(300); }); else soon(300);
   new MutationObserver(function (list) {
     if (busy) return;
-    for (var i = 0; i < list.length; i++) { var t = list[i].target; if (t.nodeType === 1 && t.closest && t.closest(SKIP)) continue; soon(400); return; }
-  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+    for (var i = 0; i < list.length; i++) {
+      var m = list[i], t = m.target; if (t.nodeType !== 1 || (t.closest && t.closest(SKIP))) continue;
+      for (var k = 0; k < m.addedNodes.length; k++) { var a = m.addedNodes[k]; if (a.nodeType === 1 && a.tagName !== 'BR' && a.tagName !== 'SCRIPT' && a.tagName !== 'STYLE') { soon(600); return; } }
+    }
+  }).observe(document.body || document.documentElement, { childList: true, subtree: true });
 })();
