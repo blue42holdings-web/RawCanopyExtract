@@ -4425,7 +4425,7 @@ class Component extends DCLogic {
 
   initPlayerAutohide() {
     if (!window.matchMedia) return;
-    const mq = matchMedia('(pointer: coarse), (max-width: 767.98px)'); { const st = document.createElement('style'); st.textContent = '[data-m="player"]{transition:opacity .35s ease,transform .35s ease}[data-m="player"][data-autohidden]{opacity:0 !important;transform:translateY(100%) !important;pointer-events:none !important}'; document.head.appendChild(st); }   // Nov 4 (Scott): cinema mode on every phone, upright or sideways. The bar slips away 3 seconds after play; a tap brings it back
+    const mq = matchMedia('(pointer: coarse), (max-width: 767.98px), (max-height: 500px)'); { const st = document.createElement('style'); st.textContent = '[data-m="player"]{transition:opacity .35s ease,transform .35s ease}[data-m="player"][data-autohidden]{opacity:0 !important;transform:translateY(100%) !important;pointer-events:none !important}'; document.head.appendChild(st); }   // Nov 4 (Scott): cinema mode on every phone, upright or sideways. The bar slips away 3 seconds after play; a tap brings it back
     let timer = null, wasPlaying = false;
     const bar = () => document.querySelector('[data-m="player"]');
     const show = () => { const b = bar(); if (b) b.removeAttribute('data-autohidden'); };
