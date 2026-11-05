@@ -903,8 +903,8 @@ body:has([data-story-grid]) header{position:relative !important}
 [data-m="player"] button[aria-label]{width:32px !important;height:32px !important}
 [data-m="player"] button[data-page]{display:none !important}
 [data-m="player"] input[type="range"]{height:18px !important}
-[data-m="player"]{transition:opacity .35s ease,transform .35s ease}
-[data-m="player"][data-autohidden]{opacity:0 !important;transform:translateY(100%) !important;pointer-events:none !important}
+
+
 }
 @media (hover:hover) and (pointer:fine){
 button,a[href],[role="link"],[data-page],input[type="submit"]{transition:scale .2s cubic-bezier(.4,0,.2,1),filter .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease !important}
@@ -981,7 +981,7 @@ button,nav,header,h1,h2,h3,h4,h5,h6,label,summary,[role="link"],[role="button"],
 </style>
 <script src="cutout-lift.js?v=20261033m"></script>
 
-<script src="ambient.js?v=77"></script>
+<script src="ambient.js?v=78"></script>
 
 <script>(function(){var R=1356/1159;function fit(){var ps=document.querySelectorAll(".hero-panel");ps.forEach(function(p){var bx=Array.prototype.filter.call(p.querySelectorAll(".hero-box"),function(e){return e.offsetParent!==null});if(bx.length<1)return;var a=bx[0].getBoundingClientRect(),b=bx[bx.length-1].getBoundingClientRect();var W=Math.max(a.width,b.width),H=b.bottom-a.top;if(W<10||H<10)return;var w=W,h=W/R;if(h<H){h=H;w=H*R}var ox=(W-w)/2,oy=(H-h)*0.4;bx.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--hb-w",w.toFixed(1)+"px");e.style.setProperty("--hb-h",h.toFixed(1)+"px");e.style.setProperty("--hb-x",(ox-(r.left-a.left)).toFixed(1)+"px");e.style.setProperty("--hb-y",(oy-(r.top-a.top)).toFixed(1)+"px")})})}window.addEventListener("resize",fit);window.addEventListener("load",fit);setInterval(fit,700);})();</script>
 
@@ -4425,15 +4425,15 @@ class Component extends DCLogic {
 
   initPlayerAutohide() {
     if (!window.matchMedia) return;
-    const mq = matchMedia('(orientation: landscape) and (max-height: 500px) and (pointer: coarse)');
+    const mq = matchMedia('(pointer: coarse), (max-width: 767.98px)'); { const st = document.createElement('style'); st.textContent = '[data-m="player"]{transition:opacity .35s ease,transform .35s ease}[data-m="player"][data-autohidden]{opacity:0 !important;transform:translateY(100%) !important;pointer-events:none !important}'; document.head.appendChild(st); }   // Nov 4 (Scott): cinema mode on every phone, upright or sideways. The bar slips away 3 seconds after play; a tap brings it back
     let timer = null, wasPlaying = false;
     const bar = () => document.querySelector('[data-m="player"]');
     const show = () => { const b = bar(); if (b) b.removeAttribute('data-autohidden'); };
-    const hideSoon = () => { clearTimeout(timer); timer = setTimeout(() => { const b = bar(); if (b && mq.matches && this.state.aPlaying) b.setAttribute('data-autohidden', ''); }, 3000); };
+    const hideSoon = () => { clearTimeout(timer); timer = setTimeout(() => { timer = null; const b = bar(); if (b && mq.matches && this.state.aPlaying) b.setAttribute('data-autohidden', ''); }, 3000); };
     this._ahTick = setInterval(() => {
       const playing = !!this.state.aPlaying;
-      if (!mq.matches || !playing) { clearTimeout(timer); show(); wasPlaying = playing; return; }
-      if (!wasPlaying) { show(); hideSoon(); }
+      if (!mq.matches || !playing) { clearTimeout(timer); timer = null; show(); wasPlaying = playing; return; }
+      if (!wasPlaying) { show(); hideSoon(); } else { const b = bar(); if (b && !b.hasAttribute('data-autohidden') && !timer) hideSoon(); }   // Nov 4 (Scott): if it is showing for any reason, such as turning the phone sideways, it still slips away
       wasPlaying = playing;
     }, 250);
     this._ahTap = (e) => { if (!mq.matches || !this.state.aPlaying) return; const b = bar(); if (b && b.contains(e.target)) { hideSoon(); return; } show(); hideSoon(); };
