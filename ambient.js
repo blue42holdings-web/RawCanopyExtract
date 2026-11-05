@@ -570,9 +570,9 @@
   // Nov 4 (Scott): on a phone the badge drops the figure and gives the room to a bigger play button and a bigger SOUND BATH, so both read at a glance. Desktop keeps the full badge
   function badgePhone(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
-'<circle cx="50" cy="40.5" r="17" stroke-width="2.2"/>'+
-(on?'<path d="M44.6 33V48M55.4 33V48" stroke-width="4.2"/>':'<path d="M44.8 31.7L59.2 40.5L44.8 49.3Z" fill="'+G+'" stroke-width="1.6"/>')+
-'<text x="50" y="76.5" text-anchor="middle" textLength="66" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="17">SOUND BATH</text></svg>';}
+// Nov 4 (Scott): no circle around the play icon. Icon and SOUND BATH sit together as one block, measured on the gold ink to the center of the ring on every side
+(on?'<path d="M44.45 32.55V52.55M55.25 32.55V52.55" stroke-width="4.2"/><text x="49.85" y="69.55"':'<path d="M41.35 31.9L58.35 41.9L41.35 51.9Z" fill="'+G+'" stroke-width="1.6"/><text x="49.85" y="68.9"')+
+' text-anchor="middle" textLength="62" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="15.5">SOUND BATH</text></svg>';}
   function badge(on) {if (innerWidth < 768) return badgePhone(on); var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
 '<circle cx="50" cy="20.5" r="8.4" stroke-width="1.6"/>'+
