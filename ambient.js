@@ -570,9 +570,9 @@
   // Nov 4 (Scott): on a phone the badge drops the figure and gives the room to a bigger play button and a bigger SOUND BATH, so both read at a glance. Desktop keeps the full badge
   function badgePhone(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
-// Nov 5 (Scott): SOUND BATH bigger than the play icon, and the icon plus SOUND BATH centered as one block in the ring. Measured on the gold ink at 1000px: equal space left and right of each, equal space above and below the block, within 1px
-(on?'<path d="M45.4 34.6V45.2M54.6 34.6V45.2" stroke-width="4.2"/>':'<path d="M44.28 33.3L55.72 39.8L44.28 46.3Z" fill="'+G+'" stroke-width="1.6"/>')+
-'<text x="50.2" y="67.3" text-anchor="middle" textLength="74" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="22.4">SOUND BATH</text></svg>';}
+// Nov 5 (Scott): play icon and SOUND BATH both large, read as one image. Each is centered left to right; the gap just under the play icon sits exactly on the center of the ring (measured on the gold ink at 1000px, within 1px)
+(on?'<path d="M45.4 31.3V45.8M54.6 31.3V45.8" stroke-width="4.2"/>':'<path d="M42.43 30L57.57 38.6L42.43 47.2Z" fill="'+G+'" stroke-width="1.6"/>')+
+'<text x="50.2" y="69" text-anchor="middle" textLength="74" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="24">SOUND BATH</text></svg>';}
   function badge(on) {if (innerWidth < 768) return badgePhone(on); var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
 '<circle cx="50" cy="20.5" r="8.4" stroke-width="1.6"/>'+
