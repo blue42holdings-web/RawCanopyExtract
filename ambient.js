@@ -570,8 +570,8 @@
   // Nov 4 (Scott): on a phone the badge drops the figure and gives the room to a bigger play button and a bigger SOUND BATH, so both read at a glance. Desktop keeps the full badge
   function badgePhone(on) {var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
-// Nov 5 (Scott): play icon and SOUND BATH both large, read as one image. Each is centered left to right; the pair sits 3 points higher than true center and the play icon sits 1.5 points right of center (Scott: up higher, play slightly right)
-(on?'<path d="M45.4 28.3V42.8M54.6 28.3V42.8" stroke-width="4.2"/>':'<path d="M43.93 27L59.07 35.6L43.93 44.2Z" fill="'+G+'" stroke-width="1.6"/>')+
+// Nov 5 (Scott): play icon and SOUND BATH both large, read as one image. Each is centered left to right; the pair sits 3 points higher than true center and the play icon sits 1.5 points right of center (Scott: up higher, play slightly right), and the play icon raised 3 more points above SOUND BATH
+(on?'<path d="M45.4 25.3V39.8M54.6 25.3V39.8" stroke-width="4.2"/>':'<path d="M43.93 24L59.07 32.6L43.93 41.2Z" fill="'+G+'" stroke-width="1.6"/>')+
 '<text x="50.2" y="66" text-anchor="middle" textLength="74" lengthAdjust="spacingAndGlyphs" fill="'+G+'" stroke="none" font-family="\'Bebas Neue\',Oswald,sans-serif" font-size="24">SOUND BATH</text></svg>';}
   function badge(on) {if (innerWidth < 768) return badgePhone(on); var G='#D4A24A';return '<svg viewBox="0 0 100 100" width="100%" height="100%" style="display:block;pointer-events:none" fill="none" stroke="'+G+'" stroke-linecap="round" stroke-linejoin="round">'+
 '<circle cx="50" cy="50" r="48.6" fill="#141414" stroke-width="1.5"/><circle cx="50" cy="50" r="44.6" stroke-width="1.5"/>'+
