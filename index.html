@@ -117,6 +117,8 @@ input{font:inherit}
 78%{transform:translateX(-1px);text-shadow:none}
 100%{transform:translateX(0);text-shadow:none}
 }
+@keyframes rcxWordInA{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
+@keyframes rcxWordInB{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
 @keyframes rcxSealRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes rcxArrowDraw{0%{stroke-dashoffset:100}13%{stroke-dashoffset:0}83%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}
 @keyframes rcxArrowHead{0%,12%{opacity:0}13%,97%{opacity:1}98%,100%{opacity:0}}
@@ -3208,9 +3210,9 @@ class Component extends DCLogic {
       this._k = this._k ? (this._k % 3) + 1 : 1;
       const k = this._k;
       this.setState(s => ({ prev: s.rot, rot: [k, k, k], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
-      this._rotT = setTimeout(step, 4000);   // Nov 6 (Scott): desktop was stuck on one thought; it now turns every 4 seconds, same as the phone
+      this._rotT = setTimeout(step, innerWidth >= 768 ? 8000 : 4000);   // Nov 6 (Scott): desktop holds each thought 8 seconds, the phone 4
     };
-    this._rotT = setTimeout(step, this._introDone ? 4000 : 5000);
+    this._rotT = setTimeout(step, this._introDone ? (innerWidth >= 768 ? 8000 : 4000) : 5000);
   };
 
   setHeroSeal = (n) => {
@@ -3300,7 +3302,7 @@ class Component extends DCLogic {
 
     const io = new IntersectionObserver((es) => {
       es.forEach(e => {
-        if (e.intersectionRatio >= 0.95) { io.disconnect(); ring.style.animationPlayState = 'running'; setTimeout(spin, 220); const iv = setInterval(() => { if (!n.isConnected) { clearInterval(iv); return; } if (!document.hidden) spin(); }, 10000); }
+        if (e.intersectionRatio >= 0.95) { io.disconnect(); ring.style.animationPlayState = 'running'; setTimeout(spin, 220); const iv = setInterval(() => { if (!n.isConnected) { clearInterval(iv); return; } if (!document.hidden) spin(); }, (n === this._heroNode && innerWidth >= 768) ? 60000 : 10000); }   // Nov 6 (Scott): the desktop top seal turns on its own only once a minute; a click still spins it
       });
     }, { threshold: [0, 0.95, 1] });
     io.observe(n);
@@ -3332,7 +3334,9 @@ class Component extends DCLogic {
     const idx = this.state.rot[i] || 0;
     const pv = this.state.prev || [0, 0, 0];
     const anim = this._rotRunning && this.state.changed === -2 && this.wordPools[i][pv[i]] !== this.wordPools[i][idx] && !this.reducedMotion()
-      ? (this.state.flash[i] ? 'rcxGlitchB' : 'rcxGlitchA') + ' 170ms steps(5,end) 1'
+      ? (innerWidth >= 768   // Nov 6 (Scott): desktop words ease in smoothly, no shake or blur; the phone keeps its quick glitch
+        ? (this.state.flash[i] ? 'rcxWordInB' : 'rcxWordInA') + ' 700ms cubic-bezier(.2,.7,.2,1) 1'
+        : (this.state.flash[i] ? 'rcxGlitchB' : 'rcxGlitchA') + ' 170ms steps(5,end) 1')
       : 'none';
     return {
       text: this.wordPools[i][idx],
@@ -4437,7 +4441,7 @@ html body [data-screen-label="About"] section[data-m="about-compost"][data-m="ab
 
 </style>
 <script>function PHONE_ROWS(){return !!(window.matchMedia&&matchMedia("(max-width:767px)").matches);}</script>
-<script src="site-extras.js?v=62"></script>
+<script src="site-extras.js?v=63"></script>
 <script src="nav-extras.js?v=51"></script>
 <script src="mushroom-reveal.js?v=13"></script>
 <script src="desk-rows.js?v=967"></script>

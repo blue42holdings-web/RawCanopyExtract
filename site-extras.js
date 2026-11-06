@@ -144,7 +144,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     });
     // any black clickable box or button, phone and desktop
     document.querySelectorAll('main button, main a, main label, main [role="button"], main [role="link"], main [onclick]').forEach(function (b) {
-      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"],.mx-tabs,.shoptg-bar') || b.classList.contains('mx-press')) return;   // magazine cards show their own blurred cover   // two-way switches style themselves
+      if (b.__sv || b.__sl || b.closest('header,footer,nav,[data-m="player"],[data-ambient-btn],[data-m^="nav"],.mx-tabs,.shoptg-bar') || b.classList.contains('mx-press') || b.matches('[aria-label^="Raw Canopy Extract seal"]')) return;   // Nov 6 (Scott): the seal never turns gold on hover   // magazine cards show their own blurred cover   // two-way switches style themselves
       var r = b.getBoundingClientRect(); if (r.width < 30 || r.height < 26) return;
       var cs = getComputedStyle(b);
       if (cs.backgroundImage !== 'none') return;
