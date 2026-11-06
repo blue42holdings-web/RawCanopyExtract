@@ -355,4 +355,5 @@ f();addEventListener('resize',f);if(document.fonts)document.fonts.ready.then(f)}
 (function(){if(!/embed/.test(location.search))return;var last=0;function post(){var h=Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height);if(h!==last){last=h;parent.postMessage({fmHeight:h},'*');}}
 if(window.ResizeObserver)new ResizeObserver(post).observe(document.querySelector('.wrap'));addEventListener('load',post);setInterval(post,1000);post();})();
 </script>
+<style>.rcx-off *,.rcx-off *::before,.rcx-off *::after{animation-play-state:paused!important}</style><script>/* Nov 6 (Scott): the slot machine's lights pause while it is off screen, so the page stays light on slower computers */(function(){if(!window.IntersectionObserver)return;new IntersectionObserver(function(es){document.documentElement.classList.toggle("rcx-off",!es[0].isIntersecting)}).observe(document.body)})();</script>
 </body></html>
