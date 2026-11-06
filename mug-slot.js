@@ -1,3 +1,4 @@
+/* Nov 6 (Scott): the coffee, tea and blender symbols are gold like the words, not white */
 /* Oct 29 (Scott): the headline opens on Tear. Pour. Stir. and Stir. turns into a drink symbol (never the first or second line), then turns back.
    Coffee, tea and smoothie take turns, in Scott's own art, all in the same box, sitting on the same line as Tear and Pour.
    The rotator's third word is a private-use character; this turns that character into the symbol, colored like the words around it. */
@@ -25,9 +26,9 @@
       var m=document.createElement('i');m.setAttribute('data-mug','');e.insertBefore(m,e.firstChild);   // zero size, bottom edge sits on the text line
       var h=m.style;h.display='inline-block';h.verticalAlign='baseline';h.width='0';h.height='0';h.position='relative';h.overflow='visible';h.pointerEvents='none';
       var bl=e.textContent.charCodeAt(0)===0xE002;var d=document.createElement('b');m.appendChild(d);
-      if(bl){var dot=document.createElement('b');var q=dot.style;q.position='absolute';q.left='.56em';q.bottom='.04em';q.width='.12em';q.height='.12em';q.borderRadius='50%';q.backgroundColor='#F1ECE1';m.appendChild(dot);}   // a drawn dot, not text, so the symbol check still sees one private character}   // Oct 29 (Scott): the blender reads as a word, with its own period after it
+      if(bl){var dot=document.createElement('b');var q=dot.style;q.position='absolute';q.left='.56em';q.bottom='.04em';q.width='.12em';q.height='.12em';q.borderRadius='50%';q.backgroundColor='#D4A24A';m.appendChild(dot);}   // a drawn dot, not text, so the symbol check still sees one private character}   // Oct 29 (Scott): the blender reads as a word, with its own period after it
       var c=d.style;c.position='absolute';c.left=bl?'0':'.02em';c.bottom='-.08em';var ix=e.textContent.charCodeAt(0)-0xE000;c.width=['.96em','1.36em','.53em'][ix];c.height='.82em';   // Oct 29 (Scott): coffee, tea and blender are the same height
-      c.backgroundColor='#F1ECE1';c.webkitMaskImage=u;c.maskImage=u;c.webkitMaskRepeat='no-repeat';c.maskRepeat='no-repeat';
+      c.backgroundColor='#D4A24A';c.webkitMaskImage=u;c.maskImage=u;c.webkitMaskRepeat='no-repeat';c.maskRepeat='no-repeat';
       c.webkitMaskPosition=bl?'left bottom':'center bottom';c.maskPosition=bl?'left bottom':'center bottom';c.webkitMaskSize='contain';c.maskSize='contain';
     });
     var gone=[];touched.forEach(function(o){if(live.indexOf(o.g)<0&&gone.indexOf(o.g)<0)gone.push(o.g);});gone.forEach(function(g){g.__mug=0;undo(g);});
