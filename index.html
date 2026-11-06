@@ -3202,9 +3202,9 @@ class Component extends DCLogic {
       this._k = this._k ? (this._k % 3) + 1 : 1;
       const k = this._k;
       this.setState(s => ({ prev: s.rot, rot: [k, k, k], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
-      this._rotT = setTimeout(step, innerWidth >= 768 ? 180000 : 4000);   // Oct 16 (Scott): desktop holds each thought three minutes
+      this._rotT = setTimeout(step, 4000);   // Nov 6 (Scott): desktop was stuck on one thought; it now turns every 4 seconds, same as the phone
     };
-    this._rotT = setTimeout(step, this._introDone ? (innerWidth >= 768 ? 180000 : 4000) : 5000);
+    this._rotT = setTimeout(step, this._introDone ? 4000 : 5000);
   };
 
   setHeroSeal = (n) => {
