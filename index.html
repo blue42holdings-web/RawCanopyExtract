@@ -3173,9 +3173,9 @@ class Component extends DCLogic {
   // Oct 29 (Scott): the headline opens on Tear. Pour. Stir. Then it reads as three thoughts, each ending on a drink symbol:
   // Tear. Mix. (coffee)   Pour. Sip. (tea)   Add. Blend. (smoothie). Each slot holds one word per step; \uE000 to \uE002 are the three symbols.
   wordPools = [
-    ['Tear.', 'Tear.', 'Pour.', 'Open.'],
-    ['Pour.', 'Mix.', 'Sip.', '\uE002'],
-    ['Stir.', '\uE000', '\uE001', 'Enjoy.']
+    ['Tear.', 'Tear.', 'Open.'],
+    ['Pour.', 'Mix.', '\uE002'],
+    ['Stir.', '\uE000', 'Enjoy.']
   ];
 
   reducedMotion() {
@@ -3207,7 +3207,7 @@ class Component extends DCLogic {
     const step = () => {
       this._introDone = true;
       // the next thought: 1, 2, 3, then round again. Only the words that change animate, so the first move is Pour. and Stir. turning into Mix. and the coffee cup together
-      this._k = this._k ? (this._k % 3) + 1 : 1;
+      this._k = ((this._k || 0) + 1) % 3;   // Nov 6 (Scott): back to the main three, and Tear. Pour. Stir. comes back around
       const k = this._k;
       this.setState(s => ({ prev: s.rot, rot: [k, k, k], flash: s.flash.map(f => (f + 1) % 2), changed: -2 }));
       this._rotT = setTimeout(step, innerWidth >= 768 ? 8000 : 4000);   // Nov 6 (Scott): desktop holds each thought 8 seconds, the phone 4
@@ -5941,7 +5941,7 @@ html body a.mx-press.mx-sq.mx-sq.mx-sq .pr-mast.pr-mast.pr-mast.m-time{font-fami
 <script src="rect-lines.js?v=10"></script>
 <script src="beach-pair-phone.js?v=1"></script>
 <script src="mush-pair-swipe.js?v=1"></script>
-<script src="home-graphic.js?v=58"></script><script src="rot-fit.js?v=5"></script><script src="foot-say.js?v=1"></script><script src="pastel-btn.js?v=30"></script><script src="mug-slot.js?v=33"></script>
+<script src="home-graphic.js?v=58"></script><script src="rot-fit.js?v=5"></script><script src="foot-say.js?v=1"></script><script src="pastel-btn.js?v=30"></script><script src="mug-slot.js?v=34"></script>
 <script src="vegas-amb.js?v=7"></script>
 <script src="desk-oct22.js?v=10"></script>
 <style id="lm-fr-oct17">html body div[data-screen-label="Lion's Mane"] [data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"][data-ph="vintage-bottles-labels"]:not(.q1):not(.q2):not(.q3):not(.q4):not(.q5):not(.q6):not(.q7):not(.q8):not(.q9):not(.q10):not(.q11):not(.q12):not(.q13):not(.q14):not(.q15):not(.q16):not(.q17):not(.q18):not(.q19):not(.q20){background:linear-gradient(rgba(0,0,0,.66),rgba(0,0,0,.76)),url("assets/photo/lm-ski-lesson.jpg") center 45%/cover no-repeat !important}</style>
