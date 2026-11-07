@@ -1,4 +1,4 @@
-/* Oct 17 (Scott): on phone, every "swipe for more" row opens with its FIRST box in start position, dead center on the screen.
+/* Oct 17 (Scott): on phone, every "swipe for more" row opens with its FIRST box (the magazines open on box two, Nov 7) in start position, dead center on the screen.
    Each row gets enough side padding to center its first and last box, boxes snap to center, and the row is set to box one
    until the visitor touches it. */
 (function () {
@@ -26,7 +26,8 @@
       var pl = Math.max(0, Math.round((cw - fw) / 2)), pr = Math.max(0, Math.round((cw - lw) / 2));
       if (row.__rcxPl !== pl) { row.__rcxPl = pl; row.style.setProperty('padding-left', pl + 'px', 'important'); row.style.setProperty('padding-right', pr + 'px', 'important'); row.style.setProperty('scroll-padding-left', '0px', 'important'); row.style.setProperty('scroll-padding-right', '0px', 'important'); }
       b.forEach(function (k) { if (k.style.getPropertyValue('scroll-snap-align') !== 'center') k.style.setProperty('scroll-snap-align', 'center', 'important'); });
-      var want = Math.max(0, Math.round(left(f, row) + fw / 2 - cw / 2 - (parseFloat(getComputedStyle(row).borderLeftWidth) || 0)));
+      var st = (row.closest('[data-m="mx-mags"]') && b[1]) ? b[1] : f;   // Nov 7 (Scott): the magazines open on box two (Men's Fitness) centered, with box one peeking in from the left
+      var want = Math.max(0, Math.round(left(st, row) + st.offsetWidth / 2 - cw / 2 - (parseFloat(getComputedStyle(row).borderLeftWidth) || 0)));
       if (Math.abs(want - row.scrollLeft) > 1) { row.style.setProperty('scroll-behavior', 'auto', 'important'); row.scrollLeft = want; }
       if (!row.__rcxWatch) { row.__rcxWatch = 1; ['touchstart', 'pointerdown', 'wheel'].forEach(function (ev) { row.addEventListener(ev, function () { row.__rcxTouched = 1; }, { passive: true }); }); }
     });
