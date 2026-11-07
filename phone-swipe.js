@@ -76,7 +76,7 @@
       var tall = ch.some(function (c) { return c.getBoundingClientRect().height > c.getBoundingClientRect().width * 2; });
       if (tall) { el.classList.remove('rcx-swipe'); el.setAttribute('data-noswipe', '1'); continue; }   // text too long to make a near square card: leave it stacked
       if (!(el.previousElementSibling && el.previousElementSibling.classList.contains('rcx-swipe-tag'))) {
-        el.parentNode.insertBefore(mkTag(), el); wrapParent(el.parentNode);
+        el.parentNode.insertBefore(mkTag(el), el); wrapParent(el.parentNode);
       }
     }
     label(root);
@@ -106,7 +106,7 @@
     var c = getComputedStyle(par);
     if (/flex/.test(c.display) && !/column/.test(c.flexDirection) && c.flexWrap === 'nowrap' && !par.classList.contains('rcx-swipe')) par.style.setProperty('flex-wrap', 'wrap', 'important');
   }
-  function mkTag() { var t = document.createElement('div'); t.className = 'rcx-swipe-tag'; t.innerHTML = 'SWIPE FOR MORE <b>›</b>'; t.style.setProperty('display', 'block', 'important'); return t; }
+  function mkTag(row) { var t = document.createElement('div'); t.className = 'rcx-swipe-tag'; var tabs = row && row.previousElementSibling && row.previousElementSibling.classList.contains('mx-tabs'); t.innerHTML = (tabs ? 'TAP OR SWIPE FOR MORE' : 'SWIPE FOR MORE') + ' <b>›</b>'; t.style.setProperty('display', 'block', 'important'); return t; }
   // every row that moves sideways says so, centered, right above it
   function label(root) {
     var all = root.querySelectorAll('div,section,ul');
@@ -119,7 +119,7 @@
       var p = el.previousElementSibling;
       while (p && (p.classList.contains('rit-nav') || (getComputedStyle(p).display === 'none' && !p.classList.contains('rcx-swipe-tag')))) p = p.previousElementSibling;
       if (p && p.classList.contains('rcx-swipe-tag')) continue;
-      var tg = mkTag();
+      var tg = mkTag(el);
       if (el.getAttribute('data-row-title')) { tg.innerHTML = '<span class="rcx-row-t">' + el.getAttribute('data-row-title') + '</span>' + tg.innerHTML; tg.classList.add('rcx-has-t'); }
       el.parentNode.insertBefore(tg, el);
       wrapParent(el.parentNode);
