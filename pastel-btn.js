@@ -44,10 +44,10 @@ paint();[300,800,1500,3000].forEach(function(t){setTimeout(function(){paint();pi
 (function () {
   var BASE = 17, S0 = 20;
   function textW(el) { var r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; }
-  function fit(list) {
+  function fit(list, cap) {
     list = list.filter(function (e) { return e.offsetParent && e.parentElement; });
     if (list.length < 2) return;
-    var size = BASE * 2;
+    var size = cap || BASE * 2;
     list.forEach(function (e) {
       var host = e.tagName === 'H2' ? e : e.parentElement, cs = getComputedStyle(host);
       var avail = host.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0) - 6;
@@ -61,7 +61,10 @@ paint();[300,800,1500,3000].forEach(function(t){setTimeout(function(){paint();pi
     });
   }
   function run() {
-    fit([].slice.call(document.querySelectorAll('.rcx-row > .rcx-marble.rcx-txt span[data-m="rl-name"]')));
+    var nm = [].slice.call(document.querySelectorAll('.rcx-row > .rcx-marble.rcx-txt span[data-m="rl-name"]'));
+    // Nov 7 (Scott): the lower set (above each mushroom's boxes) is its own set, so the small top set no longer holds its names down; on desktop it runs larger
+    fit(nm.filter(function (e) { return !e.closest('.trin-row'); }));
+    fit(nm.filter(function (e) { return e.closest('.trin-row'); }), innerWidth > 767 ? 46 : BASE * 2);
     fit([].slice.call(document.querySelectorAll('.mx-sec .mx-title h2')).filter(function (h) { return /MUSHROOM\s*$/i.test(h.textContent); }));
   }
   [500, 1500, 3000].forEach(function (t) { setTimeout(run, t); }); setInterval(run, 3000); addEventListener('resize', run); run();   // Nov 6: was every 0.4 seconds
