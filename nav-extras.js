@@ -369,7 +369,7 @@
         }
         if (/18844328/.test(b.getAttribute('href') || '')) return;
         // Nov 7 (Scott): Home lab reports, Lion's Mane gets the dad and son fishing at sunset, Cordyceps gets the ski crew framed so every skier shows
-        var HOME = { 'mx-lm': ['lm-kickoff-fishing-sunset.jpg', '60% 50%'], 'mx-cd': ['ski-crew-ridge.jpg', '50% 50%'] };
+        var HOME = { 'mx-lm': ['lm-kickoff-fishing-sunset.jpg', '60% 50%'], 'mx-cd': ['ski-crew-ridge.jpg', '23% 50%'] };
         var hs = b.closest('section.mx-sec'), hk = hs && HOME[hs.getAttribute('data-m')];
         if (hk && lbl !== 'Shop') { if (b.__lab !== hk[0]) { b.__lab = hk[0]; b.__sv = 1; b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.6)),url("' + P + hk[0] + '") ' + hk[1] + '/cover no-repeat', 'important'); } return; }   // Oct 28 (Scott): the Lion's Mane human trial box on the phone has no photo, plain black
         var t = ((b.querySelector('.lab-title') || {}).textContent || '').toUpperCase();
