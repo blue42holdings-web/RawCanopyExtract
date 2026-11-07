@@ -70,7 +70,7 @@
       var hb = grid.querySelector(':scope > .pl-k-home');
       if (!hb) { [].forEach.call(document.querySelectorAll('.pl-k-home'), function (o) { o.remove(); }); hb = box('home'); grid.insertBefore(hb, grid.firstChild); }
       paint(hb); hb.style.setProperty('grid-column', '1 / -1', 'important'); hb.style.setProperty('order', '-5', 'important');
-      hb.style.setProperty('max-width', 'none', 'important'); hb.style.setProperty('width', 'auto', 'important'); hb.style.setProperty('margin', '0 0 24px', 'important');
+      hb.style.setProperty('max-width', 'none', 'important'); hb.style.setProperty('width', 'auto', 'important'); hb.style.setProperty('margin', '0 0 ' + (innerWidth >= 768 ? '0' : '24px'), 'important');   // Nov 7 (Scott): desktop, no black gap under EASILY TAKEN ANYWHERE
     } else if (innerWidth < 768) {
       // phone: right above the slot machines, so people read what we make before they play (Oct 22, Scott)
       var g = document.querySelector('.hg');
