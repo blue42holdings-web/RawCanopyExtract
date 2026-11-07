@@ -42,7 +42,7 @@
   }
   // Oct 21 (Scott): photos for the How It's Made card, phone and desktop. Each photo sits on its own layer inside the box so no other script can swap it.
   var CARD = {
-    "Lion's Mane": { how: ['lm-kickoff-fishing-sunset.jpg', '-380px 0', '970px auto', 'linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.45))'] },   // Oct 22 (Scott): skier moved a little right so more kids show in the left box
+    "Lion's Mane": { how: ['lm-family-reading.jpg', '50% 30%', 'cover', 'linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.6))'] },   // Nov 7 (Scott): the fishing dad and son moved to the Home lab report; the family reading together takes its place
     'Turkey Tail': { how: ['tt-concert-lasers.jpg', '50% 50%'] }   // Oct 28 (Scott): the concert wristbands replace the hiker
   };
   function boxIn(sec) { return sec && ([].filter.call(sec.children, function (k) { return k.tagName === 'DIV' && k.offsetHeight > 100; })[0] || sec); }
