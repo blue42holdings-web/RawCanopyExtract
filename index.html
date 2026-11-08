@@ -17,6 +17,7 @@ document.addEventListener('click',function(e){if(e.target.closest&&e.target.clos
 new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var a=ms[i].addedNodes;for(var j=0;j<a.length;j++){var n=a[j];if(n.nodeType===1&&(n.hasAttribute('data-screen-label')||(n.querySelector&&n.querySelector('[data-screen-label]')))){arm();return}}}}).observe(document.documentElement,{childList:true,subtree:true});
 setInterval(function(){var v=null,a=document.querySelectorAll('[data-screen-label]');for(var i=0;i<a.length;i++){if(a[i].offsetHeight&&!a[i].parentElement.closest('[data-screen-label]')){v=a[i];break}}if(v&&v!==last){if(last)arm();last=v}},150)})();</script>
 <link rel="preload" as="image" href="assets/photo/hero-stove-pour-ridge-v11.jpg" fetchpriority="high">
+<style id="mush-desk-nov8">html body div[data-screen-label="Lion's Mane"] section[data-m^="num-"] .rit-nav > span,html body div[data-screen-label="Cordyceps"] section[data-m^="num-"] .rit-nav > span,html body div[data-screen-label="Turkey Tail"] section[data-m^="num-"] .rit-nav > span{background:#000 !important;color:#D4A24A !important;-webkit-text-fill-color:#D4A24A !important;text-shadow:none !important;padding:7px 16px 6px !important;border-radius:4px !important}@media (min-width:768px){html body div[data-screen-label="Lion's Mane"] section[data-m^="num-"][data-m^="num-"],html body div[data-screen-label="Cordyceps"] section[data-m^="num-"][data-m^="num-"],html body div[data-screen-label="Turkey Tail"] section[data-m^="num-"][data-m^="num-"]{padding-top:0 !important}}</style>
 <style id="punch-lines-oct22">
 /* Oct 22 (Scott): new punchy lines, one gold box per page */
 html body section.pl-box.pl-box{box-sizing:border-box;margin-top:22px !important;margin-bottom:22px !important;padding:30px 26px 28px !important;text-align:center !important;background:#0b0b0b !important;background-image:none !important;border:3px solid #D4A24A !important;border-radius:18px !important;box-shadow:0 10px 30px rgba(0,0,0,.35) !important;color:#F1ECE1 !important;min-height:0 !important;height:auto !important}
@@ -2099,7 +2100,7 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div style="height:1px;background:#000;margin-top:-1px;position:relative;z-index:3"></div>
 <div style="height:1px;background:#000;margin-bottom:-1px;position:relative;z-index:3"></div>
 
-<div data-m="diag-wrap" style="margin-bottom:-1px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.84)),url('assets/photo/extraction-diagram-plates.jpg');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center">
+<style id="diag-fit-nov8">@media (min-width:768px){html body div[data-screen-label="The Mushrooms"] [data-m="diag-box"][data-m="diag-box"][data-m="diag-box"]{max-width:1200px !important;width:100% !important;box-sizing:border-box !important;padding:28px 40px 26px !important;margin-left:auto !important;margin-right:auto !important}html body div[data-screen-label="The Mushrooms"] [data-m="diag-box"][data-m="diag-box"] h2{margin-bottom:12px !important}html body div[data-screen-label="The Mushrooms"] [data-m="diag-box"][data-m="diag-box"] p{max-width:none !important;text-wrap:pretty !important}}</style><div data-m="diag-wrap" style="margin-bottom:-1px;background-color:#000;background-image:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.84)),url('assets/photo/extraction-diagram-plates.jpg');background-size:100% 100%,cover;background-repeat:no-repeat;background-position:center 60%,center">
 <section data-m="diag-sec" style="position:relative;min-height:40vh;display:flex;align-items:center;padding:84px 28px 30px;background:transparent">
 
 <div data-ph="apothecary-shelf" data-m="diag-box" style="position:relative;max-width:1080px;margin:0 auto;background:rgba(0,0,0,.82);padding:44px 38px">
@@ -5544,7 +5545,7 @@ html body div[data-screen-label="Shop"][data-screen-label="Shop"]>section:first-
 <style id="mush-lm-oct15d">@media (min-width:768px){
 html body div[data-screen-label="Lion's Mane"] section[data-m="sbox"] button[data-m="flat"][data-m="flat"]{min-height:620px !important}
 html body [data-m="nature-line"][data-m="nature-line"]{max-width:none !important;width:auto !important;margin-left:0 !important;margin-right:0 !important}
-html body div[data-ph="couple-tent-pourover"][data-ph="couple-tent-pourover"]{aspect-ratio:1326/974;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/fruiting-body-mycelium-rainbow-crop.jpg") center/cover no-repeat !important;display:flex;flex-direction:column;justify-content:center}
+html body div[data-ph="couple-tent-pourover"][data-ph="couple-tent-pourover"]{background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.55)),url("assets/photo/fruiting-body-mycelium-rainbow-crop.jpg") center/cover no-repeat !important;display:flex;flex-direction:column;justify-content:center}
 
 html body div[data-ph="couple-tent-pourover"] p,html body div[data-ph="couple-tent-pourover"] h2{text-shadow:0 2px 10px #000,0 0 3px #000 !important}
 html body div[data-ph="couple-tent-pourover"] > *:has(p){background:rgba(0,0,0,.55) !important;border-radius:14px;padding:22px 26px !important}
@@ -5770,7 +5771,7 @@ html body [data-ms-page] section[data-ms-card] h2,html body [data-ms-page] secti
 /* Lion's Mane How It's Made: no red box. The diver beside the shark */
 }
 @media (min-width:768px){
-html body [data-ms-page] .ms-row{padding:4px max(28px,calc((100vw - 1100px)/2)) 30px !important;gap:24px !important}
+html body [data-ms-page] .ms-row{padding:4px 28px 30px !important;gap:24px !important;justify-content:center !important}
 html body [data-ms-page] .ms-row > section[data-ms-card]{flex:0 0 540px !important;width:540px !important;max-width:540px !important}
 html body [data-ms-page] section[data-ms-card] p,html body [data-ms-page] section[data-ms-card] li{font-size:16px !important}
 html body [data-ms-page] .ms-wrap .rcx-swipe-tag{text-align:center !important}
