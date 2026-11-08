@@ -1,6 +1,6 @@
 /* Nov 6 (Scott): the coffee, tea and blender symbols are gold like the words, not white */
-/* Oct 29 (Scott): the headline opens on Tear. Pour. Stir. and Stir. turns into a drink symbol (never the first or second line), then turns back.
-   Coffee, tea and smoothie take turns, in Scott's own art, all in the same box, sitting on the same line as Tear and Pour.
+/* Oct 29 (Scott): the headline opens on Open. Pour. Stir. and Stir. turns into a drink symbol (never the first or second line), then turns back.
+   Coffee, tea and smoothie take turns, in Scott's own art, all in the same box, sitting on the same line as Open and Pour.
    The rotator's third word is a private-use character; this turns that character into the symbol, colored like the words around it. */
 (function(){
   var ICONS=['coffee','tea','smoothie'];   // \uE000 coffee, \uE001 tea, \uE002 smoothie

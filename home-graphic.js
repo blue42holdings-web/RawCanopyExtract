@@ -1,6 +1,6 @@
 /* Oct 22 2026 (Scott): PHONE home. The brand paragraph box becomes a graphic:
    box one, on the erupting volcano: what's in their "functional" mushroom scoop (15 labeled pieces, the mushroom a glowing sliver) vs our one clean packet.
-   box two, on the river forest: Uncompromising, by design (four tiles), Tear > Pour > Build your honest blend.
+   box two, on the river forest: Uncompromising, by design (four tiles), Open > Pour > Build your honest blend.
    Desktop keeps the paragraph for now. */
 (function () {
   var ING = [['RICE FLOUR', '#7a1f1f'], ['MALTODEXTRIN', '#5b4a44'], ['NATURAL FLAVORS', '#9b2c2c'], ['XANTHAN GUM', '#6e3b2e'], ['CORN STARCH', '#4a4440'], ['GUAR GUM', '#a8432e'], ['SILICA', '#3f3a37'], ['MUSHROOM', ''], ['SUCRALOSE', '#8c2a2a'], ['DEXTROSE', '#6a5a52'], ['CARAMEL COLOR', '#b0472f'], ['SOY LECITHIN', '#4d3b35'], ['MAGNESIUM STEARATE', '#7d2424'], ['CARRAGEENAN', '#5e5550'], ['CANE SUGAR', '#963528']];
@@ -114,7 +114,7 @@
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="home|packet"><div class="hg-ic"><img src="assets/icons/extracted.svg" alt=""></div><div class="hg-tt">Scientifically extracted</div><div class="hg-ts">Unlocked so your body can actually absorb it.</div></div>' +
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="how|"><div class="hg-ic"><img src="assets/icons/single-ingredient.svg" alt=""></div><div class="hg-tt">Measured so you don’t have to</div><div class="hg-ts">One clean, single ingredient packet.</div></div>' +
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="receipts|"><div class="hg-ic">' + qr + '</div><div class="hg-tt">Scan the lab report</div><div class="hg-ts">Scan the QR for the independent lab report.</div></div>' +
-      '</div><div class="hg-flow"><span>TEAR</span><b>›</b><span>POUR</span><b>›</b><span>BUILD YOUR HONEST BLEND</span></div>' +
+      '</div><div class="hg-flow"><span>OPEN</span><b>›</b><span>POUR</span><b>›</b><span>BUILD YOUR HONEST BLEND</span></div>' +
       '<div class="hg-end">Prescription free. Sugar free. Guilt free.</div></div>';
   }
   function rail() {   // the box in the middle is the big one

@@ -1,4 +1,4 @@
-/* Oct 28 (Scott): on the phone landing, Tear. Pour. Stir. runs large; every other word set is sized down so the whole line fits on the page, then it grows again when Tear. Pour. Stir. comes back. */
+/* Oct 28 (Scott): on the phone landing, Open. Pour. Stir. runs large; every other word set is sized down so the whole line fits on the page, then it grows again when Open. Pour. Stir. comes back. */
 (function () {
   var BIG = 33, MIN = 17, timer = null, node = null;
   function slots(p) { return [].slice.call(p.children); }
