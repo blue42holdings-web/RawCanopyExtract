@@ -162,9 +162,9 @@ if(HOVER) window.addEventListener('blur',function(){ px=-1; setActive(null); });
   if(RM||!window.IntersectionObserver) return;
   var PH=matchMedia('(max-width:767px)').matches;
   function imgRect(bw,bh,iw,ih,sz,ps){
-    var s=sz.trim().split(/\s+/), w, h;
+    var s=(function(v){ var o=[],d=0,c=''; for(var i=0;i<v.length;i++){ var ch=v[i]; if(ch==='(')d++; if(ch===')')d--; if(/\s/.test(ch)&&d===0){ if(c){o.push(c);c='';} } else c+=ch; } if(c)o.push(c); return o; })(sz.trim()), w, h;
     if(s[0]==='cover'||s[0]==='contain'){ var k=(s[0]==='cover'?Math.max:Math.min)(bw/iw,bh/ih); w=iw*k; h=ih*k; }
-    else { var v=function(x,b){ return x==null||x==='auto'?null:/%$/.test(x)?parseFloat(x)/100*b:parseFloat(x); }; w=v(s[0],bw); h=v(s[1],bh); if(w==null&&h==null){ w=iw; h=ih; } else if(w==null) w=h*iw/ih; else if(h==null) h=w*ih/iw; }
+    else { var v=function(x,b){ if(x==null||x==='auto') return null; if(/^-?[\d.]+%$/.test(x)) return parseFloat(x)/100*b; if(/^-?[\d.]+(px)?$/.test(x)) return parseFloat(x); var t=document.createElement('div'); t.style.cssText='position:absolute;visibility:hidden;left:0;top:0;height:1px;width:'+x; var hold=document.createElement('div'); hold.style.cssText='position:absolute;visibility:hidden;left:0;top:0;width:'+b+'px'; hold.appendChild(t); document.body.appendChild(hold); var r=t.offsetWidth; hold.remove(); return r; };   /* Nov 8: resolve max()/min()/calc() sizes so the grow point lands where it was set, not the 50% 60% fallback */ w=v(s[0],bw); h=v(s[1],bh); if(w==null&&h==null){ w=iw; h=ih; } else if(w==null) w=h*iw/ih; else if(h==null) h=w*ih/iw; }
     var p=ps.trim().split(/\s+/), q=function(x,b,sz2){ if(x==null) x='50%'; if(x==='center') x='50%'; if(x==='left'||x==='top') x='0%'; if(x==='right'||x==='bottom') x='100%'; return /%$/.test(x)?(b-sz2)*parseFloat(x)/100:parseFloat(x); };
     return {x:q(p[0],bw,w),y:q(p[1],bh,h),w:w,h:h};
   }
