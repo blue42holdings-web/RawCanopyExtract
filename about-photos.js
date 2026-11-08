@@ -7,11 +7,11 @@
   var BOX = ['about-selfie.webp', 'about-loaded-car-clean.webp', 'about-kayaks.jpg', 'own-dogs-car.jpg', 'own-shasta-road.jpg', 'about-house-level.jpg'];   // Oct 18 (Scott): the Mount Shasta road shot is back above his house; his friend in the river is out
   var POS = ['center 56%', 'center 40%', 'center 40%', '78% 50%', 'center 65%', 'center 65%'];   // Oct 18 (Scott, 2:47pm): Shasta keeps the whole peak with only a little sky above it, and the road coming up below   // Oct 18 (Scott): Shasta shows the empty road running up to the mountain, not the sky; the house shows less sky   // Oct 17 (Scott): house straightened, sky and ground even
   var CREAM = 'rgb(244,240,231)';
-  function photo(e, f, pos, dark) {
-    var v = 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
+  function photo(e, f, pos, dark, fade) {
+    var v = (fade ? 'linear-gradient(#000 0,#000 ' + fade + ',rgba(0,0,0,0) calc(' + fade + ' + 90px)),' : '') + 'linear-gradient(rgba(0,0,0,' + dark + '),rgba(0,0,0,' + (dark + .12) + ')),url("assets/photo/' + f + '")';
     if (e.style.getPropertyValue('background-image') === v.replace(/"/g, '"') && e.__abv === v) return; e.__abv = v;
-    e.style.setProperty('background-image', v, 'important'); e.style.setProperty('background-size', '100% 100%,cover', 'important');
-    e.style.setProperty('background-position', '0 0,' + pos, 'important'); e.style.setProperty('background-repeat', 'no-repeat', 'important');
+    e.style.setProperty('background-image', v, 'important'); e.style.setProperty('background-size', (fade ? '100% 100%,' : '') + '100% 100%,cover', 'important');
+    e.style.setProperty('background-position', (fade ? '0 0,' : '') + '0 0,' + pos, 'important'); e.style.setProperty('background-repeat', 'no-repeat', 'important');
     e.classList.add('rcx-abx');
     [].forEach.call(e.children, function (k) { if (k.tagName === 'DIV' && !k.textContent.trim() && /url\(/.test(getComputedStyle(k).backgroundImage)) k.style.setProperty('display', 'none', 'important'); });
   }
@@ -81,7 +81,7 @@
       });
     }
     var bb = A.querySelector('.ab-brand-box:not(.cmp-box)'); if (bb) photo(bb, 'own-scott-wildman.jpg', 'center 40%', .6);   // Scott, the wild man in his backyard, behind About The Brand
-    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth >= 768 ? 'about-three-dogs-wide.jpg' : 'own-two-labs-hill.jpg', innerWidth >= 768 ? 'center 0%' : 'center 30%', .5);   // Oct 17: desktop zoomed all the way out, sides filled softly, no black bars   // Oct 16 (Scott): his two labs on the hill, towel painted out; one photo, never a collage   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
+    var cb = A.querySelector('.cmp-box'); if (cb) photo(cb, innerWidth >= 768 ? 'about-three-dogs-wide.jpg' : 'own-two-labs-hill.jpg', innerWidth >= 768 ? 'center 34px' : 'center 30%', .5, innerWidth >= 768 ? '34px' : 0);   // Nov 8 (Scott): desktop, the photo sits a little lower so Buddy's head has room; the top fades from black   // Oct 17: desktop zoomed all the way out, sides filled softly, no black bars   // Oct 16 (Scott): his two labs on the hill, towel painted out; one photo, never a collage   // Oct 15 (night): phone, all three dogs, one above the other to fit the tall box   // phone: the two labs, all heads in   // all three dogs in one photo
     var cs = A.querySelector('section[data-m="about-compost"]');
     if (cs) {
       // white (cream) behind the compost box and on down behind the spinning seal; short fades only
