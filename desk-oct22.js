@@ -55,8 +55,8 @@
     });
     if (lm) [].forEach.call(sb.querySelectorAll('[data-m="sbox-shade"]'), function (d) { setI(d, 'display', 'none'); });
     if (lm) { var f = sb.querySelector('form'); if (f && f.parentElement) setI(f.parentElement, 'justify-content', 'center'); }   // email box centered under the paragraph
-    // the RCX field behind the story box goes; the box ends in black
-    [].forEach.call(sb.querySelectorAll('div'), function (d) { if (!d.textContent.trim() && /pattern-field/.test(getComputedStyle(d).backgroundImage)) setI(d, 'display', 'none'); });
+    // Nov 8 (Scott): Cordyceps and Turkey Tail keep their grayed black and white RCX field; only Lion's Mane (poster photo) drops it
+    if (lm) [].forEach.call(sb.querySelectorAll('div'), function (d) { if (!d.textContent.trim() && /pattern-field/.test(getComputedStyle(d).backgroundImage)) setI(d, 'display', 'none'); });
   }
 
   // 7. Cordyceps top photo: a soft dark pool behind the words so the gold reads when the photo brightens
