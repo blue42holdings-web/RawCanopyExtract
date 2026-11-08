@@ -1,7 +1,7 @@
 /* Oct 28 (Scott): on the phone landing, Open. Pour. Stir. runs large; every other word set is sized down so the whole line fits on the page, then it grows again when Open. Pour. Stir. comes back. */
 (function () {
   var BIG = 33, MIN = 17, timer = null, node = null;
-  function slots(p) { return [].slice.call(p.children); }
+  function slots(p) { return [].slice.call(p.children).filter(function (c) { return !c.classList.contains('hero-dks'); }); }   // Nov 8: the drink icons line under the words is not a word
   function natural(p) {   // width of the words at the current font size, not the animated slot widths
     var w = 0, kids = slots(p);
     kids.forEach(function (s) { var i = s.firstElementChild; if (i) w += i.offsetWidth; });
