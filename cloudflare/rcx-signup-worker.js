@@ -48,8 +48,10 @@ async function getToken(env) {
       client_secret: env.SHOPIFY_CLIENT_SECRET,
     }),
   });
-  const data = await res.json();
-  if (!data.access_token) throw new Error('token: ' + JSON.stringify(data));
+  const raw = await res.text();
+  let data = {};
+  try { data = JSON.parse(raw); } catch {}
+  if (!data.access_token) throw new Error('token ' + res.status + ': ' + raw.slice(0, 300));
   cached = { token: data.access_token, expires: Date.now() + ((data.expires_in || 3600) - 300) * 1000 };
   return cached.token;
 }
