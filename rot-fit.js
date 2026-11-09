@@ -37,9 +37,10 @@
     if (w.length < 3 || !w[0] || !/^open\.?$/i.test(w[0].textContent.trim()) || !/^pour\.?$/i.test(w[1].textContent.trim()) || !/^stir\.?$/i.test(w[2].textContent.trim())) return;
     var c = [mid(w[0], 0, 4), mid(w[1], 0, 4) === null ? null : (function () { var tx = w[1].firstChild, r = document.createRange(); r.setStart(tx, 1); r.setEnd(tx, 2); var o = r.getBoundingClientRect(); r.setStart(tx, 2); r.setEnd(tx, 3); var u = r.getBoundingClientRect(); return (o.left + u.right) / 2; })(), mid(w[2], 0, 4)];
     if (c.some(function (x) { return x === null; })) return;
-    {   // the cup stays put and the mug and blender sit the same distance either side: desktop measured from the period after OPEN and the S of STIR, phone from the middles of OPEN and STIR
+    {   // the cup stays put and the mug and blender sit the same distance either side: desktop measured from the period after OPEN and the S of STIR, phone with the cup dead center and the spacing from the middles of OPEN and STIR
       var A = c[0], B = c[2];
       if (innerWidth >= 768) { A = mid(w[0], 4, 5); B = mid(w[2], 0, 1); }
+      else { var pr = p.getBoundingClientRect(); c[1] = pr.left + pr.width / 2; }   // Nov 8 (Scott): phone, the cup sits dead center of the page
       if (A !== null && B !== null) { var step = ((c[1] - A) + (B - c[1])) / 2; c[0] = c[1] - step; c[2] = c[1] + step; }
     }
     var L = d.getBoundingClientRect().left, ic = d.querySelectorAll('.dk');
