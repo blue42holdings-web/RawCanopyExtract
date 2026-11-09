@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>window.__rcxT0=Date.now();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="pace.js?v=1"></script>
@@ -1860,8 +1861,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <p style="font-size:15px;line-height:1.65;color:#8C8574;margin:0 0 20px;flex:1">Single-ingredient organic coconut milk powder. No fillers, no maltodextrin. The same idea, a different cup.</p>
 <sc-if value="{{ notifiedCoconut }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:0">We'll write when it lands.</p></sc-if>
 <p style="font-size:13.5px;line-height:1.5;color:#8C8574;margin:0 0 10px">Sign up for updates when new products are released</p>
-<form data-k="coconut" onSubmit="{{ notify }}" style="display:flex;border:1px solid rgba(241,236,225,.22)">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px">
+<form data-k="coconut" onSubmit="{{ notify }}" style="position:relative;display:flex;border:1px solid rgba(241,236,225,.22)">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:none;border:none;border-left:1px solid rgba(241,236,225,.22);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.12em;padding:0 16px">NOTIFY ME</button>
 </form>
 </article>
@@ -1872,8 +1873,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <p style="font-size:15px;line-height:1.65;color:#8C8574;margin:0 0 20px;flex:1">Single-ingredient organic ginger root. One rhizome, dried and milled, nothing carried along with it.</p>
 <sc-if value="{{ notifiedGinger }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:0">We'll write when it lands.</p></sc-if>
 <p style="font-size:13.5px;line-height:1.5;color:#8C8574;margin:0 0 10px">Sign up for updates when new products are released</p>
-<form data-k="ginger" onSubmit="{{ notify }}" style="display:flex;border:1px solid rgba(241,236,225,.22)">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px">
+<form data-k="ginger" onSubmit="{{ notify }}" style="position:relative;display:flex;border:1px solid rgba(241,236,225,.22)">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:none;border:none;border-left:1px solid rgba(241,236,225,.22);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.12em;padding:0 16px">NOTIFY ME</button>
 </form>
 </article>
@@ -1884,8 +1885,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <p style="font-size:15px;line-height:1.65;color:#8C8574;margin:0 0 20px;flex:1">Freeze-dried orange juice powder. Nothing added to make it dissolve: no maltodextrin, no carrier, no sweetener. Juice, not whole fruit, so it goes into your cup and disappears. Pour it into tea, water, or over turkey tail.</p>
 <sc-if value="{{ notifiedOrange }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:0">We'll write when it lands.</p></sc-if>
 <p style="font-size:13.5px;line-height:1.5;color:#8C8574;margin:0 0 10px">Sign up for updates when new products are released</p>
-<form data-k="orange" onSubmit="{{ notify }}" style="display:flex;border:1px solid rgba(241,236,225,.22)">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px">
+<form data-k="orange" onSubmit="{{ notify }}" style="position:relative;display:flex;border:1px solid rgba(241,236,225,.22)">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:none;border:none;border-left:1px solid rgba(241,236,225,.22);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.12em;padding:0 16px">NOTIFY ME</button>
 </form>
 </article>
@@ -1896,8 +1897,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <p style="font-size:15px;line-height:1.65;color:#8C8574;margin:0 0 20px;flex:1">Pure honey in an easy open packet. One ingredient, sourced the way everything else here is, with the lab report to prove it. The sweetener for the tea side of the cup.</p>
 <sc-if value="{{ notifiedHoney }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:0">We'll write when it lands.</p></sc-if>
 <p style="font-size:13.5px;line-height:1.5;color:#8C8574;margin:0 0 10px">Sign up for updates when new products are released</p>
-<form data-k="honey" onSubmit="{{ notify }}" style="display:flex;border:1px solid rgba(241,236,225,.22)">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px">
+<form data-k="honey" onSubmit="{{ notify }}" style="position:relative;display:flex;border:1px solid rgba(241,236,225,.22)">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:14px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:none;border:none;border-left:1px solid rgba(241,236,225,.22);color:#D4A24A;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.12em;padding:0 16px">NOTIFY ME</button>
 </form>
 </article>
@@ -2173,8 +2174,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 </div>
 </div>
 <div data-mo="6" style="max-width:360px;width:100%;pointer-events:auto;transform:translateX(-52px)">
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px">
+<form data-tag="origin stories, lion's mane" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;color:#D4A24A;margin:10px 0 0">You're on the list.</p></sc-if>
@@ -2264,8 +2265,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,1.5vw,21px);line-height:1.3;color:#D4A24A;margin:0 0 6px">In development · Coming 2029</p>
 <p style="font-size:14px;line-height:1.5;color:#EDE5D6;margin:0 0 12px">Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.</p>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px">
+<form data-tag="origin stories, cordyceps" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;color:#D4A24A;margin:10px 0 0">You're on the list.</p></sc-if>
@@ -2352,8 +2353,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div data-mo="5" style="max-width:360px;width:100%;pointer-events:auto">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,1.5vw,21px);line-height:1.3;color:#D4A24A;margin:0 0 6px">In development · Coming 2030</p>
 <p style="font-size:14px;line-height:1.5;color:#EDE5D6;margin:0 0 12px">Every purchase funds it. Words first, then a storyboard, then an animated film released chapter by chapter. Sign up to follow along.</p>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px">
+<form data-tag="origin stories, turkey tail" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);background:#000">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:#000;border:none;outline:none;color:#F1ECE1;padding:12px 13px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;color:#D4A24A;margin:10px 0 0">You're on the list.</p></sc-if>
@@ -2864,8 +2865,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <p style="font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:14px;color:#B8A98C;margin:0;text-align:left">LISTEN TO THE ROAR OF THE MOUNTAIN<br>KEEPS PLAYING AS YOU BROWSE THE SITE</p>
 </div>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">An animated story, released in chapters. Sign up and we’ll tell you when the next one is ready.</p>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px">
+<form data-tag="origin stories, lion's mane" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:12px 0 0">You're on the list.</p></sc-if>
@@ -2931,8 +2932,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2029</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px">
+<form data-tag="origin stories, cordyceps" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:12px 0 0">You're on the list.</p></sc-if>
@@ -2998,8 +2999,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <div data-fb="82" style="max-width:760px;margin:0 auto;background:rgba(0,0,0,.82);padding:40px 34px;text-align:center">
 <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:#D4A24A;margin:0 0 8px">In development · Coming 2030</p>
 <p style="font-size:17px;line-height:1.7;color:#E4DCCC;margin:0 0 20px;text-wrap:pretty">Every purchase funds these stories. Each one starts as words, becomes a storyboard, then an animated film released chapter by chapter. Even The Roar of the Mountain will be fully animated. Sign up and we’ll keep you posted as it develops.</p>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px">
+<form data-tag="origin stories, turkey tail" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:360px;margin:0 auto">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span style="display:block">MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:12px 0 0">You're on the list.</p></sc-if>
@@ -3060,8 +3061,8 @@ html body section.pl-box.pl-hero.pl-k-home.pl-k-home.pl-k-home{display:none !imp
 <button data-page="legal" onClick="{{ go }}" style="background:none;border:none;padding:0;text-align:left;font-size:15px;color:#CFC7B6" style-hover="color:#D4A24A">Shipping, Privacy &amp; Terms</button>
 </nav>
 <div>
-<form onSubmit="{{ signup }}" style="display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:320px">
-<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px">
+<form data-tag="join the movement" onSubmit="{{ signup }}" style="position:relative;display:flex;gap:0;border:1px solid rgba(212,162,74,.45);max-width:320px">
+<input type="email" required="required" placeholder="Email address" style="flex:1;min-width:0;background:none;border:none;outline:none;color:#F1ECE1;padding:13px 14px;font-size:15px"><input name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button type="submit" style="background:#D4A24A;border:none;color:#000;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.12em;padding:8px 18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center">JOIN THE<span>MOVEMENT</span></button>
 </form>
 <sc-if value="{{ signedUp }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;color:#D4A24A;margin:12px 0 0">You're on the list.</p></sc-if>
@@ -3649,11 +3650,25 @@ class Component extends DCLogic {
     this.setState(s => ({ faq: s.faq === i ? -1 : i }));
   };
 
-  signup = (e) => { e.preventDefault(); this.setState({ signedUp: true }); };
+  // Nov 9 (Scott): every sign-up box goes straight into the Shopify customer list through the Cloudflare relay, tagged by the box it came from; no second page
+  sendSignup = (form, tag) => {
+    const email = (form.querySelector('input[type=email]') || {}).value || '';
+    const hp = (form.querySelector('input[name=company]') || {}).value || '';
+    return fetch('https://rcx-signup.blue42holdings.workers.dev/', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, tags: [tag], hp: hp, ms: Date.now() - (window.__rcxT0 || 0) })
+    }).then(r => r.json()).then(d => { if (!d || !d.ok) throw new Error('signup'); });
+  };
+  signupFail = () => { window.alert('That sign up did not go through. Please check your connection and try again.'); };
+  signup = (e) => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    this.sendSignup(f, f.dataset.tag || 'join the movement').then(() => { this.setState({ signedUp: true }); f.reset(); }, this.signupFail);
+  };
   notify = (e) => {
     e.preventDefault();
-    const k = e.currentTarget.dataset.k;
-    this.setState(s => ({ notified: Object.assign({}, s.notified, { [k]: true }) }));
+    const f = e.currentTarget, k = f.dataset.k;
+    this.sendSignup(f, 'notify ' + k).then(() => { this.setState(s => ({ notified: Object.assign({}, s.notified, { [k]: true }) })); f.reset(); }, this.signupFail);
   };
 
   filter(list) {
