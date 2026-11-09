@@ -27,6 +27,20 @@
     }, d); });
     setTimeout(schedule, 450);
   }
+  // Nov 8 (Scott): each drink icon sits under its word of OPEN. POUR. STIR.: the mug under the middle of OPEN, the cup between the O and U of POUR, the blender under the middle of STIR.
+  // Measured from the letters themselves (periods left out), only while those three words show; the icons stay put while other words rotate through.
+  function mid(t, a, b) { var tx = t && t.firstChild; if (!tx || tx.nodeType !== 3) return null; var r = document.createRange(); r.setStart(tx, a); r.setEnd(tx, b); var q = r.getBoundingClientRect(); return q.width ? q.left + q.width / 2 : null; }
+  function icons() {
+    var p = document.querySelector('[data-rcx-rotator]'); if (!p || !p.offsetParent) return;
+    var d = p.querySelector('.hero-dks'); if (!d) return;
+    var w = slots(p).map(function (s) { return s.firstElementChild; });
+    if (w.length < 3 || !w[0] || !/^open\.?$/i.test(w[0].textContent.trim()) || !/^pour\.?$/i.test(w[1].textContent.trim()) || !/^stir\.?$/i.test(w[2].textContent.trim())) return;
+    var c = [mid(w[0], 0, 4), mid(w[1], 0, 4) === null ? null : (function () { var tx = w[1].firstChild, r = document.createRange(); r.setStart(tx, 1); r.setEnd(tx, 2); var o = r.getBoundingClientRect(); r.setStart(tx, 2); r.setEnd(tx, 3); var u = r.getBoundingClientRect(); return (o.left + u.right) / 2; })(), mid(w[2], 0, 4)];
+    if (c.some(function (x) { return x === null; })) return;
+    var L = d.getBoundingClientRect().left, ic = d.querySelectorAll('.dk');
+    for (var i = 0; i < 3 && i < ic.length; i++) { var v = (c[i] - L - ic[i].offsetWidth / 2).toFixed(1) + 'px'; if (ic[i].style.left !== v) ic[i].style.left = v; }
+  }
+  addEventListener('resize', function () { setTimeout(icons, 50); });
   function schedule() { if (!timer) timer = setTimeout(fit, 0); }
   function attach() {
     var p = document.querySelector('[data-rcx-rotator]');
@@ -35,5 +49,5 @@
     new MutationObserver(schedule).observe(p, { subtree: true, childList: true, characterData: true });
     schedule();
   }
-  setInterval(function () { attach(); schedule(); }, 700);
+  setInterval(function () { attach(); schedule(); icons(); }, 700);
 })();
