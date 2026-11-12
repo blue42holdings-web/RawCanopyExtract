@@ -266,10 +266,10 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
     document.querySelectorAll('a.mx-press').forEach(function (b) {
       if (b.__mr && /assets\/(press|photo)\//.test(b.style.getPropertyValue('background') || b.style.getPropertyValue('background-image'))) return;   // Oct 15 (night): repaint if a re-render wiped the cover
       if (!b.__mrk) b.__mrk = (n++ % 10) + 1; b.__mr = 1;
-      var k = b.__mrk, h = b.getAttribute('href') || '', img = 'assets/photo/mag-rack-' + k + '.jpg', sh = '.5),rgba(0,0,0,.62)';
+      var k = b.__mrk, h = b.getAttribute('href') || '', img = '', sh = '.5),rgba(0,0,0,.62)';
       // Oct 15: each box gets the painted, blurred feel of its own magazine's cover instead of a rack photo
       for (var i = 0; i < PRESS.length; i++) if (h.indexOf(PRESS[i][0]) >= 0) { img = 'assets/press/' + PRESS[i][1] + '.webp?v=4'; sh = '.42),rgba(0,0,0,.6)'; break; }
-      b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + sh + '),url("' + img + '") center/cover no-repeat', 'important');
+      if (img) b.style.setProperty('background', 'linear-gradient(rgba(0,0,0,' + sh + '),url("' + img + '") center/cover no-repeat', 'important');
     });
   }
   setInterval(run, 1000); run();
@@ -279,7 +279,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
    once it scrolls into view (background photos and plain pictures alike). */
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var NEW = /assets\/photo\/(about-beach-seastack|about-shasta-clouds|dodge03-diver|lab-hand-closeup|lab-mushroom-extraction|lab-powder-coat|lab-reishi-weighing|lab-soxhlet-extraction|lab-steel-tanks|lm-grandma-girl-puzzle|lm-grandma-puzzle|lm-grandpa-football-park|lm-grandpa-kickoff|lm-grandpa-puzzle|lm-powder-pile|mag-rack-\d+|mess-counter|mess-counter-v2|mess-floor|mess-swirl|mtb-rider-side|cd-studied-clubs|a-freediver-surfacing-at-sunset|coffee-made-at-camp|how-mossy-tree|camp-adventure|thermos-pour-sunrise|map-mug-camera|kettle-tripod-camp|kitchen-shake|reef-aerial-aqua|reef-aerial-sky|tr-[a-z-]+|tt-airport-crowd|tt-airport-security-line|tt-baggage-claim-crowd|tt-feet-in-line|tt-queue-feet|tt-train-crowd|yoga-vertical)\./;
+  var NEW = /assets\/photo\/(about-beach-seastack|about-shasta-clouds|dodge03-diver|lab-hand-closeup|lab-mushroom-extraction|lab-powder-coat|lab-reishi-weighing|lab-soxhlet-extraction|lab-steel-tanks|lm-grandma-girl-puzzle|lm-grandma-puzzle|lm-grandpa-football-park|lm-grandpa-kickoff|lm-grandpa-puzzle|lm-powder-pile|mess-counter|mess-counter-v2|mess-floor|mess-swirl|mtb-rider-side|cd-studied-clubs|a-freediver-surfacing-at-sunset|coffee-made-at-camp|how-mossy-tree|camp-adventure|thermos-pour-sunrise|map-mug-camera|kettle-tripod-camp|kitchen-shake|reef-aerial-aqua|reef-aerial-sky|tr-[a-z-]+|tt-airport-crowd|tt-airport-security-line|tt-baggage-claim-crowd|tt-feet-in-line|tt-queue-feet|tt-train-crowd|yoga-vertical)\./;
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
     en.forEach(function (e) {
       if (e.isIntersecting) {
