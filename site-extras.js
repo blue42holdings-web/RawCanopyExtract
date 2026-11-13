@@ -134,7 +134,7 @@ window.__rcxMetal = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org
   }
   var nm = 0, ns = 0;
   function run() {
-    document.querySelectorAll('.rcx-marble,[data-pack-stage="tin"],.pk-tile.pk-tin,.mx-press-w').forEach(function (e) {
+    document.querySelectorAll('.rcx-marble,.mx-press-w').forEach(function (e) {
       if (e.__mv) return; e.__mv = 1;
       e.style.setProperty('background', marble(nm++), 'important');
     });
