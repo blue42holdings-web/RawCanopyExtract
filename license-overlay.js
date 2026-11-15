@@ -53,7 +53,7 @@
     "lm-white": [U, "No source found"],
     "a-cup-in-the-woods": [U, "No clear owner found"],
     "a-freediver-rising-over-the-sand-flats": [U, "No clear owner found"],
-    "og-seal-camp-v2": [U, "Camp photo behind the seal, no match found"],
+    "og-seal-camp-v3": [U, "Camp photo behind the seal, no match found"],
     "how-gym-coffee-crop": [U, "No owner found, looks AI made"],
     "why-sunrise": [U, "No owner, looks AI made"],
     "tt-fest-wristbands": [U, "No owner, AI image from StockCake"],
@@ -66,7 +66,7 @@
     "tt-tube-boarding": [R, "London news photo, real commuters"],
     "faq-camp-table-tin": [R, "Shows the steel tin"]
   };
-  var NT = ["cd-paddleboard-group","cd-relay-college","cd-xc-skier","cd-yunnan-hoodoos","coconut-palm-up","couple-tent-beach","desk-journal-coffee","dodge03-diver","e-tent-dusk","ginger-root","hero-stove-pour-ridge-v11","home-bg-coast-dusk","honeycomb","kitchen-blender-greens","kitchen-shake","lab-hand-closeup","lab-powder-coat","lab-steel-tanks","lm-family-reading","lm-how-made-desk","lm-kickoff-fishing-sunset","lm-macro-closeup","lm-office-red-mugs","measured-hiker-sunset-flip","mess-floor","mtb-rider-side","orange-slices","pineapple-smoothie","ski-crew-ridge","tt-airport-crowd","tt-concert-lasers","two-figures-stretching-against-a-sunset-sea","why-desk-coffee","why-pour","yoga-vertical"];
+  var NT = ["cd-paddleboard-group","cd-relay-college","cd-xc-skier","cd-yunnan-hoodoos","coconut-palm-up","couple-tent-beach","desk-journal-coffee","dodge03-diver","e-tent-dusk","ginger-root","hero-stove-pour-ridge-v12","home-bg-coast-dusk","honeycomb","kitchen-blender-greens","kitchen-shake","lab-hand-closeup","lab-powder-coat","lab-steel-tanks","lm-family-reading","lm-how-made-desk","lm-kickoff-fishing-sunset","lm-macro-closeup","lm-office-red-mugs","measured-hiker-sunset-flip","mess-floor","mtb-rider-side","orange-slices","pineapple-smoothie","ski-crew-ridge","tt-airport-crowd","tt-concert-lasers","two-figures-stretching-against-a-sunset-sea","why-desk-coffee","why-pour","yoga-vertical"];
   NT.forEach(function (s) { if (!L[s]) L[s] = [N, "Source not checked yet"]; });
 
   var RE = /assets\/(?:photo|cutouts)\/(?:faq\/)?([^\/?#"')]+?)\.(?:jpe?g|webp|png|avif)/i;
