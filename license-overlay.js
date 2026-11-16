@@ -28,7 +28,7 @@
     "how-freediver-line": [E, "Mitch Brown Photo Freediving, Oahu | info@mitchbrownphotofreediving.com | 808-308-8311"],
     "how-freediver-dark": [E, "Mitch Brown Photo Freediving, Oahu | info@mitchbrownphotofreediving.com | 808-308-8311"],
     "h-van-forest": [E, "Tiffin Motorhomes (GH1 press photo) | call 256-356-8661, ask for marketing | contact@tiffinmotorhomes.com (unconfirmed)"],
-    "van-rainier-stripes26": [E, "Jessica Carpenter, My Feet Will Lead Me blog | jessica@myfeetwillleadme.com"],
+    "van-rainier-stripes26": [R, "Jessica Carpenter asked about $3,000 a year. Not a match, replace"],
     "lm-skagit-valley": [E, "Benj Drummond, photographer | mail@benjandsara.com"],
     "how-kayak-whitewater": [E, "Confluence Outdoor | form at confluenceoutdoor.com/pages/contact, pick Media Inquiries"],
     "lab-extraction-rig": [E, "Alibaba seller hzlymachine | Contact Supplier on Alibaba listing 10000012035177"],
