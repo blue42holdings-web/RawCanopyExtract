@@ -141,8 +141,15 @@
       try { v = visibleRect(el); } catch (e) {}
       if (!v) { d.style.display = "none"; return; }
       d.style.display = "block";
+      /* Nov 16 (Scott): a photo used as a whole-page background gets no giant X across the page.
+         It gets only its label, pinned at the top of the area it covers, marked PAGE BACKGROUND. */
+      var big = el.getBoundingClientRect().height > innerHeight * 1.3;
+      var svg = d.querySelector("svg"), lab = d.lastChild;
+      if (!d._t) d._t = lab.textContent;
+      if (svg) svg.style.display = big ? "none" : "block";
+      lab.textContent = big ? "PAGE BACKGROUND, " + d._t : d._t;
       d.style.left = (v.x + scrollX) + "px"; d.style.top = (v.y + scrollY) + "px";
-      d.style.width = v.w + "px"; d.style.height = v.h + "px";
+      d.style.width = v.w + "px"; d.style.height = (big ? 60 : v.h) + "px";
     });
   }
   var ticking = false;
