@@ -57,7 +57,6 @@
     "how-gym-coffee-crop": [U, "No owner found, looks AI made"],
     "why-sunrise": [U, "No owner, looks AI made"],
     "tt-fest-wristbands": [U, "No owner, AI image from StockCake"],
-    "about-kayaks": [U, "No match anywhere online. Probably yours?"],
     /* REPLACE: can't be fixed with permission */
     "receipts-tennis-noblog": [R, "News photo of a real tennis player"],
     "receipts-tennis-wide": [R, "News photo of a real tennis player"],
