@@ -99,7 +99,7 @@
     'html body .hg-two{margin-top:0 !important;padding-top:8px !important}',
     'html body .hg-two .hg-box{margin-bottom:0}',
     'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}',
-    '@media (min-width:768px){html body .hg.hg-desk .hg-sign{width:100% !important;max-width:100% !important;margin:0 auto 16px !important}html body .hg.hg-desk .hg-box.hg-pm{width:853px !important;max-width:100% !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;padding:30px 24px 28px !important}}'   // Nov 5 (Scott): desktop boxes fit what's inside them, no big black space
+    '@media (min-width:768px){html body .hg.hg-desk .hg-sign{width:100% !important;max-width:100% !important;margin:0 auto 16px !important}html body .hg.hg-desk .hg-box.hg-pm{width:853px !important;border-width:3.5px !important;border-radius:22px !important;max-width:100% !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;padding:30px 24px 28px !important}}'   // Nov 5 (Scott): desktop boxes fit what's inside them, no big black space
   ].join('\n');
   document.head.appendChild(css);
 
