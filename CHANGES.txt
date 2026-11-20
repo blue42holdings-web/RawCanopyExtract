@@ -341,3 +341,4 @@ Nov 19 2026 (Scott): the slot machine on the home page (phone and desktop) is re
 Nov 19 2026 (Scott): headline under the subway sign is now THE EXPRESS TO / BETTER HEALTH AND WELLNESS (was Your health and wellness isn't a game).
 Nov 19 2026 (Scott): desktop subway sign box now matches the green box above it, 1234px wide (was 666px frame, 900px sign). Headline under the sign now THE EXPRESS TO / HEALTH AND WELLNESS (dropped "better").
 Nov 19 2026 (Scott): headline under the subway sign reads THE EXPRESS TRAIN / TO HEALTH AND WELLNESS. Desktop: that box has no bottom line; its sides run down into the outer gold frame, like the Natural Vitality box at the top.
+Nov 19 2026 (Scott): undid the open-bottom headline box. Desktop: the EXPRESS TRAIN box is a full closed box again, now 853px wide to match the Natural Vitality box at the top.
