@@ -49,7 +49,7 @@
     'html body .hg-shop{font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:20px;color:#F6D58E;text-align:center;margin:2px 0 10px;text-shadow:0 0 8px rgba(246,213,142,.55),0 1px 3px #000;width:100%}',
     'html body .hg-shop span{color:#F1ECE1;margin:0 4px}html body .hg-shop b{display:inline-block;font-weight:400;animation:rcxSwArr 1.8s ease-in-out infinite}',
     '@media (max-width:767px){html body .hg{margin-top:9px !important}}',   // Oct 23 (Scott): the casino stays put, leaving black under the buttons
-    'html body .hg .hg-slot{display:block;width:100%;height:1750px;border:0;margin:0 0 16px;background:transparent;overflow:hidden}',
+    'html body .hg .hg-sign{display:block;width:100%;height:auto;aspect-ratio:1600/901;border:0;margin:0 0 16px;object-fit:cover}',   // Nov 19 (Scott): the subway sign replaces the slot machine; a still picture, nothing playing in the background
     '.hg-marq{position:relative;margin:4px auto 2px;padding:9px 10px 7px;border-radius:10px;background:#1a0606;text-align:center;font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:19px;white-space:nowrap;color:#F6D58E;text-shadow:0 0 8px rgba(246,213,142,.8);border:2px solid #D4A24A}',
     '.hg-marq:before{content:"";position:absolute;inset:-6px;border-radius:13px;background:radial-gradient(circle,#FFE7A8 0 2.2px,transparent 2.6px) 0 0/14px 14px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:4px;animation:hgBulb 0.9s steps(2) infinite;pointer-events:none}',
     '@keyframes hgBulb{0%{opacity:1}50%{opacity:.35}}',
@@ -99,7 +99,7 @@
     'html body .hg-two{margin-top:0 !important;padding-top:8px !important}',
     'html body .hg-two .hg-box{margin-bottom:0}',
     'html body .hg:not(.hg-two){margin-top:0 !important;padding-top:0 !important}',
-    '@media (min-width:768px){html body .hg.hg-desk .hg-slot{width:600px !important;max-width:100% !important;margin:0 auto 16px !important}html body .hg.hg-desk .hg-box.hg-pm{width:600px !important;max-width:100% !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;padding:30px 24px 28px !important}}'   // Nov 5 (Scott): desktop boxes fit what's inside them, no big black space
+    '@media (min-width:768px){html body .hg.hg-desk .hg-sign{width:900px !important;max-width:100% !important;margin:0 auto 16px !important}html body .hg.hg-desk .hg-box.hg-pm{width:600px !important;max-width:100% !important;margin-left:auto !important;margin-right:auto !important;box-sizing:border-box;padding:30px 24px 28px !important}}'   // Nov 5 (Scott): desktop boxes fit what's inside them, no big black space
   ].join('\n');
   document.head.appendChild(css);
 
@@ -107,7 +107,7 @@
     var segs = ING.map(function (x) { return x[1] ? '<i class="hg-ing" style="background:' + x[1] + '"><em>' + x[0] + '</em></i>' : '<i class="hg-ing hg-m"><em>' + x[0] + '</em></i>'; }).join('');
     var qr = '<svg viewBox="-1 -1 27 27" width="52" height="52" aria-hidden="true"><rect x="-1" y="-1" width="27" height="27" rx="2" fill="#000"/><g fill="#D4A24A"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM13 0h2v1h-2zM16 0h1v1h-1zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h4v1h-4zM13 1h2v1h-2zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h1v1h-1zM11 2h1v1h-1zM13 2h4v1h-4zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h1v1h-1zM12 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h2v1h-2zM12 4h2v1h-2zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM12 5h1v1h-1zM14 5h2v1h-2zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h3v1h-3zM15 6h1v1h-1zM18 6h7v1h-7zM10 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM3 8h2v1h-2zM6 8h5v1h-5zM12 8h3v1h-3zM16 8h2v1h-2zM22 8h3v1h-3zM2 9h5v1h-5zM8 9h4v1h-4zM18 9h1v1h-1zM23 9h2v1h-2zM0 10h1v1h-1zM2 10h11v1h-11zM15 10h5v1h-5zM22 10h3v1h-3zM0 11h3v1h-3zM4 11h2v1h-2zM8 11h1v1h-1zM10 11h1v1h-1zM15 11h3v1h-3zM21 11h2v1h-2zM4 12h1v1h-1zM6 12h5v1h-5zM13 12h1v1h-1zM17 12h5v1h-5zM0 13h1v1h-1zM3 13h1v1h-1zM8 13h2v1h-2zM11 13h1v1h-1zM14 13h2v1h-2zM18 13h3v1h-3zM23 13h1v1h-1zM2 14h1v1h-1zM4 14h2v1h-2zM10 14h1v1h-1zM13 14h4v1h-4zM18 14h3v1h-3zM22 14h2v1h-2zM1 15h1v1h-1zM6 15h4v1h-4zM11 15h2v1h-2zM15 15h1v1h-1zM19 15h1v1h-1zM21 15h2v1h-2zM3 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM15 16h6v1h-6zM24 16h1v1h-1zM8 17h5v1h-5zM16 17h1v1h-1zM20 17h2v1h-2zM24 17h1v1h-1zM0 18h7v1h-7zM10 18h1v1h-1zM12 18h2v1h-2zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h3v1h-3zM24 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h2v1h-2zM11 19h1v1h-1zM13 19h4v1h-4zM20 19h1v1h-1zM23 19h1v1h-1zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM10 20h3v1h-3zM14 20h8v1h-8zM24 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM8 21h1v1h-1zM12 21h2v1h-2zM15 21h2v1h-2zM20 21h1v1h-1zM22 21h1v1h-1zM24 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM8 22h1v1h-1zM11 22h2v1h-2zM14 22h7v1h-7zM22 22h1v1h-1zM24 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h4v1h-4zM14 23h2v1h-2zM17 23h1v1h-1zM19 23h2v1h-2zM22 23h1v1h-1zM0 24h7v1h-7zM9 24h1v1h-1zM13 24h5v1h-5zM19 24h3v1h-3z"/></g></svg>';
     return '<div class="hg-title"><span>WHY WE\u2019RE DIFFERENT</span></div>' +
-      '<iframe class="hg-slot" src="find-the-mushroom.html?embed=1&s=12" title="Find the mushroom: a slot machine game" scrolling="no" loading="lazy"></iframe>' +
+      '<img class="hg-sign" src="assets/photo/home/rcx-subway-super-blend-sign.webp" width="1600" height="901" loading="lazy" decoding="async" alt="Subway sign: what\u2019s really in their super blend? Lion\u2019s mane, cordyceps and turkey tail per serving, compared with published research and with RCX at 2000 mg per packet.">' +
       '<div class="hg-box hg-pm"><span class="hg-pmh">Your health and</span><span class="hg-pmh">wellness isn\u2019t a\u00a0game.</span><i class="hg-pmr"></i><span class="hg-pmb">Our products have no\u00a0fillers.</span><span class="hg-pmb">No flow agents. No\u00a0additives.</span><span class="hg-pmb">Scientifically extracted for max\u00a0absorption.</span><span class="hg-pmb hg-pmg">You know exactly what you\u2019re getting, every\u00a0time.</span></div>' +
       '<div class="hg-box hg-b2"><div class="hg-q" role="heading" aria-level="2">UNCOMPROMISING, BY DESIGN</div><div class="hg-tiles">' +
       '<div class="hg-t" role="link" tabindex="0" data-hg-go="shop|shop-research"><div class="hg-ic hg-sp"><img src="assets/icons/species/rcx-sym-lions-mane-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-cordyceps-gold.svg" alt=""><img src="assets/icons/species/rcx-sym-turkey-tail-gold.svg" alt=""></div><div class="hg-tt">Backed by published research</div><div class="hg-ts">Three organic mushrooms.<br>Nature’s raw harvest.</div></div>' +
@@ -242,7 +242,7 @@
     var t = document.createElement('div'); t.className = 'hg-shop'; t.innerHTML = 'SHOP NOW <span>\u00B7</span> CLICK A MUSHROOM <b>\u203A</b>';
     rl.parentNode.insertBefore(t, rl);
   }
-  function place() {   // order: the three white mushroom buttons, the green box (Oct 27, Scott), then the slot machines
+  function place() {   // order: the three white mushroom buttons, the green box (Oct 27, Scott), then the subway sign
     var w = g && rlWrap(); if (!w) return;
     var p = w.parentNode;
     if (g2 && g2.previousElementSibling !== w) p.insertBefore(g2, w.nextSibling);
@@ -272,7 +272,7 @@
     var a = hidden && hidden.isConnected ? hidden : anchor(); if (!a) return;
     if (!g || !g.isConnected) {
       [].forEach.call(document.querySelectorAll('.hg'), function (o) { o.remove(); });
-      g = document.createElement('div'); g.className = 'hg' + (phone ? '' : ' hg-desk'); g.__phone = phone; g.setAttribute('data-noswipe', '1'); g.innerHTML = phone ? html() : html().replace('embed=1', 'embed=1&wide=1');
+      g = document.createElement('div'); g.className = 'hg' + (phone ? '' : ' hg-desk'); g.__phone = phone; g.setAttribute('data-noswipe', '1'); g.innerHTML = html();
       [].forEach.call(g.querySelectorAll('div'), function (d) { d.setAttribute('data-noswipe', '1'); });
       var cs = getComputedStyle(a), pcs = getComputedStyle(a.parentNode), aw = a.offsetWidth || (a.parentNode.clientWidth - parseFloat(pcs.paddingLeft) - parseFloat(pcs.paddingRight)); g.style.maxWidth = (phone ? aw : 1300) + 'px'; g.style.marginLeft = cs.marginLeft === '0px' ? 'auto' : cs.marginLeft; g.style.marginRight = g.style.marginLeft === 'auto' ? 'auto' : cs.marginRight;
       a.parentNode.insertBefore(g, a.nextSibling);
@@ -310,7 +310,6 @@
   }
   document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('.hg [data-hg-go]'); if (t) { e.preventDefault(); hgGo(t); } });
   document.addEventListener('keydown', function (e) { if (e.key !== 'Enter' && e.key !== ' ') return; var t = e.target.closest && e.target.closest('.hg [data-hg-go]'); if (t) { e.preventDefault(); hgGo(t); } });
-  addEventListener('message', function (e) { if (e.data && e.data.fmHeight && g) { var f = g.querySelector('.hg-slot'); if (f && e.source === f.contentWindow) f.style.height = e.data.fmHeight + 'px'; } });
   addEventListener('resize', function () { run(); fit(); });
   setInterval(run, 1000); run();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);

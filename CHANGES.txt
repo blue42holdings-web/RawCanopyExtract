@@ -337,3 +337,4 @@ Oct 28 afternoon: new phone landing screen (packets photo, seal badge, headline 
 Oct 28 afternoon: phone landing now has the Tear/Pour/Stir to Measured/Tested/Published animation back, and a boxed description with the packaging details.
 Oct 28 afternoon: heading MEET OUR TRIPLE POWER FUNGI; black logos and black text on the white mushroom boxes; Tear Pour Stir tucked under the seal on phone; landing box rewritten shorter (100% organic mushroom extract, one mushroom per packet).
 Oct 28 afternoon: phone landing word line resizes: Tear. Pour. Stir. large, other word sets smaller so they always fit.
+Nov 19 2026 (Scott): the slot machine on the home page (phone and desktop) is replaced by the subway sign still (assets/photo/home/rcx-subway-super-blend-sign.webp). A still picture, nothing animating or playing. Deleted with it: find-the-mushroom.html, vegas-amb.js and the Sound Bath hooks that only the casino sound used.

@@ -628,9 +628,6 @@
   }
 
 
-  // Oct 22 (Scott): while the slot machines are on screen, the sound bath steps aside for the casino floor (vegas-amb.js)
-  window.__rcxBathOn = function () { return !!(started && !muted && ctx && ctx.state === 'running'); };
-  window.__rcxBathDuck = function (v, sec) { if (eng && !storyOn && !playing) eng.setDuck(v, sec); };
   var startedAt = 0, fresh = false;
   function start() {
     if (started || !AC) return;
