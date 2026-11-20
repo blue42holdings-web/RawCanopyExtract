@@ -339,3 +339,4 @@ Oct 28 afternoon: heading MEET OUR TRIPLE POWER FUNGI; black logos and black tex
 Oct 28 afternoon: phone landing word line resizes: Tear. Pour. Stir. large, other word sets smaller so they always fit.
 Nov 19 2026 (Scott): the slot machine on the home page (phone and desktop) is replaced by the subway sign still (assets/photo/home/rcx-subway-super-blend-sign.webp). A still picture, nothing animating or playing. Deleted with it: find-the-mushroom.html, vegas-amb.js and the Sound Bath hooks that only the casino sound used.
 Nov 19 2026 (Scott): headline under the subway sign is now THE EXPRESS TO / BETTER HEALTH AND WELLNESS (was Your health and wellness isn't a game).
+Nov 19 2026 (Scott): desktop subway sign now spans the full width of the green box above it (was 900px). Headline under the sign now THE EXPRESS TO / HEALTH AND WELLNESS (dropped "better").
